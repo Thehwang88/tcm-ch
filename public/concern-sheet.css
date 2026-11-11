@@ -27,3 +27,20 @@
 .tcm-concern-success p{color:#505453;font-size:15px}
 @media(min-width:768px){.tcm-concern-sheet[open]{inset:0;margin:auto;max-width:510px;width:calc(100vw - 32px)}.tcm-concern-panel{border-radius:22px;max-height:min(90dvh,850px);box-shadow:0 16px 60px rgba(0,0,0,.2)}}
 @media(prefers-reduced-motion:no-preference){.tcm-concern-sheet[open] .tcm-concern-panel{animation:tcm-concern-in .18s ease-out}@keyframes tcm-concern-in{from{transform:translateY(20px);opacity:.85}to{transform:translateY(0);opacity:1}}}
+
+
+/* CARE Concierge is the primary low-friction channel; email form is optional. */
+.tcm-concern-wa{display:flex;align-items:center;justify-content:center;gap:9px;box-sizing:border-box;
+  width:100%;min-height:52px;margin-top:16px;padding:11px 14px;
+  background:#1769B1;border:1px solid #1769B1;color:#fff!important;border-radius:999px;
+  font-size:15px;font-weight:750;line-height:1.35;text-decoration:none!important;text-align:center}
+.tcm-concern-wa:hover{background:#10558F}
+.tcm-concern-wa:focus-visible,.tcm-concern-email-option summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
+.tcm-concern-email-option{margin-top:14px;border-top:1px solid #E8E6E3;padding-top:12px}
+.tcm-concern-email-option summary{display:flex;justify-content:center;gap:9px;
+  padding:12px 5px;font-size:14px;font-weight:700;color:#171B1A;
+  cursor:pointer;list-style:none;min-height:42px;box-sizing:border-box}
+.tcm-concern-email-option summary::-webkit-details-marker{display:none}
+.tcm-concern-email-option[open] summary span{transform:rotate(180deg)}
+.tcm-concern-email-fields{display:flex;flex-direction:column;padding:0 0 4px}
+#tcm-concern-form[hidden],.tcm-concern-success[hidden],.tcm-concern-error[hidden]{display:none!important}
