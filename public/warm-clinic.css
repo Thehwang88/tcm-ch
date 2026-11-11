@@ -1168,3 +1168,113 @@ body.tcm-warm #home-content .glb-section--compact a:focus-visible{
     font-size:11.5px;padding:6px 10px;min-height:32px;
   }
 }
+
+
+/* Home insurance: one clear answer instead of a duplicate insurer strip and
+   three lengthy cards. Complete coverage guidance remains at /krankenkassen/. */
+body.tcm-warm #home-content .kkc-section--compact{
+  padding:clamp(34px,4vw,58px) 0!important;
+  background:var(--tcm-surface,#F4F2EF)!important;
+}
+body.tcm-warm #home-content .kkc-section--compact .kkc-compact-inner{
+  max-width:990px;margin:0 auto;padding:0;
+}
+body.tcm-warm #home-content .kkc-section--compact .kkc-compact-copy{
+  border:1px solid var(--tcm-border,#D7D4D0);
+  background:#fff;border-radius:18px;
+  padding:clamp(22px,3vw,36px);
+}
+body.tcm-warm #home-content .kkc-section--compact .section-label{
+  display:block;margin:0 0 10px!important;
+  color:var(--tcm-text-soft,#505453)!important;
+}
+body.tcm-warm #home-content .kkc-section--compact .section-title{
+  max-width:26ch;margin:0 0 12px!important;
+  font-size:clamp(24px,3vw,36px)!important;
+  line-height:1.18;color:var(--tcm-ink,#171B1A)!important;
+}
+body.tcm-warm #home-content .kkc-section--compact p{
+  color:var(--tcm-text-soft,#505453)!important;
+  font-size:14.5px;line-height:1.6;max-width:83ch;
+  margin:0 0 10px!important;
+}
+body.tcm-warm #home-content .kkc-section--compact p strong{
+  color:var(--tcm-ink,#171B1A)!important;
+  font-weight:750;
+}
+body.tcm-warm #home-content .kkc-section--compact .kkc-compact-actions{
+  display:flex;flex-wrap:wrap;align-items:center;gap:9px 17px;
+  margin-top:18px;
+}
+body.tcm-warm #home-content .kkc-section--compact .kkc-compact-actions a{
+  display:inline-flex;align-items:center;justify-content:center;
+  box-sizing:border-box;min-height:42px;
+  font-size:13px;line-height:1.4;font-weight:750;
+  text-decoration:none!important;
+}
+body.tcm-warm #home-content .kkc-section--compact .kkc-compact-contact{
+  padding:8px 14px;border-radius:999px;
+  border:1px solid var(--tcm-border,#D7D4D0);
+  color:var(--tcm-ink,#171B1A)!important;
+  background:var(--tcm-surface,#F4F2EF);
+}
+body.tcm-warm #home-content .kkc-section--compact .kkc-compact-details{
+  padding:8px 3px;color:var(--tcm-primary,#1769B1)!important;
+}
+body.tcm-warm #home-content .kkc-section--compact a:hover{
+  text-decoration:underline!important;text-underline-offset:3px;
+}
+body.tcm-warm #home-content .kkc-section--compact a:focus-visible{
+  outline:3px solid var(--tcm-primary,#1769B1);outline-offset:3px;
+}
+/* FAQ actions previously inherited their layout from the now-removed
+   Gesundheitsbibliothek inline styles. Give them independent styling. */
+body.tcm-warm #home-content .hf-section .hf-actions{
+  display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;
+  margin-top:23px;
+}
+body.tcm-warm #home-content .hf-section .hf-appointment-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:10px 22px;
+  background:var(--tcm-primary,#1769B1)!important;
+  border:1px solid var(--tcm-primary,#1769B1);
+  border-radius:999px;
+  color:#fff!important;
+  font-size:14px;font-weight:750;text-decoration:none;
+  box-sizing:border-box;
+}
+body.tcm-warm #home-content .hf-section .hf-questions-link{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;
+  color:var(--tcm-ink,#171B1A)!important;
+  font-size:14px;font-weight:700;line-height:1.4;
+  text-decoration:none!important;white-space:normal;
+}
+body.tcm-warm #home-content .hf-section .hf-questions-link:hover{
+  text-decoration:underline!important;text-underline-offset:3px;
+}
+body.tcm-warm #home-content .hf-section .hf-actions a:focus-visible{
+  outline:3px solid var(--tcm-primary,#1769B1);outline-offset:3px;
+}
+@media(max-width:767px){
+  body.tcm-warm #home-content .kkc-section--compact{
+    padding:28px 0!important;
+  }
+  body.tcm-warm #home-content .kkc-section--compact .kkc-compact-copy{
+    padding:20px 18px;border-radius:15px;
+  }
+  body.tcm-warm #home-content .kkc-section--compact p{
+    font-size:13.5px;line-height:1.55;
+  }
+  body.tcm-warm #home-content .kkc-section--compact .section-title{
+    font-size:clamp(23px,6.3vw,29px)!important;
+  }
+  body.tcm-warm #home-content .hf-section .hf-actions{
+    flex-direction:column;align-items:stretch;gap:8px;
+  }
+  body.tcm-warm #home-content .hf-section .hf-appointment-cta{
+    width:100%;
+  }
+  body.tcm-warm #home-content .hf-section .hf-questions-link{
+    align-self:flex-start;width:auto;padding:5px 0;
+  }
+}

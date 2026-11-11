@@ -261,6 +261,9 @@ function onScroll(){
   requestAnimationFrame(function(){
     ticking=false;
     var y=window.scrollY||0;
+    // Homepage: keep the mobile navigation visible above the sticky Check-in
+    // banner; otherwise auto-hide exposes content in the reserved header gap.
+    if(document.getElementById('home-content')){lastY=y;acc=0;show();return;}
     if(!mq.matches){lastY=y; if(isHidden()) show(); return;}
     if(document.body.style.position==='fixed'||performance.now()<holdUntil){lastY=y; acc=0; return;} // Drawer offen / Restore
     var d=y-lastY; lastY=y;
