@@ -401,3 +401,39 @@ body.tcm-warm .kf :is(.kf-btn--primary,.form-submit,button[type=submit]):not(.sc
   background:var(--tcm-primary-hover)!important;
   border-color:var(--tcm-primary-hover)!important;
 }
+
+
+/* Inspected page-specific legacy sections: About, insurance, team and
+   consultation. Decorative tints are warm neutral, never appointment blue. */
+body.tcm-warm #page-ueber-uns .ueber-intro .sub-eyebrow,
+body.tcm-warm .hero-tag,
+body.tcm-warm #page-krankenkasse .hero-badge{
+  background:var(--tcm-surface)!important;
+  border-color:var(--tcm-border)!important;
+  color:var(--tcm-text-soft)!important;
+}
+body.tcm-warm #page-krankenkasse .hero-badge::before,
+body.tcm-warm #sg-premium-hero .sg-urgency::before{
+  background:var(--tcm-text-soft)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .tmc-initials,
+body.tcm-warm .uu-advisor-photo-wrap{
+  background:var(--tcm-surface-strong)!important;
+}
+body.tcm-warm #page-sprechstunde{
+  --spg:var(--tcm-text-soft);
+  --spg-mid:var(--tcm-ink);
+  --spg-lt:var(--tcm-surface);
+  --sp-warm:var(--tcm-surface);
+  --sp-dark:var(--tcm-ink);
+}
+/* Call-to-book inside the legacy insurer hero is a real conversion action. */
+body.tcm-warm #page-krankenkasse .hero-card-cta{
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+}
+body.tcm-warm #page-krankenkasse .hero-card-cta:hover{
+  background:var(--tcm-primary-hover)!important;
+}
