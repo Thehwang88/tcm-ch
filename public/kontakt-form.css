@@ -1,6 +1,6 @@
 /* TCM.ch · Gemeinsames Kontaktformular (15.10.2026). Mobile first. Markup: src/lib/kontakt-form.ts.
    Farben ausschliesslich aus bestehenden Tokens (Neongrün --brand #1AE288, Schwarz --brand-black, Mint-Flächen). */
-.kf{--kf-neon:var(--brand,#1AE288);--kf-ink:var(--brand-black,#020B10);--kf-mint:#F0FCF6;--kf-mint-line:rgba(26,226,136,.45);--kf-line:var(--border,#E3E6E8);--kf-mid:var(--mid,#4B5563);--kf-err:#B3261E;
+.kf{--kf-neon:var(--brand,#1AE288);--kf-ink:var(--brand-black,#020B10);--kf-mint:#F4F2EF;--kf-mint-line:rgba(23,105,177,.16);--kf-line:var(--border,#E3E6E8);--kf-mid:var(--mid,#4B5563);--kf-err:#B3261E;
   background:#fff;border:1px solid var(--kf-line);border-radius:20px;padding:20px 16px 18px;color:var(--kf-ink);font-family:var(--font-sans,'Figtree',system-ui,sans-serif);text-align:left;box-sizing:border-box;max-width:100%;min-width:0}
 .kf *,.kf *::before,.kf *::after{box-sizing:border-box}
 .kf [hidden]{display:none!important}
@@ -49,7 +49,7 @@
 .kf-input{display:block;width:100%;max-width:100%;font:inherit;font-size:16px;line-height:1.4;color:var(--kf-ink);background:#fff;border:1.5px solid var(--kf-line);border-radius:12px;padding:12px 14px;min-height:48px}
 .kf-textarea{min-height:0;resize:vertical}
 .kf-select{appearance:auto}
-.kf-input:focus{outline:none;border-color:var(--kf-ink);box-shadow:0 0 0 3px rgba(26,226,136,.45)}
+.kf-input:focus{outline:none;border-color:var(--kf-ink);box-shadow:0 0 0 3px rgba(23,105,177,.16)}
 .kf-input[aria-invalid="true"]{border-color:var(--kf-err)}
 .kf-fhint{font-size:14px;color:var(--kf-mid);margin:6px 0 0;line-height:1.4}
 .kf-ferr{font-size:14px;color:var(--kf-err);font-weight:600;margin:6px 0 0;line-height:1.4}
@@ -59,7 +59,7 @@
 .kf-ts{margin:0 0 10px;max-width:100%;overflow:hidden}
 .kf-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;padding:14px 20px;border-radius:14px;font:inherit;font-size:16.5px;font-weight:800;line-height:1.2;text-decoration:none;cursor:pointer;text-align:center}
 .kf-btn--primary{background:var(--kf-neon);color:var(--kf-ink);border:1.5px solid var(--kf-neon)}
-.kf-btn--primary:hover{background:#14C97A;border-color:#14C97A}
+.kf-btn--primary:hover{background:var(--tcm-primary-hover,#10558F);border-color:var(--tcm-primary-hover,#10558F)}
 .kf-btn--primary:focus-visible,.kf-btn--outline:focus-visible,.kf-link:focus-visible{outline:3px solid var(--kf-ink);outline-offset:3px}
 .kf-btn--outline{background:#fff;color:var(--kf-ink);border:1.5px solid var(--kf-ink)}
 .kf-btn--outline:hover{background:var(--kf-mint)}
@@ -142,7 +142,7 @@
 .kf--ruhig .kf-fields{margin-top:20px}
 .kf--ruhig .kf-opts{gap:10px}
 .kf--ruhig .kf-opt,.kf--ruhig .kf-opt--checkin{border:1.5px solid var(--kf-line);box-shadow:none;transition:border-color .15s ease}
-.kf--ruhig .kf-opt--behandlung,.kf--ruhig .kf-opt--behandlung.is-checked{background:#F7FCF9}
+.kf--ruhig .kf-opt--behandlung,.kf--ruhig .kf-opt--behandlung.is-checked{background:#F4F2EF}
 .kf--ruhig .kf-opt--checkin,.kf--ruhig .kf-opt--checkin.is-checked{background:#fff}
 .kf--ruhig .kf-opt.is-checked{border-color:var(--kf-ink);box-shadow:inset 0 0 0 1px var(--kf-ink)}
 .kf--ruhig .kf-opt,.kf--ruhig .kf-opt--checkin{padding:16px 48px 16px 16px}
@@ -188,10 +188,10 @@
 .kf-huelle .kf-field{margin:0 0 12px}
 .kf-huelle :is(input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([name=website]),select,textarea):not(#w2):not(#w3):not(#w4){display:block;width:100%;max-width:100%;margin:0;font:inherit;font-size:16px;line-height:1.4;color:var(--kf-ink);background:#fff;border:1.5px solid var(--kf-line);border-radius:12px;padding:12px 14px;min-height:48px;box-shadow:none}
 .kf-huelle textarea:not(#w2):not(#w3):not(#w4){min-height:0;resize:vertical}
-.kf-huelle :is(input,select,textarea):not(#w2):not(#w3):not(#w4):focus{outline:none!important;border-color:var(--kf-ink)!important;box-shadow:0 0 0 3px rgba(26,226,136,.45)!important}
+.kf-huelle :is(input,select,textarea):not(#w2):not(#w3):not(#w4):focus{outline:none!important;border-color:var(--kf-ink)!important;box-shadow:0 0 0 3px rgba(23,105,177,.16)!important}
 .kf-huelle :is(input,select,textarea)[aria-invalid="true"]:not(#w2):not(#w3):not(#w4){border-color:var(--kf-err)}
 .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4){display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;margin:4px 0 0;padding:14px 20px;border-radius:14px!important;font:inherit;font-size:16.5px;font-weight:800;line-height:1.2;text-transform:none;letter-spacing:0;white-space:normal!important;text-align:center;background:var(--kf-neon)!important;color:var(--kf-ink)!important;border:1.5px solid var(--kf-neon)!important;box-shadow:none!important;cursor:pointer}
-.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover{background:#14C97A!important;border-color:#14C97A!important}
+.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover{background:var(--tcm-primary-hover,#10558F)!important;border-color:var(--tcm-primary-hover,#10558F)!important}
 .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):focus-visible{outline:3px solid var(--kf-ink);outline-offset:3px}
 .kf-huelle :is(.form-submit,form button[type=submit])[disabled]:not(#w2):not(#w3):not(#w4){opacity:.65;cursor:progress}
 .kf-huelle .cf-turnstile-wrap{margin:0 0 10px}

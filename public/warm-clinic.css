@@ -678,3 +678,130 @@ body.tcm-location-page .zh-cro-hero .zh-cro-lead{display:none}
   body.tcm-location-page .zh-cro-booking .kf .kf-fields{margin-top:12px!important}
   body.tcm-location-page .zh-cro-booking .kf .kf-field{margin-bottom:10px!important}
 }
+
+
+/* 2026-11-11 green-cast audit: brand palette wins over old ID-specific home.css
+   shadows and pseudo-elements. Actual WhatsApp controls remain WhatsApp green.
+   These rules do not alter content, links, JS handlers, or tracked events. */
+body.tcm-warm #home-content .wa-section::before{
+  background:radial-gradient(circle at 70% 50%,rgba(255,255,255,.025),transparent 60%)!important;
+}
+body.tcm-warm #home-content .wa-concierge{
+  border-color:var(--tcm-border)!important;
+  box-shadow:0 10px 28px rgba(23,27,26,.12)!important;
+}
+body.tcm-warm #home-content .wa-concierge-submit{
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+body.tcm-warm #home-content .wa-concierge-submit:hover{
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm #home-content .wa-concierge-textarea:focus{
+  border-color:var(--tcm-primary)!important;
+  box-shadow:0 0 0 3px rgba(23,105,177,.16)!important;
+}
+body.tcm-warm #home-content .wa-pill:hover{
+  background:var(--tcm-surface)!important;
+  border-color:var(--tcm-border)!important;
+  color:var(--tcm-ink)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm #home-content .wa-left .section-title em{
+  color:#fff!important;
+}
+/* Existing home.css pins green shadows on these specific acquisition CTAs. */
+body.tcm-warm #home-content :is(.offer-cta,.hcd-primary,.hero-finder-cta){
+  box-shadow:none!important;
+}
+body.tcm-warm #home-content :is(.offer-cta,.hcd-primary,.hero-finder-cta):hover{
+  box-shadow:none!important;
+}
+body.tcm-warm #home-content :is(.offer-cardx-title,.offer-feature-title) svg{
+  stroke:var(--tcm-ink)!important;
+}
+body.tcm-warm .tcm-btn--lg:not(.tcm-btn--whatsapp){
+  box-shadow:none!important;
+}
+/* Shared patient navigation: suppress leftover decorative mint. */
+body.tcm-warm .drw-header::after{
+  background:linear-gradient(90deg,var(--tcm-border),transparent)!important;
+}
+body.tcm-warm :is(.drw-finder-icon,.drw-acc-chevron){
+  background:var(--tcm-surface)!important;
+  color:var(--tcm-ink)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm :is(.drw-finder-item:hover,.drw-acc-btn.open,.drw-links li a:hover,.drw-plain-links li a:hover){
+  background:var(--tcm-surface)!important;
+  border-color:var(--tcm-border)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .drw-cta-primary{
+  background:var(--tcm-primary)!important;
+  color:#fff!important;
+  border-color:var(--tcm-primary)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .drw-cta-primary:hover{
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+  color:#fff!important;
+}
+body.tcm-warm .drw-cta-primary svg{
+  stroke:currentColor!important;
+}
+
+
+/* Beschwerden hub: green-tinted "Häufig gesucht" pills and card highlights
+   belong to the former palette. Neutral chips remain distinguishable via
+   weight, border and hover; all original link/click handlers are untouched. */
+body.tcm-warm .symptom-scope .bx-hchip,
+body.tcm-warm .symptom-scope .bx-hchip.live{
+  background:var(--tcm-surface,#F4F2EF)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .symptom-scope .bx-hchip:hover,
+body.tcm-warm .symptom-scope .bx-hchip:focus-visible{
+  background:#fff!important;
+  border-color:var(--tcm-ink,#171B1A)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-cat-panel-icon,.bx-trust-icon){
+  background:var(--tcm-surface-strong,#E8E6E3)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-eyebrow-dot,.bx-stat-dot){
+  background:var(--tcm-ink,#171B1A)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .symptom-scope .bx-cat-panel:hover{
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  box-shadow:0 4px 14px rgba(23,27,26,.06)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-cat-link:hover,.bx-complaint-row:hover,.bx-hero-az-l:hover){
+  background:var(--tcm-surface,#F4F2EF)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-cr-badge,.bx-cr-arrow,.bx-cat-link-arrow){
+  color:var(--tcm-text-soft,#505453)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-hchip,.bx-cat-link,.bx-complaint-row):focus-visible{
+  outline:3px solid var(--tcm-primary,#1769B1)!important;
+  outline-offset:2px;
+}
+/* Other complaint/therapy cards inherit old greenish time/recognition pills. */
+body.tcm-warm .svc-card :is(.svc-badge--time,.svc-badge--ins){
+  background:var(--tcm-surface,#F4F2EF)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-text-soft,#505453)!important;
+}

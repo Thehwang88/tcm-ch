@@ -153,7 +153,7 @@ main > section.hero > .wrap.narrow:not(#w3) .einordnung{background:#fff}
 :is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .lib-chip--all{color:var(--brand-ink);border-color:rgba(11,122,76,.35)}
 /* Bibliothek-Suche */
 main > section.hero > .wrap.narrow:not(#w3) .ls-box{border-color:rgba(2,11,16,.18);border-radius:14px;transition:border-color var(--t-base),box-shadow var(--t-base)}
-main > section.hero > .wrap.narrow:not(#w3) .ls-box:focus-within{border-color:var(--brand-black);box-shadow:0 0 0 3px rgba(26,226,136,.35)}
+main > section.hero > .wrap.narrow:not(#w3) .ls-box:focus-within{border-color:var(--brand-black);box-shadow:0 0 0 3px rgba(23,27,26,.35)}
 main > section.hero > .wrap.narrow:not(#w3) .ls-results{border-color:rgba(2,11,16,.1);border-radius:16px}
 main > section.hero > .wrap.narrow:not(#w3) .ls-results :is(.ls-item:hover,.ls-item:focus){background:var(--brand-tint);color:var(--brand-black)}
 
@@ -170,7 +170,7 @@ main > section.hero > .wrap.narrow:not(#w3) .ls-results :is(.ls-item:hover,.ls-i
   transition:background var(--t-base),border-color var(--t-base),transform var(--t-base),box-shadow var(--t-base)
 }
 :is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .btn--primary{background:var(--brand);color:var(--brand-black)}
-:is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .btn--primary:hover{background:var(--brand-hover);color:var(--brand-black);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,226,136,.28)}
+:is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .btn--primary:hover{background:var(--brand-hover);color:var(--brand-black);transform:translateY(-1px);box-shadow:0 8px 20px rgba(23,27,26,.28)}
 :is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .btn--primary:active{transform:translateY(0);box-shadow:none}
 :is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .btn--ghost{background:#fff;color:var(--brand-black);border:1.5px solid rgba(2,11,16,.22)}
 :is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .btn--ghost:hover{background:var(--brand-surface);border-color:var(--brand-black);color:var(--brand-black)}
