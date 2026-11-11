@@ -52,8 +52,7 @@ const { href = '#termin', slotApi } = Astro.props as { href?: string; slotApi?: 
   .sgb-banner ~ #home-content{padding-top:0!important}
   .sgb-spacer{display:none}
   @media (max-width:900px){.sgb-banner{position:fixed;left:0;right:0;top:var(--header-h,80px);margin-top:0;transition:top .25s ease}.sgb-spacer{display:block;height:var(--sgb-h,86px);margin-top:var(--header-h,80px)}}
-  /* Mobile Header blendet beim Scrollen aus (header.js: nav.nav-hidden): Banner rückt an den oberen Rand. */
-  @media (max-width:1023px){body:has(nav.nav-hidden) .sgb-banner{top:0}}
+  /* The mobile header stays visible. Banner always sits beneath it. */
   .sgb-in{max-width:var(--max,1280px);margin:0 auto;padding:6px 16px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;text-decoration:none;color:inherit}
   .sgb-txt{font-size:clamp(14px,1.15vw,15.5px);font-weight:600;letter-spacing:-.01em;line-height:1.3}
   .sgb-txt strong{font-weight:800}
