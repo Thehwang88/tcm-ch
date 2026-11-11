@@ -1011,3 +1011,79 @@ body.tcm-warm #home-content #heroPatient .sr-btn--call{display:none!important}
     display:none!important;
   }
 }
+
+
+/* Mobile patient homepage: content and booking BEFORE the team image.
+   CSS-only visual reorder retains DOM, image, CTA actions, analytics and
+   desktop rendering. This is deliberately scoped to #heroPatient only. */
+@media(max-width:767px){
+  body.tcm-warm #home-content #heroPatient .sr-hero{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:0!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-hero-left,
+  body.tcm-warm #home-content #heroPatient .sr-hero-inner{
+    display:contents!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-eyebrow,
+  body.tcm-warm #home-content #heroPatient .sr-h1,
+  body.tcm-warm #home-content #heroPatient .sr-cta,
+  body.tcm-warm #home-content #heroPatient .sr-lead,
+  body.tcm-warm #home-content #heroPatient .sr-trust{
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    padding-left:clamp(20px,6.7vw,28px)!important;
+    padding-right:clamp(20px,6.7vw,28px)!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-eyebrow{
+    order:1!important;
+    padding-top:27px!important;
+    margin-bottom:14px!important;
+    line-height:1.4!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-h1{
+    order:2!important;
+    margin:0 0 23px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-cta{
+    order:3!important;
+    margin:0 0 25px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:10px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-cta .sr-btn{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-hero-right{
+    order:4!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-hero-right img{
+    display:block!important;
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:4/3!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-lead{
+    order:5!important;
+    padding-top:21px!important;
+    margin:0 0 18px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-trust{
+    order:6!important;
+    margin:0!important;
+    padding-bottom:27px!important;
+  }
+}
