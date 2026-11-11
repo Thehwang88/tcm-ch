@@ -29,8 +29,9 @@ const leadCtx = clinicalLeadContext(data.slug);
 const leadLokal = team.some((t) => t.slug === CLINICAL_LEAD_SLUG); // z. B. Frauenfeld: Leitung ist dort lokale Teamkarte → Marker auf dieser Zeile
 const lead = leadCtx && !leadLokal ? clinicalLeadCopy('de', leadCtx) : undefined;
 const ctaTitle = data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfrage stellen' : 'Termin anfragen';
+const zhCRO = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].includes(data.slug) && !data.planned && !data.review && !PU;
 ---
-<section class="sgt std-termin" aria-labelledby="sgt-h">
+<section class={`sgt std-termin${zhCRO ? " zh-cro-booking" : ""}`} aria-labelledby="sgt-h">
   <div class="sgt-wrap sgt-grid">
     <aside class="sgt-aside" aria-label={`Praxis ${data.stadt}`}>
       <div class="sgt-aside-top">
@@ -52,6 +53,7 @@ const ctaTitle = data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfr
       <div class="sgt-head">
         <h2 class="section-title" id="sgt-h">Termin in <em>{data.stadt}</em></h2>
         <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt.{place && <Fragment> <a href={place} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></Fragment>}</p>
+        {zhCRO && team.length > 0 && <p class="zh-cro-team"><span>Team an diesem Standort:</span>{team.slice(0, 3).map((t) => <a href={`/team/${t.slug}/`}>{t.name}</a>)}</p>}
       </div>
       <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
       <div class="sgt-channels">

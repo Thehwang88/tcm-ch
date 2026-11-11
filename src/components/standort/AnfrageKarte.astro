@@ -9,6 +9,9 @@ import { expandStandort, PLANNED_PRESELECT } from '../../data/standort-optionen'
 import { renderKontaktForm } from '../../lib/kontakt-form';
 const { data, sitekey, oben = false } = Astro.props as { data: Standort; sitekey: string; oben?: boolean };
 const wa = waHref(data.nap.telefon);
+// Zürich Ads pages: make the paid treatment choice the starting point;
+// keep free Check-in selectable, all validation and backend offer IDs intact.
+const zhCRO = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].includes(data.slug) && !data.planned && !data.review;
 // Standort <select>: preselect the option matching this location (prefix match, so
 // "Winterthur Marktgasse" -> "Winterthur"), mirroring prefillStandort().
 const options = ['Zürich Bahnhofstrasse', 'Zürich Oerlikon', 'Zürich Höngg', 'Winterthur', 'Volketswil', 'Frauenfeld', 'Kreuzlingen', 'St. Gallen', 'Wil', 'Rorschach', 'Basel', 'Andere / in meiner Nähe'].flatMap(expandStandort);
@@ -20,7 +23,7 @@ options.forEach((o, i) => { if (selIdx < 0 && (data.stadt === o.value || data.st
 // Kein OneDoc, kein Check-in (beides nur mit Freigabe in src/data/kontakt-angebote.mjs); Quelle bleibt der Seitenpfad.
 const kfCard = !data.planned && !data.review
   ? renderKontaktForm(oben
-    ? { instance: 'standort-oben', standortId: data.slug, cardId: 'anfrage-box', quelleDetail: 'Anfragebox oben', wunschzeit: true, headingTag: 'h2', heroKompakt: true, rueckrufOffen: true, sitekey, waHref: wa }
+    ? { instance: 'standort-oben', standortId: data.slug, cardId: 'anfrage-box', quelleDetail: 'Anfragebox oben', wunschzeit: true, headingTag: 'h2', heroKompakt: true, rueckrufOffen: true, terminart: zhCRO ? 'behandlung' : undefined, checkinZuerst: zhCRO ? false : undefined, sitekey, waHref: wa }
     : { instance: 'standort', standortId: data.slug, sitekey, waHref: wa })
   : '';
 const idp = oben ? 'kto-' : 'kt-';

@@ -15,18 +15,20 @@ const LSR_SLUGS = new Set(['basel', 'zuerich-oerlikon', 'zuerich-bahnhofstrasse'
 const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 // Zürcher Standorte hängen unter dem Stadt-Hub /akupunktur-tcm-zuerich/ (Hub-&-Spoke, wie /standorte/zuerich/kosten/).
 const zh = data.slug.startsWith('zuerich-');
+const zhCRO = zh && !data.planned && !data.review && !data.partnerUmleitung;
 // Gemeinsames Hero-Video (src/data/hero-video.ts): bisheriges Hero-Bild bleibt Poster/Fallback, keine Caption.
 const video = heroVideo(data);
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
 {LSR_SLUGS.has(data.slug) ? (
-<section class={`lsr-hero std-location-hero${data.planned || data.review ? " std-location-hero--pending" : ""}${data.partnerUmleitung ? " std-location-hero--partner" : ""}`}>
+<section class={`lsr-hero std-location-hero${data.planned || data.review ? " std-location-hero--pending" : ""}${data.partnerUmleitung ? " std-location-hero--partner" : ""}${zhCRO ? " zh-cro-hero" : ""}`}>
   <div class="lsr-inner">
     <div class="lsr-left">
       <div class="tsr-crumb" style="color:rgba(2,11,16,.72)"><button onclick="nav('home')">TCM.ch</button><span class="tsr-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="tsr-sep">›</span>{zh && <Fragment><a href="/akupunktur-tcm-zuerich/" style="color:inherit">Zürich</a><span class="tsr-sep">›</span></Fragment>}<span>{data.stadt}</span></div>
       <span class="lsr-eyebrow">{eyebrow}</span>
       <h1 class="lsr-h1" set:html={heroH1}></h1>
       <p class="lsr-lead std-hero-summary" set:html={data.hero.lead}></p>
+      {zhCRO && <p class="zh-cro-lead">Lass dir einen passenden Ersttermin vorschlagen. Wir melden uns persönlich bei dir.</p>}
       <p class="lsr-lead std-hero-detail" style="margin-bottom:22px" set:html={data.hero.sub}></p>
       {data.partnerUmleitung ? (
       <Fragment>
@@ -37,10 +39,10 @@ const video = heroVideo(data);
       </Fragment>
       ) : (
       <Fragment>
-      <div class="lsr-trust std-hero-trust"><div><span class="lsr-check">✓</span> {data.planned && !data.vorVertrag ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
+      <div class="lsr-trust std-hero-trust"><div><span class="lsr-check">✓</span> {data.planned && !data.vorVertrag ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : zhCRO ? 'Zusatzversicherung je nach Police' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
       <div class="lsr-ctas">
         <a href="#anfrage-box" class="lsr-btn-primary">{data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfrage stellen' : 'Termin anfragen'}</a>
-        <a href={waTermin} class="lsr-btn-ghost" target="_blank" rel="noopener">Per WhatsApp</a>
+        <a href={waTermin} class="lsr-btn-ghost" target="_blank" rel="noopener">{zhCRO ? "Lieber per WhatsApp fragen?" : "Per WhatsApp"}</a>
       </div>
       </Fragment>
       )}

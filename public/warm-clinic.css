@@ -583,3 +583,98 @@ body.tcm-location-page .sg-bs-cta{
 }
 body.tcm-location-page .sg-bs-cta::before,
 body.tcm-location-page .sg-bs-cta::after{box-shadow:none!important;filter:none!important}
+
+
+/* Zürich paid-mobile CRO: no artificial card height or eight huge stacked
+   symptom tiles. Keep every condition link and the underlying copy. */
+@media(max-width:600px){
+  body.tcm-location-page :is(.clinic-symptoms-universal .svc-grid,.clinic-symptoms-compact .card-grid){
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;align-items:stretch!important;margin-top:16px!important;
+  }
+  body.tcm-location-page :is(.clinic-symptoms-universal .svc-card,.clinic-symptoms-compact .svc-card){
+    min-height:0!important;height:auto!important;max-height:none!important;
+    aspect-ratio:auto!important;border-radius:13px!important;
+  }
+  body.tcm-location-page :is(.clinic-symptoms-universal .svc-body,.clinic-symptoms-compact .svc-body){
+    padding:12px!important;gap:6px!important;min-height:0!important;
+  }
+  body.tcm-location-page :is(.clinic-symptoms-universal .svc-name,.clinic-symptoms-compact .svc-name){
+    font-size:14px!important;line-height:1.3!important;overflow-wrap:anywhere;
+  }
+  body.tcm-location-page :is(.clinic-symptoms-universal .svc-tagline,.clinic-symptoms-compact .svc-tagline){
+    display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;
+    overflow:hidden!important;line-height:1.35!important;font-size:12px!important;
+    min-height:0!important;
+  }
+  body.tcm-location-page :is(.clinic-symptoms-universal .svc-cta,.clinic-symptoms-compact .svc-cta){
+    margin-top:auto!important;padding-top:8px!important;
+    font-size:12px!important;white-space:nowrap!important;
+  }
+  body.tcm-location-page .clinic-symptoms-universal .svc-header{margin-bottom:18px!important}
+  body.tcm-location-page .clinic-symptoms-universal{padding:36px 0 42px!important}
+}
+/* Zürich clinic booking: one visible form, low-friction alternative channels.
+   Original phone, WhatsApp, data-kf-tel and form integration are unchanged. */
+@media(max-width:767px){
+  body.tcm-location-page .zh-cro-booking{padding-top:22px!important;padding-bottom:30px!important}
+  body.tcm-location-page .zh-cro-booking .sgt-head{margin-bottom:12px}
+  body.tcm-location-page .zh-cro-booking .sgt-head .section-title{font-size:clamp(23px,6.8vw,31px);line-height:1.14}
+  body.tcm-location-page .zh-cro-booking .sgt-sub{font-size:13.5px;line-height:1.45}
+  body.tcm-location-page .zh-cro-booking .sgt-channels{
+    display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+    gap:12px!important;margin:0 0 12px!important;
+  }
+  body.tcm-location-page .zh-cro-booking .sgt-ch--primary{display:none!important}
+  body.tcm-location-page .zh-cro-booking .sgt-ch:not(.sgt-ch--primary){
+    display:inline-flex!important;flex:0 1 auto!important;
+    min-height:44px!important;height:auto!important;
+    padding:9px 12px!important;border:1px solid var(--tcm-border,#D7D4D0)!important;
+    border-radius:999px!important;box-shadow:none!important;transform:none!important;
+    background:transparent!important;
+  }
+  body.tcm-location-page .zh-cro-booking .sgt-ch:not(.sgt-ch--primary) :is(.sgt-ch-title,.sgt-ch-sub,.sgt-ch-go){display:none!important}
+  body.tcm-location-page .zh-cro-booking .sgt-ch:not(.sgt-ch--primary) .sgt-ch-label{
+    font-size:13px!important;line-height:1.3!important;
+    text-transform:none!important;letter-spacing:0!important;
+    font-weight:650!important;color:var(--tcm-ink,#171B1A)!important;
+  }
+  body.tcm-location-page .zh-cro-booking .sgt-form{margin:0}
+  body.tcm-location-page .zh-cro-booking .sgt-form .kf{max-width:none}
+}
+body.tcm-location-page .zh-cro-booking .zh-cro-team{
+  display:flex;align-items:center;flex-wrap:wrap;gap:4px 9px;
+  margin:10px 0 0;color:var(--tcm-text-soft,#505453);font-size:13px;line-height:1.45;
+}
+body.tcm-location-page .zh-cro-booking .zh-cro-team a{
+  color:var(--tcm-ink,#171B1A);font-weight:650;text-decoration:underline;text-underline-offset:2px;
+}
+@media(max-width:767px){
+  body.tcm-location-page .zh-cro-hero .lsr-left{padding:19px 20px 17px!important}
+  body.tcm-location-page .zh-cro-hero .std-hero-summary{display:none!important}
+  body.tcm-location-page .zh-cro-hero .zh-cro-lead{
+    display:block!important;margin:0 0 14px!important;
+    font-size:15px!important;line-height:1.48!important;color:var(--tcm-text-soft,#505453);
+  }
+  body.tcm-location-page .zh-cro-hero .lsr-h1{margin-bottom:10px!important;line-height:1.09}
+  body.tcm-location-page .zh-cro-hero .lsr-ctas{gap:4px!important;margin-bottom:8px!important}
+  body.tcm-location-page .zh-cro-hero .lsr-btn-primary{min-height:50px!important}
+}
+body.tcm-location-page .zh-cro-hero .zh-cro-lead{display:none}
+
+
+/* Subtle density improvements to the existing Zürich clinic enquiry form.
+   No field is removed, hidden or made optional; server validation remains. */
+@media(max-width:767px){
+  body.tcm-location-page .zh-cro-booking .kf.kf--ruhig .kf-kopf{
+    padding-top:15px!important;padding-bottom:13px!important;
+    margin-bottom:13px!important;
+  }
+  body.tcm-location-page .zh-cro-booking .kf .kf-opts{gap:8px!important}
+  body.tcm-location-page .zh-cro-booking .kf .kf-opt{
+    padding-top:11px!important;padding-bottom:11px!important;
+    border-radius:13px!important;
+  }
+  body.tcm-location-page .zh-cro-booking .kf .kf-fields{margin-top:12px!important}
+  body.tcm-location-page .zh-cro-booking .kf .kf-field{margin-bottom:10px!important}
+}

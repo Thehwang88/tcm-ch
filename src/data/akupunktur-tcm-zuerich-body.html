@@ -316,6 +316,78 @@
      when legacy global button rules override the regular .btn-primary class. */
   .zhx-match-booking-cta.zhx-match-booking-cta{background:var(--tcm-primary,#1769B1)!important;color:#fff!important;box-shadow:none}
   .zhx-match-booking-cta.zhx-match-booking-cta:hover{background:var(--tcm-primary-hover,#10558F)!important;color:#fff!important}
+
+  /* Paid-mobile Zürich funnel: compact condition navigation (not the home
+     location-card treatment, which reserves 188px and moves the CTA to bottom). */
+  @media(max-width:767px){
+    .akz .akz-beschwerden-section{
+      padding-top:42px!important;padding-bottom:44px!important;
+    }
+    .akz .akz-beschwerden-section .reveal{
+      margin-bottom:14px!important;
+    }
+    .akz .akz-beschwerden-section .city-grid{
+      display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      gap:10px!important;margin-top:14px!important;align-items:stretch!important;
+    }
+    .akz .akz-beschwerden-section a.city-card.location-card{
+      display:flex!important;flex-direction:column!important;align-items:stretch!important;
+      min-height:0!important;height:auto!important;max-height:none!important;
+      aspect-ratio:auto!important;border-radius:13px!important;
+      padding:13px!important;gap:5px!important;transform:none!important;
+    }
+    .akz .akz-beschwerden-section .location-city{
+      min-height:0!important;line-height:1.3!important;font-size:14px!important;
+      margin:0!important;overflow-wrap:anywhere;
+    }
+    .akz .akz-beschwerden-section .location-desc{
+      min-height:0!important;margin:0!important;font-size:12px!important;
+      line-height:1.4!important;display:-webkit-box!important;
+      -webkit-box-orient:vertical!important;-webkit-line-clamp:2!important;overflow:hidden!important;
+    }
+    .akz .akz-beschwerden-section .location-link{
+      display:block!important;margin:6px 0 0!important;padding:6px 0 0!important;
+      font-size:12px!important;line-height:1.25!important;white-space:normal!important;
+    }
+    .akz .akz-funnel-section .contact-inline-grid{gap:12px!important}
+    .akz .akz-funnel-section .intake-trust-row,
+    .akz .akz-funnel-section .contact-methods-mini{display:none!important}
+    .akz .akzh .lsr-ctas .lsr-btn-ghost{
+      min-height:40px!important;width:auto!important;margin:0 auto!important;
+      padding:5px 10px!important;border:0!important;box-shadow:none!important;
+      background:transparent!important;text-decoration:underline;text-underline-offset:3px;
+      color:var(--tcm-ink,#171B1A)!important;
+    }
+    .akz .zhx-routing--merged .btn-secondary{
+      width:auto!important;min-height:44px!important;padding:8px 12px!important;
+      border:0!important;background:transparent!important;
+      text-decoration:underline;text-underline-offset:3px;
+      box-shadow:none!important;color:var(--tcm-ink,#171B1A)!important;
+    }
+  }
+  @media(max-width:340px){
+    .akz .akz-beschwerden-section .city-grid{grid-template-columns:minmax(0,1fr)!important}
+  }
+  .akz .zh-cro-quick-locations{display:none}
+  @media(max-width:767px){
+    .akz .zh-cro-quick-locations{
+      display:flex!important;flex-wrap:wrap;align-items:center;gap:8px;
+      margin:0 0 14px;font-size:12.5px;
+      color:var(--tcm-text-soft,#505453);
+    }
+    .akz .zh-cro-quick-locations span{width:100%;font-weight:650}
+    .akz .zh-cro-quick-locations a{
+      display:inline-flex;align-items:center;min-height:38px;
+      border:1px solid var(--tcm-border,#D7D4D0);
+      border-radius:999px;padding:6px 11px;background:#fff;
+      font-size:12.5px;font-weight:650;color:var(--tcm-ink,#171B1A);
+      text-decoration:none;
+    }
+    .akz .zh-cro-quick-locations a:focus-visible{
+      outline:3px solid var(--tcm-primary,#1769B1);outline-offset:2px;
+    }
+  }
+
 </style>
 
 <div class="akz">
@@ -333,6 +405,12 @@
           <a class="lsr-btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'hero'})">Termin in Zürich finden</a>
           <a class="lsr-btn-ghost" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20einen%20TCM-Termin%20in%20Z%C3%BCrich." target="_blank" rel="noopener nofollow" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'zh_hero'})">WhatsApp</a>
         </div>
+        <nav class="zh-cro-quick-locations" aria-label="Zürcher Praxis direkt auswählen">
+          <span>Direkt zur Praxis:</span>
+          <a href="/standorte/zuerich-bahnhofstrasse/">Bahnhofstrasse</a>
+          <a href="/standorte/zuerich-oerlikon/">Oerlikon</a>
+          <a href="/standorte/zuerich-hoengg/">Höngg</a>
+        </nav>
         <div class="zh-hero-proof" aria-label="Qualifikation und Versicherungsinformation">
           <span><span class="lsr-check" aria-hidden="true">✓</span> EMR-/ASCA-registrierte Therapeut:innen</span>
           <span><span class="lsr-check" aria-hidden="true">✓</span> Zusatzversicherung je nach Police</span>
