@@ -62,10 +62,17 @@ const patientDrawer = `
         <a href="/standorte/" class="patient-drawer-all" onclick="drawerClose()">Alle Standorte ansehen <span aria-hidden="true">→</span></a>
       </div>
     </details>
-    <a href="/beschwerden/" onclick="drawerClose()">Beschwerden<span aria-hidden="true">›</span></a>
-    <a href="/therapien/" onclick="drawerClose()">Therapien<span aria-hidden="true">›</span></a>
+    <a class="patient-drawer-header-duplicate" href="/beschwerden/" onclick="drawerClose()">Beschwerden<span aria-hidden="true">›</span></a>
+    <a class="patient-drawer-header-duplicate" href="/therapien/" onclick="drawerClose()">Therapien<span aria-hidden="true">›</span></a>
     <a href="/krankenkassen/" onclick="drawerClose()">Krankenkasse &amp; Kosten<span aria-hidden="true">›</span></a>
     <a href="/ueber-uns/" onclick="drawerClose()">Über TCM.ch<span aria-hidden="true">›</span></a>
+        <div class="patient-drawer-desktop-extras" role="group" aria-label="Weitere Themen">
+      <div class="patient-drawer-kicker">WEITERE THEMEN</div>
+      <a href="/haut/" onclick="drawerClose()">Haut &amp; Gesicht<span aria-hidden="true">›</span></a>
+      <a href="/longevity/" onclick="drawerClose()">Longevity Schweiz<span aria-hidden="true">›</span></a>
+      <a href="/ergebnisse/" onclick="drawerClose()">Ergebnisse &amp; Transparenz<span aria-hidden="true">›</span></a>
+      <a href="/fachpersonen/" onclick="drawerClose()">Für Fachpersonen<span aria-hidden="true">›</span></a>
+    </div>
     <a class="patient-drawer-language" href="/en/" hreflang="en" onclick="drawerClose()">English / EN<span aria-hidden="true">↗</span></a>
   </div>
   <div class="drw-group drw-group--cta patient-drawer-actions">
@@ -95,10 +102,17 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
     nav#mainNav { height:64px; }
   }
 
-  /* Patient-only mobile drawer, desktop drawer markup and mega menu untouched. */
-  #siteDrawer .drw-body--patient{display:none!important}
+  /* One streamlined drawer on phone and desktop. "Mehr" is redundant with
+     the burger: the original mega-panel markup remains but is not presented. */
+  #siteDrawer .drw-body--legacy{display:none!important}
+  #siteDrawer .drw-body--patient{
+    display:flex!important;flex:1 1 auto;min-height:0;flex-direction:column;
+    overflow-y:auto!important;overscroll-behavior:contain;
+    padding:0!important;background:#fff;
+  }
+  #mainNav .nav-more-li{display:none!important}
+  #siteDrawer .patient-drawer-desktop-extras{display:none}
   @media(max-width:768px){
-    #siteDrawer .drw-body--legacy{display:none!important}
     #siteDrawer .drw-body--patient{
       display:flex!important;flex:1 1 auto;min-height:0;flex-direction:column;
       overflow-y:auto!important;overscroll-behavior:contain;
@@ -156,6 +170,72 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
     #siteDrawer .patient-drawer-actions .drw-cta-secondary{
       min-height:44px;border:1px solid #D7D4D0!important;color:#171B1A!important;
       background:#fff!important;
+    }
+    #siteDrawer .patient-drawer-nav a:focus-visible,
+    #siteDrawer .patient-drawer-locations summary:focus-visible{
+      outline:3px solid #1769B1;outline-offset:2px;border-radius:4px;
+    }
+  }
+
+  /* Desktop burger: header already has Beschwerden, Therapien and Wissen.
+     Keep the drawer for locations, insurance, About and occasional discovery. */
+  @media(min-width:769px){
+    #siteDrawer .patient-drawer-nav{display:block;padding:26px 26px 16px}
+    #siteDrawer .patient-drawer-kicker,
+    #siteDrawer .patient-drawer-subheading{
+      color:#707472;font-weight:800;font-size:11px;letter-spacing:.13em;
+    }
+    #siteDrawer .patient-drawer-kicker{margin:2px 0 13px}
+    #siteDrawer .patient-drawer-nav > a,
+    #siteDrawer .patient-drawer-locations > summary,
+    #siteDrawer .patient-drawer-desktop-extras > a{
+      box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;
+      min-height:50px;padding:12px 0;width:100%;
+      color:#171B1A!important;background:transparent;
+      text-decoration:none;font-size:16px;font-weight:700;
+      border:0;border-bottom:1px solid #E8E6E3;cursor:pointer;
+    }
+    #siteDrawer .patient-drawer-locations > summary{list-style:none}
+    #siteDrawer .patient-drawer-locations > summary::-webkit-details-marker{display:none}
+    #siteDrawer .patient-drawer-header-duplicate{display:none!important}
+    #siteDrawer .patient-drawer-nav > a > span,
+    #siteDrawer .patient-drawer-desktop-extras > a > span,
+    #siteDrawer .patient-drawer-chevron{font-weight:400;color:#707472;font-size:20px}
+    #siteDrawer .patient-drawer-locations[open] .patient-drawer-chevron{transform:rotate(180deg)}
+    #siteDrawer .patient-drawer-locations-inner{
+      padding:13px 16px 17px;background:#F4F2EF;
+      border-bottom:1px solid #E8E6E3;border-radius:0 0 12px 12px;
+    }
+    #siteDrawer .patient-drawer-subheading{margin:9px 0 8px}
+    #siteDrawer .patient-drawer-subheading--other{margin-top:19px}
+    #siteDrawer .patient-drawer-locations-inner > a{
+      display:flex;align-items:center;min-height:40px;padding:7px 2px;
+      font-size:14px;font-weight:600;line-height:1.35;
+      color:#353938!important;text-decoration:none;
+    }
+    #siteDrawer .patient-drawer-locations-inner > a.patient-drawer-all{font-weight:800;color:#171B1A!important}
+    #siteDrawer .patient-drawer-desktop-extras{display:block;margin-top:22px}
+    #siteDrawer .patient-drawer-desktop-extras > a{font-size:14px;min-height:44px}
+    #siteDrawer .patient-drawer-language{
+      font-size:13px!important;min-height:44px!important;
+      color:#505453!important;border-bottom:0!important;
+      margin-top:13px;
+    }
+    #siteDrawer .patient-drawer-actions{
+      position:sticky;bottom:0;z-index:2;margin-top:auto;
+      background:#fff;border-top:1px solid #D7D4D0;
+      padding:14px 20px 18px;box-shadow:0 -8px 20px rgba(23,27,26,.05);
+    }
+    #siteDrawer .patient-drawer-actions .drw-cta-primary{
+      background:#1769B1!important;border-color:#1769B1!important;
+      color:#fff!important;min-height:50px!important;
+    }
+    #siteDrawer .patient-drawer-actions .drw-cta-primary:hover{
+      background:#10558F!important;border-color:#10558F!important;color:#fff!important;
+    }
+    #siteDrawer .patient-drawer-actions .drw-cta-secondary{
+      min-height:44px;border:1px solid #D7D4D0!important;
+      color:#171B1A!important;background:#fff!important;
     }
     #siteDrawer .patient-drawer-nav a:focus-visible,
     #siteDrawer .patient-drawer-locations summary:focus-visible{
