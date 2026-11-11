@@ -1,0 +1,41 @@
+/* One presentation shell, multiple native appointment forms; no cloned inputs. */
+.tcm-booking-sheet{border:0;background:transparent;padding:0;overflow:visible;color:#171B1A;max-width:none;max-height:none}
+.tcm-booking-sheet::backdrop{background:rgba(2,11,16,.55)}
+.tcm-booking-sheet[open]{position:fixed;inset:auto 0 0;margin:0;width:100%;max-width:100%;z-index:2100}
+.tcm-booking-panel{display:flex;flex-direction:column;box-sizing:border-box;width:100%;max-height:calc(100dvh - 76px);background:#fff;border-radius:24px 24px 0 0;overflow:hidden;box-shadow:0 -12px 40px rgba(0,0,0,.16);font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
+.tcm-booking-head{position:relative;flex:0 0 auto;background:#fff;padding:24px 24px 13px;border-bottom:1px solid #E8E6E3}
+.tcm-booking-grip{display:block;background:#D7D4D0;border-radius:99px;width:46px;height:4px;margin:-11px auto 19px}
+.tcm-booking-heading{padding-right:42px}
+.tcm-booking-overline{font-size:11px;font-weight:750;letter-spacing:.11em;color:#505453;text-transform:uppercase;line-height:1.4}
+.tcm-booking-heading h2{margin:7px 0 5px;font-size:clamp(26px,6.3vw,34px)!important;line-height:1.13!important;letter-spacing:-.03em;color:#171B1A!important}
+.tcm-booking-heading p{margin:0;font-size:13px;line-height:1.45;color:#505453}
+.tcm-booking-close{position:absolute;top:21px;right:18px;width:43px;height:43px;border:1px solid #D7D4D0;border-radius:50%;background:#fff;color:#171B1A;font-size:27px;line-height:1;cursor:pointer}
+.tcm-booking-scroll{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;-webkit-overflow-scrolling:touch;padding:14px clamp(16px,4vw,26px) calc(25px + env(safe-area-inset-bottom));background:#fff}
+.tcm-booking-content{min-width:0}
+.tcm-booking-content .inline-form-card{box-shadow:none!important;border:0!important;background:transparent!important;border-radius:0!important;max-width:none!important;margin:0!important;width:100%!important}
+.tcm-booking-content .inline-form-card .kf-kopf{padding-top:8px!important}
+.tcm-booking-content .inline-form-card .kf-kopf .kf-h{font-size:20px!important;line-height:1.25!important}
+.tcm-booking-content .inline-form-card .kf-huelle{box-shadow:none!important}
+.tcm-booking-content .kf-fields{max-width:none!important}
+.tcm-booking-content .sgt-form{width:100%!important;max-width:none!important}
+.tcm-booking-content [data-kf],.tcm-booking-content form{max-width:100%!important}
+.tcm-booking-content :is(input,textarea,select,button){font-family:inherit}
+.tcm-booking-content [data-kf] .kf-btn--primary,.tcm-booking-content .form-submit{background:var(--tcm-primary,#1769B1)!important;border-radius:999px!important;color:#fff!important}
+.tcm-booking-content .akz{padding:0!important;background:#fff!important}
+.tcm-booking-content #zh-funnel{padding:0!important;margin:0!important;background:#fff!important;min-height:0!important}
+.tcm-booking-content #zh-funnel>.wrap{padding:0!important;max-width:none!important;width:100%!important}
+.tcm-booking-content #zh-funnel .contact-inline-grid{display:block!important}
+.tcm-booking-content #zh-funnel .contact-inline-grid>.reveal:first-child{display:none!important}
+.tcm-booking-content #zh-funnel .contact-inline-grid>.reveal{opacity:1!important;transform:none!important;visibility:visible!important}
+.tcm-booking-content #zh-funnel .inline-form-card{padding:0!important;box-shadow:none!important}
+.tcm-booking-content #zh-funnel .inline-form-header,.tcm-booking-content #zh-funnel .kf-kopf{padding-top:8px!important}
+.tcm-booking-content #home-contact-form{padding:0!important;margin:0!important;background:#fff!important;min-height:0!important}
+.tcm-booking-content #home-contact-form>.wrap{padding:0!important;max-width:none!important;width:100%!important}
+.tcm-booking-content #home-contact-form .contact-inline-grid{display:block!important}
+.tcm-booking-content #home-contact-form .contact-inline-grid>.reveal:first-child{display:none!important}
+.tcm-booking-content #home-contact-form .contact-inline-grid>.reveal{opacity:1!important;transform:none!important;visibility:visible!important}
+.tcm-booking-content #home-contact-form .inline-form-card{padding:0!important}
+.tcm-booking-sheet :is(input,select,textarea,button,a):focus-visible{outline:3px solid #1769B1!important;outline-offset:3px}
+.tcm-booking-sheet .tcm-booking-close:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
+@media(min-width:768px){.tcm-booking-sheet[open]{inset:0;margin:auto;width:min(560px,calc(100vw - 32px))}.tcm-booking-panel{max-height:min(92dvh,920px);border-radius:22px;box-shadow:0 15px 55px rgba(0,0,0,.2)}}
+@media(prefers-reduced-motion:no-preference){.tcm-booking-sheet[open] .tcm-booking-panel{animation:tcm-booking-in .2s ease-out}@keyframes tcm-booking-in{from{transform:translateY(18px);opacity:.9}to{transform:translateY(0);opacity:1}}}
