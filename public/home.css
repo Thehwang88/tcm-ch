@@ -5898,9 +5898,11 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
     position:static;
     width:100%;
     height:auto;
-    aspect-ratio:1/1;
+    /* Crop mostly empty grey at the bottom, a little at the top; retain all six faces.
+       6:5 frees roughly 17% of the photo height for the booking CTAs. */
+    aspect-ratio:6/5;
     object-fit:cover;
-    object-position:36% center;
+    object-position:36% 18%;
   }
   #home-content #heroPatient .sr-eyebrow {
     order:1;
