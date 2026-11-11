@@ -51,7 +51,7 @@ const { href = '#termin', slotApi } = Astro.props as { href?: string; slotApi?: 
   .sgb-banner ~ .lsr-hero,.sgb-banner ~ .lsr-hero.hlsg{padding-top:0!important}
   .sgb-banner ~ #home-content{padding-top:0!important}
   .sgb-spacer{display:none}
-  @media (max-width:900px){.sgb-banner{position:fixed;left:0;right:0;top:80px;margin-top:0;transition:top .25s ease}.sgb-spacer{display:block;height:var(--sgb-h,86px);margin-top:80px}}
+  @media (max-width:900px){.sgb-banner{position:fixed;left:0;right:0;top:var(--header-h,80px);margin-top:0;transition:top .25s ease}.sgb-spacer{display:block;height:var(--sgb-h,86px);margin-top:var(--header-h,80px)}}
   /* Mobile Header blendet beim Scrollen aus (header.js: nav.nav-hidden): Banner rückt an den oberen Rand. */
   @media (max-width:1023px){body:has(nav.nav-hidden) .sgb-banner{top:0}}
   .sgb-in{max-width:var(--max,1280px);margin:0 auto;padding:6px 16px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;text-decoration:none;color:inherit}
@@ -64,5 +64,5 @@ const { href = '#termin', slotApi } = Astro.props as { href?: string; slotApi?: 
   /* Mobil einzeilig: «Gratis Check-in bis Monatsende → Sichern» (ohne Trennpunkt) */
   .sgb-slot strong{white-space:nowrap}
   @media (max-width:900px){.sgb-in{flex-wrap:nowrap;gap:10px;padding:5px 12px}.sgb-txt--d,.sgb-cta--d{display:none}.sgb-txt--m,.sgb-cta--m{display:inline}.sgb-txt{font-size:14px;white-space:nowrap}.sgb-cta{padding:6px 12px;font-size:13px}}
-  @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(80px + var(--sgb-h,86px) + 10px)}}
+  @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(var(--header-h,80px) + var(--sgb-h,86px) + 10px)}}
 </style>
