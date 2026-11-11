@@ -1278,3 +1278,19 @@ body.tcm-warm #home-content .hf-section .hf-actions a:focus-visible{
     align-self:flex-start;width:auto;padding:5px 0;
   }
 }
+
+
+/* Homepage-only mobile header/banner guard. The shared scroll-hide system
+   intentionally remains in use for other pages. With the fixed Check-in
+   promotion, hiding home navigation exposes unrelated content above it. */
+@media(max-width:1023px){
+  body.tcm-warm:has(#home-content) #mainNav,
+  body.tcm-warm:has(#home-content) #mainNav.nav-hidden{
+    transform:none!important;
+    -webkit-transform:none!important;
+    visibility:visible!important;
+  }
+  body.tcm-warm:has(#home-content) .sgb-banner{
+    top:var(--header-h,80px)!important;
+  }
+}

@@ -278,6 +278,12 @@ function onScroll(){
 window.addEventListener('scroll',onScroll,{passive:true});
 nav.addEventListener('focusin',show);
 if(mq.addEventListener) mq.addEventListener('change',function(){if(!mq.matches) show();});
+// Restore the homepage header on back/forward cache navigations and tab resumes,
+ // even if the previous scroll state retained nav-hidden before JS started.
+if(document.getElementById('home-content')){
+  show();
+  window.addEventListener('pageshow',show);
+}
 window.__tcmNavShow=show; // Drawer-Hooks
 window.__tcmNavSync=function(){holdUntil=performance.now()+400; lastY=window.scrollY||0; acc=0; show();};
 })();
