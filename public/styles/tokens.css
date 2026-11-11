@@ -7,6 +7,28 @@
    only — never redefine these in a component or page.
    ============================================================ */
 :root {
+  /* ── OFFICIAL TCM.ch PALETTE · approved 11.11.2026 ───────
+     Semantic rule:
+       blue = primary conversion only
+       charcoal = secondary action / structure
+       champagne rose = free Check-in / introductory offer
+       warm greys = architecture / surfaces
+       WhatsApp green = WhatsApp only
+     Rollout begins on Home, Zürich hub, SG and the 3 Zürich location pages. */
+  --tcm-primary:#1769B1;
+  --tcm-primary-hover:#10558F;
+  --tcm-ink:#171B1A;
+  --tcm-text:#353938;
+  --tcm-text-soft:#505453;
+  --tcm-muted:#707472;
+  --tcm-bg:#FFFFFF;
+  --tcm-surface:#F4F2EF;
+  --tcm-surface-strong:#E8E6E3;
+  --tcm-border:#D7D4D0;
+  --tcm-offer:#EEDBD7;
+  --tcm-offer-hover:#E2C6BF;
+  --tcm-whatsapp:#25D366;
+
   /* ── Brand greens ──────────────────────────────────────── */
   --blue: #2D9B6F;          /* primary green — CTAs */
   --blue-dark: #1F7A54;     /* hover / dark green */

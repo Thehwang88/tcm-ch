@@ -1,140 +1,279 @@
-/* Warm-neutral visual rollout — homepage, Zurich Bahnhofstrasse/Oerlikon/Hoengg and St. Gallen only.
-   The page opt-in is the body.tcm-warm class. No typography, spacing, content, image or navigation changes.
-   Yellow check-in offers and WhatsApp branding remain untouched. */
-body.tcm-warm {
-  --brand:#E8E6E3;
-  --brand-hover:#D6D4D1;
-  --brand-black:#171B1A;
-  --brand-surface:#F5F4F2;
-  --brand-tint:#EFEEEC;
-  --brand-ink:#454943;
-  --blue:#1769B1;
-  --blue-dark:#10558F;
-  --blue-light:#EEF3F8;
-  --green:#565B59;
-  --green-light:#EFEEEC;
-  --green-dark:#414642;
-  --green-mid:#D8D6D2;
-  --green-mint:#E8E6E3;
-  --black:#171B1A;
-  --charcoal:#171B1A;
-  --mid:#565B59;
-  --muted:#676B67;
-  --border:#D8D6D2;
-  --surface:#E8E6E3;
-  --bg-soft:#F5F4F2;
+/* TCM.ch official palette rollout — approved 11.11.2026.
+   Scoped to body.tcm-warm: Home, Zürich hub, Zürich Bahnhofstrasse/Oerlikon/Höngg and St. Gallen.
+   Semantic hierarchy:
+     BLUE      = primary conversion / booking only
+     CHARCOAL  = secondary actions, headings, structure
+     ROSE      = free Check-in / introductory offer only
+     WARM GREY = architecture, surfaces, cards
+     GREEN     = WhatsApp + true success states only
+   No spacing, typography, content, tracking or imagery changes here. */
+
+body.tcm-warm{
+  /* Legacy aliases become NEUTRAL inside the pilot. This prevents old code that
+     calls its accent "--blue" from turning decorative labels/links/icons blue. */
+  --brand:var(--tcm-surface-strong);
+  --brand-hover:var(--tcm-border);
+  --brand-black:var(--tcm-ink);
+  --brand-surface:var(--tcm-surface);
+  --brand-tint:var(--tcm-surface);
+  --brand-ink:var(--tcm-text-soft);
+
+  --blue:var(--tcm-text-soft);
+  --blue-dark:var(--tcm-ink);
+  --blue-light:var(--tcm-surface);
+  --green:var(--tcm-text-soft);
+  --green-light:var(--tcm-surface);
+  --green-dark:var(--tcm-ink);
+  --green-mid:var(--tcm-border);
+  --green-mint:var(--tcm-surface-strong);
+
+  --black:var(--tcm-ink);
+  --charcoal:var(--tcm-text);
+  --mid:var(--tcm-text-soft);
+  --muted:var(--tcm-muted);
+  --border:var(--tcm-border);
+  --surface:var(--tcm-surface-strong);
+  --bg-soft:var(--tcm-surface);
+  --wa-green:var(--tcm-whatsapp);
+
   --sh-btn:0 6px 18px rgba(23,27,26,.12);
   --sh-btn-hover:0 10px 28px rgba(23,27,26,.18);
 }
+
 body.tcm-warm .standort-scope,
 body.tcm-warm .std-ds,
-body.tcm-warm .std-vorlage {
-  --brand:#E4DDD2;
-  --brand-black:#171B1A;
-  --brand-surface:#F5F2ED;
-  --blue:#565B59;
-  --blue-dark:#414642;
-  --blue-light:#F0EBE5;
-  --green-mint:#ECE5DC;
-  --green-mid:#DED5C9;
-  --surface:#F5F2ED;
-  --border:#DED8D0;
+body.tcm-warm .std-vorlage{
+  --brand:var(--tcm-surface-strong);
+  --brand-black:var(--tcm-ink);
+  --brand-surface:var(--tcm-surface);
+  --blue:var(--tcm-text-soft);
+  --blue-dark:var(--tcm-ink);
+  --blue-light:var(--tcm-surface);
+  --green-mint:var(--tcm-surface-strong);
+  --green-mid:var(--tcm-border);
+  --surface:var(--tcm-surface);
+  --border:var(--tcm-border);
 }
-/* Keep the same hero layout and imagery, only change large green fields to ivory. */
+
+/* ── Architecture / large surfaces ───────────────────────── */
 body.tcm-warm #home-content .sr-hero,
 body.tcm-warm .lsr-hero,
-body.tcm-warm .hh-hero {background:#E8E6E3;color:#171B1A}
+body.tcm-warm .hh-hero{
+  background:var(--tcm-surface-strong);
+  color:var(--tcm-ink);
+}
 body.tcm-warm #home-content .sr-hero-left,
 body.tcm-warm .lsr-left,
-body.tcm-warm .hh-left {color:#171B1A}
+body.tcm-warm .hh-left,
 body.tcm-warm .lsr-h1,
 body.tcm-warm .hh-h1,
-body.tcm-warm #home-content .sr-h1 {color:#171B1A}
+body.tcm-warm #home-content .sr-h1{color:var(--tcm-ink)}
+
 body.tcm-warm .section-label,
 body.tcm-warm .section-title em,
-body.tcm-warm .offer-brand-eyebrow {color:#565B59}
-/* Existing large colour surfaces, cards and informational tints. */
-body.tcm-warm #s-offer {background:#E8E6E3!important}
-body.tcm-warm #home-content .home-locations-feature {
-  background:linear-gradient(135deg,#F5F4F2 0%,#E8E6E3 65%,#FFF7CF 100%);
+body.tcm-warm .offer-brand-eyebrow,
+body.tcm-warm .sec-lbl,
+body.tcm-warm .signal-overline{color:var(--tcm-text-soft)!important}
+
+body.tcm-warm #s-offer{background:var(--tcm-surface-strong)!important}
+body.tcm-warm #home-content .home-locations-feature{
+  background:linear-gradient(135deg,var(--tcm-surface) 0%,var(--tcm-surface-strong) 68%,var(--tcm-offer) 100%);
+  border-color:var(--tcm-border);
 }
 body.tcm-warm #home-content .home-locations-kicker,
-body.tcm-warm #home-content .home-locations-divider>span {color:#565B59}
+body.tcm-warm #home-content .home-locations-divider>span{color:var(--tcm-text-soft)}
 body.tcm-warm .akz-chip,
-body.tcm-warm .zhx-tag {background:#F0EBE5;color:#414642}
-/* Blue primary actions on the five opted-in pages; preserve white text and yellow offer CTAs. */
-body.tcm-warm .btn-primary,
-body.tcm-warm .lsr-btn-primary,
-body.tcm-warm .hh-btn-primary,
-body.tcm-warm #home-content .sr-btn--solid {
-  background:#1769B1;color:#FFFFFF;border-color:#1769B1;box-shadow:none;
+body.tcm-warm .zhx-tag,
+body.tcm-warm .zhx-chip--other{
+  background:var(--tcm-surface);
+  color:var(--tcm-text);
+  border-color:var(--tcm-border);
 }
-body.tcm-warm .btn-primary:hover,
-body.tcm-warm .lsr-btn-primary:hover,
-body.tcm-warm .hh-btn-primary:hover,
-body.tcm-warm #home-content .sr-btn--solid:hover {
-  background:#10558F;color:#FFFFFF;border-color:#10558F;
-}
-/* Form stylesheet sets dark-on-dark label via !important — override only in opted-in pages. */
-body.tcm-warm .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4),
-body.tcm-warm .kf .kf-btn--primary {
-  background:#1769B1!important;border-color:#1769B1!important;color:#FFFFFF!important;
-}
-body.tcm-warm .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover,
-body.tcm-warm .kf .kf-btn--primary:hover {
-  background:#10558F!important;border-color:#10558F!important;color:#FFFFFF!important;
-}
-body.tcm-warm .kf {--kf-neon:#1769B1;--kf-ink:#171B1A;--kf-mint:#F5F4F2;--kf-mint-line:#D8D6D2}
-body.tcm-warm .kf-opt:has(input:checked),
-body.tcm-warm .kf-radio:has(input:checked) {border-color:#565B59}
-/* Shared location tiles keep the existing layout and the yellow check-in emphasis. */
-body.tcm-warm .sc .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
-body.tcm-warm .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F;color:#FFFFFF}
-body.tcm-warm .sc-chip:not(.sc-chip--gelb){background:#EFEEEC;color:#414642;border-color:#D8D6D2}
-body.tcm-warm .sc-btn--gelb,
-body.tcm-warm .sc-chip--gelb {background:#EEDBD7;color:#171B1A;border-color:#EEDBD7}
-/* The St. Gallen seasonal gift module keeps its offer semantics, but aligns large green
-   background panels with the new charcoal/ivory identity. Gold remains gold. */
-body.tcm-warm .f30-hero {--f30-pine:#171B1A;--f30-pine-deep:#353A37;--f30-accent:#565B59;--f30-mint:#E4DDD2}
-body.tcm-warm .f30-hero .f30-card {background:#171B1A}
-body.tcm-warm .lsr-hero .lsr-btn-primary {background:#1769B1;color:#FFFFFF}
-body.tcm-warm .lsr-hero .lsr-btn-primary:hover {background:#10558F}
 
-/* Primary actions beyond generic .btn-primary: site nav, standard local clinic,
-   main home action and form submit. Specific to five opted-in pages. */
+/* Decorative legacy green marks become neutral, never conversion blue. */
+body.tcm-warm #home-content [stroke="#2D9B6F"]{stroke:var(--tcm-text-soft)!important}
+body.tcm-warm #home-content [fill="#2D9B6F"]{fill:var(--tcm-text-soft)!important}
+body.tcm-warm .team-photo-wrap::before,
+body.tcm-warm .svc-photo-top-bar,
+body.tcm-warm .h-card::before{background:var(--tcm-border)!important}
+
+/* ── PRIMARY = booking / conversion blue ─────────────────── */
+body.tcm-warm :is(
+  .btn-primary,
+  .lsr-btn-primary,
+  .hh-btn-primary,
+  .deh-btn--primary,
+  .hero-action-cta,
+  .hcd-primary,
+  .sticky-cta-primary,
+  .sg-contact-cta
+),
+body.tcm-warm #home-content .sr-btn--solid,
 body.tcm-warm #mainNav .nav-cta,
 body.tcm-warm .nav-cta,
-body.tcm-warm .hh-btn-primary,
-body.tcm-warm .sg-contact-cta,
-body.tcm-warm #home-content .svc-all-cta-link{
-  background:#1769B1;color:#FFFFFF;border-color:#1769B1;
+body.tcm-warm #home-content :is(a,button).tcm-btn--mint,
+body.tcm-warm .sc .sc-btn:not(.sc-btn--gelb){
+  background:var(--tcm-primary)!important;
+  color:#fff!important;
+  border-color:var(--tcm-primary)!important;
+  box-shadow:none!important;
 }
+body.tcm-warm :is(
+  .btn-primary,
+  .lsr-btn-primary,
+  .hh-btn-primary,
+  .deh-btn--primary,
+  .hero-action-cta,
+  .hcd-primary,
+  .sticky-cta-primary,
+  .sg-contact-cta
+):hover,
+body.tcm-warm #home-content .sr-btn--solid:hover,
 body.tcm-warm #mainNav .nav-cta:hover,
 body.tcm-warm .nav-cta:hover,
-body.tcm-warm .hh-btn-primary:hover,
-body.tcm-warm .sg-contact-cta:hover,
-body.tcm-warm #home-content .svc-all-cta-link:hover{
-  background:#10558F;color:#FFFFFF;border-color:#10558F;
+body.tcm-warm #home-content :is(a,button).tcm-btn--mint:hover,
+body.tcm-warm .sc:hover .sc-btn:not(.sc-btn--gelb){
+  background:var(--tcm-primary-hover)!important;
+  color:#fff!important;
+  border-color:var(--tcm-primary-hover)!important;
 }
-/* Yellow Check-in and promotional banners retain their existing independent styles. */
 
-/* Homepage's legacy mint CTA variant was not covered by the initial blue rollout.
-   Keep the old button dimensions, labels, links and events. Do not recolour
-   WhatsApp (#25D366) or the yellow Gratis Check-in offers. */
-body.tcm-warm #home-content a.tcm-btn--mint,
-body.tcm-warm #home-content button.tcm-btn--mint {
-  background:#1769B1!important;
-  border-color:#1769B1!important;
-  color:#FFFFFF!important;
-  box-shadow:none;
+/* ── SECONDARY = charcoal, never blue ────────────────────── */
+body.tcm-warm :is(
+  .btn-secondary,
+  .lsr-btn-ghost,
+  .hh-btn-secondary,
+  .deh-btn--secondary
+){
+  background:transparent!important;
+  color:var(--tcm-ink)!important;
+  border-color:rgba(23,27,26,.52)!important;
+  box-shadow:none!important;
 }
-body.tcm-warm #home-content a.tcm-btn--mint:hover,
-body.tcm-warm #home-content button.tcm-btn--mint:hover {
-  background:#10558F!important;
-  border-color:#10558F!important;
-  color:#FFFFFF!important;
+body.tcm-warm :is(
+  .btn-secondary,
+  .lsr-btn-ghost,
+  .hh-btn-secondary,
+  .deh-btn--secondary
+):hover{
+  background:rgba(23,27,26,.06)!important;
+  color:var(--tcm-ink)!important;
+  border-color:var(--tcm-ink)!important;
 }
-body.tcm-warm #home-content :is(a,button).tcm-btn--mint:focus-visible {
-  outline:3px solid #10558F;
+
+/* Quiet text links stay charcoal/grey; blue is not a decorative link colour. */
+body.tcm-warm :is(.body-link,.akz-txtlinks a,.nav-util,.sidebar-all-link){
+  color:var(--tcm-text)!important;
+}
+body.tcm-warm :is(.body-link,.akz-txtlinks a,.nav-util,.sidebar-all-link):hover{
+  color:var(--tcm-ink)!important;
+}
+
+/* ── Forms: blue only at conversion/focus; selected choices stay neutral ── */
+body.tcm-warm .kf{
+  --kf-neon:var(--tcm-primary);
+  --kf-ink:var(--tcm-ink);
+  --kf-mint:var(--tcm-surface);
+  --kf-mint-line:var(--tcm-border);
+}
+body.tcm-warm .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4),
+body.tcm-warm .kf .kf-btn--primary{
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+}
+body.tcm-warm .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover,
+body.tcm-warm .kf .kf-btn--primary:hover{
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+  color:#fff!important;
+}
+body.tcm-warm .kf-opt:has(input:checked),
+body.tcm-warm .kf-radio:has(input:checked){border-color:var(--tcm-ink)!important}
+body.tcm-warm .kf-opt--checkin{
+  background:var(--tcm-offer)!important;
+  border-color:var(--tcm-offer-hover)!important;
+}
+body.tcm-warm :is(input,select,textarea):focus{
+  border-color:var(--tcm-primary)!important;
+  box-shadow:0 0 0 3px rgba(23,105,177,.12)!important;
+}
+
+/* ── FREE CHECK-IN = champagne rose only ─────────────────── */
+body.tcm-warm .sgb-banner,
+body.tcm-warm .sgcp-card,
+body.tcm-warm .sgcp-reopen,
+body.tcm-warm .sc-btn--gelb,
+body.tcm-warm .sc-chip--gelb,
+body.tcm-warm #home-content .home-loc-gratis{
+  background:var(--tcm-offer)!important;
+  color:var(--tcm-ink)!important;
+  border-color:var(--tcm-offer)!important;
+}
+body.tcm-warm .sgb-cta,
+body.tcm-warm .sgcp-cta,
+body.tcm-warm .sgcp-kicker{
+  background:var(--tcm-ink)!important;
+  color:#fff!important;
+}
+body.tcm-warm .sgb-in:hover .sgb-cta,
+body.tcm-warm .sgcp-cta:hover{background:#2B302E!important}
+
+/* Shared location cards: neutral metadata, blue only the booking action. */
+body.tcm-warm .sc-chip:not(.sc-chip--gelb){
+  background:var(--tcm-surface);
+  color:var(--tcm-text);
+  border-color:var(--tcm-border);
+}
+
+/* St. Gallen seasonal FIRST 30 keeps its campaign gold, but no legacy green. */
+body.tcm-warm .f30-hero{
+  --f30-pine:var(--tcm-ink);
+  --f30-pine-deep:#353A37;
+  --f30-accent:var(--tcm-text-soft);
+  --f30-mint:var(--tcm-surface-strong);
+}
+body.tcm-warm .f30-hero .f30-card{background:var(--tcm-ink)}
+
+/* WhatsApp is the only persistent green brand action. */
+body.tcm-warm :is(.hero-wa-cta,.sg-mobile-wa-cta,.form-wa-alt-new){
+  --wa-green:var(--tcm-whatsapp);
+}
+
+/* Accessible focus: blue for actionable controls, independent of decoration. */
+body.tcm-warm :is(
+  .btn-primary,.btn-secondary,.lsr-btn-primary,.lsr-btn-ghost,
+  .nav-cta,.sgb-in,.sgcp-cta,.sc-btn
+):focus-visible{
+  outline:3px solid var(--tcm-primary)!important;
   outline-offset:3px;
+}
+
+
+/* ── Late-loading Standort component CSS guardrails ─────────
+   These component <style> blocks render after warm-clinic.css, so use !important
+   only where necessary to preserve the official semantic hierarchy. */
+body.tcm-warm .sgt-ch--primary{
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+}
+body.tcm-warm .sgt-ch--primary:hover{
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+}
+body.tcm-warm .sgt-ch--primary :is(.sgt-ch-label,.sgt-ch-go,.sgt-ch-title){
+  color:#fff!important;
+}
+body.tcm-warm .sgt-ch--primary .sgt-ch-sub{color:rgba(255,255,255,.82)!important}
+body.tcm-warm .sgt-ch:not(.sgt-ch--primary):hover{border-color:var(--tcm-ink)!important}
+body.tcm-warm .sgt-ch:not(.sgt-ch--primary) :is(.sgt-ch-label,.sgt-ch-go),
+body.tcm-warm .sgt-google{color:var(--tcm-text)!important}
+body.tcm-warm [stroke="#2D9B6F"]{stroke:var(--tcm-text-soft)!important}
+body.tcm-warm [fill="#2D9B6F"]{fill:var(--tcm-text-soft)!important}
+
+/* The generic dark CTA band remains charcoal; its button is a high-contrast secondary
+   on the dark surface, not another blue decorative block. */
+body.tcm-warm .cta-band{background:var(--tcm-ink)!important}
+body.tcm-warm .cta-band .btn-white{
+  background:#fff!important;color:var(--tcm-ink)!important;border-color:#fff!important;
 }
