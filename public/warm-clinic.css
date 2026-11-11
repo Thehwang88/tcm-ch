@@ -755,3 +755,53 @@ body.tcm-warm .drw-cta-primary:hover{
 body.tcm-warm .drw-cta-primary svg{
   stroke:currentColor!important;
 }
+
+
+/* Beschwerden hub: green-tinted "Häufig gesucht" pills and card highlights
+   belong to the former palette. Neutral chips remain distinguishable via
+   weight, border and hover; all original link/click handlers are untouched. */
+body.tcm-warm .symptom-scope .bx-hchip,
+body.tcm-warm .symptom-scope .bx-hchip.live{
+  background:var(--tcm-surface,#F4F2EF)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .symptom-scope .bx-hchip:hover,
+body.tcm-warm .symptom-scope .bx-hchip:focus-visible{
+  background:#fff!important;
+  border-color:var(--tcm-ink,#171B1A)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-cat-panel-icon,.bx-trust-icon){
+  background:var(--tcm-surface-strong,#E8E6E3)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-eyebrow-dot,.bx-stat-dot){
+  background:var(--tcm-ink,#171B1A)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .symptom-scope .bx-cat-panel:hover{
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  box-shadow:0 4px 14px rgba(23,27,26,.06)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-cat-link:hover,.bx-complaint-row:hover,.bx-hero-az-l:hover){
+  background:var(--tcm-surface,#F4F2EF)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-cr-badge,.bx-cr-arrow,.bx-cat-link-arrow){
+  color:var(--tcm-text-soft,#505453)!important;
+}
+body.tcm-warm .symptom-scope :is(.bx-hchip,.bx-cat-link,.bx-complaint-row):focus-visible{
+  outline:3px solid var(--tcm-primary,#1769B1)!important;
+  outline-offset:2px;
+}
+/* Other complaint/therapy cards inherit old greenish time/recognition pills. */
+body.tcm-warm .svc-card :is(.svc-badge--time,.svc-badge--ins){
+  background:var(--tcm-surface,#F4F2EF)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-text-soft,#505453)!important;
+}
