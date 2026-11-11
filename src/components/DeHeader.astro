@@ -96,7 +96,7 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
 <Fragment set:html={html} />
 <!-- Time-limited, global DE patient offer. Keep out of the fixed nav to avoid
      reintroducing a header spacer or affecting nav scroll-hide calculations. -->
-<a id="tcm-nov-checkin" class="tcm-nov-checkin" href="/kontakt/" data-open-concern aria-label="Gratis 30-Minuten-Check-in bis 30. November sichern">
+<a id="tcm-nov-checkin" class="tcm-nov-checkin" href="/kontakt/?terminart=checkin#termin-formular" aria-label="Gratis 30-Minuten-Check-in bis 30. November sichern">
   <span><strong>Gratis 30-Min.-Check-in zum Kennenlernen</strong><span class="tcm-nov-checkin-deadline"> · Bis 30. November sichern</span></span>
   <span aria-hidden="true" class="tcm-nov-checkin-arrow">→</span>
 </a>
@@ -113,6 +113,32 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
     var nav=document.getElementById('mainNav');
     if(nav)el.style.top=Math.round(nav.getBoundingClientRect().bottom)+'px';
   }
+  // Reuse the real booking sheet and select the free Check-in option.
+  // Do not open the unrelated "Anliegen schildern" sheet.
+  el.addEventListener('click',function(e){
+    if(e.defaultPrevented||e.button!==0||e.ctrlKey||e.metaKey||e.altKey||e.shiftKey)return;
+    var variants=[
+      ['sg','#offer-form'],
+      ['home','#home-contact-form'],
+      ['zh','#zh-funnel'],
+      ['clinic','#anfrage-box']
+    ];
+    for(var i=0;i<variants.length;i++){
+      if(!document.querySelector(variants[i][1]+' form'))continue;
+      var proxy=document.createElement('button');
+      proxy.type='button';
+      proxy.hidden=true;
+      proxy.setAttribute('data-booking-sheet',variants[i][0]);
+      proxy.setAttribute('data-booking-wish','checkin');
+      proxy.setAttribute('data-care-cta','november-banner-checkin');
+      document.body.appendChild(proxy);
+      proxy.click();
+      proxy.remove();
+      var dialog=document.getElementById('tcm-booking-sheet');
+      if(dialog&&dialog.open){e.preventDefault();return;}
+    }
+    // Pages without a compatible native form use the check-in prefill URL.
+  });
   position();
   window.addEventListener('scroll',position,{passive:true});
   window.addEventListener('resize',position,{passive:true});
