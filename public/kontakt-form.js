@@ -187,7 +187,7 @@
     // Expliziter Check-in-Wunsch, der hier nicht verfügbar ist: KEINE (kostenpflichtige) Auswahl als scheinbare Erfüllung
     // stehen lassen. Auswahl lösen, Standard sperren (noDefault), Hinweis zeigen; Eingaben bleiben. Hinweis: globale Formulare
     // zeigen den bestehenden Standort-Hinweis (scopeNote), Formulare mit festem Standort den Hinweis an der Auswahl.
-    var checkinNA = 'Der kostenlose TCM-Check-in ist derzeit nur in ' + scopeNames + ' verfügbar. Bitte wähle eine Terminart.';
+    var checkinNA = 'Gratis Check-in für diesen Standort nicht verfügbar. Bitte wähle eine andere Terminart oder einen anderen Standort.';
     var blockWish = function () {
       radios.forEach(function (x) { x.checked = false; }); noDefault = true; sync();
       if (!(scopeNote && !scopeNote.hidden)) fieldErr('terminart', checkinNA);
@@ -387,7 +387,7 @@
       if (sel && !opt()) fail('standort', 'Bitte wähle einen Standort.');
       if (!t && tg) fail('terminart', 'Bitte wähle aus, wie wir dir helfen können.');
       else if (!t) { /* Standort fehlt: Kacheln erst nach Standortwahl relevant */ }
-      else if (t === 'checkin' && !checkinAllowed()) fail('terminart', 'Der kostenlose TCM-Check-in ist derzeit nur in ' + scopeNames + ' verfügbar.');
+      else if (t === 'checkin' && !checkinAllowed()) fail('terminart', 'Gratis Check-in für diesen Standort nicht verfügbar.');
       // Name Pflicht (ein Feld, nach Trimmen nicht leer; keine Wortanzahl-Regel). Fehlerreihenfolge = sichtbare Reihenfolge.
       var nmEl = form.querySelector('[name="name"]');
       if (nmEl && nmEl.required && !nmEl.value.trim()) fail('name', 'Bitte gib deinen Namen an.');
