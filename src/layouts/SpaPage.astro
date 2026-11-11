@@ -112,7 +112,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     {!sensibel && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>}
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
   </head>
-  <body class={warmClinicPalette ? "tcm-warm" : undefined}>
+  <body class={`${warmClinicPalette ? "tcm-warm" : ""}${path.startsWith("/standorte/") ? " tcm-location-page" : ""}`.trim()}>
     <DeHeader />
     <slot />
     <Fragment set:html={html} /><slot name="body-insert" />{htmlAfter && <Fragment set:html={htmlAfter} />}
