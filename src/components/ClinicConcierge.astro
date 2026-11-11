@@ -25,22 +25,6 @@ const lead = isEn
     : limited
       ? 'Du hast Fragen zu diesem Standort? Wir erklären dir den aktuellen Stand und mögliche Alternativen.'
       : 'Schilder uns dein Anliegen. Wir helfen dir bei der Behandlung und Terminanfrage an diesem Standort.';
-const detail = isEn
-  ? limited
-    ? 'Regular treatment appointments are not yet confirmed at this location.'
-    : 'Personal guidance on treatments, clinics and appointments.'
-  : limited
-    ? 'Noch keine bestätigten regulären Behandlungstermine an diesem Standort.'
-    : 'Persönliche Beratung zur Behandlung, Praxis und Terminwahl.';
-const waNumber = '41775236122';
-const directMessage = isEn
-  ? isZurichHub
-    ? 'Hello Yuna, I have a question about TCM.ch clinics and appointments in Zürich.'
-    : 'Hello Yuna, I have a question about the TCM.ch clinic in ' + location + '.'
-  : isZurichHub
-    ? 'Hallo Yuna, ich habe eine Frage zu den TCM.ch Praxen und Terminen in Zürich.'
-    : 'Hallo Yuna, ich habe eine Frage zum TCM.ch Standort ' + location + '.';
-const waHref = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(directMessage);
 ---
 <section class="cc-section" id="care-concierge" aria-labelledby="cc-title" data-cc-location={location} data-cc-status={status} data-cc-hub={isZurichHub ? 'true' : 'false'} data-cc-lang={lang}>
   <div class="cc-wrap">
@@ -51,9 +35,8 @@ const waHref = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(direc
       <div class="cc-yuna-card home-cta-merged">
         <img src="/images/Yuna.jpg" width="1875" height="2500" alt="Yuna – TCM.ch Concierge" loading="lazy" decoding="async" />
         <div class="cc-yuna-copy">
-          <strong>{isEn ? 'Prefer to speak with Yuna?' : 'Lieber direkt mit Yuna sprechen?'}</strong>
-          <span>{detail}</span>
-          <a class="cc-yuna-link" href={waHref} target="_blank" rel="noopener">{isEn ? 'Ask Yuna on WhatsApp' : 'Yuna per WhatsApp fragen'} <span aria-hidden="true">↗</span></a>
+          <strong>{isEn ? 'Personal support from our team' : 'Persönlich für dich da'}</strong>
+          <span>{isEn ? 'We read your enquiry and help you choose a clinic or appointment.' : 'Wir lesen deine Anfrage und helfen dir bei der Praxis- und Terminwahl.'}</span>
         </div>
       </div>
     </div>
@@ -74,7 +57,7 @@ const waHref = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(direc
           <button type="button" data-cc-preset={isEn ? "I have digestive symptoms since " : "Ich habe Verdauungsprobleme seit "}>{isEn ? "Digestion" : "Verdauung"}</button>
           <button type="button" data-cc-preset={isEn ? "I have questions about my cycle or hormones: " : "Ich habe Fragen zu Zyklus oder Hormonen: "}>{isEn ? "Cycle / hormones" : "Zyklus / Hormone"}</button>
         </div>
-        <button type="submit" class="cc-submit">{isEn ? 'Request guidance on WhatsApp' : 'Empfehlung per WhatsApp anfragen'} <span aria-hidden="true">→</span></button>
+        <button type="submit" class="cc-submit">{isEn ? 'Send enquiry via WhatsApp' : 'Anfrage per WhatsApp senden'} <span aria-hidden="true">→</span></button>
         <p class="cc-disclaimer">{isEn ? 'Opens WhatsApp. No treatment or appointment is booked automatically.' : 'Öffnet WhatsApp. Eine Behandlung oder ein Termin wird nicht automatisch gebucht.'}</p>
       </form>
     </div>
