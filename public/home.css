@@ -5873,7 +5873,7 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 #page-standort .std-kontakt-alt a{color:var(--blue-dark);font-weight:600;text-decoration:none}
 
 
-/* Mobile homepage hero: image first, headline + booking actions near the fold.
+/* Mobile homepage hero: full square team portrait above headline and booking actions.
    Uses the existing authentic team image; CSS reorders only the patient hero.
    Desktop and therapist/career hero remain unchanged. */
 @media (max-width:767px) {
@@ -5898,9 +5898,9 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
     position:static;
     width:100%;
     height:auto;
-    aspect-ratio:16/8;
+    aspect-ratio:1/1;
     object-fit:cover;
-    object-position:36% 42%;
+    object-position:36% center;
   }
   #home-content #heroPatient .sr-eyebrow {
     order:1;
@@ -5940,6 +5940,5 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
   }
 }
 @media (max-width:375px) {
-  #home-content #heroPatient .sr-hero-right img {aspect-ratio:16/7;}
   #home-content #heroPatient .sr-h1 {font-size:36px;}
 }
