@@ -168,7 +168,6 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
       ['Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', K ? 'Persönliche Empfehlung' : 'Persönliche Empfehlung zum weiteren Vorgehen'].map((t) => `<span class="kf-benefit" role="listitem">${CHECK}<span>${t}</span></span>`).join('') +
       `<span class="kf-benefit" role="listitem">${CHECK}<span>Krankenkassen-Check<span class="kf-benefit-sub">Hilfe bei der Abklärung deiner Zusatzversicherung.</span></span></span></span>` +
       `<span class="kf-opt-foot">Kostenlos · ohne Behandlung · ohne Verpflichtung</span>`) +
-    (fixed ? '' : `<span class="kf-scope" data-kf-scope>Derzeit nur in ${esc(scopeNames)}</span>`) +
     `</span></label>`;
   const tileBehandlung =
     `<label class="kf-opt kf-opt--behandlung" for="${p}-ta-behandlung">` +
@@ -266,7 +265,6 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? (K || Q ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : QG ? '' : select) +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
     (Q && !HB && !CZ ? tileBehandlung + tileCheckin : tileCheckin + tileBehandlung) + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
-    (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
     // Ruhig (SG): keine Zwischenüberschrift, nach den Kacheln folgt direkt «Telefonnummer *».
