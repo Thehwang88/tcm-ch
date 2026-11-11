@@ -10,7 +10,7 @@
   .akzh .lsr-right--team{
     position:relative;min-width:0;min-height:100%;margin:0;padding:0;
     overflow:hidden;border:0;border-radius:0;box-shadow:none;
-    background:#E4DDD2;container-type:normal;
+    background:var(--tcm-surface-strong,#E8E6E3);container-type:normal;
   }
   .akzh .lsr-right--team .zh-hero-video{
     position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
@@ -37,11 +37,11 @@
   @media(min-width:1101px){.zhx-praxis-tags{min-height:69px;align-content:flex-start}}
   .zhx-praxis-ctas .btn-primary,.zhx-praxis-ctas .btn-secondary{min-height:48px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;border-radius:100px}
   /* Softriver-CTA-Farben statt Legacy-Gruen - nur innerhalb .akz */
-  .akz .btn-primary{background:var(--brand,#1AE288);color:var(--brand-black,#020B10);box-shadow:none}
-  .akz .btn-primary:hover{background:#14C97A;color:var(--brand-black,#020B10)}
+  .akz .btn-primary{background:var(--tcm-primary,#1769B1);color:#fff;box-shadow:none}
+  .akz .btn-primary:hover{background:var(--tcm-primary-hover,#10558F);color:#fff}
   /* CTA-Band liegt im Dokument ausserhalb des (unbalancierten) .akz-Wrappers - eigene Regel. */
-  .cta-band .btn-primary{background:var(--brand,#1AE288);color:var(--brand-black,#020B10);box-shadow:none}
-  .cta-band .btn-primary:hover{background:#14C97A;color:var(--brand-black,#020B10)}
+  .cta-band .btn-primary{background:var(--tcm-primary,#1769B1);color:#fff;box-shadow:none}
+  .cta-band .btn-primary:hover{background:var(--tcm-primary-hover,#10558F);color:#fff}
   .akz .btn-primary:focus-visible,.akz .btn-secondary:focus-visible,.akzh-row:focus-visible,.akz .lsr-btn-primary:focus-visible,.akz .lsr-btn-ghost:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:2px}
   @media(prefers-reduced-motion:reduce){.akzh-row-arrow{transition:none}}
   .akz-hero{background:var(--green-mint);border-bottom:1px solid var(--border)}
@@ -210,11 +210,11 @@
   /* Zürich-only warm-neutral colour pilot. No structure, content or tracking changes.
      Global tokens, shared clinic cards and other locations remain untouched. */
   .akz{
-    --brand:var(--tcm-surface-strong,var(--tcm-surface-strong,#E8E6E3));--brand-hover:var(--tcm-border,#D7D4D0);--brand-black:var(--tcm-ink,#171B1A);
+    --brand:var(--tcm-surface-strong,#E8E6E3);--brand-hover:var(--tcm-border,#D7D4D0);--brand-black:var(--tcm-ink,#171B1A);
     --brand-surface:var(--tcm-surface,#F4F2EF);--brand-tint:var(--tcm-surface,#F4F2EF);--brand-ink:var(--tcm-text-soft,#505453);
     --blue:var(--tcm-text-soft,#505453);--blue-dark:var(--tcm-ink,#171B1A);--blue-light:var(--tcm-surface,#F4F2EF);
-    --green-mint:var(--tcm-surface-strong,var(--tcm-surface-strong,#E8E6E3));--green-mid:var(--tcm-border,#D7D4D0);--green-dark:var(--tcm-ink,#171B1A);
-    --surface:var(--tcm-surface-strong,var(--tcm-surface-strong,#E8E6E3));--border:var(--tcm-border,#D7D4D0);--mid:var(--tcm-text-soft,#505453);--muted:var(--tcm-muted,#707472);
+    --green-mint:var(--tcm-surface-strong,#E8E6E3);--green-mid:var(--tcm-border,#D7D4D0);--green-dark:var(--tcm-ink,#171B1A);
+    --surface:var(--tcm-surface-strong,#E8E6E3);--border:var(--tcm-border,#D7D4D0);--mid:var(--tcm-text-soft,#505453);--muted:var(--tcm-muted,#707472);
     --sh-btn:0 6px 18px rgba(23,27,26,.12);
     --sh-btn-hover:0 10px 28px rgba(23,27,26,.18);
   }
