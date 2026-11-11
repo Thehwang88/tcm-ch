@@ -189,6 +189,14 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
   @media(max-width:370px){
     .tcm-nov-checkin{font-size:clamp(10px,2.9vw,11px);gap:4px;padding-inline:5px}
   }
+  /* The fixed offer banner must not crowd/cover location-page eyebrows.
+     Restrict extra breathing room to location heroes, not the homepage. */
+  @media(max-width:900px){
+    html.tcm-nov-offer-active body > main:has(.std-location-hero),
+    html.tcm-nov-offer-active body > main:has(.lsr-hero.hlsg){
+      padding-top:calc(60px + 42px + 20px)!important;
+    }
+  }
   @media(prefers-reduced-motion:reduce){.tcm-nov-checkin{transition:none}}
 </style>
 
