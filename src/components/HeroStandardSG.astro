@@ -48,7 +48,7 @@ const card = renderKontaktForm({
 <section class="sgb-banner" id="sg-angebot-banner" aria-label="Kostenloser TCM 360°-Check-in">
   <a href="#termin" class="sgb-in">
     <span class="sgb-txt sgb-txt--d"><strong>Kostenloser TCM 360°-Check-in</strong><span class="sgb-sep" aria-hidden="true"> · </span>30 Min<span class="sgb-slot" data-sgb-slot hidden> · Nächster freier Termin: <strong data-sgb-slot-label></strong></span><span class="sgb-slot" data-sgb-gueltig hidden> · Angebot gültig bis <strong data-sgb-gueltig-label></strong></span></span>
-    <span class="sgb-txt sgb-txt--m"><strong>Gratis Check-in</strong> · <span data-sgb-slot-m>30 Min</span></span>
+    <span class="sgb-txt sgb-txt--m"><strong>Gratis Check-in</strong> <span data-sgb-slot-m>30 Min</span></span>
     <span class="sgb-cta"><span class="sgb-cta--d"><span data-sgb-cta-d>Jetzt Termin wählen</span> <span aria-hidden="true">→</span></span><span class="sgb-cta--m"><span aria-hidden="true">→</span> <span data-sgb-cta-m>Termin</span></span></span>
   </a>
 </section>
@@ -161,7 +161,7 @@ const card = renderKontaktForm({
   .sgb-in:hover .sgb-cta{background:#0B1F27}
   .sgb-in:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:-3px}
   .sgb-txt--m,.sgb-cta--m{display:none}
-  /* Mobil einzeilig: «Gratis Check-in · 30 Min → Termin» */
+  /* Mobil einzeilig: «Gratis Check-in bis Monatsende → Sichern» (ohne Trennpunkt) */
   .sgb-slot strong{white-space:nowrap}
   @media (max-width:900px){.sgb-in{flex-wrap:nowrap;gap:10px;padding:5px 12px}.sgb-txt--d,.sgb-cta--d{display:none}.sgb-txt--m,.sgb-cta--m{display:inline}.sgb-txt{font-size:14px;white-space:nowrap}.sgb-cta{padding:6px 12px;font-size:13px}}
 
