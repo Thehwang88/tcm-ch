@@ -94,6 +94,58 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
   .replace(drawerTail, '  </div>' + patientDrawer + ' </div>\n<div id="drawerOverlay"');
 ---
 <Fragment set:html={html} />
+<!-- Time-limited, global DE patient offer. Keep out of the fixed nav to avoid
+     reintroducing a header spacer or affecting nav scroll-hide calculations. -->
+<a id="tcm-nov-checkin" class="tcm-nov-checkin" href="/kontakt/" data-open-concern aria-label="Gratis 30-Minuten-Check-in bis 30. November sichern">
+  <span><strong>Gratis 30-Min.-Check-in</strong><span class="tcm-nov-checkin-deadline"> · Bis 30. November sichern</span></span>
+  <span aria-hidden="true" class="tcm-nov-checkin-arrow">→</span>
+</a>
+<script is:inline>
+(function(){
+  var el=document.getElementById('tcm-nov-checkin');
+  if(!el)return;
+  var now=new Date();
+  // Offer ends at the end of 30 November 2026, Swiss local time.
+  var swiss=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Zurich',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
+  if(swiss>'2026-11-30'){el.remove();return;}
+  document.documentElement.classList.add('tcm-nov-offer-active');
+  function position(){
+    var nav=document.getElementById('mainNav');
+    if(nav)el.style.top=Math.round(nav.getBoundingClientRect().bottom)+'px';
+  }
+  position();
+  window.addEventListener('scroll',position,{passive:true});
+  window.addEventListener('resize',position,{passive:true});
+})();
+</script>
+<style is:global>
+  .tcm-nov-checkin{
+    position:fixed;left:0;right:0;top:68px;z-index:899;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    box-sizing:border-box;min-height:38px;padding:8px 18px;
+    background:#EAF5FC;color:#142D40;text-decoration:none;
+    border-bottom:1px solid #D5E8F4;font:600 13px/1.3 Figtree,Arial,sans-serif;
+    text-align:center;transition:transform .2s ease,opacity .2s ease;
+  }
+  .tcm-nov-checkin strong{font-weight:800}
+  .tcm-nov-checkin-arrow{font-size:19px;line-height:1}
+  .tcm-nov-checkin:hover{background:#DFF0FA}
+  .tcm-nov-checkin:focus-visible{outline:3px solid #1769B1;outline-offset:-3px}
+  html.tcm-nov-offer-active body > main,
+  html.tcm-nov-offer-active body > #home-content{padding-top:calc(var(--header-h,68px) + 38px)!important}
+  @media(max-width:900px){
+    .tcm-nov-checkin{min-height:38px;padding:7px 12px;font-size:12px}
+    html.tcm-nov-offer-active body > main,
+    html.tcm-nov-offer-active body > #home-content{padding-top:calc(60px + 38px)!important}
+    body.tcm-nav-scrolled-away .tcm-nov-checkin{transform:translateY(-150%);opacity:0;pointer-events:none}
+  }
+  @media(max-width:370px){
+    .tcm-nov-checkin{font-size:11px;gap:6px}
+    .tcm-nov-checkin-deadline{font-size:10px}
+  }
+  @media(prefers-reduced-motion:reduce){.tcm-nov-checkin{transition:none}}
+</style>
+
 <style is:global>
   /* Shared DE mobile navigation: 68 → 64px, keeping logo proportions
      and all phone/menu touch targets unchanged (>=44px). */
