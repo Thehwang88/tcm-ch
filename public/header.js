@@ -238,15 +238,63 @@ function navMoreToggle(){
   window.addEventListener('resize', update);
 })();
 
-/* Shared mobile navigation: always visible. With a fixed Check-in banner
-   the previous scroll hide/reveal feature caused a header/banner collision.
-   Keep the drawer's existing show/sync hooks without any scroll hiding. */
+/* Shared mobile auto-hide (all German pages).
+ * Scroll DOWN: slide header + promotion offscreen together for reading room.
+ * Scroll UP: reveal both. At top, focus, drawer, dialog: always visible.
+ * No layout shifts: fixed elements retain their original document spacer.
+ */
 (function(){
-  var nav=document.getElementById('mainNav');
-  if(!nav) return;
-  function show(){nav.classList.remove('nav-hidden');}
-  show();
-  window.addEventListener('pageshow',show);
+  var bar=document.getElementById('mainNav');
+  if(!bar)return;
+  var mq=window.matchMedia('(max-width:900px)');
+  var previous=window.scrollY||0,delta=0,ticking=false;
+  var hidden=false;
+  function show(){
+    hidden=false;
+    bar.classList.remove('nav-hidden');
+    document.body.classList.remove('tcm-nav-scrolled-away');
+    delta=0;
+  }
+  function hide(){
+    if(hidden||!mq.matches||document.hidden||locked())return;
+    hidden=true;
+    bar.classList.add('nav-hidden');
+    document.body.classList.add('tcm-nav-scrolled-away');
+    delta=0;
+  }
+  function locked(){
+    return document.body.classList.contains('drawer-open')
+      || !!document.querySelector('dialog[open],#siteDrawer.open,#navMorePanel.open')
+      || !!(document.activeElement&&bar.contains(document.activeElement))
+      || !!document.querySelector('input:focus,textarea:focus,select:focus')
+      || document.documentElement.classList.contains('search-open');
+  }
+  function update(){
+    ticking=false;
+    var y=Math.max(0,window.scrollY||0);
+    var change=y-previous;
+    previous=y;
+    if(!mq.matches||y<100||locked()){show();return;}
+    // Ignore tiny movements and mobile scroll bounce; accumulate a deliberate
+    // direction before switching to avoid flicker on short touch movements.
+    if(Math.abs(change)>90){delta=0;return;}
+    if(Math.sign(change)!==Math.sign(delta))delta=change;
+    else delta+=change;
+    if(change>0&&delta>22&&y>150)hide();
+    else if(change<0&&delta< -14)show();
+  }
+  function onScroll(){
+    if(ticking)return;
+    ticking=true;
+    requestAnimationFrame(update);
+  }
+  function reset(){previous=Math.max(0,window.scrollY||0);show();}
+  reset();
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('pageshow',reset);
+  window.addEventListener('resize',function(){if(!mq.matches)reset();else previous=window.scrollY||0;},{passive:true});
+  window.addEventListener('focusin',function(){if(locked())show();});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)reset();});
   window.__tcmNavShow=show;
-  window.__tcmNavSync=show;
+  window.__tcmNavSync=function(){reset();};
 })();
