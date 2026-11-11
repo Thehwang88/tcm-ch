@@ -41,15 +41,18 @@
 @media(prefers-reduced-motion:no-preference){.tcm-booking-sheet[open] .tcm-booking-panel{animation:tcm-booking-in .2s ease-out}@keyframes tcm-booking-in{from{transform:translateY(18px);opacity:.9}to{transform:translateY(0);opacity:1}}}
 
 
-/* St. Gallen: the booking sheet already supplies the heading and intro.
-   Suppress only its duplicated black in-card heading *inside this dialog*.
-   The original in-page form heading and every appointment option remain intact. */
-.tcm-booking-content--sg .inline-form-card.kf--ruhig > .kf-kopf{
+/* Every appointment sheet already has its own white heading and intro.
+   The live forms can nest .kf-kopf within .kf-form (SG included), so the
+   former `> .kf-kopf` selector missed the real black banner. Hide the
+   duplicated heading for ALL four variants only while inside the dialog.
+   Original inline forms remain untouched when restored to their pages. */
+#tcm-booking-sheet .tcm-booking-content .kf-kopf,
+#tcm-booking-sheet .tcm-booking-content .inline-form-header{
   display:none!important;
 }
-.tcm-booking-content--sg .inline-form-card.kf--ruhig{
+#tcm-booking-sheet .tcm-booking-content .inline-form-card{
   padding-top:0!important;
 }
-.tcm-booking-content--sg .kf-opts{
-  margin-top:0;
+#tcm-booking-sheet .tcm-booking-content .kf-form{
+  margin-top:0!important;
 }
