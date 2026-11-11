@@ -116,6 +116,8 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <DeHeader />
     <slot />
     <Fragment set:html={html} /><slot name="body-insert" />{htmlAfter && <Fragment set:html={htmlAfter} />}
+    {/* Optional end-of-page conversion section, after the page body but before the global footer. */}
+    <slot name="pre-footer" />
     <Footer />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>

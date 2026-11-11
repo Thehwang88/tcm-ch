@@ -8,7 +8,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSplit from '../../components/en/HeroSplit.astro';
 import UspStrip from '../../components/en/UspStrip.astro';
 import AppointmentForm from '../../components/en/AppointmentForm.astro';
-import CtaBand from '../../components/en/CtaBand.astro';
+import ClinicConcierge from '../../components/ClinicConcierge.astro';
 import { site } from '../../data/site';
 import { enLocationPath, formatHours, type Clinic } from '../../data/locations';
 import { zuerichStandorte, ZH_FLEXIBEL } from '../../data/zuerich-termin';
@@ -278,7 +278,7 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
     </div>
   </section>
 
-  <CtaBand title="Rather ask first?" text="Yuna from the TCM.ch concierge answers questions about treatment, appointments and insurance on WhatsApp, free and without obligation." primary={{ href: wa, label: 'Ask on WhatsApp', external: true }} secondary={{ href: telHref, label: `Call ${phone}` }} />
+  <ClinicConcierge lang="en" isZurichHub />
 
 </Layout>
 

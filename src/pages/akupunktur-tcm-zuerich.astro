@@ -1,6 +1,7 @@
 ---
 // /akupunktur-tcm-zuerich/ - kommerzielle Zürich-Hub-Landingpage (Hub & Spoke → die 3 Zürcher Standorte).
 export const prerender = true;
+import ClinicConcierge from '../components/ClinicConcierge.astro';
 import SpaPage from '../layouts/SpaPage.astro';
 import rawBody from '../data/akupunktur-tcm-zuerich-body.html?raw';
 import { zhStandortOptionsHtml } from '../data/zuerich-termin';
@@ -100,6 +101,7 @@ const schema = [
   <!-- Mobile Sticky-CTA (bestehende Komponente; erscheint erst nach dem Hero) -->
   <StickyCta prefill="Hallo, ich suche eine TCM-Praxis in Zürich." formTarget="#zh-funnel" heroSelector=".lsr-hero" />
   <SgCheckinPopup />
+  <ClinicConcierge slot="pre-footer" isZurichHub />
   <BrandSignature
     slot="body-insert"
     warm

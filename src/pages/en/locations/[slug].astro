@@ -8,6 +8,7 @@ import StatusBanner from '../../../components/en/StatusBanner.astro';
 import UspStrip from '../../../components/en/UspStrip.astro';
 import AppointmentForm from '../../../components/en/AppointmentForm.astro';
 import CtaBand from '../../../components/en/CtaBand.astro';
+import ClinicConcierge from '../../../components/ClinicConcierge.astro';
 import Practitioners from '../../../components/en/Practitioners.astro';
 import ClinicalLead from '../../../components/en/ClinicalLead.astro';
 import { getStandort, waHref } from '../../../data/standorte';
@@ -282,8 +283,12 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
     </section>
   )}
 
+  {PU ? (
   <CtaBand title={underReview ? `Looking for TCM in ${city}?` : planned ? `Interested in ${name}?` : `Ready for an appointment in ${name}?`}
     text={underReview ? 'Send your request; we suggest an available TCM.ch practice nearby and reply personally in English or German.' : planned ? 'Register your interest, or let us suggest the nearest open TCM.ch clinic. We reply personally in English or German.' : 'Tell us briefly what is going on and your preferred times. We reply personally in English or German.'}
     primary={PU ? { href: PU.href, label: primaryLabel, external: true } : { href: '#appointment', label: primaryLabel }}
     secondary={PU ? undefined : { href: waTermin, label: 'WhatsApp', external: true }} />
+  ) : (
+    <ClinicConcierge lang="en" locationName={name} status={clinic.status} />
+  )}
 </Layout>
