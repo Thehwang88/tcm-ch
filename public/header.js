@@ -323,6 +323,24 @@ function navMoreToggle(){
       el.appendChild(badge);
       el.dataset.tcmQuickCta='1';
       el.classList.add('tcm-cta-quick');
+      // Mobile fixed bottom action bar: remove redundant location icon and
+      // keep the label and time badge together on one line.
+      var parent=el.parentElement,sticky=false;
+      for(var depth=0;parent&&depth<5;depth++,parent=parent.parentElement){
+        var position=getComputedStyle(parent).position;
+        if(position==='fixed'&&parent.getBoundingClientRect().bottom>=innerHeight-90){sticky=true;break;}
+      }
+      if(sticky){
+        el.classList.add('tcm-cta-quick-sticky');
+        var icons=el.querySelectorAll('svg');
+        for(var k=0;k<icons.length;k++){
+          // The location-pin graphic is decorative; never remove the CTA text.
+          var icon=icons[k];
+          var path=icon.querySelector('path');
+          var d=path&&path.getAttribute('d')||'';
+          if(d.indexOf('M20')>=0||icon.getAttribute('data-icon')==='map-pin')icon.remove();
+        }
+      }
     }
   }
   function init(){
