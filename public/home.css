@@ -5898,14 +5898,13 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
     position:static;
     width:100%;
     height:auto;
-    /* Keep the six therapists larger, trim the grey above their heads.
-       A 10:9 frame is closer to square, but stops short of pushing the CTA
-       as far down as the full 1:1 version. Crop from the TOP, not the feet. */
-    aspect-ratio:10/9;
+    /* Trim modestly from both grey margins while retaining the members'
+       apparent size. 6:5 frame is shorter; matching zoom offsets scale loss. */
+    aspect-ratio:6/5;
     object-fit:cover;
-    object-position:36% 100%;
-    transform:scale(1.08);
-    transform-origin:center 65%;
+    object-position:36% 85%;
+    transform:scale(1.16);
+    transform-origin:center 55%;
   }
   #home-content #heroPatient .sr-eyebrow {
     order:1;

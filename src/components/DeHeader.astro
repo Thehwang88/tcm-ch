@@ -39,3 +39,12 @@ const drawer =
 const html = header.replace('<!--PRO_NAV_DESKTOP-->', desktop).replace('<!--PRO_NAV_DRAWER-->', drawer);
 ---
 <Fragment set:html={html} />
+<style is:global>
+  /* Shared DE mobile navigation: 68 → 64px, keeping logo proportions
+     and all phone/menu touch targets unchanged (>=44px). */
+  @media (max-width:768px) {
+    :root { --header-h:64px; }
+    nav#mainNav { height:64px; }
+  }
+</style>
+
