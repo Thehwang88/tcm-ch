@@ -120,26 +120,6 @@ const homeHtml = homeHtmlCards;
     <link rel="stylesheet" href="/footer-rebrand.css" />
     <link rel="stylesheet" href="/standort-card.css" />
     <link rel="stylesheet" href="/warm-clinic.css" />
-    <!-- Home-specific stacking fix: the promo is fixed at z530 while the
-         shared nav was z200 and could be covered when shifted to top:0. -->
-    <style is:inline>
-      @media(max-width:900px){
-        html body.tcm-warm nav#mainNav,
-        html body.tcm-warm nav#mainNav.nav-hidden{
-          position:fixed!important;
-          top:0!important;left:0!important;right:0!important;
-          z-index:850!important;
-          transform:none!important;-webkit-transform:none!important;
-          opacity:1!important;visibility:visible!important;
-          display:flex!important;
-        }
-        html body.tcm-warm .sgb-banner{
-          position:fixed!important;
-          top:var(--header-h,64px)!important;
-          z-index:530!important;
-        }
-      }
-    </style>
     <!-- static page: reveal + SPA anti-FOUC are JS-only; never hide content from no-JS/crawlers -->
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
