@@ -266,3 +266,26 @@
     box-shadow:0 0 0 3px #D5CABD,0 12px 28px rgba(23,27,26,.16);
   }
 }
+
+/* 2026-11-11: all booking entry points, including hero sheets and SG:
+   selected radio states must not inherit grey surfaces from legacy rules. */
+.kf .kf-opts .kf-opt--behandlung,
+.kf .kf-opts .kf-opt--behandlung.is-checked,
+.kf .kf-opts .kf-opt--behandlung:has(input:checked),
+.kf--kompakt .kf-opts .kf-opt--behandlung.is-checked,
+body.tcm-warm .kf .kf-opts .kf-opt--behandlung,
+body.tcm-warm .kf .kf-opts .kf-opt--behandlung:has(input:checked){
+  background-color:#fff!important;
+  border-color:#D6DDE3!important;
+}
+.kf .kf-opts .kf-opt--checkin,
+.kf .kf-opts .kf-opt--checkin.is-checked,
+.kf .kf-opts .kf-opt--checkin:has(input:checked),
+body.tcm-warm .kf .kf-opts .kf-opt--checkin:has(input:checked){
+  background-color:#E8F2FA!important;
+  border-color:#C8E0F2!important;
+}
+.kf .kf-opts :is(.kf-opt--behandlung,.kf-opt--checkin):is(.is-checked,:has(input:checked)){
+  border-color:#1E6BB0!important;
+  box-shadow:inset 0 0 0 1px #1E6BB0!important;
+}

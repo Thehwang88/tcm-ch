@@ -379,9 +379,15 @@ body.tcm-warm .kf{
   --kf-mint-line:var(--tcm-border);
 }
 body.tcm-warm .kf :is(.kf-opt.is-checked,.kf-opt:has(input:checked)){
-  border-color:var(--tcm-ink)!important;
-  box-shadow:inset 0 0 0 1px var(--tcm-ink)!important;
-  background:var(--tcm-surface)!important;
+  border-color:var(--tcm-primary)!important;
+  box-shadow:inset 0 0 0 1px var(--tcm-primary)!important;
+}
+/* Do not override appointment-type surfaces when a radio is selected. */
+body.tcm-warm .kf :is(.kf-opt--behandlung,.kf-opt--behandlung.is-checked,.kf-opt--behandlung:has(input:checked)){
+  background:#fff!important;
+}
+body.tcm-warm .kf :is(.kf-opt--checkin,.kf-opt--checkin.is-checked,.kf-opt--checkin:has(input:checked)){
+  background:#E8F2FA!important;
 }
 body.tcm-warm .kf :is(.kf-opt--checkin,.kf-opt--checkin.is-checked){
   background:var(--tcm-offer)!important;
