@@ -252,3 +252,41 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
 #siteDrawer .drw-acc-btn:focus-visible,#siteDrawer .drw-links a:focus-visible,#siteDrawer .drw-plain-links a:focus-visible{outline-offset:-3px}
 #mainNav .nav-more-panel a:focus-visible{outline-offset:-3px}
 #navCtaBtn.nav-cta:focus-visible,#siteDrawer .drw-cta-primary:focus-visible{outline:3px solid rgba(2,11,16,.55)!important;outline-offset:3px}
+
+
+/* Official TCM.ch colour correction. Old #1AE288 navigation treatments
+   predate the brand refresh: charcoal for menu indicators and hover,
+   Korean Blue only for booking; green reserved for WhatsApp. */
+:root{
+  --nav-green:#171B1A;
+  --nav-green-dark:#171B1A;
+  --nav-green-soft:rgba(23,27,26,.055);
+  --nav-ink:#171B1A;
+}
+#mainNav .nav-links a:hover,
+#mainNav .nav-links button:hover,
+#mainNav .nav-more-btn:hover,
+#mainNav .nav-more-btn[aria-expanded="true"],
+#siteDrawer .drw-acc-btn.open,
+#siteDrawer .drw-links a:hover,
+#siteDrawer .drw-plain-links a:hover{
+  background:rgba(23,27,26,.055)!important;
+  color:#171B1A!important;
+}
+#siteDrawer .drw-header::after{
+  background:linear-gradient(90deg,#D7D4D0 0%,transparent 100%)!important;
+}
+#siteDrawer .drw-acc-btn::before{background:#D7D4D0!important}
+#siteDrawer .drw-logo-dot,
+#mainNav .nav-aud-opt.active::before,
+#siteDrawer .drw-aud-opt.active::before{background:#171B1A!important}
+#siteDrawer .drw-cta-primary{
+  background:#1769B1!important;
+  border-color:#1769B1!important;color:#fff!important;
+}
+#siteDrawer .drw-cta-primary:hover{
+  background:#10558F!important;
+  border-color:#10558F!important;color:#fff!important;
+}
+#siteDrawer .drw-cta-primary svg{stroke:#fff!important}
+#siteDrawer .drw-cta-wa{color:#171B1A;border-color:#D7D4D0}
