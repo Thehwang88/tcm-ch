@@ -30,6 +30,8 @@ export async function onRequestPost({ request, env }) {
     const _akademie = d.quelle === 'akademie' || d.quelle === 'qi-club' || d.quelle === 'praxisnachfolge';
     // Zürich-Routing-Funnel: Name + Telefon ODER E-Mail genügt (eines von beidem).
     const _zhRouting = d.anfrage_typ === 'zuerich-routing';
+    // Lightweight privacy-aware contact: free concern enquiry, not a booked appointment.
+    const _shortConcern = d.anfrage_typ === 'kurzanliegen' && d.quelle === 'kurzanliegen-hero';
     // Angebots-/Terminart (FIRST 30 Pre-Christmas Edition 2026, St. Gallen): der Code aus dem Formular wird
     // ausschliesslich gegen diese Whitelist aufgelöst; Preis-, Umfang- und Berechtigungstexte kommen NIE vom
     // Client (d.angebot wird überschrieben). Unbekannter Code → 422. Quelle der Codes: src/data/first30.ts.
@@ -90,6 +92,16 @@ export async function onRequestPost({ request, env }) {
       // Telefon, Standort und ggf. E-Mail bereits oben validiert.
     } else if (_first30Phone) {
       // Telefon bereits oben validiert.
+    } else if (_shortConcern) {
+      // Require personal text plus one valid reply channel; never imply a medical diagnosis.
+      d.anliegen = String(d.anliegen || '').trim().slice(0, 2000);
+      const boilerplate = 'Ich möchte wissen, ob TCM für mich infrage kommt. Mein Anliegen:';
+      if (!d.anliegen || d.anliegen === boilerplate || d.anliegen.length < 12) return J({ error: 'missing_anliegen' }, 422);
+      if (!d.telefon && !d.email) return J({ error: 'missing_contact' }, 422);
+      if (d.telefon && !_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
+      if (d.email && !_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
+      d.standort = String(d.standort || '').trim().slice(0, 120);
+      d.name = '';
     } else if (_zhRouting) {
       if (!d.name || (!d.telefon && !d.email)) return J({ error: 'missing_fields' }, 422);
     } else if (_warteliste) {
@@ -197,6 +209,7 @@ export async function onRequestPost({ request, env }) {
     // Massage-Anfragen (anfrage_typ==='massage') im Betreff markieren; quelle steht bereits
     // als eigene Zeile im HTML-Body (rows oben).
     if (d.anfrage_typ === 'massage') subject = '[Massage] ' + subject;
+    if (_shortConcern) subject = '[Kurzanliegen] ' + (d.standort || 'TCM.ch') + ' – kostenlos, kein Termin';
     if (neu) {
       // Gemeinsames Formular: Betreff nur aus validierter Terminart + kanonischem Ziel. Der Formularname
       // (z. B. Hero-Gratis-30min-StGallen) steht nur noch unter «Technische Angaben».
