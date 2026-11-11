@@ -866,7 +866,7 @@ body.tcm-warm #home-content .wa-section--merged .wa-yuna-copy strong{
   color:#fff;font-size:15px;font-weight:750;line-height:1.35;
 }
 body.tcm-warm #home-content .wa-section--merged .wa-yuna-copy>span{
-  color:rgba(255,255,255,.73);font-size:12.5px;line-height:1.45;
+  color:rgba(255,255,255,.88)!important;font-size:12.5px;line-height:1.5;
 }
 body.tcm-warm #home-content .wa-section--merged .wa-yuna-link{
   display:inline-flex;align-items:center;justify-content:center;
@@ -942,4 +942,14 @@ body.tcm-warm #home-content .wa-section--merged .wa-concierge-submit:hover{
   body.tcm-warm #home-content .wa-section--merged .wa-yuna-link{
     font-size:12px;padding:7px 10px;
   }
+}
+
+/* Contrast regression guard: dark surfaces must never inherit charcoal body
+   copy from legacy CTA/card rules. Shared only with this merged homepage card. */
+body.tcm-warm #home-content section.wa-section--merged .wa-yuna-card .wa-yuna-copy,
+body.tcm-warm #home-content section.wa-section--merged .wa-yuna-card .wa-yuna-copy strong{
+  color:#FFFFFF!important;
+}
+body.tcm-warm #home-content section.wa-section--merged .wa-yuna-card .wa-yuna-copy > span{
+  color:rgba(255,255,255,.88)!important;
 }
