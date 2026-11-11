@@ -1417,3 +1417,135 @@ body.tcm-warm #home-content .hf-section .hf-actions a:focus-visible{
   }
   body.tcm-warm #generic-premium-hero .sg-mobile-sub:nth-of-type(2){display:none!important}
 }
+
+
+/* Desktop location hero consolidation, matching homepage's calm left panel.
+   Never target #home-content, booking form blocks or other sections. */
+@media(min-width:768px){
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-left{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:stretch!important;
+    padding:clamp(34px,4.2vw,68px) clamp(30px,4vw,68px)!important;
+    color:var(--tcm-ink,#171B1A)!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-eyebrow{
+    order:1!important;
+    font-size:11.5px!important;
+    letter-spacing:.12em!important;
+    line-height:1.5!important;
+    margin:0 0 18px!important;
+    color:var(--tcm-text-soft,#505453)!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-h1{
+    order:2!important;
+    max-width:17ch;
+    font-size:clamp(38px,3.65vw,59px)!important;
+    line-height:1.075!important;
+    letter-spacing:-.042em!important;
+    margin:0 0 24px!important;
+    text-wrap:balance;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-lead{
+    order:3!important;
+    font-size:clamp(16px,1.22vw,19px)!important;
+    line-height:1.55!important;
+    max-width:48ch;
+    margin:0 0 29px!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas{
+    order:4!important;
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    flex-wrap:wrap!important;
+    gap:12px!important;
+    margin:0 0 19px!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas > a{
+    display:inline-flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    box-sizing:border-box!important;
+    width:auto!important;
+    min-height:52px!important;
+    padding:12px 25px!important;
+    border-radius:999px!important;
+    font-size:15px!important;
+    font-weight:750!important;
+    text-decoration:none!important;
+    margin:0!important;
+    box-shadow:none!important;
+    white-space:normal!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas > a:first-child{
+    border:1.5px solid var(--tcm-primary,#1769B1)!important;
+    background:var(--tcm-primary,#1769B1)!important;color:#fff!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas > a:nth-child(2){
+    border:1.5px solid var(--tcm-ink,#171B1A)!important;
+    background:transparent!important;color:var(--tcm-ink,#171B1A)!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-trust,
+  body.tcm-warm .akz .lsr-hero.akzh .zh-hero-proof{
+    order:5!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:9px 20px!important;
+    max-width:58ch;
+    margin:0!important;
+    font-size:12.5px!important;
+    line-height:1.45!important;
+  }
+  /* The standalone desktop lead already contains enough location context.
+     Keep the full secondary paragraph in the DOM / lower explanatory sections. */
+  body.tcm-warm .std-location-hero:not(.std-location-hero--pending):not(.std-location-hero--partner) .std-hero-detail{
+    display:none!important;
+  }
+  body.tcm-warm .std-location-hero .tsr-crumb{
+    order:0!important;
+    margin:0 0 20px!important;
+    font-size:12px!important;
+    line-height:1.4!important;
+    color:var(--tcm-text-soft,#505453)!important;
+  }
+  body.tcm-warm .std-location-hero .std-hero-note{
+    order:6!important;
+    margin:12px 0 0!important;
+    font-size:12.5px!important;
+    line-height:1.4!important;
+    font-weight:550!important;
+  }
+  body.tcm-warm .std-location-hero:not(.std-location-hero--pending):not(.std-location-hero--partner) .std-hero-note{
+    margin-top:14px!important;
+  }
+  body.tcm-warm .akz .lsr-hero.akzh .tsr-crumb{
+    order:0!important;margin:0 0 20px!important;
+    font-size:12px!important;
+  }
+  body.tcm-warm .akz .lsr-hero.akzh .zh-hero-meta{
+    display:none!important;
+  }
+  body.tcm-warm .lsr-hero.hlsg .lsr-cta-note{
+    display:none!important; /* Existing Check-in banner remains prominent. */
+  }
+  body.tcm-warm .lsr-hero.hlsg .lsr-tert{
+    display:none!important; /* Phone already second CTA, WA remains in contact section. */
+  }
+  body.tcm-warm .lsr-hero.hlsg .lsr-tlink{
+    order:6!important;
+  }
+}
+@media(min-width:768px) and (max-width:1100px){
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-left{
+    padding:clamp(24px,3vw,40px)!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-h1{
+    font-size:clamp(32px,3.5vw,42px)!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas > a{
+    min-height:46px!important;padding:10px 18px!important;
+    font-size:13.5px!important;
+  }
+}
