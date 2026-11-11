@@ -5898,24 +5898,24 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
     position:static;
     width:100%;
     height:auto;
-    /* Trim modestly from both grey margins while retaining the members'
-       apparent size. 6:5 frame is shorter; matching zoom offsets scale loss. */
-    aspect-ratio:6/5;
+    /* Keep the editorial team portrait substantial: a very modest crop of
+       empty grey above/below, not a narrow strip. */
+    aspect-ratio:5/4;
     object-fit:cover;
-    object-position:36% 85%;
-    transform:scale(1.16);
+    object-position:36% 80%;
+    transform:scale(1.20);
     transform-origin:center 55%;
   }
   #home-content #heroPatient .sr-eyebrow {
     order:1;
-    margin:22px 24px 10px;
+    margin:17px 24px 10px;
     font-size:11px;
     line-height:1.35;
     letter-spacing:.15em;
   }
   #home-content #heroPatient .sr-h1 {
     order:2;
-    margin:0 24px 18px;
+    margin:0 24px 14px;
     font-size:clamp(36px,9.4vw,44px);
     line-height:1.04;
     letter-spacing:-.035em;
