@@ -256,6 +256,15 @@ const homeHtml = homeHtmlCards;
       #heroPatient{position:relative;isolation:isolate;overflow:hidden}
       #heroPatient .tcm-snow-layer{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;contain:paint}
       #heroPatient .tcm-snowflake{position:absolute;top:-18px;left:var(--snow-x);width:var(--snow-size);height:var(--snow-size);border-radius:50%;background:rgba(102,145,172,var(--snow-opacity));box-shadow:0 0 3px rgba(120,166,195,.12);animation:tcm-snow-fall var(--snow-duration) linear infinite;animation-delay:var(--snow-delay);will-change:transform}
+      /* Actual six-armed snowflake glyphs, not circular blue particles. */
+      #heroPatient .tcm-snowflake{
+        width:auto;height:auto;border-radius:0;background:none;box-shadow:none;
+        font-family:Arial,'Noto Sans Symbols 2',sans-serif;font-weight:400;
+        font-size:calc(var(--snow-size) * 2.5);line-height:1;
+        color:rgba(103,144,169,var(--snow-opacity));
+        font-variant-emoji:text;
+        user-select:none;
+      }
       @keyframes tcm-snow-fall{from{transform:translate3d(0,-20px,0)}to{transform:translate3d(var(--snow-drift),calc(100vh + 60px),0)}}
       @media(prefers-reduced-motion:reduce){#heroPatient .tcm-snow-layer{display:none!important}}
     </style>
@@ -271,9 +280,10 @@ const homeHtml = homeHtmlCards;
         for(var i=0;i<13;i++){
           var flake=document.createElement('i');
           flake.className='tcm-snowflake';
+          flake.textContent='❄︎';
           flake.style.setProperty('--snow-x',((i*73+17)%97+1)+'%');
-          flake.style.setProperty('--snow-size',(2+i%4)+'px');
-          flake.style.setProperty('--snow-opacity',(0.16+(i%4)*0.055).toFixed(2));
+          flake.style.setProperty('--snow-size',(4+i%3)+'px');
+          flake.style.setProperty('--snow-opacity',(0.22+(i%4)*0.065).toFixed(2));
           flake.style.setProperty('--snow-duration',(15+(i*7)%14)+'s');
           flake.style.setProperty('--snow-delay',(-((i*11)%25))+'s');
           flake.style.setProperty('--snow-drift',((i%2?1:-1)*(12+(i*13)%55))+'px');
