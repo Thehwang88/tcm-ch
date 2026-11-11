@@ -45,6 +45,7 @@ const video = heroVideo(data);
       </Fragment>
       )}
       <p class="lsr-note std-hero-note">{data.hero.locationHook}</p>
+      {!data.hero.lead.includes(data.nap.strasse) && <p class="std-hero-mobile-address">{data.nap.strasse} · {data.nap.plz} {data.nap.ort}</p>}
     </div>
     {video ? (
     <HeroMedia />
@@ -103,6 +104,7 @@ const video = heroVideo(data);
     }
   }
 
+  .std-location-hero .std-hero-mobile-address{display:none}
   /* Mobile first: homepage-like hierarchy on the shared operational location
      heroes only. Desktop, copy, schema, form routing and clinic status stay intact. */
   @media (max-width:767px){
@@ -139,6 +141,10 @@ const video = heroVideo(data);
       box-shadow:none!important;text-decoration:underline;text-underline-offset:3px;
     }
     .std-location-hero .std-hero-note{order:6;margin:0;font-size:13px;line-height:1.4}
+    .std-location-hero .std-hero-mobile-address{
+      display:block;order:7;margin:3px 0 0;
+      font-size:13px;line-height:1.4;color:var(--tcm-text-soft,#505453);
+    }
     .std-location-hero:not(.std-location-hero--pending):not(.std-location-hero--partner) .std-hero-note{
       display:none!important;
     }
