@@ -29,6 +29,11 @@
     success.hidden=true;form.hidden=false;submit.disabled=false;
     alternative.open=false;
     modal.showModal();
+    // A restored textarea focus/scroll can otherwise clip the sheet heading.
+    var panel=modal.querySelector('.tcm-concern-panel');
+    if(panel)panel.scrollTop=0;
+    var close=modal.querySelector('.tcm-concern-close');
+    if(close)close.focus({preventScroll:true});
     push('concern_sheet_open',{source_page:location.pathname,location_slug:trigger.getAttribute('data-concern-location-slug')||''});
     // No keyboard auto-open: patients first see both contact choices.
   }
