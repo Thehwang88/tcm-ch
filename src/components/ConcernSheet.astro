@@ -1,6 +1,7 @@
 ---
 /** Shared low-commitment enquiry sheet. Uses existing /api/anfrage with Turnstile. */
-const key = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAADf8GZzWnvFzYvmx';
+const branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
+const key = branch && branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 ---
 <dialog id="tcm-concern-sheet" class="tcm-concern-sheet" aria-labelledby="tcm-concern-title" aria-describedby="tcm-concern-desc">
   <div class="tcm-concern-panel">
