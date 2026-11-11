@@ -43,7 +43,7 @@ const patientWa = header.match(/<a href="(https:\/\/wa\.me\/[^"]+)" target="_bla
 if (!patientWa) throw new Error('DE header: original WhatsApp destination not found');
 const patientDrawer = `
 <div class="drw-body drw-body--patient" aria-label="Patientennavigation">
-  <nav class="patient-drawer-nav" aria-label="Wichtige Bereiche für Patientinnen und Patienten">
+  <div class="patient-drawer-nav" role="navigation" aria-label="Wichtige Bereiche für Patientinnen und Patienten">
     <div class="patient-drawer-kicker">DEINE BEHANDLUNG</div>
     <details class="patient-drawer-locations">
       <summary>Standorte &amp; Kliniken<span class="patient-drawer-chevron" aria-hidden="true">⌄</span></summary>
@@ -66,7 +66,7 @@ const patientDrawer = `
     <a href="/krankenkassen/" onclick="drawerClose()">Krankenkasse &amp; Kosten<span aria-hidden="true">›</span></a>
     <a href="/ueber-uns/" onclick="drawerClose()">Über TCM.ch<span aria-hidden="true">›</span></a>
     <a class="patient-drawer-language" href="/en/" hreflang="en" onclick="drawerClose()">English / EN<span aria-hidden="true">↗</span></a>
-  </nav>
+  </div>
   <div class="drw-group drw-group--cta patient-drawer-actions">
     <div class="drw-cta-grid">
       <button type="button" class="drw-cta-primary" onclick="drawerClose();setTimeout(function(){var btn=document.getElementById('navCtaBtn');if(btn)btn.click();else window.location.href='/kontakt/';},300)">Termin finden</button>
