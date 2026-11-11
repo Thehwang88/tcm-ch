@@ -38,8 +38,8 @@ const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
   : selfUrl;
-const WARM_ROUTES = new Set(['/akupunktur-tcm-zuerich','/standorte/zuerich-bahnhofstrasse','/standorte/zuerich-oerlikon','/standorte/zuerich-hoengg','/standorte/st-gallen']);
-const warmClinicPalette = WARM_ROUTES.has(path.replace(/\/$/, ''));
+// The official colour-only palette now covers every DE SPA/leaf page.
+const warmClinicPalette = true;
 const enTwin = canonicalTo ? null : enTwinPath(path); // EN alternate (null if no built EN twin)
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
