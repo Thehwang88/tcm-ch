@@ -178,9 +178,11 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
 
 /* ── Mobile Header hide/reveal (Verhalten in header.js): nur ≤1023px, Desktop unverändert.
    transform+transition only, kein Layout-Shift (Header ist fixed). ── */
+/* Shared nav must stay above the fixed Check-in banner (z-index:530).
+   The drawer and overlay remain at their higher, existing stacking levels. */
+nav#mainNav{z-index:850}
 @media (max-width:1023px){
-  #mainNav{transition:transform .2s ease}
-  #mainNav.nav-hidden{transform:translateY(-100%)}
+  #mainNav{transform:none;transition:none}
 }
 @media (prefers-reduced-motion:reduce){
   #mainNav{transition:none}
