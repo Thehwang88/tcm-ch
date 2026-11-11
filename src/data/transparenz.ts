@@ -28,7 +28,7 @@ const ICON = {
 // Markup = freigegebenes UspGrid-Muster (src/components/standort/UspGrid.astro): gleiche Klassen,
 // gleiche Icon-Fläche; keine eigenen Farben/Radien.
 const card = (icon: string, title: string, body: string) =>
-  `<div class="usp-card"><div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon}</svg></div><div class="usp-title">${title}</div><div class="usp-sub content-body">${body}</div></div>`;
+  `<div class="usp-card"><div class="usp-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon}</svg></div><div class="usp-title">${title}</div><div class="usp-sub content-body">${body}</div></div>`;
 
 /** Transparenz-Sektion für eine Standortseite. `planned` = nicht als offen bestätigt; `review` = Betriebsstatus in Prüfung. */
 /** ohneKosten: SG-Vorlage (3 Karten, keine Preis-/Tarifkarte; Krankenkassen-Hinweis steht im Termin-Bereich). */
