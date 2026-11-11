@@ -5871,3 +5871,75 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 #page-standort .std-kontakt .std-kontakt-sub{margin-bottom:22px}
 #page-standort .std-kontakt-alt{margin-top:16px;text-align:center;font-size:13.5px;line-height:1.6;color:var(--mid)}
 #page-standort .std-kontakt-alt a{color:var(--blue-dark);font-weight:600;text-decoration:none}
+
+
+/* Mobile homepage hero: image first, headline + booking actions near the fold.
+   Uses the existing authentic team image; CSS reorders only the patient hero.
+   Desktop and therapist/career hero remain unchanged. */
+@media (max-width:767px) {
+  #home-content #heroPatient > .sr-hero {
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  #home-content #heroPatient .sr-hero-left,
+  #home-content #heroPatient .sr-hero-inner {
+    display:contents;
+  }
+  #home-content #heroPatient .sr-hero-right {
+    order:0;
+    width:100%;
+    min-height:0;
+    container-type:normal;
+    overflow:hidden;
+  }
+  #home-content #heroPatient .sr-hero-right img {
+    display:block;
+    position:static;
+    width:100%;
+    height:auto;
+    aspect-ratio:16/8;
+    object-fit:cover;
+    object-position:36% 42%;
+  }
+  #home-content #heroPatient .sr-eyebrow {
+    order:1;
+    margin:22px 24px 10px;
+    font-size:11px;
+    line-height:1.35;
+    letter-spacing:.15em;
+  }
+  #home-content #heroPatient .sr-h1 {
+    order:2;
+    margin:0 24px 18px;
+    font-size:clamp(36px,9.4vw,44px);
+    line-height:1.04;
+    letter-spacing:-.035em;
+  }
+  #home-content #heroPatient .sr-cta {
+    order:3;
+    margin:0 24px 16px;
+    gap:10px;
+    flex-wrap:nowrap;
+    flex-direction:column;
+  }
+  #home-content #heroPatient .sr-cta .sr-btn {
+    width:100%;
+    min-height:48px;
+  }
+  #home-content #heroPatient .sr-lead {
+    order:4;
+    margin:0 24px 20px;
+    max-width:none;
+    font-size:15px;
+    line-height:1.5;
+  }
+  #home-content #heroPatient .sr-trust {
+    order:5;
+    margin:0 24px 26px;
+  }
+}
+@media (max-width:375px) {
+  #home-content #heroPatient .sr-hero-right img {aspect-ratio:16/7;}
+  #home-content #heroPatient .sr-h1 {font-size:36px;}
+}
