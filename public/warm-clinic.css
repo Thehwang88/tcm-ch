@@ -248,3 +248,32 @@ body.tcm-warm :is(
   outline:3px solid var(--tcm-primary)!important;
   outline-offset:3px;
 }
+
+
+/* ── Late-loading Standort component CSS guardrails ─────────
+   These component <style> blocks render after warm-clinic.css, so use !important
+   only where necessary to preserve the official semantic hierarchy. */
+body.tcm-warm .sgt-ch--primary{
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+}
+body.tcm-warm .sgt-ch--primary:hover{
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+}
+body.tcm-warm .sgt-ch--primary :is(.sgt-ch-label,.sgt-ch-go,.sgt-ch-title){
+  color:#fff!important;
+}
+body.tcm-warm .sgt-ch--primary .sgt-ch-sub{color:rgba(255,255,255,.82)!important}
+body.tcm-warm .sgt-ch:not(.sgt-ch--primary):hover{border-color:var(--tcm-ink)!important}
+body.tcm-warm .sgt-ch:not(.sgt-ch--primary) :is(.sgt-ch-label,.sgt-ch-go),
+body.tcm-warm .sgt-google{color:var(--tcm-text)!important}
+body.tcm-warm [stroke="#2D9B6F"]{stroke:var(--tcm-text-soft)!important}
+body.tcm-warm [fill="#2D9B6F"]{fill:var(--tcm-text-soft)!important}
+
+/* The generic dark CTA band remains charcoal; its button is a high-contrast secondary
+   on the dark surface, not another blue decorative block. */
+body.tcm-warm .cta-band{background:var(--tcm-ink)!important}
+body.tcm-warm .cta-band .btn-white{
+  background:#fff!important;color:var(--tcm-ink)!important;border-color:#fff!important;
+}
