@@ -151,7 +151,7 @@ const card = renderKontaktForm({
   .sgb-banner{position:sticky;top:var(--header-h,76px);z-index:530;margin-top:var(--header-h,76px);background:#EEDBD7;color:#171B1A;font-family:var(--font-sans,'Figtree',system-ui,sans-serif);border-bottom:1px solid rgba(2,11,16,.12)}
   .sgb-banner ~ .lsr-hero.hlsg{padding-top:0!important}
   .sgb-spacer{display:none}
-  @media (max-width:900px){.sgb-banner{position:fixed;left:0;right:0;top:80px;margin-top:0;transition:top .25s ease}.sgb-spacer{display:block;height:var(--sgb-h,86px);margin-top:80px}}
+  @media (max-width:900px){.sgb-banner{position:fixed;left:0;right:0;top:var(--header-h,80px);margin-top:0;transition:top .25s ease}.sgb-spacer{display:block;height:var(--sgb-h,86px);margin-top:var(--header-h,80px)}}
   /* Mobile Header blendet beim Scrollen aus (header.js: nav.nav-hidden): Banner rückt an den oberen Rand. */
   @media (max-width:1023px){body:has(nav.nav-hidden) .sgb-banner{top:0}}
   .sgb-in{max-width:var(--max,1280px);margin:0 auto;padding:6px 16px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;text-decoration:none;color:inherit}
@@ -178,7 +178,7 @@ const card = renderKontaktForm({
   /* Kontaktsektion #termin (Muster /kontakt/): Titel, drei Karten, OneDoc, Formular. */
   /* Offset: fixer Header + sticky Banner (Desktop 1 Zeile ≈ 60px, Mobil 2 Zeilen + Button ≈ 104px). */
   .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 72px)}
-  @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(80px + var(--sgb-h,86px) + 10px)}}
+  @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(var(--header-h,80px) + var(--sgb-h,86px) + 10px)}}
   .sgt{background:var(--surface,#F4F6F5);padding:clamp(28px,4vw,56px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
   .up-sg-mobile-photo{display:none}
   @media(max-width:1023px){
@@ -259,6 +259,46 @@ const card = renderKontaktForm({
   .sgt-form .form-trust-checklist{display:none}
   /* Gelbe Terminart-Auswahl: seit 06.11.2026 gemeinsam in kontakt-form.css (.kf--gelb). */
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
+
+  /* St. Gallen mobile-only funnel: treatment first (blue), existing free
+     Check-in second (rose), only one trust line. No changes to form IDs,
+     attribution, OneDoc, special ?t= ads variants or desktop. */
+  @media(max-width:767px){
+    .lsr-hero.hlsg .lsr-left{
+      display:flex;flex-direction:column;padding:24px 20px 22px;
+    }
+    .lsr-hero.hlsg .lsr-eyebrow{margin-bottom:12px}
+    .lsr-hero.hlsg .lsr-h1{margin-bottom:16px}
+    .lsr-hero.hlsg .lsr-lead{margin-bottom:20px;line-height:1.55}
+    .lsr-hero.hlsg .lsr-ctas{
+      order:4;display:flex;flex-direction:column;gap:9px;margin:0 0 12px;
+    }
+    .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-ersttermin"]{
+      order:0;display:flex;width:100%;min-height:52px;
+      justify-content:center;background:var(--tcm-primary,#1769B1)!important;
+      border-color:var(--tcm-primary,#1769B1)!important;color:#fff!important;
+      box-shadow:none!important;
+    }
+    .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-ersttermin"]:hover{
+      background:var(--tcm-primary-hover,#10558F)!important;
+      border-color:var(--tcm-primary-hover,#10558F)!important;
+    }
+    .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-checkin"]{
+      order:1;display:flex;width:100%;min-height:48px;
+      justify-content:center;background:var(--tcm-offer,#EEDBD7)!important;
+      border-color:var(--tcm-offer,#EEDBD7)!important;
+      color:var(--tcm-ink,#171B1A)!important;box-shadow:none!important;
+    }
+    .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-checkin"]:hover{
+      background:var(--tcm-offer-hover,#E2C6BF)!important;
+      border-color:var(--tcm-offer-hover,#E2C6BF)!important;
+    }
+    .lsr-hero.hlsg .lsr-trust{order:5;margin:0;font-size:13px}
+    .lsr-hero.hlsg .lsr-trust > div:not(.lsr-google):nth-child(n+2){display:none!important}
+    .lsr-hero.hlsg .lsr-cta-note{order:6;display:none!important}
+    .lsr-hero.hlsg .lsr-tlink{order:7}
+    .lsr-hero.hlsg .lsr-tert{order:8;display:none!important}
+  }
 </style>
 <script is:inline>
   // Nächster freier Check-in (05.11.2026): /api/sg-next-slot (Cloudflare Function, OneDoc-Verfügbarkeit, Cache 10 Min).
