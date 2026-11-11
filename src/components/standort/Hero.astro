@@ -20,14 +20,14 @@ const video = heroVideo(data);
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
 {LSR_SLUGS.has(data.slug) ? (
-<section class="lsr-hero std-location-hero">
+<section class={`lsr-hero std-location-hero${data.planned || data.review ? " std-location-hero--pending" : ""}${data.partnerUmleitung ? " std-location-hero--partner" : ""}`}>
   <div class="lsr-inner">
     <div class="lsr-left">
       <div class="tsr-crumb" style="color:rgba(2,11,16,.72)"><button onclick="nav('home')">TCM.ch</button><span class="tsr-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="tsr-sep">›</span>{zh && <Fragment><a href="/akupunktur-tcm-zuerich/" style="color:inherit">Zürich</a><span class="tsr-sep">›</span></Fragment>}<span>{data.stadt}</span></div>
       <span class="lsr-eyebrow">{eyebrow}</span>
       <h1 class="lsr-h1" set:html={heroH1}></h1>
-      <p class="lsr-lead" set:html={data.hero.lead}></p>
-      <p class="lsr-lead" style="margin-bottom:22px" set:html={data.hero.sub}></p>
+      <p class="lsr-lead std-hero-summary" set:html={data.hero.lead}></p>
+      <p class="lsr-lead std-hero-detail" style="margin-bottom:22px" set:html={data.hero.sub}></p>
       {data.partnerUmleitung ? (
       <Fragment>
         <p class="lsr-lead lsr-umleitung" style="margin-bottom:22px"><strong>{data.partnerUmleitung.hinweis}</strong></p>
@@ -37,14 +37,15 @@ const video = heroVideo(data);
       </Fragment>
       ) : (
       <Fragment>
-      <div class="lsr-trust"><div><span class="lsr-check">✓</span> {data.planned && !data.vorVertrag ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
+      <div class="lsr-trust std-hero-trust"><div><span class="lsr-check">✓</span> {data.planned && !data.vorVertrag ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
       <div class="lsr-ctas">
         <a href="#anfrage-box" class="lsr-btn-primary">{data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfrage stellen' : 'Termin anfragen'}</a>
         <a href={waTermin} class="lsr-btn-ghost" target="_blank" rel="noopener">Per WhatsApp</a>
       </div>
       </Fragment>
       )}
-      <p class="lsr-note">{data.hero.locationHook}</p>
+      <p class="lsr-note std-hero-note">{data.hero.locationHook}</p>
+      {!data.hero.lead.includes(data.nap.strasse) && <p class="std-hero-mobile-address">{data.nap.strasse} · {data.nap.plz} {data.nap.ort}</p>}
     </div>
     {video ? (
     <HeroMedia />
@@ -100,6 +101,52 @@ const video = heroVideo(data);
   @media(max-width:900px){
     body:not(:has(.sgb-banner)) #sg-premium-hero ~ .lsr-hero.std-location-hero{
       margin-top:80px;
+    }
+  }
+
+  .std-location-hero .std-hero-mobile-address{display:none}
+  /* Mobile first: homepage-like hierarchy on the shared operational location
+     heroes only. Desktop, copy, schema, form routing and clinic status stay intact. */
+  @media (max-width:767px){
+    .std-location-hero .lsr-left{
+      display:flex;flex-direction:column;
+      padding:24px 20px 22px;
+    }
+    .std-location-hero .tsr-crumb{display:none!important}
+    .std-location-hero .lsr-eyebrow{margin-bottom:12px}
+    .std-location-hero .lsr-h1{margin-bottom:16px}
+    .std-location-hero .std-hero-summary{
+      margin-bottom:20px;line-height:1.55;
+    }
+    /* Supporting explanations remain in DOM / desktop and the clinic detail
+       sections; pending/partner pages retain warnings and redirections. */
+    .std-location-hero:not(.std-location-hero--pending):not(.std-location-hero--partner) .std-hero-detail{
+      display:none!important;
+    }
+    .std-location-hero .lsr-ctas{order:4;margin:0 0 12px;gap:8px}
+    .std-location-hero .lsr-ctas .lsr-btn-primary{
+      width:100%;min-height:52px;justify-content:center;
+    }
+    .std-location-hero .std-hero-trust{order:5;margin:0 0 9px;font-size:13px;line-height:1.35}
+    .std-location-hero:not(.std-location-hero--pending) .std-hero-trust > div:first-child,
+    .std-location-hero:not(.std-location-hero--pending) .std-hero-trust > div:last-child{
+      display:none!important;
+    }
+    .std-location-hero .lsr-ctas .lsr-btn-ghost{
+      /* Keep WhatsApp functional and accessible, but stop presenting it
+         as a second competing large pill. */
+      min-height:44px;width:auto;margin:0 auto;
+      padding:8px 14px;border:0!important;background:transparent!important;
+      color:var(--tcm-ink,#171B1A)!important;
+      box-shadow:none!important;text-decoration:underline;text-underline-offset:3px;
+    }
+    .std-location-hero .std-hero-note{order:6;margin:0;font-size:13px;line-height:1.4}
+    .std-location-hero .std-hero-mobile-address{
+      display:block;order:7;margin:3px 0 0;
+      font-size:13px;line-height:1.4;color:var(--tcm-text-soft,#505453);
+    }
+    .std-location-hero:not(.std-location-hero--pending):not(.std-location-hero--partner) .std-hero-note{
+      display:none!important;
     }
   }
 </style>
