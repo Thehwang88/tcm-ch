@@ -298,3 +298,38 @@ function navMoreToggle(){
   window.__tcmNavShow=show;
   window.__tcmNavSync=function(){reset();};
 })();
+
+/* Add the lightning marker to blue primary appointment CTAs site-wide.
+   Text-only decoration; preserves link targets, click handlers and analytics. */
+(function(){
+  var selector='a,button';
+  var pattern=/^Termin anfragen(?:\\s*⚡️?)?$/i;
+  function update(root){
+    var nodes=root.querySelectorAll?root.querySelectorAll(selector):[];
+    for(var i=0;i<nodes.length;i++){
+      var el=nodes[i];
+      if(el.dataset.tcmCtaBolt==='1')continue;
+      var label=(el.textContent||'').replace(/\\s+/g,' ').trim();
+      if(!pattern.test(label))continue;
+      var bg=getComputedStyle(el).backgroundColor;
+      var blue=/(?:rgb\\(\\s*(?:29|30|31|32|33|34|35|36|37|38|39|40)\\s*,\\s*(?:90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120)\\s*,\\s*(?:155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179|180|181|182|183|184|185|186|187|188|189|190|191|192|193|194|195|196|197|198|199|200)\\s*\\))/i.test(bg);
+      if(!blue)continue;
+      el.appendChild(document.createTextNode(' ⚡️'));
+      el.dataset.tcmCtaBolt='1';
+    }
+  }
+  function init(){
+    update(document);
+    var observer=new MutationObserver(function(records){
+      for(var i=0;i<records.length;i++){
+        for(var j=0;j<records[i].addedNodes.length;j++){
+          var node=records[i].addedNodes[j];
+          if(node.nodeType===1)update(node.parentElement||node);
+        }
+      }
+    });
+    observer.observe(document.body,{childList:true,subtree:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+})();
