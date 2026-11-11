@@ -101,3 +101,24 @@ html[lang="en"] :is(.ev-btn,.btn--primary,.btn--secondary):focus-visible {
 html[lang="en"] :is(.ev-btn--wa svg,.wa-icon,.whatsapp-icon) {
   color:var(--tcm-whatsapp);
 }
+
+
+/* English shared header uses a scoped .nav-cta selector, with different
+   HTML than the DE header. Its appointment link must be explicitly blue.
+   Leave language, phone, menu and exploration links charcoal. */
+html[lang="en"] header .nav-cta,
+html[lang="en"] nav .nav-cta {
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+}
+html[lang="en"] header .nav-cta:hover,
+html[lang="en"] nav .nav-cta:hover {
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+  color:#fff!important;
+}
+html[lang="en"] .nav-menu-btn:hover {
+  background:var(--tcm-surface)!important;
+  border-color:var(--tcm-border)!important;
+}
