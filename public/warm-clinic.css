@@ -1549,3 +1549,62 @@ body.tcm-warm #home-content .hf-section .hf-actions a:focus-visible{
     font-size:13.5px!important;
   }
 }
+
+
+/* Older data-driven location fallback (non-LSR): align desktop hierarchy
+   without modifying booking handlers or navigation to partner clinics. */
+@media(min-width:901px){
+  body.tcm-warm #generic-premium-hero.sg-active{
+    padding:clamp(42px,5vw,76px) clamp(26px,4vw,60px)!important;
+    background:var(--tcm-surface-strong,#E8E6E3)!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-inner{
+    max-width:1380px!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:clamp(30px,4vw,64px)!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-text{
+    max-width:640px!important;display:flex!important;
+    flex-direction:column!important;align-items:flex-start!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-crumb{
+    order:0!important;margin-bottom:18px!important;
+    font-size:12px!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-eyebrow{
+    order:1!important;margin:0 0 17px!important;
+    font-size:11.5px!important;letter-spacing:.12em!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-title{
+    order:2!important;
+    max-width:17ch!important;
+    font-size:clamp(38px,3.65vw,59px)!important;
+    line-height:1.075!important;letter-spacing:-.042em!important;
+    margin:0 0 24px!important;text-wrap:balance;
+  }
+  body.tcm-warm #generic-premium-hero .sg-sub:first-of-type{
+    order:3!important;font-size:clamp(16px,1.22vw,19px)!important;
+    line-height:1.55!important;max-width:48ch!important;
+    margin:0 0 28px!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-ctas{
+    order:4!important;display:flex!important;flex-wrap:wrap!important;
+    gap:12px!important;margin:0 0 18px!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-ctas > *{
+    min-height:50px!important;border-radius:999px!important;
+    padding:12px 23px!important;box-shadow:none!important;
+    font-size:14px!important;font-weight:750!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-trust{
+    order:5!important;margin:0!important;font-size:12.5px!important;
+    line-height:1.45!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-location{
+    order:6!important;margin:12px 0 0!important;
+    font-size:12.5px!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-text > .sg-sub:not(:first-of-type){
+    display:none!important;
+  }
+}
