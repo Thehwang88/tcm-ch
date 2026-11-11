@@ -111,7 +111,7 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
     "seo": {
       "title": "TCM & Akupunktur Zürich Bahnhofstrasse | TCM.ch",
       "description": "TCM.ch Zürich Bahnhofstrasse: Akupunktur und TCM an der Bahnhofstrasse 37, 1. OG, im Zentrum von Zürich (8001). Zusatzversicherung je nach Police, Termin anfragen.",
-      "h1": "TCM &amp; Akupunktur Zürich <em>Bahnhofstrasse</em>",
+      "h1": "TCM.ch <em>Zürich Bahnhofstrasse</em> – Akupunktur",
       "schemaName": "TCM.ch Zürich Bahnhofstrasse"
     },
     "hero": {
@@ -166,7 +166,7 @@ const ZH_BAHNHOFSTRASSE_VOR_VERTRAG: Standort = {
   seo: {
     title: 'TCM & Akupunktur Zürich Bahnhofstrasse | TCM.ch',
     description: 'TCM.ch Zürich Bahnhofstrasse: Akupunktur und TCM für Zürich City und den Kreis 1. Termine in Zürich koordinieren wir aktuell über unsere Praxen in Oerlikon und Höngg.',
-    h1: 'TCM &amp; Akupunktur Zürich <em>Bahnhofstrasse</em>',
+    h1: 'TCM.ch <em>Zürich Bahnhofstrasse</em> – Akupunktur',
     schemaName: 'TCM.ch Zürich Bahnhofstrasse',
   },
   hero: {
