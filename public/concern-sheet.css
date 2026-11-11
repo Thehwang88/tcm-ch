@@ -41,7 +41,7 @@
   padding:12px 5px;font-size:14px;font-weight:700;color:#171B1A;
   cursor:pointer;list-style:none;min-height:42px;box-sizing:border-box}
 .tcm-concern-email-option summary::-webkit-details-marker{display:none}
-.tcm-concern-email-option[open] summary span{transform:rotate(180deg)}
+.tcm-concern-email-option[open] .tcm-concern-alt-chevron{transform:rotate(180deg)}
 .tcm-concern-email-fields{display:flex;flex-direction:column;padding:0 0 4px}
 #tcm-concern-form[hidden],.tcm-concern-success[hidden],.tcm-concern-error[hidden]{display:none!important}
 
