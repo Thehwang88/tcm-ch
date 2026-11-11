@@ -5,7 +5,7 @@
 // Nur das .usp-grid: kompakte USP-Reihe der SG-Vorlage (Slot usp in KontaktPraxis.astro).
 // umleitung: Buchung über Partnerpraxis bis zur Eröffnung (Winterthur Marktgasse → Praxis Hwang): keine Termin-Claims für diese Adresse.
 const { planned = false, review = false, vorVertrag = false, umleitung = false } = Astro.props as { planned?: boolean; review?: boolean; vorVertrag?: boolean; umleitung?: boolean };
-const icon = (p: string) => `<div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg></div>`;
+const icon = (p: string) => `<div class="usp-icon" style="background:#F4F2EF"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg></div>`;
 const cards = [
   { i: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline>',
     t: planned ? 'Abrechnung über Zusatzversicherung' : 'Krankenkassen-anerkannt',
