@@ -287,6 +287,30 @@
   .akz .sc-btn:not(.sc-btn--gelb){background:var(--tcm-primary,#1769B1);color:#FFFFFF}
   .akz .sc:hover .sc-btn:not(.sc-btn--gelb){background:var(--tcm-primary-hover,#10558F)}
 
+
+  /* Zürich mobile hero: say it once; desktop keeps the original richer lead.
+     Full SEO content and all existing CTA links / tracking remain unchanged. */
+  .zh-hero-mobile-summary{display:none}
+  @media(max-width:767px){
+    .akz .akzh .tsr-crumb{display:none!important}
+    .akz .akzh .lsr-left{padding:24px 20px 24px}
+    .akz .akzh .lsr-eyebrow{margin-bottom:12px}
+    .akz .akzh .lsr-h1{margin-bottom:16px}
+    .akz .akzh .lsr-left > .lsr-lead:not(.zh-hero-mobile-summary){display:none!important}
+    .akz .akzh .zh-hero-mobile-summary{
+      display:block!important;margin:0 0 20px;
+      font-size:16px;line-height:1.55;
+    }
+    .akz .akzh .lsr-ctas{margin-bottom:11px;gap:3px}
+    .akz .akzh .lsr-btn-ghost{
+      border:0!important;background:transparent!important;
+      color:var(--tcm-ink,#171B1A)!important;
+      box-shadow:none!important;text-decoration:underline;
+      text-underline-offset:3px;min-height:44px;
+    }
+    .akz .akzh .zh-hero-proof{margin-bottom:0;gap:6px 10px}
+    .akz .akzh .zh-hero-meta{display:none!important}
+  }
 </style>
 
 <div class="akz">
@@ -299,6 +323,7 @@
         <span class="lsr-eyebrow">TCM.ch Netzwerk · Zürich</span>
         <h1 class="lsr-h1">Akupunktur &amp; TCM in <em class="lsr-accent">Zürich</em></h1>
         <p class="lsr-lead">Akupunktur, Tuina und chinesische Kräutertherapie in Zürich: Wir helfen dir, die passende Praxis an der Bahnhofstrasse, in Oerlikon oder in Höngg zu finden – persönlich, unkompliziert und abgestimmt auf deinen Standortwunsch.</p>
+        <p class="lsr-lead zh-hero-mobile-summary">Drei Standorte in Zürich. Wir helfen dir, die passende Praxis und einen Termin zu finden.</p>
         <div class="lsr-ctas">
           <a class="lsr-btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'hero'})">Termin in Zürich finden</a>
           <a class="lsr-btn-ghost" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20einen%20TCM-Termin%20in%20Z%C3%BCrich." target="_blank" rel="noopener nofollow" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'zh_hero'})">WhatsApp</a>
