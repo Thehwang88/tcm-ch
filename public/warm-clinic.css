@@ -1294,3 +1294,126 @@ body.tcm-warm #home-content .hf-section .hf-actions a:focus-visible{
     top:var(--header-h,80px)!important;
   }
 }
+
+
+/* Mobile location hero system v1: home hero's TWO same-sized action pills.
+   Scoped to location hero templates + Zürich hub; all calls and booking anchors
+   remain real links. Desktop and lower-page CTAs are untouched. */
+@media(max-width:767px){
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-left{
+    padding:24px clamp(20px,6.7vw,28px) 22px!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:stretch!important;
+    text-align:left!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-eyebrow{
+    text-align:left!important;
+    font-size:clamp(11px,2.9vw,12.5px)!important;
+    letter-spacing:.09em!important;line-height:1.42!important;
+    margin:0 0 12px!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-h1{
+    font-size:clamp(35px,9vw,47px)!important;
+    line-height:1.08!important;letter-spacing:-.037em!important;
+    margin:0 0 19px!important;
+    text-align:left!important;
+    overflow-wrap:normal!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-lead{
+    font-size:clamp(15px,4vw,17px)!important;
+    line-height:1.5!important;
+    margin:0 0 20px!important;
+    text-align:left!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas{
+    display:flex!important;flex-direction:column!important;
+    gap:10px!important;align-items:stretch!important;
+    width:100%!important;margin:0 0 18px!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas > a{
+    box-sizing:border-box!important;
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    flex:0 0 auto!important;
+    width:100%!important;max-width:none!important;
+    min-height:52px!important;
+    margin:0!important;padding:12px 20px!important;
+    border-radius:999px!important;
+    font-family:var(--font-sans,'Figtree',sans-serif)!important;
+    font-size:clamp(16px,4.2vw,19px)!important;
+    font-weight:750!important;
+    line-height:1.3!important;
+    text-align:center!important;
+    text-decoration:none!important;
+    white-space:normal!important;
+    box-shadow:none!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas > a:first-child{
+    order:1!important;
+    background:var(--tcm-primary,#1769B1)!important;
+    color:#fff!important;border:2px solid var(--tcm-primary,#1769B1)!important;
+  }
+  body.tcm-warm :is(.std-location-hero,.lsr-hero.hlsg,.akz .lsr-hero.akzh) .lsr-ctas > a:nth-child(2){
+    order:2!important;
+    background:transparent!important;color:var(--tcm-ink,#171B1A)!important;
+    border:2px solid var(--tcm-ink,#171B1A)!important;
+  }
+  body.tcm-warm .std-location-hero .lsr-ctas .std-hero-phone{
+    text-decoration:none!important;
+  }
+  body.tcm-warm .akz .lsr-hero.akzh .zh-cro-quick-locations{
+    display:flex;flex-wrap:wrap;gap:7px!important;
+    margin:0 0 15px!important;order:6;
+  }
+  body.tcm-warm .akz .lsr-hero.akzh .zh-cro-quick-locations span{
+    width:100%;font-size:12px!important;line-height:1.3!important;
+  }
+  body.tcm-warm .akz .lsr-hero.akzh .zh-cro-quick-locations a{
+    padding:6px 11px!important;font-size:12px!important;
+  }
+  body.tcm-warm .akz .lsr-hero.akzh .zh-hero-proof{
+    order:5;margin:0 0 12px!important;font-size:12.5px!important;
+  }
+  body.tcm-warm .akz .lsr-hero.akzh .lsr-ctas{order:4}
+  body.tcm-warm .akz .lsr-hero.akzh .zh-hero-meta{display:none!important}
+  body.tcm-warm .lsr-hero.hlsg .lsr-ctas > a[data-care-cta="hero-phone"]{
+    background:transparent!important;color:var(--tcm-ink,#171B1A)!important;
+    border:2px solid var(--tcm-ink,#171B1A)!important;
+  }
+  body.tcm-warm .lsr-hero.hlsg .lsr-trust{order:5!important;margin:0 0 8px!important}
+  body.tcm-warm .lsr-hero.hlsg .lsr-cta-note{
+    display:block!important;order:6!important;
+    margin:0!important;font-size:12.5px!important;line-height:1.5!important;
+  }
+  body.tcm-warm .lsr-hero.hlsg .lsr-cta-note a{
+    color:var(--tcm-ink,#171B1A)!important;
+    text-underline-offset:3px;font-weight:700;
+  }
+  /* Shared generic hero fallback: same two-action structure, no duplicate
+     mobile-only buttons or giant WhatsApp card above the fold. */
+  body.tcm-warm #generic-premium-hero .sg-text .sg-mobile-hero-actions{
+    display:flex!important;flex-direction:column!important;
+    gap:10px!important;width:100%!important;margin:18px 0!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-text .sg-mobile-hero-actions > *{
+    box-sizing:border-box!important;
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    width:100%!important;min-height:52px!important;
+    margin:0!important;padding:12px 20px!important;
+    border-radius:999px!important;
+    font-size:clamp(16px,4.2vw,19px)!important;
+    font-weight:750!important;text-align:center!important;text-decoration:none!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-text .sg-m-primary{
+    background:var(--tcm-primary,#1769B1)!important;
+    border:2px solid var(--tcm-primary,#1769B1)!important;color:#fff!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-text .sg-m-phone{
+    background:transparent!important;border:2px solid var(--tcm-ink,#171B1A)!important;
+    color:var(--tcm-ink,#171B1A)!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-mobile-wa,
+  body.tcm-warm #generic-premium-hero .sg-mobile-secondary{
+    display:none!important;
+  }
+  body.tcm-warm #generic-premium-hero .sg-mobile-sub:nth-of-type(2){display:none!important}
+}
