@@ -8,7 +8,7 @@
 :root{
   --nav-green:var(--brand,#1AE288);
   --nav-green-dark:var(--brand-black,#020B10);
-  --nav-green-soft:rgba(26,226,136,.16);
+  --nav-green-soft:rgba(23,27,26,.16);
   --nav-ink:var(--brand-black,#020B10);
 }
 
@@ -70,7 +70,7 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
 @media(max-width:900px){
   #navCtaBtn.nav-cta{display:none!important}
   .nav-phone{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:50%;border:1px solid rgba(2,11,16,.18);color:var(--nav-ink);background:#fff;margin-left:auto}
-  .nav-phone:active{background:rgba(26,226,136,.16)}
+  .nav-phone:active{background:rgba(23,27,26,.16)}
   .nav-menu-btn,#navMenuBtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
 }
 /* Burger-Button neutral statt grün umrandet */
@@ -121,7 +121,7 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
 
 /* ── Drawer: Basis ── */
 #siteDrawer{background:#fff}
-.drw-header::after{background:linear-gradient(90deg,var(--nav-green) 0%,rgba(26,226,136,0) 100%)}
+.drw-header::after{background:linear-gradient(90deg,var(--nav-green) 0%,rgba(23,27,26,0) 100%)}
 
 /* Audience-Switch im Drawer (gleiche Indikator-Mechanik) */
 .drw-aud{display:grid;position:relative;grid-template-columns:1fr 1fr;background:rgba(2,11,16,.05);border-radius:100px;padding:3px;margin:14px 22px 6px;flex-shrink:0}
@@ -147,7 +147,7 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
 .drw-cta-primary:hover{background:var(--tcm-primary-hover,#10558F)!important;color:#fff!important}
 .drw-cta-primary svg{stroke:var(--nav-ink)}
 .drw-cta-secondary{border-radius:100px;min-height:44px}
-.drw-cta-wa{color:var(--nav-green-dark);border-color:rgba(26,226,136,.45)}
+.drw-cta-wa{color:var(--nav-green-dark);border-color:rgba(23,27,26,.45)}
 
 /* ── Drawer-Scrolling-Fix ──────────────────────────────────────────────────
    header.css setzt .drw-body{overflow-y:hidden!important} und erlaubt Scrollen
