@@ -7,6 +7,7 @@
 // env-gated. NO voice cleanup, NO trimming - wording/layout identical to live.
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
+import ConcernSheet from '../components/ConcernSheet.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import CheckinBanner from '../components/CheckinBanner.astro';
@@ -261,6 +262,7 @@ const homeHtml = homeHtmlCards;
     <Fragment set:html={homeHtml} />
     <SgCheckinPopup />
     <Footer />
+    <ConcernSheet />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
   </body>
