@@ -210,22 +210,22 @@
   /* Zürich-only warm-neutral colour pilot. No structure, content or tracking changes.
      Global tokens, shared clinic cards and other locations remain untouched. */
   .akz{
-    --brand:#E8E6E3;--brand-hover:#D6D4D1;--brand-black:#171B1A;
-    --brand-surface:#F5F4F2;--brand-tint:#EBE9E6;--brand-ink:#454943;
-    --blue:#1769B1;--blue-dark:#10558F;--blue-light:#EEF3F8;
-    --green-mint:#E8E6E3;--green-mid:#D8D6D2;--green-dark:#414642;
-    --surface:#E8E6E3;--border:#D8D6D2;--mid:#565B59;--muted:#676B67;
+    --brand:var(--tcm-surface-strong,var(--tcm-surface-strong,#E8E6E3));--brand-hover:var(--tcm-border,#D7D4D0);--brand-black:var(--tcm-ink,#171B1A);
+    --brand-surface:var(--tcm-surface,#F4F2EF);--brand-tint:var(--tcm-surface,#F4F2EF);--brand-ink:var(--tcm-text-soft,#505453);
+    --blue:var(--tcm-text-soft,#505453);--blue-dark:var(--tcm-ink,#171B1A);--blue-light:var(--tcm-surface,#F4F2EF);
+    --green-mint:var(--tcm-surface-strong,var(--tcm-surface-strong,#E8E6E3));--green-mid:var(--tcm-border,#D7D4D0);--green-dark:var(--tcm-ink,#171B1A);
+    --surface:var(--tcm-surface-strong,var(--tcm-surface-strong,#E8E6E3));--border:var(--tcm-border,#D7D4D0);--mid:var(--tcm-text-soft,#505453);--muted:var(--tcm-muted,#707472);
     --sh-btn:0 6px 18px rgba(23,27,26,.12);
     --sh-btn-hover:0 10px 28px rgba(23,27,26,.18);
   }
   /* Farner-inspired architectural warm grey hero pilot; other surfaces stay unchanged. */
-  .akz .lsr-hero.akzh{background:#E8E6E3}
+  .akz .lsr-hero.akzh{background:var(--tcm-surface-strong,#E8E6E3)}
   /* Compact proof and location/contact details under the hero CTAs. */
   .akzh .zh-hero-proof{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 12px;font-size:13.5px;font-weight:600;line-height:1.5;color:#454943}
   .akzh .zh-hero-proof > span{display:inline-flex;align-items:baseline;gap:6px}
-  .akzh .zh-hero-proof .lsr-check{color:#414642}
-  .akzh .zh-hero-meta{display:flex;align-items:center;flex-wrap:wrap;gap:5px 16px;margin:0;font-size:13.5px;line-height:1.5;color:#565B59}
-  .akzh .zh-hero-meta a{color:#414642;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .akzh .zh-hero-proof .lsr-check{color:var(--tcm-ink,#171B1A)}
+  .akzh .zh-hero-meta{display:flex;align-items:center;flex-wrap:wrap;gap:5px 16px;margin:0;font-size:13.5px;line-height:1.5;color:var(--tcm-text-soft,#505453)}
+  .akzh .zh-hero-meta a{color:var(--tcm-ink,#171B1A);font-weight:600;text-decoration:underline;text-underline-offset:3px}
   .akzh .zh-hero-meta a:hover{color:#171B1A}
   @media(max-width:560px){
     .akzh .zh-hero-proof{gap:6px 14px;font-size:13px}
@@ -233,7 +233,7 @@
   }
   .akz .lsr-left{color:#171B1A}
   .akz .lsr-h1,.akz .section-title{color:#171B1A}
-  .akz .section-label,.akz .section-title em,.akz .akz-txtlinks a{color:#565B59}
+  .akz .section-label,.akz .section-title em,.akz .akz-txtlinks a{color:var(--tcm-text-soft,#505453)}
   /* Mobile Zürich hero: clear primary booking action, less text crowding.
      Preserve the existing CTA destination, copy, analytics and desktop layout. */
   @media(max-width:767px){
@@ -249,43 +249,43 @@
     }
   }
   /* Primary CTA colour pilot: brighter modern Korean blue, Zürich funnel only. */
-  .akz .lsr-btn-primary,.akz .btn-primary{background:#1769B1;color:#FFFFFF;box-shadow:none}
-  .akz .lsr-btn-primary:hover,.akz .btn-primary:hover{background:#10558F;color:#FFFFFF}
+  .akz .lsr-btn-primary,.akz .btn-primary{background:var(--tcm-primary,#1769B1);color:#FFFFFF;box-shadow:none}
+  .akz .lsr-btn-primary:hover,.akz .btn-primary:hover{background:var(--tcm-primary-hover,#10558F);color:#FFFFFF}
   .akz .lsr-btn-ghost{border-color:#8E877F;color:#171B1A}
   .akz .lsr-btn-ghost:hover{background:rgba(255,255,255,.32);border-color:#171B1A}
-  .akz .akz-chip,.akz .zhx-tag,.akz .zhx-chip--other{background:#EFEEEC;color:#414642;border-color:#D8D6D2}
-  .akz .zhx-chip:hover,.akz .zhx-chip:focus-visible{border-color:#565B59;color:#171B1A}
-  .akz #standorte .sc-chip:not(.sc-chip--gelb){background:#EFEEEC;color:#414642;border-color:#D8D6D2}
-  .akz #standorte .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
-  .akz #standorte .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F}
-  .akz .kf{--kf-neon:#1769B1;--kf-ink:#171B1A;--kf-mint:#F5F4F2;--kf-mint-line:#D8D6D2}
-  .akz .kf .kf-btn--primary{background:#1769B1;border-color:#1769B1;color:#FFFFFF}
-  .akz .kf .kf-btn--primary:hover{background:#10558F;border-color:#10558F;color:#FFFFFF}
+  .akz .akz-chip,.akz .zhx-tag,.akz .zhx-chip--other{background:var(--tcm-surface,#F4F2EF);color:var(--tcm-ink,#171B1A);border-color:var(--tcm-border,#D7D4D0)}
+  .akz .zhx-chip:hover,.akz .zhx-chip:focus-visible{border-color:var(--tcm-text-soft,#505453);color:#171B1A}
+  .akz #standorte .sc-chip:not(.sc-chip--gelb){background:var(--tcm-surface,#F4F2EF);color:var(--tcm-ink,#171B1A);border-color:var(--tcm-border,#D7D4D0)}
+  .akz #standorte .sc-btn:not(.sc-btn--gelb){background:var(--tcm-primary,#1769B1);color:#FFFFFF}
+  .akz #standorte .sc:hover .sc-btn:not(.sc-btn--gelb){background:var(--tcm-primary-hover,#10558F)}
+  .akz .kf{--kf-neon:var(--tcm-primary,#1769B1);--kf-ink:#171B1A;--kf-mint:var(--tcm-surface,#F4F2EF);--kf-mint-line:var(--tcm-border,#D7D4D0)}
+  .akz .kf .kf-btn--primary{background:var(--tcm-primary,#1769B1);border-color:var(--tcm-primary,#1769B1);color:#FFFFFF}
+  .akz .kf .kf-btn--primary:hover{background:var(--tcm-primary-hover,#10558F);border-color:var(--tcm-primary-hover,#10558F);color:#FFFFFF}
   /* Shared kontakt-form.css applies dark text with !important to legacy form-submit.
      Match its selector here, scoped to this funnel, to keep white text on charcoal. */
   .akz .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4){
-    background:#1769B1!important;border-color:#1769B1!important;color:#FFFFFF!important;
+    background:var(--tcm-primary,#1769B1)!important;border-color:var(--tcm-primary,#1769B1)!important;color:#FFFFFF!important;
   }
   .akz .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover{
-    background:#10558F!important;border-color:#10558F!important;color:#FFFFFF!important;
+    background:var(--tcm-primary-hover,#10558F)!important;border-color:var(--tcm-primary-hover,#10558F)!important;color:#FFFFFF!important;
   }
-  .akz .akz-funnel-section .intake-trust-dot{background:#565B59}
+  .akz .akz-funnel-section .intake-trust-dot{background:var(--tcm-text-soft,#505453)}
   /* Final CTA is outside .akz in the existing page split: scope to this route via :has(). */
-  body:has(> .akz) .cta-band{background:#E8E6E3!important}
-  body:has(> .akz) .cta-band .btn-primary{background:#1769B1;color:#FFFFFF;box-shadow:none}
-  body:has(> .akz) .cta-band .btn-primary:hover{background:#10558F;color:#FFFFFF}
+  body:has(> .akz) .cta-band{background:var(--tcm-surface-strong,#E8E6E3)!important}
+  body:has(> .akz) .cta-band .btn-primary{background:var(--tcm-primary,#1769B1);color:#FFFFFF;box-shadow:none}
+  body:has(> .akz) .cta-band .btn-primary:hover{background:var(--tcm-primary-hover,#10558F);color:#FFFFFF}
 
   /* Complete grey rollout for the former beige/tinted funnel sections.
      White service and content cards remain white for visual rhythm. */
-  .akz #standorte,.akz .akz-quartiere-section{background:#F5F4F2}
-  .akz .akz-funnel-section,.akz .zh-why-section,.akz .akz-wissen-section{background:#E8E6E3!important}
-  .akz .zhx-routing,.akz .zhx-chip--other{border-color:#D8D6D2}
+  .akz #standorte,.akz .akz-quartiere-section{background:var(--tcm-surface,#F4F2EF)}
+  .akz .akz-funnel-section,.akz .zh-why-section,.akz .akz-wissen-section{background:var(--tcm-surface-strong,#E8E6E3)!important}
+  .akz .zhx-routing,.akz .zhx-chip--other{border-color:var(--tcm-border,#D7D4D0)}
   /* Desktop header booking CTA on the Zürich hub only. */
-  body:has(> .akz) #mainNav .nav-cta{background:#1769B1;color:#FFFFFF}
-  body:has(> .akz) #mainNav .nav-cta:hover{background:#10558F;color:#FFFFFF}
+  body:has(> .akz) #mainNav .nav-cta{background:var(--tcm-primary,#1769B1);color:#FFFFFF}
+  body:has(> .akz) #mainNav .nav-cta:hover{background:var(--tcm-primary-hover,#10558F);color:#FFFFFF}
   /* Booking buttons inside inserted shared cards. Keep yellow offers unchanged. */
-  .akz .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
-  .akz .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F}
+  .akz .sc-btn:not(.sc-btn--gelb){background:var(--tcm-primary,#1769B1);color:#FFFFFF}
+  .akz .sc:hover .sc-btn:not(.sc-btn--gelb){background:var(--tcm-primary-hover,#10558F)}
 
 </style>
 
