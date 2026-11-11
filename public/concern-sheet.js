@@ -37,7 +37,6 @@
     if(el){e.preventDefault();open(el);return;}
     var wa=e.target.closest('[data-concern-whatsapp]');
     if(wa){
-      e.preventDefault();
       var msg=textarea.value.trim();
       if(!msg||msg===initial)msg='Ich habe eine Frage zu TCM und möchte mein Anliegen zunächst kostenlos schildern.';
       var loc=locationInput.value.trim();
@@ -45,7 +44,7 @@
       var text=intro+(loc?'bezüglich '+loc+': ':'')+msg;
       wa.href='https://wa.me/41775236122?text='+encodeURIComponent(text);
       push('concern_sheet_whatsapp_click',{source_page:location.pathname});
-      window.open(wa.href,'_blank','noopener,noreferrer');
+      // Let the native link open WhatsApp (no popup blocker / double navigation).
       return;
     }
     if(e.target.closest('[data-concern-close]')&&modal.open){modal.close();}
