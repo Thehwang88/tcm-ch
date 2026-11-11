@@ -308,3 +308,7 @@ nav#mainNav{z-index:850}
 }
 #siteDrawer .drw-cta-primary svg{stroke:#fff!important}
 #siteDrawer .drw-cta-wa{color:#171B1A;border-color:#D7D4D0}
+
+/* Compact time badge, only on enhanced primary appointment CTAs. */
+.tcm-cta-quick{gap:8px!important;flex-wrap:wrap}
+.tcm-cta-time-badge{display:inline-flex;align-items:center;white-space:nowrap;font:600 10px/1.2 inherit;font-size:10px;letter-spacing:0;padding:4px 7px;border:1px solid rgba(255,255,255,.45);border-radius:999px;color:inherit;background:rgba(255,255,255,.13)}

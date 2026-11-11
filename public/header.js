@@ -299,36 +299,41 @@ function navMoreToggle(){
   window.__tcmNavSync=function(){reset();};
 })();
 
-/* Add the lightning marker to blue primary appointment CTAs site-wide.
-   Text-only decoration; preserves link targets, click handlers and analytics. */
+/* Lightweight visual treatment for primary appointment enquiry CTAs.
+   No handler, href, or analytics changes. The time label describes form effort,
+   not response time; validate the claim against real user completion times. */
 (function(){
-  var selector='a,button';
-  var pattern=/^Termin anfragen(?:\\s*⚡️?)?$/i;
-  function update(root){
-    var nodes=root.querySelectorAll?root.querySelectorAll(selector):[];
+  function enhance(root){
+    var nodes=root.querySelectorAll ? root.querySelectorAll('a,button') : [];
     for(var i=0;i<nodes.length;i++){
       var el=nodes[i];
-      if(el.dataset.tcmCtaBolt==='1')continue;
-      var label=(el.textContent||'').replace(/\\s+/g,' ').trim();
-      if(!pattern.test(label))continue;
-      var bg=getComputedStyle(el).backgroundColor;
-      var blue=/(?:rgb\\(\\s*(?:29|30|31|32|33|34|35|36|37|38|39|40)\\s*,\\s*(?:90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120)\\s*,\\s*(?:155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179|180|181|182|183|184|185|186|187|188|189|190|191|192|193|194|195|196|197|198|199|200)\\s*\\))/i.test(bg);
-      if(!blue)continue;
-      el.appendChild(document.createTextNode(' ⚡️'));
-      el.dataset.tcmCtaBolt='1';
+      if(el.dataset.tcmQuickCta==='1')continue;
+      var label=(el.textContent||'').replace(/\s+/g,' ').trim();
+      if(label!=='Termin anfragen' && label!=='Termin anfragen ⚡️')continue;
+      var bg=getComputedStyle(el).backgroundColor.match(/[0-9.]+/g);
+      if(!bg||bg.length<3)continue;
+      var red=+bg[0],green=+bg[1],blue=+bg[2];
+      if(!(blue>red*1.15 && blue>green*1.08))continue;
+      if(label==='Termin anfragen')el.appendChild(document.createTextNode(' ⚡️'));
+      var badge=document.createElement('span');
+      badge.className='tcm-cta-time-badge';
+      badge.textContent='<30 Sek.';
+      badge.setAttribute('aria-label','unter 30 Sekunden');
+      el.appendChild(badge);
+      el.dataset.tcmQuickCta='1';
+      el.classList.add('tcm-cta-quick');
     }
   }
   function init(){
-    update(document);
-    var observer=new MutationObserver(function(records){
+    enhance(document);
+    new MutationObserver(function(records){
       for(var i=0;i<records.length;i++){
-        for(var j=0;j<records[i].addedNodes.length;j++){
-          var node=records[i].addedNodes[j];
-          if(node.nodeType===1)update(node.parentElement||node);
+        var added=records[i].addedNodes;
+        for(var j=0;j<added.length;j++){
+          if(added[j].nodeType===1)enhance(added[j].parentElement||added[j]);
         }
       }
-    });
-    observer.observe(document.body,{childList:true,subtree:true});
+    }).observe(document.body,{childList:true,subtree:true});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
   else init();
