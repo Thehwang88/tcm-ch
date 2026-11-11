@@ -42,6 +42,19 @@ const schema = {
 <SpaPage title={title} description={description} path="/standorte" body={body} schema={schema} />
 
 <style is:global>
+  /* /standorte overview is now intentionally text-first: the redundant hero
+     photograph was removed, so do not leave the old empty 50% media column. */
+  #page-standorte .hh-inner{
+    display:grid;grid-template-columns:minmax(0,1fr)!important;
+    min-height:0!important;max-width:1280px;margin:0 auto;
+  }
+  #page-standorte .hh-left{
+    width:100%;max-width:960px;
+    padding:clamp(28px,4vw,52px) clamp(20px,4vw,52px)!important;
+  }
+  @media(max-width:767px){
+    #page-standorte .hh-left{padding:26px 20px 24px!important}
+  }
   /* /standorte only: Grid-Section rueckt an den Hero. Die frueheren
      #standorte-premium-hero-Regeln sind mit dem hh-Hero (home.css) obsolet
      und entfernt — das alte Hero-Markup existiert nicht mehr. */
