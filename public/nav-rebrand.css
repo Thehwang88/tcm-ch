@@ -176,16 +176,32 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
   .drw-acc-btn.open .drw-acc-btn-inner::after{display:none}
 }
 
-/* ── Mobile Header hide/reveal (Verhalten in header.js): nur ≤1023px, Desktop unverändert.
-   transform+transition only, kein Layout-Shift (Header ist fixed). ── */
-/* Shared nav must stay above the fixed Check-in banner (z-index:530).
-   The drawer and overlay remain at their higher, existing stacking levels. */
+/* ── Sitewide mobile auto-hide: header + promo travel together.
+   Header stays above promotion (850 > 530); drawer/overlay are separate.
+   Only max-width:900px because the shared banner switches to fixed there. ── */
 nav#mainNav{z-index:850}
-@media (max-width:1023px){
-  #mainNav{transform:none;transition:none}
+@media(max-width:900px){
+  nav#mainNav{
+    transform:translate3d(0,0,0);
+    transition:transform .24s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+  }
+  body.tcm-nav-scrolled-away nav#mainNav{
+    transform:translate3d(0,-105%,0);
+    pointer-events:none;
+  }
+  /* Fixed promotion follows the header OFFSCREEN on downward scrolling.
+     This prevents orphan pills/chips peeking out below an absent header. */
+  body.tcm-nav-scrolled-away .sgb-banner{
+    transform:translate3d(0,calc(-1 * (var(--header-h,80px) + var(--sgb-h,75px) + 4px)),0);
+    pointer-events:none;
+  }
+  .sgb-banner{
+    transition:transform .24s cubic-bezier(.2,.7,.2,1);
+  }
 }
-@media (prefers-reduced-motion:reduce){
-  #mainNav{transition:none}
+@media(prefers-reduced-motion:reduce){
+  nav#mainNav,.sgb-banner{transition:none!important}
 }
 
 /* ── «Mehr» als Mega-Panel: Patienten-Gruppe links, «Für Fachpersonen» (aus PRO_NAV) rechts ── */
