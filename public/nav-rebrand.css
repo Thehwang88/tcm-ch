@@ -312,3 +312,10 @@ nav#mainNav{z-index:850}
 /* Compact time badge, only on enhanced primary appointment CTAs. */
 .tcm-cta-quick{gap:8px!important;flex-wrap:wrap}
 .tcm-cta-time-badge{display:inline-flex;align-items:center;white-space:nowrap;font:600 10px/1.2 inherit;font-size:10px;letter-spacing:0;padding:4px 7px;border:1px solid rgba(255,255,255,.45);border-radius:999px;color:inherit;background:rgba(255,255,255,.13)}
+
+/* Keep mobile sticky appointment CTA text and speed badge in a single line. */
+@media(max-width:900px){
+  .tcm-cta-quick-sticky{display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:nowrap!important;gap:5px!important;white-space:nowrap!important;font-size:clamp(12px,3.4vw,16px)!important;line-height:1.2!important;padding-inline:8px!important;min-width:0!important}
+  .tcm-cta-quick-sticky .tcm-cta-time-badge{flex:0 0 auto;font-size:9px!important;padding:3px 5px!important;margin:0!important;line-height:1.1!important}
+  .tcm-cta-quick-sticky svg{display:none!important}
+}
