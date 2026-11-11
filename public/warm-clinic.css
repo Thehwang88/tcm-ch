@@ -492,3 +492,94 @@ body.tcm-warm .up-info .up-ico{
   color:var(--tcm-ink,#171B1A)!important;
 }
 body.tcm-warm .up-ico svg{stroke:var(--tcm-ink,#171B1A)!important}
+
+
+/* All data-driven clinic pages + St. Gallen: image-free, compact symptom
+   navigation. The real clinic and therapy photos are deliberately unaffected. */
+body.tcm-location-page .clinic-symptoms-universal{
+  padding-top:clamp(36px,5vw,64px)!important;
+  padding-bottom:clamp(38px,5vw,64px)!important;
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;align-items:stretch;
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-card{
+  display:flex;flex-direction:column;min-width:0;min-height:0;
+  background:#fff;border:1px solid var(--tcm-border,#D7D4D0);
+  border-radius:16px;box-shadow:none!important;
+  overflow:hidden;transform:none;
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-photo-wrap,
+body.tcm-location-page .clinic-symptoms-universal .svc-photo-top-bar{display:none!important}
+body.tcm-location-page .clinic-symptoms-universal .svc-body{
+  display:flex;flex-direction:column;flex:1;min-width:0;
+  gap:8px;padding:18px!important;
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-name{
+  font-size:16px;line-height:1.35;font-weight:750;
+  color:var(--tcm-ink,#171B1A);
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-tagline{
+  display:block;white-space:normal;overflow:visible;text-overflow:clip;
+  font-size:13px;line-height:1.5;
+  color:var(--tcm-text-soft,#505453);
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-cta{
+  margin-top:auto;padding-top:8px;
+  border-top:1px solid var(--tcm-border,#D7D4D0);
+  color:var(--tcm-ink,#171B1A);
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-card:hover{
+  border-color:var(--tcm-text-soft,#505453);
+  box-shadow:0 4px 16px rgba(23,27,26,.07)!important;
+}
+body.tcm-location-page .clinic-symptoms-universal .svc-card:focus-visible{
+  outline:3px solid var(--tcm-primary,#1769B1);outline-offset:2px;
+}
+@media(max-width:1000px){
+  body.tcm-location-page .clinic-symptoms-universal .svc-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:560px){
+  body.tcm-location-page .clinic-symptoms-universal .svc-grid{
+    grid-template-columns:minmax(0,1fr);gap:9px;
+  }
+  body.tcm-location-page .clinic-symptoms-universal .svc-body{
+    padding:14px 16px!important;gap:5px;
+  }
+  body.tcm-location-page .clinic-symptoms-universal .svc-tagline{font-size:12.5px}
+  body.tcm-location-page .clinic-symptoms-universal .svc-cta{padding-top:5px}
+}
+/* All location-page informational tiles: no green success-style highlights. */
+body.tcm-location-page :is(.usp-icon,.up-ico,.intake-icon,.sgu-icon){
+  background:var(--tcm-surface-strong,#E8E6E3)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+  box-shadow:none!important;
+}
+body.tcm-location-page :is(.usp-icon,.up-ico,.intake-icon,.sgu-icon) svg{
+  stroke:var(--tcm-ink,#171B1A)!important;
+}
+/* Location booking actions: consistent blue with neutral shadow.
+   No changes to the actual anchors, handlers or dataLayer tracking. */
+body.tcm-location-page :is(.sg-bs-cta,.sg-merged-cta,.std-beschwerden)
+  :is(.btn-primary,.tcm-btn--primary){
+  background:var(--tcm-primary,#1769B1)!important;
+  border-color:var(--tcm-primary,#1769B1)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+body.tcm-location-page :is(.sg-bs-cta,.sg-merged-cta,.std-beschwerden)
+  :is(.btn-primary,.tcm-btn--primary):hover{
+  background:var(--tcm-primary-hover,#10558F)!important;
+  border-color:var(--tcm-primary-hover,#10558F)!important;
+  box-shadow:none!important;
+}
+body.tcm-location-page .sg-bs-cta{
+  filter:none!important;text-shadow:none!important;box-shadow:none!important;
+}
+body.tcm-location-page .sg-bs-cta::before,
+body.tcm-location-page .sg-bs-cta::after{box-shadow:none!important;filter:none!important}
