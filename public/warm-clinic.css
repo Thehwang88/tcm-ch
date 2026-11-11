@@ -995,4 +995,19 @@ body.tcm-warm #home-content #heroPatient .sr-btn--call{display:none!important}
   body.tcm-warm #home-content #heroPatient .sr-trust li{
     font-size:12.5px!important;
   }
+  /* Original team image is 4:3: show the full photo rather than
+     the former square crop that pushed booking down one extra screen. */
+  body.tcm-warm #home-content #heroPatient .sr-hero-right img{
+    aspect-ratio:4/3!important;
+    height:auto!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-hero-inner{
+    padding-top:24px!important;padding-bottom:28px!important;
+  }
+  /* The final network-wide trust claim stays in the DOM / desktop view. */
+  body.tcm-warm #home-content #heroPatient .sr-trust li:nth-child(n+3){
+    display:none!important;
+  }
 }
