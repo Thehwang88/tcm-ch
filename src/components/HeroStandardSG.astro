@@ -45,15 +45,6 @@ const card = renderKontaktForm({
   compatAnchors: ['termin-formular'], kopfTitel: 'Lieber einen Rückruf? Termin anfragen',
 });
 ---
-<section class="sgb-banner" id="sg-angebot-banner" aria-label="Kostenloser TCM 360°-Check-in">
-  <a href="#termin" class="sgb-in">
-    <span class="sgb-txt sgb-txt--d"><strong>Kostenloser TCM 360°-Check-in</strong><span class="sgb-sep" aria-hidden="true"> · </span>30 Min<span class="sgb-slot" data-sgb-slot hidden> · Nächster freier Termin: <strong data-sgb-slot-label></strong></span><span class="sgb-slot" data-sgb-gueltig hidden> · Angebot gültig bis <strong data-sgb-gueltig-label></strong></span></span>
-    <span class="sgb-txt sgb-txt--m"><strong>Gratis Check-in</strong> <span data-sgb-slot-m>30 Min</span></span>
-    <span class="sgb-cta"><span class="sgb-cta--d"><span data-sgb-cta-d>Jetzt Termin wählen</span> <span aria-hidden="true">→</span></span><span class="sgb-cta--m"><span aria-hidden="true">→</span> <span data-sgb-cta-m>Termin</span></span></span>
-  </a>
-</section>
-{/* Mobil (html/body overflow-x:hidden bricht position:sticky): Banner fixed unter dem Header, Platzhalter in Bannerhöhe (--sgb-h per Script). */}
-<div class="sgb-spacer" aria-hidden="true"></div>
 <section class="lsr-hero hlsg">
   <div class="lsr-inner">
     <div class="lsr-left">
@@ -107,8 +98,7 @@ const card = renderKontaktForm({
       <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
       <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt. <a href={SG_MAPS} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></p>
     </div>
-    {/* #termin: Vor-Anker direkt am Kartenblock (mobil nach Foto/Adresse/Zeiten, Titel bleibt per Scroll nach oben erreichbar);
-        Offset = Header + sticky Banner. Kein Vorfahre der Formularkarte (kontakt-form.js übernimmt den Hash nicht). */}
+    {/* #termin: anchor offset under the fixed site header; no promotional banner. */}
     <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
     <div class="sgt-channels">
       <a class="sgt-ch sgt-ch--primary" href="#online-buchen" data-care-cta="termin-karte-checkin">
@@ -147,23 +137,6 @@ const card = renderKontaktForm({
   {praxisHtml && <Fragment slot="info" set:html={praxisHtml} />}
 </KontaktPraxis>
 <style is:global>
-  /* Angebotsbanner unter dem fixen Header (gelb); der Hero verliert dafür sein Header-Padding. */
-  .sgb-banner{position:sticky;top:var(--header-h,76px);z-index:530;margin-top:var(--header-h,76px);background:#EEDBD7;color:#171B1A;font-family:var(--font-sans,'Figtree',system-ui,sans-serif);border-bottom:1px solid rgba(2,11,16,.12)}
-  .sgb-banner ~ .lsr-hero.hlsg{padding-top:0!important}
-  .sgb-spacer{display:none}
-  @media (max-width:900px){.sgb-banner{position:fixed;left:0;right:0;top:var(--header-h,80px);margin-top:0;transition:top .25s ease}.sgb-spacer{display:block;height:var(--sgb-h,86px);margin-top:var(--header-h,80px)}}
-  /* Shared mobile navigation handles header + banner together; never jump banner to top:0. */
-  .sgb-in{max-width:var(--max,1280px);margin:0 auto;padding:6px 16px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;text-decoration:none;color:inherit}
-  .sgb-txt{font-size:clamp(14px,1.15vw,15.5px);font-weight:600;letter-spacing:-.01em;line-height:1.3}
-  .sgb-txt strong{font-weight:800}
-  .sgb-cta{display:inline-flex;align-items:center;gap:6px;background:var(--brand-black,#020B10);color:#fff;border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:800;line-height:1.2;white-space:nowrap}
-  .sgb-in:hover .sgb-cta{background:#0B1F27}
-  .sgb-in:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:-3px}
-  .sgb-txt--m,.sgb-cta--m{display:none}
-  /* Mobil einzeilig: «Gratis Check-in bis Monatsende → Sichern» (ohne Trennpunkt) */
-  .sgb-slot strong{white-space:nowrap}
-  @media (max-width:900px){.sgb-in{flex-wrap:nowrap;gap:10px;padding:5px 12px}.sgb-txt--d,.sgb-cta--d{display:none}.sgb-txt--m,.sgb-cta--m{display:inline}.sgb-txt{font-size:14px;white-space:nowrap}.sgb-cta{padding:6px 12px;font-size:13px}}
-
   /* ?t=-Textlink unter den Hero-Buttons */
   .lsr-cta-note{margin:-6px 0 12px;font-size:14.5px;line-height:1.45;color:var(--brand-black,#020B10);opacity:.8}
   .lsr-tlink{display:inline-block;margin:-2px 0 12px;font-size:15px;font-weight:700;color:var(--brand-black,#020B10);text-decoration:underline;text-underline-offset:3px}
@@ -175,9 +148,9 @@ const card = renderKontaktForm({
   .lsr-stars{color:#F4B400;letter-spacing:.04em;font-size:15px}
 
   /* Kontaktsektion #termin (Muster /kontakt/): Titel, drei Karten, OneDoc, Formular. */
-  /* Offset: fixer Header + sticky Banner (Desktop 1 Zeile ≈ 60px, Mobil 2 Zeilen + Button ≈ 104px). */
-  .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 72px)}
-  @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(var(--header-h,80px) + var(--sgb-h,86px) + 10px)}}
+  /* Offset: fixed header only; campaign banner was removed. */
+  .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
+  @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(var(--header-h,80px) + 12px)}}
   .sgt{background:var(--surface,#F4F6F5);padding:clamp(28px,4vw,56px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
   .up-sg-mobile-photo{display:none}
   @media(max-width:1023px){
@@ -239,12 +212,14 @@ const card = renderKontaktForm({
   .sgt-ch-title{font-size:19px;font-weight:800;color:var(--black);margin:6px 0 8px;line-height:1.2;letter-spacing:-.01em}
   .sgt-ch-sub{font-size:14.5px;line-height:1.5;color:var(--mid);flex:1}
   .sgt-ch-go{margin-top:16px;font-size:14px;font-weight:700;color:var(--blue)}
-  .sgt-ch--primary{background:var(--brand-black,#020B10);border-color:var(--brand-black,#020B10)}
-  .sgt-ch--primary .sgt-ch-label{color:#EEDBD7}
-  .sgt-ch--primary .sgt-ch-title{color:#fff}
-  .sgt-ch--primary .sgt-ch-sub{color:rgba(255,255,255,.82)}
-  .sgt-ch--primary .sgt-ch-go{color:#EEDBD7}
-  .sgt-ch--primary:hover{border-color:var(--brand,#1AE288)}
+  /* The SG quick-booking card is the free 360° offer: ice blue, not
+     a second solid-blue booking button. */
+  .sgt-ch--primary{background:#E8F2FA;border-color:#C8E0F2}
+  .sgt-ch--primary .sgt-ch-label{color:#345B79}
+  .sgt-ch--primary .sgt-ch-title{color:#171B1A}
+  .sgt-ch--primary .sgt-ch-sub{color:#505453}
+  .sgt-ch--primary .sgt-ch-go{color:#1769B1}
+  .sgt-ch--primary:hover{border-color:#1769B1;background:#DDEDF8}
   .sgt-onedoc{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:20px 20px 12px;margin-bottom:24px;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
   .sgt-od-head{margin-bottom:10px}
   .sgt-od-h{margin:0 0 4px;font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--black)}
@@ -262,7 +237,7 @@ const card = renderKontaktForm({
   .sgt-form .kf{width:100%;max-width:560px;margin:0 auto}
   /* Generische Trust-Zeile aus home.js (form-trust-checklist) nicht über dem SG-Formular: dupliziert die Karten. */
   .sgt-form .form-trust-checklist{display:none}
-  /* Gelbe Terminart-Auswahl: seit 06.11.2026 gemeinsam in kontakt-form.css (.kf--gelb). */
+  /* Appointment option colours are shared via kontakt-form.css. */
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
 
   /* St. Gallen mobile-only funnel: treatment first (blue), existing free
@@ -290,13 +265,13 @@ const card = renderKontaktForm({
     }
     .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-checkin"]{
       order:1;display:flex;width:100%;min-height:48px;
-      justify-content:center;background:var(--tcm-offer,#EEDBD7)!important;
-      border-color:var(--tcm-offer,#EEDBD7)!important;
+      justify-content:center;background:var(--tcm-offer,#E8F2FA)!important;
+      border-color:var(--tcm-offer,#E8F2FA)!important;
       color:var(--tcm-ink,#171B1A)!important;box-shadow:none!important;
     }
     .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-checkin"]:hover{
-      background:var(--tcm-offer-hover,#E2C6BF)!important;
-      border-color:var(--tcm-offer-hover,#E2C6BF)!important;
+      background:var(--tcm-offer-hover,#D4E7F5)!important;
+      border-color:var(--tcm-offer-hover,#D4E7F5)!important;
     }
     .lsr-hero.hlsg .lsr-trust{order:5;margin:0;font-size:13px}
     .lsr-hero.hlsg .lsr-trust > div:not(.lsr-google):nth-child(n+2){display:none!important}
@@ -306,41 +281,6 @@ const card = renderKontaktForm({
   }
 </style>
 <script is:inline>
-  // Nächster freier Check-in (05.11.2026): /api/sg-next-slot (Cloudflare Function, OneDoc-Verfügbarkeit, Cache 10 Min).
-  // Slot innerhalb 14 Tagen → «Nächster freier Termin: …» + «Jetzt buchen». Sonst (kein Slot, zu weit weg, Fehler) Fallback
-  // «Angebot gültig bis <letzter Tag des Monats>» + «Jetzt Termin sichern» und Hinweis im Formular (Buchung zählt am Buchungstag).
-  // Monatsende clientseitig aus dem Datum (Europe/Zurich) berechnet, nie hart kodiert. dataLayer next_slot_shown einmal je Aufruf.
-  (function () {
-    var label = document.querySelector('[data-sgb-slot-label]'); if (!label) return;
-    var q = function (s) { return document.querySelector(s); };
-    var setTxt = function (sel, t) { var e = q(sel); if (e) e.textContent = t; };
-    var monatsende = function () {
-      var p = {}; try { new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; }); } catch (e) { var d = new Date(); p = { year: d.getFullYear(), month: ('0' + (d.getMonth() + 1)).slice(-2) }; }
-      var last = new Date(Date.UTC(+p.year, +p.month, 0)).getUTCDate();
-      return ('0' + last).slice(-2) + '.' + p.month + '.';
-    };
-    var fallback = function (bis) {
-      bis = bis || monatsende();
-      setTxt('[data-sgb-gueltig-label]', bis); var g = q('[data-sgb-gueltig]'); if (g) g.hidden = false;
-      setTxt('[data-sgb-slot-m]', 'bis ' + bis); setTxt('[data-sgb-cta-d]', 'Jetzt Termin sichern'); setTxt('[data-sgb-cta-m]', 'Sichern');
-      // Formular-Hinweis «Buchung bis …» kommt aus kontakt-form.js ([data-kf-gueltig]).
-    };
-    fetch('/api/sg-next-slot', { credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-      if (!j || !j.slot || !j.label || j.show !== true) return fallback(j && j.gueltigBis);
-      var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(j.slot); if (!m) return fallback(j.gueltigBis);
-      var now = new Date(); var nowLocal = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2) + 'T' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
-      if (j.slot.slice(0, 16) <= nowLocal) return fallback(j.gueltigBis);
-      label.textContent = j.label; var wrap = q('[data-sgb-slot]'); if (wrap) wrap.hidden = false;
-      setTxt('[data-sgb-slot-m]', j.label); setTxt('[data-sgb-cta-d]', 'Jetzt buchen'); setTxt('[data-sgb-cta-m]', 'Buchen');
-      try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'next_slot_shown', slot: j.slot }); } catch (e) {}
-    }).catch(function () { fallback(); });
-  })();
-  // Bannerhöhe als CSS-Variable (Platzhalter + Anker-Offset auf Mobile), bei Grössenänderung nachgeführt.
-  (function () {
-    var b = document.querySelector('.sgb-banner'); if (!b) return;
-    var set = function () { document.documentElement.style.setProperty('--sgb-h', b.offsetHeight + 'px'); };
-    set(); window.addEventListener('resize', set); if (window.ResizeObserver) new ResizeObserver(set).observe(b);
-  })();
   // Ads-Parameter ?t=schroepfen|akupunktur|tuina|beschwerden (nur clientseitig; statischer Inhalt/Canonical bleibt «Akupunktur & TCM»):
   // H1 + Unterzeile je Therapie, Textlink unter den Buttons zur Therapie-/Beschwerden-Sektion, optional Hero-Bild (Bilder aus
   // /therapien/*, Video dann aus), «Dein Anliegen» vorbelegt, dataLayer-Variable therapy. Nur bekannte Werte, nie Nutzertext.
