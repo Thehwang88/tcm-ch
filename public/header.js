@@ -310,10 +310,11 @@ function navMoreToggle(){
       if(el.dataset.tcmQuickCta==='1')continue;
       var label=(el.textContent||'').replace(/\s+/g,' ').trim();
       if(label!=='Termin anfragen' && label!=='Termin anfragen ⚡️')continue;
-      var bg=getComputedStyle(el).backgroundColor.match(/[0-9.]+/g);
-      if(!bg||bg.length<3)continue;
-      var red=+bg[0],green=+bg[1],blue=+bg[2];
-      if(!(blue>red*1.15 && blue>green*1.08))continue;
+      // Primary CTAs use the dark SoftRiver brand colour, not a bright RGB blue.
+      // Match their semantic button styles instead of guessing the RGB value.
+      if(!el.matches('.sr-btn--solid,.btn-primary,.hf-appointment-cta,.drw-cta-primary,.nav-cta,.cta-primary,[class*="primary"],[class*="booking-cta"]'))continue;
+      var style=getComputedStyle(el);
+      if(style.display==='none'||style.visibility==='hidden')continue;
       if(label==='Termin anfragen')el.appendChild(document.createTextNode(' ⚡️'));
       var badge=document.createElement('span');
       badge.className='tcm-cta-time-badge';
