@@ -144,7 +144,7 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
 /* Drawer-CTA: Markengrün, gross, sticky am unteren Rand des Scrollbereichs */
 .drw-group--cta{position:sticky;bottom:0;background:#fff;border-top:1px solid rgba(2,11,16,.08);padding:12px 18px calc(14px + env(safe-area-inset-bottom));margin-top:auto;box-shadow:0 -10px 24px rgba(2,11,16,.05)}
 .drw-cta-primary{background:var(--nav-green)!important;color:var(--nav-ink)!important;min-height:48px;border-radius:100px!important;font-size:15px;font-weight:700;box-shadow:none!important}
-.drw-cta-primary:hover{background:#14C97A!important;color:var(--nav-ink)!important}
+.drw-cta-primary:hover{background:var(--tcm-primary-hover,#10558F)!important;color:#fff!important}
 .drw-cta-primary svg{stroke:var(--nav-ink)}
 .drw-cta-secondary{border-radius:100px;min-height:44px}
 .drw-cta-wa{color:var(--nav-green-dark);border-color:rgba(26,226,136,.45)}
