@@ -90,7 +90,7 @@ const card = renderKontaktForm({
       </div>
       <div class="sgt-aside-bottom">
         <ul class="sgt-team" aria-label="Team St. Gallen">
-          {SG_TEAM.map((t) => <li>{t.bild ? <img src={t.bild} alt={t.name} width="48" height="48" loading="lazy" decoding="async"> : <span class="sgt-team-init" aria-hidden="true">{t.initialen}</span>}<span><strong>{t.name}</strong><small>{t.rolle}</small></span></li>)}
+          {SG_TEAM.map((t) => <li>{t.bild ? <img src={t.bild} alt={t.name} width="72" height="72" loading="lazy" decoding="async"> : <span class="sgt-team-init" aria-hidden="true">{t.initialen}</span>}<span><strong>{t.name}</strong><small>{t.rolle}</small></span></li>)}
         </ul>
     {SG_ZITATE.length > 0 && (
       <ul class="sgt-quotes" aria-label="Google-Rezensionen">
@@ -210,7 +210,13 @@ const card = renderKontaktForm({
   .sgt-hours dd{margin:0}
   .sgt-team{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:12px 22px}
   .sgt-team li{display:flex;align-items:center;gap:10px}
-  .sgt-team img,.sgt-team-init{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0}
+  /* Use native therapist portraits (not small thumbnail assets).
+     Desktop 72px; mobile 56px; actual quality still depends on source pixels. */
+  .sgt-team img,.sgt-team-init{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:center 24%;flex-shrink:0}
+  @media(max-width:767px){
+    .sgt-team img,.sgt-team-init{width:56px;height:56px}
+    .sgt-team{gap:12px 16px}
+  }
   .sgt-team-init{display:inline-flex!important;align-items:center;justify-content:center;background:var(--brand-black,#020B10);color:var(--brand,#1AE288);font-weight:800;font-size:15px;letter-spacing:.02em;flex-direction:row!important}
   .sgt-team span{display:flex;flex-direction:column;line-height:1.25}
   .sgt-team strong{font-size:15px;color:var(--black)}
