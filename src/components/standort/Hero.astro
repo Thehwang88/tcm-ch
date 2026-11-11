@@ -106,6 +106,14 @@ const video = heroVideo(data);
     }
   }
 
+  /* The shared hero has its own 80px margin-top rule, independent of the
+     page wrapper. Previous wrapper/inner-padding patches did not move its
+     visible top edge below the fixed offer banner. Offset the hero itself. */
+  @media(max-width:900px){
+    html.tcm-nov-offer-active body #sg-premium-hero ~ .lsr-hero.std-location-hero{
+      margin-top:calc(80px + 42px + 20px)!important;
+    }
+  }
   .std-location-hero .std-hero-mobile-address{display:none}
   /* Mobile first: homepage-like hierarchy on the shared operational location
      heroes only. Desktop, copy, schema, form routing and clinic status stay intact. */
