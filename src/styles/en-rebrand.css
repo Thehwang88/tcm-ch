@@ -70,7 +70,7 @@ html[lang="en"] main .faq p { color: rgba(2,11,16,.72); line-height: 1.65; }
 html[lang="en"] main .form-card { border: 1px solid rgba(2,11,16,.1); border-radius: 20px; box-shadow: none; padding: 32px; }
 html[lang="en"] main .field label { color: var(--brand-black); font-size: 13.5px; }
 html[lang="en"] main .field input, html[lang="en"] main .field select, html[lang="en"] main .field textarea { border: 1px solid rgba(2,11,16,.18); border-radius: 12px; color: var(--brand-black); }
-html[lang="en"] main .field input:focus, html[lang="en"] main .field select:focus, html[lang="en"] main .field textarea:focus { outline: none; border-color: var(--brand-black); box-shadow: 0 0 0 3px rgba(26,226,136,.35); }
+html[lang="en"] main .field input:focus, html[lang="en"] main .field select:focus, html[lang="en"] main .field textarea:focus { outline: none; border-color: var(--brand-black); box-shadow: 0 0 0 3px rgba(23,27,26,.35); }
 html[lang="en"] main .req { color: var(--brand-ink); }
 html[lang="en"] main .form-status[data-state="success"] { background: var(--brand-tint); color: var(--brand-ink); border: 1px solid rgba(11,122,76,.3); border-radius: 12px; }
 html[lang="en"] main .form-status[data-state="error"] { border-radius: 12px; }
