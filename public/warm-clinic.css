@@ -302,3 +302,138 @@ body.tcm-warm main .btn--secondary:hover {
   background:rgba(23,27,26,.06)!important;
   color:var(--tcm-ink)!important;
 }
+
+
+/* ── Wave 3: legacy decoration and form states ──────────────────────────
+   Specific elements confirmed from sitewide CSS audit; colour-only.
+   Keep WhatsApp and true success/warning/error indicators semantic. */
+
+/* Standort trust icons are informational, not a green success notification. */
+body.tcm-warm .sgu .usp-icon,
+body.tcm-warm .usp-grid .usp-icon{
+  background:var(--tcm-surface)!important;
+  border-color:var(--tcm-border)!important;
+  color:var(--tcm-ink)!important;
+}
+body.tcm-warm .sgu .usp-icon svg,
+body.tcm-warm .usp-grid .usp-icon svg{
+  stroke:var(--tcm-ink)!important;
+}
+
+/* Legacy decorative label, feature and card accents stay neutral. */
+body.tcm-warm :is(
+  .hero-tag,.city-rollout,.city-note,.hc-pilot-badge,
+  .kt-micro-badge,.kt-feature,.hc-hl,.offer-hl,
+  .pc-pilot,.pil-card,.hero-city-strip .hcs-flag,
+  .sub-eyebrow--symptom,.standort-flagship-banner-tag
+){
+  border-color:var(--tcm-border)!important;
+}
+body.tcm-warm :is(
+  .hc-pilot-badge,.kt-micro-badge,.pc-pilot,
+  .standort-flagship-banner-tag
+){
+  background:var(--tcm-surface)!important;
+  color:var(--tcm-text)!important;
+}
+
+/* Legacy generic clinic heroes have distinct primary booking classes. */
+body.tcm-warm :is(
+  #generic-premium-hero .sg-m-primary,
+  #zh-premium-hero .sg-m-primary,
+  #win-premium-hero .sg-m-primary,
+  #sg-premium-hero .sg-m-primary,
+  #generic-premium-hero .sg-btn-primary,
+  #zh-premium-hero .sg-btn-primary,
+  #win-premium-hero .sg-btn-primary,
+  #sg-premium-hero .sg-btn-primary
+){
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+body.tcm-warm :is(
+  #generic-premium-hero .sg-m-primary,
+  #zh-premium-hero .sg-m-primary,
+  #win-premium-hero .sg-m-primary,
+  #sg-premium-hero .sg-m-primary,
+  #generic-premium-hero .sg-btn-primary,
+  #zh-premium-hero .sg-btn-primary,
+  #win-premium-hero .sg-btn-primary,
+  #sg-premium-hero .sg-btn-primary
+):hover{
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+}
+
+/* Shared contact-form colours: neutral selection, rose only for a free
+   Check-in, blue only for actual booking/submission and focus. */
+body.tcm-warm .kf{
+  --kf-neon:var(--tcm-primary);
+  --kf-ink:var(--tcm-ink);
+  --kf-mint:var(--tcm-surface);
+  --kf-mint-line:var(--tcm-border);
+}
+body.tcm-warm .kf :is(.kf-opt.is-checked,.kf-opt:has(input:checked)){
+  border-color:var(--tcm-ink)!important;
+  box-shadow:inset 0 0 0 1px var(--tcm-ink)!important;
+  background:var(--tcm-surface)!important;
+}
+body.tcm-warm .kf :is(.kf-opt--checkin,.kf-opt--checkin.is-checked){
+  background:var(--tcm-offer)!important;
+  border-color:var(--tcm-offer-hover)!important;
+}
+body.tcm-warm .kf .kf-tag{
+  background:var(--tcm-surface)!important;
+  color:var(--tcm-ink)!important;
+}
+body.tcm-warm .kf :is(.kf-input,.kf-huelle input,.kf-huelle select,.kf-huelle textarea):focus{
+  border-color:var(--tcm-primary)!important;
+  box-shadow:0 0 0 3px rgba(23,105,177,.12)!important;
+}
+body.tcm-warm .kf :is(.kf-btn--primary,.form-submit,button[type=submit]):not(.sc-btn--gelb){
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+}
+body.tcm-warm .kf :is(.kf-btn--primary,.form-submit,button[type=submit]):not(.sc-btn--gelb):hover{
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+}
+
+
+/* Inspected page-specific legacy sections: About, insurance, team and
+   consultation. Decorative tints are warm neutral, never appointment blue. */
+body.tcm-warm #page-ueber-uns .ueber-intro .sub-eyebrow,
+body.tcm-warm .hero-tag,
+body.tcm-warm #page-krankenkasse .hero-badge{
+  background:var(--tcm-surface)!important;
+  border-color:var(--tcm-border)!important;
+  color:var(--tcm-text-soft)!important;
+}
+body.tcm-warm #page-krankenkasse .hero-badge::before,
+body.tcm-warm #sg-premium-hero .sg-urgency::before{
+  background:var(--tcm-text-soft)!important;
+  box-shadow:none!important;
+}
+body.tcm-warm .tmc-initials,
+body.tcm-warm .uu-advisor-photo-wrap{
+  background:var(--tcm-surface-strong)!important;
+}
+body.tcm-warm #page-sprechstunde{
+  --spg:var(--tcm-text-soft);
+  --spg-mid:var(--tcm-ink);
+  --spg-lt:var(--tcm-surface);
+  --sp-warm:var(--tcm-surface);
+  --sp-dark:var(--tcm-ink);
+}
+/* Call-to-book inside the legacy insurer hero is a real conversion action. */
+body.tcm-warm #page-krankenkasse .hero-card-cta{
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+}
+body.tcm-warm #page-krankenkasse .hero-card-cta:hover{
+  background:var(--tcm-primary-hover)!important;
+}
