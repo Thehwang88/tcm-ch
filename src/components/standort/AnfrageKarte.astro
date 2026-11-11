@@ -23,7 +23,7 @@ options.forEach((o, i) => { if (selIdx < 0 && (data.stadt === o.value || data.st
 // Kein OneDoc, kein Check-in (beides nur mit Freigabe in src/data/kontakt-angebote.mjs); Quelle bleibt der Seitenpfad.
 const kfCard = !data.planned && !data.review
   ? renderKontaktForm(oben
-    ? { instance: 'standort-oben', standortId: data.slug, cardId: 'anfrage-box', quelleDetail: 'Anfragebox oben', wunschzeit: true, headingTag: 'h2', heroKompakt: true, rueckrufOffen: true, terminart: zhCRO ? 'behandlung' : undefined, sitekey, waHref: wa }
+    ? { instance: 'standort-oben', standortId: data.slug, cardId: 'anfrage-box', quelleDetail: 'Anfragebox oben', wunschzeit: true, headingTag: 'h2', heroKompakt: true, rueckrufOffen: true, terminart: zhCRO ? 'behandlung' : undefined, checkinZuerst: zhCRO ? false : undefined, sitekey, waHref: wa }
     : { instance: 'standort', standortId: data.slug, sitekey, waHref: wa })
   : '';
 const idp = oben ? 'kto-' : 'kt-';
