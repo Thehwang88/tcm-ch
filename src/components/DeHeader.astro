@@ -97,7 +97,7 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
 <!-- Time-limited, global DE patient offer. Keep out of the fixed nav to avoid
      reintroducing a header spacer or affecting nav scroll-hide calculations. -->
 <a id="tcm-nov-checkin" class="tcm-nov-checkin" href="/kontakt/?terminart=checkin#termin-formular" aria-label="Gratis 30-Minuten-Kennenlerntermin bis 30. November sichern">
-  <span class="tcm-nov-checkin-copy"><strong>Gratis 30-Min.-Kennenlerntermin</strong><span class="tcm-nov-checkin-deadline"> · Bis 30.11. sichern</span></span>
+  <span class="tcm-nov-checkin-copy"><strong>Gratis 30-Min.-Kennenlerntermin</strong><span class="tcm-nov-checkin-deadline"> · Bis 30.11.</span></span>
   <span aria-hidden="true" class="tcm-nov-checkin-arrow">→</span>
 </a>
 <script is:inline>
@@ -177,6 +177,17 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
     .tcm-nov-checkin{gap:5px;padding:7px 8px;font-size:clamp(9px,2.65vw,12px);white-space:nowrap}
     .tcm-nov-checkin-deadline{font-size:inherit!important}
     .tcm-nov-checkin-arrow{font-size:16px}
+  }
+  /* Readable single-line offer on phones, without shrinking to 9px. */
+  .tcm-nov-checkin strong{font-weight:700}
+  .tcm-nov-checkin-deadline{font-weight:500}
+  @media(max-width:900px){
+    .tcm-nov-checkin{min-height:42px;padding:8px 9px;gap:7px;font-size:clamp(11px,3.0vw,13px)}
+    .tcm-nov-checkin-copy{white-space:nowrap}
+    .tcm-nov-checkin-arrow{font-size:17px}
+  }
+  @media(max-width:370px){
+    .tcm-nov-checkin{font-size:clamp(10px,2.9vw,11px);gap:4px;padding-inline:5px}
   }
   @media(prefers-reduced-motion:reduce){.tcm-nov-checkin{transition:none}}
 </style>
