@@ -66,7 +66,7 @@ const waHref = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(direc
         <label for="cc-complaint-field">{isEn ? 'Briefly describe your concern or question' : 'Beschwerden oder Frage kurz schildern'}</label>
         <p>{isEn ? 'One or two sentences are enough. ' : 'Ein bis zwei Sätze genügen. '}{isEn ? isZurichHub ? 'We help you choose a Zürich clinic.' : limited ? 'We check the options for this location.' : 'We consider your preferred location.' : isZurichHub ? 'Wir helfen dir, eine Zürcher Praxis auszuwählen.' : limited ? 'Wir prüfen die Möglichkeiten für diesen Standort.' : 'Wir berücksichtigen deinen gewünschten Standort.'}</p>
         <textarea id="cc-complaint-field" rows="3" maxlength="600" placeholder={isEn ? "e.g. I have had back pain for several weeks …" : "z. B. Ich habe seit einigen Wochen Rückenschmerzen …"}></textarea>
-        <div class="cc-pills" aria-label="Häufige Anliegen">
+        <div class="cc-pills" aria-label={isEn ? "Common concerns" : "Häufige Anliegen"}>
           <button type="button" data-cc-preset={isEn ? "I have neck pain since " : "Ich habe Nackenschmerzen seit "}>{isEn ? "Neck pain" : "Nackenschmerzen"}</button>
           <button type="button" data-cc-preset={isEn ? "I have back pain since " : "Ich habe Rückenschmerzen seit "}>{isEn ? "Back pain" : "Rückenschmerzen"}</button>
           <button type="button" data-cc-preset={isEn ? "I have migraines since " : "Ich habe Migräne seit "}>{isEn ? "Migraine" : "Migräne"}</button>
@@ -253,15 +253,15 @@ const waHref = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(direc
       var status=root.getAttribute('data-cc-status')||'operational';
       var english=root.getAttribute('data-cc-lang')==='en';
       var context=root.getAttribute('data-cc-hub')==='true'
-        ? (english ? 'a TCM.ch clinic in Zürich' : 'zu einer TCM.ch Praxis in Zürich')
-        : (english ? 'the TCM.ch clinic in '+loc : 'zum TCM.ch Standort '+loc);
+        ? (english ? 'a TCM.ch clinic in Zürich' : 'Zürich')
+        : (english ? 'the TCM.ch clinic in '+loc : loc);
       var prefix=english
         ? status==='operational'
           ? 'Hello, I would like to enquire about an appointment at '+context+'.'
           : 'Hello, I have a question about the current status of '+context+'.'
         : status==='operational'
-          ? 'Hallo, ich möchte '+context+' einen passenden Termin anfragen.'
-          : 'Hallo, ich habe eine Frage zum aktuellen Stand '+context+'.';
+          ? 'Hallo, ich möchte einen passenden Termin bei TCM.ch in '+context+' anfragen.'
+          : 'Hallo, ich habe eine Frage zum TCM.ch Standort '+context+'.';
       var msg=prefix+(issue ? (english ? ' My concern: ' : ' Mein Anliegen: ')+issue+'.' : '')+
         (english ? ' Could you advise me personally?' : ' Könnt ihr mich persönlich beraten?');
       try{
