@@ -45,7 +45,7 @@ import { transparenzHtml } from '../../data/transparenz';
 import UeberPraxis from '../../components/standort/UeberPraxis.astro';
 import WeitereStandorte from '../../components/standort/WeitereStandorte.astro';
 import KontaktForm from '../../components/standort/KontaktForm.astro';
-import FinalCta from '../../components/standort/FinalCta.astro';
+import ClinicConcierge from '../../components/ClinicConcierge.astro';
 import KontaktPraxis from '../../components/standort/KontaktPraxis.astro';
 import AnfrageKarte from '../../components/standort/AnfrageKarte.astro';
 import TerminSektion from '../../components/standort/TerminSektion.astro';
@@ -376,7 +376,19 @@ if (migrated) {
   // Gemeinsames Kontaktformular auch auf den übrigen Legacy-Leaves (Bottighofen): fester Standort, wenn operativ.
   const legacyClinic = clinicById(slug!);
   const legacyBody = upgradeLegacyForms(legacyBody0, { path: `/standorte/${slug}/`, standortId: legacyClinic?.status === 'operational' ? slug : undefined, instancePrefix: 'standort' });
-  spaBody = (slug === 'st-gallen') ? sgBody : legacyBody + beschwerdenLinks + hautBlock + ksBlock;
+  // The legacy Corinna / Yuna WhatsApp-only banner is superseded by the
+  // shared CARE concierge below all page content. Preserve therapist/team
+  // information, FAQs, existing contact forms and the original links.
+  const removeOldPromo = (html: string) => {
+    const marker = '<section class="sg-merged-cta">';
+    const at = html.indexOf(marker);
+    if (at < 0) return html;
+    const end = html.indexOf('</section>', at);
+    if (end < 0 || html.indexOf(marker, end + 10) >= 0)
+      throw new Error('standort: legacy promo marker unbalanced or repeated');
+    return html.slice(0, at) + html.slice(end + 10);
+  };
+  spaBody = removeOldPromo((slug === 'st-gallen') ? sgBody : legacyBody + beschwerdenLinks + hautBlock + ksBlock);
   // «Praxen in der Nähe» (05.11.2026): Leaf-Karten durch die zentrale Standortkarte ersetzen (max. 3 buchbare nach Distanz).
   {
     const rs = spaBody.indexOf('<section class="related-section">');
@@ -390,6 +402,9 @@ if (migrated) {
 }
 
 const data = migrated as Standort;
+const conciergeClinic = clinics.find((c) => c.id === slug);
+const conciergeName = conciergeClinic?.name ?? (migrated?.stadt ?? slug!);
+const conciergeStatus = conciergeClinic?.status ?? (migrated?.review ? 'review' : migrated?.planned ? 'planned' : 'operational');
 // Partner-Umleitung (Marktgasse bis zur Eröffnung 2027 → Praxis Hwang): Umleitungskarte statt Anfragebox/Formular/OneDoc;
 // Karte trägt den Sticky-CTA-Hinweis (StickyCtaBar liest data-sticky-cta-href/-label).
 const PU = migrated?.partnerUmleitung;
@@ -444,11 +459,11 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         <Beschwerden data={data} />
         <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review, data.vorVertrag, true)} />
         <WeitereStandorte data={data} />
-        {!PU && <FinalCta data={data} />}
         <Faq data={data} />
         <Fragment set:html={weiterlesenHtml} />
       </div>
     </div>
+    <ClinicConcierge slot="pre-footer" locationName={conciergeName} status={conciergeStatus} />
   </SpaPage>
 ) : (
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
@@ -456,5 +471,6 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
     {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} uspHtml={sgUspHtml} praxisHtml={sgPraxisHtml} />)}
     {slug === 'st-gallen' && !first30.showCampaign && <SgCheckinPopup />}
     {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstSheetSG sitekey={turnstileSitekey} />}
+    <ClinicConcierge slot="pre-footer" locationName={conciergeName} status={conciergeStatus} />
   </SpaPage>
 )}
