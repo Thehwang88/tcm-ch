@@ -4,6 +4,7 @@
 // Full SPA CSS via /home.css; Turnstile env-gated. Used for the rich hub/leaf pages.
 import DeHeader from '../components/DeHeader.astro';
 import ConcernSheet from '../components/ConcernSheet.astro';
+import BookingSheet from '../components/BookingSheet.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import { SENSIBEL_REFERRER, SENSIBEL_CSP } from '../data/sensibel-head';
@@ -121,6 +122,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <slot name="pre-footer" />
     <Footer />
     <ConcernSheet />
+    <BookingSheet />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
   </body>

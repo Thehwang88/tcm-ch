@@ -1,0 +1,25 @@
+---
+/**
+ * Booking presentation-only shell. Moves the original live DOM form/card
+ * into a native dialog and restores it on close. No cloning, no second form,
+ * no new submission endpoint or alternative offer/pricing logic.
+ */
+---
+<dialog id="tcm-booking-sheet" class="tcm-booking-sheet" aria-labelledby="tcm-booking-sheet-title">
+  <div class="tcm-booking-panel">
+    <div class="tcm-booking-head">
+      <span class="tcm-booking-grip" aria-hidden="true"></span>
+      <div class="tcm-booking-heading">
+        <span class="tcm-booking-overline">TCM.ch · Persönliche Terminanfrage</span>
+        <h2 id="tcm-booking-sheet-title">Dein Termin.</h2>
+        <p>Wähle deinen passenden Termin. Wir melden uns persönlich.</p>
+      </div>
+      <button type="button" class="tcm-booking-close" aria-label="Terminanfrage schliessen" data-booking-close autofocus>×</button>
+    </div>
+    <div class="tcm-booking-scroll" tabindex="-1">
+      <div class="tcm-booking-content" data-booking-content></div>
+    </div>
+  </div>
+</dialog>
+<link rel="stylesheet" href="/booking-sheet.css" />
+<script src="/booking-sheet.js" is:inline defer></script>
