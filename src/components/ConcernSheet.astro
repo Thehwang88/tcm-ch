@@ -8,11 +8,16 @@ const key = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAADf8GZzWnvFzYv
     <button type="button" class="tcm-concern-close" data-concern-close aria-label="Schliessen">×</button>
     <div class="tcm-concern-eyebrow">Kostenlos &amp; unverbindlich</div>
     <h2 id="tcm-concern-title">Was beschäftigt dich?</h2>
-    <p id="tcm-concern-desc">Du bist unsicher, ob TCM zu deinem Anliegen passt? Schreib uns kurz.</p>
+    <p id="tcm-concern-desc">Du bist unsicher, ob TCM zu deinem Anliegen passt? Schilder es kurz und wähle deinen Kontaktweg.</p>
     <form id="tcm-concern-form">
       <label for="tcm-concern-text">Dein Anliegen <span aria-hidden="true">*</span></label>
-      <textarea id="tcm-concern-text" name="anliegen" rows="4" maxlength="2000" required>Ich möchte wissen, ob TCM für mich infrage kommt. Mein Anliegen ist: </textarea>
-      <p class="tcm-concern-hint">Du kannst den Text anpassen. Bitte beschreibe dein Anliegen kurz.</p>
+      <textarea id="tcm-concern-text" name="anliegen" rows="4" maxlength="2000" required>Ich möchte wissen, ob TCM für mich infrage kommt. Mein Anliegen: </textarea>
+      <p class="tcm-concern-hint">Text ergänzen oder ändern – danach deinen Kontaktweg wählen.</p>
+      <a class="tcm-concern-wa" href="https://wa.me/41775236122" target="_blank" rel="noopener noreferrer" data-concern-whatsapp>Mit CARE Concierge auf WhatsApp schreiben <span aria-hidden="true">↗</span></a>
+      <p class="tcm-concern-speed">⚡️ Antwort meist in unter 1 Stunde auf WhatsApp</p>
+      <details class="tcm-concern-email-option" data-concern-alternative>
+        <summary>Lieber ohne WhatsApp? Hier senden <span aria-hidden="true">⌄</span></summary>
+        <div class="tcm-concern-email-fields">
       <label for="tcm-concern-phone">Telefonnummer</label>
       <input id="tcm-concern-phone" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="077 123 45 67">
       <div class="tcm-concern-or">oder</div>
@@ -24,7 +29,8 @@ const key = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAADf8GZzWnvFzYv
       <div id="tcm-concern-turnstile" data-sitekey={key}></div>
       <p class="tcm-concern-error" role="alert" data-concern-error hidden></p>
       <button type="submit" class="tcm-concern-send">Anliegen kostenlos senden <span aria-hidden="true">→</span></button>
-      <p class="tcm-concern-speed">⚡️ Antwort meist innerhalb von 1 Stunde</p>
+        </div>
+      </details>
       <p class="tcm-concern-privacy">Wir melden uns persönlich. Deine Angaben verwenden wir zur Bearbeitung deiner Anfrage. <a href="/datenschutz/">Datenschutz</a>. Bei akuten Beschwerden bitte medizinische Hilfe kontaktieren.</p>
     </form>
     <div class="tcm-concern-success" data-concern-success hidden tabindex="-1">
