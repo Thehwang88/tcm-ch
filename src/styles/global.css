@@ -71,7 +71,7 @@ h1, h2, h3 {
   transition: box-shadow var(--t-base) ease, transform var(--t-base) ease, border-color var(--t-base) ease;
   display: block;
 }
-.card:hover { box-shadow: var(--sh-lg); transform: translateY(-2px); border-color: rgba(45,155,111,.25); }
+.card:hover { box-shadow: var(--sh-lg); transform: translateY(-2px); border-color: rgba(23,27,26,.25); }
 .card h3 { font-size: 18px; font-weight: 700; margin: 0 0 6px; }
 .card p { color: #374151; font-size: var(--fs-small); margin: 0; }
 
@@ -90,7 +90,7 @@ h1, h2, h3 {
 .field { display: flex; flex-direction: column; margin-bottom: 16px; }
 .field label { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
 .field input, .field select, .field textarea { font-family: var(--font-sans); font-size: 15px; padding: 11px 13px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--white); width: 100%; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(45,155,111,.12); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(23,27,26,.12); }
 .field textarea { resize: vertical; min-height: 110px; line-height: 1.55; }
 .req { color: var(--blue); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
