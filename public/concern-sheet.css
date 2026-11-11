@@ -44,3 +44,69 @@
 .tcm-concern-email-option[open] summary span{transform:rotate(180deg)}
 .tcm-concern-email-fields{display:flex;flex-direction:column;padding:0 0 4px}
 #tcm-concern-form[hidden],.tcm-concern-success[hidden],.tcm-concern-error[hidden]{display:none!important}
+
+
+/* 11 Nov mobile sheet correction: keep the title and close button inside
+   visible viewport; scroll content within the panel, never behind browser UI. */
+@media(max-width:767px){
+  .tcm-concern-sheet[open]{
+    top:auto!important;right:0!important;bottom:0!important;left:0!important;
+    width:100%!important;
+    max-height:calc(100dvh - 72px)!important;
+    overflow:hidden!important;
+  }
+  .tcm-concern-panel{
+    max-height:calc(100dvh - 72px)!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    scroll-padding-top:18px;
+  }
+}
+/* Visually obvious secondary route: full-width bordered accordion control
+   with a large chevron that rotates only when expanded. */
+.tcm-concern-email-option{
+  border-top:1px solid #E8E6E3;
+  padding-top:14px;
+}
+.tcm-concern-email-option > summary{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+  width:100%;
+  box-sizing:border-box;
+  min-height:62px!important;
+  padding:12px 14px!important;
+  background:#F4F2EF!important;
+  border:1.5px solid #C6C8C6!important;
+  border-radius:14px!important;
+  color:#171B1A!important;
+  text-align:left!important;
+  cursor:pointer;
+  transition:background-color .15s,border-color .15s;
+}
+.tcm-concern-email-option > summary:hover,
+.tcm-concern-email-option[open] > summary{
+  background:#EEECEA!important;
+  border-color:#171B1A!important;
+}
+.tcm-concern-alt-text{
+  display:flex!important;flex-direction:column;
+  gap:3px;min-width:0;
+  font-size:14px;line-height:1.35;
+}
+.tcm-concern-alt-text strong{font-size:14px;font-weight:750}
+.tcm-concern-alt-text > span{font-size:13px;font-weight:600;color:#505453}
+.tcm-concern-alt-chevron{
+  display:flex!important;align-items:center;justify-content:center;
+  flex:0 0 40px;
+  height:40px;width:40px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid #C6C8C6;
+  color:#171B1A;
+  transition:transform .18s ease;
+}
+.tcm-concern-email-option[open] .tcm-concern-alt-chevron{transform:rotate(180deg)}
+.tcm-concern-email-fields{padding:12px 2px 4px}
