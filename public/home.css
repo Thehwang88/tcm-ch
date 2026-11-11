@@ -5898,11 +5898,14 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
     position:static;
     width:100%;
     height:auto;
-    /* Crop mostly empty grey at the bottom, a little at the top; retain all six faces.
-       6:5 frees roughly 17% of the photo height for the booking CTAs. */
-    aspect-ratio:6/5;
+    /* Keep the six therapists larger, trim the grey above their heads.
+       A 10:9 frame is closer to square, but stops short of pushing the CTA
+       as far down as the full 1:1 version. Crop from the TOP, not the feet. */
+    aspect-ratio:10/9;
     object-fit:cover;
-    object-position:36% 18%;
+    object-position:36% 100%;
+    transform:scale(1.08);
+    transform-origin:center 65%;
   }
   #home-content #heroPatient .sr-eyebrow {
     order:1;
