@@ -123,6 +123,9 @@ const homeHtml = homeHtmlCards;
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
     /* restore the SPA #app{padding-top:68px} offset so the full-bleed hero clears the fixed 68px header */
     #home-content{padding-top:68px}
+    /* Mobile header already reserves its own space in normal flow.
+       Do not add the old SPA fixed-header offset a second time. */
+    @media(max-width:767px){#home-content{padding-top:0}}
     /* Primary therapy grid: one compact link to the complete therapy overview. */
     #s-behandlungen .svc-all-cta{display:flex;justify-content:center;margin-top:clamp(24px,3vw,36px)}
     #s-behandlungen .svc-all-cta-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 24px;border-radius:999px;border:1.5px solid #171B1A;background:#171B1A;color:#fff;font-family:var(--font-sans);font-size:15px;font-weight:700;text-decoration:none;transition:background .16s ease,border-color .16s ease}
