@@ -238,54 +238,15 @@ function navMoreToggle(){
   window.addEventListener('resize', update);
 })();
 
-/* ── Mobile Header-Verhalten (≤1023px): Hysterese-Hide beim Runterscrollen,
-   sofortiges Reveal beim Hochscrollen. Desktop (≥1024px) unverändert.
-   Regeln: y<=20 immer sichtbar; ~10px akkumuliert runter -> hide (erst ab y>90);
-   ~6px akkumuliert hoch -> show. Kein Hide bei offenem Drawer oder Fokus im Header.
-   prefers-reduced-motion: CSS deaktiviert die Transition (nav-rebrand.css). */
+/* Shared mobile navigation: always visible. With a fixed Check-in banner
+   the previous scroll hide/reveal feature caused a header/banner collision.
+   Keep the drawer's existing show/sync hooks without any scroll hiding. */
 (function(){
-var nav=document.getElementById('mainNav');
-if(!nav) return;
-var mq=window.matchMedia('(max-width:1023px)');
-var isHome=window.location.pathname==='/' || window.location.pathname==='/index.html';
-var lastY=window.scrollY||0, acc=0, ticking=false, holdUntil=0;
-function isHidden(){return nav.classList.contains('nav-hidden');}
-function show(){nav.classList.remove('nav-hidden');}
-function hide(){
-  if(isHome) return; // homepage never auto-hides: sticky banner requires visible header
-  if(nav.contains(document.activeElement)) return;
-  var d=document.getElementById('siteDrawer');
-  if(d&&d.classList.contains('open')) return;
-  nav.classList.add('nav-hidden');
-}
-function onScroll(){
-  if(ticking) return; ticking=true;
-  requestAnimationFrame(function(){
-    ticking=false;
-    var y=window.scrollY||0;
-    // Homepage: keep the mobile navigation visible above the sticky Check-in
-    // banner; otherwise auto-hide exposes content in the reserved header gap.
-    if(isHome){lastY=y;acc=0;show();return;}
-    if(!mq.matches){lastY=y; if(isHidden()) show(); return;}
-    if(document.body.style.position==='fixed'||performance.now()<holdUntil){lastY=y; acc=0; return;} // Drawer offen / Restore
-    var d=y-lastY; lastY=y;
-    if(y<=20){acc=0; show(); return;}
-    if(d===0) return;
-    if((d>0)!==(acc>0)) acc=0;   // Richtungswechsel setzt Akkumulator zurueck
-    acc+=d;
-    if(acc>10&&y>90&&!isHidden()) hide();
-    else if(acc<-6&&isHidden()) show();
-  });
-}
-window.addEventListener('scroll',onScroll,{passive:true});
-nav.addEventListener('focusin',show);
-if(mq.addEventListener) mq.addEventListener('change',function(){if(!mq.matches) show();});
-// Restore the homepage header on back/forward cache navigations and tab resumes,
- // even if the previous scroll state retained nav-hidden before JS started.
-if(isHome){
+  var nav=document.getElementById('mainNav');
+  if(!nav) return;
+  function show(){nav.classList.remove('nav-hidden');}
   show();
   window.addEventListener('pageshow',show);
-}
-window.__tcmNavShow=show; // Drawer-Hooks
-window.__tcmNavSync=function(){holdUntil=performance.now()+400; lastY=window.scrollY||0; acc=0; show();};
+  window.__tcmNavShow=show;
+  window.__tcmNavSync=show;
 })();
