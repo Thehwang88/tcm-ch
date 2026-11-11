@@ -249,6 +249,14 @@ const TEL = `tel:+${site.whatsapp}`;
       if (r.top + (window.scrollY || 0) < window.innerHeight * 1.5) { target = el; }
       break;                                                 // nur den ersten sichtbaren pruefen
     }
+    // Mobile home: the real blue hero button is below the initial viewport on
+    // browsers with expanded bottom chrome. Observe that button—not the whole
+    // hero—so the shared sticky booking action is available until it comes into
+    // view, without shrinking the authentic team photo or duplicating CTAs.
+    if (location.pathname === '/') {
+      var homeHeroButton = document.querySelector('#heroPatient .sr-cta .sr-btn--solid');
+      if (homeHeroButton) target = homeHeroButton;
+    }
     if (!target) target = hero;
     // Patientenformulare (DE: [data-kf]/[data-kf-huelle]; EN: form.ev-form): zusaetzlich verborgen, solange irgendein Teil einer Formularsektion im Bild ist (Homepage:
     // #home-contact-form wie bisher; sonst die Sektion jeder Karte des gemeinsamen Formulars bzw. der gemeinsamen Huelle
