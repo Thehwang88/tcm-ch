@@ -62,6 +62,8 @@ const year = 2026;
     <link rel="stylesheet" href="/footer-rebrand.css" />
     <link rel="stylesheet" href="/standort-card.css" />
     <link rel="stylesheet" href="/knowledge-rebrand.css" />
+    <!-- Official brand colours only; no content, layout or markup changes. -->
+    <link rel="stylesheet" href="/warm-clinic.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content={robots} />}
@@ -106,7 +108,7 @@ const year = 2026;
 
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
   </head>
-  <body>
+  <body class="tcm-warm">
     <DeHeader />
 
     <main data-no-sticky-cta={stickyCta ? undefined : ''} data-wa-neutral={sensibel ? '' : undefined}>
