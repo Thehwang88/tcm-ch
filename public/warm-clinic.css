@@ -92,7 +92,7 @@ body.tcm-warm .sc .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
 body.tcm-warm .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F;color:#FFFFFF}
 body.tcm-warm .sc-chip:not(.sc-chip--gelb){background:#EFEEEC;color:#414642;border-color:#D8D6D2}
 body.tcm-warm .sc-btn--gelb,
-body.tcm-warm .sc-chip--gelb {background:#FFD84D;color:#111;border-color:#FFD84D}
+body.tcm-warm .sc-chip--gelb {background:#F5E7A3;color:#171B1A;border-color:#F5E7A3}
 /* The St. Gallen seasonal gift module keeps its offer semantics, but aligns large green
    background panels with the new charcoal/ivory identity. Gold remains gold. */
 body.tcm-warm .f30-hero {--f30-pine:#171B1A;--f30-pine-deep:#353A37;--f30-accent:#565B59;--f30-mint:#E4DDD2}
