@@ -437,3 +437,58 @@ body.tcm-warm #page-krankenkasse .hero-card-cta{
 body.tcm-warm #page-krankenkasse .hero-card-cta:hover{
   background:var(--tcm-primary-hover)!important;
 }
+
+
+/* Zürich clinic page CRO: image-free symptom navigation. The card's original
+   nav() handler, copy and destinations remain intact. Do not apply to therapies. */
+body.tcm-warm .clinic-symptoms-compact{padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(40px,5vw,68px)}
+body.tcm-warm .clinic-symptoms-compact .card-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
+}
+body.tcm-warm .clinic-symptoms-compact .svc-card{
+  min-width:0;min-height:0;display:flex;flex-direction:column;
+  background:#fff;border:1px solid var(--tcm-border,#D7D4D0);
+  border-radius:16px;box-shadow:none;overflow:hidden;
+  cursor:pointer;transform:none;
+}
+body.tcm-warm .clinic-symptoms-compact .svc-photo-wrap,
+body.tcm-warm .clinic-symptoms-compact .svc-photo-top-bar{display:none!important}
+body.tcm-warm .clinic-symptoms-compact .svc-body{
+  display:flex;flex-direction:column;flex:1;gap:8px;
+  padding:18px!important;min-width:0;
+}
+body.tcm-warm .clinic-symptoms-compact .svc-name{
+  font-size:16px;line-height:1.35;font-weight:750;color:var(--tcm-ink,#171B1A);
+}
+body.tcm-warm .clinic-symptoms-compact .svc-tagline{
+  font-size:13px;line-height:1.55;color:var(--tcm-text-soft,#505453);
+  display:block;white-space:normal;overflow:visible;text-overflow:clip;
+}
+body.tcm-warm .clinic-symptoms-compact .svc-cta{
+  margin-top:auto;padding-top:8px;border-top:1px solid var(--tcm-border,#D7D4D0);
+  color:var(--tcm-ink,#171B1A);
+}
+body.tcm-warm .clinic-symptoms-compact .svc-card:hover{
+  border-color:var(--tcm-text-soft,#505453);box-shadow:0 4px 16px rgba(23,27,26,.07);
+}
+body.tcm-warm .clinic-symptoms-compact .svc-card:focus-visible{
+  outline:3px solid var(--tcm-primary,#1769B1);outline-offset:3px;
+}
+@media(max-width:1000px){
+  body.tcm-warm .clinic-symptoms-compact .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  body.tcm-warm .clinic-symptoms-compact .card-grid{grid-template-columns:minmax(0,1fr);gap:9px}
+  body.tcm-warm .clinic-symptoms-compact .svc-body{padding:14px 16px!important;gap:5px}
+  body.tcm-warm .clinic-symptoms-compact .svc-tagline{font-size:12.5px}
+  body.tcm-warm .clinic-symptoms-compact .svc-cta{padding-top:5px}
+}
+/* Legacy mint icon tiles on location contact details: neutral, non-actionable. */
+body.tcm-warm .up-ico,
+body.tcm-warm .up-item .up-ico,
+body.tcm-warm .up-info .up-ico{
+  background:var(--tcm-surface-strong,#E8E6E3)!important;
+  border-color:var(--tcm-border,#D7D4D0)!important;
+  color:var(--tcm-ink,#171B1A)!important;
+}
+body.tcm-warm .up-ico svg{stroke:var(--tcm-ink,#171B1A)!important}
