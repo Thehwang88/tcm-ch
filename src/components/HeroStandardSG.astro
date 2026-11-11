@@ -98,8 +98,7 @@ const card = renderKontaktForm({
       <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
       <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt. <a href={SG_MAPS} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></p>
     </div>
-    {/* #termin: Vor-Anker direkt am Kartenblock (mobil nach Foto/Adresse/Zeiten, Titel bleibt per Scroll nach oben erreichbar);
-        Offset = Header + sticky Banner. Kein Vorfahre der Formularkarte (kontakt-form.js übernimmt den Hash nicht). */}
+    {/* #termin: anchor offset under the fixed site header; no promotional banner. */}
     <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
     <div class="sgt-channels">
       <a class="sgt-ch sgt-ch--primary" href="#online-buchen" data-care-cta="termin-karte-checkin">
@@ -213,12 +212,14 @@ const card = renderKontaktForm({
   .sgt-ch-title{font-size:19px;font-weight:800;color:var(--black);margin:6px 0 8px;line-height:1.2;letter-spacing:-.01em}
   .sgt-ch-sub{font-size:14.5px;line-height:1.5;color:var(--mid);flex:1}
   .sgt-ch-go{margin-top:16px;font-size:14px;font-weight:700;color:var(--blue)}
-  .sgt-ch--primary{background:var(--brand-black,#020B10);border-color:var(--brand-black,#020B10)}
-  .sgt-ch--primary .sgt-ch-label{color:#EEDBD7}
-  .sgt-ch--primary .sgt-ch-title{color:#fff}
-  .sgt-ch--primary .sgt-ch-sub{color:rgba(255,255,255,.82)}
-  .sgt-ch--primary .sgt-ch-go{color:#EEDBD7}
-  .sgt-ch--primary:hover{border-color:var(--brand,#1AE288)}
+  /* The SG quick-booking card is the free 360° offer: ice blue, not
+     a second solid-blue booking button. */
+  .sgt-ch--primary{background:#E8F2FA;border-color:#C8E0F2}
+  .sgt-ch--primary .sgt-ch-label{color:#345B79}
+  .sgt-ch--primary .sgt-ch-title{color:#171B1A}
+  .sgt-ch--primary .sgt-ch-sub{color:#505453}
+  .sgt-ch--primary .sgt-ch-go{color:#1769B1}
+  .sgt-ch--primary:hover{border-color:#1769B1;background:#DDEDF8}
   .sgt-onedoc{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:20px 20px 12px;margin-bottom:24px;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
   .sgt-od-head{margin-bottom:10px}
   .sgt-od-h{margin:0 0 4px;font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--black)}
@@ -264,13 +265,13 @@ const card = renderKontaktForm({
     }
     .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-checkin"]{
       order:1;display:flex;width:100%;min-height:48px;
-      justify-content:center;background:var(--tcm-offer,#EEDBD7)!important;
-      border-color:var(--tcm-offer,#EEDBD7)!important;
+      justify-content:center;background:var(--tcm-offer,#E8F2FA)!important;
+      border-color:var(--tcm-offer,#E8F2FA)!important;
       color:var(--tcm-ink,#171B1A)!important;box-shadow:none!important;
     }
     .lsr-hero.hlsg .lsr-ctas a[data-care-cta="hero-checkin"]:hover{
-      background:var(--tcm-offer-hover,#E2C6BF)!important;
-      border-color:var(--tcm-offer-hover,#E2C6BF)!important;
+      background:var(--tcm-offer-hover,#D4E7F5)!important;
+      border-color:var(--tcm-offer-hover,#D4E7F5)!important;
     }
     .lsr-hero.hlsg .lsr-trust{order:5;margin:0;font-size:13px}
     .lsr-hero.hlsg .lsr-trust > div:not(.lsr-google):nth-child(n+2){display:none!important}
