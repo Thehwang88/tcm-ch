@@ -1,0 +1,103 @@
+/* Official TCM.ch palette — English routes. Colour-only overrides.
+   Preserve all existing layout, text, component structure, links, and events.
+   Blue: conversion; charcoal: navigation; champagne: complimentary offer;
+   green: WhatsApp. Loaded after en-v2.css in the shared EN layout. */
+
+html[lang="en"] body {
+  --brand:var(--tcm-surface-strong);
+  --brand-hover:var(--tcm-border);
+  --brand-black:var(--tcm-ink);
+  --brand-surface:var(--tcm-surface);
+  --brand-tint:var(--tcm-surface);
+  --brand-ink:var(--tcm-text-soft);
+  --blue:var(--tcm-text-soft);
+  --blue-dark:var(--tcm-ink);
+  --blue-light:var(--tcm-surface);
+  --green:var(--tcm-text-soft);
+  --green-light:var(--tcm-surface);
+  --green-dark:var(--tcm-ink);
+  --green-mid:var(--tcm-border);
+  --green-mint:var(--tcm-surface-strong);
+  --ink:var(--tcm-ink);
+  --black:var(--tcm-ink);
+  --text:var(--tcm-text);
+  --text-soft:var(--tcm-text-soft);
+  --muted:var(--tcm-muted);
+  --border:var(--tcm-border);
+  --surface:var(--tcm-surface);
+  --bg-soft:var(--tcm-surface);
+  color:var(--tcm-text);
+}
+
+/* Grey / neutral architecture; not blue or the old mint. */
+html[lang="en"] :is(.ev-hero,.ev-cta,main .hero) {
+  background:var(--tcm-surface-strong);
+  color:var(--tcm-ink);
+}
+html[lang="en"] :is(.ev-eyebrow,main .eyebrow,.ev-crumb,.ev-crumb a) {
+  color:var(--tcm-text-soft);
+}
+html[lang="en"] :is(.ev-card,.card,main .hero-figure) {
+  border-color:var(--tcm-border);
+}
+
+/* Explicit conversion controls: no decorative blue. */
+html[lang="en"] :is(
+  .ev-btn--solid,.btn--primary,.tcm-btn--mint,
+  .ev-form button[type="submit"],.ev-form input[type="submit"],
+  .kf-btn--primary,.scb-primary:not(.scb-primary--gelb)
+) {
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+html[lang="en"] :is(
+  .ev-btn--solid,.btn--primary,.tcm-btn--mint,
+  .ev-form button[type="submit"],.ev-form input[type="submit"],
+  .kf-btn--primary,.scb-primary:not(.scb-primary--gelb)
+):hover {
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+  color:#fff!important;
+}
+
+/* Exploration / utility controls remain outlined or charcoal. */
+html[lang="en"] :is(.ev-btn--outline,.btn--secondary,.tcm-btn--outline) {
+  background:transparent!important;
+  color:var(--tcm-ink)!important;
+  border-color:var(--tcm-ink)!important;
+}
+html[lang="en"] :is(.ev-btn--outline,.btn--secondary,.tcm-btn--outline):hover {
+  background:rgba(23,27,26,.06)!important;
+  color:var(--tcm-ink)!important;
+}
+html[lang="en"] :is(.site-nav__links a,main a:not([class]):hover) {
+  color:var(--tcm-text);
+}
+
+/* Rose is reserved for existing Check-in/introductory offer surfaces. */
+html[lang="en"] :is(.sgb-banner,.sgcp-card,.sgcp-reopen,.sc-btn--gelb,.sc-chip--gelb) {
+  background:var(--tcm-offer)!important;
+  color:var(--tcm-ink)!important;
+  border-color:var(--tcm-offer)!important;
+}
+html[lang="en"] :is(.sgb-cta,.sgcp-cta) {
+  background:var(--tcm-ink)!important;
+  color:#fff!important;
+}
+
+/* Neutral focus/choices; blue focus outline only for purposeful interactive action. */
+html[lang="en"] :is(input,textarea,select):focus-visible {
+  border-color:var(--tcm-primary)!important;
+  outline-color:var(--tcm-primary);
+}
+html[lang="en"] :is(.ev-btn,.btn--primary,.btn--secondary):focus-visible {
+  outline:3px solid var(--tcm-primary);
+  outline-offset:3px;
+}
+
+/* Never recolour the actual WhatsApp icon/brand. */
+html[lang="en"] :is(.ev-btn--wa svg,.wa-icon,.whatsapp-icon) {
+  color:var(--tcm-whatsapp);
+}
