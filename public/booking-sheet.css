@@ -39,3 +39,17 @@
 .tcm-booking-sheet .tcm-booking-close:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
 @media(min-width:768px){.tcm-booking-sheet[open]{inset:0;margin:auto;width:min(560px,calc(100vw - 32px))}.tcm-booking-panel{max-height:min(92dvh,920px);border-radius:22px;box-shadow:0 15px 55px rgba(0,0,0,.2)}}
 @media(prefers-reduced-motion:no-preference){.tcm-booking-sheet[open] .tcm-booking-panel{animation:tcm-booking-in .2s ease-out}@keyframes tcm-booking-in{from{transform:translateY(18px);opacity:.9}to{transform:translateY(0);opacity:1}}}
+
+
+/* St. Gallen: the booking sheet already supplies the heading and intro.
+   Suppress only its duplicated black in-card heading *inside this dialog*.
+   The original in-page form heading and every appointment option remain intact. */
+.tcm-booking-content--sg .inline-form-card.kf--ruhig > .kf-kopf{
+  display:none!important;
+}
+.tcm-booking-content--sg .inline-form-card.kf--ruhig{
+  padding-top:0!important;
+}
+.tcm-booking-content--sg .kf-opts{
+  margin-top:0;
+}
