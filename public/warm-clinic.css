@@ -277,3 +277,28 @@ body.tcm-warm .cta-band{background:var(--tcm-ink)!important}
 body.tcm-warm .cta-band .btn-white{
   background:#fff!important;color:var(--tcm-ink)!important;border-color:#fff!important;
 }
+
+
+/* Brand Wave 2 follow-through: LayoutDe articles / knowledge / insurance / About.
+   Legacy knowledge-rebrand.css uses .btn--primary (not .btn-primary).
+   This is the missing semantic conversion selector, not a layout change. */
+body.tcm-warm main .btn--primary:not(.sc-btn--gelb) {
+  background:var(--tcm-primary)!important;
+  border-color:var(--tcm-primary)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+body.tcm-warm main .btn--primary:not(.sc-btn--gelb):hover {
+  background:var(--tcm-primary-hover)!important;
+  border-color:var(--tcm-primary-hover)!important;
+  color:#fff!important;
+}
+body.tcm-warm main .btn--secondary {
+  background:transparent!important;
+  border-color:var(--tcm-ink)!important;
+  color:var(--tcm-ink)!important;
+}
+body.tcm-warm main .btn--secondary:hover {
+  background:rgba(23,27,26,.06)!important;
+  color:var(--tcm-ink)!important;
+}
