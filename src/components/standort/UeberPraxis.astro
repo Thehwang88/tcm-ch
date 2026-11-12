@@ -14,6 +14,7 @@ const mobileClinicPhoto = sg && !data.planned
 // sg (SG-Vorlage, 08.11.2026): Einleitung immer, keine Praxisfotos (das Foto steht links im Termin-Bereich, TerminSektion);
 // der lokale Intro-Text (intro.body ohne eigene H2) folgt als Prosa unter der Einleitung, wie in St. Gallen.
 const introProsa = sg ? (data.intro?.body ?? '').replace(/^\s*<h2[^>]*>[\s\S]*?<\/h2>/, '') : '';
+const zhMobileCRO = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].includes(data.slug);
 const address = data.nap.strasse ? `${data.nap.strasse}, ${data.nap.plz} ${data.nap.ort}` : data.nap.ort; // ohne Strasse (vorVertrag): nur Ort
 // This is the SINGLE source of Anfahrt on the page (oev + autoParken). IntroNap holds no
 // Anfahrt. CRO-Layout: Kontakt-Reihenfolge Adresse → Öffnungszeiten → Telefon → E-Mail,
@@ -62,8 +63,17 @@ const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').spl
     <img src={mobileClinicPhoto.src} alt={mobileClinicPhoto.alt} width="1200" height="900" loading="lazy" decoding="async" />
   </figure>
 )}
+{zhMobileCRO && (
+  <div class="up-zh-mobile-intro">
+    <p>Akupunktur &amp; TCM in {data.stadt}. Adresse, Kontakt und Anreise findest du direkt darunter.</p>
+    {introProsa && <details class="up-zh-mobile-details">
+      <summary>Mehr über diese Praxis <span aria-hidden="true">+</span></summary>
+      <div class="content-body" set:html={introProsa} />
+    </details>}
+  </div>
+)}
 {(sg || ((data.cro || data.praxisBilder) && !slim)) && (
-  <div class="content-body" style="margin-bottom:18px"><p>{data.review && !data.nap.strasse ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Deine Anfrage nehmen wir gern entgegen und schlagen dir die passende Praxis vor.' : data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p>{introProsa && <Fragment set:html={introProsa} />}</div>
+  <div class:list={["content-body", {"up-zh-desktop-intro": zhMobileCRO}]} style="margin-bottom:18px"><p>{data.review && !data.nap.strasse ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Deine Anfrage nehmen wir gern entgegen und schlagen dir die passende Praxis vor.' : data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p>{introProsa && <Fragment set:html={introProsa} />}</div>
 )}
 {praxisBilder.length > 0 && (
   <div class={paar ? 'up-bilder-paar' : undefined} style={paar ? `--up-cols:${paarCols}` : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>
@@ -96,6 +106,19 @@ const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').spl
 ) : null}
 {data.wissenLink && (<p class="sg-wissen-xlink" style="margin:20px 0 0;font-size:15px;line-height:1.55"><a href={data.wissenLink.href} style="color:var(--blue);font-weight:700;text-decoration:none">{data.wissenLink.label} →</a><span style="display:block;color:#4a4a4a;font-size:13.5px;margin-top:3px">{data.wissenLink.sub}</span></p>)}
 <style is:global>
+  @media(max-width:767px){
+    .up-zh-desktop-intro{display:none!important}
+    .up-zh-mobile-intro{display:block;margin:0 0 16px}
+    .up-zh-mobile-intro>p{font-size:15px;line-height:1.55;margin:0 0 12px;color:var(--mid)}
+    .up-zh-mobile-details{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0}
+    .up-zh-mobile-details summary{cursor:pointer;list-style:none;font-family:var(--font-sans);font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+    .up-zh-mobile-details summary::-webkit-details-marker{display:none}
+    .up-zh-mobile-details summary span{font-size:19px;font-weight:400}
+    .up-zh-mobile-details[open] summary span{transform:rotate(45deg)}
+    .up-zh-mobile-details .content-body{margin-top:12px;font-size:15px;line-height:1.55}
+    .up-zh-mobile-details .content-body p{font-size:15px;line-height:1.55;margin-bottom:12px}
+  }
+  @media(min-width:768px){.up-zh-mobile-intro{display:none}}
   .up-mobile-clinic-photo{display:none}
   @media(max-width:1023px){
     .up-mobile-clinic-photo{display:block;margin:0 0 22px;border-radius:var(--r-card,16px);overflow:hidden;box-shadow:var(--sh-md)}
