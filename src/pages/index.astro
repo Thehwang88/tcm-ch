@@ -266,10 +266,11 @@ const homeHtml = homeHtmlCards;
         user-select:none;
       }
       @keyframes tcm-snow-fall{from{transform:translate3d(0,-20px,0)}to{transform:translate3d(var(--snow-drift),calc(100vh + 60px),0)}}
-      /* Seasonal, decorative Santa hat precisely anchored to the M in Moderne.
-         Hidden by default and entirely absent on mobile; no text or CTA overlay. */
+      /* Seasonal hat: white brim rests on the top-left shoulder of the M, like a fitted cap.
+         Smaller, lowered and mirrored (pom-pom to the left) to avoid the eyebrow above.
+         Desktop only; heading text, booking CTAs and mobile layout are unchanged. */
       #heroPatient .tcm-santa-m{position:relative;display:inline-block}
-      #heroPatient .tcm-santa-hat{display:none;position:absolute;left:-.14em;top:-.56em;width:.87em;height:auto;overflow:visible;pointer-events:none;transform:rotate(-12deg);transform-origin:48% 82%;filter:drop-shadow(0 2px 2px rgba(18,21,22,.14))}
+      #heroPatient .tcm-santa-hat{display:none;position:absolute;left:-.04em;top:-.26em;width:.72em;height:auto;overflow:visible;pointer-events:none;transform:scaleX(-1) rotate(9deg);transform-origin:50% 84%;filter:drop-shadow(0 1px 1.5px rgba(18,21,22,.17))}
       @media(min-width:1024px){
         html.tcm-santa-season #heroPatient .tcm-santa-hat{display:block}
       }
