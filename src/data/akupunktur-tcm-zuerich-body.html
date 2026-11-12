@@ -1,4 +1,20 @@
 <style>
+/* Clear native dropdown affordance for the Zürich booking form. */
+.akz-funnel-section .zh-location-select{
+  appearance:none;-webkit-appearance:none;
+  padding-right:52px!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23263d49' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;background-position:right 17px center!important;
+  background-size:20px 20px!important;cursor:pointer;
+}
+@media(max-width:767px){
+ .akz-funnel-section .kf-kopf{padding:18px 18px 12px!important}
+ .akz-funnel-section .kf-kopf-sub{display:none!important}
+ .akz-funnel-section .zh-location-select{font-size:16px!important}
+ .akz-funnel-section #zh-standort-hint{font-size:12px!important;line-height:1.4!important;margin-top:5px!important}
+}
+</style>
+<style>
 /* Mobile disclosures retain essential insurance/safety facts without large cards. */
 .akz-mobile-disclosure{display:none}
 @media(max-width:767px){
@@ -547,7 +563,7 @@
           </div>
         </div>
         <div class="reveal">
-          <div class="inline-form-card kf kf--ruhig kf-huelle" data-kf-huelle="zuerich-funnel"><link rel="stylesheet" href="/kontakt-form.css"><div class="kf-kopf"><h3 class="kf-h inline-form-title">Termin bei TCM.ch finden</h3><p class="kf-kopf-sub">Wir melden uns mit einem passenden Termin an einem unserer Zürcher Standorte.</p></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-family:var(--font-sans);margin-bottom:4px">Schritt 1</div><label class="form-label" for="zh-standort">Welche Praxis passt dir?</label><select class="form-select" name="standort"><option value="" selected>Egal – bitte empfehlen</option><option>Zürich Bahnhofstrasse</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select><p class="kf-fhint" style="margin:6px 0 0">Wir empfehlen dir eine passende Praxis. Du kannst auch selbst wählen.</p></div><div class="form-group zh-offer-choice">
+          <div class="inline-form-card kf kf--ruhig kf-huelle" data-kf-huelle="zuerich-funnel"><link rel="stylesheet" href="/kontakt-form.css"><div class="kf-kopf"><h3 class="kf-h inline-form-title">Termin bei TCM.ch finden</h3><p class="kf-kopf-sub">Wir melden uns mit einem passenden Termin an einem unserer Zürcher Standorte.</p></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-family:var(--font-sans);margin-bottom:4px">Schritt 1</div><label class="form-label" for="zh-standort">Welche Praxis passt dir?</label><select class="form-select zh-location-select" name="standort" id="zh-standort" aria-describedby="zh-standort-hint"><option value="" selected>Egal – bitte empfehlen</option><option>Zürich Bahnhofstrasse</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select><p class="kf-fhint" id="zh-standort-hint" style="margin:6px 0 0">Tippe auf das Feld, um einen Standort auszuwählen.</p></div><div class="form-group zh-offer-choice">
   <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-family:var(--font-sans);margin-bottom:4px">Schritt 2</div>
   <label class="form-label">Terminart wählen</label>
   <fieldset class="kf-opts" style="margin-top:10px">
