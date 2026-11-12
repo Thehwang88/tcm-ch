@@ -78,6 +78,28 @@
 }
 </style>
 <style>
+/* Mobile: disclosure-only sections must not inherit 68px section spacing.
+   Keep all content and details accessible, desktop untouched. */
+@media(max-width:767px){
+  .akz .akz-kasse-section,
+  .akz .akz-wissen-section{
+    padding-top:18px!important;
+    padding-bottom:18px!important;
+    min-height:0!important;
+    height:auto!important;
+  }
+  .akz .akz-kasse-section>.akz-mobile-disclosure,
+  .akz .akz-wissen-section>.akz-mobile-disclosure{
+    margin-top:0!important;
+    margin-bottom:0!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+    min-height:0!important;
+  }
+  .akz .akz-mobile-disclosure details{
+    margin-bottom:0!important;
+  }
+}
 /* Mobile disclosures retain essential insurance/safety facts without large cards. */
 .akz-mobile-disclosure{display:none}
 @media(max-width:767px){
