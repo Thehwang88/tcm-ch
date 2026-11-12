@@ -1,4 +1,15 @@
 <style>
+/* Zürich funnel: don't reserve vertical space for an unrendered Turnstile.
+   Once Cloudflare inserts its iframe, the security widget stays visible. */
+@media(max-width:767px){
+  .akz-funnel-section .kf-huelle .cf-turnstile-wrap:has(.cf-turnstile:empty){display:none!important}
+  .akz-funnel-section .kf-huelle .cf-turnstile-wrap:not(:has(iframe)){min-height:0!important;height:auto!important;padding:0!important;margin:0!important}
+  .akz-funnel-section .kf-huelle .inline-form{min-height:0!important}
+  .akz-funnel-section .kf-huelle #zh-extra-toggle{margin-bottom:4px!important}
+  .akz-funnel-section .kf-huelle .form-submit{margin-top:10px!important}
+}
+</style>
+<style>
 /* Clear native dropdown affordance for the Zürich booking form. */
 .akz-funnel-section .zh-location-select{
   appearance:none;-webkit-appearance:none;
