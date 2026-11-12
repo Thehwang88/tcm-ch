@@ -1,4 +1,17 @@
 <style>
+/* Zürich why: preserve full desktop explanation; mobile gets concise patient value. */
+.zh-why-mobile{display:none}
+@media(max-width:767px){
+  .zh-why-section{padding:30px 0 32px!important}
+  .zh-why-section .zh-why-desktop{display:none!important}
+  .zh-why-section .zh-why-mobile{display:block}
+  .zh-why-mobile .section-label{margin-bottom:12px}
+  .zh-why-mobile h2{font-size:clamp(26px,7vw,34px);line-height:1.14;letter-spacing:-.035em;margin:0 0 12px;font-weight:800;color:#181d1c}
+  .zh-why-mobile p{font-size:16px;line-height:1.5;margin:0 0 16px;color:#4d5554}
+  .zh-why-mobile-points{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:650;line-height:1.4;color:#273332}
+}
+</style>
+<style>
 /* Zürich-Hub only: compact mobile proof instead of four tall information cards. */
 .zh-proof-mobile{display:none}
 @media(max-width:767px){
@@ -588,6 +601,17 @@
 
   <section class="section zh-why-section" style="background:var(--surface)">
     <div class="wrap">
+      <div class="zh-why-mobile">
+        <div class="section-label">Warum TCM.ch Zürich</div>
+        <h2>Du musst nicht wissen, wo du anfangen sollst.</h2>
+        <p>Sag uns, was du brauchst. Wir helfen dir, die passende Praxis und Behandlung zu finden.</p>
+        <div class="zh-why-mobile-points" aria-label="Deine Vorteile">
+          <span>✓ Eine Anfrage für drei Praxen</span>
+          <span>✓ Passende Behandlung finden</span>
+          <span>✓ Persönliche Unterstützung</span>
+        </div>
+      </div>
+      <div class="zh-why-desktop">
       <div class="reveal" style="max-width:68ch;margin-bottom:32px">
         <div class="section-label">Warum TCM.ch Zürich</div>
         <h2 class="section-title">Du musst nicht wissen, <em>wo oder womit du anfangen sollst.</em></h2>
@@ -597,6 +621,7 @@
         <div class="city-card location-card"><div class="location-city">Eine Anfrage, drei Praxen</div><div class="location-desc">Du musst nicht drei Kalender vergleichen. Wir prüfen Bahnhofstrasse, Oerlikon und Höngg für dich.</div></div>
         <div class="city-card location-card"><div class="location-city">Therapie nicht selbst wählen</div><div class="location-desc">Akupunktur, Tuina, Schröpfen oder Kräutertherapie werden nach Anamnese und Befund eingeordnet.</div></div>
         <div class="city-card location-card"><div class="location-city">Vorher Klarheit zu Kosten</div><div class="location-desc">Zusatzversicherung und voraussichtliche Abrechnung klären wir auf Wunsch vor dem ersten Termin.</div></div>
+      </div>
       </div>
     </div>
   </section>
