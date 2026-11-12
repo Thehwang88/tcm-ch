@@ -266,6 +266,18 @@ const homeHtml = homeHtmlCards;
         user-select:none;
       }
       @keyframes tcm-snow-fall{from{transform:translate3d(0,-20px,0)}to{transform:translate3d(var(--snow-drift),calc(100vh + 60px),0)}}
+      /* Desktop-only winter polish: higher contrast across cream copy and grey team photo.
+         Keep 13 original flakes and appearance unchanged on mobile. */
+      @media(min-width:1024px){
+        #heroPatient .tcm-snowflake{
+          font-size:calc(var(--snow-size) * 2.8);
+          color:rgba(var(--snow-rgb, 103,144,169),var(--snow-opacity-desktop, .48));
+          text-shadow:0 1px 2px rgba(27,43,52,.10);
+        }
+      }
+      @media(max-width:1023px){
+        #heroPatient .tcm-snowflake:nth-child(n+14){display:none!important}
+      }
       @media(prefers-reduced-motion:reduce){#heroPatient .tcm-snow-layer{display:none!important}}
     </style>
     <script is:inline>
@@ -276,14 +288,18 @@ const homeHtml = homeHtmlCards;
         var layer=document.createElement('div');
         layer.className='tcm-snow-layer';
         layer.setAttribute('aria-hidden','true');
-        // Fixed parameters: soft, sparse, reproducible and lightweight.
-        for(var i=0;i<13;i++){
+        // Fixed parameters: lightweight, reproducible. Four additional desktop-only flakes.
+        for(var i=0;i<17;i++){
           var flake=document.createElement('i');
           flake.className='tcm-snowflake';
           flake.textContent='❄︎';
-          flake.style.setProperty('--snow-x',((i*73+17)%97+1)+'%');
+          var x=((i*73+17)%97+1);
+          flake.style.setProperty('--snow-x',x+'%');
           flake.style.setProperty('--snow-size',(4+i%3)+'px');
           flake.style.setProperty('--snow-opacity',(0.22+(i%4)*0.065).toFixed(2));
+          // Steel-blue on the light hero copy; soft white over the grey team photograph.
+          flake.style.setProperty('--snow-rgb',x<51?'73,109,130':'255,255,255');
+          flake.style.setProperty('--snow-opacity-desktop',(x<51?0.37+(i%4)*0.055:0.42+(i%4)*0.055).toFixed(2));
           flake.style.setProperty('--snow-duration',(15+(i*7)%14)+'s');
           flake.style.setProperty('--snow-delay',(-((i*11)%25))+'s');
           flake.style.setProperty('--snow-drift',((i%2?1:-1)*(12+(i*13)%55))+'px');
