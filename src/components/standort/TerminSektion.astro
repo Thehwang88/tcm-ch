@@ -173,6 +173,21 @@ const zhCRO = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].i
   .sgt-form .kf{width:100%;max-width:560px;margin:0 auto}
   /* Generische Trust-Zeile aus home.js (form-trust-checklist) nicht über dem SG-Formular: dupliziert die Karten. */
   .sgt-form .form-trust-checklist{display:none}
+  /* Zürich-only mobile: concise contact choices, form remains fully functional.
+     Keep all three links accessible; do not alter shared form renderer or tracking. */
+  @media(max-width:767px){
+    .zh-cro-booking .sgt-head{margin-bottom:14px}
+    .zh-cro-booking .sgt-channels{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:14px}
+    .zh-cro-booking .sgt-ch{min-width:0;padding:12px 13px;border-radius:12px}
+    .zh-cro-booking .sgt-ch--primary{grid-column:1/-1}
+    .zh-cro-booking .sgt-ch-label,
+    .zh-cro-booking .sgt-ch-sub,
+    .zh-cro-booking .sgt-ch-go{display:none}
+    .zh-cro-booking .sgt-ch-title{font-size:15px;line-height:1.3;margin:0;overflow-wrap:anywhere}
+    .zh-cro-booking .sgt-ch:not(.sgt-ch--primary) .sgt-ch-title{font-size:14px}
+    .zh-cro-booking .sgt-form .kf-kopf{padding-top:16px!important;padding-bottom:12px!important}
+    .zh-cro-booking .sgt-form .kf-kopf-sub{font-size:13px!important;line-height:1.4!important}
+  }
   /* Gelbe Terminart-Auswahl: seit 06.11.2026 gemeinsam in kontakt-form.css (.kf--gelb). */
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}}
   .sgt-team a{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
