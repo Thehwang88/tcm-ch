@@ -1,4 +1,16 @@
 <style>
+/* Zürich-Hub only: compact mobile proof instead of four tall information cards. */
+.zh-proof-mobile{display:none}
+@media(max-width:767px){
+  .zh-proof-section{padding:22px 0 20px!important}
+  .zh-proof-section .section-label{margin-bottom:12px!important}
+  .zh-proof-section .zh-proof-grid{display:none!important}
+  .zh-proof-mobile{display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;font-size:13px;line-height:1.45;font-weight:600;color:#29343a}
+  .zh-proof-mobile>span{display:inline-flex;align-items:center;gap:6px}
+  .zh-proof-mobile>span>span{font-weight:800;color:#2368a6}
+}
+</style>
+<style>
   /* Layout-only helpers - design tokens only, no new colours/fonts/components. */
   .akz{padding-top:68px}
   /* Keep the fixed-header clearance on .akz, but eliminate the SECOND 76px
@@ -509,6 +521,11 @@
         <div class="city-card location-card"><div class="location-city">EMR / ASCA</div><div class="location-desc">Behandlung durch registrierte Therapeut:innen, je nach Person und Methode.</div></div>
         <div class="city-card location-card"><div class="location-city">Kassen-Check</div><div class="location-desc">Wir helfen dir vor dem Termin zu prüfen, was deine Zusatzversicherung übernimmt.</div></div>
         <div class="city-card location-card"><div class="location-city">Persönliche Koordination</div><div class="location-desc">Wir schlagen dir die passende Praxis oder den nächsten freien Termin vor.</div></div>
+      </div>
+      <div class="zh-proof-mobile" aria-label="TCM.ch Zürich auf einen Blick">
+        <span><span aria-hidden="true">✓</span> 3 Standorte in Zürich</span>
+        <span><span aria-hidden="true">✓</span> Akupunktur &amp; TCM</span>
+        <span><span aria-hidden="true">✓</span> Persönliche Terminvermittlung</span>
       </div>
     </div>
   </section>
