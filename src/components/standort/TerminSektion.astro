@@ -53,8 +53,16 @@ const zhCRO = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].i
       <div class="sgt-head">
         <h2 class="section-title" id="sgt-h">Termin in <em>{data.stadt}</em></h2>
         <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt.{place && <Fragment> <a href={place} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></Fragment>}</p>
-        {zhCRO && team.length > 0 && <p class="zh-cro-team"><span>Team an diesem Standort:</span>{team.slice(0, 3).map((t) => <a href={`/team/${t.slug}/`}>{t.name}</a>)}</p>}
+        {zhCRO && team.length > 0 && <p class="zh-cro-team zh-cro-team--compact"><span>Team an diesem Standort:</span>{team.slice(0, 3).map((t) => <a href={`/team/${t.slug}/`}>{t.name}</a>)}</p>}
       </div>
+      <style is:global>
+        @media(max-width:767px){
+          .sgt .zh-cro-team--compact{font-size:13px!important;line-height:1.5!important;margin:7px 0 12px!important;display:flex;flex-wrap:wrap;gap:3px 10px}
+          .sgt .zh-cro-team--compact span{width:100%;font-size:12px}
+          .sgt .zh-cro-team--compact a{font-size:13px!important}
+          .sgt .sgt-sub{font-size:14px!important;line-height:1.5!important}
+        }
+      </style>
       <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
       <div class="sgt-channels">
         {PU ? (
