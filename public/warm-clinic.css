@@ -968,6 +968,21 @@ body.tcm-warm #home-content section.wa-section--merged .wa-yuna-card .wa-yuna-co
    replaces symptom browsing only on mobile. Browser-native tel: link.
    Existing desktop browse link, booking handler and destinations unchanged. */
 body.tcm-warm #home-content #heroPatient .sr-btn--call{display:none!important}
+/* Align desktop secondary CTA with mobile: describe concern instead of browsing.
+   Reuse the existing data-open-concern link and its functioning concern sheet. */
+@media(min-width:768px){
+  body.tcm-warm #home-content #heroPatient .sr-btn--browse{display:none!important}
+  body.tcm-warm #home-content #heroPatient .sr-btn--call{
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:center;
+    background:transparent!important;
+    border:2px solid var(--tcm-ink,#171B1A)!important;
+    color:var(--tcm-ink,#171B1A)!important;
+    text-decoration:none!important;
+    box-shadow:none!important;
+  }
+}
 @media(max-width:767px){
   body.tcm-warm #home-content #heroPatient .sr-btn--browse{display:none!important}
   body.tcm-warm #home-content #heroPatient .sr-btn--call{
