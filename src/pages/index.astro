@@ -138,23 +138,12 @@ const homeHtml = homeHtmlCards;
     #s-behandlungen .svc-all-cta-link:focus-visible{outline:3px solid #565B59;outline-offset:3px}
     @media(max-width:600px){#s-behandlungen .svc-all-cta-link{width:100%;max-width:340px}}
     /* Reduzierter Standortfinder auf Home: eine visuelle Sprache, keine Promo-Wiederholungen. */
-    #home-content .home-locations-feature{
-      margin-top:28px;padding:clamp(22px,3vw,30px);border:1px solid rgba(2,11,16,.12);
-      border-radius:18px;background:linear-gradient(135deg,var(--tcm-surface) 0%,var(--tcm-surface-strong) 68%,var(--tcm-offer) 100%);display:flex;align-items:flex-end;
-      justify-content:space-between;gap:28px
-    }
-    #home-content .home-locations-feature__copy{max-width:680px}
-    #home-content .home-locations-kicker,
+    #home-content #home-zuerich{margin-top:28px;scroll-margin-top:calc(var(--header-h,76px) + 20px)}
+    #home-content .home-locations-hub-link{margin:14px 0 0}
     #home-content .home-locations-divider>span{
       font-family:var(--font-sans);font-size:11px;font-weight:800;letter-spacing:.14em;
       text-transform:uppercase;color:var(--brand-ink,#0B7A4B)
     }
-    #home-content .home-locations-feature h3{
-      margin:7px 0 7px;font-family:var(--font-sans);font-size:clamp(22px,2.5vw,30px);
-      font-weight:800;letter-spacing:-.025em;color:var(--brand-black,#020B10)
-    }
-    #home-content .home-locations-feature p{margin:0;color:rgba(2,11,16,.68);font-size:15px;line-height:1.55}
-    #home-content .home-locations-feature__actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;flex-shrink:0}
     #home-content .home-locations-textlink,
     #home-content .home-locations-divider a{
       color:var(--brand-black,#020B10);font-family:var(--font-sans);font-size:14px;font-weight:750;
@@ -196,7 +185,6 @@ const homeHtml = homeHtmlCards;
       display:flex;align-items:center;justify-content:space-between;gap:18px
     }
     @media(max-width:960px){
-      #home-content .home-locations-feature{align-items:flex-start;flex-direction:column}
       #home-content .home-loc-grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
     @media(max-width:720px){
