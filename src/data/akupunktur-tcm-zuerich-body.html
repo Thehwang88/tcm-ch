@@ -1,4 +1,37 @@
 <style>
+/* Zürich paid-traffic funnel: mobile-only reduction of repeated content.
+   Preserve desktop and all links, native form behavior, FAQ and tracking. */
+@media(max-width:767px){
+  .zh-proof-section,.zh-why-section{display:none!important}
+  #standorte .reveal{margin-bottom:18px!important}
+  #standorte .reveal .section-sub{font-size:15px;line-height:1.5}
+  #standorte .zhx-routing{margin-top:18px!important}
+  #standorte .zhx-routing h3{font-size:21px!important}
+  #standorte .zhx-routing .section-sub{display:none}
+  #standorte .zhx-routing .btn-secondary{display:none}
+  #standorte>.wrap>.section-sub{display:none}
+  .akz-funnel-section .contact-inline-grid>.reveal:first-child .section-sub{font-size:15px;line-height:1.45}
+  .akz-funnel-section .intake-trust-row,
+  .akz-funnel-section .contact-methods-mini{display:none!important}
+  .akz-funnel-section .kf-kopf-sub{display:none}
+  .akz-funnel-section .kf-opt-d{display:none}
+  .akz-funnel-section .kf-opt-note{display:block}
+  .akz-funnel-section .kf-opts{gap:8px}
+  .akz-funnel-section .form-group{margin-bottom:12px}
+  .akz-beschwerden-section .reveal{margin-bottom:18px!important}
+  .akz-beschwerden-section .reveal .section-sub{display:none}
+  .akz-beschwerden-section .city-grid>a:nth-child(n+5){display:none}
+  .akz-beschwerden-section .city-card{min-height:0!important}
+  .akz-therapien-section .svc-sub,
+  .akz-therapien-section .akz-txtlinks,
+  .akz-therapien-section .wrap>p.section-sub{display:none}
+  .akz-quartiere-section .zhx-chip:not(:nth-child(-n+5)):not(:last-child){display:none}
+  .akz-quartiere-section .zhx-chip-x{display:none}
+  .akz-quartiere-section .wrap>p:last-child{display:none}
+  .akz-quartiere-section .section-sub{font-size:15px}
+}
+</style>
+<style>
 /* Zürich why: preserve full desktop explanation; mobile gets concise patient value. */
 .zh-why-mobile{display:none}
 @media(max-width:767px){
@@ -425,7 +458,7 @@
         <span class="lsr-eyebrow">TCM.ch Netzwerk · Zürich</span>
         <h1 class="lsr-h1">Akupunktur &amp; TCM in <em class="lsr-accent">Zürich</em></h1>
         <p class="lsr-lead">Drei Standorte in Zürich: Bahnhofstrasse, Oerlikon und Höngg. Wir helfen dir, die passende Praxis und einen Termin zu finden.</p>
-        <p class="lsr-lead zh-hero-mobile-summary">Drei Standorte in Zürich. Wir helfen dir, die passende Praxis und einen Termin zu finden.</p>
+        <p class="lsr-lead zh-hero-mobile-summary">Wir finden den passenden Standort und Termin für dich.</p>
         <div class="lsr-ctas">
           <a class="lsr-btn-primary" href="#zh-funnel" data-booking-sheet="zh" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'hero'})">Termin anfragen</a>
           <a class="lsr-btn-ghost" href="/kontakt/" data-open-concern data-concern-location="Zürich" data-concern-location-slug="zuerich-hub">Anliegen kostenlos schildern</a>
@@ -452,7 +485,7 @@
       <div class="reveal" style="max-width:62ch;margin-bottom:36px">
         <div class="section-label">Standorte im Raum Zürich</div>
         <h2 class="section-title">Unsere Praxen <em>in Zürich</em></h2>
-        <p class="section-sub">TCM.ch in Zürich: zwei eigene Praxen, an der Bahnhofstrasse in Zürich City und an der Ohmstrasse in Oerlikon, dazu die Partnerpraxis Praxis Hwang in Höngg. Wähle die Lage, die dir passt, oder lass uns die Praxis mit dem nächsten freien Termin vorschlagen.</p>
+        <p class="section-sub">Wähle Bahnhofstrasse, Oerlikon oder unsere Partnerpraxis in Höngg – oder lass uns den passenden Standort empfehlen.</p>
       </div>
       <!--zh-standort-karten-->
       <div class="zhx-routing zhx-routing--merged" style="margin-top:34px">
@@ -473,7 +506,7 @@
         <div class="reveal">
           <div class="section-label">Passende Hilfe finden</div>
           <h2 class="section-title">Passenden Termin bei TCM.ch in <em>Zürich</em> finden.</h2>
-          <p class="section-sub" style="margin-bottom:0">Sag uns, wo in Zürich du einen Termin suchst und was dir wichtig ist. Wir finden innerhalb unserer TCM.ch Praxen den passenden Standort oder den nächsten freien Termin für dich.</p>
+          <p class="section-sub" style="margin-bottom:0">Wähle deinen Termin und hinterlasse deine Kontaktdaten. Wir melden uns mit einem Vorschlag.</p>
           <div class="intake-trust-row">
             <div class="intake-trust-item"><span class="intake-trust-dot"></span>Praxen des TCM.ch Netzwerks in Zürich</div>
             <div class="intake-trust-item"><span class="intake-trust-dot"></span>Praxen an der Bahnhofstrasse, in Oerlikon und Höngg</div>
@@ -496,7 +529,7 @@
           </div>
         </div>
         <div class="reveal">
-          <div class="inline-form-card kf kf--ruhig kf-huelle" data-kf-huelle="zuerich-funnel"><link rel="stylesheet" href="/kontakt-form.css"><div class="kf-kopf"><h3 class="kf-h inline-form-title">Termin bei TCM.ch finden</h3><p class="kf-kopf-sub">Wir melden uns mit einem passenden Termin an einem unserer Zürcher Standorte.</p></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-family:var(--font-sans);margin-bottom:4px">Schritt 1</div><label class="form-label" for="zh-standort">Welche Praxis passt dir?</label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select><p class="kf-fhint" style="margin:6px 0 0">Nicht sicher? Lass «Egal – bitte empfehlen» gewählt – wir finden die passende oder schnellste Praxis.</p></div><div class="form-group zh-offer-choice">
+          <div class="inline-form-card kf kf--ruhig kf-huelle" data-kf-huelle="zuerich-funnel"><link rel="stylesheet" href="/kontakt-form.css"><div class="kf-kopf"><h3 class="kf-h inline-form-title">Termin bei TCM.ch finden</h3><p class="kf-kopf-sub">Wir melden uns mit einem passenden Termin an einem unserer Zürcher Standorte.</p></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-family:var(--font-sans);margin-bottom:4px">Schritt 1</div><label class="form-label" for="zh-standort">Welche Praxis passt dir?</label><select class="form-select" name="standort"><option value="" selected>Egal – bitte empfehlen</option><option>Zürich Bahnhofstrasse</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select><p class="kf-fhint" style="margin:6px 0 0">Wir empfehlen dir eine passende Praxis. Du kannst auch selbst wählen.</p></div><div class="form-group zh-offer-choice">
   <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-family:var(--font-sans);margin-bottom:4px">Schritt 2</div>
   <label class="form-label">Terminart wählen</label>
   <fieldset class="kf-opts" style="margin-top:10px">
@@ -512,9 +545,9 @@
     <label class="kf-opt kf-opt--checkin" for="zh-ta-checkin">
       <input class="kf-radio" type="radio" name="terminart" id="zh-ta-checkin" value="checkin" data-kf-angebot="TCM_CHECKIN">
       <span class="kf-opt-body">
-        <span class="kf-opt-t">Kostenloser TCM 360°-Check-in</span>
+        <span class="kf-opt-t">Gratis 30-Min.-Kennenlerntermin</span>
         <span class="kf-opt-dur">30 Minuten</span>
-        <span class="kf-opt-d">Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.</span>
+        <span class="kf-opt-d">Kurzes Kennenlernen mit Zungen- und Pulsdiagnostik sowie Zeit für Fragen.</span>
         <span class="kf-opt-note">Ohne Behandlung. Unverbindlich.</span>
       </span>
     </label>
