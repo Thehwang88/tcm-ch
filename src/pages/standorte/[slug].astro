@@ -423,7 +423,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
     {/* Wie St. Gallen (HeroStandardSG): Hero und Kontakt-/Praxisbereich vor #page-standort, damit dort weder die
         seitenweiten Karten-/Abstandsregeln ([id^="page-"] …) noch die Hero-Geschwisterregel (#sg-premium-hero ~ section) greifen. */}
     <Hero data={data} />
-    <div class="std-oben">
+    <div class:list={["std-oben", { "std-zh-cro": ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].includes(data.slug) }]}>
       {data.planned && (
       <section class="section" data-status-banner={data.review ? 'review' : 'planned'} style="padding:0;background:var(--bg)">
         <div class="wrap" style="padding-top:12px">
@@ -446,7 +446,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         <UeberPraxis slot="info" data={data} inner sg />
       </KontaktPraxis>
     </div>
-    <div class="page active std-ds std-vorlage" id="page-standort" style="display:block">
+    <div class:list={["page active std-ds std-vorlage", { "std-zh-cro": ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].includes(data.slug) }]} id="page-standort" style="display:block">
       <div id="standort-content">
         <section class="section std-hinweis" style="padding:20px 0 0 !important;background:var(--bg)"><div class="wrap"><div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px"><div style="font-family:var(--font-sans);font-weight:800;font-size:clamp(17px,3.4vw,21px);color:var(--black);line-height:1.25;margin-bottom:6px">Keine Ahnung, wo du anfangen sollst? Dafür sind wir da.</div><div style="font-size:14.5px;color:var(--mid);line-height:1.55;max-width:70ch">Du musst nicht wissen, welche Therapie du brauchst. {data.planned ? 'Schreib uns' : 'Komm vorbei'}, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div></div></div></section>
         <Therapien data={data} />
@@ -457,6 +457,23 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         <Fragment set:html={weiterlesenHtml} />
       </div>
     </div>
+    <style is:global>
+      /* Zürich location pages only: compact mobile rhythm, no content or link deletion. */
+      @media(max-width:767px){
+        .std-zh-cro .sgu{padding:4px 16px}
+        .std-zh-cro .sgu .usp-card{padding:7px 0}
+        .std-zh-cro .sgu .usp-sub{font-size:12px;line-height:1.4}
+        .std-zh-cro .sgk{padding:20px 16px}
+        .std-zh-cro .sgk-inner{gap:16px}
+        .std-zh-cro .svc-section{padding-top:30px!important;padding-bottom:30px!important;min-height:0!important}
+        .std-zh-cro .svc-header{margin-bottom:16px!important}
+        .std-zh-cro .svc-sub{font-size:14px!important;line-height:1.45!important}
+        .std-zh-cro .svc-card .svc-cta{font-size:12px!important}
+        .std-zh-cro .sg-bs-cta{margin-top:18px!important}
+        .std-zh-cro .std-hinweis{padding-top:10px!important}
+        .std-zh-cro .std-hinweis .wrap>div{padding:14px 16px!important}
+      }
+    </style>
     <ClinicConcierge slot="pre-footer" locationName={conciergeName} status={conciergeStatus} />
   </SpaPage>
 ) : (
