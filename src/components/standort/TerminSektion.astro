@@ -52,7 +52,7 @@ const zhCRO = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].i
     <div class="sgt-main">
       <div class="sgt-head">
         <h2 class="section-title" id="sgt-h">Termin in <em>{data.stadt}</em></h2>
-        <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt.{place && <Fragment> <a href={place} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></Fragment>}</p>
+        <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt.{place && !zhCRO && <Fragment> <a href={place} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></Fragment>}</p>
         {zhCRO && team.length > 0 && <p class="zh-cro-team zh-cro-team--compact"><span>Team an diesem Standort:</span>{team.slice(0, 3).map((t) => <a href={`/team/${t.slug}/`}>{t.name}</a>)}</p>}
       </div>
       <style is:global>
