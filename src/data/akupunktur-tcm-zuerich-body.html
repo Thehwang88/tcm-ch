@@ -1,4 +1,23 @@
 <style>
+/* Mobile disclosures retain essential insurance/safety facts without large cards. */
+.akz-mobile-disclosure{display:none}
+@media(max-width:767px){
+  .akz-kasse-section,.akz-wissen-section{padding:25px 0!important}
+  .akz-mobile-disclosure{display:block}
+  .akz-kasse-section>.akz-split,.akz-wissen-section>.akz-split{display:none!important}
+  .akz-mobile-disclosure>p{margin:6px 0 12px;font-size:15px;line-height:1.5;color:#344046}
+  .akz-mobile-disclosure details{border-top:1px solid #dce3e5;padding:12px 0}
+  .akz-mobile-disclosure summary{cursor:pointer;list-style:none;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .akz-mobile-disclosure summary::-webkit-details-marker{display:none}
+  .akz-mobile-disclosure summary span{font-size:22px;font-weight:400}
+  .akz-mobile-disclosure details[open] summary span{transform:rotate(45deg)}
+  .akz-mobile-disclosure details p{font-size:14px;line-height:1.6;margin:12px 0;color:#435058}
+  .akz-mobile-disclosure details a{text-decoration:underline;text-underline-offset:3px}
+  .kk-section .kk-header{margin-bottom:18px!important}
+  .kk-section .kk-item:nth-child(2),.kk-section .kk-item:nth-child(3),.kk-section .kk-item:nth-child(5){display:none}
+}
+</style>
+<style>
 /* Zürich paid-traffic funnel: mobile-only reduction of repeated content.
    Preserve desktop and all links, native form behavior, FAQ and tracking. */
 @media(max-width:767px){
@@ -25,7 +44,6 @@
   .akz-therapien-section .svc-sub,
   .akz-therapien-section .akz-txtlinks,
   .akz-therapien-section .wrap>p.section-sub{display:none}
-  .akz-quartiere-section .zhx-chip:not(:nth-child(-n+5)):not(:last-child){display:none}
   .akz-quartiere-section .zhx-chip-x{display:none}
   .akz-quartiere-section .wrap>p:last-child{display:none}
   .akz-quartiere-section .section-sub{font-size:15px}
@@ -596,6 +614,14 @@
   </section>
 
 <section class="section akz-kasse-section" style="background:#fff">
+  <div class="wrap akz-mobile-disclosure">
+    <div class="section-label">Krankenkasse &amp; Kosten</div>
+    <p><strong>Zusatzversicherung:</strong> Die Übernahme hängt von deiner Police und der behandelnden Person ab. Wir helfen dir beim Prüfen.</p>
+    <details><summary>Versicherung &amp; Kosten im Detail <span aria-hidden="true">+</span></summary>
+      <p>TCM-Behandlungen bei entsprechend registrierten Therapeut:innen können über die Zusatzversicherung für Komplementärmedizin abgerechnet werden. Die Grundversicherung deckt diese Behandlungen in der Regel nicht; ärztliche Akupunktur unterliegt anderen Voraussetzungen.</p>
+      <p><a href="/krankenkassen/akupunktur/">Versicherungsdetails</a> · <a href="/standorte/zuerich/kosten/">Kosten in Zürich</a> · <a href="/krankenkassen/">Kassendeckung prüfen</a></p>
+    </details>
+  </div>
     <div class="wrap akz-split">
       <div>
         <div class="section-label">Krankenkasse &amp; Kosten</div>
@@ -682,6 +708,13 @@
 
 
   <section class="section akz-wissen-section" id="zh-wissen" style="background:var(--surface)">
+  <div class="wrap akz-mobile-disclosure">
+    <details>
+      <summary>Mehr über Akupunktur &amp; TCM erfahren <span aria-hidden="true">+</span></summary>
+      <p>Welche Behandlung sinnvoll ist, hängt von deinen Beschwerden und dem Erstgespräch ab. Bei akuten Notfällen oder neuen neurologischen Ausfällen ist eine ärztliche Abklärung wichtig.</p>
+      <p><a href="/therapien/akupunktur/">Akupunktur</a> · <a href="/therapien/tuina/">Tuina</a> · <a href="/therapien/kraeutertherapie/">Kräutertherapie</a></p>
+    </details>
+  </div>
     <div class="wrap akz-split">
       <div>
         <div class="section-label">Akupunktur &amp; TCM in Zürich</div>
