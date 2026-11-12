@@ -1,7 +1,7 @@
 // Hero-Video der Standortseiten: Poster = Standbild des ersten Video-Frames (kein Standortfoto mehr im Hero). Nach `npm run build`:
 //   node scripts/test-hero-video.mjs [dist] [--baseline <dist-von-main>] [--shots docs/qa/hero-video-poster]
 //  1. Markup (alle Video-Standorte inkl. Zürich City/Bahnhofstrasse + Oerlikon seit 02.11.2026): Poster-<img> = <video poster> = Video-Standbild, kein /images/-Foto in der Figure,
-//     4 Renditionen, muted/playsinline/loop/preload=none; Nicht-Video-Seiten unverändert; Praxisfotos bleiben in «Über die Praxis».
+//     4 Renditionen, muted/playsinline/loop/preload=none in HTML (preload=auto when near viewport); Nicht-Video-Seiten unverändert; Praxisfotos bleiben in «Über die Praxis».
 //  2. Poster-Dateien: 1280×720 / 640×360, klein, und pixelnah am ersten Frame der echten Renditionen (ffmpeg + sharp).
 //  3. Browser (Chromium, 320/375/390/1280/1440): Stufen initial → vor Wiedergabe → erster bewegter Frame → Wiedergabe;
 //     keine schwarzen/weissen Übergänge, Poster ≈ erster Frame (Pixelvergleich), Geometrie konstant (auch gegen Baseline),
@@ -123,7 +123,7 @@ for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['base
     ok(mC0 > 40 && mC0 < 215 && mC > 40 && mC < 215, `${tag}: Übergang ohne Schwarz/Weiss-Kippen (Helligkeit Poster ${mA.toFixed(0)} → Start ${mC0.toFixed(0)} → eingeblendet ${mC.toFixed(0)})`);
     await sleep(1500);
     const D = await figState(pg); const shotD = await clipShot(pg, D.rect, `${tag}-D-wiedergabe.png`); const mD = await stats(shotD);
-    ok(!D.paused && D.t > 0.5 && D.muted && D.loop && D.pi && D.preload === 'none' && D.src.endsWith(w <= 900 ? 'hwang-praxis-640.webm' : 'hwang-praxis-1280.webm') && mD > 30, `${tag}: läuft (t=${D.t.toFixed(1)}s), muted/loop/playsinline, Rendition ${D.src.split('/').pop()}`);
+    ok(!D.paused && D.t > 0.5 && D.muted && D.loop && D.pi && D.preload === 'auto' && D.src.endsWith(w <= 900 ? 'hwang-praxis-640.webm' : 'hwang-praxis-1280.webm') && mD > 30, `${tag}: läuft (t=${D.t.toFixed(1)}s), muted/loop/playsinline, Rendition ${D.src.split('/').pop()}`);
     const L = await lcp(pg); geom[tag] = { rect: A.rect, lcp: L };
     ok(L && (L.url.includes('hwang-praxis-poster') || (w < 500 && L.tag !== 'VIDEO')), `${tag}: LCP = ${L ? (L.url ? L.url.split('/').pop() : L.tag + '.' + L.cls.slice(0, 20)) : '–'} (${L ? L.t : '–'} ms), nie das Video`);
     await pg.close();

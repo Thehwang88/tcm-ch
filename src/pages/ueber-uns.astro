@@ -10,4 +10,26 @@ const title = 'Über uns – Unsere Geschichte | TCM.ch';
 const description = 'Wer wir sind, woran wir glauben, und warum wir medizinische TCM in der Schweiz neu denken. Die Geschichte hinter dem TCM.ch Netzwerk.';
 const schema = { '@context': 'https://schema.org', '@type': 'AboutPage', name: title, url: 'https://tcm.ch/ueber-uns/', inLanguage: 'de-CH', isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } };
 ---
-<SpaPage title={title} description={description} path="/ueber-uns" body={body} schema={schema} />
+<SpaPage title={title} description={description} path="/ueber-uns" body={body} schema={schema}>
+  <script slot="pre-footer" is:inline>
+    // Start behind-the-scenes clips only when approaching the viewport.
+    // Posters remain visible until playback; scrolling away pauses decoding.
+    (function(){
+      var clips=document.querySelectorAll('#ueber-uns-bts video');
+      if(!clips.length)return;
+      var c=navigator.connection;
+      if((window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||(c&&c.saveData))return;
+      if(!('IntersectionObserver' in window))return;
+      var observer=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var v=e.target;
+          if(e.isIntersecting){
+            v.preload='auto';
+            var p=v.play();if(p&&p.catch)p.catch(function(){});
+          }else if(!v.paused)v.pause();
+        });
+      },{rootMargin:'250px 0px',threshold:0.01});
+      clips.forEach(function(v){observer.observe(v);});
+    })();
+  </script>
+</SpaPage>

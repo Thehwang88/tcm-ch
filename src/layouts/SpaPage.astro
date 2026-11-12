@@ -109,6 +109,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {path === '/ueber-uns' && <link rel="preconnect" href="https://s3.amazonaws.com" crossorigin />}
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Nunito:ital,wght@1,900&display=swap" rel="stylesheet" />
     {!sensibel && <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />}
     {!sensibel && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>}
