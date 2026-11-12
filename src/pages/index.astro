@@ -268,7 +268,7 @@ const homeHtml = homeHtmlCards;
       @keyframes tcm-snow-fall{from{transform:translate3d(0,-20px,0)}to{transform:translate3d(var(--snow-drift),calc(100vh + 60px),0)}}
       /* Seasonal hat: white brim rests on the top-left shoulder of the M, like a fitted cap.
          Smaller, lowered and mirrored (pom-pom to the left) to avoid the eyebrow above.
-         Desktop only; heading text, booking CTAs and mobile layout are unchanged. */
+         Heading text, booking CTAs and layout remain unchanged. */
       #heroPatient .tcm-santa-m{position:relative;display:inline-block}
       #heroPatient .tcm-santa-hat{
   display:none;
@@ -283,9 +283,8 @@ const homeHtml = homeHtmlCards;
   transform-origin:bottom center;
   filter:drop-shadow(0 0.03em 0.04em rgba(0,0,0,.25));
 }
-      @media(min-width:1024px){
-        html.tcm-santa-season #heroPatient .tcm-santa-hat{display:block}
-      }
+      /* Same em-based placement on desktop and mobile, anchored to the M. */
+      html.tcm-santa-season #heroPatient .tcm-santa-hat{display:block}
       /* Desktop-only winter polish: higher contrast across cream copy and grey team photo.
          Keep 13 original flakes and appearance unchanged on mobile. */
       @media(min-width:1024px){
