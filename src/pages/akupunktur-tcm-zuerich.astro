@@ -15,7 +15,11 @@ import { NETZ_THERAPIEN } from '../data/standorte';
 // Zürcher Standort-Optionen im Termin-Formular aus der zentralen Quelle (src/data/zuerich-termin.ts)
 // statt hartcodiert - geplante Standorte (clinic.status) nur mit Vormerk-/Partner-Optionen.
 const ZH_ALT = '<select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select>';
-if (!rawBody.includes(ZH_ALT)) throw new Error('akupunktur-tcm-zuerich: Standort-Select nicht gefunden');
+// The Zürich funnel now contains its own styled select. Keep the legacy replacement
+// only for older markup; validate the new select without overwriting its options/UI.
+const ZH_HAS_LEGACY_SELECT = rawBody.includes(ZH_ALT);
+const ZH_HAS_NEW_SELECT = /<select\b[^>]*\bname=["']standort["'][^>]*\bid=["']zh-standort["'][^>]*>/.test(rawBody);
+if (!ZH_HAS_LEGACY_SELECT && !ZH_HAS_NEW_SELECT) throw new Error('akupunktur-tcm-zuerich: Standort-Select nicht gefunden');
 // Therapien: EIN Kartenraster wie St. Gallen und die Zürcher Standortseiten (gemeinsame Kartendaten therapy-cards.ts).
 // Top 8 = die ersten 8 Karten des Netz-Kartensets (NETZ_THERAPIEN), genau die sichtbaren Karten der St.-Galler und Zürcher
 // Standortseiten; Kräutertherapie, Massage, Moxibustion und Elektroakupunktur als Textlinks darunter.
@@ -37,10 +41,10 @@ const zhCards = '<div class="sc-grid sc-grid--3">' +
   })).join('') +
   '</div>';
 
-const body = rawBody.replace(
+const body = (ZH_HAS_LEGACY_SELECT ? rawBody.replace(
   ZH_ALT,
   `<select class="form-select" name="standort" id="zh-standort"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}</select>`,
-).replace(ZH_KARTEN, therapyCardsGridHtml(ZH_TOP8))
+) : rawBody).replace(ZH_KARTEN, therapyCardsGridHtml(ZH_TOP8))
   .replace(ZH_STANDORTE, zhCards);
 
 // Brand Signature direkt vor dem End-CTA (nach FAQ): Standortfinder, Quartiere und Funnel bleiben ungestört.
