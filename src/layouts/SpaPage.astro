@@ -42,7 +42,7 @@ const { title, description, path, body, schema, ogImage = site.ogImage, noindex 
 const winterSnowTarget =
   path === '/standorte' ? '#page-standorte .std-overview-intro' :
   path === '/akupunktur-tcm-zuerich' ? '.akz .lsr-hero.akzh' :
-  path === '/standorte/st-gallen' ? '.lsr-hero.std-location-hero, #sg-premium-hero.sg-active' :
+  path === '/standorte/st-gallen' ? '.lsr-hero.hlsg, .lsr-hero.f30-hero' :
   /^\/standorte\/(?:basel|zuerich-(?:bahnhofstrasse|oerlikon|hoengg))$/.test(path) ? '.lsr-hero.std-location-hero' :
   null;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
