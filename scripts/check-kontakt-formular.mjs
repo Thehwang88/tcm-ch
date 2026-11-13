@@ -179,7 +179,15 @@ globalThis.fetch = async (url, init) => { if (String(url).includes('turnstile'))
 const post = async (d) => { const res = await onRequestPost({ request: new Request('https://tcm.ch/api/anfrage', { method: 'POST', body: JSON.stringify(d) }), env: { RESEND_API_KEY: 'x', TURNSTILE_SECRET: 'y' } }); return [res.status, await res.json(), sent[sent.length - 1]]; };
 const base = { standort: 'St. Gallen', quelle: 'launch-hero-sg', turnstileToken: 't', name: 'Test Person', email: 'test@beispiel.ch' };
 let [st, j, mail] = await post({ ...base, telefon: '+41 79 123 45 67', angebot_id: 'TCM_CHECKIN' });
-ok(st === 200 && /KOSTENLOSER TCM-CHECK-IN/.test(mail.html) && /Kostenloser TCM-Check-in – St\. Gallen/.test(mail.html) && mail.subject === 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.' && />30 Minuten</.test(mail.html) && />kostenlos, ohne Behandlung</.test(mail.html) && mail.reply_to === 'test@beispiel.ch' && />Test Person</.test(mail.html), 'Name + Telefon + E-Mail + Check-in SG → 200, Betreff/Dauer/Kosten aus Terminart, reply_to = E-Mail, Name in der Mail');
+ok(st === 200 && /KOSTENLOSER TCM-CHECK-IN/.test(mail.html) && />Kostenloser TCM-Check-in</.test(mail.html) && />St\. Gallen</.test(mail.html) && mail.subject === 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.' && />30 Minuten</.test(mail.html) && />kostenlos, ohne Behandlung</.test(mail.html) && mail.reply_to === 'test@beispiel.ch' && />Test Person</.test(mail.html), 'Name + Telefon + E-Mail + Check-in SG → 200, Betreff/Dauer/Kosten aus Terminart, reply_to = E-Mail, Name in der Mail');
+const patientMain = mail.html.split('Technische Angaben')[0];
+ok(patientMain.indexOf('>Test Person<') < patientMain.indexOf('>Telefon<') &&
+  patientMain.indexOf('>Telefon<') < patientMain.indexOf('>Terminart<') &&
+  patientMain.indexOf('>Wunschzeit<') < patientMain.indexOf('>Anliegen<') &&
+  /href="tel:\+41791234567"/.test(patientMain) &&
+  /href="mailto:test@beispiel.ch"/.test(patientMain) &&
+  !patientMain.includes('>Angebot<') &&
+  /Nicht angegeben/.test(patientMain), 'Patientenmail: Name und Direktkontakte zuerst, Termin/Wunschzeit/Anliegen sichtbar, kein doppeltes Angebot');
 [st, j, mail] = await post({ ...base, telefon: '0041 79 123 45 67', angebot_id: 'ERSTTERMIN_BEHANDLUNG', name: 'Test', email: 'a@b.ch', anliegen: 'Rücken', wunschzeit: 'Do' });
 ok(st === 200 && /ERSTTERMIN MIT BEHANDLUNG/.test(mail.html) && mail.reply_to === 'a@b.ch' && /Wunschzeit/.test(mail.html) && /Rücken/.test(mail.html) && mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.' && />90 Minuten</.test(mail.html) && /Carlos: 90 Minuten im Kalender reservieren\./.test(mail.html) && />kostenpflichtig, Abrechnung nach Tarif</.test(mail.html), 'Behandlung mit allen optionalen Feldern → 200, reply_to, Wunschzeit/Anliegen, 90 Minuten intern (SG) + Carlos-Hinweis, kostenpflichtig');
 [st, j] = await post({ ...base, standort: 'Wil', quelle: 'Beschwerde: Akne', telefon: '+49 30 1234 5678', angebot_id: 'ERSTTERMIN_BEHANDLUNG' });
