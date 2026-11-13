@@ -187,9 +187,11 @@ export async function onRequestPost({ request, env }) {
     // Legacy, B2B and other special forms retain their existing mail rendering below.
     const safeAttr = (v) => esc(v).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const detail = (v) => esc(String(v)).replace(/\n/g, '<br>');
-    const renderField = (k, v) => v == null || String(v).trim() === '' ? '' :
-      '<tr><td style="padding:6px 14px 6px 0;color:#626767;font-size:13px;vertical-align:top;white-space:nowrap"><strong>' +
-      esc(k) + '</strong></td><td style="padding:6px 0;color:#18221f;font-size:14px;vertical-align:top;overflow-wrap:anywhere">' + detail(v) + '</td></tr>';
+    const renderField = (k, v, quiet = false) => v == null || String(v).trim() === '' ? '' :
+      '<tr><td style="padding:6px 14px 6px 0;color:' + (quiet ? '#777' : '#626767') +
+      ';font-size:' + (quiet ? '11px' : '13px') + ';vertical-align:top;white-space:nowrap"><strong>' +
+      esc(k) + '</strong></td><td style="padding:6px 0;color:' + (quiet ? '#777' : '#18221f') +
+      ';font-size:' + (quiet ? '11px' : '14px') + ';vertical-align:top;overflow-wrap:anywhere">' + detail(v) + '</td></tr>';
     const patientMail = () => {
       // No second "Angebot" line: this already appears as the canonical Terminart.
       // The free-text fields are shown once, in the order Carlos needs them.
@@ -240,7 +242,7 @@ export async function onRequestPost({ request, env }) {
         '<div style="padding:16px 24px;background:#fafafa;border-top:1px solid #eaedeb">' +
         '<h3 style="margin:0 0 7px;font-size:12px;font-weight:700;color:#777">Technische Angaben</h3>' +
         '<table role="presentation" style="border-collapse:collapse;width:100%;font-size:12px;color:#777">' +
-        techCompact.map(([k,v])=>renderField(k,v)).join('') + '</table>' +
+        techCompact.map(([k,v])=>renderField(k,v,true)).join('') + '</table>' +
         '</div></div></body></html>';
     };
     const html = neu ? patientMail() :
