@@ -1,34 +1,42 @@
 ---
 /**
- * Subtle seasonal snowfall for major clinic landing-page heroes only.
- * Homepage uses its existing, stronger snowfall and Santa hat.
- * No form, booking, analytics or layout dependencies.
+ * Homepage-identical Christmas snowfall on the selected clinic landing pages.
+ * Same flakes, size, colors, density, duration, drift, and 13-flake mobile count.
+ * Santa hat remains on the homepage only; date and accessibility gates remain.
  */
 const { target } = Astro.props as { target: string };
 ---
 <style is:global>
   .tcm-winter-snow-host{position:relative}
   .tcm-winter-snow-layer{
-    position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;
-    contain:paint
+    position:absolute;inset:0;z-index:2;overflow:hidden;
+    pointer-events:none;contain:paint
   }
   .tcm-winter-snowflake{
-    position:absolute;top:-22px;left:var(--winter-x);display:block;
-    font-family:Arial,'Noto Sans Symbols 2',sans-serif;
-    font-size:var(--winter-size);font-weight:400;line-height:1;
-    font-variant-emoji:text;color:rgba(83,117,136,var(--winter-opacity));
-    user-select:none;pointer-events:none;
-    animation:tcm-winter-snow-fall var(--winter-duration) linear infinite;
-    animation-delay:var(--winter-delay);animation-play-state:paused;
+    position:absolute;top:-18px;left:var(--snow-x);
+    width:auto;height:auto;border-radius:0;background:none;box-shadow:none;
+    font-family:Arial,'Noto Sans Symbols 2',sans-serif;font-weight:400;
+    font-size:calc(var(--snow-size) * 2.5);line-height:1;
+    color:rgba(103,144,169,var(--snow-opacity));
+    font-variant-emoji:text;user-select:none;pointer-events:none;
+    animation:tcm-winter-snow-fall var(--snow-duration) linear infinite;
+    animation-delay:var(--snow-delay);animation-play-state:paused;
     will-change:transform
   }
   .tcm-winter-snow-layer.is-visible .tcm-winter-snowflake{animation-play-state:running}
   @keyframes tcm-winter-snow-fall{
     from{transform:translate3d(0,-20px,0)}
-    to{transform:translate3d(var(--winter-drift),var(--winter-fall-distance),0)}
+    to{transform:translate3d(var(--snow-drift),calc(100vh + 60px),0)}
   }
-  @media(max-width:767px){
-    .tcm-winter-snowflake:nth-child(n+5){display:none!important}
+  @media(min-width:1024px){
+    .tcm-winter-snowflake{
+      font-size:calc(var(--snow-size) * 2.8);
+      color:rgba(var(--snow-rgb, 103,144,169),var(--snow-opacity-desktop, .48));
+      text-shadow:0 1px 2px rgba(27,43,52,.10)
+    }
+  }
+  @media(max-width:1023px){
+    .tcm-winter-snowflake:nth-child(n+14){display:none!important}
   }
   @media(prefers-reduced-motion:reduce){
     .tcm-winter-snow-layer{display:none!important}
@@ -48,23 +56,23 @@ const { target } = Astro.props as { target: string };
   var layer=document.createElement('div');
   layer.className='tcm-winter-snow-layer';
   layer.setAttribute('aria-hidden','true');
-  // Seven very light flakes on desktop, four on mobile (~40% of home).
-  for(var i=0;i<7;i++){
-    var flake=document.createElement('span');
+  // Identical to homepage: 17 flakes desktop; CSS displays first 13 on mobile.
+  for(var i=0;i<17;i++){
+    var flake=document.createElement('i');
     flake.className='tcm-winter-snowflake';
     flake.textContent='❄︎';
-    flake.style.setProperty('--winter-x',((i*47+13)%94+3)+'%');
-    flake.style.setProperty('--winter-size',(9+i%3*2)+'px');
-    flake.style.setProperty('--winter-opacity',(0.13+(i%4)*0.025).toFixed(3));
-    flake.style.setProperty('--winter-duration',(21+(i*5)%12)+'s');
-    flake.style.setProperty('--winter-delay',(-((i*9)%25))+'s');
-    flake.style.setProperty('--winter-drift',((i%2?1:-1)*(10+(i*7)%27))+'px');
+    var x=((i*73+17)%97+1);
+    flake.style.setProperty('--snow-x',x+'%');
+    flake.style.setProperty('--snow-size',(4+i%3)+'px');
+    flake.style.setProperty('--snow-opacity',(0.22+(i%4)*0.065).toFixed(2));
+    flake.style.setProperty('--snow-rgb',x<51?'73,109,130':'255,255,255');
+    flake.style.setProperty('--snow-opacity-desktop',(x<51?0.37+(i%4)*0.055:0.42+(i%4)*0.055).toFixed(2));
+    flake.style.setProperty('--snow-duration',(15+(i*7)%14)+'s');
+    flake.style.setProperty('--snow-delay',(-((i*11)%25))+'s');
+    flake.style.setProperty('--snow-drift',((i%2?1:-1)*(12+(i*13)%55))+'px');
     layer.appendChild(flake);
   }
   host.appendChild(layer);
-  function size(){layer.style.setProperty('--winter-fall-distance',Math.ceil(host.getBoundingClientRect().height+64)+'px');}
-  size();
-  if('ResizeObserver' in window)new ResizeObserver(size).observe(host);
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
       layer.classList.toggle('is-visible',entries[entries.length-1].isIntersecting);
