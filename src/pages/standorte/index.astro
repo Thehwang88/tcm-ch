@@ -16,7 +16,11 @@ const card = (id: string) => {
     : st === '2027' ? [/2027/.test(c.openingNote ?? '') || c.status === 'operational' ? 'Eröffnung 2027' : 'In Vorbereitung'] : [];
   const suffix = c.karte?.chip ? ` <span class="stdc-suffix">· ${esc(c.karte.chip)}</span>` : '';
   const label = c.karte?.button ?? (st === 'einzugsgebiet' ? `Nächste Praxis: ${cardName(clinicById(c.karte?.naechste ?? ''))}` : st === '2027' ? (c.status === 'operational' ? 'Standort ansehen' : 'Warteliste') : ci ? 'Gratis Check-in buchen' : 'Termin buchen');
-  const cardImage = c.bild && (['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen'].includes(id)) ? `<img class="stdc-photo" src="${esc(c.bild.src)}" alt="${esc(c.bild.alt)}" loading="lazy" decoding="async">` : '';
+  // On the /standorte/ overview, Basel uses the same in-card photo treatment as St. Gallen.
+  const bild = id === 'basel'
+    ? { src: '/images/basel-empfang-800.webp', alt: 'Empfangsbereich der TCM.ch Klinik Basel, Steinenvorstadt 73' }
+    : c.bild;
+  const cardImage = bild && (['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen','basel'].includes(id)) ? `<img class="stdc-photo" src="${esc(bild.src)}" alt="${esc(bild.alt)}" loading="lazy" decoding="async">` : '';
   const cta = `<span class="stdc-cta ${offen ? (ci ? 'stdc-cta--gelb' : 'stdc-cta--ghost') : 'stdc-cta--link'}">${esc(label)} <span aria-hidden="true">→</span></span>`;
   return `<a class="stdc${offen ? '' : ' stdc--muted'}" href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ''}>${cardImage}<h3 class="stdc-h">${PIN}<span>${esc(cardName(c))}</span></h3><p class="stdc-adr"><span>${esc(cardHinweis(c))}</span>${suffix}</p><div class="stdc-chips">${chips.map((t) => `<span class="stdc-chip">${esc(t)}</span>`).join('')}</div>${cta}</a>`;
 };
@@ -25,8 +29,9 @@ const liste =
   head('standorte-zuerich', 'TCM.ch Praxen', 'Zürich') + ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].map(card).join('') +
   '<a class="std-next" href="/akupunktur-tcm-zuerich/#zh-funnel"><span class="std-next-l">Standort egal?</span><span class="std-next-t"><strong>Nächster freier Termin in Zürich</strong><span>Wir prüfen unsere Zürcher Praxen und finden den schnellsten passenden Termin für dich.</span></span><span class="std-next-go">Nächsten Termin finden →</span></a>' +
   head('standorte-st-gallen', 'TCM.ch Praxis', 'St. Gallen') + card('st-gallen') +
+  head('standorte-basel', 'TCM.ch Praxis', 'Basel') + card('basel') +
   head('standorte-thurgau', 'Partnerpraxen Hwang · Termine über hwang.ch', 'Thurgau &amp; Winterthur') + ['frauenfeld', 'kreuzlingen', 'winterthur-muenzgasse'].map(card).join('') +
-  head('standorte-weitere', 'Partner, Eröffnungen 2027 und Warteliste', 'Weitere Standorte') + ['bottighofen', 'rorschach', 'wil', 'volketswil', 'basel', 'luzern', 'bern', 'winterthur-marktgasse'].map(card).join('');
+  head('standorte-weitere', 'Partner, Eröffnungen 2027 und Warteliste', 'Weitere Standorte') + ['bottighofen', 'rorschach', 'wil', 'volketswil', 'luzern', 'bern', 'winterthur-marktgasse'].map(card).join('');
 const body = bodyRaw.replace('<!--sc:std-liste-->', liste);
 if (/<!--sc:/.test(body) || (body.match(/class="stdc[" ]/g) || []).length !== 15) throw new Error('standorte/index.astro: Standortkarten nicht vollständig gerendert');
 
