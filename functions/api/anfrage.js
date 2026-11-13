@@ -195,7 +195,7 @@ export async function onRequestPost({ request, env }) {
     const patientMail = () => {
       // No second "Angebot" line: this already appears as the canonical Terminart.
       // The free-text fields are shown once, in the order Carlos needs them.
-      const concern = String(d.behandlung || d.anliegen || '').trim();
+      const concern = String(d.behandlung || d.anliegen || d.nachricht || d.situation || '').trim();
       const extra = [
         ['Nachricht', d.nachricht], ['Aktuelle Situation', d.situation],
         ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
