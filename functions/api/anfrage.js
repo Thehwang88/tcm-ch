@@ -183,11 +183,72 @@ export async function onRequestPost({ request, env }) {
         .map(([k, v]) => '<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top"><strong>' +
           esc(k) + '</strong></td><td style="padding:4px 0">' + esc(v).replace(/\n/g, '<br>') + '</td></tr>')
         .join('') + '</table>';
-    const html =
+    // Operational mail for the shared patient form: one source of truth per field.
+    // Legacy, B2B and other special forms retain their existing mail rendering below.
+    const safeAttr = (v) => esc(v).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    const detail = (v) => esc(String(v)).replace(/\n/g, '<br>');
+    const renderField = (k, v, quiet = false) => v == null || String(v).trim() === '' ? '' :
+      '<tr><td style="padding:6px 14px 6px 0;color:' + (quiet ? '#777' : '#626767') +
+      ';font-size:' + (quiet ? '11px' : '13px') + ';vertical-align:top;white-space:nowrap"><strong>' +
+      esc(k) + '</strong></td><td style="padding:6px 0;color:' + (quiet ? '#777' : '#18221f') +
+      ';font-size:' + (quiet ? '11px' : '14px') + ';vertical-align:top;overflow-wrap:anywhere">' + detail(v) + '</td></tr>';
+    const patientMail = () => {
+      // No second "Angebot" line: this already appears as the canonical Terminart.
+      // The free-text fields are shown once, in the order Carlos needs them.
+      const concern = String(d.behandlung || d.anliegen || d.nachricht || d.situation || '').trim();
+      const extra = [
+        ['Nachricht', d.nachricht], ['Aktuelle Situation', d.situation],
+        ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
+      ].filter(([key, value]) => value != null && String(value).trim() !== '' && String(value).trim() !== concern);
+      const phone = String(d.telefon || '').replace(/[^\d+]/g, '');
+      const telephone = '<a href="tel:' + safeAttr(phone) + '" style="color:#155d87;text-decoration:underline;font-weight:700">' + esc(d.telefon) + '</a>';
+      const email = '<a href="mailto:' + safeAttr(d.email) + '" style="color:#155d87;text-decoration:underline">' + esc(d.email) + '</a>';
+      const booking = [
+        ['Standort', d.standort],
+        ['Terminart', offer.label],
+        ['Dauer', offer.dauerMin ? offer.dauerMin + ' Minuten' : undefined],
+        ['Wunschzeit', d.wunschzeit || 'Nicht angegeben'],
+        ['Kosten', offer.kosten],
+      ];
+      // Preserve identifiers for troubleshooting/marketing, but do not repeat
+      // the human-readable offer description or duplicate "Seite" = "Quelle".
+      const techCompact = tech.filter(([key, value]) => value != null && String(value).trim() !== '' &&
+        key !== 'Beschreibung' && !(key === 'Seite' && d.seite && d.seite === d.quelle));
+      const internalNote = d.standort_id === 'st-gallen' && neu.terminart === 'behandlung'
+        ? '<p style="margin:16px 0 0;padding:10px 12px;background:#fff5e6;border-left:3px solid #be8136;color:#3e3022;font-size:13px"><strong>Carlos: 90 Minuten im Kalender reservieren.</strong></p>'
+        : '';
+      return '<!doctype html><html lang="de"><head><meta charset="utf-8"></head>' +
+        '<body style="margin:0;padding:20px 12px;background:#f6f6f5;font-family:Arial,Helvetica,sans-serif;color:#18221f">' +
+        '<div style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #e3e5e2;border-radius:14px;overflow:hidden">' +
+        '<div style="padding:22px 24px 18px;border-bottom:1px solid #eaedeb">' +
+        '<p style="margin:0 0 8px;color:#5a6460;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Neue TCM.ch Anfrage</p>' +
+        '<h2 style="margin:0 0 16px;color:#141b19;font-size:25px;line-height:1.2">' + esc(d.name) + '</h2>' +
+        '<table role="presentation" style="border-collapse:collapse;font-size:14px">' +
+        '<tr><td style="padding:4px 14px 4px 0;color:#626767"><strong>Telefon</strong></td><td style="padding:4px 0">' + telephone + '</td></tr>' +
+        '<tr><td style="padding:4px 14px 4px 0;color:#626767"><strong>E-Mail</strong></td><td style="padding:4px 0">' + email + '</td></tr>' +
+        '</table></div>' +
+        '<div style="padding:19px 24px 20px">' +
+        '<h3 style="font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 9px;color:#565e5b">Termin auf einen Blick</h3>' +
+        '<table role="presentation" style="border-collapse:collapse;width:100%">' + booking.map(([k,v]) => renderField(k,v)).join('') + '</table>' +
+        '<div style="margin-top:18px;padding:14px 16px;background:#f5f7f6;border-radius:10px;border-left:3px solid #247455">' +
+        '<h3 style="font-size:13px;margin:0 0 8px;color:#394740">Anliegen</h3>' +
+        '<div style="font-size:15px;line-height:1.55;white-space:normal;overflow-wrap:anywhere;color:#18221f">' +
+        (concern ? detail(concern) : '<span style="color:#6b7170">Nicht angegeben</span>') +
+        '</div></div>' +
+        (extra.length ? '<div style="margin-top:16px"><h3 style="font-size:13px;color:#565e5b;margin:0 0 8px">Weitere Angaben</h3>' +
+          '<table role="presentation" style="border-collapse:collapse;width:100%">' + extra.map(([k,v])=>renderField(k,v)).join('') + '</table></div>' : '') +
+        internalNote +
+        '</div>' +
+        '<div style="padding:16px 24px;background:#fafafa;border-top:1px solid #eaedeb">' +
+        '<h3 style="margin:0 0 7px;font-size:12px;font-weight:700;color:#777">Technische Angaben</h3>' +
+        '<table role="presentation" style="border-collapse:collapse;width:100%;font-size:12px;color:#777">' +
+        techCompact.map(([k,v])=>renderField(k,v,true)).join('') + '</table>' +
+        '</div></div></body></html>';
+    };
+    const html = neu ? patientMail() :
       '<!doctype html><html lang="de"><head><meta charset="utf-8"></head><body>' +
-      '<h2 style="font-family:sans-serif;margin:0 0 12px">Neue TCM.ch Anfrage' + (offer ? ' — ' + esc(neu ? offer.anzeige : offer.art) : '') + '</h2>' +
-      (neu ? '<p style="font-family:sans-serif;font-size:14px;margin:0 0 12px;padding:8px 12px;border-left:4px solid #2D9B6F;background:#f6f6f6"><strong>' + esc(offer.anzeige) + '</strong> · ' + esc(d.standort) + (offer.kosten ? ' · ' + esc(offer.kosten) : '') + '</p>'
-        : offer ? '<p style="font-family:sans-serif;font-size:14px;margin:0 0 12px;padding:8px 12px;border-left:4px solid ' + (offer.betreff ? '#813548' : '#2D9B6F') + ';background:#f6f6f6"><strong>' + esc(offer.art) + '</strong> · ' + esc(d.standort || 'St. Gallen') + ' · ' + esc(offer.terminart) + '</p>' : '') +
+      '<h2 style="font-family:sans-serif;margin:0 0 12px">Neue TCM.ch Anfrage' + (offer ? ' — ' + esc(offer.art) : '') + '</h2>' +
+      (offer ? '<p style="font-family:sans-serif;font-size:14px;margin:0 0 12px;padding:8px 12px;border-left:4px solid ' + (offer.betreff ? '#813548' : '#2D9B6F') + ';background:#f6f6f6"><strong>' + esc(offer.art) + '</strong> · ' + esc(d.standort || 'St. Gallen') + ' · ' + esc(offer.terminart) + '</p>' : '') +
       table(rows) +
       '<h3 style="font-family:sans-serif;font-size:13px;color:#666;margin:20px 0 6px">Technische Angaben</h3>' +
       table(tech) +
