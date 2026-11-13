@@ -238,8 +238,7 @@ const homeHtml = homeHtmlCards;
     <BookingSheet />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
-    <!-- Homepage-only Christmas snow preview. No library, no interaction layer.
-         Deliberately enabled now for visual testing; can be season-gated later. -->
+    <!-- Homepage-only seasonal snow, matched to the Santa-hat date window. -->
     <style is:global>
       #heroPatient{position:relative;isolation:isolate;overflow:hidden}
       #heroPatient .tcm-snow-layer{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;contain:paint}
@@ -297,6 +296,9 @@ const homeHtml = homeHtmlCards;
     </script>
     <script is:inline>
       (function(){
+        // Match the Santa-hat season: no snowfall outside 12 Nov–26 Dec.
+        var today=new Date(),mmdd=(today.getMonth()+1)*100+today.getDate();
+        if(mmdd<1112||mmdd>1226)return;
         if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
         var hero=document.getElementById('heroPatient');
         if(!hero||hero.querySelector('.tcm-snow-layer'))return;
