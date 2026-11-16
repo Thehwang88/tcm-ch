@@ -200,9 +200,9 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
   /* Place the clearance on the actual hero content, not another page-level
      header offset. Keeps the banner fixed and avoids homepage regressions. */
   @media(max-width:767px){
-    /* More separation between the fixed blue offer strip and the clinic H1.
-       This changes only location heroes on mobile while the November offer is active. */
-    html.tcm-nov-offer-active .std-location-hero .lsr-left{
+    /* Override the more specific shared warm-clinic mobile hero padding.
+       Without this, the fixed offer banner covers the first part of the H1. */
+    html.tcm-nov-offer-active body.tcm-warm .lsr-hero.std-location-hero .lsr-inner > .lsr-left{
       padding-top:68px!important;
     }
     html.tcm-nov-offer-active .lsr-hero.hlsg .lsr-left{
