@@ -66,7 +66,7 @@
       : (waitlist
       ? 'Wir melden uns, sobald an diesem Standort Termine verfügbar werden.'
       : 'Unser Patientenservice meldet sich schnellstmöglich persönlich bei dir. Ein Termin ist noch nicht verbindlich gebucht.'));
-    set('[data-tps-next-label]', en ? 'What happens next' : 'So geht es weiter');
+
     var email = d.querySelector('[data-tps-email]');
     email.hidden = !emailSent;
     if (emailSent) email.textContent = en
@@ -80,8 +80,12 @@
         ? 'Carlos versucht, dich unter +41 77 523 61 22 telefonisch zu erreichen.'
         : 'Du kannst uns auch direkt per E-Mail oder WhatsApp schreiben.'));
     set('[data-tps-prompt]', en
-      ? (waitlist ? 'Any questions? We are happy to help.' : 'Want to speed things up? Simply reply to the email with 2–3 suitable days or times.')
-      : (waitlist ? 'Fragen? Wir helfen dir gerne weiter.' : 'Du möchtest es beschleunigen? Antworte auf die E-Mail mit 2–3 passenden Tagen oder Uhrzeiten.'));
+      ? (waitlist ? 'Any questions? We are happy to help.' : emailSent
+        ? 'Want to speed things up? Simply reply to the email with 2–3 suitable days or times.'
+        : 'To speed things up, you can send us 2–3 suitable days or times on WhatsApp.')
+      : (waitlist ? 'Fragen? Wir helfen dir gerne weiter.' : emailSent
+        ? 'Du möchtest es beschleunigen? Antworte auf die E-Mail mit 2–3 passenden Tagen oder Uhrzeiten.'
+        : 'Du möchtest es beschleunigen? Schicke uns gerne 2–3 passende Tage oder Uhrzeiten per WhatsApp.'));
     set('[data-tps-wa]', en ? 'Write on WhatsApp' : 'Per WhatsApp schreiben');
     set('[data-tps-tel]', en ? 'Call us' : 'Direkt anrufen');
     set('[data-tps-done]', en ? 'Got it' : 'Alles klar');
