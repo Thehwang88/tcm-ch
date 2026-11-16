@@ -445,6 +445,13 @@
           // Kampagnen-Sheet: eigene, zutreffende Bestätigung für den 360°-Check (data-kf-ok-checkin); sonst Standardtexte.
           ok.querySelector('[data-kf-ok-text]').textContent = (t === 'checkin' && card.getAttribute('data-kf-ok-checkin')) || OK[t];
           form.replaceWith(ok); ok.focus({ preventScroll: true });
+          // Display a consistent, immediately visible receipt even when the form was
+          // below the fold or moved into the booking sheet. No extra tracking.
+          if (window.tcmPatientSuccess) window.tcmPatientSuccess.show({
+            emailSent: res.j.confirmation_email_sent === true,
+            kind: t === 'vormerkung' ? 'waitlist' : t,
+            hasPhone: !!data.telefon
+          });
         })
         .catch(function (err) {
           sending = false; form.classList.remove('is-sending');

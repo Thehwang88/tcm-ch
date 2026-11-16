@@ -98,7 +98,8 @@ const { stadt, jahr, quelle } = Astro.props;
       if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Wird gesendet…'; }
       fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
         .then(function (r) { if (!r.ok) throw new Error('bad_status'); return r.json().catch(function () { return {}; }); })
-        .then(function () {
+        .then(function (out) {
+          if (!out || out.ok !== true) throw new Error('bad_response');
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({ event: 'formular_senden', form_type: 'warteliste', quelle: quelle });
           var ok = document.createElement('div');
@@ -107,6 +108,9 @@ const { stadt, jahr, quelle } = Astro.props;
             '<h3 style="font-size:19px;font-weight:800;color:var(--black);margin:0 0 8px;letter-spacing:-.01em">Danke, du stehst auf der Liste.</h3>' +
             '<p style="font-size:14.5px;color:var(--mid);line-height:1.55">Wir melden uns per E-Mail, sobald die Termine freigegeben sind.</p>';
           f.replaceWith(ok);
+          if (window.tcmPatientSuccess) window.tcmPatientSuccess.show({
+            kind: 'waitlist', emailSent: out.confirmation_email_sent === true, hasPhone: false
+          });
         })
         .catch(function () {
           if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Auf die Warteliste'; }

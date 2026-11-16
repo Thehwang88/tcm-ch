@@ -78,6 +78,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <link rel="stylesheet" href="/home.css" />
     <link rel="stylesheet" href="/nav-rebrand.css" />
     <link rel="stylesheet" href="/footer-rebrand.css" />
+    <link rel="stylesheet" href="/patient-success.css" />
     <link rel="stylesheet" href="/standort-card.css" />
     {warmClinicPalette && <link rel="stylesheet" href="/warm-clinic.css" />}
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
@@ -136,5 +137,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     {winterSnowTarget && <WinterSnow target={winterSnowTarget} />}
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
+    <!-- Global receipt: success only after server-confirmed patient enquiry. -->
+    <script src="/patient-success.js" is:inline defer></script>
   </body>
 </html>

@@ -1,0 +1,46 @@
+/* Site-wide success receipt. Isolated names; no impact on existing form/CTA styling. */
+.tcm-patient-success {
+  padding:0;border:0;border-radius:22px;
+  width:min(540px,calc(100vw - 32px));max-width:540px;
+  max-height:min(92dvh,760px);overflow:auto;
+  margin:auto;background:#fff;color:#142b3b;
+  box-shadow:0 24px 86px rgba(16,38,53,.24);
+  font-family:inherit;
+}
+.tcm-patient-success::backdrop { background:rgba(13,27,40,.62); }
+.tcm-patient-success .tps-panel { padding:clamp(24px,4.5vw,38px);position:relative;text-align:left; }
+.tcm-patient-success .tps-logo { display:block;width:148px;height:auto;max-height:58px;object-fit:contain;object-position:left center;margin-bottom:26px; }
+.tcm-patient-success .tps-close {
+  position:absolute;top:15px;right:15px;display:grid;place-items:center;
+  width:36px;height:36px;border:1px solid #e2e8eb;border-radius:50%;
+  background:white;color:#52616d;font-size:25px;line-height:1;cursor:pointer;
+}
+.tcm-patient-success .tps-check { display:grid;place-items:center;width:51px;height:51px;border-radius:50%;background:#e9f4f6;color:#176d83;margin-bottom:18px; }
+.tcm-patient-success .tps-title { font-size:clamp(24px,4vw,30px);line-height:1.16;letter-spacing:-.035em;font-weight:750;color:#132b3e;margin:0 0 12px; }
+.tcm-patient-success .tps-summary { font-size:15.5px;line-height:1.6;color:#415566;margin:0 0 22px; }
+.tcm-patient-success .tps-next { background:#eff6fb;border:1px solid #dceaf4;border-radius:13px;padding:17px 19px;margin-bottom:17px; }
+.tcm-patient-success .tps-next-label { font-size:13px;font-weight:750;color:#255e89;letter-spacing:.02em; }
+.tcm-patient-success .tps-next p { color:#2c4455;font-size:14px;line-height:1.58;margin:10px 0 0; }
+.tcm-patient-success .tps-prompt { font-size:14px;color:#465968;line-height:1.55;margin:0 0 17px; }
+.tcm-patient-success .tps-contact { display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px; }
+.tcm-patient-success .tps-contact a {
+  color:#1b659a;text-decoration:none;font-weight:700;font-size:13.5px;
+  border:1px solid #cbdde9;background:#fff;border-radius:99px;
+  padding:10px 14px;min-height:43px;display:inline-flex;align-items:center;
+}
+.tcm-patient-success .tps-contact a:hover { background:#f2f7fb; }
+.tcm-patient-success .tps-done {
+  border:0;border-radius:99px;background:#1767a4;color:white;
+  font-weight:700;font-size:15px;font-family:inherit;line-height:1.2;min-height:50px;width:100%;cursor:pointer;
+}
+.tcm-patient-success .tps-done:hover { background:#115789; }
+.tcm-patient-success :focus-visible { outline:3px solid #1877b4;outline-offset:3px; }
+@media(max-width:540px){
+  .tcm-patient-success { width:calc(100vw - 22px);border-radius:17px; }
+  .tcm-patient-success .tps-panel { padding:23px 21px 21px; }
+  .tcm-patient-success .tps-logo { width:130px;margin-bottom:23px; }
+  .tcm-patient-success .tps-close { top:13px;right:13px; }
+  .tcm-patient-success .tps-contact { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+  .tcm-patient-success .tps-contact a { font-size:12.5px;justify-content:center;text-align:center;padding:8px; }
+}
+@media(prefers-reduced-motion:reduce){.tcm-patient-success{scroll-behavior:auto}}

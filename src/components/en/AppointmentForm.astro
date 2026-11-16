@@ -90,6 +90,10 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
           form.reset();
           track('form_submit_success', { stage: 'inquiry_received' });
           show('success', 'Thank you! Your request has been received. We will get back to you personally.');
+          if (window.tcmPatientSuccess) window.tcmPatientSuccess.show({
+            lang: 'en', emailSent: data.confirmation_email_sent === true,
+            kind: 'inquiry', hasPhone: true
+          });
         } else {
           track('form_submit_error', { reason: 'server' });
           show('error', (data && data.error) || 'Could not send your request. Please try again or call us.');
