@@ -3,6 +3,7 @@
 // Gemeinsames Kontaktformular (15.10.2026): Terminarten + Check-in-Freigaben aus src/data/kontakt-angebote.mjs.
 import { OFFER_BY_ID, ZIELART_FUER, zielFuer, terminBetreff, KAMPAGNEN, HWANG_ZIEL } from '../../src/data/kontakt-angebote.mjs';
 import { patientConfirmation, PATIENT_REPLY_TO } from '../../src/lib/patient-confirmation.mjs';
+import { smsEligible, sendSmsConfirmation } from '../../src/lib/sms-confirmation.mjs';
 const TO = 'termine@tcm.ch';
 const FROM = 'TCM.ch Anfrage <anfrage@tcm.ch>';
 
@@ -19,6 +20,14 @@ export async function onRequestPost({ request, env }) {
     try { d = await request.json(); } catch (e) {}
 
     if (d.website) return J({ ok: true });                 // honeypot
+    // Optional contact preferences: never required; whitelist to prevent arbitrary
+    // form payloads from changing process logic. Nothing personal goes into GA4.
+    const kontaktMap = { telefon: 'Telefon', email: 'E-Mail', whatsapp: 'WhatsApp' };
+    d.kontaktweg = Object.prototype.hasOwnProperty.call(kontaktMap, String(d.kontaktweg || ''))
+      ? String(d.kontaktweg) : '';
+    d.wunschzeit = typeof d.wunschzeit === 'string' ? d.wunschzeit.trim().slice(0, 160) : '';
+    d.sms_einwilligung = d.sms_einwilligung === true || d.sms_einwilligung === 'ja';
+
     // Email is required for every source EXCEPT the St. Gallen launch hero
     // (quelle=launch-hero-sg), which captures only name + phone. Name, telefon
     // and a valid Turnstile token are always required.
@@ -159,6 +168,7 @@ export async function onRequestPost({ request, env }) {
       ['Aktuelle Situation', d.situation], ['Nachricht', d.nachricht],
       ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen], ['Wunschzeit', d.wunschzeit],
+      ['Bevorzugter Kontakt', kontaktMap[d.kontaktweg]], ['SMS-Bestätigung gewünscht', d.sms_einwilligung ? 'Ja' : undefined],
       ['Angebot', d.angebot],
       // Partner-B2B (quelle=partner-b2b, /partner/): Qualifikationsfelder. Nur gesetzt, wenn vorhanden.
       ['Praxis-Website', d.praxis_url], ['Klinische Erfahrung (Jahre)', d.erfahrung],
@@ -209,6 +219,8 @@ export async function onRequestPost({ request, env }) {
         ['Terminart', offer.label],
         ['Dauer', offer.dauerMin ? offer.dauerMin + ' Minuten' : undefined],
         ['Wunschzeit', d.wunschzeit || 'Nicht angegeben'],
+        ['Bevorzugter Kontakt', kontaktMap[d.kontaktweg] || 'Nicht angegeben'],
+        ['SMS-Bestätigung gewünscht', d.sms_einwilligung ? 'Ja' : undefined],
         ['Kosten', offer.kosten],
       ];
       // Preserve identifiers for troubleshooting/marketing, but do not repeat
@@ -339,7 +351,15 @@ export async function onRequestPost({ request, env }) {
         console.error('patient_confirmation_delivery_exception');
       }
     }
-    return J({ ok: true, confirmation_email_sent: confirmationEmailSent });
+    // SMS is independent of the lead / email path. Never send to partners,
+    // waitlists, non-Zurich clinics or numbers without explicit consent.
+    // Provider errors must not convert a completed lead to an apparent failure.
+    let smsConfirmationSent = false;
+    const isWaitlist = _warteliste || (neu && neu.terminart === 'vormerkung');
+    if (smsEligible(d, patientForm, isWaitlist, !!hwang)) {
+      smsConfirmationSent = await sendSmsConfirmation({ env, d });
+    }
+    return J({ ok: true, confirmation_email_sent: confirmationEmailSent, sms_confirmation_sent: smsConfirmationSent });
   } catch (err) {
     return J({ error: 'exception', detail: String((err && err.stack) || err) }, 500);
   }
