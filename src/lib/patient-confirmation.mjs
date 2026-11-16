@@ -6,7 +6,7 @@ export const PATIENT_PHONE_E164 = '+41775236122';
 export const PATIENT_WHATSAPP = '41775236122';
 // An existing public PNG is used rather than an SVG: Outlook and Gmail support varies for SVGs.
 // The accompanying live text wordmark remains legible even if remote images are disabled.
-export const PATIENT_FOOTER_LOGO = 'https://tcm.ch/images/logo/tcm-kliniken-logo-96.png';
+export const PATIENT_FOOTER_LOGO = 'https://tcm.ch/images/logo/tcm-ch-email-logo.png';
 
 const clean = (s) => String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
 const esc = (s) => clean(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -83,7 +83,7 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
     '<tr><td style="padding:30px 30px 22px;">' + paragraphs + '</td></tr>' +
     '<tr><td style="padding:18px 30px;background:#fafbfd;border-top:1px solid #e4e9ee;">' +
     '<table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;"><tr>' +
-    '<td style="vertical-align:middle;padding-right:12px;"><img src="' + PATIENT_FOOTER_LOGO + '" width="44" height="44" alt="TCM.ch" style="display:block;border:0;max-width:44px;height:auto;"></td>' +
+    '<td style="vertical-align:middle;padding-right:16px;"><img src="' + PATIENT_FOOTER_LOGO + '" width="130" height="44" alt="TCM.ch Kliniken" style="display:block;border:0;width:130px;max-width:130px;height:auto;"></td>' +
     '<td style="vertical-align:middle;font-size:13px;line-height:1.4;color:#526372;"><strong style="color:#1c3549;font-size:15px;">TCM.ch Kliniken</strong><br>' +
     '<a href="https://tcm.ch/" style="color:#526372;text-decoration:none;">tcm.ch</a> &nbsp;·&nbsp; ' +
     '<a href="mailto:' + PATIENT_REPLY_TO + '" style="color:#526372;text-decoration:none;">' + PATIENT_REPLY_TO + '</a></td>' +
