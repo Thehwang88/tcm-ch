@@ -79,12 +79,13 @@
       anliegen:concern,telefon:phone,email:email,standort:locationInput.value,website:form.elements.website.value,
       turnstileToken:token,zeit:new Date().toISOString()};
     fetch('/api/anfrage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-      .then(function(r){return r.json().catch(function(){return null;}).then(function(j){return {ok:r.ok&&j&&j.ok};});})
+      .then(function(r){return r.json().catch(function(){return null;}).then(function(j){return {ok:r.ok&&j&&j.ok,emailSent:!!(j&&j.confirmation_email_sent)};});})
       .then(function(out){
         if(!out.ok)throw Error('send_failed');
         form.hidden=true;success.hidden=false;
         push('concern_sheet_submit_success',{source_page:location.pathname});
         success.focus({preventScroll:true});
+        if(window.tcmPatientSuccess) window.tcmPatientSuccess.show({emailSent:out.emailSent,kind:'inquiry',hasPhone:!!phone});
       })
       .catch(function(){setError('Senden fehlgeschlagen. Bitte versuch es erneut oder ruf uns an.');if(widget!==null&&window.turnstile)window.turnstile.reset(widget);})
       .finally(function(){sending=false;submit.disabled=false;submit.innerHTML='Anliegen kostenlos senden <span aria-hidden="true">→</span>';});
