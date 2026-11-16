@@ -79,6 +79,9 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
         standort: form.standort.value,
         anliegen: form.anliegen.value.trim(),
         quelle: form.dataset.source,
+        kontaktweg: (form.querySelector('[name="kontaktweg"]') || {}).value || '',
+        wunschzeit: (form.querySelector('[name="wunschzeit"]') || {}).value || '',
+        sms_einwilligung: !!(form.querySelector('[name="sms_einwilligung"]') || {}).checked,
         turnstileToken: token,
       };
       form.classList.add('is-sending');
