@@ -72,13 +72,17 @@
     panel.appendChild(note);
     function sync() {
       var zh = isZurich(form);
-      sms.hidden = !zh;
-      if (!zh) cb.checked = false;
+      // Do not offer SMS when no telephone has been entered: a phone-only/blank
+      // field can otherwise imply the patient will receive an impossible SMS.
+      var canText = !!(phone && phone.value && phone.value.trim());
+      sms.hidden = !zh || !canText;
+      if (sms.hidden) cb.checked = false;
     }
     if (!fields.children.length) heading.hidden = true;
     var target = submit.closest('.kf-submit-wrap, .kf-actions, .form-actions, .ev-actions') || submit;
     target.parentNode.insertBefore(panel,target);
     form.addEventListener('change',sync);
+    if (phone) phone.addEventListener('input',sync);
     sync();
   }
   function boot() {
