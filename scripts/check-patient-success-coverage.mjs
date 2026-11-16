@@ -30,4 +30,13 @@ for (const asset of [
 }
 const modal = readFileSync('public/patient-success.js', 'utf8');
 assert.ok(modal.includes('Carlos oder Emily'), 'shared caller acknowledgement missing');
-console.log('PASS: success modal loaded in all four site entry layouts; handlers and assets present.');
+// The action must remain outside the independently scrollable content area.
+const js = readFileSync('public/patient-success.js', 'utf8');
+const css = readFileSync('public/patient-success.css', 'utf8');
+assert.ok(js.indexOf("'<div class=\"tps-content\">'") >= 0, 'receipt content scroll region missing');
+assert.ok(js.indexOf("'<div class=\"tps-footer\">'") >= 0, 'persistent receipt footer missing');
+assert.ok(js.indexOf("'<div class=\"tps-footer\">'") > js.indexOf("'<div class=\"tps-content\">'"), 'action must follow scrollable content');
+assert.ok(css.includes('.tcm-patient-success .tps-content {') && css.includes('overflow-y:auto'), 'receipt text must scroll independently');
+assert.ok(css.includes('.tcm-patient-success .tps-footer {') && css.includes('flex:0 0 auto'), 'receipt action must not shrink or scroll away');
+assert.ok(css.includes('100dvh') && css.includes('@media(max-width:540px)'), 'compact and viewport-aware mobile rules missing');
+console.log('PASS: all site layouts covered; compact scrollable receipt and pinned action present.');
