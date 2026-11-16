@@ -2,6 +2,7 @@
 // Env var: RESEND_API_KEY (must be in the same Resend workspace as the verified tcm.ch domain)
 // Gemeinsames Kontaktformular (15.10.2026): Terminarten + Check-in-Freigaben aus src/data/kontakt-angebote.mjs.
 import { OFFER_BY_ID, ZIELART_FUER, zielFuer, terminBetreff, KAMPAGNEN, HWANG_ZIEL } from '../../src/data/kontakt-angebote.mjs';
+import { patientConfirmation, PATIENT_REPLY_TO } from '../../src/lib/patient-confirmation.mjs';
 const TO = 'termine@tcm.ch';
 const FROM = 'TCM.ch Anfrage <anfrage@tcm.ch>';
 
@@ -300,6 +301,42 @@ export async function onRequestPost({ request, env }) {
 
     const text = await res.text();
     if (!res.ok) return J({ error: 'resend_failed', status: res.status, detail: text }, 500);
+
+    // Patient acknowledgement: only AFTER the internal notification has succeeded.
+    // Do not auto-reply to B2B / job / academy enquiries or Hwang partner routing.
+    // No second submission or error is surfaced to the patient if this optional email fails.
+    const patientForm = !!neu || _zhRouting || _shortConcern || _warteliste ||
+      _launchSG || d.typ === 'termin' || d.anfrage_typ === 'massage';
+    if (patientForm && !hwang && d.email && _emailOk(d.email)) {
+      const fromPath = String(d.quelle || d.seite || '').trim();
+      const lang = /^\/en(?:\/|$)/.test(fromPath) || d.lang === 'en' ? 'en' : 'de';
+      const kind = _warteliste || (neu && neu.terminart === 'vormerkung') ? 'waitlist'
+        : neu && neu.terminart === 'behandlung' ? 'treatment'
+        : neu && neu.terminart === 'checkin' ? 'checkin'
+        : _zhRouting || (neu && (neu.terminart === 'routing' || neu.terminart === 'anfrage')) ? 'routing'
+        : 'inquiry';
+      try {
+        const confirm = patientConfirmation({
+          name: d.name, standort: d.standort, lang, kind, hasPhone: !!d.telefon,
+        });
+        const confirmationRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({
+            from: 'TCM.ch Patientenservice <anfrage@tcm.ch>',
+            to: [String(d.email).trim()],
+            reply_to: PATIENT_REPLY_TO,
+            subject: confirm.subject,
+            html: confirm.html,
+            text: confirm.text,
+          }),
+        });
+        // Do not log patient data or the provider response; record only the status.
+        if (!confirmationRes.ok) console.error('patient_confirmation_delivery_failed', confirmationRes.status);
+      } catch (confirmationError) {
+        console.error('patient_confirmation_delivery_exception');
+      }
+    }
     return J({ ok: true });
   } catch (err) {
     return J({ error: 'exception', detail: String((err && err.stack) || err) }, 500);
