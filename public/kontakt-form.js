@@ -408,7 +408,7 @@
       if (tsEl && !token) { if (errBox) { errBox.textContent = 'Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'; errBox.hidden = false; } return; }
       var data = {};
       [].forEach.call(form.querySelectorAll('input,textarea,select'), function (el) {
-        if (!el.name || el.type === 'radio' || el.name === 'website' || el.name === 'cf-turnstile-response') return;
+        if (!el.name || el.type === 'radio' || (el.type === 'checkbox' && !el.checked) || el.name === 'website' || el.name === 'cf-turnstile-response') return;
         var v = (el.value || '').trim(); if (v) data[el.name] = v;
       });
       // Kanonischer Zielwert (bisheriger option.value) für Server, Routing und Mail; ID separat.
