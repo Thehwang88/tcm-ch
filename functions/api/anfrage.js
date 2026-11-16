@@ -309,7 +309,7 @@ export async function onRequestPost({ request, env }) {
       _launchSG || d.typ === 'termin' || d.anfrage_typ === 'massage';
     if (patientForm && !hwang && d.email && _emailOk(d.email)) {
       const fromPath = String(d.quelle || d.seite || '').trim();
-      const lang = /^\\/en(?:\\/|$)/.test(fromPath) || d.lang === 'en' ? 'en' : 'de';
+      const lang = /^\/en(?:\/|$)/.test(fromPath) || d.lang === 'en' ? 'en' : 'de';
       const kind = _warteliste || (neu && neu.terminart === 'vormerkung') ? 'waitlist'
         : neu && neu.terminart === 'behandlung' ? 'treatment'
         : neu && neu.terminart === 'checkin' ? 'checkin'
