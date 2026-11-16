@@ -11,7 +11,7 @@ export const PATIENT_FOOTER_LOGO = 'https://tcm.ch/images/logo/tcm-ch-email-logo
 const clean = (s) => String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
 const esc = (s) => clean(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
-export function patientConfirmation({ name = '', standort = '', kind = 'inquiry', lang = 'de', hasPhone = true } = {}) {
+export function patientConfirmation({ name = '', standort = '', kind = 'inquiry', lang = 'de', hasPhone = true, contactWay = '' } = {}) {
   const en = lang === 'en';
   const first = clean(name).split(/\s+/)[0].slice(0, 60);
   const clinic = clean(standort).slice(0, 110);
@@ -33,6 +33,9 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
   if (kind === 'routing') typeNote = en
     ? 'We will check which clinic is suitable for your request.'
     : 'Wir prüfen, welche Praxis am besten zu Ihrer Anfrage passt.';
+  const prefersEmail = contactWay === 'email';
+  const prefersWhatsApp = contactWay === 'whatsapp';
+  const callPlanned = hasPhone && !prefersEmail && !prefersWhatsApp;
   let next;
   if (isWaitlist) {
     next = en
@@ -44,8 +47,14 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
       : 'Unser Team meldet sich schnellstmöglich persönlich bei Ihnen, um das weitere Vorgehen zu besprechen. Ein Termin ist damit noch nicht gebucht.';
   } else {
     next = en
-      ? (hasPhone ? 'Carlos or Emily from our patient service & concierge team will call you as soon as possible to find a suitable appointment.' : 'Our patient service team will reply to you as soon as possible.')
-      : (hasPhone ? 'Carlos oder Emily aus unserem Patientenservice werden sich schnellstmöglich telefonisch bei Ihnen melden, um gemeinsam einen passenden Termin zu finden.' : 'Unser Patientenservice wird sich schnellstmöglich bei Ihnen melden.');
+      ? (prefersEmail ? 'Carlos or Emily from patient service will reply by email as soon as possible.'
+        : prefersWhatsApp ? 'Carlos or Emily from patient service will contact you on WhatsApp as soon as possible.'
+        : callPlanned ? 'Carlos or Emily from patient service will call you as soon as possible to find a suitable appointment.'
+        : 'Our patient service team will reply to you as soon as possible.')
+      : (prefersEmail ? 'Carlos oder Emily aus unserem Patientenservice melden sich schnellstmöglich per E-Mail bei Ihnen.'
+        : prefersWhatsApp ? 'Carlos oder Emily aus unserem Patientenservice melden sich schnellstmöglich per WhatsApp bei Ihnen.'
+        : callPlanned ? 'Carlos oder Emily aus unserem Patientenservice werden sich schnellstmöglich telefonisch bei Ihnen melden, um gemeinsam einen passenden Termin zu finden.'
+        : 'Unser Patientenservice wird sich schnellstmöglich bei Ihnen melden.');
     next += en ? ' Your appointment is not confirmed yet.' : ' Ein Termin ist damit noch nicht verbindlich gebucht.';
   }
   const numberNote = en
@@ -88,7 +97,7 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
     '<a href="mailto:' + PATIENT_REPLY_TO + '" style="color:#526372;text-decoration:none;">' + PATIENT_REPLY_TO + '</a></p>' +
     '</td></tr></table></body></html>';
   const textBody = [
-    salutation, '', title, '', received, typeNote, next, hasPhone && !isWaitlist ? numberNote : '',
+    salutation, '', title, '', received, typeNote, next, callPlanned && !isWaitlist ? numberNote : '',
     '', contactLine, '', intro, whatsappLabel + ': ' + wa, callLabel + ': ' + PATIENT_PHONE, '',
     signoff, 'Carlos & Emily', role, 'TCM.ch Kliniken', PATIENT_REPLY_TO, 'https://tcm.ch/'
   ].filter((s) => s !== null && s !== undefined).join('\n');
