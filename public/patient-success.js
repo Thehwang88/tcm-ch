@@ -74,10 +74,10 @@
       : 'Wir haben dir eine Bestätigung per E-Mail geschickt. Bitte prüfe auch deinen Spam-Ordner.';
     set('[data-tps-followup]', en
       ? (waitlist ? 'There is nothing else you need to do.' : hasPhone
-        ? 'Carlos will try to reach you by phone at +41 77 523 61 22.'
+        ? 'Carlos or Emily will contact you from our shared number: +41 77 523 61 22.'
         : 'You can reply directly to the confirmation email.')
       : (waitlist ? 'Du musst vorerst nichts weiter unternehmen.' : hasPhone
-        ? 'Carlos versucht, dich unter +41 77 523 61 22 telefonisch zu erreichen.'
+        ? 'Carlos oder Emily melden sich telefonisch von unserer gemeinsamen Nummer: +41 77 523 61 22.'
         : 'Du kannst uns auch direkt per E-Mail oder WhatsApp schreiben.'));
     set('[data-tps-prompt]', en
       ? (waitlist ? 'Any questions? We are happy to help.' : emailSent
