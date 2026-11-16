@@ -1,0 +1,13 @@
+/* Compact opt-in preferences. No extra mandatory fields or layout shifts above submit. */
+.tcm-prefs{margin:12px 0 14px;padding:13px 15px;border:1px solid #dce5eb;border-radius:12px;background:#f8fafc;color:#233e4e;font:inherit}
+.tcm-prefs-heading{font-size:13px;font-weight:750;margin:0 0 10px;color:#263f4e}
+.tcm-prefs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tcm-prefs-field{min-width:0}
+.tcm-prefs-field label{display:block;font-size:12px;font-weight:650;line-height:1.35;margin:0 0 5px;color:#3c5260}
+.tcm-prefs .tcm-prefs-control{box-sizing:border-box;width:100%;height:42px;border:1px solid #cad7df;border-radius:8px;padding:8px 10px;font:inherit;font-size:13px;background:#fff;color:#172b3c;min-width:0}
+.tcm-prefs-sms{display:flex;gap:9px;align-items:flex-start;margin-top:11px;font-size:12.5px;line-height:1.45;cursor:pointer}
+.tcm-prefs-sms[hidden]{display:none!important}
+.tcm-prefs-sms input{width:16px;height:16px;flex:0 0 auto;accent-color:#1767a4;margin:1px 0 0}
+.tcm-prefs-note{font-size:11.5px;line-height:1.4;color:#60717d;margin:9px 0 0}
+.tcm-prefs :focus-visible{outline:3px solid #1767a4;outline-offset:2px}
+@media(max-width:580px){.tcm-prefs{margin:10px 0 12px;padding:12px}.tcm-prefs-grid{grid-template-columns:1fr;gap:10px}.tcm-prefs-field label{font-size:12px}}
