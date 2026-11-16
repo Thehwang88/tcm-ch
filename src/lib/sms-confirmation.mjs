@@ -27,7 +27,7 @@ export function smsEligible(d, isPatient, isWaitlist, isHwang) {
 }
 export function smsMessage() {
   // GSM-7 basic characters, 139 chars max => one billable SMS segment.
-  return 'TCM.ch: Danke fuer deine Anfrage. Carlos oder Emily melden sich von +41 77 523 61 22. Terminwuensche? Antworte auf unsere E-Mail.';
+  return 'TCM.ch: Danke fuer deine Anfrage! Carlos oder Emily melden sich. Rueckfragen: +41 77 523 61 22. Auf diese SMS kann man nicht antworten.';
 }
 export async function sendSmsConfirmation({ env, d, fetchFn = fetch }) {
   if (!env || env.TCM_SMS_ENABLED !== 'true' || !wantsSms(d) || !isZurichSmsPilot(d)) return false; // off by default; no charges
