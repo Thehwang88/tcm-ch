@@ -111,7 +111,7 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
     "seo": {
       "title": "TCM & Akupunktur Zürich Bahnhofstrasse | TCM.ch",
       "description": "TCM.ch Zürich Bahnhofstrasse: Akupunktur und TCM an der Bahnhofstrasse 37, 1. OG, im Zentrum von Zürich (8001). Zusatzversicherung je nach Police, Termin anfragen.",
-      "h1": "TCM.ch <em>Zürich Bahnhofstrasse</em> – Akupunktur",
+      "h1": "TCM.ch <em>Zürich Bahnhofstrasse</em> – TCM &amp; Akupunktur",
       "schemaName": "TCM.ch Zürich Bahnhofstrasse"
     },
     "hero": {
@@ -922,7 +922,7 @@ export const standorte: Record<string, Standort> = {
     "seo": {
       "title": "TCM Oerlikon – Akupunktur in Zürich Oerlikon | TCM.ch",
       "description": "TCM.ch Oerlikon an der Ohmstrasse 14, 8050 Zürich: Akupunktur, Tuina und TCM für Oerlikon und Zürich Nord. EMR-/ASCA-anerkannt, Termin direkt anfragen.",
-      "h1": "TCM.ch <em>Oerlikon</em> – Akupunktur",
+      "h1": "TCM.ch <em>Oerlikon</em> – TCM &amp; Akupunktur",
       "schemaName": "TCM.ch Zürich Oerlikon"
     },
     "hero": {
