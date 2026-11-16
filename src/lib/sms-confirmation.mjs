@@ -30,7 +30,7 @@ export function smsMessage() {
   return 'TCM.ch: Danke fuer deine Anfrage. Carlos oder Emily melden sich von +41 77 523 61 22. Terminwuensche? Antworte auf unsere E-Mail.';
 }
 export async function sendSmsConfirmation({ env, d, fetchFn = fetch }) {
-  if (!env || env.TCM_SMS_ENABLED !== 'true') return false; // off by default; no charges
+  if (!env || env.TCM_SMS_ENABLED !== 'true' || !wantsSms(d) || !isZurichSmsPilot(d)) return false; // off by default; no charges
   const sid = String(env.TWILIO_ACCOUNT_SID || '');
   const token = String(env.TWILIO_AUTH_TOKEN || '');
   const sender = String(env.TWILIO_SMS_FROM || SMS_FROM);
