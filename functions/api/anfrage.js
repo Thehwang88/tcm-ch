@@ -305,6 +305,7 @@ export async function onRequestPost({ request, env }) {
     // Patient acknowledgement: only AFTER the internal notification has succeeded.
     // Do not auto-reply to B2B / job / academy enquiries or Hwang partner routing.
     // No second submission or error is surfaced to the patient if this optional email fails.
+    let confirmationEmailSent = false;
     const patientForm = !!neu || _zhRouting || _shortConcern || _warteliste ||
       _launchSG || d.typ === 'termin' || d.anfrage_typ === 'massage';
     if (patientForm && !hwang && d.email && _emailOk(d.email)) {
@@ -332,12 +333,13 @@ export async function onRequestPost({ request, env }) {
           }),
         });
         // Do not log patient data or the provider response; record only the status.
-        if (!confirmationRes.ok) console.error('patient_confirmation_delivery_failed', confirmationRes.status);
+        if (confirmationRes.ok) confirmationEmailSent = true;
+        else console.error('patient_confirmation_delivery_failed', confirmationRes.status);
       } catch (confirmationError) {
         console.error('patient_confirmation_delivery_exception');
       }
     }
-    return J({ ok: true });
+    return J({ ok: true, confirmation_email_sent: confirmationEmailSent });
   } catch (err) {
     return J({ error: 'exception', detail: String((err && err.stack) || err) }, 500);
   }
