@@ -1,6 +1,10 @@
 /* Compact opt-in preferences. No extra mandatory fields or layout shifts above submit. */
 .tcm-prefs{margin:12px 0 14px;padding:13px 15px;border:1px solid #dce5eb;border-radius:12px;background:#f8fafc;color:#233e4e;font:inherit}
-.tcm-prefs-heading{font-size:13px;font-weight:750;margin:0 0 10px;color:#263f4e}
+.tcm-prefs-heading{cursor:pointer;font-size:13px;font-weight:750;margin:0;color:#263f4e;line-height:1.5;min-height:24px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tcm-prefs-heading::-webkit-details-marker{display:none}
+.tcm-prefs-heading::after{content:'+';font-size:19px;font-weight:500;line-height:1}
+.tcm-prefs[open] .tcm-prefs-heading{margin-bottom:12px}
+.tcm-prefs[open] .tcm-prefs-heading::after{content:'−'}
 .tcm-prefs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .tcm-prefs-field{min-width:0}
 .tcm-prefs-field label{display:block;font-size:12px;font-weight:650;line-height:1.35;margin:0 0 5px;color:#3c5260}
