@@ -65,7 +65,24 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08
   #navCtaBtn.nav-cta{padding:0 11px!important;font-size:15px!important}
 }
 
-/* ── Header-Redesign: Telefon-Icon (nur mobil), kein Mobile-CTA, 44px-Targets ── */
+/* ── Header contact: desktop shows the real direct-dial number next to the CTA. ── */
+#mainNav .nav-phone-number{display:none}
+@media(min-width:901px){
+  #mainNav .nav-phone{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    min-height:44px;padding:0 6px;border:0;background:transparent;
+    color:#263D49;text-decoration:none;white-space:nowrap;
+    font:700 14px/1.2 Figtree,Arial,sans-serif;
+  }
+  #mainNav .nav-phone-number{display:inline}
+  #mainNav .nav-phone svg{width:17px;height:17px;flex:none}
+  #mainNav .nav-phone:hover{color:#1769B1}
+  #mainNav .nav-phone:focus-visible{outline:2px solid #1769B1;outline-offset:2px;border-radius:5px}
+}
+@media(min-width:901px) and (max-width:1100px){
+  #mainNav .nav-phone{gap:6px;font-size:12px}
+}
+/* ── Header-Redesign: Telefon-Icon (mobil), kein Mobile-CTA, 44px-Targets ── */
 .nav-phone{display:none}
 @media(max-width:900px){
   #navCtaBtn.nav-cta{display:none!important}
