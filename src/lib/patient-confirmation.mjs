@@ -16,7 +16,7 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
   const first = clean(name).split(/\s+/)[0].slice(0, 60);
   const clinic = clean(standort).slice(0, 110);
   const locationPart = clinic ? (en ? ' at TCM.ch ' : ' bei TCM.ch ') + clinic : (en ? ' at TCM.ch' : ' bei TCM.ch');
-  const subject = (en ? 'We received your enquiry' : 'Ihre Anfrage ist eingegangen') + locationPart;
+  const subject = en ? 'We received your enquiry' + locationPart : 'Ihre Anfrage' + locationPart + ' ist eingegangen';
   const salutation = en ? (first ? 'Hello ' + first + ',' : 'Hello,') : (first ? 'Guten Tag ' + first + ',' : 'Guten Tag,');
   const isWaitlist = kind === 'waitlist';
   const title = en ? 'Thank you for your enquiry.' : 'Vielen Dank für Ihre Anfrage.';
