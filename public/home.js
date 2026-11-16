@@ -59,7 +59,8 @@ fetch('/api/anfrage', {
   var modalShown = window.tcmPatientSuccess && window.tcmPatientSuccess.show({
     emailSent: out.confirmation_email_sent === true,
     kind: data.anfrage_typ === 'vormerkung' ? 'waitlist' : data.anfrage_typ === 'zuerich-routing' ? 'routing' : 'inquiry',
-    hasPhone: !!data.telefon
+    hasPhone: !!data.telefon,
+    contactWay: data.kontaktweg || ''
   });
   if(!modalShown && card) card.scrollIntoView({behavior:'smooth',block:'start'});
 })
