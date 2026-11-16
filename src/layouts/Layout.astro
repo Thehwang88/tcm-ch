@@ -54,6 +54,7 @@ const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path]
     <link rel="stylesheet" href="/footer.css" />
     <link rel="stylesheet" href="/footer-rebrand.css" />
     <link rel="stylesheet" href="/patient-success.css" />
+    <link rel="stylesheet" href="/patient-preferences.css" />
     <link rel="stylesheet" href="/standort-card.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -107,5 +108,6 @@ const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path]
     <FooterEn />
     <!-- Global receipt: success only after server-confirmed patient enquiry. -->
     <script src="/patient-success.js" is:inline defer></script>
+    <script src="/patient-preferences.js" is:inline defer></script>
   </body>
 </html>
