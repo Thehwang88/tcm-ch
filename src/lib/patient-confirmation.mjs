@@ -44,13 +44,13 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
       : 'Unser Team meldet sich schnellstmöglich persönlich bei Ihnen, um das weitere Vorgehen zu besprechen. Ein Termin ist damit noch nicht gebucht.';
   } else {
     next = en
-      ? (hasPhone ? 'Carlos from our patient service team will call you as soon as possible to find a suitable appointment.' : 'Our patient service team will reply to you as soon as possible.')
-      : (hasPhone ? 'Carlos aus unserem Patientenservice wird Sie schnellstmöglich anrufen, um gemeinsam einen passenden Termin zu finden.' : 'Unser Patientenservice wird sich schnellstmöglich bei Ihnen melden.');
+      ? (hasPhone ? 'Carlos or Emily from our patient service & concierge team will call you as soon as possible to find a suitable appointment.' : 'Our patient service team will reply to you as soon as possible.')
+      : (hasPhone ? 'Carlos oder Emily aus unserem Patientenservice werden sich schnellstmöglich telefonisch bei Ihnen melden, um gemeinsam einen passenden Termin zu finden.' : 'Unser Patientenservice wird sich schnellstmöglich bei Ihnen melden.');
     next += en ? ' Your appointment is not confirmed yet.' : ' Ein Termin ist damit noch nicht verbindlich gebucht.';
   }
   const numberNote = en
-    ? 'You can recognise our call from this number: ' + PATIENT_PHONE + '.'
-    : 'Sie erkennen unseren Rückruf an dieser Nummer: ' + PATIENT_PHONE + '.';
+    ? 'You can also reach our patient service team directly on ' + PATIENT_PHONE + '.'
+    : 'Für Rückfragen erreichen Sie unseren Patientenservice unter ' + PATIENT_PHONE + '.';
   const preference = en
     ? 'Would you like to speed up scheduling? Simply reply to this email with 2–3 suitable days or times. This is entirely optional.'
     : 'Möchten Sie die Terminvereinbarung erleichtern? Antworten Sie einfach auf diese E-Mail mit 2–3 passenden Tagen oder Uhrzeiten. Das ist selbstverständlich freiwillig.';
@@ -63,7 +63,7 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
   const wa = 'https://wa.me/' + PATIENT_WHATSAPP + '?text=' + encodeURIComponent(waText);
   const intro = en ? 'Prefer to contact us directly?' : 'Lieber direkt Kontakt aufnehmen?';
   const signoff = en ? 'Kind regards' : 'Herzliche Grüsse';
-  const role = en ? 'Head of Patient Experience' : 'Head of Patient Experience';
+  const role = en ? 'Patient Service & Concierge' : 'Patientenservice & Concierge';
   const contactLine = isWaitlist ? waitlistPreference : preference;
   const paragraphs = [
     '<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#273540;">' + esc(salutation) + '</p>',
@@ -75,7 +75,7 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
     '<div style="margin:20px 0;padding:16px 18px;background-color:#eff6fc;border-left:3px solid #2870a8;border-radius:4px;"><p style="margin:0;font-size:15px;line-height:1.55;color:#172b3c;">' + esc(contactLine) + '</p></div>',
     '<p style="margin:18px 0 8px;font-size:14px;line-height:1.5;color:#425466;">' + esc(intro) + '</p>',
     '<p style="margin:0 0 24px;font-size:14px;line-height:1.7;"><a href="' + wa + '" style="color:#17618f;text-decoration:underline;">' + esc(whatsappLabel) + '</a><span style="color:#a1aab1;"> &nbsp;·&nbsp; </span><a href="tel:' + PATIENT_PHONE_E164 + '" style="color:#17618f;text-decoration:underline;">' + esc(callLabel) + '</a></p>',
-    '<p style="margin:0;font-size:14px;line-height:1.5;color:#273540;">' + esc(signoff) + '<br><strong>Carlos</strong><br>' + esc(role) + '</p>'
+    '<p style="margin:0;font-size:14px;line-height:1.5;color:#273540;">' + esc(signoff) + '<br><strong>Carlos &amp; Emily</strong><br>' + esc(role) + '</p>'
   ].join('\n');
   const html = '<!doctype html><html lang="' + (en ? 'en' : 'de-CH') + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>' +
     '<body style="margin:0;padding:24px 12px;background:#f5f7f9;font-family:Arial,Helvetica,sans-serif;">' +
@@ -91,7 +91,7 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
   const textBody = [
     salutation, '', title, '', received, typeNote, next, hasPhone && !isWaitlist ? numberNote : '',
     '', contactLine, '', intro, whatsappLabel + ': ' + wa, callLabel + ': ' + PATIENT_PHONE, '',
-    signoff, 'Carlos', role, 'TCM.ch Kliniken', PATIENT_REPLY_TO, 'https://tcm.ch/'
+    signoff, 'Carlos & Emily', role, 'TCM.ch Kliniken', PATIENT_REPLY_TO, 'https://tcm.ch/'
   ].filter((s) => s !== null && s !== undefined).join('\n');
   return { subject, html, text: textBody };
 }
