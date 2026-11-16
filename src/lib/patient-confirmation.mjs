@@ -82,12 +82,11 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
     '<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;margin:0 auto;border-collapse:collapse;background:#fff;border:1px solid #e4e9ee;border-radius:8px;">' +
     '<tr><td style="padding:30px 30px 22px;">' + paragraphs + '</td></tr>' +
     '<tr><td style="padding:18px 30px;background:#fafbfd;border-top:1px solid #e4e9ee;">' +
-    '<table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;"><tr>' +
-    '<td style="vertical-align:middle;padding-right:16px;"><img src="' + PATIENT_FOOTER_LOGO + '" width="130" height="44" alt="TCM.ch Kliniken" style="display:block;border:0;width:130px;max-width:130px;height:auto;"></td>' +
-    '<td style="vertical-align:middle;font-size:13px;line-height:1.4;color:#526372;"><strong style="color:#1c3549;font-size:15px;">TCM.ch Kliniken</strong><br>' +
+    '<img src="' + PATIENT_FOOTER_LOGO + '" width="150" height="51" alt="TCM.ch Kliniken" style="display:block;border:0;width:150px;max-width:150px;height:auto;">' +
+    '<p style="font-size:12px;line-height:1.6;margin:10px 0 0;color:#526372;">' +
     '<a href="https://tcm.ch/" style="color:#526372;text-decoration:none;">tcm.ch</a> &nbsp;·&nbsp; ' +
-    '<a href="mailto:' + PATIENT_REPLY_TO + '" style="color:#526372;text-decoration:none;">' + PATIENT_REPLY_TO + '</a></td>' +
-    '</tr></table></td></tr></table></body></html>';
+    '<a href="mailto:' + PATIENT_REPLY_TO + '" style="color:#526372;text-decoration:none;">' + PATIENT_REPLY_TO + '</a></p>' +
+    '</td></tr></table></body></html>';
   const textBody = [
     salutation, '', title, '', received, typeNote, next, hasPhone && !isWaitlist ? numberNote : '',
     '', contactLine, '', intro, whatsappLabel + ': ' + wa, callLabel + ': ' + PATIENT_PHONE, '',
