@@ -31,7 +31,7 @@
 .tcm-patient-success .tps-contact a:hover { background:#f2f7fb; }
 .tcm-patient-success .tps-done {
   border:0;border-radius:99px;background:#1767a4;color:white;
-  font:700 15px/1.2 inherit;min-height:50px;width:100%;cursor:pointer;
+  font-weight:700;font-size:15px;font-family:inherit;line-height:1.2;min-height:50px;width:100%;cursor:pointer;
 }
 .tcm-patient-success .tps-done:hover { background:#115789; }
 .tcm-patient-success :focus-visible { outline:3px solid #1877b4;outline-offset:3px; }
