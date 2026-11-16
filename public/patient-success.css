@@ -1,46 +1,137 @@
-/* Site-wide success receipt. Isolated names; no impact on existing form/CTA styling. */
+/* TCM.ch global patient receipt; isolated from form / CTA styles.
+ * The content scrolls; the confirmation button is NEVER inside the scroll area.
+ */
 .tcm-patient-success {
-  padding:0;border:0;border-radius:22px;
-  width:min(540px,calc(100vw - 32px));max-width:540px;
-  max-height:min(92dvh,760px);overflow:auto;
+  box-sizing:border-box;
+  padding:0;border:0;border-radius:20px;
+  width:min(500px,calc(100vw - 28px));
+  max-width:500px;
+  max-height:min(90dvh,670px);
+  overflow:hidden;
   margin:auto;background:#fff;color:#142b3b;
   box-shadow:0 24px 86px rgba(16,38,53,.24);
   font-family:inherit;
 }
 .tcm-patient-success::backdrop { background:rgba(13,27,40,.62); }
-.tcm-patient-success .tps-panel { padding:clamp(24px,4.5vw,38px);position:relative;text-align:left; }
-.tcm-patient-success .tps-logo { display:block;width:148px;height:auto;max-height:58px;object-fit:contain;object-position:left center;margin-bottom:26px; }
+.tcm-patient-success .tps-panel {
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  max-height:min(90dvh,670px);
+  min-height:0;
+  text-align:left;
+}
+.tcm-patient-success .tps-content {
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  padding:23px 28px 18px;
+}
+.tcm-patient-success .tps-footer {
+  flex:0 0 auto;
+  padding:12px 28px 20px;
+  background:#fff;
+  border-top:1px solid #e8edf1;
+  box-shadow:0 -6px 16px rgba(16,38,53,.035);
+}
+.tcm-patient-success .tps-logo {
+  display:block;width:126px;height:auto;max-height:48px;
+  object-fit:contain;object-position:left center;
+  margin:0 0 16px;
+}
 .tcm-patient-success .tps-close {
-  position:absolute;top:15px;right:15px;display:grid;place-items:center;
+  position:absolute;z-index:2;top:13px;right:13px;
+  display:grid;place-items:center;
   width:36px;height:36px;border:1px solid #e2e8eb;border-radius:50%;
   background:white;color:#52616d;font-size:25px;line-height:1;cursor:pointer;
 }
-.tcm-patient-success .tps-check { display:grid;place-items:center;width:51px;height:51px;border-radius:50%;background:#e9f4f6;color:#176d83;margin-bottom:18px; }
-.tcm-patient-success .tps-title { font-size:clamp(24px,4vw,30px);line-height:1.16;letter-spacing:-.035em;font-weight:750;color:#132b3e;margin:0 0 12px; }
-.tcm-patient-success .tps-summary { font-size:15.5px;line-height:1.6;color:#415566;margin:0 0 22px; }
-.tcm-patient-success .tps-next { background:#eff6fb;border:1px solid #dceaf4;border-radius:13px;padding:17px 19px;margin-bottom:17px; }
-.tcm-patient-success .tps-next-label { font-size:13px;font-weight:750;color:#255e89;letter-spacing:.02em; }
-.tcm-patient-success .tps-next p { color:#2c4455;font-size:14px;line-height:1.58;margin:10px 0 0; }
-.tcm-patient-success .tps-prompt { font-size:14px;color:#465968;line-height:1.55;margin:0 0 17px; }
-.tcm-patient-success .tps-contact { display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px; }
+.tcm-patient-success .tps-check {
+  display:grid;place-items:center;
+  width:42px;height:42px;border-radius:50%;
+  background:#e9f4f6;color:#176d83;margin-bottom:12px;
+}
+.tcm-patient-success .tps-title {
+  font-size:clamp(22px,3.2vw,27px);line-height:1.17;
+  letter-spacing:-.03em;font-weight:750;
+  color:#132b3e;margin:0 0 10px;
+}
+.tcm-patient-success .tps-summary {
+  font-size:14.5px;line-height:1.52;
+  color:#415566;margin:0 0 16px;
+}
+.tcm-patient-success .tps-next {
+  background:#eff6fb;border:1px solid #dceaf4;
+  border-radius:12px;padding:13px 16px;
+  margin-bottom:14px;
+}
+.tcm-patient-success .tps-next-label {
+  font-size:12.5px;font-weight:750;
+  color:#255e89;letter-spacing:.02em;
+}
+.tcm-patient-success .tps-next p {
+  color:#2c4455;font-size:13.5px;
+  line-height:1.5;margin:8px 0 0;
+}
+.tcm-patient-success .tps-prompt {
+  font-size:13.5px;color:#465968;
+  line-height:1.5;margin:0 0 14px;
+}
+.tcm-patient-success .tps-contact {
+  display:flex;gap:9px;flex-wrap:wrap;margin:0;
+}
 .tcm-patient-success .tps-contact a {
-  color:#1b659a;text-decoration:none;font-weight:700;font-size:13.5px;
-  border:1px solid #cbdde9;background:#fff;border-radius:99px;
-  padding:10px 14px;min-height:43px;display:inline-flex;align-items:center;
+  box-sizing:border-box;
+  color:#1b659a;text-decoration:none;
+  font-weight:700;font-size:13px;
+  border:1px solid #cbdde9;background:#fff;
+  border-radius:99px;padding:9px 13px;
+  min-height:40px;display:inline-flex;align-items:center;justify-content:center;
 }
 .tcm-patient-success .tps-contact a:hover { background:#f2f7fb; }
 .tcm-patient-success .tps-done {
-  border:0;border-radius:99px;background:#1767a4;color:white;
-  font-weight:700;font-size:15px;font-family:inherit;line-height:1.2;min-height:50px;width:100%;cursor:pointer;
+  display:block;box-sizing:border-box;
+  border:0;border-radius:99px;
+  background:#1767a4;color:white;
+  font-weight:700;font-size:15px;
+  font-family:inherit;line-height:1.2;
+  min-height:47px;width:100%;
+  cursor:pointer;margin:0;
 }
 .tcm-patient-success .tps-done:hover { background:#115789; }
 .tcm-patient-success :focus-visible { outline:3px solid #1877b4;outline-offset:3px; }
-@media(max-width:540px){
-  .tcm-patient-success { width:calc(100vw - 22px);border-radius:17px; }
-  .tcm-patient-success .tps-panel { padding:23px 21px 21px; }
-  .tcm-patient-success .tps-logo { width:130px;margin-bottom:23px; }
-  .tcm-patient-success .tps-close { top:13px;right:13px; }
-  .tcm-patient-success .tps-contact { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
-  .tcm-patient-success .tps-contact a { font-size:12.5px;justify-content:center;text-align:center;padding:8px; }
+
+@media(max-width:540px) {
+  .tcm-patient-success {
+    width:calc(100vw - 20px);
+    max-height:calc(100dvh - 20px);
+    border-radius:17px;
+  }
+  .tcm-patient-success .tps-panel {max-height:calc(100dvh - 20px);}
+  .tcm-patient-success .tps-content {padding:20px 20px 14px;}
+  .tcm-patient-success .tps-footer {padding:10px 20px max(14px,env(safe-area-inset-bottom));}
+  .tcm-patient-success .tps-logo {width:112px;margin-bottom:13px;}
+  .tcm-patient-success .tps-close {top:10px;right:10px;width:34px;height:34px;}
+  .tcm-patient-success .tps-check {width:38px;height:38px;margin-bottom:10px;}
+  .tcm-patient-success .tps-title {font-size:clamp(21px,5.7vw,25px);margin-bottom:8px;}
+  .tcm-patient-success .tps-summary {font-size:14px;margin-bottom:13px;}
+  .tcm-patient-success .tps-next {padding:12px 14px;margin-bottom:12px;}
+  .tcm-patient-success .tps-next p {font-size:13px;line-height:1.48;}
+  .tcm-patient-success .tps-prompt {font-size:13px;margin-bottom:12px;}
+  .tcm-patient-success .tps-contact {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .tcm-patient-success .tps-contact a {padding:9px 6px;font-size:12px;line-height:1.25;text-align:center;min-height:40px;}
+  .tcm-patient-success .tps-done {min-height:46px;}
 }
-@media(prefers-reduced-motion:reduce){.tcm-patient-success{scroll-behavior:auto}}
+@media(max-width:350px) {
+  .tcm-patient-success .tps-contact {grid-template-columns:1fr;}
+}
+@media(max-height:540px) {
+  .tcm-patient-success,.tcm-patient-success .tps-panel {max-height:calc(100dvh - 12px);}
+  .tcm-patient-success .tps-logo {width:104px;margin-bottom:11px;}
+  .tcm-patient-success .tps-content {padding-top:16px;}
+  .tcm-patient-success .tps-footer {padding-top:8px;padding-bottom:10px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .tcm-patient-success .tps-content {scroll-behavior:auto;}
+}
