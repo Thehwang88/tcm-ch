@@ -315,10 +315,10 @@ export async function onRequestPost({ request, env }) {
         : neu && neu.terminart === 'checkin' ? 'checkin'
         : _zhRouting || (neu && (neu.terminart === 'routing' || neu.terminart === 'anfrage')) ? 'routing'
         : 'inquiry';
-      const confirm = patientConfirmation({
-        name: d.name, standort: d.standort, lang, kind, hasPhone: !!d.telefon,
-      });
       try {
+        const confirm = patientConfirmation({
+          name: d.name, standort: d.standort, lang, kind, hasPhone: !!d.telefon,
+        });
         const confirmationRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json; charset=utf-8' },
