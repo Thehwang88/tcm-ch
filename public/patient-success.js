@@ -57,6 +57,7 @@
     var waitlist = opts.kind === 'waitlist';
     var hasPhone = opts.hasPhone !== false;
     var emailSent = opts.emailSent === true;
+    var contactWay = opts.contactWay || '';
     lastFocus = document.activeElement;
     var set = function (selector, value) {
       var el = d.querySelector(selector);
@@ -77,11 +78,15 @@
       ? 'We sent a confirmation email. Please check your inbox (and spam folder).'
       : 'Wir haben dir eine Bestätigung per E-Mail geschickt. Bitte prüfe auch deinen Spam-Ordner.';
     set('[data-tps-followup]', en
-      ? (waitlist ? 'There is nothing else you need to do.' : hasPhone
-        ? 'Carlos or Emily will contact you from our shared number: +41 77 523 61 22.'
+      ? (waitlist ? 'There is nothing else you need to do.' : contactWay === 'email'
+        ? 'Carlos or Emily will reply to you by email.'
+        : contactWay === 'whatsapp' ? 'Carlos or Emily will contact you on WhatsApp.'
+        : hasPhone ? 'Carlos or Emily will contact you from our shared number: +41 77 523 61 22.'
         : 'You can reply directly to the confirmation email.')
-      : (waitlist ? 'Du musst vorerst nichts weiter unternehmen.' : hasPhone
-        ? 'Carlos oder Emily melden sich telefonisch von unserer gemeinsamen Nummer: +41 77 523 61 22.'
+      : (waitlist ? 'Du musst vorerst nichts weiter unternehmen.' : contactWay === 'email'
+        ? 'Carlos oder Emily melden sich per E-Mail bei dir.'
+        : contactWay === 'whatsapp' ? 'Carlos oder Emily melden sich über WhatsApp bei dir.'
+        : hasPhone ? 'Carlos oder Emily melden sich telefonisch von unserer gemeinsamen Nummer: +41 77 523 61 22.'
         : 'Du kannst uns auch direkt per E-Mail oder WhatsApp schreiben.'));
     set('[data-tps-prompt]', en
       ? (waitlist ? 'Any questions? We are happy to help.' : emailSent
