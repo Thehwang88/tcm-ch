@@ -14,7 +14,7 @@ function esc(s) {
   return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, context }) {
   try {
     let d = {};
     try { d = await request.json(); } catch (e) {}
@@ -354,12 +354,22 @@ export async function onRequestPost({ request, env }) {
     // SMS is independent of the lead / email path. Never send to partners,
     // waitlists, non-Zurich clinics or numbers without explicit consent.
     // Provider errors must not convert a completed lead to an apparent failure.
-    let smsConfirmationSent = false;
+    let smsConfirmationQueued = false;
     const isWaitlist = _warteliste || (neu && neu.terminart === 'vormerkung');
-    if (smsEligible(d, patientForm, isWaitlist, !!hwang)) {
-      smsConfirmationSent = await sendSmsConfirmation({ env, d });
+    const smsConfigured = env && env.TCM_SMS_ENABLED === 'true' &&
+      /^AC[0-9a-f]{32}$/i.test(String(env.TWILIO_ACCOUNT_SID || '')) &&
+      !!env.TWILIO_AUTH_TOKEN;
+    if (smsConfigured && smsEligible(d, patientForm, isWaitlist, !!hwang)) {
+      const smsTask = sendSmsConfirmation({ env, d });
+      if (context && typeof context.waitUntil === 'function') {
+        context.waitUntil(smsTask);
+        smsConfirmationQueued = true;
+      } else {
+        // Local or test runtime without Cloudflare's background task lifetime.
+        smsConfirmationQueued = await smsTask;
+      }
     }
-    return J({ ok: true, confirmation_email_sent: confirmationEmailSent, sms_confirmation_sent: smsConfirmationSent });
+    return J({ ok: true, confirmation_email_sent: confirmationEmailSent, sms_confirmation_queued: smsConfirmationQueued });
   } catch (err) {
     return J({ error: 'exception', detail: String((err && err.stack) || err) }, 500);
   }
