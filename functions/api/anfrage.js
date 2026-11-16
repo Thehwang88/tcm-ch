@@ -330,7 +330,7 @@ export async function onRequestPost({ request, env }) {
         : 'inquiry';
       try {
         const confirm = patientConfirmation({
-          name: d.name, standort: d.standort, lang, kind, hasPhone: !!d.telefon,
+          name: d.name, standort: d.standort, lang, kind, hasPhone: !!d.telefon, contactWay: d.kontaktweg,
         });
         const confirmationRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
