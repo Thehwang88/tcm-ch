@@ -450,7 +450,8 @@
           if (window.tcmPatientSuccess) window.tcmPatientSuccess.show({
             emailSent: res.j.confirmation_email_sent === true,
             kind: t === 'vormerkung' ? 'waitlist' : t,
-            hasPhone: !!data.telefon
+            hasPhone: !!data.telefon,
+            contactWay: data.kontaktweg || ''
           });
         })
         .catch(function (err) {
