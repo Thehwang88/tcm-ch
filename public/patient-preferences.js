@@ -30,8 +30,8 @@
     form.dataset.patientPreferencesReady = '1';
     var en = /^en/i.test(document.documentElement.lang || '');
     var id = 'tcm-prefs-' + index;
-    var panel = createField('div', {'class':'tcm-prefs'});
-    var heading = createField('p', {'class':'tcm-prefs-heading',text:en?'Your preferences (optional)':'Deine Wünsche (optional)'});
+    var panel = createField('details', {'class':'tcm-prefs'});
+    var heading = createField('summary', {'class':'tcm-prefs-heading',text:en?'Contact & appointment preferences (optional)':'Kontakt & Terminwunsch (optional)'});
     panel.appendChild(heading);
     var fields = createField('div',{'class':'tcm-prefs-grid'});
     if (!form.querySelector('[name="kontaktweg"]')) {
