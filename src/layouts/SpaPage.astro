@@ -137,6 +137,8 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     {winterSnowTarget && <WinterSnow target={winterSnowTarget} />}
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
+    {/* Fresh therapy-link navigation must begin at the hero; preserves explicit anchors and Back scroll. */}
+    {path.startsWith('/therapien/') && <script src="/therapy-hero-entry.js" is:inline defer></script>}
     <!-- Global receipt: success only after server-confirmed patient enquiry. -->
     <script src="/patient-success.js" is:inline defer></script>
   </body>
