@@ -116,6 +116,8 @@ const homeHtml = homeHtmlCards;
     <link rel="stylesheet" href="/home.css" />
     <link rel="stylesheet" href="/nav-rebrand.css" />
     <link rel="stylesheet" href="/footer-rebrand.css" />
+    <!-- Central patient success modal (home has its own layout, not SpaPage). -->
+    <link rel="stylesheet" href="/patient-success.css" />
     <link rel="stylesheet" href="/standort-card.css" />
     <link rel="stylesheet" href="/warm-clinic.css" />
     <!-- static page: reveal + SPA anti-FOUC are JS-only; never hide content from no-JS/crawlers -->
@@ -238,6 +240,7 @@ const homeHtml = homeHtmlCards;
     <BookingSheet />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
+    <script src="/patient-success.js" is:inline defer></script>
     <!-- Homepage-only seasonal snow, matched to the Santa-hat date window. -->
     <style is:global>
       #heroPatient{position:relative;isolation:isolate;overflow:hidden}
