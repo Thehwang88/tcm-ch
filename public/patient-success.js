@@ -18,6 +18,7 @@
     dialog.innerHTML =
       '<div class="tps-panel">' +
         '<button class="tps-close" type="button" data-tps-close aria-label="Schliessen">×</button>' +
+        '<div class="tps-content">' +
         '<img class="tps-logo" src="/images/logo/tcm-ch-logo-kliniken-black.svg" alt="TCM.ch Kliniken" width="150" height="52">' +
         '<div class="tps-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg></div>' +
         '<h2 id="tcm-success-title" class="tps-title" tabindex="-1" data-tps-title></h2>' +
@@ -28,7 +29,10 @@
           '<a data-tps-wa href="https://wa.me/41775236122" target="_blank" rel="noopener noreferrer"></a>' +
           '<a data-tps-tel href="tel:+41775236122"></a>' +
         '</div>' +
-        '<button class="tps-done" type="button" data-tps-close data-tps-done></button>' +
+        '</div>' +
+        '<div class="tps-footer">' +
+          '<button class="tps-done" type="button" data-tps-close data-tps-done></button>' +
+        '</div>' +
       '</div>';
     document.body.appendChild(dialog);
     dialog.addEventListener('click', function (event) {
