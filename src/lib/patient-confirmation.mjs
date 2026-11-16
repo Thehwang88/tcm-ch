@@ -49,8 +49,8 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
     next += en ? ' Your appointment is not confirmed yet.' : ' Ein Termin ist damit noch nicht verbindlich gebucht.';
   }
   const numberNote = en
-    ? 'You can also reach our patient service team directly on ' + PATIENT_PHONE + '.'
-    : 'Für Rückfragen erreichen Sie unseren Patientenservice unter ' + PATIENT_PHONE + '.';
+    ? 'You can recognise calls from Carlos or Emily on our shared number: ' + PATIENT_PHONE + '.'
+    : 'Sie erkennen die Rückrufe von Carlos und Emily an unserer gemeinsamen Nummer: ' + PATIENT_PHONE + '.';
   const preference = en
     ? 'Would you like to speed up scheduling? Simply reply to this email with 2–3 suitable days or times. This is entirely optional.'
     : 'Möchten Sie die Terminvereinbarung erleichtern? Antworten Sie einfach auf diese E-Mail mit 2–3 passenden Tagen oder Uhrzeiten. Das ist selbstverständlich freiwillig.';
