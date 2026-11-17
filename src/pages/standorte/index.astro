@@ -2,40 +2,74 @@
 // /standorte - faithful 1:1 reproduction of the live SPA #page-standorte hub.
 import SpaPage from '../../layouts/SpaPage.astro';
 import bodyRaw from '../../data/standorte-body.html?raw';
-import { clinicById, cardStatus, cardHref, cardName, cardHinweis, zeitenChip, checkinFrei } from '../../lib/standort-card';
-// Standortliste (06.11.2026, nur diese Seite): EIN Grid (4/3/2/1 Spalten) für alle Standorte, Abschnittstitel (Eyebrow + h2) als
-// volle Zeilen darin. Feste Kartenanatomie: Titel max. 2 Zeilen, Adresse 1 Zeile, max. 2 Chips (Zeiten, Krankenkassen),
-// CTA unten. CTA-Hierarchie: Check-in (CHECKIN_FREIGABE) gelb gefüllt · offen = Ghost-Button · 2027/Vorbereitung = Textlink,
-// Karte gedämpft, nur Status-Chip. Partner-Hinweis als grauer Suffix in der Adresszeile. Daten weiterhin nur aus locations.ts.
+import { clinicById, cardHref, cardName } from '../../lib/standort-card';
+// /standorte overview: 7 TCM.ch clinic cards in the same visual hierarchy as home;
+// partner / additional locations remain crawlable in a collapsed native disclosure.
+// All booking / contact form logic and analytics events remain untouched.
 const esc = (s: string) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const PIN = '<svg class="stdc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>';
-const card = (id: string) => {
-  const c = clinicById(id); const st = cardStatus(c); const href = cardHref(c); const ext = /^https?:\/\//.test(href);
-  const offen = st === 'live' || st === 'partner'; const ci = checkinFrei(c);
-  const chips = offen ? [zeitenChip(c), 'Krankenkassen anerkannt'].filter(Boolean)
-    : st === '2027' ? [/2027/.test(c.openingNote ?? '') || c.status === 'operational' ? 'Eröffnung 2027' : 'In Vorbereitung'] : [];
-  const suffix = c.karte?.chip ? ` <span class="stdc-suffix">· ${esc(c.karte.chip)}</span>` : '';
-  const label = c.karte?.button ?? (st === 'einzugsgebiet' ? `Nächste Praxis: ${cardName(clinicById(c.karte?.naechste ?? ''))}` : st === '2027' ? (c.status === 'operational' ? 'Standort ansehen' : 'Warteliste') : ci ? 'Gratis Check-in buchen' : 'Termin buchen');
-  // On the /standorte/ overview, Basel uses the same in-card photo treatment as St. Gallen.
-  const bild = id === 'basel'
-    ? { src: '/images/basel-empfang-800.webp', alt: 'Empfangsbereich der TCM.ch Klinik Basel, Steinenvorstadt 73' }
+const PIN = '<svg class="stdc-pin" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>';
+const mainIds = ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen','winterthur-marktgasse','basel','bern'] as const;
+const additionalIds = ['frauenfeld','kreuzlingen','bottighofen','volketswil','wil','rorschach','luzern'] as const;
+const displayName: Record<string,string> = { 'winterthur-marktgasse': 'Winterthur' };
+const mainCard = (id: typeof mainIds[number]) => {
+  const c = clinicById(id);
+  if(c.status !== 'operational') throw new Error(`/standorte/: main clinic ${id} must be operational`);
+  const label = esc(displayName[id] ?? cardName(c));
+  const href = cardHref(c);
+  if(/^https?:\/\//.test(href)) throw new Error(`/standorte/: main clinic ${id} unexpectedly routes outside TCM.ch`);
+  const img = id === 'basel'
+    ? {src:'/images/basel-empfang-800.webp',alt:'Empfangsbereich der TCM.ch Klinik Basel, Steinenvorstadt 73'}
     : c.bild;
-  const cardImage = bild && (['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen','basel','bern','winterthur-marktgasse'].includes(id)) ? `<img class="stdc-photo" src="${esc(bild.src)}" alt="${esc(bild.alt)}" loading="lazy" decoding="async">` : '';
-  const cta = `<span class="stdc-cta ${offen ? (ci ? 'stdc-cta--gelb' : 'stdc-cta--ghost') : 'stdc-cta--link'}">${esc(label)} <span aria-hidden="true">→</span></span>`;
-  return `<a class="stdc${offen ? '' : ' stdc--muted'}" href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ''}>${cardImage}<h3 class="stdc-h">${PIN}<span>${esc(cardName(c))}</span></h3><p class="stdc-adr"><span>${esc(cardHinweis(c))}</span>${suffix}</p><div class="stdc-chips">${chips.map((t) => `<span class="stdc-chip">${esc(t)}</span>`).join('')}</div>${cta}</a>`;
+  if(!img) throw new Error(`/standorte/: main clinic ${id} missing image`);
+  return `<article class="stdc stdc--clinic" aria-label="TCM.ch ${label}">
+    <a class="stdc-visual" href="${esc(href)}" aria-label="Mehr Informationen zu TCM.ch ${label}">
+      <img class="stdc-photo" src="${esc(img.src)}" alt="${esc(img.alt)}" width="1200" height="675" loading="lazy" decoding="async">
+    </a>
+    <div class="stdc-main"><h3 class="stdc-h">${PIN}<span>${label}</span></h3></div>
+    <div class="stdc-actions">
+      <a class="stdc-primary" href="#standorte-anfrage" onclick="openContactForm(null, '${id}')">Termin anfragen</a>
+      <a class="stdc-more" href="${esc(href)}">Mehr Infos <span aria-hidden="true">→</span></a>
+    </div>
+  </article>`;
 };
-const head = (id: string, eyebrow: string, h: string) => `<div class="std-sec" id="${id}"><span class="std-eyebrow">${esc(eyebrow)}</span><h2 class="std-h2">${h}</h2></div>`;
+// Do not imply that partner clinics are TCM.ch-owned, or that planned Luzern accepts treatment bookings.
+const additionalRow = (id: typeof additionalIds[number]) => {
+  const c=clinicById(id);
+  const href=cardHref(c), external=/^https?:\/\//.test(href);
+  const label=esc(cardName(c));
+  const descriptor = id==='luzern' ? 'Eröffnung 2027 · Warteliste'
+    : id==='bottighofen' ? 'Partnerklinik TCM Pelican'
+    : c.betreiber ? 'Praxis Hwang · Partnerpraxis' : 'Weiterer Behandlungsstandort';
+  const action=id==='luzern'?'Vormerken':'Mehr Infos';
+  return `<a class="std-partner-row" href="${esc(href)}"${external?' target="_blank" rel="noopener"':''}>
+    <span class="std-partner-row-copy"><strong>${label}</strong><span>${esc(descriptor)}</span></span>
+    <span class="std-partner-row-action">${action} <span aria-hidden="true">→</span></span>
+  </a>`;
+};
 const liste =
-  head('standorte-zuerich', 'TCM.ch Praxen', 'Zürich') + ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].map(card).join('') +
-  '<a class="std-next" href="/akupunktur-tcm-zuerich/#zh-funnel"><span class="std-next-l">Standort egal?</span><span class="std-next-t"><strong>Nächster freier Termin in Zürich</strong><span>Wir prüfen unsere Zürcher Praxen und finden den schnellsten passenden Termin für dich.</span></span><span class="std-next-go">Nächsten Termin finden →</span></a>' +
-  head('standorte-st-gallen', 'TCM.ch Praxis', 'St. Gallen') + card('st-gallen') +
-  head('standorte-winterthur', 'TCM.ch Praxis · geöffnet', 'Winterthur') + card('winterthur-marktgasse') +
-  head('standorte-basel', 'TCM.ch Praxis', 'Basel') + card('basel') +
-  head('standorte-bern', 'TCM.ch Praxis · geöffnet', 'Bern') + card('bern') +
-  head('standorte-thurgau', 'Partnerpraxen Hwang · Termine über hwang.ch', 'Thurgau') + ['frauenfeld', 'kreuzlingen'].map(card).join('') +
-  head('standorte-weitere', 'Partner und Wartelisten', 'Weitere Standorte') + ['bottighofen', 'rorschach', 'wil', 'volketswil', 'luzern'].map(card).join('');
-const body = bodyRaw.replace('<!--sc:std-liste-->', liste);
-if (/<!--sc:/.test(body) || (body.match(/class="stdc[" ]/g) || []).length !== 14) throw new Error('standorte/index.astro: Standortkarten nicht vollständig gerendert');
+  '<div class="std-primary-group"><h2 class="std-group-heading">Zürich</h2><div class="std-featured-grid">' +
+    mainIds.slice(0,3).map(mainCard).join('')+'</div></div>'+
+  '<div class="std-primary-group"><h2 class="std-group-heading">Weitere Kliniken</h2><div class="std-featured-grid std-featured-grid--other">' +
+    mainIds.slice(3).map(mainCard).join('')+'</div></div>'+
+  '<details id="standorte-weitere" class="std-other-locations"><summary><span>Weitere Standorte &amp; Partnerpraxen</span><span class="std-disclosure-meta">7 Standorte anzeigen <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
+    additionalIds.map(additionalRow).join('')+'</div></details>';
+// Replace ONLY the redundant hero/nav section. Keep the existing embedded contact
+// form, submission code, schema, canonical links and analytics untouched.
+const introStart=bodyRaw.indexOf('<div class="std-overview-intro">');
+const cardsStart=bodyRaw.indexOf('<div id="standorte-page-grid"',introStart);
+if(introStart<0 || cardsStart<0) throw new Error('/standorte/: intro/card markers not found');
+const hero = `<div class="std-overview-intro">
+  <h1 class="std-overview-heading" id="std-overview-heading">Unsere TCM.ch <em>Standorte.</em></h1>
+  <p class="std-overview-lead">Wähle eine Praxis oder lass dir den passenden Termin vorschlagen.</p>
+  <a class="std-overview-primary" href="#standorte-anfrage" onclick="openContactForm()">Passenden Termin anfragen →</a>
+</div>
+`;
+const body = (bodyRaw.slice(0,introStart) + hero + bodyRaw.slice(cardsStart))
+  .replace('<!--sc:std-liste-->',liste)
+  .replace('<section class="section contact-section-inline"','<section class="section contact-section-inline" id="standorte-anfrage"')
+  .replace(/<p class="std-finder">[\s\S]*?<\/p>/,'');
+if(/<!--sc:/.test(body) || (body.match(/class="stdc stdc--clinic"/g)||[]).length!==7 || (body.match(/class="std-partner-row"/g)||[]).length!==7)
+  throw new Error('/standorte/: missing or duplicated location cards');
 
 const title = 'Standorte – TCM.ch Kliniken in der Deutschschweiz';
 const description =
@@ -49,186 +83,152 @@ const schema = {
 <SpaPage title={title} description={description} path="/standorte" body={body} schema={schema} />
 
 <style is:global>
-  /* /standorte overview is now intentionally text-first: the redundant hero
-     photograph was removed, so do not leave the old empty 50% media column. */
-  #page-standorte .hh-inner{
-    display:grid;grid-template-columns:minmax(0,1fr)!important;
-    min-height:0!important;max-width:1280px;margin:0 auto;
+/* /standorte only: compact hero, seven owned/operational cards, one subdued
+   secondary disclosure. No shared forms, marketing instrumentation or pages affected. */
+#page-standorte .std-overview{
+  padding:clamp(28px,3.5vw,46px) 0 clamp(40px,4vw,58px)!important;
+  background:var(--tcm-surface-strong,#E8E6E3)!important
+}
+#page-standorte .std-overview>.wrap{max-width:1200px!important}
+#page-standorte .std-overview-intro{max-width:840px;margin:0 0 31px}
+#page-standorte .std-overview-heading{
+  font-family:var(--font-sans);font-size:clamp(33px,4vw,54px);
+  font-weight:850;line-height:1.08;letter-spacing:-.045em;
+  color:var(--tcm-ink,#171B1A);margin:0 0 11px;text-wrap:balance
+}
+#page-standorte .std-overview-heading em{font-style:italic;color:inherit}
+#page-standorte .std-overview-lead{
+  max-width:58ch;font-size:clamp(15px,1.25vw,18px);
+  line-height:1.5;color:var(--tcm-text-soft,#505453);margin:0 0 20px
+}
+#page-standorte .std-overview-primary{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;box-sizing:border-box;padding:11px 24px;
+  font-family:var(--font-sans);font-size:15px;font-weight:750;
+  border-radius:999px;background:var(--tcm-primary,#1769B1);
+  color:#fff!important;text-decoration:none
+}
+#page-standorte .std-overview-primary:hover{background:#12578F;color:#fff!important}
+#page-standorte .std-primary-group{margin-top:29px}
+#page-standorte .std-primary-group:first-child{margin-top:0}
+#page-standorte .std-group-heading{
+  font-family:var(--font-sans);font-weight:800;letter-spacing:-.025em;
+  line-height:1.15;font-size:clamp(24px,2.4vw,30px);
+  color:var(--tcm-ink,#171B1A);margin:0 0 16px
+}
+#page-standorte .std-featured-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;align-items:stretch
+}
+#page-standorte .std-featured-grid--other{
+  grid-template-columns:repeat(2,minmax(0,1fr))
+}
+#page-standorte .stdc--clinic{
+  display:flex;flex-direction:column;align-items:stretch;
+  height:100%;min-width:0;padding:0;overflow:hidden;
+  border:1px solid rgba(2,11,16,.11);border-radius:18px;
+  background:#fff;box-shadow:none;transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease
+}
+#page-standorte .stdc--clinic:hover{
+  border-color:rgba(2,11,16,.28);box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)
+}
+#page-standorte .stdc-visual{
+  display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
+  background:#EDF2F5;flex-shrink:0
+}
+#page-standorte .stdc-photo{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center;
+  margin:0;border:0;border-radius:0
+}
+#page-standorte .stdc-main{
+  display:flex;align-items:center;min-width:0;flex:1;
+  padding:17px 19px 10px
+}
+#page-standorte .stdc-h{
+  display:flex;align-items:center;gap:9px;min-height:0;
+  margin:0;color:var(--brand-black,#020B10);
+  font-family:var(--font-sans);font-size:clamp(21px,1.65vw,24px);
+  line-height:1.2;letter-spacing:-.025em;font-weight:800
+}
+#page-standorte .stdc-h span{
+  display:block;overflow:visible;white-space:normal;
+  -webkit-line-clamp:unset;min-width:0
+}
+#page-standorte .stdc-pin{
+  display:block;flex:0 0 21px;width:21px;height:21px;margin:0;color:#506579
+}
+#page-standorte .stdc-actions{
+  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);
+  align-items:center;gap:9px;padding:4px 19px 19px
+}
+#page-standorte .stdc-primary{
+  display:flex;align-items:center;justify-content:center;min-width:0;
+  box-sizing:border-box;min-height:48px;border:1px solid var(--tcm-primary,#1769B1);
+  border-radius:11px;padding:10px 12px;background:var(--tcm-primary,#1769B1);
+  color:#fff!important;font-family:var(--font-sans);font-size:14px;line-height:1.2;
+  font-weight:750;text-align:center;text-decoration:none
+}
+#page-standorte .stdc-primary:hover{background:#12578f;border-color:#12578f;color:#fff!important}
+#page-standorte .stdc-more{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:48px;min-width:0;padding:6px 0;color:#344C5F;
+  font-family:var(--font-sans);font-size:14px;font-weight:750;
+  text-decoration:none;white-space:nowrap
+}
+#page-standorte .stdc-more:hover{text-decoration:underline;text-underline-offset:4px}
+#page-standorte .std-other-locations{
+  margin:34px 0 0;border:1px solid var(--tcm-border,#D7D4D0);
+  border-radius:16px;background:#fff;overflow:hidden
+}
+#page-standorte .std-other-locations>summary{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;min-height:62px;box-sizing:border-box;padding:16px 20px;
+  font-family:var(--font-sans);font-size:17px;line-height:1.3;
+  font-weight:800;cursor:pointer;list-style:none;color:#171B1A
+}
+#page-standorte .std-other-locations>summary::-webkit-details-marker{display:none}
+#page-standorte .std-disclosure-meta{
+  color:#526272;font-family:var(--font-sans);font-size:13px;
+  font-weight:650;white-space:nowrap
+}
+#page-standorte .std-other-locations[open] .std-disclosure-meta span{display:inline-block;transform:rotate(180deg)}
+#page-standorte .std-partner-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  padding:4px 20px 20px;gap:10px
+}
+#page-standorte .std-partner-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;min-width:0;padding:12px 14px;
+  border:1px solid #E4E8EA;border-radius:11px;
+  color:#171B1A;background:#FAFBFB;text-decoration:none
+}
+#page-standorte .std-partner-row:hover{border-color:#ADBFCB;background:#F1F6F8}
+#page-standorte .std-partner-row-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+#page-standorte .std-partner-row-copy strong{font-family:var(--font-sans);font-size:15px;font-weight:750}
+#page-standorte .std-partner-row-copy>span{font-family:var(--font-sans);font-size:12.5px;color:#5B6872}
+#page-standorte .std-partner-row-action{
+  flex-shrink:0;font-family:var(--font-sans);font-size:13px;
+  font-weight:750;color:#344C5F;white-space:nowrap
+}
+#page-standorte .std-overview :is(a,button,summary):focus-visible{
+  outline:3px solid var(--tcm-primary,#1769B1);outline-offset:3px
+}
+#standorte-anfrage{scroll-margin-top:105px}
+@media(max-width:900px){
+  #page-standorte .std-featured-grid,
+  #page-standorte .std-featured-grid--other{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  #page-standorte .std-overview{padding:23px 0 37px!important}
+  #page-standorte .std-overview-intro{margin-bottom:26px}
+  #page-standorte .std-overview-heading{font-size:clamp(32px,8.5vw,42px)}
+  #page-standorte .std-featured-grid,
+  #page-standorte .std-featured-grid--other{grid-template-columns:minmax(0,1fr);gap:14px}
+  #page-standorte .stdc-main{padding:16px 17px 10px}
+  #page-standorte .stdc-actions{padding:4px 17px 17px}
+  #page-standorte .std-other-locations>summary{
+    align-items:flex-start;flex-direction:column;gap:6px;padding:15px 17px
   }
-  #page-standorte .hh-left{
-    width:100%;max-width:960px;
-    padding:clamp(28px,4vw,52px) clamp(20px,4vw,52px)!important;
-  }
-  @media(max-width:767px){
-    #page-standorte .hh-left{padding:26px 20px 24px!important}
-  }
-  /* /standorte only: Grid-Section rueckt an den Hero. Die frueheren
-     #standorte-premium-hero-Regeln sind mit dem hh-Hero (home.css) obsolet
-     und entfernt — das alte Hero-Markup existiert nicht mehr. */
-  @media (max-width: 768px) {
-    /* grid section (only the one holding #standorte-page-grid): kill the top-padding seam and
-       drop the duplicate eyebrow + subline that restate the hero; keep H2 as minimal label */
-    .section:has(#standorte-page-grid) { padding-top: 8px !important; }
-    .section:has(#standorte-page-grid) .section-label { display: none !important; }
-    .section:has(#standorte-page-grid) .location-intro { display: none !important; }
-    .section:has(#standorte-page-grid) .section-title { margin-bottom: 12px !important; }
-  }
-  @media (min-width: 769px) {
-    .section:has(#standorte-page-grid) { padding-top: 56px !important; }
-    /* Zürich-Block: Headline sitzt direkt über dem grünen Container, kein doppelter Abstand */
-    #standorte-zuerich { margin-top: 36px !important; }
-  }
-  /* Standortliste 06.11.2026: Sprunglinks, ein Grid (4/3/2/1), Abschnittstitel und Termin-Leiste als volle Zeilen. */
-  .std-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 20px; }
-  .std-jump a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1.5px solid var(--border); border-radius: 999px; font-family: var(--font-sans); font-size: 14.5px; font-weight: 700; color: var(--black); text-decoration: none; background: #fff; }
-  .std-jump a:hover { border-color: var(--blue); }
-  #standorte-page-grid.std-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: stretch; margin-top: 8px; }
-  .std-sec, .std-next { grid-column: 1 / -1; }
-  .std-sec { display: flex; flex-direction: column; gap: 4px; margin-top: 16px; scroll-margin-top: 90px; }
-  .std-sec:first-child { margin-top: 0; }
-  .std-eyebrow { font-family: var(--font-sans); font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--blue); }
-  .std-h2 { font-family: var(--font-sans); font-size: 24px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; color: var(--black); margin: 0; }
-  /* Karte: feste Anatomie, 1px Rand, kein Schatten, CTA unten */
-  .stdc { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 20px 18px 18px; background: #fff; border: 1px solid var(--border); border-radius: var(--r-card, 16px); text-decoration: none; color: inherit; font-family: var(--font-sans); transition: border-color .15s ease; }
-  .stdc:hover { border-color: var(--black); }
-  .stdc--muted { background: #F6F7F7; }
-  .stdc-h { display: flex; align-items: flex-start; gap: 8px; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; color: var(--black); min-height: calc(2 * 1.2em); }
-  .stdc-h span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-width: 0; }
-  .stdc-pin { flex: 0 0 18px; width: 18px; height: 18px; margin-top: .2em; color: var(--blue); }
-  .stdc-adr { display: flex; align-items: baseline; gap: 4px; margin: 0; font-size: 14.5px; line-height: 1.4; color: var(--mid); white-space: nowrap; min-width: 0; }
-  .stdc-adr > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  .stdc-suffix { flex-shrink: 0; color: #8a8a8a; font-size: 13px; }
-  .stdc-chips { display: flex; flex-wrap: wrap; gap: 6px; height: 26px; overflow: hidden; }
-  .stdc-chip { display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border: 1px solid var(--border); border-radius: 999px; background: #fff; font-size: 12.5px; font-weight: 700; line-height: 1; color: var(--black); white-space: nowrap; }
-  .stdc--muted .stdc-chip { background: transparent; }
-  .stdc-cta { margin-top: auto; padding-top: 6px; font-size: 15px; font-weight: 800; line-height: 1.2; }
-  .stdc-cta--gelb, .stdc-cta--ghost { display: flex; justify-content: center; align-items: center; gap: 6px; border-radius: 999px; padding: 12px 16px; margin-top: auto; }
-  .stdc-cta--gelb { background: #FFD84D; color: #111; border: 1px solid #FFD84D; }
-  .stdc:hover .stdc-cta--gelb { background: #F5C800; border-color: #F5C800; }
-  .stdc-cta--ghost { background: transparent; color: var(--black); border: 1px solid var(--black); }
-  .stdc:hover .stdc-cta--ghost { background: var(--black); color: #fff; }
-  .stdc-cta--link { display: inline-flex; align-items: center; gap: 6px; color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
-  /* Schmale Termin-Leiste unter Zürich (keine Karte) */
-  .std-next { display: flex; align-items: center; gap: 16px; border: 1px solid var(--border); border-radius: 999px; padding: 10px 20px; background: #fff; text-decoration: none; color: inherit; margin-top: -8px; }
-  .std-next:hover { border-color: var(--black); }
-  .std-next-l { font-family: var(--font-sans); font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--black); white-space: nowrap; }
-  .std-next-t { flex: 1; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; font-size: 13.5px; color: var(--mid); min-width: 0; }
-  .std-next-t strong { font-family: var(--font-sans); font-size: 15px; color: var(--black); }
-  .std-next-go { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--black); white-space: nowrap; }
-  .std-finder { margin: 24px 0 0; font-size: 15px; }
-  .std-finder a { color: var(--blue); font-weight: 700; text-decoration: none; }
-  @media (max-width: 1199px) { #standorte-page-grid.std-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  @media (max-width: 899px) { #standorte-page-grid.std-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; } .std-next { border-radius: 20px; flex-wrap: wrap; gap: 8px 16px; } }
-  @media (max-width: 599px) { #standorte-page-grid.std-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } .std-h2 { font-size: 22px; } .std-next { flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 18px; margin-top: 0; } .std-next-t { flex-direction: column; gap: 2px; } }
-</style>
-
-<style is:global>
-  .stdc-photo {display:block;width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:5px;}
-  @media(max-width:600px){.stdc-photo{height:176px;}}
-</style>
-
-
-<style is:global>
-  /* Unified Standortfinder: one introduction directly connected to the regions
-     and real location cards. No decorative photo or duplicate section heading. */
-  #page-standorte .std-overview{
-    padding:clamp(38px,4.5vw,66px) 0 clamp(34px,4vw,54px)!important;
-    background:var(--tcm-surface-strong,#E8E6E3)!important;
-  }
-  #page-standorte .std-overview > .wrap{max-width:1200px!important}
-  #page-standorte .std-overview-intro{
-    max-width:800px;margin:0 0 27px!important;
-  }
-  #page-standorte .std-overview-eyebrow{
-    display:block;font-family:var(--font-sans);font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;font-weight:800;
-    line-height:1.5;color:var(--tcm-text-soft,#505453);
-    margin:0 0 14px;
-  }
-  #page-standorte .std-overview-heading{
-    font-family:var(--font-sans);font-size:clamp(36px,4.25vw,64px);
-    line-height:1.07;letter-spacing:-.045em;font-weight:850;
-    color:var(--tcm-ink,#171B1A);margin:0 0 17px;
-    text-wrap:balance;
-  }
-  #page-standorte .std-overview-heading em{
-    font-style:italic;color:inherit;
-  }
-  #page-standorte .std-overview-lead{
-    max-width:57ch;font-size:clamp(16px,1.3vw,19px);line-height:1.55;
-    color:var(--tcm-text-soft,#505453);margin:0 0 24px;
-  }
-  #page-standorte .std-overview-actions{
-    display:flex;flex-wrap:wrap;gap:12px;align-items:center;
-    margin:0 0 13px;
-  }
-  #page-standorte .std-overview-actions > *{
-    box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
-    min-height:51px;padding:11px 25px;border-radius:999px;
-    font-family:var(--font-sans);font-weight:750;font-size:15px;line-height:1.3;
-    text-decoration:none;cursor:pointer;text-align:center;
-    box-shadow:none;
-  }
-  #page-standorte .std-overview-primary{
-    background:var(--tcm-primary,#1769B1);border:2px solid var(--tcm-primary,#1769B1);
-    color:#fff;
-  }
-  #page-standorte .std-overview-secondary{
-    border:2px solid var(--tcm-ink,#171B1A);
-    background:transparent;color:var(--tcm-ink,#171B1A);
-  }
-  #page-standorte .std-overview-help{
-    font-size:13px;line-height:1.5;color:var(--tcm-text-soft,#505453);
-    margin:0!important;
-  }
-  #page-standorte .std-overview-help a{
-    color:var(--tcm-ink,#171B1A);text-underline-offset:3px;
-  }
-  #page-standorte .std-overview .std-jump{
-    margin:0 0 23px!important;padding:16px 0 0;
-    border-top:1px solid var(--tcm-border,#D7D4D0);
-    gap:8px!important;
-  }
-  #page-standorte .std-overview .std-jump a{
-    background:rgba(255,255,255,.7)!important;
-    border-color:var(--tcm-border,#D7D4D0)!important;
-    color:var(--tcm-ink,#171B1A)!important;
-    min-height:38px;padding:8px 15px;font-size:13px;
-  }
-  #page-standorte .std-overview #standorte-page-grid{
-    margin-top:0!important;
-  }
-  #page-standorte .std-overview .std-sec{
-    margin-top:14px;scroll-margin-top:125px;
-  }
-  #page-standorte .std-overview .std-sec:first-child{margin-top:0}
-  #page-standorte .std-overview .std-eyebrow{color:var(--tcm-text-soft,#505453)!important}
-  #page-standorte .std-overview .std-h2{font-size:clamp(22px,2.3vw,28px)}
-  #page-standorte .std-overview .std-finder{
-    margin:24px 0 0;font-size:14px;line-height:1.5;
-  }
-  #page-standorte .std-overview a:focus-visible,
-  #page-standorte .std-overview button:focus-visible{
-    outline:3px solid var(--tcm-primary,#1769B1);outline-offset:3px;
-  }
-  @media(max-width:767px){
-    #page-standorte .std-overview{padding:28px 0 35px!important}
-    #page-standorte .std-overview-intro{margin-bottom:22px!important}
-    #page-standorte .std-overview-heading{
-      font-size:clamp(35px,9.2vw,47px);
-      margin-bottom:15px;
-    }
-    #page-standorte .std-overview-lead{
-      font-size:15.5px;line-height:1.5;margin-bottom:20px;
-    }
-    #page-standorte .std-overview-actions{
-      flex-direction:column;align-items:stretch;gap:10px;
-    }
-    #page-standorte .std-overview-actions > *{
-      width:100%;min-height:52px;font-size:17px;
-    }
-    #page-standorte .std-overview .std-jump{gap:7px!important}
-    #page-standorte .std-overview .std-jump a{font-size:12.5px;padding:7px 12px}
-    #page-standorte .std-overview #standorte-page-grid.std-grid{gap:15px}
-  }
+  #page-standorte .std-partner-grid{grid-template-columns:1fr;padding:0 15px 16px}
+}
 </style>
