@@ -182,7 +182,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   // no shadow selection state: canonical values, prefills, offer gates and events
   // follow the existing shared handler. Luzern uses its dedicated waitlist.
   const MAIN_LOCATION_IDS = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'st-gallen', 'basel', 'bern'];
-  const SECONDARY_LOCATION_IDS = ['volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'wil', 'rorschach'];
+  const SECONDARY_LOCATION_IDS = ['frauenfeld', 'kreuzlingen', 'bottighofen', 'wil', 'rorschach'];
   const globalOpts = fixed ? [] : globalOptions();
   const visibleOpts = [...MAIN_LOCATION_IDS, ...SECONDARY_LOCATION_IDS, 'andere']
     .flatMap((id) => globalOpts.filter((x: any) => x.id === id));
