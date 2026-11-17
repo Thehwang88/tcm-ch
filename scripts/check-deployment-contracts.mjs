@@ -32,7 +32,7 @@ assert(mainIds.length > 0 && otherIds.length > 0 &&
        'Clinic group IDs exist, are unique and do not overlap');
 assert(locationSource.includes('length!==mainIds.length') &&
        locationSource.includes('length!==additionalIds.length') &&
-       locationSource.includes('${additionalIds.length} Standorte anzeigen'),
+       locationSource.includes("'+additionalIds.length+' Standorte anzeigen"),
        'Card count guard and disclosure text derive from their source arrays');
 
 const mustExist = [
