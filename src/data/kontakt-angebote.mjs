@@ -126,8 +126,8 @@ export const KAMPAGNEN = {
   },
 };
 
-/** Reihenfolge der globalen Standortauswahl (Vereinigung der bisherigen Listen; Bern nur mit eigener Warteliste). */
-export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
+/** Reihenfolge der globalen Standortauswahl (inkl. Bern-Vormerkung für den bestätigten Standort Marktgasse 50). */
+export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'bern', 'luzern'];
 /** Keine aktive TCM.ch-Formularumleitung nach Hwang: Winterthur-Anfragen gehen direkt an Marktgasse.
  * Export für bestehende Server-Integration erhalten; ältere Partner-Ziele werden nicht mehr angeboten. */
 export const HWANG_ZIEL = {};

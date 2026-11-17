@@ -79,7 +79,7 @@ const description = planned
   ? underReview
     ? `Acupuncture & TCM in ${name}: status under review, not confirmed as an operating clinic. Send your request and we suggest an available practice nearby.`
     : inPreparation
-    ? `Acupuncture & TCM in ${name}: location in preparation, not open yet. Register your interest; we contact you once appointments are possible.`
+    ? `Acupuncture & TCM in ${name}: ${street ? `confirmed address ${street}, ${postalCode} ${city}; ` : ''}location in preparation, not open yet. Register your interest; we contact you once appointments are possible.`
     : `Acupuncture & TCM in ${name}: ${openingLabel}. Not open yet; register your interest and we contact you once appointments are possible.`
   : partner
   ? `Acupuncture & TCM in ${name}: ${partner.name}, ${street}. Partner practice in the TCM.ch network, requests in English. Reimbursement may be available via supplementary insurance, depending on your policy.`
@@ -176,7 +176,7 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
           ) : (
             <p><strong>No address yet</strong><br />{inPreparation ? 'Location in preparation' : openingLabel}<br />{city}, Switzerland</p>
           )}
-          {mapsHref && !planned && <p>{mapsPlace && <><a href={mapsPlace} target="_blank" rel="noopener">Open in Google Maps</a> · </>}<a href={mapsHref} target="_blank" rel="noopener">{mapsPlace ? 'Directions' : 'Directions to this address'}</a></p>}
+          {mapsHref && street && <p>{mapsPlace && <><a href={mapsPlace} target="_blank" rel="noopener">Open Google Business Profile</a> · </>}<a href={mapsHref} target="_blank" rel="noopener">{mapsPlace ? 'Directions' : 'Directions to this confirmed address'}</a></p>}
 
           <h3 style="margin-top:18px">{partner ? 'Opening hours (as published by the practice)' : 'Opening hours'}</h3>
           {openingHours.length ? (

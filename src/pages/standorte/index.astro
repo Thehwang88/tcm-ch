@@ -31,8 +31,9 @@ const liste =
   head('standorte-st-gallen', 'TCM.ch Praxis', 'St. Gallen') + card('st-gallen') +
   head('standorte-winterthur', 'TCM.ch Praxis · geöffnet', 'Winterthur') + card('winterthur-marktgasse') +
   head('standorte-basel', 'TCM.ch Praxis', 'Basel') + card('basel') +
+  head('standorte-bern', 'TCM.ch · Standort in Vorbereitung', 'Bern') + card('bern') +
   head('standorte-thurgau', 'Partnerpraxen Hwang · Termine über hwang.ch', 'Thurgau') + ['frauenfeld', 'kreuzlingen'].map(card).join('') +
-  head('standorte-weitere', 'Partner und Wartelisten', 'Weitere Standorte') + ['bottighofen', 'rorschach', 'wil', 'volketswil', 'luzern', 'bern'].map(card).join('');
+  head('standorte-weitere', 'Partner und Wartelisten', 'Weitere Standorte') + ['bottighofen', 'rorschach', 'wil', 'volketswil', 'luzern'].map(card).join('');
 const body = bodyRaw.replace('<!--sc:std-liste-->', liste);
 if (/<!--sc:/.test(body) || (body.match(/class="stdc[" ]/g) || []).length !== 14) throw new Error('standorte/index.astro: Standortkarten nicht vollständig gerendert');
 

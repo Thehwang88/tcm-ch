@@ -164,9 +164,13 @@ export const clinics: Clinic[] = [
     areaServed: ['Luzern', 'Kriens', 'Emmen', 'Emmenbrücke', 'Horw', 'Ebikon', 'Littau', 'Meggen'] },
 
   { id: 'bern', name: 'Bern', city: 'Bern', region: 'Bern-Mittelland',
-    street: null, postalCode: null, phone: '+41 77 523 61 22',
-    hinweis: 'Neuer Standort im Aufbau',
+    // Standortadresse durch Inhaber am 17.11.2026 bestätigt; Eröffnung/Betriebsaufnahme noch nicht bestätigt.
+    street: 'Marktgasse 50', postalCode: '3011', phone: '+41 77 523 61 22',
+    hinweis: 'Marktgasse 50 · Berner Altstadt',
+    // Google Business Profile derzeit nicht live – kein unbestätigter CID/Review-Link.
+    // Geplante Terminzeiten werden auf der Seite explizit als geplant bezeichnet; keine Live-Schema-Öffnungszeiten.
     openingHours: [], geo: { lat: 46.948, lng: 7.4474 }, status: 'planned', openingNote: 'In preparation',
+    vorab: [{ value: 'Bern – Vormerkung, Marktgasse 50', label: 'Bern Marktgasse 50 (in Vorbereitung)', labelEn: 'Bern Marktgasse 50 (in preparation)', art: 'vormerkung' }],
     areaServed: ['Bern', 'Köniz', 'Ostermundigen', 'Ittigen', 'Zollikofen', 'Muri bei Bern', 'Worb'] },
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
