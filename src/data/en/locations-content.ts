@@ -294,7 +294,7 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'How can I book an appointment?', a: 'Submit the form on this page, call us or write on WhatsApp. We will confirm a suitable appointment for Marktgasse 50.' },
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
     ],
-    hero: { src: '/images/hero-main.webp', alt: 'Illustrative image: treatment at a TCM.ch clinic, not the Bern premises', caption: 'Illustrative image', symbolic: true },
+    hero: { src: '/images/bern-marktgasse-logo-wall.avif', alt: 'Illustrative TCM.ch logo wall using the original PDF logo; not an actual photograph of the Bern premises', caption: 'Illustrative visualisation', symbolic: true },
     nearby: ['basel', 'zuerich-bahnhofstrasse', 'st-gallen'],
   },
 };
