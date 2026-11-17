@@ -23,12 +23,13 @@ const schema = {
   <section class="kontakt-layout-section" aria-labelledby="kontakt-title">
     <div class="wrap kontakt-shell">
       <div class="kontakt-layout">
+        <div class="kontakt-left">
         <div class="kontakt-intro">
           <p class="kontakt-eyebrow">Kontakt · TCM.ch Kliniken</p>
           <h1 id="kontakt-title">Wir sind für dich da.</h1>
           <p class="kontakt-lead">
-            Du möchtest einen Termin vereinbaren oder hast Fragen zu unseren Behandlungen?
-            Schreib uns oder ruf an – wir helfen dir, die passende Praxis zu finden.
+            Termin oder Fragen zu TCM? Schreib uns oder ruf an –
+            wir helfen dir, die passende Praxis zu finden.
           </p>
         </div>
 
@@ -61,17 +62,32 @@ const schema = {
         </div>
 
         <div class="kontakt-trust">
-          <div class="kontakt-trust-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m12 2 8 4v5c0 5-3.6 8.7-8 11-4.4-2.3-8-6-8-11V6l8-4Z"/><path d="m8.5 12 2.5 2.5L16 9"/>
-            </svg>
-            <strong>Gut informiert in die Behandlung</strong>
+          <div class="kontakt-reviewstrip" aria-label="Patientenbewertungen: 4.89 von 5 Sternen, über tausend Rezensionen">
+            <div class="kontakt-reviewstrip-label">
+              <svg class="kontakt-review-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 7a21 21 0 0 0-8 17 21 21 0 0 0 8 17M34 7a21 21 0 0 1 8 17 21 21 0 0 1-8 17"/>
+                <path d="M14 12 8 9m4 10-7-1m7 10-7 2m9 5-5 4M34 12l6-3m-4 10 7-1m-7 10 7 2m-9 5 5 4"/>
+                <path d="m24 11 3.8 7.5 8.2 1.2-6 5.8 1.4 8.2L24 30l-7.4 3.7 1.4-8.2-6-5.8 8.2-1.2z"/>
+              </svg>
+              <strong>Sehr gut bewertete Schweizer TCM-Kliniken</strong>
+            </div>
+            <div class="kontakt-review-metrics">
+              <div class="kontakt-review-metric">
+                <strong>4.89</strong>
+                <span class="kontakt-review-stars" aria-label="4.89 von 5 Sternen">★★★★★</span>
+              </div>
+              <div class="kontakt-review-metric kontakt-review-metric--count">
+                <strong>1'000+</strong>
+                <span>Rezensionen</span>
+              </div>
+            </div>
           </div>
-          <p>EMR-/ASCA-anerkannte Therapeut:innen. Eine Kostenbeteiligung durch die Zusatzversicherung ist je nach Police und behandelnder Person möglich.</p>
+          <p class="kontakt-insurance-note">EMR-/ASCA-anerkannte Therapeut:innen. Zusatzversicherungen können je nach Police und behandelnder Person Kosten übernehmen.</p>
           <div class="kontakt-support-links">
-            <a href="/standorte/">Unsere Standorte <span aria-hidden="true">→</span></a>
-            <a href="/krankenkassen/">Versicherung &amp; Kosten <span aria-hidden="true">→</span></a>
+            <a href="/standorte/">Standorte <span aria-hidden="true">→</span></a>
+            <a href="/krankenkassen/">Krankenkasse &amp; Kosten <span aria-hidden="true">→</span></a>
           </div>
+        </div>
         </div>
 
         <div class="kontakt-form-panel" aria-label="Terminanfrage-Formular">
@@ -86,46 +102,47 @@ const schema = {
 <style>
   .kontakt-layout-section{
     background:var(--brand-surface,#F6F5F2);
-    padding:clamp(38px,5.5vw,80px) 0 clamp(60px,7vw,100px);
+    padding:clamp(24px,3vw,42px) 0 clamp(40px,5vw,66px);
     min-height:600px;
   }
   .kontakt-shell{max-width:1320px}
   .kontakt-layout{
     display:grid;
-    grid-template-columns:minmax(0,1.08fr) minmax(430px,.92fr);
-    grid-template-areas:"intro form" "methods form" "trust form";
+    grid-template-columns:minmax(0,1.06fr) minmax(430px,.94fr);
     align-items:start;
-    column-gap:clamp(30px,5vw,86px);
-    row-gap:clamp(24px,2.5vw,36px);
+    gap:clamp(30px,4vw,70px);
   }
-  .kontakt-intro{grid-area:intro;min-width:0}
+  .kontakt-left{
+    display:flex;flex-direction:column;align-items:stretch;
+    gap:clamp(13px,1.6vw,22px);min-width:0;
+  }
+  .kontakt-intro{min-width:0}
   .kontakt-eyebrow{
-    margin:0 0 18px;
-    font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    margin:0 0 10px;
+    font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
     color:#496074;
   }
   .kontakt-intro h1{
-    max-width:680px;margin:0 0 23px;
+    max-width:680px;margin:0 0 12px;
     font-family:var(--font-sans);
-    font-size:clamp(40px,4.2vw,66px);
+    font-size:clamp(37px,3.5vw,54px);
     font-weight:850;line-height:1.08;letter-spacing:-.045em;
     color:var(--brand-black,#020B10);
     text-wrap:balance;
   }
   .kontakt-lead{
     max-width:58ch;margin:0;
-    font-size:clamp(16px,1.3vw,19px);line-height:1.65;
+    font-size:clamp(15px,1.15vw,17px);line-height:1.5;
     color:#52616B;
   }
   .kontakt-methods{
-    grid-area:methods;
     display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:19px 16px;
+    gap:7px 13px;
     min-width:0;
   }
   .kontakt-method{
     display:flex;align-items:flex-start;gap:12px;min-width:0;
-    padding:10px 3px;
+    padding:6px 2px;
     color:var(--brand-black,#020B10);
     text-decoration:none;border-radius:9px;
   }
@@ -136,43 +153,67 @@ const schema = {
     display:block;flex:0 0 22px;width:22px;height:22px;
     margin-top:2px;color:var(--tcm-primary,#1769B1);
   }
-  .kontakt-method>span{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .kontakt-method>span{display:flex;flex-direction:column;gap:3px;min-width:0}
   .kontakt-method strong{
-    display:block;font-size:15px;font-weight:800;line-height:1.3;
+    display:block;font-size:14.5px;font-weight:800;line-height:1.25;
   }
   .kontakt-method>span>span{
-    display:block;font-size:14px;line-height:1.4;
+    display:block;font-size:13.5px;line-height:1.35;
     color:#52616B;overflow-wrap:anywhere;
   }
   .kontakt-method:not(.kontakt-method--info):hover>span>span{
     color:var(--tcm-primary,#1769B1);text-decoration:underline;text-underline-offset:3px;
   }
   .kontakt-trust{
-    grid-area:trust;
-    max-width:640px;padding:22px 24px;
-    border:1px solid rgba(35,56,70,.12);
-    border-radius:16px;background:#fff;
+    min-width:0;max-width:640px;
   }
-  .kontakt-trust-title{
-    display:flex;align-items:center;gap:11px;
-    font-size:16px;line-height:1.4;color:var(--brand-black,#020B10);
+  .kontakt-reviewstrip{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    box-sizing:border-box;padding:18px 19px;border-radius:16px;
+    border:1px solid rgba(35,56,70,.1);background:#fff;
   }
-  .kontakt-trust-title svg{
-    flex:none;width:24px;height:24px;color:var(--tcm-primary,#1769B1);
+  .kontakt-reviewstrip-label{
+    display:flex;align-items:center;gap:10px;min-width:0;flex:1;
+    font-size:14px;line-height:1.35;color:var(--brand-black,#020B10);
   }
-  .kontakt-trust p{
-    margin:10px 0 15px;
-    font-size:14px;line-height:1.6;color:#52616B;
+  .kontakt-reviewstrip-label strong{font-weight:750}
+  .kontakt-review-icon{
+    display:block;flex:0 0 34px;width:34px;height:34px;
+    color:var(--tcm-primary,#1769B1);
   }
-  .kontakt-support-links{display:flex;flex-wrap:wrap;gap:8px 23px}
+  .kontakt-review-metrics{
+    display:flex;flex:0 0 auto;align-items:center;gap:0;
+  }
+  .kontakt-review-metric{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;min-width:67px;text-align:center;
+  }
+  .kontakt-review-metric--count{
+    min-width:87px;margin-left:12px;padding-left:12px;
+    border-left:1px solid #DDE5EB;
+  }
+  .kontakt-review-metric strong{
+    font-size:clamp(21px,1.9vw,27px);font-weight:800;
+    line-height:1.05;letter-spacing:-.035em;color:var(--brand-black,#020B10);
+  }
+  .kontakt-review-metric span{
+    font-size:11.5px;line-height:1.25;color:#536776;
+  }
+  .kontakt-review-metric .kontakt-review-stars{
+    color:#CE9235;font-size:13px;letter-spacing:1px;white-space:nowrap;
+  }
+  .kontakt-insurance-note{
+    margin:10px 0 2px;font-size:12.5px;line-height:1.45;color:#61717C;
+  }
+  .kontakt-support-links{display:flex;flex-wrap:wrap;gap:5px 20px}
   .kontakt-support-links a{
     display:inline-flex;align-items:center;min-height:32px;
-    color:var(--tcm-primary,#1769B1);font-size:14px;font-weight:750;
+    color:var(--tcm-primary,#1769B1);font-size:13px;font-weight:750;
     text-decoration:none;
   }
   .kontakt-support-links a:hover{text-decoration:underline;text-underline-offset:4px}
   .kontakt-form-panel{
-    grid-area:form;min-width:0;width:100%;max-width:590px;justify-self:end;
+    min-width:0;width:100%;max-width:590px;justify-self:end;
   }
   /* Layout overrides ONLY. Original TerminForm and its conversion events remain untouched. */
   :global(.kontakt-form-panel .tf-section){
@@ -192,23 +233,34 @@ const schema = {
     .kontakt-layout{
       max-width:730px;margin:0 auto;
       grid-template-columns:minmax(0,1fr);
-      grid-template-areas:"intro" "form" "methods" "trust";
-      row-gap:28px;
+      gap:20px;
     }
-    .kontakt-form-panel{justify-self:stretch;max-width:none}
-    .kontakt-intro h1{font-size:clamp(38px,5.4vw,58px);margin-bottom:16px}
-    .kontakt-lead{font-size:17px}
+    .kontakt-left{display:contents}
+    .kontakt-intro{order:1}
+    .kontakt-trust{order:2}
+    .kontakt-form-panel{order:3;justify-self:stretch;max-width:none}
+    .kontakt-methods{order:4}
+    .kontakt-intro h1{font-size:clamp(35px,5.2vw,50px);margin-bottom:10px}
+    .kontakt-lead{font-size:16px}
   }
   @media(max-width:560px){
     .kontakt-layout-section{padding:34px 0 72px;min-height:0}
     .kontakt-eyebrow{font-size:11px;margin-bottom:12px}
-    .kontakt-intro h1{font-size:clamp(36px,9vw,46px)}
+    .kontakt-intro h1{font-size:clamp(34px,8.8vw,42px)}
     .kontakt-lead{font-size:16px;line-height:1.55}
     .kontakt-methods{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 6px}
     .kontakt-method{gap:7px;padding:8px 1px}
     .kontakt-method-icon{flex-basis:19px;width:19px;height:19px}
     .kontakt-method strong{font-size:13.5px}
     .kontakt-method>span>span{font-size:12.5px}
-    .kontakt-trust{padding:18px 16px}
+    .kontakt-reviewstrip{padding:12px 13px;gap:8px}
+    .kontakt-reviewstrip-label{gap:7px;font-size:12px}
+    .kontakt-review-icon{flex-basis:24px;width:24px;height:24px}
+    .kontakt-review-metric{min-width:53px}
+    .kontakt-review-metric--count{min-width:67px;margin-left:7px;padding-left:7px}
+    .kontakt-review-metric strong{font-size:20px}
+    .kontakt-review-metric span{font-size:10px}
+    .kontakt-review-metric .kontakt-review-stars{font-size:10.5px;letter-spacing:0}
+    .kontakt-insurance-note{font-size:12px}
   }
 </style>
