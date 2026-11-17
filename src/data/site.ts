@@ -14,7 +14,7 @@ export const site = {
   turnstileSitekey: '0x4AAAAAADf8GZzWnvFzYvmx',
 };
 
-// The 14 TCM.ch clinics (id = DE SPA standort slug, label = display name).
+// Publicly promoted TCM.ch locations (historical Münzgasse slug redirects to Marktgasse).
 export const standorte = [
   { id: 'zuerich-bahnhofstrasse', label: 'Zürich Bahnhofstrasse' },
   { id: 'zuerich-oerlikon', label: 'Zürich Oerlikon' },
