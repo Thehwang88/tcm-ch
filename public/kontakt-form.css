@@ -433,3 +433,34 @@ body.tcm-warm .kf .kf-opts .kf-opt--checkin:has(input:checked){
 @media(prefers-reduced-motion:reduce){
   .kf[data-kf] .kf-opt{transition:none!important}
 }
+
+/* Unified compact booking choices for every shared patient form.
+   Pure presentation: labels, values, native radios, prefill and JS stay intact.
+   The homepage's adapted service selector remains untouched. */
+.kf[data-kf] .kf-opts{gap:9px!important;margin-bottom:5px!important}
+.kf[data-kf] .kf-opts .kf-opt{
+  padding:13px 45px 13px 15px!important;
+  border:1px solid #DDE5EB!important;border-radius:15px!important;
+  box-shadow:none!important;min-height:0
+}
+.kf[data-kf] .kf-opts .kf-opt--checkin{background-color:#E8F2FA!important;border-color:#C8E0F2!important}
+.kf[data-kf] .kf-opts .kf-opt--behandlung{background-color:#FFFFFF!important;border-color:#DDE5EB!important}
+.kf[data-kf] .kf-opts .kf-opt.is-checked,
+.kf[data-kf] .kf-opts .kf-opt:has(input:checked){
+  border-color:#1769B1!important;box-shadow:inset 0 0 0 1px #1769B1!important;
+}
+.kf[data-kf] .kf-opts .kf-opt-t{font-size:16px!important;font-weight:750!important;line-height:1.32!important;margin:0 0 4px!important}
+.kf[data-kf] .kf-opts .kf-opt-dur{font-size:13px!important;font-weight:650!important;line-height:1.4!important;margin:0 0 3px!important}
+.kf[data-kf] .kf-opts .kf-opt-d{font-size:13px!important;line-height:1.45!important}
+.kf[data-kf] .kf-opts .kf-opt-note{font-size:12.5px!important;line-height:1.4!important;margin-top:5px!important}
+.kf[data-kf] .kf-opts .kf-opt-gueltig{font-size:12.5px!important;line-height:1.4!important}
+.kf[data-kf] .kf-opts .kf-radio{top:14px;right:14px;width:20px;height:20px;accent-color:#1769B1}
+.kf[data-kf] .kf-sec-h{margin-bottom:9px!important;font-size:13.5px!important;color:#687C88!important}
+.kf[data-kf] .kf-fields{margin-top:14px!important}
+.kf[data-kf],.kf.kf-huelle{max-width:540px!important}
+@media(max-width:600px){
+  .kf[data-kf] .kf-opts .kf-opt{padding:12px 42px 12px 13px!important}
+  .kf[data-kf] .kf-opts .kf-radio{top:13px;right:12px}
+}
+/* Never let the hover/focus styles camouflage a disabled choice. */
+.kf[data-kf] .kf-opts .kf-opt.is-disabled{opacity:.55;cursor:not-allowed}

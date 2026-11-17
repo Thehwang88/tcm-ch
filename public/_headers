@@ -32,6 +32,12 @@
 /styles/tokens.css
   Cache-Control: no-cache
 
+# Shared patient-form CSS and booking-sheet CSS are non-hashed and change frequently.
+/kontakt-form.css
+  Cache-Control: no-cache
+/booking-sheet.css
+  Cache-Control: no-cache
+
 # Deployment fingerprint (scripts/write-build-version.mjs): always fresh, never indexed.
 /version.json
   Cache-Control: no-store

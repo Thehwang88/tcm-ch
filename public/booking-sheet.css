@@ -123,3 +123,17 @@
     grid-row:auto;grid-column:1/-1
   }
 }
+
+/* Shared forms moved into the dialog keep the exact same warm controls and
+   compact option presentation as when shown inline. Only remove the extra
+   outer-card frame; the dialog itself supplies the frame. */
+#tcm-booking-sheet .tcm-booking-content .kf[data-kf],
+#tcm-booking-sheet .tcm-booking-content .kf.kf-huelle{
+  box-sizing:border-box;max-width:520px!important;
+  width:100%!important;margin-inline:auto!important;
+  padding:0!important;background:#fff!important;
+  border:0!important;border-radius:0!important;box-shadow:none!important;
+}
+#tcm-booking-sheet .tcm-booking-content .kf[data-kf] .kf-fields{
+  max-width:100%!important;
+}
