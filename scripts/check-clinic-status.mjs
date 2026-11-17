@@ -87,6 +87,27 @@ const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); st
 walk('dist');
 const html = new Map(pages.map((p) => [p, readFileSync(p, 'utf8')]));
 const text = (s) => s.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+// Retired clinic guard: user confirmed TCM.ch does not operate Volketswil.
+// Fail regression checks if any stale DE/EN route, booking option or clinic link returns.
+ok(!m.clinics.some((c) => c.id === 'volketswil') && !m.getStandort('volketswil'),
+  'Volketswil: nicht als TCM.ch Standort oder Standortseite registriert');
+ok(!html.has('dist/standorte/volketswil/index.html') &&
+   !html.has('dist/en/locations/volketswil/index.html'),
+  'Volketswil: DE/EN Seiten werden nicht gebaut');
+const retiredRefs = [...html].filter(([, content]) =>
+  /(?:\/standorte\/volketswil\/?|\/en\/locations\/volketswil\/?|data-id="volketswil"|value="Volketswil"|>Volketswil<\/option>)/i.test(content)
+);
+ok(retiredRefs.length === 0,
+  'Volketswil: keine Links oder Buchungsoptionen in gerenderten Seiten' +
+   (retiredRefs.length ? ' – ' + retiredRefs.slice(0, 3).map(([p]) => p).join(', ') : ''));
+const redirects = readFileSync('public/_redirects', 'utf8');
+ok(['/standorte/volketswil/', '/en/locations/volketswil/'].every((route) =>
+   redirects.split('\n').some((line) => line.startsWith(route + ' ') && / 301\s*$/.test(line))),
+  'Volketswil: alte DE/EN URLs werden permanent auf Standortverzeichnisse umgeleitet');
+ok(!/\/(?:standorte|en\/locations)\/volketswil\//.test(readFileSync('public/sitemap.xml', 'utf8')),
+  'Volketswil: nicht in Sitemap');
+
+
 const ldOf = (s) => [...s.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((x) => x[1]).join('\n');
 ok(![...html.values()].some((s) => /data-zh-(bis|termin)|2026-12-01/.test(s)), 'kein Datums-Schalter im HTML (data-zh-bis, data-zh-termin, 2026-12-01)');
 
