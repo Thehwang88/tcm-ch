@@ -29,7 +29,9 @@
   /** Option für einen Prefill-Wert: exakter value > Label > Standort-ID (Standardziel data-default) > Altwert «<id>-<n>».
    *  Eine explizite Vorab-/Partnerpraxis-Auswahl springt so nie auf eine andere Option desselben Standorts. */
   var pickOption = function (sel, v) {
-    if (!sel || !v) return -1; v = String(v).trim(); var o = sel.options, i, m;
+    if (!sel || !v) return -1; v = String(v).trim();
+    if (typeof sel.__kfEnsureOption === 'function') sel.__kfEnsureOption(v);
+    var o = sel.options, i, m;
     for (i = 1; i < o.length; i++) if (o[i].value === v) return i;
     for (i = 1; i < o.length; i++) if (o[i].text.trim() === v) return i;
     for (i = 1; i < o.length; i++) if (o[i].getAttribute('data-id') === v && o[i].getAttribute('data-default') === '1') return i;
@@ -52,6 +54,41 @@
     var fixedCheckin = card.getAttribute('data-kf-checkin') === '1';
     var scopeNames = card.getAttribute('data-kf-scope-names') || 'St. Gallen';
     var sel = form.querySelector('select[name="standort"]');
+    // Progressive disclosure for the shared global selector only.
+    // All canonical options are rendered server-side for no-JS fallback.
+    // JS hides secondary options from the initial native menu, while keeping
+    // each one selectable with its original value/ID and every existing prefill.
+    var otherLocations = form.querySelector('[data-kf-other-locations]');
+    if (sel && otherLocations) {
+      var secondaryOptions = [].slice.call(sel.querySelectorAll('option[data-kf-secondary="1"]'));
+      var secondaryStash = document.createDocumentFragment();
+      var hideUnselected = function () {
+        secondaryOptions.forEach(function (o) { if (!o.selected && o.parentElement === sel) secondaryStash.appendChild(o); });
+      };
+      var ensureSecondary = function (v) {
+        if (!v) return;
+        var found = secondaryOptions.filter(function (o) {
+          return o.value === v || o.text.trim() === v ||
+            o.getAttribute('data-id') === v;
+        })[0];
+        if (found && found.parentElement !== sel) sel.appendChild(found);
+      };
+      sel.__kfEnsureOption = ensureSecondary;
+      hideUnselected();
+      otherLocations.hidden = false;
+      otherLocations.addEventListener('click', function (e) {
+        var button = e.target && e.target.closest ? e.target.closest('[data-kf-choose-standort]') : null;
+        if (!button || !otherLocations.contains(button)) return;
+        var value = button.getAttribute('data-kf-choose-standort') || '';
+        var i = pickOption(sel, value);
+        if (i < 1) return;
+        sel.selectedIndex = i;
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
+        otherLocations.open = false;
+        sel.focus({ preventScroll: true });
+      });
+      sel.addEventListener('change', hideUnselected);
+    }
     var radios = [].slice.call(form.querySelectorAll('input[name="terminart"]'));
     var rCheckin = form.querySelector('input[name="terminart"][value="checkin"]');
     var submitBtn = form.querySelector('[data-kf-submit]');
