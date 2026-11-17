@@ -280,18 +280,18 @@ export const locationContent: Record<string, LocationContent> = {
   },
 
   bern: {
-    lead: 'Our future Bern clinic is planned at Marktgasse 50, 3011 Bern, in the Old Town.',
-    sub: 'The address is confirmed. The clinic is not yet open; register your interest and we will contact you once appointments become available.',
+    lead: 'Our TCM.ch Bern clinic is open at Marktgasse 50, 3011 Bern, in the Old Town.',
+    sub: 'Acupuncture and Traditional Chinese Medicine in central Bern. Request your appointment directly; we reply with an available time.',
     about: [
-      'TCM.ch is preparing its Bern clinic at the confirmed address Marktgasse 50, 3011 Bern. The clinic opening date and actual appointment hours have not yet been confirmed. You can register your interest here. The intended treatment range follows our other locations, including acupuncture, Tuina, cupping and Chinese herbal therapy.',
-      'The proposed appointment hours match our standard clinic schedule: Monday–Saturday 07:30–19:30 and Sunday 08:00–17:00. These are planned hours, not current opening hours. The Google Business Profile is not public yet, so use the address-based map and directions instead.',
+      'Our TCM.ch Bern clinic is open at Marktgasse 50, 3011 Bern. We offer acupuncture, Tuina, cupping and Chinese herbal therapy, with an individual assessment before treatment. Send your appointment request through the form or contact us by phone or WhatsApp.',
+      'Opening hours are Monday–Saturday 07:30–19:30 and Sunday 08:00–17:00; appointments are arranged individually. The Google Business Profile is not public yet, so use the address-based map and directions instead.',
     ],
-    area: 'The future clinic is located in the Bern Old Town, close to the city centre, for patients from Bern, Köniz, Ostermundigen, Ittigen, Zollikofen, Muri bei Bern and Worb.',
+    area: 'Our clinic is located at Marktgasse 50 in Bern Old Town, convenient for patients from Bern, Köniz, Ostermundigen, Ittigen, Zollikofen, Muri bei Bern and Worb.',
     faqs: [
       { q: 'Where is the Bern TCM.ch clinic?', a: 'The confirmed address is Marktgasse 50, 3011 Bern, Switzerland. Use the address-based map for directions.' },
-      { q: 'Is the Bern clinic open?', a: 'No opening date has been confirmed yet. We are accepting registrations of interest, not treatment appointments at this address.' },
-      { q: 'What will the opening hours be?', a: 'The planned schedule is Monday–Saturday 07:30–19:30 and Sunday 08:00–17:00, subject to confirmation when the clinic opens.' },
-      { q: 'Can I register for a future appointment?', a: 'Yes. Use the enquiry form on this page to join the Bern interest list. We will contact you when appointments become available.' },
+      { q: 'Is the Bern clinic open?', a: 'Yes. Our Bern clinic at Marktgasse 50 is operating and you can request appointments directly.' },
+      { q: 'What are the Bern clinic opening hours?', a: 'Monday–Saturday 07:30–19:30 and Sunday 08:00–17:00. Appointments are by arrangement.' },
+      { q: 'How can I book an appointment?', a: 'Submit the form on this page, call us or write on WhatsApp. We will confirm a suitable appointment for Marktgasse 50.' },
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
     ],
     hero: { src: '/images/hero-main.webp', alt: 'Illustrative image: treatment at a TCM.ch clinic, not the Bern premises', caption: 'Illustrative image', symbolic: true },
