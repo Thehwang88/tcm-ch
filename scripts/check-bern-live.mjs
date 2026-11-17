@@ -9,11 +9,16 @@ if (!existsSync(filename)) {
 }
 const html = readFileSync(filename, 'utf8');
 
+const hero = (html.match(/<section class="lsr-hero std-location-hero[\s\S]*?<\/section>/) || [''])[0];
+
 const checks = [
   ['shared premium clinic hero (as Basel)', /class="lsr-hero std-location-hero(?:\s|")/.test(html)],
-  ['Bern wall-logo visual displayed', html.includes('/images/bern-marktgasse-logo-wall.avif')],
+  ['shared hero video (as Basel): responsive sources + poster', /<video\b[^>]*preload="none"[^>]*poster="\/videos\/hero-praxis\/hwang-praxis-poster-1280\.webp"/.test(hero)
+    && hero.includes('hwang-praxis-640.mp4') && hero.includes('hwang-praxis-1280.webm')],
+  ['wall-logo not used as hero image', !hero.includes('bern-marktgasse-logo-wall')],
+  ['wall-logo kept in location cards', /class="sgt-foto"[\s\S]{0,400}bern-marktgasse-logo-wall\.avif/.test(html)],
   ['correct clinic address', html.includes('Marktgasse 50') && html.includes('3011 Bern')],
-  ['regular opening hours', html.includes('07:30') && html.includes('19:30') && html.includes('17:00')],
+  ['regular opening hours', /Mo–Sa[\s\S]{0,120}7:30–19:30 Uhr/.test(html) && /So[\s\S]{0,120}8:00–17:00 Uhr/.test(html) && html.includes('"Mo-Sa 07:30-19:30"')],
   ['direct booking section', /id="sgt-h"[^>]*>Termin in\s*<em>Bern<\/em>/.test(html)],
   ['active appointment form', html.includes('id="anfrage-box"') && html.includes('Termin anfragen')],
   ['canonical URL unchanged', html.includes('https://tcm.ch/standorte/bern/')],
