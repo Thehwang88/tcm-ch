@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/check-bern-live.mjs && node scripts/gen-sitemap.mjs && wrangler pages functions build --outdir=./worker/",
-    "preview": "astro preview"
+    "build": "astro build && node scripts/gen-sitemap.mjs && wrangler pages functions build --outdir=./worker/",
+    "preview": "astro preview",
+    "check:bern": "node scripts/check-bern-live.mjs"
   },
   "dependencies": {
     "astro": "^5.6.0",
