@@ -58,7 +58,7 @@ export const therapies: Therapy[] = [
     faqs: [
       { q: 'What does acupuncture feel like?', a: 'The needles are very fine and most people feel only a small prick or a dull, heavy ache as they go in. It is usually far more comfortable than people expect. Sharp or lasting pain is not normal - tell your practitioner and they will adjust or reposition the needle.' },
       { q: 'How do you plan follow-up sessions?', a: 'There is no fixed number. Many people start with a short course of about six to ten sessions and we reassess whether it is helping. If you notice no change after several treatments, we will say so honestly rather than keep going indefinitely.' },
-      { q: 'What should I tell my practitioner before treatment?', a: 'When performed by a trained practitioner with sterile single-use needles, serious side effects are rare. Minor bruising or brief light-headedness can happen. Tell us if you are pregnant, take blood thinners, or have a bleeding disorder so we can adapt the treatment.' },
+      { q: 'What should I tell my practitioner before treatment?', a: 'Tell us if you are pregnant, take blood thinners or have a bleeding disorder so we can assess and adapt treatment. We use sterile single-use needles; serious side effects are rare with qualified practitioners, although minor bruising or brief light-headedness can occur.' },
     ],
     related: ['electroacupuncture', 'cupping', 'tuina-massage'],
   },
@@ -137,8 +137,8 @@ export const therapies: Therapy[] = [
     evidence: 'The evidence base is uneven: some formulas have supportive trials for specific complaints, but quality varies and many products are poorly studied. Safety also matters - herbs can interact with medication. We prescribe cautiously, check interactions, and are honest that this is a complement with limited proof rather than a proven cure.',
     conditions: ['digestive-issues', 'sleep-problems', 'menstrual-issues', 'fertility-support', 'stress-burnout'],
     faqs: [
-      { q: 'How do you check whether Chinese herbs suit me?', a: 'They are not automatically safe just because they are natural. Herbs can have effects and interact with medication, so a proper consultation matters. We use quality-controlled herbs tested for contaminants and check your formula against any medicines you take. Tell us your full medical history and what else you are taking.' },
-      { q: 'What if I already take medication?', a: 'They can, which is exactly why we ask what you take before prescribing - blood thinners, antidepressants and immune-suppressing drugs are particular examples. We screen for known interactions and will avoid or adjust a formula where needed. Never stop a prescribed medicine to take herbs without talking to your doctor.' },
+      { q: 'How do you check whether Chinese herbs suit me?', a: 'Before recommending herbs, we review your medical history, medicines and possible interactions. Herbal products are not automatically safe just because they are natural. We use quality-controlled herbs tested for contaminants and check the proposed formula against medicines you take. Tell us your full medical history and what else you are taking.' },
+      { q: 'What if I already take medication?', a: 'Some herbs can interact with prescribed medicines, which is why we ask what you take before prescribing - blood thinners, antidepressants and immune-suppressing drugs are particular examples. We screen for known interactions and will avoid or adjust a formula where needed. Never stop a prescribed medicine to take herbs without talking to your doctor.' },
       { q: 'How do I take the formula and how long for?', a: 'Most people take granules dissolved in hot water once or twice a day; tablets and teas are alternatives. Short-term complaints may need a few weeks, longer-standing ones several months with regular adjustments. We reassess as we go and stop if it is not helping.' },
     ],
     related: ['acupuncture', 'moxibustion', 'tuina-massage'],
@@ -164,7 +164,7 @@ export const therapies: Therapy[] = [
     evidence: 'The evidence is limited and mixed. The most-studied use - moxibustion for breech presentation - has some supportive but inconclusive trials and should only be done with professional supervision. For most other uses the research is weak. We present it as a gentle, low-risk complement, not a proven treatment.',
     conditions: ['fertility-support', 'menstrual-issues', 'digestive-issues', 'stress-burnout'],
     faqs: [
-      { q: 'What does a moxibustion session feel like?', a: 'It should not. The heat is applied carefully and the point is changed as soon as it feels too warm, so you feel a comfortable warmth rather than burning. With correct technique, skin burns do not occur. Tell your practitioner immediately if any spot feels too hot.' },
+      { q: 'What does a moxibustion session feel like?', a: 'You should feel a comfortable warmth, not burning. We monitor the heat and adjust the treatment as soon as it feels too hot. Burns are uncommon with careful technique but remain a possible risk, so tell your practitioner immediately if any spot feels too hot.' },
       { q: 'What is the smell during treatment?', a: 'Burning mugwort has a strong, herbal, slightly smoky smell that can linger briefly in clothing. We ventilate the room well and can use smoke-free moxa if you are sensitive to it or prefer to avoid the smell.' },
       { q: 'What should I mention before moxibustion?', a: 'Moxa over a specific point is sometimes used from around week 32 to encourage a breech baby to turn, and this use is reasonably studied. Other uses in pregnancy should only be done by an experienced TCM practitioner, never self-applied. Always tell us if you are pregnant.' },
     ],
@@ -191,7 +191,7 @@ export const therapies: Therapy[] = [
     evidence: 'There is moderate evidence that electroacupuncture can help with some chronic and post-operative pain, and it is one of the more studied acupuncture variations for pain. Quality still varies and it does not work for everyone. We use it as a reasonable option to trial for persistent pain, not a certainty.',
     conditions: ['back-pain', 'neck-pain', 'migraine-headaches'],
     faqs: [
-      { q: 'What does electroacupuncture feel like?', a: 'Yes - most people feel a light tingling or a gentle rhythmic pulsing. The strength is set individually and should always feel comfortable, never painful. If it becomes too strong, tell your practitioner and they will reduce it immediately.' },
+      { q: 'What does electroacupuncture feel like?', a: 'Most people feel a light tingling or a gentle rhythmic pulsing. The strength is set individually to stay comfortable; tell your practitioner if anything feels painful or too strong. If it becomes too strong, tell your practitioner and they will reduce it immediately.' },
       { q: 'What should I mention before electroacupuncture?', a: 'We avoid it if you have a pacemaker or implanted defibrillator, and use caution with epilepsy, in pregnancy, and over certain areas such as the chest. Tell us about any implanted devices or medical conditions beforehand so we can decide whether it is suitable.' },
       { q: 'How is it different from a TENS machine?', a: 'A TENS unit sends current through pads on the skin surface, while electroacupuncture delivers it through needles placed at specific points, so the stimulation is more targeted and deeper. Both aim at pain relief; we choose electroacupuncture when needle-based treatment fits your situation.' },
     ],

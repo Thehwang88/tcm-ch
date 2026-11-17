@@ -33,7 +33,7 @@ const faqs = [
   { q: 'Can I request a practitioner who speaks English?', a: 'You can send your enquiry and coordinate appointments in English or German. Tell us if you prefer an English-speaking practitioner; we take that into account when suggesting a clinic.' },
   { q: 'How do I find the right clinic?', a: 'Tell us which town or district suits you and what matters most, such as a nearby clinic or a convenient time. We help you choose from our clinics and partner practices. You can also use the clinic finder.' },
   { q: 'What happens at the first visit?', a: 'We begin with a conversation about your symptoms and history, followed by a TCM assessment and a discussion of reasonable treatment options. We explain the likely costs and whether another medical assessment may be more suitable.' },
-  { q: 'How can I check insurance coverage and costs?', a: 'Acupuncture and TCM are generally not covered by Swiss basic insurance unless provided under different medical conditions. ' + INSURANCE + ' We can tell you the practitioner’s EMR/ASCA recognition and help you check your policy before you book.' },
+  { q: 'How can I check insurance coverage and costs?', a: 'For non-physician TCM care, reimbursement usually comes from supplementary rather than basic health insurance. ' + INSURANCE + ' We can tell you the practitioner’s EMR/ASCA recognition and help you check your policy before you book.' },
 ];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: 'en', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 ---
