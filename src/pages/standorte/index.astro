@@ -51,7 +51,7 @@ const liste =
     mainIds.slice(0,3).map(mainCard).join('')+'</div></div>'+
   '<div class="std-primary-group"><h2 class="std-group-heading">Weitere Kliniken</h2><div class="std-featured-grid std-featured-grid--other">' +
     mainIds.slice(3).map(mainCard).join('')+'</div></div>'+
-  '<details id="standorte-weitere" class="std-other-locations"><summary><span>Weitere Standorte &amp; Partnerpraxen</span><span class="std-disclosure-meta">6 Standorte anzeigen <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
+  '<details id="standorte-weitere" class="std-other-locations"><summary><span>Weitere Standorte &amp; Partnerpraxen</span><span class="std-disclosure-meta">${additionalIds.length} Standorte anzeigen <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
     additionalIds.map(additionalRow).join('')+'</div></details>';
 // Replace ONLY the redundant hero/nav section. Keep the existing embedded contact
 // form, submission code, schema, canonical links and analytics untouched.
@@ -68,7 +68,7 @@ const body = (bodyRaw.slice(0,introStart) + hero + bodyRaw.slice(cardsStart))
   .replace('<!--sc:std-liste-->',liste)
   .replace('<section class="section contact-section-inline"','<section class="section contact-section-inline" id="standorte-anfrage"')
   .replace(/<p class="std-finder">[\s\S]*?<\/p>/,'');
-if(/<!--sc:/.test(body) || (body.match(/class="stdc stdc--clinic"/g)||[]).length!==7 || (body.match(/class="std-partner-row"/g)||[]).length!==additionalIds.length)
+if(/<!--sc:/.test(body) || (body.match(/class="stdc stdc--clinic"/g)||[]).length!==mainIds.length || (body.match(/class="std-partner-row"/g)||[]).length!==additionalIds.length)
   throw new Error('/standorte/: missing or duplicated location cards');
 
 const title = 'Standorte – TCM.ch Kliniken in der Deutschschweiz';
