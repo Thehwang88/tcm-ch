@@ -9,7 +9,7 @@ import { clinicById, cardHref, cardName } from '../../lib/standort-card';
 const esc = (s: string) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const PIN = '<svg class="stdc-pin" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>';
 const mainIds = ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen','winterthur-marktgasse','basel','bern'] as const;
-const additionalIds = ['frauenfeld','kreuzlingen','bottighofen','volketswil','wil','rorschach','luzern'] as const;
+const additionalIds = ['frauenfeld','kreuzlingen','bottighofen','wil','rorschach','luzern'] as const;
 const displayName: Record<string,string> = { 'winterthur-marktgasse': 'Winterthur' };
 const mainCard = (id: typeof mainIds[number]) => {
   const c = clinicById(id);
@@ -51,7 +51,7 @@ const liste =
     mainIds.slice(0,3).map(mainCard).join('')+'</div></div>'+
   '<div class="std-primary-group"><h2 class="std-group-heading">Weitere Kliniken</h2><div class="std-featured-grid std-featured-grid--other">' +
     mainIds.slice(3).map(mainCard).join('')+'</div></div>'+
-  '<details id="standorte-weitere" class="std-other-locations"><summary><span>Weitere Standorte &amp; Partnerpraxen</span><span class="std-disclosure-meta">7 Standorte anzeigen <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
+  '<details id="standorte-weitere" class="std-other-locations"><summary><span>Weitere Standorte &amp; Partnerpraxen</span><span class="std-disclosure-meta">6 Standorte anzeigen <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
     additionalIds.map(additionalRow).join('')+'</div></details>';
 // Replace ONLY the redundant hero/nav section. Keep the existing embedded contact
 // form, submission code, schema, canonical links and analytics untouched.
