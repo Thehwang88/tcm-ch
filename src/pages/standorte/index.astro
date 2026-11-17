@@ -51,7 +51,7 @@ const liste =
     mainIds.slice(0,3).map(mainCard).join('')+'</div></div>'+
   '<div class="std-primary-group"><h2 class="std-group-heading">Weitere Kliniken</h2><div class="std-featured-grid std-featured-grid--other">' +
     mainIds.slice(3).map(mainCard).join('')+'</div></div>'+
-  '<details id="standorte-weitere" class="std-other-locations"><summary><span>Weitere Standorte &amp; Partnerpraxen</span><span class="std-disclosure-meta">${additionalIds.length} Standorte anzeigen <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
+  '<details id="standorte-weitere" class="std-other-locations"><summary><span>Weitere Standorte &amp; Partnerpraxen</span><span class="std-disclosure-meta">'+additionalIds.length+' Standorte anzeigen <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
     additionalIds.map(additionalRow).join('')+'</div></details>';
 // Replace ONLY the redundant hero/nav section. Keep the existing embedded contact
 // form, submission code, schema, canonical links and analytics untouched.
