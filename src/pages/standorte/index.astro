@@ -19,8 +19,6 @@ const card = (id: string) => {
   // On the /standorte/ overview, Basel uses the same in-card photo treatment as St. Gallen.
   const bild = id === 'basel'
     ? { src: '/images/basel-empfang-800.webp', alt: 'Empfangsbereich der TCM.ch Klinik Basel, Steinenvorstadt 73' }
-    : id === 'bern'
-    ? { src: '/images/hero-main.webp', alt: 'Symbolbild: Akupunktur bei TCM.ch, keine Aufnahme der Praxis Bern' }
     : c.bild;
   const cardImage = bild && (['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen','basel','bern','winterthur-marktgasse'].includes(id)) ? `<img class="stdc-photo" src="${esc(bild.src)}" alt="${esc(bild.alt)}" loading="lazy" decoding="async">` : '';
   const cta = `<span class="stdc-cta ${offen ? (ci ? 'stdc-cta--gelb' : 'stdc-cta--ghost') : 'stdc-cta--link'}">${esc(label)} <span aria-hidden="true">→</span></span>`;
