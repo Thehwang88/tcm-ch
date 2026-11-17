@@ -201,23 +201,21 @@ export const standorte: Record<string, Standort> = {
     v2: true,
     slug: 'bern',
     stadt: 'Bern',
-    plannedTitle: 'Bern Marktgasse 50 · Standort in Vorbereitung',
-    plannedNote: 'Die Adresse in der Berner Altstadt ist bestätigt. Der Behandlungsstart und die tatsächlichen Öffnungszeiten werden vor Freigabe der Terminbuchung bestätigt. Du kannst dich schon jetzt für Bern vormerken lassen.',
     seo: {
       title: 'Akupunktur & TCM Bern – Marktgasse 50 | TCM.ch',
-      description: 'TCM.ch in Bern: Standort an der Marktgasse 50, 3011 Bern in Vorbereitung. Geplantes Angebot mit Akupunktur, Tuina, Schröpfen und Kräutertherapie. Jetzt vormerken.',
+      description: 'Akupunktur & TCM in Bern, Marktgasse 50: Praxis in der Berner Altstadt. Akupunktur, Tuina, Schröpfen und Kräutertherapie. Jetzt Termin anfragen.',
       h1: 'Akupunktur & TCM in <em>Bern</em>',
       schemaName: 'TCM.ch Bern',
     },
     hero: {
       banner: 'Standort Bern · Marktgasse 50',
-      lead: 'TCM.ch bereitet eine Praxis an der Marktgasse 50 in der Berner Altstadt vor.',
-      sub: 'Die Adresse ist bestätigt. Bis zur Betriebsaufnahme kannst du dich unverbindlich vormerken lassen. Der genaue Starttermin steht noch nicht fest.',
+      lead: 'Willkommen in unserer TCM.ch Praxis an der Marktgasse 50, mitten in der Berner Altstadt.',
+      sub: 'Akupunktur und Traditionelle Chinesische Medizin direkt im Zentrum von Bern. Termine sind per Formular, Telefon oder WhatsApp anfragbar.',
       image: '/images/hero-main.webp',
       imageAlt: 'Symbolbild: Traditionelle Chinesische Medizin bei TCM.ch – kein Foto der Berner Praxis',
       locationHook: 'Marktgasse 50 · 3011 Bern · Berner Altstadt',
     },
-    aufEinenBlick: '<section class="section" style="padding:32px 0;background:var(--bg)"><div class="wrap reveal"><div class="section-label">TCM Bern auf einen Blick</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px"><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px"><strong>Bestätigte Adresse</strong><p>Marktgasse 50, 3011 Bern · Berner Altstadt</p></div><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px"><strong>Geplantes Angebot</strong><p>Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie</p></div><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px"><strong>Termine</strong><p>Vormerkung jetzt möglich · Eröffnungstermin folgt</p></div></div></div></section>',
+    aufEinenBlick: '<section class="section" style="padding:32px 0;background:var(--bg)"><div class="wrap reveal"><div class="section-label">TCM Bern auf einen Blick</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px"><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px"><strong>Unsere Praxis</strong><p>Marktgasse 50, 3011 Bern · Berner Altstadt</p></div><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px"><strong>Behandlungen</strong><p>Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie</p></div><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px"><strong>Öffnungszeiten</strong><p>Mo–Sa 07:30–19:30 · So 08:00–17:00 · Termine nach Vereinbarung</p></div></div><div style="margin-top:16px"><a class="btn-primary" href="#termin">Termin anfragen <span aria-hidden="true">→</span></a></div></div></section>',
     nap: {
       strasse: 'Marktgasse 50',
       plz: '3011',
@@ -227,14 +225,14 @@ export const standorte: Record<string, Standort> = {
       // Address-only directions until the TCM.ch Bern Google Business Profile is published.
       mapEmbed: 'https://www.google.com/maps?q=Marktgasse%2050%2C%203011%20Bern%2C%20Schweiz&output=embed',
       mapsDirections: 'https://www.google.com/maps/dir/?api=1&destination=Marktgasse%2050%2C%203011%20Bern%2C%20Schweiz',
-      // These are PLANNED service hours, not asserted as actual opening hours in schema.org.
+      // Operative Öffnungszeiten wie in der kanonischen Klinikdatei locations.ts.
       oeffnungszeiten: [
-        { tag: 'Geplant Mo–Sa', zeit: '07:30–19:30 Uhr' },
-        { tag: 'Geplant So', zeit: '08:00–17:00 Uhr' },
+        { tag: 'Mo–Sa', zeit: '07:30–19:30 Uhr' },
+        { tag: 'So', zeit: '08:00–17:00 Uhr' },
       ],
     },
     intro: {
-      body: '<h2>Deine zukünftige TCM-Praxis in Bern</h2><p>Unser Berner Standort ist an der <strong>Marktgasse 50, 3011 Bern</strong> vorgesehen. Die Adresse in der Altstadt ist bestätigt; bis zur Eröffnung vergeben wir noch keine Behandlungstermine an diesem Ort. Du kannst dich aber jetzt vormerken lassen.</p><p>Wie in Basel und St. Gallen soll das Angebot unter anderem <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a>, <a href="/therapien/schroepfen/">Schröpfen</a> und <a href="/therapien/kraeutertherapie/">chinesische Kräutertherapie</a> umfassen. Umfang und Verfügbarkeit bestätigen wir zum Start.</p><p>Die Abrechnung erfolgt nach Tarif 590; was die Zusatzversicherung übernimmt, richtet sich nach der Versicherung und der Anerkennung der behandelnden Fachperson. Mehr dazu unter <a href="/krankenkassen/">Krankenkasse &amp; Kosten</a>.</p>',
+      body: '<h2>Deine TCM-Praxis in Bern</h2><p>Unsere Praxis liegt an der <strong>Marktgasse 50, 3011 Bern</strong> im Herzen der Altstadt. Wir nehmen uns Zeit für deine Beschwerden, eine ausführliche Anamnese und eine individuelle Behandlung. Du kannst direkt einen Termin anfragen.</p><p>Zu unseren TCM-Angeboten zählen unter anderem <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a>, <a href="/therapien/schroepfen/">Schröpfen</a> und <a href="/therapien/kraeutertherapie/">chinesische Kräutertherapie</a>. Welche Methode für dich sinnvoll ist, klären wir beim Erstgespräch.</p><p>Abgerechnet wird nach Tarif 590. Ob und in welcher Höhe die Zusatzversicherung deine Behandlung übernimmt, hängt von deiner Versicherung und der Anerkennung der behandelnden Fachperson ab. Vor dem Termin helfen wir dir gerne bei der Abklärung. Mehr dazu unter <a href="/krankenkassen/">Krankenkasse &amp; Kosten</a>.</p>',
       einzugsgebiet: '<h2>Mitten in der Berner Altstadt</h2><p>Die Marktgasse 50 liegt zentral in Bern und ist zu Fuss vom Bahnhof durch die Altstadt erreichbar. Wir möchten Patientinnen und Patienten aus Bern und der Umgebung ansprechen, etwa aus Köniz, Ostermundigen, Ittigen, Zollikofen, Muri bei Bern und Worb.</p>',
     },
     anfahrt: {
@@ -242,15 +240,15 @@ export const standorte: Record<string, Standort> = {
       autoParken: 'Die Berner Altstadt ist verkehrsberuhigt. Bitte nutze ein öffentliches Parkhaus und plane den Fussweg zur Marktgasse ein.',
     },
     therapien: ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'kraeutertherapie', 'akupressur', 'shiatsu', 'gua-sha'],
-    beschwerdenIntro: 'Geplante Behandlungsschwerpunkte für Bern. Ob eine TCM-Behandlung für dein Anliegen sinnvoll ist, klären wir persönlich, sobald Termine verfügbar sind.',
+    beschwerdenIntro: 'Häufige Beschwerden, mit denen du unsere Praxis in Bern besuchen kannst. Wir klären persönlich, welche Behandlung für dein Anliegen sinnvoll ist.',
     beschwerden: NETZ_BESCHWERDEN,
     team: [],
     ablaufBlock: true,
     faqs: [
       { q: 'Wo liegt die TCM.ch Praxis Bern?', a: 'Die bestätigte Standortadresse ist Marktgasse 50, 3011 Bern in der Altstadt. Auf der Karte und über den Routenlink kannst du die genaue Adresse finden.' },
-      { q: 'Ist die Praxis in Bern bereits eröffnet?', a: 'Nein, die Betriebsaufnahme ist noch nicht bestätigt. Du kannst dich für Termine an der Marktgasse 50 vormerken lassen. Wir melden uns, sobald der Start feststeht.' },
-      { q: 'Wann ist TCM.ch Bern geöffnet?', a: 'Vorgesehen ist der reguläre Terminrahmen unserer Kliniken: Montag bis Samstag 07:30–19:30 Uhr und Sonntag 08:00–17:00 Uhr. Das sind geplante Zeiten; die tatsächlichen Öffnungszeiten bestätigen wir zum Start.' },
-      { q: 'Wie kann ich mich für einen Termin in Bern anmelden?', a: 'Über das Formular auf dieser Seite kannst du dich unverbindlich für Bern vormerken lassen. Wir kontaktieren dich, sobald Termine verfügbar sind.' },
+      { q: 'Ist die Praxis in Bern bereits eröffnet?', a: 'Ja. Unsere TCM.ch Praxis an der Marktgasse 50, 3011 Bern ist geöffnet und Termine können direkt angefragt werden.' },
+      { q: 'Wann ist TCM.ch Bern geöffnet?', a: 'Montag bis Samstag 07:30–19:30 Uhr, Sonntag 08:00–17:00 Uhr. Termine nach Vereinbarung; nenne uns einfach deine Wunschtage und deine bevorzugte Uhrzeit.' },
+      { q: 'Wie kann ich einen Termin in Bern vereinbaren?', a: 'Schick uns deine Anfrage direkt über das Formular auf dieser Seite, per Telefon oder WhatsApp. Wir melden uns mit einem passenden Terminvorschlag für Marktgasse 50.' },
       { q: 'Übernimmt die Krankenkasse TCM-Behandlungen in Bern?', a: 'Das hängt von deiner Zusatzversicherung und der Anerkennung der behandelnden Fachperson ab. Vor dem ersten Termin helfen wir dir dabei, die Deckung abzuklären.' },
       { q: 'Gibt es schon ein Google-Unternehmensprofil für Bern?', a: 'Der offizielle Google-Maps-Unternehmenseintrag wird ergänzt, sobald er veröffentlicht und verifiziert ist. Bis dahin findest du uns über die bestätigte Adresse Marktgasse 50.' },
     ],

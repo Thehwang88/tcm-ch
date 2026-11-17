@@ -27,6 +27,7 @@ export const standorte = [
   { id: 'rorschach', label: 'Rorschach' },
   { id: 'wil', label: 'Wil' },
   { id: 'basel', label: 'Basel' },
+  { id: 'bern', label: 'Bern' },
 ];
 
 import { clinics, deStandortPath, enLocationPath, isRedirectedClinic } from './locations';
