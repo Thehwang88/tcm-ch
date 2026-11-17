@@ -306,6 +306,12 @@
     var navTarget = function () {
       var head = card.querySelector('.kf-h');
       if (sel && !opt()) return { el: sel.closest('.kf-field') || sel, focus: head || sel.closest('.kf-field') };
+      // Homepage Hwang-style trial: the native terminart radio group is visually
+      // replaced by a service selector. Scroll/focus to the visible control.
+      var homeService = inst === 'home' && form.querySelector('[data-kf-service]');
+      if (homeService && !homeService.closest('[hidden]')) {
+        return { el: homeService.closest('.kf-field') || homeService, focus: homeService };
+      }
       if (opts && shown(opts)) {
         var cur = radios.filter(function (x) { return x.checked; })[0];
         return { el: [taH, form.querySelector('.kf-intro')].filter(shown)[0] || opts, focus: opts, tile: cur && cur.closest('.kf-opt') };
