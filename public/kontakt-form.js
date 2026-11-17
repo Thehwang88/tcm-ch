@@ -411,8 +411,36 @@
         if (fe) { openFor(fe); fe.focus(); }
         return;
       }
-      var tsEl = form.querySelector('.cf-turnstile'); var tsIn = form.querySelector('[name="cf-turnstile-response"]'); var token = tsIn ? tsIn.value : '';
-      if (tsEl && !token) { if (errBox) { errBox.textContent = 'Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'; errBox.hidden = false; } return; }
+      var tsEl = form.querySelector('.cf-turnstile');
+      var tsIn = form.querySelector('[name="cf-turnstile-response"]');
+      var token = tsIn ? tsIn.value.trim() : '';
+      if (tsEl && !token) {
+        // Cloudflare still verifies exactly as before; never bypass server checks.
+        // Detect missing/blocked widget instead of asking patients to click a
+        // confirmation box they cannot see.
+        var tsLoaded = !!(window.turnstile && typeof window.turnstile.render === 'function');
+        var tsIframe = tsEl.querySelector('iframe');
+        if (tsLoaded && !tsIframe && tsEl.dataset.sitekey) {
+          try {
+            window.turnstile.render(tsEl, {
+              sitekey: tsEl.dataset.sitekey,
+              appearance: 'always',
+              size: tsEl.dataset.size === 'compact' ? 'compact' : 'normal'
+            });
+            tsIframe = tsEl.querySelector('iframe');
+          } catch (eTs) { /* Cloudflare may still be rendering automatically. */ }
+        }
+        if (errBox) {
+          errBox.textContent = !tsLoaded
+            ? 'Die Cloudflare-Sicherheitsprüfung konnte nicht geladen werden. Bitte lade die Seite neu oder kontaktiere uns telefonisch.'
+            : !tsIframe
+              ? 'Die Sicherheitsprüfung ist noch nicht sichtbar. Bitte lade die Seite neu oder kontaktiere uns telefonisch.'
+              : 'Bitte schliesse die sichtbare Cloudflare-Sicherheitsprüfung ab und sende die Anfrage erneut.';
+          errBox.hidden = false;
+        }
+        tsEl.scrollIntoView({ block: 'center', behavior: 'auto' });
+        return;
+      }
       var data = {};
       [].forEach.call(form.querySelectorAll('input,textarea,select'), function (el) {
         if (!el.name || el.type === 'radio' || el.name === 'website' || el.name === 'cf-turnstile-response') return;
