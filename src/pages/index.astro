@@ -131,6 +131,7 @@ const homeHtml = homeHtmlCards;
     <link rel="stylesheet" href="/patient-success.css" />
     <link rel="stylesheet" href="/standort-card.css" />
     <link rel="stylesheet" href="/warm-clinic.css" />
+    <link rel="stylesheet" href="/proof-section.css" />
     <!-- static page: reveal + SPA anti-FOUC are JS-only; never hide content from no-JS/crawlers -->
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
@@ -384,6 +385,7 @@ const homeHtml = homeHtmlCards;
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
     <script src="/patient-success.js" is:inline defer></script>
+    <script src="/proof-section.js" is:inline defer></script>
     <!-- Homepage-only seasonal snow, matched to the Santa-hat date window. -->
     <style is:global>
       #heroPatient{position:relative;isolation:isolate;overflow:hidden}
