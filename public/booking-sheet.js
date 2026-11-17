@@ -15,11 +15,30 @@
   var push=function(name,other){
     try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name,placement:'hero_booking_sheet'},other||{}));}catch(e){}
   };
+  // Move only the actual live FORM CARD. Moving its entire parent section
+  // also moves unrelated content and strips page-scoped layout CSS, producing
+  // a broken booking modal after the homepage and Zürich layout redesigns.
+  function liveCard(root){
+    if(!root)return null;
+    if(root.matches && root.matches('[data-kf],.inline-form-card') && root.querySelector('form'))return root;
+    var kf=root.querySelector && root.querySelector('[data-kf]');
+    if(kf && kf.querySelector('form'))return kf;
+    var form=root.querySelector && root.querySelector('form');
+    return form && form.closest('.inline-form-card');
+  }
+  function firstForm(selectors){
+    for(var i=0;i<selectors.length;i++){
+      var root=document.querySelector(selectors[i]);
+      var card=liveCard(root);
+      if(card)return card;
+    }
+    return null;
+  }
   function pick(type){
-    if(type==='home')return document.getElementById('home-contact-form');
-    if(type==='zh')return document.getElementById('zh-funnel');
-    if(type==='sg')return document.getElementById('offer-form');
-    if(type==='clinic')return document.getElementById('anfrage-box');
+    if(type==='home')return firstForm(['#home-contact-form [data-kf]','#home-contact-form']);
+    if(type==='zh')return firstForm(['#zh-funnel [data-kf]','#zh-funnel']);
+    if(type==='sg')return firstForm(['#offer-form','#termin-formular [data-kf]','[data-kf-instance="sg-hero"]','[data-kf-instance="sg-unten"]','#kontakt [data-kf]']);
+    if(type==='clinic')return firstForm(['#anfrage-box','#termin [data-kf]','#kontakt [data-kf]','[data-kf-instance="standort"]']);
     return null;
   }
   function formOf(el){return el&&el.querySelector('form');}
@@ -27,6 +46,13 @@
     if(!wish)return;
     var form=formOf(el);
     if(!form)return;
+    // Home's new human-readable service select drives the canonical radios.
+    var service=form.querySelector('[data-kf-service]');
+    if(service && (wish==='checkin'||wish==='behandlung')){
+      service.value=wish;
+      service.dispatchEvent(new Event('change',{bubbles:true}));
+      return;
+    }
     var radio=form.querySelector('input[name="terminart"][value="'+wish+'"]');
     if(radio&&!radio.disabled){
       radio.checked=true;
@@ -61,7 +87,7 @@
     if(!node||!formOf(node)||!node.parentNode)return false;
     // Required handlers belong to the REAL node and remain attached when moved.
     // Cards that have not initialised yet still use their normal in-page fallback.
-    if(type!=='zh'&&type!=='home'&&node.hasAttribute('data-kf')&&!node.__kfGoto)return false;
+    if(node.hasAttribute('data-kf')&&!node.__kfGoto)return false;
     if(!setLocation(node,btn.getAttribute('data-booking-location')||''))return false;
     pending=true;
     var marker=document.createComment('booking-sheet-origin');
@@ -70,7 +96,7 @@
     slot.className='tcm-booking-content tcm-booking-content--'+type;
     if(type==='zh'){
       var host=document.createElement('div');
-      host.className='akz tcm-booking-zh-host';
+      host.className='akz akz-funnel-section tcm-booking-zh-host';
       host.appendChild(node);
       slot.appendChild(host);
     } else {
@@ -80,7 +106,7 @@
     heading.textContent=/Passende Praxis|Anfrage stellen|Vormerk/.test(title)?'Deine Anfrage.':'Dein Termin.';
     sub.textContent=type==='zh'?'Wir finden die passende Zürcher Praxis und melden uns persönlich.':
       type==='sg'?'Wähle Ersttermin oder Gratis Check-in – die Kosten werden vor dem Senden angezeigt.':
-      'Wähle einen Standort und Terminart. Wir melden uns persönlich.';
+      'Schreib uns kurz dein Anliegen – wir melden uns persönlich.';
     var card=node.matches('[data-kf]')?node:node.querySelector('[data-kf]');
     if(card){
       var position=card.querySelector('input[name="cta_pos"]');
