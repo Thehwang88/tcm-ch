@@ -4,119 +4,83 @@
 // live SPA. Styling via /home.css (home/SpaPage) or /footer.css (LayoutDe); links route
 // DE via nav() in /header.js.
 import footer from '../data/footer.html?raw';
-import { standortCardHtml } from '../lib/standort-card';
+import '../styles/footer-compact.css';
 import WhatsAppFab from './WhatsAppFab.astro';
 import WhatsAppConcierge from './WhatsAppConcierge.astro';
 import StickyCtaBar from './StickyCtaBar.astro';
-// Copyright year is stamped at build time (the site is rebuilt on every push).
+// Keep the legal links and group-brand logo assets, but present only the
+// patient-relevant navigation up front. The full directories remain linked.
 const year = new Date().getFullYear();
-// Standorte-Spalte (05.11.2026): zentrale Standortkarte, Variante inline (Pin + Ort + Button); Nähe- und Zürich-Links bleiben.
-const FOOTER_STANDORTE = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern', 'bern'];
-const footerLocations = '<ul id="footer-locations"><li><a href="/akupunktur-in-der-naehe/">Akupunktur in deiner Nähe</a></li><li><a href="/akupunktur-tcm-zuerich/">Zürich – alle Praxen</a></li>' + FOOTER_STANDORTE.map((id) => '<li>' + standortCardHtml(id, { variant: 'inline' }) + '</li>').join('') + '</ul>';
-const secondaryLinks = [
-  ['/kontakt/', 'Kontakt'],
-  ['/krankenkassen/', 'Krankenkasse & Kosten'],
-  ['/wissen/', 'Wissen & Magazin'],
-  ['/haut/', 'Haut & Gesicht'],
-  ['/longevity/', 'Longevity Schweiz'],
-  ['/ergebnisse/', 'Ergebnisse & Transparenz'],
-  ['/ueber-uns/', 'Über TCM.ch'],
-  ['/fachpersonen/', 'Für Fachpersonen'],
-  ['/karriere/', 'Karriere'],
-  ['/akademie/', 'Akademie'],
-];
-const footerUtilities = '<div class="footer-secondary-links" role="navigation" aria-label="Weitere Informationen">' +
-  secondaryLinks.map(([href, label]) => '<a href="' + href + '">' + label + '</a>').join('') + '</div>';
-const footerHtml = footer.replace('© 2025 TCM.ch', `© ${year} TCM.ch`)
-  .replace(/<ul id="footer-locations">[\s\S]*?<\/ul>/, () => footerLocations)
-  .replace('</footer>', footerUtilities + '</footer>');
-if (!footerHtml.includes('sc--inline')) throw new Error('Footer.astro: Standorte-Liste nicht ersetzt');
+const treatments = [
+  ['/therapien/akupunktur/','Akupunktur'],
+  ['/therapien/tuina/','Tuina Massage'],
+  ['/therapien/schroepfen/','Schröpfen'],
+  ['/therapien/kraeutertherapie/','Kräutertherapie'],
+  ['/beschwerden/','Beschwerden & Symptome'],
+  ['/therapien/','Alle Therapien']
+] as const;
+const locations = [
+  ['/akupunktur-tcm-zuerich/','Zürich · Alle Praxen'],
+  ['/standorte/st-gallen/','St. Gallen'],
+  ['/standorte/winterthur-marktgasse/','Winterthur'],
+  ['/standorte/basel/','Basel'],
+  ['/standorte/bern/','Bern'],
+  ['/standorte/','Alle Standorte']
+] as const;
+const info = [
+  ['/ueber-uns/','Über TCM.ch'],
+  ['/krankenkassen/','Krankenkasse & Kosten'],
+  ['/wissen/','Wissen & Magazin'],
+  ['/kontakt/','Kontakt'],
+  ['/fachpersonen/','Für Fachpersonen']
+] as const;
+const more = [
+  ['/haut/','Haut & Gesicht'],['/longevity/','Longevity Schweiz'],
+  ['/ergebnisse/','Ergebnisse & Transparenz'],['/karriere/','Karriere'],
+  ['/akademie/','Akademie'],['/akupunktur-in-der-naehe/','Akupunktur in deiner Nähe'],
+  ['/gesundheitsbibliothek/','Gesundheitsbibliothek']
+] as const;
+const entries = (items: readonly (readonly [string,string])[]) =>
+  items.map(([href,label]) => '<li><a href="'+href+'">'+label+'</a></li>').join('');
+const top = [
+  '<div class="footer-inner footer-inner--tidy">',
+  '<div class="footer-brand-col">',
+    '<a href="/" class="footer-logo" aria-label="TCM.ch Kliniken – Startseite"><img src="/images/logo/tcm-ch-logo-kliniken-mint.svg" alt="TCM.ch Kliniken" width="168" height="57" loading="lazy"></a>',
+    '<p class="footer-tagline">TCM &amp; Akupunktur in der Deutschschweiz.<br>Kliniken und Partnerpraxen.</p>',
+    '<a class="footer-contact-cta" href="/kontakt/">Termin anfragen <span aria-hidden="true">→</span></a>',
+    '<a class="footer-mail" href="mailto:termine@tcm.ch">termine@tcm.ch</a>',
+  '</div>',
+  '<div class="footer-col"><h4>Behandlungen</h4><ul id="footer-therapies">',entries(treatments),'</ul></div>',
+  '<div class="footer-col"><h4>Standorte</h4><ul id="footer-locations">',entries(locations),'</ul></div>',
+  '<div class="footer-col footer-col--info"><h4>Informationen</h4><ul id="footer-info-links">',entries(info),'</ul></div>',
+  '</div>',
+  '<details class="footer-more"><summary>Weitere Themen <span aria-hidden="true">⌄</span></summary>',
+  '<nav class="footer-more-links" aria-label="Weitere Themen">',
+  more.map(([href,label])=>'<a href="'+href+'">'+label+'</a>').join(''),
+  '</nav></details>'
+].join('');
+const originalGrid = /<div class="footer-inner">[\s\S]*?<div class="footer-bottom">/;
+if (!originalGrid.test(footer)) throw new Error('Footer: original grid markers changed');
+let footerHtml = footer.replace(originalGrid, top+'<div class="footer-bottom">');
+const brandsStart = footerHtml.indexOf('<span class="footer-brandrow">');
+const brandsEnd = footerHtml.indexOf(' <a href="/datenschutz/">', brandsStart);
+if(brandsStart<0 || brandsEnd<0) throw new Error('Footer: original brand/legal markers missing');
+const brandMarkup = footerHtml.slice(brandsStart,brandsEnd);
+footerHtml = footerHtml.slice(0,brandsStart)+footerHtml.slice(brandsEnd);
+footerHtml = footerHtml.replace('<div class="footer-bottom">',
+  '<details class="footer-brands"><summary>Marken der TCM.ch Gruppe <span aria-hidden="true">⌄</span></summary><div class="footer-brands-content">'
+   +brandMarkup+'</div></details><div class="footer-bottom">');
+footerHtml = footerHtml.replace(/<div class="footer-copy">[\s\S]*?<\/div> <div class="footer-legal">/,
+  '<div class="footer-copy">© '+year+' TCM.ch · Schweiz</div> <div class="footer-legal">');
+// Link now appears in the information column, not again with legal information.
+footerHtml = footerHtml.replace(' <a href="/fachpersonen/">Für Fachpersonen</a> </div>',' </div>');
+for (const required of [
+  'id="footer-locations"','class="footer-more"','class="footer-brands"',
+  'data-cky-tag="revisit-consent"','href="/datenschutz/"','href="/impressum/"','href="/agb/"'
+]) if(!footerHtml.includes(required))throw new Error('Footer: lost '+required);
+
 ---
 <Fragment set:html={footerHtml} />
-<style is:global>
-  /* TCM.ch footer identity: neutral white wordmark, restrained Korean Blue accent.
-     Scoped to the shared footer on ALL site pages; image asset stays untouched. */
-  footer.site-footer .footer-logo img {
-    filter:brightness(0) invert(1);
-  }
-  footer.site-footer .footer-mail {
-    border-bottom-color:#1769B1;
-  }
-  footer.site-footer .footer-mail::after {
-    background-color:#1769B1;
-  }
-  footer.site-footer .footer-mail:hover,
-  footer.site-footer .footer-mail:focus-visible {
-    color:#FFFFFF;
-    border-bottom-color:#3E96D9;
-  }
-  footer.site-footer .footer-col a:hover,
-  footer.site-footer .footer-col a:focus-visible {
-    color:#FFFFFF;
-  }
-
-  /* Utility links are available from the footer instead of crowding the
-     patient's primary mobile navigation. Existing footer routes remain. */
-  footer.site-footer .footer-secondary-links{
-    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
-    gap:12px 24px;padding:22px 20px 28px;
-    border-top:1px solid rgba(255,255,255,.14);
-  }
-  footer.site-footer .footer-secondary-links a{
-    color:rgba(255,255,255,.78);font-size:13px;font-weight:600;
-    line-height:1.5;text-decoration:none;
-  }
-  footer.site-footer .footer-secondary-links a:hover,
-  footer.site-footer .footer-secondary-links a:focus-visible{
-    color:#fff;text-decoration:underline;text-underline-offset:3px;
-  }
-
-  /* Footer locations: long clinic names must never be hidden behind booking pills.
-     Keep this isolated to #footer-locations; shared clinic cards are untouched. */
-  @media (min-width:1025px){
-    footer.site-footer .footer-inner{
-      grid-template-columns:minmax(180px,1.5fr) minmax(120px,1fr) minmax(120px,1fr) minmax(290px,2fr);
-    }
-  }
-  @media (min-width:601px) and (max-width:1024px){
-    footer.site-footer .footer-inner > .footer-col:last-child{
-      grid-column:1 / -1;
-    }
-  }
-  footer.site-footer #footer-locations{
-    display:flex!important;
-    flex-direction:column!important;
-    grid-template-columns:none!important;
-    gap:6px;
-    width:100%;
-    min-width:0;
-  }
-  footer.site-footer #footer-locations > li{
-    display:block;
-    width:100%;
-    min-width:0;
-  }
-  footer.site-footer #footer-locations .sc--inline{
-    display:flex!important;
-    width:100%;
-    min-width:0;
-    white-space:normal;
-    gap:8px;
-  }
-  footer.site-footer #footer-locations .sc--inline .sc-name{
-    flex:1 1 auto;
-    min-width:0;
-    white-space:normal!important;
-    overflow:visible!important;
-    text-overflow:clip!important;
-    overflow-wrap:break-word;
-    line-height:1.45;
-  }
-  footer.site-footer #footer-locations .sc--inline .sc-btn{
-    flex:0 0 auto;
-    white-space:nowrap;
-  }
-</style>
 
 <WhatsAppFab />
 <WhatsAppConcierge />
