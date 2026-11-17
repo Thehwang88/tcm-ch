@@ -356,3 +356,21 @@ nav#mainNav{z-index:850}
 @media(max-width:900px){
   .tcm-cta-quick-sticky .tcm-cta-time-badge{font-size:10px!important;margin-left:2px!important}
 }
+
+/* Desktop primary navigation replaces drawer. Tablets and phones retain the
+   existing burger because the full navigation cannot fit comfortably there.
+   CSS-only: no changes to the booking CTA, drawer JS or conversion events. */
+@media (min-width:1024px){
+  #mainNav #navMenuBtn.nav-menu-btn{display:none!important}
+  #mainNav .nav-links{display:flex!important}
+}
+/* On narrower desktop widths prioritize the five navigation destinations over
+   a duplicate phone number; the direct-dial icon remains available. */
+@media (min-width:1024px) and (max-width:1300px){
+  #mainNav .nav-inner{gap:12px!important}
+  #mainNav .nav-links{gap:1px!important}
+  #mainNav .nav-links a{padding:0 6px!important;font-size:14px!important}
+  #mainNav .nav-phone-number{display:none!important}
+  #mainNav .nav-phone{gap:0!important;padding:0 4px!important;min-width:36px}
+  #mainNav .nav-right{gap:7px!important}
+}
