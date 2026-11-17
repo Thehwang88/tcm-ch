@@ -11,7 +11,7 @@ export const HERO_VIDEO_SLUGS = new Set([
 export const heroVideo = (d: Pick<Standort, 'slug' | 'planned' | 'review'>) => HERO_VIDEO_SLUGS.has(d.slug) && !d.planned && !d.review;
 
 /** Generische Bildwelt (kein Foto des jeweiligen Standorts): nie als Praxisfoto in «Über die Praxis» zeigen. */
-export const isSymbolbild = (src: string) => /\/(hero-main\.webp|basel-reception\.webp)$/.test(src || '');
+export const isSymbolbild = (src: string) => /\/(hero-main\.webp|basel-reception\.webp|bern-marktgasse-logo-wall\.avif)$/.test(src || '');
 
 export const HERO_VIDEO_BASE = '/videos/hero-praxis/hwang-praxis';
 /** Poster = Standbild des ERSTEN Frames des Videos (ffmpeg -ss 0, identisch in allen Renditionen): Fallback-<img> (LCP) und

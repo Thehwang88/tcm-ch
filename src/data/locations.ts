@@ -164,6 +164,7 @@ export const clinics: Clinic[] = [
     areaServed: ['Luzern', 'Kriens', 'Emmen', 'Emmenbrücke', 'Horw', 'Ebikon', 'Littau', 'Meggen'] },
 
   { id: 'bern', name: 'Bern', city: 'Bern', region: 'Bern-Mittelland',
+    bild: { src: '/images/bern-marktgasse-logo-wall.avif', alt: 'Visualisierung: TCM.ch Original-Logo an einer Wand, kein Originalfoto der Räume in Bern' },
     // Inhaber bestätigt: Bern Marktgasse 50 ist geöffnet und operativ (17.11.2026).
     street: 'Marktgasse 50', postalCode: '3011', phone: '+41 77 523 61 22',
     hinweis: 'Marktgasse 50 · Berner Altstadt',
