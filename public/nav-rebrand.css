@@ -241,14 +241,14 @@ nav#mainNav{z-index:850}
 /* ── Header-Polish: Desktop-Nav Typo + Spacing (3-Zonen-Balance).
    Nav-Gruppe zentriert sich zwischen Logo und Actions (flex:1), kein
    absolutes Zentrieren -> keine Kollision bei ungleichen Zonen. ── */
-@media(min-width:1024px){
+@media(min-width:901px){
   #mainNav .nav-inner{gap:24px}
   #mainNav .nav-links{flex:1 1 auto;justify-content:center;gap:8px;min-width:0}
   #mainNav .nav-links a,#mainNav .nav-links button{font-size:15px;font-weight:600;padding:0 13px!important}
   #mainNav .nav-more-btn{font-size:15px}
   #mainNav .nav-right{gap:12px}
 }
-@media(min-width:1024px) and (max-width:1180px){
+@media(min-width:901px) and (max-width:1180px){
   #mainNav .nav-inner{gap:14px}
   #mainNav .nav-links{gap:2px}
   #mainNav .nav-links a,#mainNav .nav-links button{font-size:14px;padding:0 6px!important}
@@ -357,20 +357,26 @@ nav#mainNav{z-index:850}
   .tcm-cta-quick-sticky .tcm-cta-time-badge{font-size:10px!important;margin-left:2px!important}
 }
 
-/* Desktop primary navigation replaces drawer. Tablets and phones retain the
-   existing burger because the full navigation cannot fit comfortably there.
+/* Desktop primary navigation replaces drawer from 901px (narrow/zoomed desktop
+   windows included). Tablets and phones (<=900px, same breakpoint as header.css
+   and header.js) retain the existing burger.
    CSS-only: no changes to the booking CTA, drawer JS or conversion events. */
-@media (min-width:1024px){
+@media (min-width:901px){
   #mainNav #navMenuBtn.nav-menu-btn{display:none!important}
   #mainNav .nav-links{display:flex!important}
 }
 /* On narrower desktop widths prioritize the five navigation destinations over
    a duplicate phone number; the direct-dial icon remains available. */
-@media (min-width:1024px) and (max-width:1300px){
+@media (min-width:901px) and (max-width:1300px){
   #mainNav .nav-inner{gap:12px!important}
   #mainNav .nav-links{gap:1px!important}
   #mainNav .nav-links a{padding:0 6px!important;font-size:14px!important}
   #mainNav .nav-phone-number{display:none!important}
   #mainNav .nav-phone{gap:0!important;padding:0 4px!important;min-width:36px}
   #mainNav .nav-right{gap:7px!important}
+}
+/* Narrow desktop windows (901-1023px): the five links need the room of the EN
+   switch, so EN is hidden in this range only (visible <=900px and >=1024px). */
+@media (min-width:901px) and (max-width:1023px){
+  #mainNav .nav-lang{display:none!important}
 }
