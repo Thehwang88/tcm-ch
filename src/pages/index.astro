@@ -45,7 +45,7 @@ const homeSelect = (inner: string) => [...inner.matchAll(/<option value="([^"]+)
   }).join('');
 // Gemeinsames Kontaktformular (15.10.2026) ersetzt die Karte in #home-contact-form (globale Standortauswahl,
 // Check-in nur für freigegebene Standorte). Prefill ?standort= / ?anliegen= / ?quelle= (home.js) bleibt erhalten.
-const homeUpgraded = upgradeLegacyForms(homeBody.replace(HOME_SELECT_RE, (_m, a, inner, b) => a + homeSelect(inner) + b), { path: '/', instancePrefix: 'home', extra: { ruhig: true } });
+const homeUpgraded = upgradeLegacyForms(homeBody.replace(HOME_SELECT_RE, (_m, a, inner, b) => a + homeSelect(inner) + b), { path: '/', instancePrefix: 'home', extra: { ruhig: true, zusatzOffen: true, kopfTitel: 'Schreib uns eine Nachricht.' } });
 if ((homeUpgraded.match(/data-kf-instance="home"/g) || []).length !== 1) throw new Error('index.astro: Home-Kontaktkarte nicht eindeutig umgestellt');
 const homeHtmlBase = homeUpgraded.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 
@@ -359,6 +359,7 @@ const homeHtml = homeHtmlCards;
     </style>
     <link rel="stylesheet" href="/home-location-actions.css" />
     <link rel="stylesheet" href="/home-kontakt-layout.css" />
+    <link rel="stylesheet" href="/home-hwang-form.css" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -401,6 +402,7 @@ const homeHtml = homeHtmlCards;
     <BookingSheet />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
+    <script src="/home-friendly-form.js" is:inline defer></script>
     <script src="/patient-success.js" is:inline defer></script>
     <script src="/proof-section.js" is:inline defer></script>
     <!-- Homepage-only seasonal snow, matched to the Santa-hat date window. -->
