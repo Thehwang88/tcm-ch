@@ -12,11 +12,10 @@ import BookingSheet from '../components/BookingSheet.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
-import { cardHref, checkinFrei, clinicById } from '../lib/standort-card';
+import { cardHref, clinicById } from '../lib/standort-card';
 import { clinics } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
 import { upgradeLegacyForms } from '../lib/kontakt-form';
-import { first30State } from '../data/first30';
 
 const title = 'TCM & Akupunktur Schweiz | Medizinische TCM | TCM.ch';
 const description =
@@ -50,74 +49,61 @@ const homeUpgraded = upgradeLegacyForms(homeBody.replace(HOME_SELECT_RE, (_m, a,
 if ((homeUpgraded.match(/data-kf-instance="home"/g) || []).length !== 1) throw new Error('index.astro: Home-Kontaktkarte nicht eindeutig umgestellt');
 const homeHtmlBase = homeUpgraded.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 
-// Six equal-size city cards; homepage only. All existing routes and forms stay intact.
-const homeFirst30 = first30State();
+// Six equal-size homepage cards: one location name, one direct enquiry action, one information link.
+// No address subline or small promo/status badges; planned Luzern keeps a waitlist-only CTA.
 const escHome = (s: string) => String(s ?? '')
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
-const homeCityMeta: Record<string, {
-  name: string; hint: string; action: string; image?: string; alt?: string; badge?: string;
-}> = {
-  'zuerich-hub': {
-    name: 'Zürich', hint: 'City · Oerlikon · Höngg',
-    action: 'Alle Zürcher Praxen ansehen',
-    // The actual Oerlikon clinic photo is loaded from the clinic record below.
-  },
-  'st-gallen': {
-    name: 'St. Gallen', hint: 'Oberer Graben 22 · St. Gallen', action: 'Praxis ansehen',
-  },
-  'winterthur-marktgasse': {
-    name: 'Winterthur', hint: 'Marktgasse 78 · Winterthurer Altstadt', action: 'Praxis ansehen',
-  },
+const homeCityMeta: Record<string, { name: string; image?: string; alt?: string }> = {
+  'zuerich-hub': { name: 'Zürich' },
+  'st-gallen': { name: 'St. Gallen' },
+  'winterthur-marktgasse': { name: 'Winterthur' },
   'basel': {
-    name: 'Basel', hint: 'Steinenvorstadt 73 · Basel', action: 'Standort ansehen',
-    image: '/images/basel-empfang-800.webp', alt: 'Empfangsbereich der TCM.ch Klinik Basel, Steinenvorstadt 73',
+    name: 'Basel',
+    image: '/images/basel-empfang-800.webp',
+    alt: 'Empfangsbereich der TCM.ch Klinik Basel, Steinenvorstadt 73',
   },
   'bern': {
-    name: 'Bern', hint: 'Marktgasse 50 · 3011 Bern', action: 'Praxis ansehen',
-    // Owner-approved wall-signage composite using the original PDF logo (illustrative).
+    name: 'Bern',
     image: '/images/bern-marktgasse-logo-wall.avif',
-    alt: 'Visualisierung: TCM.ch Logo aus der Originaldatei auf einer Wand, nicht das tatsächliche Interieur der Praxis Bern',
+    alt: 'Visualisierung: TCM.ch Original-Logo auf einer Wand, kein echtes Foto der Praxis Bern',
   },
-  'luzern': {
-    name: 'Luzern', hint: 'Zentralschweiz · Warteliste', action: 'Vormerken',
-    badge: 'Demnächst',
-  },
+  'luzern': { name: 'Luzern' },
 };
 
+const homePin = '<svg class="home-loc-pin" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>';
 const homeClinicCardHtml = (id: string) => {
   const meta = homeCityMeta[id];
   if (!meta) throw new Error(`index.astro: unknown featured city ${id}`);
   const c = clinicById(id === 'zuerich-hub' ? 'zuerich-oerlikon' : id);
-  // Zürich keeps the current regional funnel; all others keep cardHref().
   const href = id === 'zuerich-hub' ? '/akupunktur-tcm-zuerich/' : cardHref(c, 'de');
-  const external = /^https?:\/\//.test(href);
   const imageSrc = meta.image ?? c.bild?.src;
   const imageAlt = meta.alt ?? c.bild?.alt ?? meta.name;
   const visual = imageSrc
     ? `<img class="home-loc-img" src="${escHome(imageSrc)}" alt="${escHome(imageAlt)}" width="1200" height="675" loading="lazy" decoding="async">`
     : `<span class="home-loc-upcoming-visual" aria-hidden="true"><span>TCM.CH</span><strong>${escHome(meta.name)}</strong></span>`;
-  const gratis = id !== 'zuerich-hub' && checkinFrei(c)
-    ? '<span class="home-loc-gratis">Gratis Check-in</span>' : '';
-  const badge = meta.badge ? `<span class="home-loc-upcoming-badge">${escHome(meta.badge)}</span>` : '';
-  const campaign = id === 'st-gallen' && homeFirst30.showCampaign
-    ? `<span class="home-loc-note">${homeFirst30.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span>`
-    : '';
+  // Preserve existing Zürich hub analytics on each navigational action (not a conversion).
   const tracking = id === 'zuerich-hub'
-    ? ` onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'homepage_zurich_hub_click',source_page:'homepage',section:'locations',destination:'/akupunktur-tcm-zuerich/',action_type:'hub'})"`
+    ? ' onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'homepage_zurich_hub_click\',source_page:\'homepage\',section:\'locations\',destination:\'/akupunktur-tcm-zuerich/\',action_type:\'hub\'})"'
     : '';
-  return `<a class="home-loc-card home-loc-card--image reveal" href="${escHome(href)}"${external ? ' target="_blank" rel="noopener"' : ''}${tracking}>
-    <span class="home-loc-visual">${visual}</span>
-    <span class="home-loc-main">
-      <span class="home-loc-title-row"><strong class="home-loc-name">${escHome(meta.name)}</strong>${badge}${gratis}</span>
-      <span class="home-loc-sub">${escHome(meta.hint)}</span>
-      ${campaign}
-    </span>
-    <span class="home-loc-action"><span>${escHome(meta.action)}</span><span aria-hidden="true">→</span></span>
-  </a>`;
+  const primary = id === 'luzern'
+    ? `<a class="home-loc-cta home-loc-cta--primary" href="${escHome(href)}#warteliste">Vormerken</a>`
+    : id === 'zuerich-hub'
+      ? `<a class="home-loc-cta home-loc-cta--primary" href="/akupunktur-tcm-zuerich/#zh-funnel"${tracking}>Termin anfragen</a>`
+      : `<a class="home-loc-cta home-loc-cta--primary" href="/?standort=${encodeURIComponent(id)}" data-booking-sheet="home" data-booking-location="${escHome(id)}" data-care-cta="home-location-card-${escHome(id)}">Termin anfragen</a>`;
+  return `<article class="home-loc-card home-loc-card--image reveal" aria-label="TCM.ch ${escHome(meta.name)}">
+    <a class="home-loc-visual" href="${escHome(href)}" aria-label="Mehr Informationen zu TCM.ch ${escHome(meta.name)}"${tracking}>${visual}</a>
+    <div class="home-loc-main">
+      <h3 class="home-loc-name">${homePin}<span>${escHome(meta.name)}</span></h3>
+    </div>
+    <div class="home-loc-actions">
+      ${primary}
+      <a class="home-loc-cta home-loc-cta--secondary" href="${escHome(href)}"${tracking}>Mehr Infos <span aria-hidden="true">→</span></a>
+    </div>
+  </article>`;
 };
 
 const homeHtmlCards = homeHtmlBase
@@ -180,7 +166,6 @@ const homeHtml = homeHtmlCards;
       border-color:rgba(2,11,16,.28);
       box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)
     }
-    #home-content .home-loc-card--image:focus-visible{outline:3px solid #547A9A;outline-offset:3px}
     #home-content .home-loc-visual{
       display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
       background:#EDF2F5;flex-shrink:0
@@ -203,35 +188,39 @@ const homeHtml = homeHtmlCards;
       font-size:clamp(27px,3vw,40px);line-height:1.1;letter-spacing:-.035em
     }
     #home-content .home-loc-main{
-      display:flex;flex-direction:column;align-items:flex-start;
-      gap:5px;padding:18px 19px 8px;min-width:0;flex:1
-    }
-    #home-content .home-loc-title-row{
-      display:flex;align-items:center;gap:8px;flex-wrap:wrap
+      display:flex;align-items:center;min-width:0;flex:1;
+      padding:17px 19px 10px
     }
     #home-content .home-loc-name{
-      font-family:var(--font-sans);font-size:18px;font-weight:800;
-      line-height:1.25;color:var(--brand-black,#020B10)
+      display:flex;align-items:center;gap:9px;margin:0;
+      font-family:var(--font-sans);font-size:clamp(21px,1.6vw,24px);font-weight:800;
+      line-height:1.22;letter-spacing:-.025em;color:var(--brand-black,#020B10)
     }
-    #home-content .home-loc-sub{
-      display:block;font-size:13.5px;line-height:1.45;color:rgba(2,11,16,.64)
+    #home-content .home-loc-pin{
+      display:block;flex:none;color:#506579
     }
-    #home-content .home-loc-action{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:8px;padding:8px 19px 19px;font-family:var(--font-sans);
-      font-size:13px;font-weight:750;color:var(--brand-black,#020B10)
+    #home-content .home-loc-actions{
+      display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+      gap:9px;padding:4px 19px 19px
     }
-    #home-content .home-loc-gratis,
-    #home-content .home-loc-upcoming-badge{
-      display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;
-      font-family:var(--font-sans);font-size:10.5px;font-weight:800;line-height:1.15;
-      white-space:nowrap;color:#314554;background:#E8F2F8
+    #home-content .home-loc-cta{
+      display:flex;align-items:center;justify-content:center;gap:5px;
+      box-sizing:border-box;min-width:0;min-height:48px;padding:10px 12px;
+      border:1px solid transparent;border-radius:11px;text-align:center;
+      font-family:var(--font-sans);font-size:14px;line-height:1.2;
+      font-weight:750;text-decoration:none;white-space:nowrap;
+      transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease
     }
-    #home-content .home-loc-upcoming-badge{
-      color:#565F68;background:#EDF0F2
+    #home-content .home-loc-cta--primary{
+      color:#fff!important;background:var(--tcm-primary,#1769B1);border-color:var(--tcm-primary,#1769B1)
     }
-    #home-content .home-loc-note{
-      display:block;margin-top:5px;font-size:11.5px;font-weight:700;color:#565B59
+    #home-content .home-loc-cta--primary:hover{background:#12578f;border-color:#12578f;color:#fff!important}
+    #home-content .home-loc-cta--secondary{
+      color:var(--brand-black,#020B10);background:#fff;border-color:#D8DEE2
+    }
+    #home-content .home-loc-cta--secondary:hover{background:#F2F6F8;border-color:#AEBFCB}
+    #home-content .home-loc-card :is(.home-loc-cta,.home-loc-visual):focus-visible{
+      outline:3px solid #547A9A;outline-offset:2px
     }
     #home-content .home-locations-secondary{margin:24px 0 0;text-align:center}
     #home-content .home-locations-secondary a{
@@ -246,8 +235,8 @@ const homeHtml = homeHtmlCards;
     }
     @media(max-width:620px){
       #home-content .home-loc-grid--six-cities{grid-template-columns:1fr}
-      #home-content .home-loc-main{padding:16px 17px 8px}
-      #home-content .home-loc-action{padding:8px 17px 17px}
+      #home-content .home-loc-main{padding:16px 17px 10px}
+      #home-content .home-loc-actions{padding:4px 17px 17px}
       #home-content .home-locations-secondary{text-align:left}
     }
     </style>
