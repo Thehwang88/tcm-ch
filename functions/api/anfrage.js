@@ -282,7 +282,7 @@ export async function onRequestPost({ request, env }) {
       // FIRST 30: Suffix am Ende des Betreffs (bestehender Formular-Präfix und Betreffaufbau bleiben unverändert).
       if (offer && offer.betreff) subject += offer.betreff;
     }
-    // Partnerpraxis-Routing (HWANG_ZIEL, 05.11.2026): Anfragen für Winterthur (Praxis Hwang) gehen an die Praxis, Kopie an termine@tcm.ch.
+    // Legacy-Partner-Routing bleibt für künftige explizite Ziele möglich. Aktuell keine Hwang-Weiterleitung für Winterthur.
     const hwang = d.standort_id && HWANG_ZIEL[d.standort_id];
     const body = {
       from: FROM,
