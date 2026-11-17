@@ -46,7 +46,7 @@ jobs:
       - name: Install Chromium for mocked browser tests
         run: |
           npx puppeteer browsers install chrome
-          node -e "const p=require('puppeteer'); console.log('CHROMIUM='+p.executablePath())" >> "$GITHUB_ENV"
+          node --input-type=module -e "import p from 'puppeteer'; console.log('CHROMIUM='+await p.executablePath())" >> "$GITHUB_ENV"
       - name: English form analytics (mocked; no live conversions)
         run: node scripts/test-en-analytics.mjs
 
@@ -70,7 +70,7 @@ jobs:
       - name: Install Chromium for mocked browser tests
         run: |
           npx puppeteer browsers install chrome
-          node -e "const p=require('puppeteer'); console.log('CHROMIUM='+p.executablePath())" >> "$GITHUB_ENV"
+          node --input-type=module -e "import p from 'puppeteer'; console.log('CHROMIUM='+await p.executablePath())" >> "$GITHUB_ENV"
       - name: Run and report outstanding regression suites
         run: node scripts/ci-legacy-audit.mjs
       - name: Upload full regression logs
