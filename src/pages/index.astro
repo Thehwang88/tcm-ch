@@ -13,7 +13,7 @@ import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
 import { cardHref, clinicById } from '../lib/standort-card';
-import { clinics } from '../data/locations';
+import { clinics, mapsDirectionsUrl } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
 import { upgradeLegacyForms } from '../lib/kontakt-form';
 
@@ -74,35 +74,48 @@ const homeCityMeta: Record<string, { name: string; image?: string; alt?: string 
   'luzern': { name: 'Luzern' },
 };
 
-const homePin = '<svg class="home-loc-pin" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>';
+// Homepage-only Hwang-style cards; business data is from src/data/locations.ts.
+const homeIcons: Record<string,string> = {
+  phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6.5-6.5 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.5 2.1L7.9 9a16 16 0 0 0 6 6l.9-.9a2 2 0 0 1 2.1-.5l2.8.7A2 2 0 0 1 22 16.9Z"/>',
+  whatsapp: '<path d="M21 11.5a8.8 8.8 0 0 1-13 7.7L3 20l1.2-5A8.8 8.8 0 1 1 21 11.5Z"/><path d="M8.5 8.3c.6 3.6 3.1 6.2 6.6 6.8l1.3-1.2"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/>',
+  map: '<path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+};
 const homeClinicCardHtml = (id: string) => {
-  const meta = homeCityMeta[id];
-  if (!meta) throw new Error(`index.astro: unknown featured city ${id}`);
-  const c = clinicById(id === 'zuerich-hub' ? 'zuerich-oerlikon' : id);
-  const href = id === 'zuerich-hub' ? '/akupunktur-tcm-zuerich/' : cardHref(c, 'de');
-  const imageSrc = meta.image ?? c.bild?.src;
-  const imageAlt = meta.alt ?? c.bild?.alt ?? meta.name;
-  const visual = imageSrc
-    ? `<img class="home-loc-img" src="${escHome(imageSrc)}" alt="${escHome(imageAlt)}" width="1200" height="675" loading="lazy" decoding="async">`
-    : `<span class="home-loc-upcoming-visual" aria-hidden="true"><span>TCM.CH</span><strong>${escHome(meta.name)}</strong></span>`;
-  // Preserve existing Zürich hub analytics on each navigational action (not a conversion).
-  const tracking = id === 'zuerich-hub'
-    ? ' onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'homepage_zurich_hub_click\',source_page:\'homepage\',section:\'locations\',destination:\'/akupunktur-tcm-zuerich/\',action_type:\'hub\'})"'
-    : '';
-  const primary = id === 'luzern'
-    ? `<a class="home-loc-cta home-loc-cta--primary" href="${escHome(href)}#warteliste">Vormerken</a>`
-    : id === 'zuerich-hub'
-      ? `<a class="home-loc-cta home-loc-cta--primary" href="/akupunktur-tcm-zuerich/#zh-funnel"${tracking}>Termin in Zürich anfragen</a>`
-      : `<a class="home-loc-cta home-loc-cta--primary" href="/?standort=${encodeURIComponent(id)}" data-booking-sheet="home" data-booking-location="${escHome(id)}" data-care-cta="home-location-card-${escHome(id)}">Termin anfragen</a>`;
-  return `<article class="home-loc-card home-loc-card--image reveal" aria-label="TCM.ch ${escHome(meta.name)}">
-    <a class="home-loc-visual" href="${escHome(href)}" aria-label="Mehr Informationen zu TCM.ch ${escHome(meta.name)}"${tracking}>${visual}</a>
+  const meta=homeCityMeta[id]; if(!meta) throw new Error(`unknown featured city ${id}`);
+  const hub=id==='zuerich-hub';
+  const c=clinicById(hub?'zuerich-oerlikon':id);
+  const planned=c.status!=='operational';
+  const href=hub?'/akupunktur-tcm-zuerich/':cardHref(c,'de');
+  const imageSrc=meta.image??c.bild?.src, imageAlt=meta.alt??c.bild?.alt??meta.name;
+  const visual=imageSrc?`<img class="home-loc-img" src="${escHome(imageSrc)}" alt="${escHome(imageAlt)}" width="1200" height="675" loading="lazy" decoding="async">`
+    :`<span class="home-loc-upcoming-visual" aria-hidden="true"><span>TCM.CH</span><strong>${escHome(meta.name)}</strong></span>`;
+  const badge=/Visualisierung/i.test(imageAlt)?'<span class="home-loc-visual-note">Visualisierung</span>':'';
+  const tracking=hub?' onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'homepage_zurich_hub_click\',source_page:\'homepage\',section:\'locations\',destination:\'/akupunktur-tcm-zuerich/\',action_type:\'hub\'})"':'';
+  const address=hub?'Drei Praxen in Zürich zur Auswahl':c.street&&c.postalCode?`${c.street}, ${c.postalCode} ${c.city}`:'Zentralschweiz · Eröffnung 2027';
+  const hours=planned?'Eröffnung 2027 · Warteliste':c.openingHours.length?c.openingHours.map(x=>escHome(x.replace(/-/g,'–'))).join('<br>'):'Öffnungszeiten auf Anfrage';
+  const phone=c.phone.replace(/[^+\d]/g,''),waNumber=c.phone.replace(/\D/g,'');
+  const waText=planned?`Hallo TCM.ch, ich interessiere mich für die Warteliste in ${meta.name}.`:`Hallo TCM.ch, ich interessiere mich für einen Termin in ${meta.name}. Könnt ihr mir helfen?`;
+  const waHref=`https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+  const bookingHref=planned?`${href}#warteliste`:hub?'/akupunktur-tcm-zuerich/#zh-funnel':`/?standort=${encodeURIComponent(id)}`;
+  const bookingAttrs=planned?'':hub?tracking:` data-booking-sheet="home" data-booking-location="${escHome(id)}" data-care-cta="home-location-card-${escHome(id)}"`;
+  const routeHref=hub?'/akupunktur-tcm-zuerich/#standorte':planned?href:mapsDirectionsUrl(c);
+  const action=(kind:'phone'|'whatsapp'|'calendar'|'map'|'info',url:string,label:string,extra='')=>
+    `<a class="home-loc-action home-loc-action--${kind}" href="${escHome(url)}" aria-label="${escHome(label)}" title="${escHome(label)}"${extra}><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${homeIcons[kind]}</svg><small>${kind==='phone'?'Anruf':kind==='whatsapp'?'WhatsApp':kind==='calendar'?(planned?'Vormerken':'Termin'):kind==='info'?'Infos':hub?'Praxen':'Route'}</small></a>`;
+  return `<article class="home-loc-card home-loc-card--image home-loc-card--hwang${planned?' home-loc-card--planned':''} reveal" aria-label="TCM.ch ${escHome(meta.name)}">
+    <a class="home-loc-visual" href="${escHome(href)}" aria-label="Mehr Informationen zu TCM.ch ${escHome(meta.name)}"${tracking}>${visual}${badge}</a>
     <div class="home-loc-main">
-      <h3 class="home-loc-name">${homePin}<span>${escHome(meta.name)}</span></h3>
-      ${id === 'luzern' ? '<span class="home-loc-status">Eröffnung 2027</span>' : ''}
-    </div>
-    <div class="home-loc-actions">
-      ${primary}
-      <a class="home-loc-more" href="${escHome(href)}"${tracking}>Mehr Infos <span aria-hidden="true">→</span></a>
+      <h3 class="home-loc-name"><a class="home-loc-more" href="${escHome(href)}"${tracking}>${escHome(meta.name)}</a></h3>
+      ${planned?'<span class="home-loc-status">Eröffnung 2027</span>':''}
+      <p class="home-loc-address">${escHome(address)}</p>
+      <div class="home-loc-actions" role="group" aria-label="Aktionen für ${escHome(meta.name)}">
+        ${action('phone',`tel:${phone}`,`TCM.ch ${meta.name} anrufen`)}
+        ${action('whatsapp',waHref,`TCM.ch ${meta.name} über WhatsApp kontaktieren`,' target="_blank" rel="noopener noreferrer"')}
+        ${action('calendar',bookingHref,planned?`${meta.name}: Warteliste`:`Termin in ${meta.name} anfragen`,bookingAttrs)}
+        ${routeHref?action(planned?'info':'map',routeHref,planned?`${meta.name}: Standortinformationen`:hub?'Zürcher Praxen und Adressen':`Anfahrt ${meta.name}`,!planned&&!hub?' target="_blank" rel="noopener noreferrer"':hub?tracking:''):''}
+      </div>
+      <div class="home-loc-hours"><span class="home-loc-hours-label">${planned?'Status':'Öffnungszeiten'}</span><span>${hours}</span></div>
     </div>
   </article>`;
 };
