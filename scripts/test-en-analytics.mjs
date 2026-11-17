@@ -35,7 +35,7 @@ const origin = () => `http://127.0.0.1:${srv.address().port}`;
 
 const fails = []; let passes = 0;
 const ok = (cond, msg) => { if (cond) passes++; else fails.push(msg); };
-const browser = await puppeteer.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox', '--no-proxy-server'] });
+const browser = await puppeteer.launch({ executablePath: process.env.CHROMIUM || puppeteer.executablePath(), args: ['--no-sandbox', '--no-proxy-server'] });
 
 async function open(p, vp = { width: 1440, height: 900 }) {
   const page = await browser.newPage();
