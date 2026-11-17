@@ -942,6 +942,15 @@ for (const [slug, s] of Object.entries(standorte)) {
   const c = clinics.find((x) => x.id === slug);
   if (c) {
     s.planned = c.status !== 'operational'; s.review = c.status === 'review'; s.betreiber = c.betreiber; s.vorVertrag = !!c.vorVertrag;
+    // One canonical source for all displayed location-page opening hours and schema.
+    // Reflect explicit owner-confirmed schedules in locations.ts, never stale local snapshots.
+    s.nap.oeffnungszeiten = (c.status === 'operational' ? c.openingHours : []).map((line) => {
+      const [days, time] = line.split(' ');
+      return {
+        tag: days.replace(/Tu/g, 'Di').replace(/We/g, 'Mi').replace(/Th/g, 'Do').replace(/Su/g, 'So').replace(/-/g, '–'),
+        zeit: (time ?? '').replace(/-/g, '–').replace(/^0/, '').replace(/–0(?=\d:)/g, '–') + ' Uhr',
+      };
+    });
     // SG-Vorlage für alle Standorte (08.11.2026): Therapien-Raster wie St. Gallen (8 Karten + «Weitere Therapien»).
     s.sgVoll = true;
     // Karte/Route aus dem verifizierten Google-Profil (locations.ts gbp); ohne Profil bleibt das Adress-Embed aus den Daten oben.
