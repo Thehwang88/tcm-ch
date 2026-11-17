@@ -14,11 +14,14 @@ const year = new Date().getFullYear();
 const FOOTER_STANDORTE = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern', 'bern'];
 const footerLocations = '<ul id="footer-locations"><li><a href="/akupunktur-in-der-naehe/">Akupunktur in deiner Nähe</a></li><li><a href="/akupunktur-tcm-zuerich/">Zürich – alle Praxen</a></li>' + FOOTER_STANDORTE.map((id) => '<li>' + standortCardHtml(id, { variant: 'inline' }) + '</li>').join('') + '</ul>';
 const secondaryLinks = [
+  ['/kontakt/', 'Kontakt'],
+  ['/krankenkassen/', 'Krankenkasse & Kosten'],
   ['/wissen/', 'Wissen & Magazin'],
   ['/haut/', 'Haut & Gesicht'],
   ['/longevity/', 'Longevity Schweiz'],
   ['/ergebnisse/', 'Ergebnisse & Transparenz'],
-  ['/ueber-uns/', 'Über uns'],
+  ['/ueber-uns/', 'Über TCM.ch'],
+  ['/fachpersonen/', 'Für Fachpersonen'],
   ['/karriere/', 'Karriere'],
   ['/akademie/', 'Akademie'],
 ];
