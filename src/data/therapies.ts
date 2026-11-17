@@ -31,7 +31,7 @@ export const REVIEWED_DATE = '2026-06-09';
 
 // Shared FAQ appended to every therapy page (display + FAQPage schema).
 export const INSURANCE_FAQ: TherapyFaq = {
-  q: 'Is this covered by my insurance?',
+  q: 'How can I check my insurance coverage?',
   a: 'Not through basic insurance. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. How much you get back depends on your individual policy; we tell you the treating practitioner\'s recognition (EMR/ASCA) before your first appointment. Our insurance guide explains the basic-versus-supplementary split in plain English.',
 };
 
@@ -56,9 +56,9 @@ export const therapies: Therapy[] = [
     evidence: 'Acupuncture is among the better-studied complementary therapies. Reviews are most encouraging for chronic pain and for reducing the frequency of migraine and tension-type headache; for many other uses the evidence is weaker or mixed, and part of the effect may be non-specific. We treat it as a reasonable option to try, not a guaranteed fix.',
     conditions: ['back-pain', 'neck-pain', 'migraine-headaches', 'sleep-problems', 'stress-burnout', 'fertility-support'],
     faqs: [
-      { q: 'Does acupuncture hurt?', a: 'The needles are very fine and most people feel only a small prick or a dull, heavy ache as they go in. It is usually far more comfortable than people expect. Sharp or lasting pain is not normal - tell your practitioner and they will adjust or reposition the needle.' },
-      { q: 'How many sessions will I need?', a: 'There is no fixed number. Many people start with a short course of about six to ten sessions and we reassess whether it is helping. If you notice no change after several treatments, we will say so honestly rather than keep going indefinitely.' },
-      { q: 'Is acupuncture safe?', a: 'When performed by a trained practitioner with sterile single-use needles, serious side effects are rare. Minor bruising or brief light-headedness can happen. Tell us if you are pregnant, take blood thinners, or have a bleeding disorder so we can adapt the treatment.' },
+      { q: 'What does acupuncture feel like?', a: 'The needles are very fine and most people feel only a small prick or a dull, heavy ache as they go in. It is usually far more comfortable than people expect. Sharp or lasting pain is not normal - tell your practitioner and they will adjust or reposition the needle.' },
+      { q: 'How do you plan follow-up sessions?', a: 'There is no fixed number. Many people start with a short course of about six to ten sessions and we reassess whether it is helping. If you notice no change after several treatments, we will say so honestly rather than keep going indefinitely.' },
+      { q: 'What should I tell my practitioner before treatment?', a: 'When performed by a trained practitioner with sterile single-use needles, serious side effects are rare. Minor bruising or brief light-headedness can happen. Tell us if you are pregnant, take blood thinners, or have a bleeding disorder so we can adapt the treatment.' },
     ],
     related: ['electroacupuncture', 'cupping', 'tuina-massage'],
   },
@@ -84,8 +84,8 @@ export const therapies: Therapy[] = [
     conditions: ['back-pain', 'neck-pain', 'migraine-headaches', 'stress-burnout'],
     faqs: [
       { q: 'What are the round marks after cupping?', a: 'The circular marks are caused by the suction drawing blood toward the skin surface. They are not bruises in the usual sense and are generally not painful. They typically fade within a few days to a week. If you would rather avoid them, let us know and we can keep the suction lighter.' },
-      { q: 'Does cupping hurt?', a: 'Most people feel a firm pulling or tightness rather than pain, and many find it relieving over tense muscles. If a cup feels too strong, tell your practitioner and they will reduce the suction. It should not be sharply painful.' },
-      { q: 'Who should avoid cupping?', a: 'We avoid or adapt cupping if you take blood thinners, have a bleeding disorder, fragile or inflamed skin in the area, or are pregnant. Tell us about your medical history beforehand so we can decide whether it is suitable for you.' },
+      { q: 'What does cupping feel like?', a: 'Most people feel a firm pulling or tightness rather than pain, and many find it relieving over tense muscles. If a cup feels too strong, tell your practitioner and they will reduce the suction. It should not be sharply painful.' },
+      { q: 'How do you check whether cupping suits me?', a: 'We avoid or adapt cupping if you take blood thinners, have a bleeding disorder, fragile or inflamed skin in the area, or are pregnant. Tell us about your medical history beforehand so we can decide whether it is suitable for you.' },
     ],
     related: ['acupuncture', 'tuina-massage', 'gua-sha'],
   },
@@ -112,7 +112,7 @@ export const therapies: Therapy[] = [
     faqs: [
       { q: 'How is Tuina different from a relaxing massage?', a: 'Tuina is applied with a therapeutic aim - easing specific areas of tension and stiffness - and tends to be firmer and more targeted than a spa massage. It often forms part of a wider TCM treatment alongside acupuncture, rather than being purely for relaxation, though many people still find it calming.' },
       { q: 'Does Tuina hurt?', a: 'It can be firm, and some tenderness over tight muscles is normal and usually feels relieving. It should not be sharply painful. Tell your practitioner if the pressure is too much and they will adjust - more pressure is not necessarily better.' },
-      { q: 'How many sessions will I need?', a: 'There is no set number. Many people start with a short course and we reassess as we go. For tension driven by posture or stress, we will also talk about what you can change between sessions, since massage alone rarely fixes the underlying cause.' },
+      { q: 'How do you plan follow-up sessions?', a: 'There is no set number. Many people start with a short course and we reassess as we go. For tension driven by posture or stress, we will also talk about what you can change between sessions, since massage alone rarely fixes the underlying cause.' },
     ],
     related: ['acupuncture', 'cupping', 'shiatsu'],
   },
@@ -137,8 +137,8 @@ export const therapies: Therapy[] = [
     evidence: 'The evidence base is uneven: some formulas have supportive trials for specific complaints, but quality varies and many products are poorly studied. Safety also matters - herbs can interact with medication. We prescribe cautiously, check interactions, and are honest that this is a complement with limited proof rather than a proven cure.',
     conditions: ['digestive-issues', 'sleep-problems', 'menstrual-issues', 'fertility-support', 'stress-burnout'],
     faqs: [
-      { q: 'Are Chinese herbs safe?', a: 'They are not automatically safe just because they are natural. Herbs can have effects and interact with medication, so a proper consultation matters. We use quality-controlled herbs tested for contaminants and check your formula against any medicines you take. Tell us your full medical history and what else you are taking.' },
-      { q: 'Will the herbs interact with my medication?', a: 'They can, which is exactly why we ask what you take before prescribing - blood thinners, antidepressants and immune-suppressing drugs are particular examples. We screen for known interactions and will avoid or adjust a formula where needed. Never stop a prescribed medicine to take herbs without talking to your doctor.' },
+      { q: 'How do you check whether Chinese herbs suit me?', a: 'They are not automatically safe just because they are natural. Herbs can have effects and interact with medication, so a proper consultation matters. We use quality-controlled herbs tested for contaminants and check your formula against any medicines you take. Tell us your full medical history and what else you are taking.' },
+      { q: 'What if I already take medication?', a: 'They can, which is exactly why we ask what you take before prescribing - blood thinners, antidepressants and immune-suppressing drugs are particular examples. We screen for known interactions and will avoid or adjust a formula where needed. Never stop a prescribed medicine to take herbs without talking to your doctor.' },
       { q: 'How do I take the formula and how long for?', a: 'Most people take granules dissolved in hot water once or twice a day; tablets and teas are alternatives. Short-term complaints may need a few weeks, longer-standing ones several months with regular adjustments. We reassess as we go and stop if it is not helping.' },
     ],
     related: ['acupuncture', 'moxibustion', 'tuina-massage'],
@@ -164,9 +164,9 @@ export const therapies: Therapy[] = [
     evidence: 'The evidence is limited and mixed. The most-studied use - moxibustion for breech presentation - has some supportive but inconclusive trials and should only be done with professional supervision. For most other uses the research is weak. We present it as a gentle, low-risk complement, not a proven treatment.',
     conditions: ['fertility-support', 'menstrual-issues', 'digestive-issues', 'stress-burnout'],
     faqs: [
-      { q: 'Does moxibustion burn the skin?', a: 'It should not. The heat is applied carefully and the point is changed as soon as it feels too warm, so you feel a comfortable warmth rather than burning. With correct technique, skin burns do not occur. Tell your practitioner immediately if any spot feels too hot.' },
+      { q: 'What does a moxibustion session feel like?', a: 'It should not. The heat is applied carefully and the point is changed as soon as it feels too warm, so you feel a comfortable warmth rather than burning. With correct technique, skin burns do not occur. Tell your practitioner immediately if any spot feels too hot.' },
       { q: 'What is the smell during treatment?', a: 'Burning mugwort has a strong, herbal, slightly smoky smell that can linger briefly in clothing. We ventilate the room well and can use smoke-free moxa if you are sensitive to it or prefer to avoid the smell.' },
-      { q: 'Is moxibustion safe in pregnancy?', a: 'Moxa over a specific point is sometimes used from around week 32 to encourage a breech baby to turn, and this use is reasonably studied. Other uses in pregnancy should only be done by an experienced TCM practitioner, never self-applied. Always tell us if you are pregnant.' },
+      { q: 'What should I mention before moxibustion?', a: 'Moxa over a specific point is sometimes used from around week 32 to encourage a breech baby to turn, and this use is reasonably studied. Other uses in pregnancy should only be done by an experienced TCM practitioner, never self-applied. Always tell us if you are pregnant.' },
     ],
     related: ['acupuncture', 'chinese-herbal-medicine', 'tuina-massage'],
   },
@@ -191,8 +191,8 @@ export const therapies: Therapy[] = [
     evidence: 'There is moderate evidence that electroacupuncture can help with some chronic and post-operative pain, and it is one of the more studied acupuncture variations for pain. Quality still varies and it does not work for everyone. We use it as a reasonable option to trial for persistent pain, not a certainty.',
     conditions: ['back-pain', 'neck-pain', 'migraine-headaches'],
     faqs: [
-      { q: 'Can I feel the electric current?', a: 'Yes - most people feel a light tingling or a gentle rhythmic pulsing. The strength is set individually and should always feel comfortable, never painful. If it becomes too strong, tell your practitioner and they will reduce it immediately.' },
-      { q: 'Who should not have electroacupuncture?', a: 'We avoid it if you have a pacemaker or implanted defibrillator, and use caution with epilepsy, in pregnancy, and over certain areas such as the chest. Tell us about any implanted devices or medical conditions beforehand so we can decide whether it is suitable.' },
+      { q: 'What does electroacupuncture feel like?', a: 'Yes - most people feel a light tingling or a gentle rhythmic pulsing. The strength is set individually and should always feel comfortable, never painful. If it becomes too strong, tell your practitioner and they will reduce it immediately.' },
+      { q: 'What should I mention before electroacupuncture?', a: 'We avoid it if you have a pacemaker or implanted defibrillator, and use caution with epilepsy, in pregnancy, and over certain areas such as the chest. Tell us about any implanted devices or medical conditions beforehand so we can decide whether it is suitable.' },
       { q: 'How is it different from a TENS machine?', a: 'A TENS unit sends current through pads on the skin surface, while electroacupuncture delivers it through needles placed at specific points, so the stimulation is more targeted and deeper. Both aim at pain relief; we choose electroacupuncture when needle-based treatment fits your situation.' },
     ],
     related: ['acupuncture', 'cupping', 'tuina-massage'],
@@ -219,8 +219,8 @@ export const therapies: Therapy[] = [
     conditions: ['stress-burnout', 'sleep-problems', 'migraine-headaches'],
     faqs: [
       { q: 'Is facial acupuncture an alternative to Botox?', a: 'Not directly. It is a natural, substance-free option that some people prefer, but it works differently and does not produce the same results as Botox or fillers. Any effects are subtle and gradual. We are honest that it is not a like-for-like replacement.' },
-      { q: 'Will I have marks afterwards?', a: 'Mild redness or small dots at needle sites are common and usually fade within an hour. Occasional small bruises can happen because the face is well supplied with tiny blood vessels, and these settle over a few days. Let us know if you have an event coming up.' },
-      { q: 'How many sessions before I see anything?', a: 'Any change tends to be gradual and modest, so people usually do a course of sessions rather than expecting a single visit to make a difference. Results vary a lot between individuals, and we will be honest if it does not seem to be doing much for you.' },
+      { q: 'What should I expect after facial acupuncture?', a: 'Mild redness or small dots at needle sites are common and usually fade within an hour. Occasional small bruises can happen because the face is well supplied with tiny blood vessels, and these settle over a few days. Let us know if you have an event coming up.' },
+      { q: 'How will we assess progress?', a: 'Any change tends to be gradual and modest, so people usually do a course of sessions rather than expecting a single visit to make a difference. Results vary a lot between individuals, and we will be honest if it does not seem to be doing much for you.' },
     ],
     related: ['acupuncture', 'acupressure', 'gua-sha'],
   },
@@ -247,7 +247,7 @@ export const therapies: Therapy[] = [
     faqs: [
       { q: 'How is acupressure different from acupuncture?', a: 'Acupressure uses finger pressure on the same points where acupuncture uses needles. It is gentler, needle-free and does not break the skin, which makes it a good option for people who are anxious about needles, as well as for children and during pregnancy. The effect is usually milder than acupuncture.' },
       { q: 'Can I do acupressure at home?', a: 'Yes - we are happy to show you a few simple points to press for things like tension headaches, nausea or stress. Self-acupressure is a useful supplement, though treatment with a practitioner is usually more thorough. It is best used alongside, not instead of, any medical care you need.' },
-      { q: 'Is acupressure safe in pregnancy?', a: 'It is popular in pregnancy, particularly for nausea, and is generally low-risk. Certain points are avoided, so it is best done by, or learned from, a trained practitioner. Always let us know you are pregnant so we can adapt the treatment.' },
+      { q: 'Can acupressure be adapted during pregnancy?', a: 'It is popular in pregnancy, particularly for nausea, and is generally low-risk. Certain points are avoided, so it is best done by, or learned from, a trained practitioner. Always let us know you are pregnant so we can adapt the treatment.' },
     ],
     related: ['acupuncture', 'tuina-massage', 'shiatsu'],
   },
@@ -299,9 +299,9 @@ export const therapies: Therapy[] = [
     evidence: 'The evidence for gua sha is limited and of low quality, though a few small studies suggest short-term relief for neck and back tension. The effect is hard to separate from massage in general. We present it as a low-risk option that many people find loosens tight muscles, not an established treatment.',
     conditions: ['neck-pain', 'back-pain', 'migraine-headaches'],
     faqs: [
-      { q: 'Why does gua sha leave red marks?', a: 'The firm scraping draws blood toward the skin surface, producing temporary red or purplish marks called "sha". They are expected, generally not painful, and usually fade within a few days. If you would prefer to avoid them, tell your practitioner and they can work more gently.' },
+      { q: 'What should I expect after gua sha?', a: 'The firm scraping draws blood toward the skin surface, producing temporary red or purplish marks called "sha". They are expected, generally not painful, and usually fade within a few days. If you would prefer to avoid them, tell your practitioner and they can work more gently.' },
       { q: 'Is the clinic treatment the same as facial gua sha?', a: 'No. The body gua sha we use in clinic is firmer and aimed at muscular tension, whereas the facial gua sha sold for skincare is very light and cosmetic. They share a tool shape but are quite different in pressure and purpose.' },
-      { q: 'Does gua sha hurt?', a: 'Most people feel a strong scraping pressure that is tolerable and often relieving over tight muscles, rather than sharp pain. Tell your practitioner if it feels too intense and they will lighten the pressure. It should not be painful afterwards beyond mild tenderness.' },
+      { q: 'What does gua sha feel like?', a: 'Most people feel a strong scraping pressure that is tolerable and often relieving over tight muscles, rather than sharp pain. Tell your practitioner if it feels too intense and they will lighten the pressure. It should not be painful afterwards beyond mild tenderness.' },
     ],
     related: ['cupping', 'tuina-massage', 'acupuncture'],
   },
@@ -327,7 +327,7 @@ export const therapies: Therapy[] = [
     conditions: ['back-pain', 'neck-pain'],
     faqs: [
       { q: 'Can I combine physiotherapy with acupuncture?', a: 'Yes - that is one of the advantages of treating both at the same clinic. Acupuncture and manual therapy can ease pain and tension, while physiotherapy builds the strength and movement that support longer-term recovery. We coordinate the two so they complement rather than duplicate each other.' },
-      { q: 'Do I have to do exercises at home?', a: 'For most problems, yes - the home exercises are usually what drives lasting recovery, while in-clinic treatment supports the process. We keep the plan realistic and tailored to your goals, and adjust it as you progress. Passive treatment alone rarely achieves as much.' },
+      { q: 'How can I support progress between sessions?', a: 'For most problems, yes - the home exercises are usually what drives lasting recovery, while in-clinic treatment supports the process. We keep the plan realistic and tailored to your goals, and adjust it as you progress. Passive treatment alone rarely achieves as much.' },
       { q: 'Is physiotherapy covered differently from TCM?', a: 'Often, yes. Physiotherapy can be covered through basic insurance with a medical referral, whereas for TCM treatments reimbursement may be available through supplementary insurance, depending on your policy and the practitioner\'s recognition. Cover depends on your policy and situation - we can talk through what applies to you, and our insurance guide explains the split.' },
     ],
     related: ['acupuncture', 'tuina-massage', 'electroacupuncture'],

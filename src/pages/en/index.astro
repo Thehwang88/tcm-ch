@@ -29,12 +29,11 @@ const steps = [
   { h: 'You confirm with the team', p: 'You receive a concrete proposal and confirm it with us. Only then is your appointment fixed; nothing is booked automatically.' },
 ];
 const faqs = [
-  { q: 'Can I be treated in English?', a: 'Requests, replies and appointment coordination are in English or German. Tell us that you would like to be treated in English and we take it into account when suggesting a practice and practitioner.' },
-  { q: 'Do I need a referral?', a: 'No. You can request an appointment directly. If a doctor is already treating you, bring any findings along; we work alongside medical care, not instead of it.' },
-  { q: 'Does my insurance reimburse acupuncture?', a: 'Not through basic insurance. ' + INSURANCE + ' We tell you which recognition (EMR/ASCA) the treating practitioner holds and check your cover with you before the first appointment.' },
-  { q: 'What happens at a first appointment?', a: 'A thorough case history and TCM assessment, then an honest view of what is sensible, how many sessions are realistic and where the limits lie. If we think we cannot help, we say so and point you elsewhere.' },
-  { q: 'Where are your clinics?', a: `Open today: ${open.map((c) => c.name).join(', ')}. Planned or under review: ${upcoming.map((c) => c.name).join(', ')}. Partner practices are independent practices in the TCM.ch network; TCM.ch coordinates your request.` },
-  { q: 'What happens after I submit the form?', a: 'A person reads your request and replies personally, usually with a concrete suggestion for a clinic and a time. Your appointment is confirmed once you agree to the proposal.' },
+  { q: 'What happens after I send an enquiry?', a: 'A member of our team reads your request and replies personally, usually with a suggested clinic and appointment time. Nothing is booked until you agree to the proposal.' },
+  { q: 'Can I request a practitioner who speaks English?', a: 'You can send your enquiry and coordinate appointments in English or German. Tell us if you prefer an English-speaking practitioner; we take that into account when suggesting a clinic.' },
+  { q: 'How do I find the right clinic?', a: 'Tell us which town or district suits you and what matters most, such as a nearby clinic or a convenient time. We help you choose from our clinics and partner practices. You can also use the clinic finder.' },
+  { q: 'What happens at the first visit?', a: 'We begin with a conversation about your symptoms and history, followed by a TCM assessment and a discussion of reasonable treatment options. We explain the likely costs and whether another medical assessment may be more suitable.' },
+  { q: 'How can I check insurance coverage and costs?', a: 'Acupuncture and TCM are generally not covered by Swiss basic insurance unless provided under different medical conditions. ' + INSURANCE + ' We can tell you the practitioner’s EMR/ASCA recognition and help you check your policy before you book.' },
 ];
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: 'en', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 ---

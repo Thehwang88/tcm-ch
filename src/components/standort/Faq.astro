@@ -8,14 +8,20 @@ import type { Standort } from '../../data/standorte';
 import { telHref } from '../../data/standorte';
 const { data } = Astro.props as { data: Standort };
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const own = (data.faqs ?? []).map((f) => ({ q: f.q, a: esc(f.a) }));
+// Booking decisions first. All original medical and coverage answers remain available.
+const bookingRank = (q: string) =>
+  /termin|anfragen|buchung|vereinbaren/i.test(q) ? 0 :
+  /praxis|standort|wo genau|wo liegt|anfahrt|wie komme|geöffnet/i.test(q) ? 1 :
+  /kosten|preis|krankenkasse|versicherung|deckung/i.test(q) ? 2 : 3;
+const own = (data.faqs ?? []).map((f) => ({ q: f.q, a: esc(f.a) }))
+  .sort((a, b) => bookingRank(a.q) - bookingRank(b.q));
 const fallback = !own.length && !data.planned && !data.review ? [
   { q: `Wie bekomme ich einen Termin in ${data.stadt}?`,
     a: `Über das Anfrageformular auf dieser Seite, per WhatsApp oder telefonisch über die Terminkoordination TCM.ch unter <a href="${telHref(data.nap.telefon)}">${esc(data.nap.telefon)}</a>. Wir melden uns mit einem Terminvorschlag.` +
       (data.betreiber ? ` Die ${esc(data.betreiber.name)} (Partnerpraxis im TCM.ch Netzwerk) erreichst du direkt unter <a href="${telHref(data.betreiber.telefon)}">${esc(data.betreiber.telefon)}</a>.` : '') },
-  { q: 'Was kostet die Behandlung?',
+  { q: 'Wie kläre ich Behandlungskosten vor dem Termin?',
     a: 'Abgerechnet wird nach Tarif 590. Was deine Zusatzversicherung übernimmt, hängt von deiner Police ab. Mehr dazu unter <a href="/krankenkassen/">Krankenkasse und Kosten</a>.' },
-  { q: 'Übernimmt meine Zusatzversicherung die Behandlung?',
+  { q: 'Wie kann ich meine Zusatzversicherung prüfen?',
     a: 'Viele Zusatzversicherungen vergüten die Behandlungen über EMR / ASCA. Bitte kläre die Kostenübernahme direkt mit deiner Krankenkasse.' },
   { q: 'Brauche ich eine ärztliche Überweisung?',
     a: 'Nein. Du kannst direkt einen Termin anfragen.' },
@@ -26,7 +32,7 @@ const items = own.length ? own : fallback;
 const p = `faq-${data.slug}`;
 ---
 {items.length > 0 && (
-<section class="kk-section std-faq" id="faq" aria-labelledby={`${p}-h`}><div class="wrap"><div class="kk-inner"><div class="kk-header reveal"><div class="section-label">Häufige Fragen</div><h2 class="section-title" id={`${p}-h`}>{own.length ? <Fragment>FAQ zu <em>TCM {data.stadt}</em></Fragment> : 'Fragen zu deinem ersten Termin'}</h2></div><div class="kk-faq">
+<section class="kk-section std-faq" id="faq" aria-labelledby={`${p}-h`}><div class="wrap"><div class="kk-inner"><div class="kk-header reveal"><div class="section-label">Häufige Fragen</div><h2 class="section-title" id={`${p}-h`}><Fragment>Dein Besuch in <em>{data.stadt}</em>. Einfach erklärt.</Fragment></h2></div><div class="kk-faq">
 {items.map((f, i) => (
   <div class="kk-item"><button type="button" class="kk-q" id={`${p}-q${i + 1}`} onclick="kkToggle(this)" aria-expanded="false" aria-controls={`${p}-a${i + 1}`}>{f.q}<span class="kk-ico" aria-hidden="true">+</span></button><div class="kk-a" id={`${p}-a${i + 1}`} role="region" aria-labelledby={`${p}-q${i + 1}`}><p set:html={f.a} /></div></div>
 ))}
