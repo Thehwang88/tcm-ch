@@ -11,7 +11,7 @@ import StickyCtaBar from './StickyCtaBar.astro';
 // Copyright year is stamped at build time (the site is rebuilt on every push).
 const year = new Date().getFullYear();
 // Standorte-Spalte (05.11.2026): zentrale Standortkarte, Variante inline (Pin + Ort + Button); Nähe- und Zürich-Links bleiben.
-const FOOTER_STANDORTE = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern', 'bern'];
+const FOOTER_STANDORTE = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern', 'bern'];
 const footerLocations = '<ul id="footer-locations"><li><a href="/akupunktur-in-der-naehe/">Akupunktur in deiner Nähe</a></li><li><a href="/akupunktur-tcm-zuerich/">Zürich – alle Praxen</a></li>' + FOOTER_STANDORTE.map((id) => '<li>' + standortCardHtml(id, { variant: 'inline' }) + '</li>').join('') + '</ul>';
 const secondaryLinks = [
   ['/wissen/', 'Wissen & Magazin'],
