@@ -3,14 +3,21 @@
 import SpaPage from '../../layouts/SpaPage.astro';
 import bodyRaw from '../../data/standorte-body.html?raw';
 import { clinicById, cardHref, cardName } from '../../lib/standort-card';
+import { mapsDirectionsUrl } from '../../data/locations';
 // /standorte overview: 7 TCM.ch clinic cards in the same visual hierarchy as home;
 // partner / additional locations remain crawlable in a collapsed native disclosure.
 // All booking / contact form logic and analytics events remain untouched.
 const esc = (s: string) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const PIN = '<svg class="stdc-pin" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>';
 const mainIds = ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen','winterthur-marktgasse','basel','bern'] as const;
 const additionalIds = ['frauenfeld','kreuzlingen','bottighofen','wil','rorschach','luzern'] as const;
 const displayName: Record<string,string> = { 'winterthur-marktgasse': 'Winterthur' };
+const icons = {
+  phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6.5-6.5 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.5 2.1L7.9 9a16 16 0 0 0 6 6l.9-.9a2 2 0 0 1 2.1-.5l2.8.7A2 2 0 0 1 22 16.9Z"/>',
+  map: '<path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+};
+const detailAction = (kind: keyof typeof icons, href: string, text: string, label: string, external=false) =>
+  `<a class="stdc-secondary" href="${esc(href)}" aria-label="${esc(label)}" ${external ? 'target="_blank" rel="noopener noreferrer"' : ''}><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[kind]}</svg><span>${esc(text)}</span></a>`;
 const mainCard = (id: typeof mainIds[number]) => {
   const c = clinicById(id);
   if(c.status !== 'operational') throw new Error(`/standorte/: main clinic ${id} must be operational`);
@@ -21,14 +28,30 @@ const mainCard = (id: typeof mainIds[number]) => {
     ? {src:'/images/basel-empfang-800.webp',alt:'Empfangsbereich der TCM.ch Klinik Basel, Steinenvorstadt 73'}
     : c.bild;
   if(!img) throw new Error(`/standorte/: main clinic ${id} missing image`);
+  if(!c.street || !c.postalCode) throw new Error(`/standorte/: main clinic ${id} missing postal address`);
+  const route = mapsDirectionsUrl(c);
+  const address = `${c.street}, ${c.postalCode} ${c.city}`;
+  const hours = c.openingHours.length
+    ? c.openingHours.map(line => esc(line.replace(/-/g,'–'))).join('<br>')
+    : 'Öffnungszeiten auf Anfrage';
+  const phone = c.phone.replace(/[^+\d]/g,'');
   return `<article class="stdc stdc--clinic" aria-label="TCM.ch ${label}">
     <a class="stdc-visual" href="${esc(href)}" aria-label="Mehr Informationen zu TCM.ch ${label}">
       <img class="stdc-photo" src="${esc(img.src)}" alt="${esc(img.alt)}" width="1200" height="675" loading="lazy" decoding="async">
+      ${/Visualisierung/i.test(img.alt) ? '<span class="stdc-image-note">Visualisierung</span>' : ''}
     </a>
-    <div class="stdc-main"><h3 class="stdc-h">${PIN}<span>${label}</span></h3></div>
+    <div class="stdc-main">
+      <h3 class="stdc-h"><a href="${esc(href)}">${label}</a></h3>
+      <p class="stdc-address">${esc(address)}</p>
+      <p class="stdc-hours"><span>Öffnungszeiten</span><span>${hours}</span></p>
+    </div>
     <div class="stdc-actions">
-      <a class="stdc-primary" href="#standorte-anfrage" onclick="openContactForm(null, '${id}')">Termin anfragen</a>
-      <a class="stdc-more" href="${esc(href)}">Mehr Infos <span aria-hidden="true">→</span></a>
+      <a class="stdc-primary" href="#standorte-anfrage" onclick="openContactForm(null, '${id}')">Termin anfragen <span aria-hidden="true">→</span></a>
+      <div class="stdc-secondary-actions" role="group" aria-label="Weitere Möglichkeiten für ${label}">
+        ${detailAction('phone', `tel:${phone}`, 'Anrufen', `TCM.ch ${label} anrufen`)}
+        ${route ? detailAction('map', route, 'Anfahrt', `Anfahrt zu TCM.ch ${label}`,true) : ''}
+        ${detailAction('info', href, 'Mehr Infos', `Weitere Informationen zu TCM.ch ${label}`)}
+      </div>
     </div>
   </article>`;
 };
@@ -127,56 +150,68 @@ const schema = {
 #page-standorte .stdc--clinic{
   display:flex;flex-direction:column;align-items:stretch;
   height:100%;min-width:0;padding:0;overflow:hidden;
-  border:1px solid rgba(2,11,16,.11);border-radius:18px;
-  background:#fff;box-shadow:none;transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease
+  border:1px solid rgba(23,55,76,.10);border-radius:18px;
+  background:#fff;box-shadow:none;transition:border-color .16s ease,box-shadow .16s ease
 }
-#page-standorte .stdc--clinic:hover{
-  border-color:rgba(2,11,16,.28);box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)
-}
+#page-standorte .stdc--clinic:hover{border-color:#B8CFDE;box-shadow:0 8px 22px rgba(23,55,76,.06)}
 #page-standorte .stdc-visual{
-  display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
+  display:block;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;
   background:#EDF2F5;flex-shrink:0
 }
 #page-standorte .stdc-photo{
   display:block;width:100%;height:100%;object-fit:cover;object-position:center;
   margin:0;border:0;border-radius:0
 }
+#page-standorte .stdc-image-note{
+  position:absolute;bottom:11px;left:11px;padding:5px 9px;border-radius:7px;
+  background:rgba(255,255,255,.95);font-size:11px;font-weight:750;color:#3F5360
+}
 #page-standorte .stdc-main{
-  display:flex;align-items:center;min-width:0;flex:1;
-  padding:17px 19px 10px
+  display:flex;flex:1;flex-direction:column;align-items:center;text-align:center;
+  min-width:0;padding:16px 14px 8px;gap:0
 }
-#page-standorte .stdc-h{
-  display:flex;align-items:center;gap:9px;min-height:0;
-  margin:0;color:var(--brand-black,#020B10);
-  font-family:var(--font-sans);font-size:clamp(21px,1.65vw,24px);
-  line-height:1.2;letter-spacing:-.025em;font-weight:800
+#page-standorte .stdc-h{display:block;margin:0 0 10px;font:inherit;line-height:1.3}
+#page-standorte .stdc-h a{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:43px;padding:8px 17px;max-width:100%;box-sizing:border-box;
+  background:#1769B1;color:#fff!important;border-radius:999px;
+  font-family:var(--font-sans);font-size:clamp(17px,1.55vw,21px);font-weight:780;
+  line-height:1.2;text-decoration:none!important;text-align:center
 }
-#page-standorte .stdc-h span{
-  display:block;overflow:visible;white-space:normal;
-  -webkit-line-clamp:unset;min-width:0
+#page-standorte .stdc-h a:hover{background:#12578F}
+#page-standorte .stdc-address{
+  margin:0;min-height:35px;font-size:clamp(13px,1.08vw,15px);
+  color:#526978;line-height:1.5;overflow-wrap:anywhere
 }
-#page-standorte .stdc-pin{
-  display:block;flex:0 0 21px;width:21px;height:21px;margin:0;color:#506579
+#page-standorte .stdc-hours{
+  margin:10px 0 0;display:flex;flex-direction:column;gap:3px;
+  font-size:12.5px;color:#647787;line-height:1.45
 }
+#page-standorte .stdc-hours>span:first-child{font-weight:700;color:#344F62}
 #page-standorte .stdc-actions{
-  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);
-  align-items:center;gap:9px;padding:4px 19px 19px
+  display:flex;flex-direction:column;gap:9px;align-items:stretch;
+  padding:14px 17px 17px;margin-top:auto
 }
 #page-standorte .stdc-primary{
-  display:flex;align-items:center;justify-content:center;min-width:0;
-  box-sizing:border-box;min-height:48px;border:1px solid var(--tcm-primary,#1769B1);
-  border-radius:11px;padding:10px 12px;background:var(--tcm-primary,#1769B1);
-  color:#fff!important;font-family:var(--font-sans);font-size:14px;line-height:1.2;
-  font-weight:750;text-align:center;text-decoration:none
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-sizing:border-box;min-height:49px;padding:11px 14px;
+  border:1px solid #1769B1;border-radius:11px;background:#1769B1;
+  color:#fff!important;font-size:14px;font-weight:800;
+  line-height:1.25;text-align:center;text-decoration:none!important
 }
-#page-standorte .stdc-primary:hover{background:#12578f;border-color:#12578f;color:#fff!important}
-#page-standorte .stdc-more{
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;
-  min-height:48px;min-width:0;padding:6px 0;color:#344C5F;
-  font-family:var(--font-sans);font-size:14px;font-weight:750;
-  text-decoration:none;white-space:nowrap
+#page-standorte .stdc-primary:hover{background:#12578F;border-color:#12578F}
+#page-standorte .stdc-secondary-actions{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px
 }
-#page-standorte .stdc-more:hover{text-decoration:underline;text-underline-offset:4px}
+#page-standorte .stdc-secondary{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  min-height:44px;min-width:0;padding:7px 3px;
+  border-radius:9px;color:#45647A;text-decoration:none!important;
+  font-size:12px;font-weight:700;line-height:1.3
+}
+#page-standorte .stdc-secondary svg{flex:0 0 19px;color:#1769B1}
+#page-standorte .stdc-secondary:hover{background:#EDF5FA}
+#page-standorte .stdc--clinic :is(a):focus-visible{outline:3px solid #1769B1;outline-offset:3px}
 #page-standorte .std-other-locations{
   margin:34px 0 0;border:1px solid var(--tcm-border,#D7D4D0);
   border-radius:16px;background:#fff;overflow:hidden
