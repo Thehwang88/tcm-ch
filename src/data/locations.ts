@@ -103,12 +103,10 @@ export const clinics: Clinic[] = [
 
   { id: 'winterthur-marktgasse', name: 'Winterthur Marktgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Marktgasse 78', postalCode: '8400', phone: '+41 77 523 61 22',
-    // Eröffnung 2027 (05.11.2026): keine Öffnungszeiten bis zur Eröffnung; Termine bis dahin in der Praxis Hwang (hwang.ch).
-    hinweis: 'Marktgasse 78 · Eröffnung 2027',
-    // GBP «TCM.ch Winterthur» (Marktgasse 78) ist bestätigt, zeigt auf Google aber reguläre Öffnungszeiten (kein «Eröffnet demnächst»),
-    // während die Seite Eröffnung 2027 kommuniziert → kein gbp, bis der Betriebsstatus geklärt ist (Audit 08.11.2026).
-    // Eröffnung 2027, bis dahin Praxis Hwang (partnerUmleitung in standorte.ts): Karte als 2027 mit «Standort ansehen».
-    karte: { status: '2027' },
+    // Inhaber bestätigt am 17.11.2026: Praxis Marktgasse 78 geöffnet und operativ.
+    // Öffnungszeiten bleiben bis zur tatsächlichen Bestätigung leer – keine Zeiten erfinden.
+    bild: { src: '/images/standort-winterthur-800.webp', alt: 'TCM.ch Winterthur Marktgasse, Empfangsbereich' },
+    hinweis: 'Marktgasse 78 · Winterthurer Altstadt',
     openingHours: [], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
     areaServed: ['Winterthur', 'Veltheim', 'Töss', 'Oberwinterthur', 'Seen', 'Wülflingen', 'Mattenbach', 'Hegi', 'Seuzach', 'Wiesendangen', 'Elsau', 'Neftenbach', 'Pfungen', 'Brütten', 'Hettlingen', 'Illnau-Effretikon'] },
 
@@ -196,8 +194,9 @@ export const clinics: Clinic[] = [
 ];
 
 /** Öffentlich verlinkbare Kliniken (ohne vorVertrag): Quelle für alle Listen, Navigationen, Formulare und hreflang-Paare. */
-/** Winterthur Münzgasse = Praxis Hwang (05.11.2026): 301 auf hwang.ch (public/_redirects), keine DE-/EN-Seite, keine Karten/Nearby/Nav/Team-Links.
- *  Der Clinic-Datensatz bleibt (Formular-Ziel, Attribution, Fingerprints). Rückbau: Slug aus dem Set nehmen + Redirects entfernen. */
+/** Winterthur Münzgasse ist ein alter TCM.ch-Slug, der jetzt dauerhaft zur geöffneten
+ *  TCM.ch Klinik Marktgasse führt. Der historische Datensatz bleibt für Bestandsreferenzen;
+ *  keine eigene DE-/EN-Seite für Münzgasse auf TCM.ch erzeugen. */
 export const HWANG_WINTERTHUR_URL = 'https://www.hwang.ch/standorte/winterthur';
 export const REDIRECTED_CLINICS = new Set(['winterthur-muenzgasse']);
 export const isRedirectedClinic = (id: string) => REDIRECTED_CLINICS.has(id);
