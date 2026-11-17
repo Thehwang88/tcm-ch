@@ -8,7 +8,7 @@ import { zhStandortOptionsHtml } from '../data/zuerich-termin';
 import StickyCta from '../components/StickyCta.astro';
 import BrandSignature from '../components/BrandSignature.astro';
 import { therapyCardsGridHtml } from '../data/therapy-cards';
-import { standortCardHtml } from '../lib/standort-card';
+import { cardHref, clinicById } from '../lib/standort-card';
 import { NETZ_THERAPIEN } from '../data/standorte';
 
 // Zürcher Standort-Optionen im Termin-Formular aus der zentralen Quelle (src/data/zuerich-termin.ts)
@@ -28,17 +28,47 @@ const ZH_TOP8 = NETZ_THERAPIEN.slice(0, 8); // dieselben 8 sichtbaren Karten wie
 if (ZH_TOP8.length !== 8) throw new Error(`akupunktur-tcm-zuerich: erwartet 8 Therapie-Karten, gefunden ${ZH_TOP8.length}`);
 const ZH_STANDORTE = '<!--zh-standort-karten-->';
 if (!rawBody.includes(ZH_STANDORTE)) throw new Error('akupunktur-tcm-zuerich: Standort-Karten-Marker nicht gefunden');
-const zhCards = '<div class="sc-grid sc-grid--3">' +
-  [
-    ['zuerich-bahnhofstrasse', 'zuerich-bahnhofstrasse'],
-    ['zuerich-oerlikon', 'zuerich-oerlikon'],
-    ['zuerich-hoengg', 'zuerich-hoengg'],
-  ].map(([id, tracking]) => standortCardHtml(id, {
-    variant: 'kompakt',
-    foto: true, // Praxisbild wie auf der Startseite (16:9, .sc-img)
-    attrs: `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'${tracking}'})"`,
-  })).join('') +
-  '</div>';
+// Zürich-specific rendering of the same minimal homepage location-card design.
+// Keep the existing zh_standort_card_click engagement event on every clickable surface.
+// Booking stays IN this Zürich funnel; the existing form and conversion tracking are untouched.
+const ZH_CLINIC_IDS = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'] as const;
+const escCard = (s: string) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const pin = '<svg class="home-loc-pin" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>';
+const zhCards = '<div class="sc-grid sc-grid--3 zh-home-loc-grid">' +
+  ZH_CLINIC_IDS.map((id) => {
+    const clinic = clinicById(id);
+    if (clinic.status !== 'operational' || !clinic.bild) throw new Error(`Zürich-Funnel: missing operational clinic image for ${id}`);
+    const name = escCard(clinic.name);
+    const href = escCard(cardHref(clinic, 'de'));
+    // Same event name and payload as the prior whole-card link, never a conversion.
+    const tracking = `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'${id}'})"`;
+    return `<article class="home-loc-card home-loc-card--image zh-home-loc-card" aria-label="TCM.ch ${name}">
+      <a class="home-loc-visual" href="${href}" aria-label="Mehr Informationen zu ${name}" ${tracking}>
+        <img class="home-loc-img" src="${escCard(clinic.bild.src)}" alt="${escCard(clinic.bild.alt)}" width="1200" height="675" loading="lazy" decoding="async">
+      </a>
+      <div class="home-loc-main"><h3 class="home-loc-name">${pin}<span>${name}</span></h3></div>
+      <div class="home-loc-actions">
+        <a class="home-loc-cta home-loc-cta--primary" href="#zh-funnel" data-zh-card-location="${name}" ${tracking}>Termin anfragen</a>
+        <a class="home-loc-more" href="${href}" ${tracking}>Mehr Infos <span aria-hidden="true">→</span></a>
+      </div>
+    </article>`;
+  }).join('') +
+  '</div>' +
+  // Delegated selection happens before the browser follows the #zh-funnel anchor.
+  // Do not intercept form submission, change tracking, or emit conversion events.
+  `<script>(function(){
+    document.addEventListener('click',function(e){
+      var link=e.target&&e.target.closest&&e.target.closest('[data-zh-card-location]');
+      if(!link||e.defaultPrevented||e.button!==0||e.ctrlKey||e.metaKey||e.altKey||e.shiftKey)return;
+      var select=document.getElementById('zh-standort');
+      if(!select)return;
+      var wanted=link.getAttribute('data-zh-card-location');
+      var option=Array.prototype.find.call(select.options,function(o){return o.value===wanted;});
+      if(!option)return;
+      select.value=option.value;
+      select.dispatchEvent(new Event('change',{bubbles:true}));
+    });
+  })();</script>`;
 
 const body = (ZH_HAS_LEGACY_SELECT ? rawBody.replace(
   ZH_ALT,

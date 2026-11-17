@@ -48,3 +48,75 @@
 .footer-col .sc--inline .sc-btn{background:rgba(255,255,255,.12);color:#fff;padding:4px 9px;font-size:11.5px;flex-shrink:0;white-space:nowrap}
 .footer-col .sc--inline:hover .sc-btn{background:rgba(255,255,255,.22)}
 .footer-col .sc--inline .sc-btn--gelb{background:#EEDBD7;color:#171B1A}
+
+/* Zürich funnel clinic cards — exact homepage card hierarchy, scoped to this
+   section so the global location cards, analytics and form UI stay untouched. */
+.akz #standorte .zh-home-loc-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.akz #standorte .zh-home-loc-card{
+  display:flex;flex-direction:column;align-items:stretch;min-width:0;
+  height:100%;box-sizing:border-box;padding:0;overflow:hidden;
+  border:1px solid rgba(2,11,16,.11);border-radius:18px;
+  background:#fff;color:inherit;text-decoration:none;
+  transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease
+}
+.akz #standorte .zh-home-loc-card:hover{
+  border-color:rgba(2,11,16,.28);
+  box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)
+}
+.akz #standorte .zh-home-loc-card .home-loc-visual{
+  display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
+  background:#EDF2F5;flex-shrink:0
+}
+.akz #standorte .zh-home-loc-card .home-loc-img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center
+}
+.akz #standorte .zh-home-loc-card .home-loc-main{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  gap:4px;min-width:0;flex:1;padding:17px 19px 10px
+}
+.akz #standorte .zh-home-loc-card .home-loc-name{
+  display:flex;align-items:center;gap:9px;margin:0;
+  font-family:var(--font-sans);font-size:clamp(21px,1.6vw,24px);font-weight:800;
+  line-height:1.22;letter-spacing:-.025em;color:var(--brand-black,#020B10)
+}
+.akz #standorte .zh-home-loc-card .home-loc-pin{
+  display:block;flex:none;color:#506579
+}
+.akz #standorte .zh-home-loc-card .home-loc-actions{
+  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);
+  align-items:center;gap:9px;padding:4px 19px 19px
+}
+.akz #standorte .zh-home-loc-card .home-loc-cta{
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  box-sizing:border-box;min-width:0;min-height:48px;padding:10px 12px;
+  border:1px solid transparent;border-radius:11px;text-align:center;
+  font-family:var(--font-sans);font-size:14px;line-height:1.2;
+  font-weight:750;text-decoration:none;white-space:normal;
+  transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease
+}
+.akz #standorte .zh-home-loc-card .home-loc-cta--primary{
+  color:#fff!important;background:var(--tcm-primary,#1769B1);border-color:var(--tcm-primary,#1769B1)
+}
+.akz #standorte .zh-home-loc-card .home-loc-cta--primary:hover{
+  background:#12578f;border-color:#12578f;color:#fff!important
+}
+.akz #standorte .zh-home-loc-card .home-loc-more{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:48px;min-width:0;padding:6px 0;
+  color:#344C5F;font-family:var(--font-sans);font-size:14px;
+  font-weight:750;text-decoration:none;white-space:nowrap
+}
+.akz #standorte .zh-home-loc-card .home-loc-more:hover{
+  text-decoration:underline;text-underline-offset:4px
+}
+.akz #standorte .zh-home-loc-card :is(.home-loc-cta,.home-loc-more,.home-loc-visual):focus-visible{
+  outline:3px solid #547A9A;outline-offset:2px
+}
+@media(max-width:950px){
+  .akz #standorte .zh-home-loc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .akz #standorte .zh-home-loc-grid{grid-template-columns:minmax(0,1fr)}
+  .akz #standorte .zh-home-loc-card .home-loc-main{padding:16px 17px 10px}
+  .akz #standorte .zh-home-loc-card .home-loc-actions{padding:4px 17px 17px}
+}
