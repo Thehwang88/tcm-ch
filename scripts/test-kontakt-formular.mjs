@@ -196,14 +196,13 @@ await pg.close();
 
 console.log('I. Standortstatus und Anfrageart (global, Homepage)');
 const OERL = 'Zürich Oerlikon';
-const LUZ = 'Luzern – Vormerkung, Eröffnung 2027';
+// Luzern is handled by its dedicated waitlist, not the normal shared treatment selector.
 const MUENZ = 'Winterthur Münzgasse', MARKT = 'Winterthur Marktgasse';
 const ANDERE = 'Andere / in meiner Nähe';
 const visible = (pg, i, s) => pg.$eval(`${card(i)} ${s}`, (e) => !e.hidden && !e.closest('[hidden]'));
 const submitText = (pg, i) => pg.$eval(`${card(i)} [data-kf-submit]`, (b) => b.textContent.trim());
 for (const [label, value, art, angebot, btn, okRe] of [
   ['Basel (operativ, ohne Check-in-Freigabe)', 'Basel', 'behandlung', 'ERSTTERMIN_BEHANDLUNG', 'Ersttermin anfragen →', /Ersttermin mit Behandlung in Basel/],
-  ['Luzern', LUZ, 'vormerkung', 'VORMERKUNG', 'Vormerkung senden →', /Deine Vormerkung: Luzern/],
   ['Andere / in meiner Nähe', ANDERE, 'routing', 'ROUTING_ANFRAGE', 'Passende Praxis anfragen →', /passende Praxis in deiner Nähe/],
 ]) {
   ({ pg, calls } = await open('/', { gtag: true }));
@@ -217,19 +216,38 @@ for (const [label, value, art, angebot, btn, okRe] of [
   }
   ok(await submitText(pg, 'home') === btn, `${label}: Button «${btn}»`);
   await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home'); c0 = calls[0] || {};
-  ok(calls.length === 1 && c0.standort === value && c0.standort_id === (value === ANDERE ? 'andere' : value === 'Basel' ? 'basel' : 'luzern') && c0.angebot_id === angebot, `${label}: Payload kanonisch {standort:"${c0.standort}", standort_id:${c0.standort_id}, angebot_id:${c0.angebot_id}}`);
+  ok(calls.length === 1 && c0.standort === value && c0.standort_id === (value === ANDERE ? 'andere' : 'basel') && c0.angebot_id === angebot, `${label}: Payload kanonisch {standort:"${c0.standort}", standort_id:${c0.standort_id}, angebot_id:${c0.angebot_id}}`);
   const fsx = await ev(pg, 'formular_senden');
   ok(fsx.length === 1 && fsx[0].terminart === art && fsx[0].standort === c0.standort_id && total(await sends(pg, 'formular_senden')) === 1, `${label}: genau 1 formular_senden (terminart ${art}, standort-ID), kein gtag-Zweitversand`);
   ok(okRe.test(await pg.$eval(card('home'), (c) => c.querySelector('.kf-success')?.textContent || '')), `${label}: Bestätigung mit derselben Bedeutung`);
   await pg.close();
 }
 
+// Visible choices in the native select: seven main clinics + Andere.
+// Secondary locations can be chosen via the accessible details list.
+({ pg, calls } = await open('/', { width: 390 }));
+ok(await pg.$eval('#kf-home-standort', (s) =>
+  s.querySelectorAll('option').length === 9 &&
+  ![...s.options].some((o) => o.getAttribute('data-id') === 'luzern' || o.getAttribute('data-kf-secondary') === '1')),
+  'Global: seven main clinics + Andere in native dropdown; no secondary/Luzern after enhancement');
+ok(await pg.$eval('#kf-home [data-kf-other-locations]', (d) => !d.hidden),
+  'Global: partner selector progressively exposed');
+await pg.click('#kf-home [data-kf-other-locations] summary');
+await pg.click('#kf-home [data-kf-choose-standort="Frauenfeld"]');
+ok(await pg.$eval('#kf-home-standort', (s) => s.value === 'Frauenfeld') && (await ev(pg,'formular_senden')).length === 0,
+  'Partnerwahl: kanonisches Frauenfeld selektiert ohne Versand oder Conversion');
+await pg.close();
+({ pg, calls } = await open('/?standort=luzern'));
+ok(await pg.$eval('#kf-home-standort', (s) => s.value === '' && ![...s.options].some((o) => o.getAttribute('data-id') === 'luzern')),
+  'Luzern: keine reguläre Behandlungsauswahl; eigenständige Warteliste bleibt bestehen');
+await pg.close();
+
 console.log('J. Prefill mehrerer Optionen desselben Standorts');
 for (const [u, want, label] of [
   ['/?standort=zuerich-oerlikon', OERL, 'Slug → reguläres Ziel (operativ)'],
   ['/?standort=zuerich-bahnhofstrasse', 'Zürich Bahnhofstrasse', 'Slug zuerich-bahnhofstrasse → Bahnhofstrasse'],
   ['/?standort=St.%20Gallen', 'St. Gallen', 'Standortname'],
-  ['/?standort=luzern', LUZ, 'Slug Luzern → Vormerkung'],
+  ['/?standort=frauenfeld', 'Frauenfeld', 'Partner-Slug → bestehende kanonische Auswahl'],
 ]) {
   ({ pg, calls } = await open(u)); await new Promise((r) => setTimeout(r, 700));
   const v = await pg.$eval(`${card('home')} select[name=standort]`, (s) => s.value);
