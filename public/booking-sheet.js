@@ -33,6 +33,27 @@
       radio.dispatchEvent(new Event('change',{bubbles:true}));
     }
   }
+  // Homepage clinic-card CTA: preselect the requested operational location before
+  // moving the EXISTING form into the sheet. If a location cannot be resolved,
+  // leave its native href fallback (?standort=<id>) intact instead.
+  function setLocation(node,id){
+    if(!id)return true;
+    var form=formOf(node),sel=form&&form.querySelector('select[name="standort"]');
+    if(!sel)return false;
+    var index=typeof window.kfPickOption==='function'?window.kfPickOption(sel,id):-1;
+    if(index<1){
+      for(var i=1;i<sel.options.length;i++){
+        var opt=sel.options[i];
+        if(opt.value===id||(opt.getAttribute('data-id')===id&&opt.getAttribute('data-default')==='1')){
+          index=i;break;
+        }
+      }
+    }
+    if(index<1)return false;
+    sel.selectedIndex=index;
+    sel.dispatchEvent(new Event('change',{bubbles:true}));
+    return true;
+  }
   function show(btn){
     if(current||pending)return false;
     var type=btn.getAttribute('data-booking-sheet');
@@ -41,6 +62,7 @@
     // Required handlers belong to the REAL node and remain attached when moved.
     // Cards that have not initialised yet still use their normal in-page fallback.
     if(type!=='zh'&&type!=='home'&&node.hasAttribute('data-kf')&&!node.__kfGoto)return false;
+    if(!setLocation(node,btn.getAttribute('data-booking-location')||''))return false;
     pending=true;
     var marker=document.createComment('booking-sheet-origin');
     node.parentNode.insertBefore(marker,node);
