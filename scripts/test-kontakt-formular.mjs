@@ -223,23 +223,29 @@ for (const [label, value, art, angebot, btn, okRe] of [
   await pg.close();
 }
 
-// Visible choices in the native select: seven main clinics + Andere.
-// Secondary locations can be chosen via the accessible details list.
+// One native Standort select. Group labels are nonselectable; every clinic
+// and partner remains a canonical <option>, including under no-JS fallback.
 ({ pg, calls } = await open('/', { width: 390 }));
-ok(await pg.$eval('#kf-home-standort', (s) =>
-  s.querySelectorAll('option').length === 9 &&
-  ![...s.options].some((o) => o.getAttribute('data-id') === 'luzern' || o.getAttribute('data-kf-secondary') === '1')),
-  'Global: seven main clinics + Andere in native dropdown; no secondary/Luzern after enhancement');
-ok(await pg.$eval('#kf-home [data-kf-other-locations]', (d) => !d.hidden),
-  'Global: partner selector progressively exposed');
-await pg.click('#kf-home [data-kf-other-locations] summary');
-await pg.click('#kf-home [data-kf-choose-standort="Frauenfeld"]');
-ok(await pg.$eval('#kf-home-standort', (s) => s.value === 'Frauenfeld') && (await ev(pg,'formular_senden')).length === 0,
-  'Partnerwahl: kanonisches Frauenfeld selektiert ohne Versand oder Conversion');
+ok(await pg.$eval('#kf-home-standort', (s) => {
+  const groups = [...s.querySelectorAll('optgroup')];
+  return groups.length === 2 &&
+    groups[0].label === 'Unsere Kliniken' &&
+    groups[1].label === 'Weitere Standorte & Partnerpraxen' &&
+    groups[0].querySelectorAll('option').length === 7 &&
+    groups[1].querySelectorAll('option').length === 6 &&
+    [...s.options].some((o) => o.value === 'Andere / in meiner Nähe') &&
+    ![...s.options].some((o) => o.getAttribute('data-id') === 'luzern') &&
+    !s.closest('[data-kf-form]').querySelector('[data-kf-other-locations]');
+}), 'Global: a single select groups seven clinics and six partner practices plus Andere; Luzern excluded');
+await sel(pg, 'home', 'Frauenfeld');
+ok(await pg.$eval('#kf-home-standort', (s) => s.value === 'Frauenfeld') &&
+  (await ev(pg, 'formular_senden')).length === 0,
+  'Partnerwahl im EINEN Dropdown: kanonisches Frauenfeld, kein Versand und keine Conversion');
 await pg.close();
 ({ pg, calls } = await open('/?standort=luzern'));
-ok(await pg.$eval('#kf-home-standort', (s) => s.value === '' && ![...s.options].some((o) => o.getAttribute('data-id') === 'luzern')),
-  'Luzern: keine reguläre Behandlungsauswahl; eigenständige Warteliste bleibt bestehen');
+ok(await pg.$eval('#kf-home-standort', (s) => s.value === '' &&
+    ![...s.options].some((o) => o.getAttribute('data-id') === 'luzern')),
+  'Luzern nicht als normale Terminanfrage wählbar; Warteliste separat');
 await pg.close();
 
 console.log('J. Prefill mehrerer Optionen desselben Standorts');
