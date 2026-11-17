@@ -289,3 +289,32 @@ body.tcm-warm .kf .kf-opts .kf-opt--checkin:has(input:checked){
   border-color:#1E6BB0!important;
   box-shadow:inset 0 0 0 1px #1E6BB0!important;
 }
+
+/* Global contact forms: seven clinics first; secondary partners are a discreet
+   native disclosure. Fixed-location forms and all conversion logic are unchanged. */
+.kf .kf-location-more{margin:9px 0 0;border:1px solid #DCE4EA;border-radius:12px;background:#F8FAFB}
+.kf .kf-location-more>summary{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:46px;padding:10px 14px;color:#34566E;font-size:14px;
+  font-weight:700;line-height:1.35;cursor:pointer;list-style:none
+}
+.kf .kf-location-more>summary::-webkit-details-marker{display:none}
+.kf .kf-location-more>summary span{flex:none;font-size:19px;font-weight:400;transition:transform .15s ease}
+.kf .kf-location-more[open]>summary span{transform:rotate(180deg)}
+.kf .kf-location-more-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;padding:0 12px 13px
+}
+.kf .kf-location-choice{
+  display:flex;align-items:center;justify-content:flex-start;
+  min-height:44px;min-width:0;padding:8px 11px;
+  border:1px solid #DDE4E9;border-radius:9px;background:#fff;
+  color:#20394E;font:inherit;font-size:13.5px;font-weight:650;text-align:left;
+  line-height:1.35;cursor:pointer
+}
+.kf .kf-location-choice:hover{border-color:#8CAEC7;background:#EFF6FB}
+.kf .kf-location-choice:focus-visible,
+.kf .kf-location-more>summary:focus-visible{outline:3px solid #1769B1;outline-offset:2px}
+@media(max-width:450px){
+  .kf .kf-location-more-grid{grid-template-columns:minmax(0,1fr)}
+}
