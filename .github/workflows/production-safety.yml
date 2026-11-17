@@ -51,7 +51,6 @@ jobs:
   # Require this job only after those suites have been repaired.
   legacy-regressions:
     name: Legacy regression inventory (informational)
-    if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     needs: production-safety
     runs-on: ubuntu-latest
     timeout-minutes: 35
