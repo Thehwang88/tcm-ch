@@ -56,6 +56,17 @@ const schema = {
     display:block;width:100%!important;height:100%!important;
     aspect-ratio:auto!important;object-fit:cover!important;filter:none!important;
   }
+  /* Portrait and focal-object photography must remain fully visible, instead
+     of being aggressively cropped by the default 8:5 cover treatment. */
+  #page-therapien .svc-card--contain-image .svc-photo-wrap{
+    box-sizing:border-box!important;
+    padding:12px!important;
+    background:#F3F5F7!important;
+  }
+  #page-therapien .svc-card--contain-image .svc-photo{
+    object-fit:contain!important;
+    object-position:center!important;
+  }
   #page-therapien .svc-body{
     display:flex;flex:1;flex-direction:column;align-items:stretch;
     min-width:0;gap:7px!important;padding:16px 17px 17px!important;
