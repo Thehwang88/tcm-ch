@@ -412,6 +412,18 @@
         if (!el.name || el.type === 'radio' || el.name === 'website' || el.name === 'cf-turnstile-response') return;
         var v = (el.value || '').trim(); if (v) data[el.name] = v;
       });
+      // Homepage-only visual experiment: preserve the existing /api/anfrage payload
+      // and attach the optional service/callback preferences to the free-text message.
+      // No extra API keys, second submission or conversion events.
+      if (inst === 'home') {
+        var hs = form.querySelector('[data-kf-service]');
+        var hc = form.querySelector('[data-kf-callback]');
+        var details = [];
+        if (hs && hs.value === 'massage') details.push('Dienstleistung: Massage');
+        if (hs && hs.value === 'beratung') details.push('Dienstleistung: Ich bin unsicher – bitte beraten');
+        if (hc && hc.checked) details.push('Rückruf gewünscht');
+        if (details.length) data.anliegen = details.join('\n') + (data.anliegen ? '\n' + data.anliegen : '');
+      }
       // Kanonischer Zielwert (bisheriger option.value) für Server, Routing und Mail; ID separat.
       data.standort = tg.value; data.standort_id = tg.id;
       data.angebot_id = ANGEBOT[t];
