@@ -68,7 +68,7 @@ const body = (bodyRaw.slice(0,introStart) + hero + bodyRaw.slice(cardsStart))
   .replace('<!--sc:std-liste-->',liste)
   .replace('<section class="section contact-section-inline"','<section class="section contact-section-inline" id="standorte-anfrage"')
   .replace(/<p class="std-finder">[\s\S]*?<\/p>/,'');
-if(/<!--sc:/.test(body) || (body.match(/class="stdc stdc--clinic"/g)||[]).length!==7 || (body.match(/class="std-partner-row"/g)||[]).length!==7)
+if(/<!--sc:/.test(body) || (body.match(/class="stdc stdc--clinic"/g)||[]).length!==7 || (body.match(/class="std-partner-row"/g)||[]).length!==additionalIds.length)
   throw new Error('/standorte/: missing or duplicated location cards');
 
 const title = 'Standorte – TCM.ch Kliniken in der Deutschschweiz';
