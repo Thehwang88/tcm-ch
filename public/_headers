@@ -35,6 +35,8 @@
 # Shared patient-form CSS and booking-sheet CSS are non-hashed and change frequently.
 /kontakt-form.css
   Cache-Control: no-cache
+/kontakt-form.js
+  Cache-Control: no-cache
 /booking-sheet.css
   Cache-Control: no-cache
 
