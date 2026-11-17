@@ -110,13 +110,6 @@ export const clinics: Clinic[] = [
     openingHours: [], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
     areaServed: ['Winterthur', 'Veltheim', 'Töss', 'Oberwinterthur', 'Seen', 'Wülflingen', 'Mattenbach', 'Hegi', 'Seuzach', 'Wiesendangen', 'Elsau', 'Neftenbach', 'Pfungen', 'Brütten', 'Hettlingen', 'Illnau-Effretikon'] },
 
-  { id: 'volketswil', name: 'Volketswil', city: 'Volketswil', region: 'Zürcher Oberland',
-    street: 'Lindenstrasse 2/1', postalCode: '8604', phone: '+41 77 523 61 22',
-    hinweis: 'Lindenstrasse 2/1 · Zürcher Oberland',
-    // Audit 08.11.2026: auf Google existiert an der Lindenstrasse 2/1 nur «Praxis Hwang» (hwang.ch, GBP-Konto Hwang), kein TCM.ch-Profil → kein gbp.
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.3923, lng: 8.6970 }, status: 'operational',
-    areaServed: ['Volketswil', 'Hegnau', 'Zimikon', 'Kindhausen', 'Gutenswil', 'Schwerzenbach', 'Greifensee', 'Uster', 'Dübendorf', 'Fällanden', 'Wangen-Brüttisellen', 'Nänikon', 'Illnau-Effretikon'] },
-
   { id: 'zuerich-hoengg', name: 'Zürich Höngg', city: 'Zürich', region: 'Zürich',
     bild: { src: '/images/standort-zuerich-hoengg-brand.webp', alt: 'TCM.ch Zürich Höngg' },
     street: 'Limmattalstrasse 340', postalCode: '8049', phone: '+41 77 523 61 22',
@@ -239,7 +232,6 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'winterthur-marktgasse':  { src: '/images/winterthur-marktgasse-reception-800.webp', alt: 'Visualisierung: heller Empfangsbereich mit TCM.ch Logo, kein Foto der Praxis Winterthur Marktgasse' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'frauenfeld':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
-  'volketswil':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'basel':                  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
 };
 
