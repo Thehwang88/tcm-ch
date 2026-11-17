@@ -317,9 +317,10 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
     }
     #siteDrawer .patient-drawer-locations > summary{list-style:none}
     #siteDrawer .patient-drawer-locations > summary::-webkit-details-marker{display:none}
-    /* The main nav no longer shows About; keep it in the desktop drawer.
-       Only duplicate symptom and therapy links are suppressed there. */
-    #siteDrawer .patient-drawer-header-duplicate{display:none!important}
+    /* Desktop already links to About, symptoms and therapies in the top nav.
+       Suppress their duplicates here; Contact and insurance remain accessible. */
+    #siteDrawer .patient-drawer-header-duplicate,
+    #siteDrawer .patient-drawer-about-duplicate{display:none!important}
     #siteDrawer .patient-drawer-nav > a > span,
     #siteDrawer .patient-drawer-desktop-extras > a > span,
     #siteDrawer .patient-drawer-chevron{font-weight:400;color:#707472;font-size:20px}
