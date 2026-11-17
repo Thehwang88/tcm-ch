@@ -105,7 +105,7 @@ export const clinics: Clinic[] = [
     street: 'Marktgasse 78', postalCode: '8400', phone: '+41 77 523 61 22',
     // Inhaber bestätigt am 17.11.2026: Praxis Marktgasse 78 geöffnet und operativ.
     // Öffnungszeiten bleiben bis zur tatsächlichen Bestätigung leer – keine Zeiten erfinden.
-    bild: { src: '/images/standort-winterthur-800.webp', alt: 'TCM.ch Winterthur Marktgasse, Empfangsbereich' },
+    bild: { src: '/images/winterthur-marktgasse-reception-800.webp', alt: 'Visualisierung: heller Empfangsbereich mit TCM.ch Logo, kein Foto der Praxis Winterthur Marktgasse' },
     hinweis: 'Marktgasse 78 · Winterthurer Altstadt',
     openingHours: [], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
     areaServed: ['Winterthur', 'Veltheim', 'Töss', 'Oberwinterthur', 'Seen', 'Wülflingen', 'Mattenbach', 'Hegi', 'Seuzach', 'Wiesendangen', 'Elsau', 'Neftenbach', 'Pfungen', 'Brütten', 'Hettlingen', 'Illnau-Effretikon'] },
@@ -234,7 +234,7 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'zuerich-hoengg':         { src: '/images/standort-zuerich-hoengg-brand.webp', alt: 'TCM.ch Zürich Höngg' },
   'zuerich-bahnhofstrasse':           { src: '/images/standort-zuerich-bahnhofstrasse-wide.webp', alt: 'TCM.ch Zürich Bahnhofstrasse' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
-  'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+  'winterthur-marktgasse':  { src: '/images/winterthur-marktgasse-reception-800.webp', alt: 'Visualisierung: heller Empfangsbereich mit TCM.ch Logo, kein Foto der Praxis Winterthur Marktgasse' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'frauenfeld':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'volketswil':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
