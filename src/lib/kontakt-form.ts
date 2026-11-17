@@ -178,16 +178,33 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     : `<span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span>`) +
     `</span></label>`;
 
+  // Global forms: patient-first location choice. Canonical destination values,
+  // availability gates, server routing and conversion tracking are unchanged.
+  // Unopened Luzern has a dedicated waitlist and is not offered as a regular appointment.
+  const MAIN_LOCATION_IDS = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'st-gallen', 'basel', 'bern'];
+  const SECONDARY_LOCATION_IDS = ['volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'wil', 'rorschach'];
+  const globalOpts = fixed ? [] : globalOptions();
+  const visibleOpts = [...MAIN_LOCATION_IDS, 'andere', ...SECONDARY_LOCATION_IDS].flatMap((id) => globalOpts.filter((x: any) => x.id === id));
+  if (!fixed && (visibleOpts.length !== globalOpts.length - globalOpts.filter((x: any) => x.id === 'luzern').length
+      || visibleOpts.some((x: any) => x.id === 'luzern')))
+    throw new Error('kontakt-form: main/secondary destination lists out of sync with canonical goals');
+  const selectedIdx = fixed ? -1 : pickZiel(visibleOpts, o.preselectStandort);
+  const optionMarkup = (x: any, selected: boolean, secondary: boolean) =>
+    `<option value="${esc(x.value)}" data-id="${x.id}" data-art="${x.art}"${x.standard ? ' data-default="1"' : ''} data-tel="${esc(x.tel)}"${x.checkin ? ' data-checkin="1"' : ''}${x.onedoc ? ` data-onedoc="${esc(x.onedoc)}"` : ''}${x.hinweis ? ` data-hinweis="${esc(x.hinweis)}"` : ''}${secondary ? ' data-kf-secondary="1"' : ''}${selected ? ' selected' : ''}>${esc(x.label)}</option>`;
   const select = fixed ? '' :
     `<div class="kf-field"><label class="kf-label" for="${p}-standort">Standort ${Q ? '<span class="kf-star" aria-hidden="true">*</span>' : '<span aria-hidden="true">*</span>'}</label>` +
     `<select class="kf-input kf-select" id="${p}-standort" name="standort" required aria-describedby="${p}-standort-err">` +
-    `<option value="">Standort auswählen</option>` +
-    (() => { const opts = globalOptions(); const pi = pickZiel(opts, o.preselectStandort); return opts.map((x: any, i: number) =>
-      `<option value="${esc(x.value)}" data-id="${x.id}" data-art="${x.art}"${x.standard ? ' data-default="1"' : ''} data-tel="${esc(x.tel)}"${x.checkin ? ' data-checkin="1"' : ''}${x.onedoc ? ` data-onedoc="${esc(x.onedoc)}"` : ''}${x.hinweis ? ` data-hinweis="${esc(x.hinweis)}"` : ''}${i === pi ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); })() +
-    `</select>` +
-    // Zielhinweis (z. B. Partnerpraxis Hwang: Anfrage geht an praxis@hwang.ch), gefüllt aus data-hinweis der gewählten Option (kontakt-form.js).
-    `<p class="kf-fhint" data-kf-ziel-hinweis hidden></p>` +
-    `<p class="kf-ferr" id="${p}-standort-err" hidden></p></div>`;
+    '<option value="">Standort auswählen</option>' +
+    visibleOpts.map((x: any, i: number) => optionMarkup(x, i === selectedIdx, SECONDARY_LOCATION_IDS.includes(x.id))).join('') +
+    '</select>' +
+    // Without JS the complete normal + partner list is usable in the native select;
+    // JS progressively enhances it with a real expandable partner picker.
+    `<details class="kf-location-more" data-kf-other-locations hidden><summary>Weitere Standorte &amp; Partnerpraxen <span aria-hidden="true">⌄</span></summary><div class="kf-location-more-grid">` +
+    SECONDARY_LOCATION_IDS.flatMap((id) => visibleOpts.filter((x: any) => x.id === id)).map((x: any) =>
+      `<button type="button" class="kf-location-choice" data-kf-choose-standort="${esc(x.value)}">${esc(x.label)}</button>`).join('') +
+    '</div></details>' +
+    // Hint/validation rendering is the existing shared pathway.
+    `<p class="kf-fhint" data-kf-ziel-hinweis hidden></p><p class="kf-ferr" id="${p}-standort-err" hidden></p></div>`;
 
   const sgOd = !!(o.onedocBeideTerminarten && fixed && onedoc);
   const onedocPanel = sgOd ?
