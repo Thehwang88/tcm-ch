@@ -71,7 +71,7 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
   ok(await clickNoNav(page, '.ev-pick a[data-pick="Zürich – nächster freier Termin"]'), 'T1 flexible selector exists');
   ok((await page.$eval('#en-zurich-form [name="standort"]', (s) => s.value)) === 'Zürich – nächster freier Termin', 'T1 flexible option preselected (DE routing value)');
   ok((await events(page)).length === 3, 'T1 one event per selector click');
-  ok((await page.$eval('form.ev-form', (f) => f.length)) === 1 && (await page.$eval('form.cc-enquiry', (f) => f.length)) === 1, 'T1 exactly one appointment form plus one concierge form on Zürich');
+  ok((await page.evaluate(() => document.querySelectorAll('form#en-zurich-form').length)) === 1, 'T1 exactly one canonical Zürich appointment form (other independent forms allowed)');
   ev = await events(page);
   ok(ev.every((e) => e.event !== 'form_submit' && e.event !== 'form_submit_success'), 'T1 clicks are never form events');
   ok(await clickNoNav(page, '.ev-panel a[href*="wa.me"]'), 'T1 WhatsApp link exists');
