@@ -12,7 +12,7 @@ import BookingSheet from '../components/BookingSheet.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
-import { cardHref, cardName, checkinFrei, clinicById } from '../lib/standort-card';
+import { cardHref, checkinFrei, clinicById } from '../lib/standort-card';
 import { clinics } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
 import { upgradeLegacyForms } from '../lib/kontakt-form';
@@ -50,8 +50,7 @@ const homeUpgraded = upgradeLegacyForms(homeBody.replace(HOME_SELECT_RE, (_m, a,
 if ((homeUpgraded.match(/data-kf-instance="home"/g) || []).length !== 1) throw new Error('index.astro: Home-Kontaktkarte nicht eindeutig umgestellt');
 const homeHtmlBase = homeUpgraded.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 
-// Homepage: one Zürich region entry followed by the four requested city markets.
-// No redirects, ad URLs, clinic data, form options or booking routes are changed.
+// Six equal-size city cards; homepage only. All existing routes and forms stay intact.
 const homeFirst30 = first30State();
 const escHome = (s: string) => String(s ?? '')
   .replace(/&/g, '&amp;')
@@ -59,56 +58,71 @@ const escHome = (s: string) => String(s ?? '')
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
-const homeCityMeta: Record<string, { hint: string; action: string }> = {
-  'st-gallen': { hint: 'Oberer Graben 22 · St. Gallen', action: 'Praxis ansehen' },
-  'winterthur-muenzgasse': { hint: 'Praxis Hwang · Münzgasse 2', action: 'Partnerpraxis ansehen' },
-  'basel': { hint: 'Steinenvorstadt 73 · Basel', action: 'Standort ansehen' },
-  'bern': { hint: 'In Vorbereitung · Vormerkung', action: 'Vormerken' },
+const homeCityMeta: Record<string, {
+  name: string; hint: string; action: string; image?: string; alt?: string; badge?: string;
+}> = {
+  'zuerich-hub': {
+    name: 'Zürich', hint: 'City · Oerlikon · Höngg',
+    action: 'Alle Zürcher Praxen ansehen',
+    // The actual Oerlikon clinic photo is loaded from the clinic record below.
+  },
+  'st-gallen': {
+    name: 'St. Gallen', hint: 'Oberer Graben 22 · St. Gallen', action: 'Praxis ansehen',
+  },
+  'winterthur-muenzgasse': {
+    name: 'Winterthur', hint: 'Praxis Hwang · Münzgasse 2', action: 'Partnerpraxis ansehen',
+  },
+  'basel': {
+    name: 'Basel', hint: 'Steinenvorstadt 73 · Basel', action: 'Standort ansehen',
+    image: '/images/basel-reception.webp', alt: 'Visualisierung des Standorts Basel',
+  },
+  'bern': {
+    name: 'Bern', hint: 'In Vorbereitung · Vormerkung', action: 'Vormerken',
+    badge: 'In Vorbereitung',
+  },
+  'luzern': {
+    name: 'Luzern', hint: 'Zentralschweiz · Warteliste', action: 'Vormerken',
+    badge: 'Demnächst',
+  },
 };
 
 const homeClinicCardHtml = (id: string) => {
-  const c = clinicById(id);
-  // Reuse the existing canonical target, including Winterthur's Hwang redirect.
-  const href = cardHref(c, 'de');
-  const external = /^https?:\/\//.test(href);
   const meta = homeCityMeta[id];
   if (!meta) throw new Error(`index.astro: unknown featured city ${id}`);
-  const checkin = checkinFrei(c);
-  const gratis = checkin ? '<span class="home-loc-gratis">Gratis Check-in</span>' : '';
+  const c = clinicById(id === 'zuerich-hub' ? 'zuerich-oerlikon' : id);
+  // Zürich keeps the current regional funnel; all others keep cardHref().
+  const href = id === 'zuerich-hub' ? '/akupunktur-tcm-zuerich/' : cardHref(c, 'de');
+  const external = /^https?:\/\//.test(href);
+  const imageSrc = meta.image ?? c.bild?.src;
+  const imageAlt = meta.alt ?? c.bild?.alt ?? meta.name;
+  const visual = imageSrc
+    ? `<img class="home-loc-img" src="${escHome(imageSrc)}" alt="${escHome(imageAlt)}" width="1200" height="675" loading="lazy" decoding="async">`
+    : `<span class="home-loc-upcoming-visual" aria-hidden="true"><span>TCM.CH</span><strong>${escHome(meta.name)}</strong></span>`;
+  const gratis = id !== 'zuerich-hub' && checkinFrei(c)
+    ? '<span class="home-loc-gratis">Gratis Check-in</span>' : '';
+  const badge = meta.badge ? `<span class="home-loc-upcoming-badge">${escHome(meta.badge)}</span>` : '';
   const campaign = id === 'st-gallen' && homeFirst30.showCampaign
     ? `<span class="home-loc-note">${homeFirst30.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span>`
     : '';
-  return `<a class="home-loc-card reveal" href="${escHome(href)}"${external ? ' target="_blank" rel="noopener"' : ''}>
+  const tracking = id === 'zuerich-hub'
+    ? ` onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'homepage_zurich_hub_click',source_page:'homepage',section:'locations',destination:'/akupunktur-tcm-zuerich/',action_type:'hub'})"`
+    : '';
+  return `<a class="home-loc-card home-loc-card--image reveal" href="${escHome(href)}"${external ? ' target="_blank" rel="noopener"' : ''}${tracking}>
+    <span class="home-loc-visual">${visual}</span>
     <span class="home-loc-main">
-      <span class="home-loc-title-row">
-        <span class="home-loc-name"><strong>${escHome(id === 'winterthur-muenzgasse' ? 'Winterthur' : cardName(c))}</strong></span>
-        ${gratis}
-      </span>
-      <span>${escHome(meta.hint)}</span>
+      <span class="home-loc-title-row"><strong class="home-loc-name">${escHome(meta.name)}</strong>${badge}${gratis}</span>
+      <span class="home-loc-sub">${escHome(meta.hint)}</span>
       ${campaign}
     </span>
     <span class="home-loc-action"><span>${escHome(meta.action)}</span><span aria-hidden="true">→</span></span>
   </a>`;
 };
 
-const zhHubHref = '/akupunktur-tcm-zuerich/';
-const zhHubTracking = `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'homepage_zurich_hub_click',source_page:'homepage',section:'locations',destination:'${zhHubHref}',action_type:'hub'})"`;
-const homeZurichHtml = `<a class="home-zh-feature reveal" href="${zhHubHref}" ${zhHubTracking}>
-  <img class="home-zh-feature-img" src="/images/team-zuerich.webp" alt="TCM.ch Team in Zürich" width="1200" height="800" loading="lazy" decoding="async">
-  <span class="home-zh-feature-content">
-    <span class="home-zh-feature-eyebrow">TCM.CH · REGION ZÜRICH</span>
-    <strong class="home-zh-feature-name">Zürich</strong>
-    <span class="home-zh-feature-sub">City · Oerlikon · Höngg</span>
-    <span class="home-zh-feature-link">Alle Zürcher Praxen ansehen <span aria-hidden="true">→</span></span>
-  </span>
-</a>`;
-
 const homeHtmlCards = homeHtmlBase
-  .replace('<!--sc:home-zuerich-->', homeZurichHtml)
+  .replace('<!--sc:home-zuerich-->', homeClinicCardHtml('zuerich-hub'))
   .replace('<!--sc:home-weitere-->',
-    '<div class="home-loc-grid home-loc-grid--four-cities">' +
-    ['st-gallen', 'winterthur-muenzgasse', 'basel', 'bern'].map(homeClinicCardHtml).join('') +
-    '</div>');
+    ['st-gallen', 'winterthur-muenzgasse', 'basel', 'bern', 'luzern']
+      .map(homeClinicCardHtml).join(''));
 
 if (/<!--sc:/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig gerendert');
 const homeHtml = homeHtmlCards;
@@ -147,84 +161,77 @@ const homeHtml = homeHtmlCards;
     #s-behandlungen .svc-all-cta-link:hover{background:#353A37;border-color:#353A37;color:#fff}
     #s-behandlungen .svc-all-cta-link:focus-visible{outline:3px solid #565B59;outline-offset:3px}
     @media(max-width:600px){#s-behandlungen .svc-all-cta-link{width:100%;max-width:340px}}
-    /* City-first homepage finder: Zürich is a single regional entry. */
+    /* Uniform six-card clinic finder: 3x2 desktop, 2 columns tablet, 1 mobile. */
     #home-content #home-zuerich{margin-top:26px;scroll-margin-top:calc(var(--header-h,76px) + 20px)}
-    #home-content .home-zh-feature{
-      display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
-      min-height:220px;background:#fff;border:1px solid rgba(2,11,16,.11);
-      border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;
+    #home-content .home-loc-grid--six-cities{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;align-items:stretch
+    }
+    #home-content .home-loc-card--image{
+      display:flex;flex-direction:column;align-items:stretch;min-width:0;
+      height:100%;box-sizing:border-box;padding:0;overflow:hidden;
+      border:1px solid rgba(2,11,16,.11);border-radius:18px;
+      background:#fff;color:inherit;text-decoration:none;
       transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease
     }
-    #home-content .home-zh-feature:hover,
-    #home-content .home-loc-card:hover{
-      border-color:rgba(2,11,16,.28);box-shadow:0 8px 22px rgba(2,11,16,.06);
-      transform:translateY(-1px)
+    #home-content .home-loc-card--image:hover{
+      border-color:rgba(2,11,16,.28);
+      box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)
     }
-    #home-content .home-zh-feature-img{
-      display:block;width:100%;height:100%;min-height:220px;
-      object-fit:cover;object-position:center
+    #home-content .home-loc-card--image:focus-visible{outline:3px solid #547A9A;outline-offset:3px}
+    #home-content .home-loc-visual{
+      display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
+      background:#EDF2F5;flex-shrink:0
     }
-    #home-content .home-zh-feature-content{
-      display:flex;flex-direction:column;justify-content:center;
-      align-items:flex-start;gap:9px;padding:28px 30px
+    #home-content .home-loc-img{
+      display:block;width:100%;height:100%;object-fit:cover;object-position:center
     }
-    #home-content .home-zh-feature-eyebrow{
-      font-family:var(--font-sans);font-size:11px;font-weight:800;
-      letter-spacing:.12em;color:#565B59
+    #home-content .home-loc-upcoming-visual{
+      display:flex;flex-direction:column;align-items:flex-start;
+      justify-content:center;gap:9px;width:100%;height:100%;
+      box-sizing:border-box;padding:26px;
+      background:radial-gradient(ellipse at 83% 12%,#D9E7F0 0%,transparent 49%),
+        linear-gradient(135deg,#F0F4F6 0%,#E5ECF2 100%);
+      color:#314554;font-family:var(--font-sans)
     }
-    #home-content .home-zh-feature-name{
-      font-family:var(--font-sans);font-size:clamp(28px,3vw,40px);
-      line-height:1.1;letter-spacing:-.03em;color:var(--brand-black,#020B10)
+    #home-content .home-loc-upcoming-visual>span{
+      font-size:11px;letter-spacing:.15em;font-weight:800;opacity:.7
     }
-    #home-content .home-zh-feature-sub{
-      font-family:var(--font-sans);font-size:14px;color:rgba(2,11,16,.68)
+    #home-content .home-loc-upcoming-visual>strong{
+      font-size:clamp(27px,3vw,40px);line-height:1.1;letter-spacing:-.035em
     }
-    #home-content .home-zh-feature-link{
-      display:inline-flex;align-items:center;gap:12px;margin-top:12px;
-      font-family:var(--font-sans);font-size:14px;font-weight:750;
-      color:var(--brand-black,#020B10)
+    #home-content .home-loc-main{
+      display:flex;flex-direction:column;align-items:flex-start;
+      gap:5px;padding:18px 19px 8px;min-width:0;flex:1
     }
-    #home-content .home-loc-grid{
-      display:grid;gap:12px;margin-top:14px
+    #home-content .home-loc-title-row{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap
     }
-    #home-content .home-loc-grid--four-cities{
-      grid-template-columns:repeat(4,minmax(0,1fr))
+    #home-content .home-loc-name{
+      font-family:var(--font-sans);font-size:18px;font-weight:800;
+      line-height:1.25;color:var(--brand-black,#020B10)
     }
-    #home-content .home-loc-card{
-      min-width:0;display:flex;flex-direction:column;align-items:flex-start;
-      justify-content:space-between;gap:18px;min-height:145px;
-      padding:20px;background:#fff;border:1px solid rgba(2,11,16,.11);
-      border-radius:16px;text-decoration:none;color:inherit;
-      transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease
-    }
-    #home-content .home-loc-main{display:block;min-width:0;width:100%}
-    #home-content .home-loc-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    #home-content .home-loc-name strong{
-      font-family:var(--font-sans);font-size:17px;line-height:1.2;
-      font-weight:800;color:var(--brand-black,#020B10)
-    }
-    #home-content .home-loc-main>span:not(.home-loc-note):not(.home-loc-title-row){
-      display:block;margin-top:5px;font-size:13px;line-height:1.4;
-      color:rgba(2,11,16,.65)
+    #home-content .home-loc-sub{
+      display:block;font-size:13.5px;line-height:1.45;color:rgba(2,11,16,.64)
     }
     #home-content .home-loc-action{
-      display:flex;align-items:center;justify-content:space-between;gap:8px;
-      width:100%;font-family:var(--font-sans);font-size:13px;font-weight:750;
-      color:var(--brand-black,#020B10)
+      display:flex;align-items:center;justify-content:space-between;
+      gap:8px;padding:8px 19px 19px;font-family:var(--font-sans);
+      font-size:13px;font-weight:750;color:var(--brand-black,#020B10)
     }
-    #home-content .home-loc-gratis{
-      display:inline-flex;align-items:center;padding:4px 8px;
-      border-radius:999px;background:#EDF4F9;color:#020B10;
-      font-family:var(--font-sans);font-size:10.5px;font-weight:800;
-      line-height:1.15;white-space:nowrap
+    #home-content .home-loc-gratis,
+    #home-content .home-loc-upcoming-badge{
+      display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;
+      font-family:var(--font-sans);font-size:10.5px;font-weight:800;line-height:1.15;
+      white-space:nowrap;color:#314554;background:#E8F2F8
+    }
+    #home-content .home-loc-upcoming-badge{
+      color:#565F68;background:#EDF0F2
     }
     #home-content .home-loc-note{
-      display:block;margin-top:7px;font-size:11.5px;font-weight:700;
-      color:#565B59
+      display:block;margin-top:5px;font-size:11.5px;font-weight:700;color:#565B59
     }
-    #home-content .home-locations-secondary{
-      margin:22px 0 0;text-align:center
-    }
+    #home-content .home-locations-secondary{margin:24px 0 0;text-align:center}
     #home-content .home-locations-secondary a{
       font-family:var(--font-sans);font-size:13.5px;font-weight:700;
       color:#565B59;text-decoration:none
@@ -232,17 +239,13 @@ const homeHtml = homeHtmlCards;
     #home-content .home-locations-secondary a:hover{
       text-decoration:underline;text-underline-offset:3px
     }
-    @media(max-width:1050px){
-      #home-content .home-loc-grid--four-cities{
-        grid-template-columns:repeat(2,minmax(0,1fr))
-      }
+    @media(max-width:950px){
+      #home-content .home-loc-grid--six-cities{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
-    @media(max-width:720px){
-      #home-content .home-zh-feature{grid-template-columns:1fr}
-      #home-content .home-zh-feature-img{height:auto;min-height:0;aspect-ratio:16/9}
-      #home-content .home-zh-feature-content{padding:22px}
-      #home-content .home-loc-grid--four-cities{grid-template-columns:1fr}
-      #home-content .home-loc-card{min-height:0;padding:18px;gap:12px}
+    @media(max-width:620px){
+      #home-content .home-loc-grid--six-cities{grid-template-columns:1fr}
+      #home-content .home-loc-main{padding:16px 17px 8px}
+      #home-content .home-loc-action{padding:8px 17px 17px}
       #home-content .home-locations-secondary{text-align:left}
     }
     </style>
