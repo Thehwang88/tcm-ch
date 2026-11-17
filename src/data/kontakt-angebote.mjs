@@ -127,12 +127,10 @@ export const KAMPAGNEN = {
 };
 
 /** Reihenfolge der globalen Standortauswahl (Vereinigung der bisherigen Listen; Bern nur mit eigener Warteliste). */
-export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
-/** Standorte, deren Anfragen an eine Partnerpraxis gehen (Winterthur Münzgasse = Praxis Hwang, 05.11.2026): eigenes
- *  Formularziel «Winterthur (Praxis Hwang)», kein Check-in, Mail-Routing an die Praxis (functions/api/anfrage.js, Kopie an termine@tcm.ch). */
-export const HWANG_ZIEL = {
-  'winterthur-muenzgasse': { value: 'Winterthur (Praxis Hwang)', mail: 'praxis@hwang.ch', hinweis: 'Deine Anfrage geht direkt an die Praxis Hwang (praxis@hwang.ch), Münzgasse 2, Winterthur.' },
-};
+export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
+/** Keine aktive TCM.ch-Formularumleitung nach Hwang: Winterthur-Anfragen gehen direkt an Marktgasse.
+ * Export für bestehende Server-Integration erhalten; ältere Partner-Ziele werden nicht mehr angeboten. */
+export const HWANG_ZIEL = {};
 export const ANDERE = { value: 'Andere / in meiner Nähe', label: 'Andere / in meiner Nähe', id: 'andere', art: 'routing' };
 
 /** Kanonische Formularziele. value = bisheriger Options-/Mail-Wert (Routing durchs Team), unverändert übernommen.
