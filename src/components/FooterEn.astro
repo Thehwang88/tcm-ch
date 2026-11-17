@@ -1,67 +1,64 @@
 ---
-// EN-Variante des Footers, eingebunden von Layout.astro (alle /en/*-Seiten).
-// Gleiche Markup-Struktur und Klassen wie der DE-Footer (src/data/footer.html), damit
-// /footer.css und /home.css unverändert greifen - nur die Spalten sind datengetrieben
-// aus conditions/therapies/clinics und zeigen auf die EN-Routen statt auf /beschwerden/,
-// /therapien/, /standorte/. Der DE-Footer bleibt unangetastet.
-//
-// Legal-Links zeigen bewusst weiter auf die DE-Seiten (nur die gibt es), die Labels
-// sind englisch.
-import { conditions, enConditionPath } from '../data/conditions';
-import { therapies, enTherapyPath } from '../data/therapies';
-import { publicClinics as clinics, enLocationPath } from '../data/locations';
-import { standortCardHtml } from '../lib/standort-card';
-const year = new Date().getFullYear();
+// Shared English compact footer. Clinics and therapies remain accessible via the hubs.
 import { site } from '../data/site';
+import { enLocationPath } from '../data/locations';
+import '../styles/footer-compact.css';
 import WhatsAppFab from './WhatsAppFab.astro';
 import WhatsAppConcierge from './WhatsAppConcierge.astro';
 import StickyCtaBar from './StickyCtaBar.astro';
 
-const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-right:6px;vertical-align:-1px;opacity:.7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`;
+const year = new Date().getFullYear();
+const treatments = [
+  ['/en/therapies/acupuncture/', 'Acupuncture'],
+  ['/en/therapies/tuina-massage/', 'Tuina Massage'],
+  ['/en/therapies/cupping/', 'Cupping'],
+  ['/en/therapies/chinese-herbal-medicine/', 'Herbal Medicine'],
+  ['/en/conditions/', 'Conditions & Symptoms'],
+  ['/en/therapies/', 'All Treatments'],
+] as const;
+const clinics = [
+  ['/en/acupuncture-zurich/', 'Zürich · All Clinics'],
+  [enLocationPath('st-gallen'), 'St. Gallen'],
+  [enLocationPath('winterthur-marktgasse'), 'Winterthur'],
+  [enLocationPath('basel'), 'Basel'],
+  [enLocationPath('bern'), 'Bern'],
+  ['/en/locations/', 'All Locations'],
+] as const;
+const information = [
+  ['/en/contact/', 'Contact'],
+  ['/en/health-insurance-acupuncture/', 'Insurance & Costs'],
+  ['/en/knowledge/', 'Knowledge & Guides'],
+  ['/en/acupuncture-near-me/', 'Acupuncture Near Me'],
+  ['/ueber-uns/', 'About TCM.ch (German)'],
+] as const;
 ---
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-inner">
+    <div class="footer-inner footer-inner--tidy">
       <div class="footer-brand-col">
-        <a href="/en/" class="footer-logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;margin-bottom:10px">
-          <img src="/images/logo/tcm-ch-logo-kliniken-mint.svg" alt="TCM Kliniken – TCM.ch" width="168" height="57" style="display:block;height:auto">
+        <a href="/en/" class="footer-logo" aria-label="TCM.ch Clinics – home">
+          <img src="/images/logo/tcm-ch-logo-kliniken-mint.svg" alt="TCM.ch Clinics" width="168" height="57" loading="lazy">
         </a>
-        <p class="footer-tagline">TCM network in German-speaking Switzerland. Requests in English or German.</p>
-        <a href={`mailto:${site.email}`} class="footer-mail"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>{site.email}</a>
+        <p class="footer-tagline">Acupuncture &amp; Traditional Chinese Medicine in Switzerland.<br>Clinics and partner practices.</p>
+        <a href="/en/contact/" class="footer-contact-cta">Request an appointment <span aria-hidden="true">→</span></a>
+        <a href={"mailto:"+site.email} class="footer-mail">{site.email}</a>
       </div>
-
       <div class="footer-col">
-        <h4>Conditions</h4>
-        <ul id="footer-conditions">
-          {conditions.map((c) => (
-            <li><a href={enConditionPath(c.slug)}>{c.condition}</a></li>
-          ))}
-        </ul>
+        <h4>Treatments</h4>
+        <ul id="footer-therapies">{treatments.map(([href,label]) => <li><a href={href}>{label}</a></li>)}</ul>
       </div>
-
-      <div class="footer-col">
-        <h4>Therapies</h4>
-        <ul id="footer-therapies">
-          {therapies.map((t) => (
-            <li><a href={enTherapyPath(t.slug)}>{t.name}</a></li>
-          ))}
-        </ul>
-      </div>
-
       <div class="footer-col">
         <h4>Locations</h4>
-        <ul id="footer-locations">
-          <li><a href="/en/acupuncture-near-me/">Acupuncture near me</a></li>
-          <li><a href="/en/acupuncture-zurich/">Acupuncture in Zürich</a></li>
-          {clinics.map((c) => (
-            <li><Fragment set:html={standortCardHtml(c.id, { variant: 'inline', lang: 'en' })} /></li>
-          ))}
-        </ul>
+        <ul id="footer-locations">{clinics.map(([href,label]) => <li><a href={href}>{label}</a></li>)}</ul>
+      </div>
+      <div class="footer-col footer-col--info">
+        <h4>Information</h4>
+        <ul id="footer-info-links">{information.map(([href,label]) => <li><a href={href}>{label}</a></li>)}</ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-copy">© {year} TCM.ch · All rights reserved · Switzerland <span class="footer-care-sep">&nbsp;·&nbsp;</span> <span class="footer-care">Part of the TCM.ch CARE System</span></div>
+      <div class="footer-copy">© {year} TCM.ch · Switzerland</div>
       <div class="footer-legal">
         <a href="/datenschutz/">Privacy</a>
         <a href="/impressum/">Legal notice</a>
