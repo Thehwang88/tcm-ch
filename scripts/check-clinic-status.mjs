@@ -142,7 +142,7 @@ for (const c of m.clinics) {
 //     Formulierung innerhalb von 70 Zeichen, ohne dass dazwischen ein anderer nicht-operativer Standort steht).
 const PREOPEN = /Eröffnung|Vormerk|in Vorbereitung|noch nicht eröffnet|Warteliste|opening planned|not open yet|in preparation|Pre-Opening/i;
 const visible = (s) => text(s.replace(/<head[\s\S]*?<\/head>|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ' ').replace(/<\/option>/g, ' | '));
-const nichtOperativ = m.clinics.filter((c) => c.status !== 'operational').map((c) => c.name).concat(['Luzern', 'Bern']);
+const nichtOperativ = m.clinics.filter((c) => c.status !== 'operational').map((c) => c.name).concat(['Luzern']);
 const vis = new Map([...html].map(([p, s]) => [p, visible(s)]));
 for (const c of m.clinics.filter((x) => x.status === 'operational')) {
   const hits = [];
@@ -173,7 +173,7 @@ for (const c of m.clinics) {
 }
 
 // 4g. Inhaber-bestätigte Status (Pins): ein versehentliches Zurücksetzen fällt sofort auf.
-const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-bahnhofstrasse': 'operational', 'winterthur-marktgasse': 'operational' }; // Marktgasse geöffnet laut Inhaber (17.11.2026)
+const PINS = { basel: 'operational', bern: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-bahnhofstrasse': 'operational', 'winterthur-marktgasse': 'operational' }; // Bern Marktgasse 50 durch Inhaber als operativ bestätigt (17.11.2026)
 for (const [id, st] of Object.entries(PINS)) {
   const c = m.clinics.find((x) => x.id === id);
   ok(c?.status === st, `Pin: ${id} ist '${st}' (aktuell '${c?.status}')`);
