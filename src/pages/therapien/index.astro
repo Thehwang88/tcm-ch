@@ -1,7 +1,4 @@
 ---
-// /therapien - faithful 1:1 reproduction of the live SPA #page-therapien (rich design:
-// hero, "Wie wir behandeln" image cards with badges, Kräutertherapie feature, reviews,
-// CTA band). Captured from the SPA render.
 import SpaPage from '../../layouts/SpaPage.astro';
 import body from '../../data/therapien-body.html?raw';
 
@@ -9,119 +6,140 @@ const title = 'TCM-Methoden – Behandlungen bei TCM.ch';
 const description =
   'Die TCM-Behandlungsmethoden bei TCM.ch: von Akupunktur über Tuina bis Physiotherapie. Evidenzbasiert, EMR-/ASCA-anerkannt, in der ganzen Deutschschweiz.';
 
-// Spezialisierte Unterseiten, die der gecapturte Hub nicht verlinkt (Ohrakupunktur,
-// Dauernadeln, Ear Seeds, Moxibustion, Kräutertherapie, Elektroakupunktur). Ohne diesen
-// Block hängen sie nur an der Navigation und werden entsprechend selten gecrawlt.
-const SPEZIAL = [
-  { href: '/therapien/ohrakupunktur/', label: 'Ohrakupunktur' },
-  { href: '/therapien/dauernadeln/', label: 'Dauernadeln' },
-  { href: '/therapien/ear-seeds/', label: 'Ear Seeds' },
-  { href: '/therapien/moxibustion/', label: 'Moxibustion' },
-  { href: '/therapien/kraeutertherapie/', label: 'Kräutertherapie' },
-  { href: '/therapien/elektroakupunktur/', label: 'Elektroakupunktur' },
-  { href: '/therapien/gesichtsakupunktur/', label: 'Gesichtsakupunktur' },
-  { href: '/therapien/schroepfen/hijama/', label: 'Hijama' },
-  { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gesichts-Gua-Sha' },
-];
-const spezialBlock =
-  '<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal">' +
-  '<div class="section-label">Spezialisierte Behandlungen</div>' +
-  '<h2 class="section-title">Feiner sortiert</h2>' +
-  '<p class="section-sub">Einzelne Methoden im Detail, jeweils mit Ablauf, Grenzen und Kassendeckung.</p>' +
-  '<div class="cl-links">' + SPEZIAL.map((s) => `<a href="${s.href}" class="cl-chip">${s.label}</a>`).join('') + '</div>' +
-  '</div></section>';
-
 const schema = {
   '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description,
   url: 'https://tcm.ch/therapien/', inLanguage: 'de-CH',
   isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
 };
 ---
-<SpaPage title={title} description={description} path="/therapien" body={`<div class="therapie-scope">${body + spezialBlock}</div>`} schema={schema} />
-
+<SpaPage title={title} description={description} path="/therapien" body={body} schema={schema} />
 
 <style is:global>
-  /* Therapien overview — homepage-like, calmer desktop / mobile hero.
-     Scoped to this hub; its image, method cards and specialist links stay. */
-  #page-therapien .hh-left{
-    padding:clamp(34px,4.2vw,68px) clamp(28px,4vw,68px)!important;
-    justify-content:center;
+  /* Therapy overview mirrors the homepage cards while keeping its own compact
+     H1, specialty links and a single booking entry. No legacy hero or badge rows. */
+  #page-therapien .therapy-overview{
+    padding:clamp(24px,3vw,42px) 0 clamp(28px,4.2vw,60px)!important;
+    background:#fff;
   }
-  #page-therapien .hh-crumb{
-    font-size:12px!important;margin:0 0 22px!important;
-    color:var(--tcm-text-soft,#505453)!important;
+  #page-therapien .therapy-overview .svc-header{
+    display:block;margin-bottom:23px!important;
   }
-  #page-therapien .hh-eyebrow{
-    font-size:11.5px!important;letter-spacing:.13em!important;
-    margin:0 0 17px!important;
-    color:var(--tcm-text-soft,#505453)!important;
+  #page-therapien .therapy-overview .section-title{
+    margin:0;font-size:clamp(34px,3.7vw,54px)!important;
+    line-height:1.12;letter-spacing:-.04em;color:#111A1C;
   }
-  #page-therapien .hh-h1{
-    max-width:18ch;
-    font-size:clamp(39px,3.8vw,60px)!important;
-    line-height:1.075!important;
-    letter-spacing:-.043em!important;
-    text-wrap:balance;
-    margin:0 0 24px!important;
+  #page-therapien .svc-grid{
+    display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:14px!important;margin:0!important;align-items:stretch;
   }
-  #page-therapien .hh-lead{
-    max-width:49ch;font-size:clamp(16px,1.25vw,19px)!important;
-    line-height:1.53!important;margin:0 0 27px!important;
+  #page-therapien a.svc-card{
+    display:flex;flex-direction:column;min-width:0;overflow:hidden;
+    border:1px solid #E1E7EC!important;border-radius:18px!important;
+    background:#fff!important;color:inherit!important;text-decoration:none!important;
+    box-shadow:none!important;
+    transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
   }
-  #page-therapien .hh-ctas{
-    display:flex;gap:12px;flex-wrap:wrap;
-    margin:0 0 20px!important;
+  #page-therapien a.svc-card:hover{
+    border-color:#B7CADB!important;box-shadow:0 9px 26px rgba(14,36,52,.08)!important;
+    transform:translateY(-2px)!important;
   }
-  #page-therapien .hh-ctas > *{
-    box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
-    min-height:52px;padding:12px 24px!important;
-    font-size:15px!important;font-weight:750!important;
-    border-radius:999px!important;
-    box-shadow:none!important;text-decoration:none!important;
-    text-align:center;line-height:1.3;
+  #page-therapien a.svc-card:focus-visible,
+  #page-therapien .therapy-specialists a:focus-visible,
+  #page-therapien .therapy-help-button:focus-visible{
+    outline:3px solid #1769B1;outline-offset:3px;
   }
-  #page-therapien .hh-ctas .hh-btn-primary{
-    background:var(--tcm-primary,#1769B1)!important;color:#fff!important;
-    border:2px solid var(--tcm-primary,#1769B1)!important;
+  #page-therapien .svc-photo-wrap{
+    display:block;position:relative;aspect-ratio:8/5!important;height:auto!important;
+    flex-shrink:0;overflow:hidden;
   }
-  #page-therapien .hh-ctas .hh-btn-ghost{
-    background:transparent!important;color:var(--tcm-ink,#171B1A)!important;
-    border:2px solid var(--tcm-ink,#171B1A)!important;
+  #page-therapien .svc-photo{
+    display:block;width:100%!important;height:100%!important;
+    aspect-ratio:auto!important;object-fit:cover!important;filter:none!important;
   }
-  #page-therapien .hh-trust{
-    display:flex;flex-wrap:wrap;gap:9px 20px;
-    font-size:12.5px!important;line-height:1.45!important;margin:0!important;
+  #page-therapien .svc-body{
+    display:flex;flex:1;flex-direction:column;align-items:stretch;
+    min-width:0;gap:7px!important;padding:16px 17px 17px!important;
   }
-  #page-therapien .hh-ctas > *:focus-visible{
-    outline:3px solid var(--tcm-primary,#1769B1);outline-offset:3px;
+  #page-therapien .svc-name{
+    margin:0!important;font-size:clamp(19px,1.55vw,23px)!important;
+    font-weight:800!important;letter-spacing:-.03em;line-height:1.2;
+    color:#111A1C!important;
   }
-  @media(max-width:767px){
-    #page-therapien .hh-left{
-      padding:25px clamp(20px,6.7vw,28px) 23px!important;
+  #page-therapien .svc-tagline{
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+    overflow:hidden;min-height:2.9em;margin:0!important;
+    font-size:14px!important;font-weight:400!important;line-height:1.45;
+    color:#586876!important;
+  }
+  #page-therapien .svc-cta{
+    display:inline-flex;justify-content:flex-start;align-items:center;gap:6px;
+    align-self:flex-start;margin-top:auto;padding:10px 0 0!important;
+    border:0!important;color:#1769B1!important;
+    font-size:14px!important;font-weight:600!important;line-height:1.3;
+  }
+  #page-therapien .svc-cta svg{
+    flex:0 0 14px;width:14px;height:14px;
+    color:#1769B1;transition:transform .18s ease;
+  }
+  #page-therapien .svc-card:hover .svc-cta svg{transform:translateX(2px)}
+  #page-therapien .therapy-specialists{
+    display:flex;align-items:baseline;flex-wrap:wrap;gap:10px 20px;
+    margin-top:26px;padding-top:22px;border-top:1px solid #E7EBEF;
+  }
+  #page-therapien .therapy-specialists-label{
+    font-size:13px;font-weight:700;color:#435362;
+  }
+  #page-therapien .therapy-specialists-links{
+    display:flex;gap:9px 18px;flex-wrap:wrap;
+  }
+  #page-therapien .therapy-specialists a{
+    color:#1769B1;text-decoration:underline;text-underline-offset:3px;
+    text-decoration-color:rgba(23,105,177,.32);font-size:13px;
+  }
+  #page-therapien .therapy-help{
+    padding:28px 0 35px;background:#F5F8FA;
+  }
+  #page-therapien .therapy-help-inner{
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  #page-therapien .therapy-help h2{
+    margin:0 0 5px;font-size:clamp(21px,2vw,28px);
+    font-weight:800;line-height:1.2;color:#111A1C;
+  }
+  #page-therapien .therapy-help p{
+    margin:0;font-size:15px;line-height:1.5;color:#586876;
+  }
+  #page-therapien .therapy-help-button{
+    display:inline-flex;justify-content:center;align-items:center;
+    flex-shrink:0;min-height:48px;padding:12px 23px;border:0;
+    border-radius:999px;background:#1769B1;color:#fff;
+    font-size:15px;font-weight:700;cursor:pointer;
+  }
+  #page-therapien .therapy-help-button:hover{background:#145A9B}
+  @media(max-width:1050px){
+    #page-therapien .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  }
+  @media(max-width:560px){
+    #page-therapien .therapy-overview{padding:21px 0 30px!important}
+    #page-therapien .therapy-overview .svc-header{margin-bottom:17px!important}
+    #page-therapien .svc-grid{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+    #page-therapien a.svc-card{
+      display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr);
+      min-height:144px;border-radius:15px!important;
     }
-    #page-therapien .hh-crumb{display:none!important}
-    #page-therapien .hh-eyebrow{margin:0 0 12px!important}
-    #page-therapien .hh-h1{
-      font-size:clamp(35px,9vw,46px)!important;
-      margin:0 0 20px!important;
-    }
-    #page-therapien .hh-lead{
-      font-size:15.5px!important;margin:0 0 22px!important;
-    }
-    #page-therapien .hh-ctas{
-      flex-direction:column;align-items:stretch;gap:10px!important;
-      margin:0 0 15px!important;
-    }
-    #page-therapien .hh-ctas > *{
-      width:100%;min-height:52px;font-size:17px!important;
-    }
-    #page-therapien .hh-trust{
-      font-size:12.5px!important;gap:7px 15px!important;
-    }
-    #page-therapien .hh-right{height:auto!important;min-height:0!important}
-    #page-therapien .hh-right img{
-      position:static!important;width:100%!important;height:auto!important;
-      aspect-ratio:4/3;object-fit:cover;
-    }
+    #page-therapien .svc-photo-wrap{height:100%!important;min-height:144px;aspect-ratio:auto!important}
+    #page-therapien .svc-photo{height:100%!important;aspect-ratio:auto!important}
+    #page-therapien .svc-body{padding:13px 14px!important;gap:5px!important}
+    #page-therapien .svc-name{font-size:clamp(17px,4.5vw,20px)!important;line-height:1.22}
+    #page-therapien .svc-tagline{min-height:0;font-size:13px!important;line-height:1.4}
+    #page-therapien .svc-cta{padding:7px 0 0!important;font-size:13px!important}
+    #page-therapien .therapy-specialists{margin-top:20px;padding-top:18px}
+    #page-therapien .therapy-specialists-links{gap:9px 15px}
+    #page-therapien .therapy-help-inner{flex-direction:column;align-items:stretch;gap:18px}
+    #page-therapien .therapy-help-button{width:100%}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #page-therapien a.svc-card,#page-therapien .svc-cta svg{transition:none!important}
+    #page-therapien a.svc-card:hover{transform:none!important}
   }
 </style>
