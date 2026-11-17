@@ -29,7 +29,7 @@ export const REVIEWED_DATE = '2026-06-09';
 
 // Shared FAQ appended to every condition page (display + FAQPage schema).
 export const INSURANCE_FAQ: ConditionFaq = {
-  q: 'Is acupuncture covered by my insurance?',
+  q: 'How can I check acupuncture insurance coverage?',
   a: 'Not through basic insurance. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. How much you get back depends on your individual policy; we tell you the treating practitioner\'s recognition (EMR/ASCA) before your first appointment. Our insurance guide explains the basic-versus-supplementary split in plain English.',
 };
 
@@ -59,7 +59,7 @@ export const conditions: Condition[] = [
     faqs: [
       { q: 'Does acupuncture work for back pain?', a: 'For some people with chronic lower-back pain it offers short-term relief; for others it does little. Reviews of the research are mixed and part of the benefit may be non-specific. It is reasonable to try as a complement to staying active - but we cannot promise it will work for you.' },
       { q: 'How many sessions will I need?', a: 'There is no fixed number. Many people start with a short course of about four to six sessions and we reassess whether it is helping. If you see no change after several treatments, we will say so honestly rather than keep going indefinitely.' },
-      { q: 'Does it hurt?', a: 'The needles are very fine and most people feel only a small prick or a dull, heavy sensation. It is usually far more comfortable than the back pain itself. Tell your practitioner if anything feels sharp and they will adjust.' },
+      { q: 'What does an acupuncture session feel like?', a: 'The needles are very fine and most people feel only a small prick or a dull, heavy sensation. It is usually far more comfortable than the back pain itself. Tell your practitioner if anything feels sharp and they will adjust.' },
     ],
     related: ['neck-pain', 'migraine-headaches', 'stress-burnout'],
   },
