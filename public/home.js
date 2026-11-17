@@ -151,7 +151,7 @@ function handleComplaintInput(){
 var field = document.getElementById('heroComplaintField');
 var val = field ? field.value.trim() : '';
 // Zürich flagship routing: recommend Zürich City when no specific location given
-var hasLocation = val.length > 0 && /zürich|winterthur|kreuzlingen|frauenfeld|basel|st\.gallen|oerlikon|höngg|volketswil|wil\b/i.test(val);
+var hasLocation = val.length > 0 && /zürich|winterthur|kreuzlingen|frauenfeld|basel|st\.gallen|oerlikon|höngg|wil\b/i.test(val);
 var zuerichHint = '';
 var msg = val.length > 0
 ? 'Hoi, ich habe aktuell ' + val + ' und bin mir nicht sicher, welche Behandlung oder Praxis für mich am besten ist. Könnt ihr mir kurz weiterhelfen?' + zuerichHint
