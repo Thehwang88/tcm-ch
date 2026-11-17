@@ -64,7 +64,7 @@ export interface Standort {
   vorVertrag?: boolean;
   /** Betriebsstatus nicht bestätigt (clinic.status 'review'); impliziert planned. Ebenfalls abgeleitet. */
   review?: boolean;
-  /** Meta-Robots noindex,follow (Seite bleibt online, nicht in der Sitemap; z. B. Marktgasse bis zur Eröffnung). */
+  /** Optional: Meta-Robots noindex,follow für nicht indexierbare Sonderseiten. Operative Kliniken bleiben indexierbar. */
   noindex?: boolean;
   /** Buchung läuft über eine Partnerpraxis (Winterthur: Praxis Hwang bis zur Eröffnung Marktgasse 2027): Hinweis + Button im Hero,
    *  Umleitungskarte statt Anfragebox/Formular, kein OneDoc, Sticky-CTA auf die Partner-URL. */
@@ -416,9 +416,9 @@ export const standorte: Record<string, Standort> = {
         "desc": "Am Bodensee"
       },
       {
-        "slug": "winterthur-muenzgasse",
+        "slug": "winterthur-marktgasse",
         "plz": "8400",
-        "city": "Winterthur Münzgasse",
+        "city": "Winterthur Marktgasse",
         "desc": "Nahe Zürich"
       },
       {
@@ -570,9 +570,9 @@ export const standorte: Record<string, Standort> = {
         "desc": "Zürich Nord"
       },
       {
-        "slug": "winterthur-muenzgasse",
+        "slug": "winterthur-marktgasse",
         "plz": "8400",
-        "city": "Winterthur Münzgasse",
+        "city": "Winterthur Marktgasse",
         "desc": "Nahe Zürich"
       },
       {
@@ -748,8 +748,6 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "winterthur-marktgasse": {
-    "noindex": true,
-    "partnerUmleitung": { "hinweis": "Eröffnung 2027 · Bis dahin empfangen wir dich in der Praxis Hwang an der Münzgasse 2", "cta": "Jetzt Termin in Winterthur", "href": "https://www.hwang.ch/standorte/winterthur" },
     "cro": true,
     "v2": true,
     "praxisBilder": [
@@ -785,7 +783,7 @@ export const standorte: Record<string, Standort> = {
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere <strong>TCM-Praxis an der Marktgasse 78</strong> liegt direkt in der Altstadt. Angeboten werden Methoden der Traditionellen Chinesischen Medizin wie <a href='/therapien/akupunktur/'><strong>Akupunktur</strong></a>, <a href='/therapien/schroepfen/'><strong>Schröpfen</strong></a>, <a href='/therapien/tuina/'><strong>Tuina-Massage</strong></a>, <a href='/therapien/kraeutertherapie/'><strong>chinesische Kräutertherapie</strong></a>, Moxibustion und Elektroakupunktur. Medizinische und entspannende Angebote findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>; was eine Akupunktursitzung in Winterthur kostet und wie der erste Termin abläuft, steht unter <a href='/wissen/akupunktur-winterthur-kosten/'>Akupunktur Winterthur: Kosten</a> und <a href='/wissen/tcm-winterthur-erfahrungen-ablauf/'>Ablauf &amp; Erfahrungen</a>.</p><h2>Bis zur Eröffnung: Praxis Hwang an der Münzgasse 2</h2><p>Die Praxis an der Marktgasse 78 eröffnet 2027. Bis dahin empfangen wir dich wenige Gehminuten entfernt in der <a href='https://www.hwang.ch/standorte/winterthur' rel='noopener'>Praxis Hwang an der Münzgasse 2</a>, Termine direkt über hwang.ch.</p>",
+      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere <strong>TCM-Praxis an der Marktgasse 78</strong> liegt direkt in der Altstadt. Angeboten werden Methoden der Traditionellen Chinesischen Medizin wie <a href='/therapien/akupunktur/'><strong>Akupunktur</strong></a>, <a href='/therapien/schroepfen/'><strong>Schröpfen</strong></a>, <a href='/therapien/tuina/'><strong>Tuina-Massage</strong></a>, <a href='/therapien/kraeutertherapie/'><strong>chinesische Kräutertherapie</strong></a>, Moxibustion und Elektroakupunktur. Medizinische und entspannende Angebote findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>; was eine Akupunktursitzung in Winterthur kostet und wie der erste Termin abläuft, steht unter <a href='/wissen/akupunktur-winterthur-kosten/'>Akupunktur Winterthur: Kosten</a> und <a href='/wissen/tcm-winterthur-erfahrungen-ablauf/'>Ablauf &amp; Erfahrungen</a>.</p><p>Die Praxis ist geöffnet. Für einen Ersttermin oder ein kostenloses Kennenlerngespräch kannst du uns direkt über das Formular, telefonisch oder per WhatsApp kontaktieren. Wir melden uns mit einem passenden Terminvorschlag für die Marktgasse 78.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – gut erreichbar aus ganz Winterthur und Umgebung</h2><p>Die Marktgasse erreichst du aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Veltheim</strong>, <strong>Töss</strong>, <strong>Oberwinterthur</strong>, <strong>Seen</strong>, <strong>Wülflingen</strong>, <strong>Mattenbach</strong> und <strong>Hegi</strong>. Aus umliegenden Gemeinden wie Seuzach, Wiesendangen, Elsau, Neftenbach, Pfungen, Brütten, Hettlingen und Illnau-Effretikon ist die Altstadt gut erreichbar.</p>"
     },
     "anfahrt": {
@@ -820,17 +818,16 @@ export const standorte: Record<string, Standort> = {
       { "q": "Wie viele Sitzungen brauche ich?", "a": "Bei akuten Beschwerden zeigt sich meist nach vier bis sechs Terminen, ob die Behandlung greift; chronische Themen brauchen eher acht bis zwölf Sitzungen. Nach vier Sitzungen ziehen wir eine ehrliche Zwischenbilanz." },
       { "q": "Wie erreiche ich die Praxis an der Marktgasse?", "a": "Zu Fuss vom Bahnhof Winterthur durch die Altstadt in wenigen Minuten. Die Altstadt ist weitgehend Fussgängerzone; Parkhäuser findest du am Altstadtrand." },
       { "q": "Bietet ihr an der Marktgasse auch Tuina oder Massage an?", "a": "Ja. Tuina gehört als manuelle Methode der TCM zum Angebot und lässt sich mit Akupunktur in einer Sitzung kombinieren. Medizinische und entspannende Massagen in Winterthur findest du mit Dauer und Preisen auf der Seite Massage Winterthur." },
-      { "q": "Wo werde ich bis zur Eröffnung der Marktgasse behandelt?", "a": "In der Praxis Hwang an der Münzgasse 2, wenige Gehminuten von der Marktgasse 78 entfernt. Termine dort vergibt hwang.ch direkt; die Praxis an der Marktgasse eröffnet 2027." }
+      { "q": "Wie buche ich einen Termin an der Marktgasse?", "a": "Du kannst direkt das Anfrageformular auf dieser Seite ausfüllen, uns anrufen oder per WhatsApp schreiben. Wir melden uns mit einem Terminvorschlag für die Praxis an der Marktgasse 78." }
     ],
     "wissenLink": { "href": "/wissen/tcm-winterthur-erfahrungen-ablauf/", "label": "Erfahrungen & Ablauf", "sub": "Wie eine Akupunktur-Behandlung in Winterthur abläuft, was sie kostet und was die Studien hergeben." },
     "massageLink": { "href": "/massage-winterthur/", "text": "Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Dann findest du Angebote, Dauer und Preise auf der Seite", "anchor": "Massage in Winterthur" },
     "nearby": [
       {
-        "slug": "winterthur-muenzgasse",
-        "plz": "8400",
-        "city": "Praxis Hwang Winterthur",
-        "desc": "Partnerpraxis · Münzgasse 2",
-        "href": "https://www.hwang.ch/standorte/winterthur"
+        "slug": "volketswil",
+        "plz": "8604",
+        "city": "Volketswil",
+        "desc": "Zürcher Oberland"
       },
       {
         "slug": "frauenfeld",
@@ -969,7 +966,7 @@ export const standorte: Record<string, Standort> = {
     "nearby": [
       { "slug": "zuerich-bahnhofstrasse", "plz": "8001", "city": "Zürich Bahnhofstrasse", "desc": "Bahnhofstrasse 37, Zürich City" },
       { "slug": "zuerich-hoengg", "plz": "8049", "city": "Zürich Höngg", "desc": "Zürich West" },
-      { "slug": "winterthur-muenzgasse", "plz": "8400", "city": "Winterthur Münzgasse", "desc": "Nahe Zürich" }
+      { "slug": "winterthur-marktgasse", "plz": "8400", "city": "Winterthur Marktgasse", "desc": "Nahe Zürich" }
     ]
   },
   // Bahnhofstrasse: Live-Fassung seit Mietvertrag (02.11.2026); VOR_VERTRAG greift nur bei clinic.vorVertrag.

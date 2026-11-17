@@ -69,8 +69,8 @@ const homeCityMeta: Record<string, {
   'st-gallen': {
     name: 'St. Gallen', hint: 'Oberer Graben 22 · St. Gallen', action: 'Praxis ansehen',
   },
-  'winterthur-muenzgasse': {
-    name: 'Winterthur', hint: 'Praxis Hwang · Münzgasse 2', action: 'Partnerpraxis ansehen',
+  'winterthur-marktgasse': {
+    name: 'Winterthur', hint: 'Marktgasse 78 · Winterthurer Altstadt', action: 'Praxis ansehen',
   },
   'basel': {
     name: 'Basel', hint: 'Steinenvorstadt 73 · Basel', action: 'Standort ansehen',
@@ -121,7 +121,7 @@ const homeClinicCardHtml = (id: string) => {
 const homeHtmlCards = homeHtmlBase
   .replace('<!--sc:home-zuerich-->', homeClinicCardHtml('zuerich-hub'))
   .replace('<!--sc:home-weitere-->',
-    ['st-gallen', 'winterthur-muenzgasse', 'basel', 'bern', 'luzern']
+    ['st-gallen', 'winterthur-marktgasse', 'basel', 'bern', 'luzern']
       .map(homeClinicCardHtml).join(''));
 
 if (/<!--sc:/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig gerendert');

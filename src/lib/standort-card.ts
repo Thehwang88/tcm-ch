@@ -61,6 +61,8 @@ export const cardHinweis = (c: Clinic) => c.hinweis ?? [c.street, c.city].filter
 export const cardHref = (c: Clinic, lang: Lang = 'de') => {
   if (c.karte?.href) return c.karte.href;
   const st = cardStatus(c);
+  // Legacy TCM.ch Münzgasse URL is now superseded by the live Marktgasse clinic.
+  if (isRedirectedClinic(c.id)) return lang === 'en' ? '/en/locations/winterthur-marktgasse/' : '/standorte/winterthur-marktgasse/';
   if (st === 'partner') return c.betreiber?.url ?? HWANG_WINTERTHUR_URL;
   if (st === 'einzugsgebiet') { const n = clinicById(c.karte?.naechste ?? ''); return cardHref(n, lang); }
   if (st === '2027') return lang === 'en' ? enLocationPath(c.id) : `/standorte/${c.id}/`;
