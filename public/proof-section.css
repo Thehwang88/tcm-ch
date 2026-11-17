@@ -8,7 +8,7 @@
 }
 #home-content #s-offer .proof-layout{
   display:grid;grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);
-  grid-template-areas:"intro metrics" "review metrics" "actions actions";
+  grid-template-areas:"intro metrics" "review metrics";
   column-gap:clamp(30px,5vw,86px);row-gap:24px;align-items:start;
 }
 #home-content #s-offer .proof-intro{grid-area:intro;min-width:0}
@@ -26,6 +26,7 @@
   display:block;font-size:clamp(64px,8vw,120px);white-space:nowrap;
   font-variant-numeric:tabular-nums;letter-spacing:-.065em;line-height:1.02;
 }
+#home-content #s-offer .proof-plus{font-size:.65em;vertical-align:.09em;margin-left:.03em}
 #home-content #s-offer .proof-heading-sub{
   display:block;font-size:clamp(29px,3.7vw,51px);font-weight:700;
   line-height:1.08;letter-spacing:-.05em;max-width:580px;
@@ -42,15 +43,8 @@
   justify-content:center;gap:8px;text-align:center;position:absolute;
   width:min(61%,310px);aspect-ratio:1;border:1px solid #A9CEE1;
   background:rgba(255,255,255,.20);color:#17242C;
-  border-radius:50%;padding:26px 19px;text-decoration:none!important;
-  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+  border-radius:50%;padding:26px 19px;
 }
-#home-content #s-offer .proof-metric:hover{
-  background:rgba(255,255,255,.65);border-color:#1769B1;
-  transform:translateY(-3px);
-}
-#home-content #s-offer .proof-metric:focus-visible,
-#home-content #s-offer .proof-cta:focus-visible,
 #home-content #s-offer .proof-review-source:focus-visible{
   outline:3px solid #1769B1;outline-offset:4px;
 }
@@ -91,32 +85,6 @@
   border:0;padding:0;margin:18px 0 0;color:#344958;
   font-size:15px;line-height:1.58;
 }
-#home-content #s-offer .proof-actions{
-  grid-area:actions;display:flex;align-items:center;justify-content:space-between;
-  gap:20px;padding-top:24px;border-top:1px solid #D3E4ED;
-}
-#home-content #s-offer .proof-actions strong{
-  font-size:20px;line-height:1.3;color:#17242C;font-weight:750;
-}
-#home-content #s-offer .proof-actions p{
-  font-size:14px;line-height:1.5;color:#516674;margin:5px 0 0;
-}
-#home-content #s-offer .proof-cta{
-  display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  min-height:52px;min-width:194px;padding:13px 24px;border:0;
-  border-radius:999px;cursor:pointer;font-family:var(--font-sans);
-  font-weight:750;font-size:15px;white-space:nowrap;
-  background:#1769B1;color:#fff;box-shadow:none;
-  transition:background .2s ease,transform .2s ease;
-}
-#home-content #s-offer .proof-cta:hover{background:#115A99;transform:translateY(-2px)}
-#home-content #s-offer .proof-source{
-  margin:21px 0 0;font-size:11px;line-height:1.55;color:#637786;
-  max-width:92ch;
-}
-#home-content #s-offer .proof-source a{
-  color:#365F7F;text-decoration:underline;text-underline-offset:2px;
-}
 @media(min-width:801px) and (max-width:1120px){
   #home-content #s-offer .proof-layout{column-gap:28px}
   #home-content #s-offer .proof-metrics{min-height:370px}
@@ -129,7 +97,7 @@
   #home-content #s-offer.proof-section{padding:34px 0 38px!important}
   #home-content #s-offer .proof-layout{
     grid-template-columns:minmax(0,1fr);
-    grid-template-areas:"intro" "metrics" "review" "actions";
+    grid-template-areas:"intro" "metrics" "review";
     gap:20px;
   }
   #home-content #s-offer .proof-heart{width:36px;height:36px;margin-bottom:12px}
@@ -149,8 +117,6 @@
   #home-content #s-offer .proof-metric-number{font-size:clamp(31px,5.5vw,49px)}
   #home-content #s-offer .proof-metric-label{font-size:12px}
   #home-content #s-offer .proof-review{padding:18px}
-  #home-content #s-offer .proof-actions{flex-direction:column;align-items:stretch;gap:14px}
-  #home-content #s-offer .proof-cta{width:100%}
 }
 @media(max-width:540px){
   #home-content #s-offer .proof-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -159,12 +125,4 @@
   #home-content #s-offer .proof-metric--right .proof-metric-label br{display:none}
   #home-content #s-offer .proof-review-source{font-size:11px;padding:8px 10px}
   #home-content #s-offer .proof-review blockquote{font-size:14px}
-  #home-content #s-offer .proof-actions strong{font-size:18px}
-  #home-content #s-offer .proof-source{font-size:10px}
-}
-@media(prefers-reduced-motion:reduce){
-  #home-content #s-offer .proof-metric,
-  #home-content #s-offer .proof-cta{transition:none!important}
-  #home-content #s-offer .proof-metric:hover,
-  #home-content #s-offer .proof-cta:hover{transform:none!important}
 }
