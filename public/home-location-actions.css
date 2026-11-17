@@ -1,0 +1,114 @@
+/* Homepage locations: Hwang-inspired patient action cards, TCM.ch palette.
+   Six cards, 3 desktop / 2 tablet / 1 phone; scoped to the DE homepage only. */
+#home-content #s-standorte .home-loc-grid--six-cities{
+  grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,25px);
+}
+#home-content #s-standorte .home-loc-card--hwang{
+  background:transparent;border:0;border-radius:0;box-shadow:none;
+  overflow:visible;min-width:0;align-self:stretch;
+}
+#home-content #s-standorte .home-loc-card--hwang:hover{
+  border:0;box-shadow:none;transform:none;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-visual{
+  display:block;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;
+  border-radius:18px;background:#E7EDF2;
+  box-shadow:0 2px 8px rgba(25,45,60,.04);
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center;
+  border-radius:0;transition:transform .25s ease;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-visual:hover .home-loc-img{
+  transform:scale(1.025);
+}
+#home-content #s-standorte .home-loc-visual-note{
+  position:absolute;left:12px;bottom:12px;padding:5px 9px;
+  background:rgba(255,255,255,.93);border-radius:7px;
+  font-size:11px;font-weight:700;color:#34495A;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-main{
+  align-items:center;justify-content:flex-start;text-align:center;
+  gap:0;padding:19px 9px 13px;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-name{
+  display:block;margin:0 0 12px;line-height:1.3;font-size:inherit;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-more{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;max-width:100%;box-sizing:border-box;
+  border:0;border-radius:999px;background:#1769B1;
+  color:#fff!important;padding:9px 18px;text-decoration:none!important;
+  font-size:clamp(17px,1.65vw,22px);font-weight:750;
+  line-height:1.2;white-space:normal;transition:background .15s ease;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-more:hover{
+  background:#105892;text-decoration:none!important;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-status{
+  margin:0 0 6px;color:#657782;font-weight:650;font-size:12px;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-address{
+  margin:2px auto 0;max-width:100%;min-height:43px;
+  color:#546B7B;font-size:clamp(13px,1.1vw,15px);
+  line-height:1.5;overflow-wrap:anywhere;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-actions{
+  display:flex;justify-content:center;align-items:flex-start;
+  gap:clamp(6px,.85vw,13px);padding:5px 0 0;margin:0;
+  width:100%;max-width:100%;box-sizing:border-box;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-action{
+  display:flex;flex:0 1 69px;min-width:0;min-height:69px;
+  flex-direction:column;align-items:center;justify-content:flex-start;
+  gap:6px;padding:9px 5px 5px;box-sizing:border-box;
+  border:0;border-radius:11px;background:transparent;
+  color:#1769B1!important;text-decoration:none!important;
+  transition:background .16s ease,transform .16s ease;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-action svg{
+  display:block;flex:0 0 27px;stroke:currentColor;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-action small{
+  display:block;font-size:11px;font-weight:700;line-height:1.15;
+  white-space:nowrap;color:#40586A;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-action:hover{
+  background:#E8F2F9;transform:translateY(-2px);color:#105892!important;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-action--calendar{
+  background:#EAF3FA;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-hours{
+  display:flex;flex-direction:column;align-items:center;
+  margin:10px 0 0;font-size:13px;line-height:1.5;
+  color:#536B7A;
+}
+#home-content #s-standorte .home-loc-card--hwang .home-loc-hours-label{
+  font-weight:700;color:#384F60;margin-bottom:3px;
+}
+#home-content #s-standorte .home-loc-card--hwang :is(.home-loc-action,.home-loc-more,.home-loc-visual):focus-visible{
+  outline:3px solid #1769B1;outline-offset:3px;
+}
+#home-content #s-standorte .home-loc-card--planned .home-loc-action--calendar{
+  background:#EDF1F4;color:#50697A!important;
+}
+@media(max-width:1000px){
+  #home-content #s-standorte .home-loc-grid--six-cities{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-address{font-size:14px}
+}
+@media(max-width:620px){
+  #home-content #s-standorte .home-loc-grid--six-cities{grid-template-columns:minmax(0,1fr);gap:23px}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-visual{border-radius:16px}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-main{padding:14px 8px 11px}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-address{min-height:auto}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-actions{padding-top:10px;gap:8px}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-action{flex-basis:70px;min-height:64px}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-hours{margin-top:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-img,
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-action{transition:none!important}
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-action:hover,
+  #home-content #s-standorte .home-loc-card--hwang .home-loc-visual:hover .home-loc-img{transform:none!important}
+}
