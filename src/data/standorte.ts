@@ -64,7 +64,7 @@ export interface Standort {
   vorVertrag?: boolean;
   /** Betriebsstatus nicht bestätigt (clinic.status 'review'); impliziert planned. Ebenfalls abgeleitet. */
   review?: boolean;
-  /** Meta-Robots noindex,follow (Seite bleibt online, nicht in der Sitemap; z. B. Marktgasse bis zur Eröffnung). */
+  /** Optional: Meta-Robots noindex,follow für nicht indexierbare Sonderseiten. Operative Kliniken bleiben indexierbar. */
   noindex?: boolean;
   /** Buchung läuft über eine Partnerpraxis (Winterthur: Praxis Hwang bis zur Eröffnung Marktgasse 2027): Hinweis + Button im Hero,
    *  Umleitungskarte statt Anfragebox/Formular, kein OneDoc, Sticky-CTA auf die Partner-URL. */
