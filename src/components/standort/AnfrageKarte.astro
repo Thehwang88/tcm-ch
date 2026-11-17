@@ -14,7 +14,7 @@ const wa = waHref(data.nap.telefon);
 const zhCRO = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].includes(data.slug) && !data.planned && !data.review;
 // Standort <select>: preselect the option matching this location (prefix match, so
 // "Winterthur Marktgasse" -> "Winterthur"), mirroring prefillStandort().
-const options = ['Zürich Bahnhofstrasse', 'Zürich Oerlikon', 'Zürich Höngg', 'Winterthur', 'Volketswil', 'Frauenfeld', 'Kreuzlingen', 'St. Gallen', 'Wil', 'Rorschach', 'Basel', 'Bern', 'Andere / in meiner Nähe'].flatMap(expandStandort);
+const options = ['Zürich Bahnhofstrasse', 'Zürich Oerlikon', 'Zürich Höngg', 'Winterthur', 'Frauenfeld', 'Kreuzlingen', 'St. Gallen', 'Wil', 'Rorschach', 'Basel', 'Bern', 'Andere / in meiner Nähe'].flatMap(expandStandort);
 // Geplante Standorte wählen ihre Vormerk-Option vor (src/data/standort-optionen.ts).
 const planned = PLANNED_PRESELECT[data.slug];
 let selIdx = planned ? options.findIndex((o) => o.value === planned) : -1;
