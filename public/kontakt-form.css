@@ -323,3 +323,113 @@ body.tcm-warm .kf .kf-opts .kf-opt--checkin:has(input:checked){
 .kf .kf-location-select:hover{border-color:#A6B8C7}
 .kf .kf-location-select:focus{border-color:#1769B1;box-shadow:0 0 0 3px rgba(23,105,177,.16)}
 .kf .kf-location-select optgroup{font-weight:750}
+
+/* Global design-only rollout: the friendly Hwang-inspired presentation.
+   Original form markup, choices, consent, validation, API and tracking unchanged.
+   Preserve campaign offer semantics and show Cloudflare Turnstile fully. */
+.kf[data-kf],.kf-huelle:has(form){
+  --kf-neon:#1769B1;--kf-ink:#172A37;--kf-mid:#60727F;
+  --kf-line:#E3E9EE;--kf-mint:#EAF3FA;--kf-mint-line:#D1E5F3;
+  width:100%;max-width:540px;box-sizing:border-box;
+  padding:clamp(19px,2.8vw,28px)!important;
+  background:#fff!important;color:#172A37;
+  border:1px solid #E3E9EC!important;border-radius:24px!important;
+  box-shadow:0 18px 50px rgba(28,53,63,.09)!important;
+  overflow:visible!important;
+}
+.kf[data-kf] .kf-kopf,.kf.kf--ruhig .kf-kopf,
+.kf-huelle .kf-kopf:not(#w2){
+  background:transparent!important;color:#172A37!important;
+  border:0!important;padding:0!important;margin:0 0 17px!important;
+}
+.kf[data-kf] .kf-h,.kf[data-kf] .kf-kopf .kf-h,
+.kf-huelle .kf-kopf .inline-form-title:not(#w2):not(#w3):not(#w4){
+  font:700 clamp(23px,2.2vw,29px)/1.23 var(--font-sans,'Figtree',system-ui,sans-serif)!important;
+  color:#172A37!important;letter-spacing:-.035em!important;
+  margin:0 0 8px!important;
+}
+.kf[data-kf] .kf-kopf-sub,.kf[data-kf] .kf-intro:not(.kf-step),
+.kf-huelle .kf-kopf-sub{
+  color:#657985!important;font-size:14px!important;line-height:1.5!important;
+}
+.kf[data-kf] .kf-fields{margin-top:15px!important}
+.kf[data-kf] .kf-field,.kf-huelle .form-group,.kf-huelle .kf-field{
+  margin-bottom:13px!important;
+}
+.kf[data-kf] .kf-label,
+.kf-huelle :is(.form-label,.kf-label):not(#w2):not(#w3):not(#w4){
+  margin:0 0 7px!important;color:#677888!important;
+  font-size:14px!important;font-weight:600!important;line-height:1.4!important;
+}
+.kf[data-kf] .kf-input,
+.kf-huelle :is(input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([name=website]),select,textarea):not(#w2):not(#w3):not(#w4){
+  box-sizing:border-box;width:100%;max-width:100%;min-height:50px!important;
+  padding:12px 15px!important;border:1px solid #E5EAED!important;
+  border-radius:16px!important;background-color:#F5F6F7!important;
+  box-shadow:none!important;color:#20323F!important;
+  font-size:16px!important;font-weight:500!important;line-height:1.4!important;
+}
+.kf[data-kf] .kf-input::placeholder,.kf-huelle :is(input,textarea)::placeholder{
+  color:#94A4B2!important;opacity:1;
+}
+.kf[data-kf] .kf-input:focus,
+.kf-huelle :is(input,select,textarea):not(#w2):not(#w3):not(#w4):focus{
+  background-color:#fff!important;border-color:#1769B1!important;
+  box-shadow:0 0 0 3px rgba(23,105,177,.14)!important;outline:none!important;
+}
+.kf[data-kf] .kf-input[aria-invalid="true"],
+.kf-huelle :is(input,select,textarea)[aria-invalid="true"]{
+  border-color:#B3261E!important;
+}
+.kf[data-kf] .kf-location-select{
+  min-height:50px!important;height:auto!important;
+  padding-left:15px!important;padding-right:44px!important;
+  background-color:#F5F6F7!important;background-position:right 15px center;
+}
+.kf[data-kf] .kf-textarea,.kf-huelle textarea:not(#w2):not(#w3):not(#w4){
+  min-height:110px!important;resize:vertical;
+}
+.kf[data-kf] .kf-btn--primary,
+.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4){
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;min-height:54px!important;padding:13px 18px!important;
+  background:#1769B1!important;color:#fff!important;
+  border:1px solid #1769B1!important;border-radius:999px!important;
+  box-shadow:none!important;font-size:16px!important;font-weight:750!important;
+  line-height:1.25!important;text-transform:none!important;letter-spacing:0!important;
+}
+.kf[data-kf] .kf-btn--primary:hover,
+.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover{
+  background:#115890!important;border-color:#115890!important;
+}
+.kf[data-kf] .kf-opts .kf-opt{border-radius:16px;border-width:1px}
+.kf[data-kf] .kf-opts .kf-opt--checkin{background:#E8F2FA!important}
+.kf[data-kf] .kf-opts .kf-opt--behandlung{background:#fff!important}
+.kf[data-kf] .kf-opts .kf-opt.is-checked{
+  border-color:#1769B1!important;box-shadow:inset 0 0 0 1px #1769B1!important;
+}
+.kf[data-kf] :is(a,button,input,textarea,select):focus-visible{
+  outline:3px solid #1769B1;outline-offset:3px;
+}
+.kf[data-kf] .kf-ts{overflow:visible!important;max-width:100%}
+.kf[data-kf] :is(.kf-fhint,.kf-req,.kf-note,.kf-legal){
+  font-size:12.5px!important;line-height:1.45!important;color:#697F8C!important;
+}
+/* Inline receipt is visible if the shared confirmation dialog cannot open. */
+.kf[data-kf]:has(>.kf-success){display:grid;align-items:center;min-height:245px}
+.kf[data-kf] .kf-success{
+  width:100%;max-width:460px;margin-inline:auto;
+  padding:20px 8px!important;scroll-margin-block:80px;
+}
+.kf[data-kf] .kf-success-ic{background:#E9F3FB;color:#1769B1}
+@media(max-width:600px){
+  .kf[data-kf],.kf-huelle:has(form){
+    padding:21px 17px!important;border-radius:20px!important;
+    box-shadow:0 12px 32px rgba(28,53,63,.09)!important;
+  }
+  .kf[data-kf] .kf-h{font-size:clamp(22px,6vw,27px)!important}
+  .kf[data-kf] .kf-input{padding:12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .kf[data-kf] .kf-opt{transition:none!important}
+}

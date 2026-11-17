@@ -12,6 +12,19 @@
   box-shadow:0 24px 86px rgba(16,38,53,.24);
   font-family:inherit;
 }
+/* Always center the success dialog in the visible viewport, irrespective
+ * of a sticky site header, previous page scroll or booking-sheet position.
+ * Native showModal keeps it in the top layer and traps focus. */
+.tcm-patient-success[open] {
+  position:fixed!important;
+  inset:auto!important;
+  top:50%!important;
+  left:50%!important;
+  margin:0!important;
+  transform:translate(-50%,-50%)!important;
+  width:min(500px,calc(100vw - 28px));
+  max-height:calc(100dvh - 20px);
+}
 .tcm-patient-success::backdrop { background:rgba(13,27,40,.62); }
 .tcm-patient-success .tps-panel {
   display:flex;
