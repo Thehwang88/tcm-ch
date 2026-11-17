@@ -29,7 +29,7 @@
       '<label class="kf-label" for="kf-home-service">Dienstleistung <span class="kf-star" aria-hidden="true">*</span></label>' +
       '<select class="kf-input kf-select" id="kf-home-service" data-kf-service required aria-describedby="kf-home-service-err">' +
       '<option value="">Dienstleistung auswählen</option>' +
-      '<option value="checkin">Gratis 30-Minuten-Kennenlernen</option>' +
+      '<option value="checkin">Gratis 30 Min. Kennenlernen</option>' +
       '<option value="behandlung">Akupunktur / TCM-Behandlung</option>' +
       '<option value="massage">Massage</option>' +
       '<option value="beratung">Ich bin unsicher – bitte beraten</option>' +
@@ -48,15 +48,19 @@
 
     function checkinAllowed() {
       var current = locationSelect.options[locationSelect.selectedIndex];
-      return !!(current && current.getAttribute('data-art') === 'behandlung' && current.getAttribute('data-checkin') === '1');
+      // Allow the user to choose the free consultation BEFORE selecting a location.
+      // After choosing a concrete clinic, its existing check-in eligibility still applies.
+      return !locationSelect.value || !!(current && current.getAttribute('data-art') === 'behandlung' && current.getAttribute('data-checkin') === '1');
     }
     function updateAvailability() {
       var current = locationSelect.options[locationSelect.selectedIndex];
       var nonTreatment = !!(current && current.getAttribute('data-art') && current.getAttribute('data-art') !== 'behandlung');
       service.hidden = nonTreatment;
       var checkinOption = serviceSelect.querySelector('option[value="checkin"]');
-      checkinOption.disabled = !!current && !checkinAllowed();
-      if (serviceSelect.value === 'checkin' && checkinOption.disabled) {
+      // Never render the offer as a disabled dropdown row. If a chosen clinic
+      // does not offer check-in, show a clear inline message instead.
+      checkinOption.disabled = false;
+      if (serviceSelect.value === 'checkin' && !checkinAllowed()) {
         serviceSelect.value = '';
         radios.forEach(function (r) { r.checked = false; });
         err.textContent = 'Gratis Kennenlernen an diesem Standort nicht verfügbar. Bitte wähle eine andere Dienstleistung oder Praxis.';
