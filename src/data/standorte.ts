@@ -227,8 +227,8 @@ export const standorte: Record<string, Standort> = {
       mapsDirections: 'https://www.google.com/maps/dir/?api=1&destination=Marktgasse%2050%2C%203011%20Bern%2C%20Schweiz',
       // Operative Öffnungszeiten wie in der kanonischen Klinikdatei locations.ts.
       oeffnungszeiten: [
-        { tag: 'Mo–Sa', zeit: '07:30–19:30 Uhr' },
-        { tag: 'So', zeit: '08:00–17:00 Uhr' },
+        { tag: 'Mo–Sa', zeit: '7:30–19:30 Uhr' },
+        { tag: 'So', zeit: '8:00–17:00 Uhr' },
       ],
     },
     intro: {
