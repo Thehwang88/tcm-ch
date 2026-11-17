@@ -32,6 +32,11 @@
 /styles/tokens.css
   Cache-Control: no-cache
 
+# Deployment fingerprint (scripts/write-build-version.mjs): always fresh, never indexed.
+/version.json
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
 # Preview-Deploys (*.pages.dev) nicht indexieren
 https://:project.pages.dev/*
   X-Robots-Tag: noindex

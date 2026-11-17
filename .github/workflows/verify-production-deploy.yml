@@ -1,0 +1,56 @@
+name: Verify production deploy
+
+# A green build is not a deploy. After every push to main this job waits until
+# https://tcm.ch/version.json (written at build time by scripts/write-build-version.mjs)
+# reports this commit or a newer main commit, then smoke-tests key public pages.
+# If Cloudflare Workers Builds never picks the push up, this job fails visibly.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Production serves this commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Wait for tcm.ch to serve this commit
+        env:
+          EXPECTED: ${{ github.sha }}
+        run: |
+          set -u
+          deadline=$((SECONDS + 900))
+          while :; do
+            live=$(curl -fsS --max-time 20 -H 'Cache-Control: no-cache' "https://tcm.ch/version.json?ci=${GITHUB_RUN_ID}-${SECONDS}" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{process.stdout.write(JSON.parse(s).commit||'')}catch{}})" || true)
+            if [ "$live" = "$EXPECTED" ]; then echo "✓ tcm.ch serves $EXPECTED"; break; fi
+            if [ -n "$live" ] && git cat-file -e "$live^{commit}" 2>/dev/null && git merge-base --is-ancestor "$EXPECTED" "$live"; then
+              echo "✓ tcm.ch serves newer main commit $live (contains $EXPECTED)"; break
+            fi
+            if [ $SECONDS -ge $deadline ]; then
+              echo "::error::tcm.ch still serves '${live:-no version.json}' 15 min after push of $EXPECTED. Cloudflare Workers Builds (tcm-ch-2) did not deploy this commit: check the Workers Builds history and start a build of main in the Cloudflare dashboard."
+              exit 1
+            fi
+            echo "… live=${live:-none}, waiting"; sleep 30
+          done
+      - name: Smoke-test public pages
+        run: |
+          fail=0
+          for p in / /therapien/ /standorte/ /kontakt/ /akupunktur-tcm-zuerich/ /akupunktur-tcm-st-gallen/ /en/ /sitemap.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "https://tcm.ch${p}")
+            echo "$code https://tcm.ch${p}"; [ "$code" = "200" ] || fail=1
+          done
+          home=$(curl -fsS --max-time 30 https://tcm.ch/)
+          echo "$home" | grep -q 'id="mainNav"' || { echo "::error::Homepage header missing"; fail=1; }
+          echo "$home" | grep -q 'href="tel:+41775236122"' || { echo "::error::Homepage phone link missing"; fail=1; }
+          exit $fail
