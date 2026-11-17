@@ -3,15 +3,15 @@
 #home-content #home-contact-form .home-kontakt-form-panel .kf.kf--ruhig{
   --kf-ink:#182832;--kf-line:#E5EAEC;--kf-neon:#1769B1;
   --kf-px:clamp(20px,3vw,35px);
-  padding:clamp(20px,3vw,34px)!important;
-  border:1px solid #E7ECEF!important;border-radius:27px!important;
-  background:#fff!important;box-shadow:0 12px 42px rgba(23,45,64,.07)!important;
+  padding:clamp(20px,2.3vw,28px)!important;
+  border:1px solid #E3E9EC!important;border-radius:24px!important;
+  background:#fff!important;box-shadow:0 20px 55px rgba(28,53,63,.10)!important;
 }
 #home-content #home-contact-form .kf--ruhig .kf-kopf{
-  padding:0!important;margin:0 0 22px!important;background:#fff!important;color:#17212A!important;
+  padding:0!important;margin:0 0 16px!important;background:#fff!important;color:#17212A!important;
 }
 #home-content #home-contact-form .kf--ruhig .kf-kopf .kf-h{
-  color:#17212A!important;font-size:clamp(24px,2.2vw,31px)!important;
+  color:#17212A!important;font-size:clamp(23px,2vw,29px)!important;
   font-weight:650!important;letter-spacing:-.035em!important;line-height:1.25!important;
   margin:0 0 8px!important;
 }
@@ -28,7 +28,7 @@
 }
 #home-content #home-contact-form .kf--ruhig .kf-fields{
   display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  column-gap:16px;row-gap:15px;margin:0!important;align-items:start;
+  column-gap:12px;row-gap:12px;margin:0!important;align-items:start;
 }
 #home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field{
   grid-column:1/-1;min-width:0;margin:0!important;
@@ -46,7 +46,7 @@
   line-height:1.35;color:#677889!important;
 }
 #home-content #home-contact-form .kf--ruhig .kf-input{
-  width:100%;min-height:54px;padding:13px 16px!important;
+  width:100%;min-height:49px;padding:11px 15px!important;
   font-size:16px!important;line-height:1.45!important;
   border:1.5px solid transparent!important;border-radius:17px!important;
   color:#1F2D37!important;background:#F5F6F7!important;
@@ -58,7 +58,7 @@
 }
 #home-content #home-contact-form .kf--ruhig select.kf-input{cursor:pointer;appearance:auto!important}
 #home-content #home-contact-form .kf--ruhig .kf-textarea{
-  min-height:122px!important;resize:vertical;
+  min-height:112px!important;resize:vertical;
 }
 #home-content #home-contact-form .kf-home-callback{
   display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;
@@ -73,7 +73,7 @@
   font-size:12.5px;line-height:1.4;color:#8895A0;
 }
 #home-content #home-contact-form .kf--ruhig .kf-btn--primary{
-  min-height:56px;border-radius:999px!important;
+  min-height:53px;border-radius:999px!important;
   background:#1769B1!important;border-color:#1769B1!important;
   color:#fff!important;font-size:16px!important;font-weight:750!important;
 }

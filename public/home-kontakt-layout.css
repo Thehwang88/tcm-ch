@@ -1,160 +1,102 @@
-/* Homepage contact section = /kontakt/ layout, with the existing home form instance.
-   Scope every rule to #home-content #home-contact-form to avoid changes elsewhere. */
+/* TCM.ch homepage conversion area: quiet, warm, Hwang-inspired.
+   Only the homepage outer section changes. /kontakt/ and booking sheets stay separate. */
 #home-content #home-contact-form.home-kontakt-section{
-  background:var(--brand-surface,#F6F5F2)!important;
-  padding:clamp(30px,3.5vw,50px) 0 clamp(45px,5vw,68px)!important;
+  background:linear-gradient(120deg,#F7F5F1 0%,#F7F8F8 100%)!important;
+  padding:clamp(40px,5.2vw,74px) 0!important;
 }
-#home-content #home-contact-form .home-kontakt-shell{max-width:1320px}
+#home-content #home-contact-form .home-kontakt-shell{
+  max-width:1120px!important;
+}
 #home-content #home-contact-form .home-kontakt-layout{
-  display:grid;grid-template-columns:minmax(0,1.06fr) minmax(430px,.94fr);
-  align-items:start;gap:clamp(28px,4vw,70px)
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,490px);
+  gap:clamp(28px,4.5vw,65px);align-items:center;
 }
 #home-content #home-contact-form .home-kontakt-left{
-  display:flex;flex-direction:column;align-items:stretch;
-  gap:clamp(22px,2.3vw,34px);min-width:0
+  display:flex;flex-direction:column;gap:26px;align-items:flex-start;min-width:0;
 }
-#home-content #home-contact-form .home-kontakt-intro{min-width:0}
+#home-content #home-contact-form .home-kontakt-intro{min-width:0;}
 #home-content #home-contact-form .home-kontakt-eyebrow{
-  margin:0 0 10px;font-size:11px;font-weight:800;
-  letter-spacing:.16em;text-transform:uppercase;color:#496074
+  margin:0 0 13px;font-size:11px;font-weight:800;
+  letter-spacing:.13em;line-height:1.4;color:#547084;
 }
 #home-content #home-contact-form .home-kontakt-intro h2{
-  max-width:680px;margin:0 0 19px;font-family:var(--font-sans);
-  font-size:clamp(37px,3.5vw,54px);font-weight:850;
-  line-height:1.08;letter-spacing:-.045em;color:#020B10;text-wrap:balance
+  margin:0 0 20px;color:#1A282E;font-family:var(--font-sans);
+  max-width:525px;font-size:clamp(38px,4.15vw,57px);
+  font-weight:800;line-height:1.08;letter-spacing:-.052em;text-wrap:balance;
+}
+#home-content #home-contact-form .home-kontakt-intro h2 em{
+  display:block;font-style:normal;color:#1769B1;font-weight:800;
 }
 #home-content #home-contact-form .home-kontakt-lead{
-  max-width:58ch;margin:0;font-size:clamp(16px,1.2vw,18px);
-  line-height:1.64;color:#52616B
+  max-width:43ch;margin:0;font-size:clamp(16px,1.38vw,18px);
+  line-height:1.65;color:#526270;
+}
+#home-content #home-contact-form .home-kontakt-benefits{
+  display:flex;flex-wrap:wrap;gap:10px 22px;padding:0;margin:25px 0 0;
+  list-style:none;
+}
+#home-content #home-contact-form .home-kontakt-benefits li{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13.5px;line-height:1.4;font-weight:700;color:#344E60;
+}
+#home-content #home-contact-form .home-kontakt-benefits li span{
+  display:grid;place-items:center;color:#1769B1;
+  width:19px;height:19px;border-radius:50%;background:#E4EFF8;font-size:13px;
 }
 #home-content #home-contact-form .home-kontakt-methods{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:20px;min-width:0
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;min-width:0;
 }
 #home-content #home-contact-form .home-kontakt-method{
-  display:flex;align-items:flex-start;gap:12px;min-width:0;
-  padding:7px 3px;color:#020B10;text-decoration:none!important;
-  border-radius:9px
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:9px;min-height:43px;box-sizing:border-box;
+  padding:9px 15px;border:1px solid #D4E1E9;border-radius:999px;
+  background:rgba(255,255,255,.75);color:#1769B1!important;
+  text-decoration:none!important;font-size:13px;font-weight:750;
+  transition:background .16s ease,border-color .16s ease;
 }
-#home-content #home-contact-form a.home-kontakt-method:hover{
-  background:rgba(23,105,177,.05)
+#home-content #home-contact-form .home-kontakt-method svg{
+  display:block;width:19px;height:19px;flex:0 0 19px;
 }
-#home-content #home-contact-form .home-kontakt-method-icon{
-  display:block;flex:0 0 22px;width:22px;height:22px;
-  margin-top:2px;color:#1769B1
+#home-content #home-contact-form .home-kontakt-method:hover{
+  background:#fff;border-color:#A7C4DA;
 }
-#home-content #home-contact-form .home-kontakt-method>span{
-  display:flex;flex-direction:column;gap:7px;min-width:0
-}
-#home-content #home-contact-form .home-kontakt-method strong{
-  display:block;font-size:15px;font-weight:800;line-height:1.35
-}
-#home-content #home-contact-form .home-kontakt-method>span>span{
-  display:block;font-size:14px;line-height:1.45;color:#52616B;
-  overflow-wrap:anywhere
-}
-#home-content #home-contact-form a.home-kontakt-method:hover>span>span{
-  color:#1769B1;text-decoration:underline;text-underline-offset:3px
-}
-#home-content #home-contact-form .home-kontakt-trust{
-  min-width:0;max-width:640px
-}
-#home-content #home-contact-form .home-kontakt-reviewstrip{
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-  box-sizing:border-box;padding:21px 23px;border-radius:16px;
-  border:1px solid rgba(35,56,70,.1);background:#fff
-}
-#home-content #home-contact-form .home-kontakt-reviewstrip-label{
-  display:flex;align-items:center;min-width:0;flex:1;
-  font-size:15px;line-height:1.45;color:#020B10
-}
-#home-content #home-contact-form .home-kontakt-reviewstrip-label strong{font-weight:750}
-#home-content #home-contact-form .home-kontakt-review-metrics{
-  display:flex;flex:0 0 auto;align-items:center;gap:0
-}
-#home-content #home-contact-form .home-kontakt-review-metric{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:3px;min-width:67px;text-align:center
-}
-#home-content #home-contact-form .home-kontakt-review-metric--count{
-  min-width:87px;margin-left:12px;padding-left:12px;border-left:1px solid #DDE5EB
-}
-#home-content #home-contact-form .home-kontakt-review-metric strong{
-  font-size:clamp(21px,1.9vw,27px);font-weight:800;
-  line-height:1.05;letter-spacing:-.035em;color:#020B10
-}
-#home-content #home-contact-form .home-kontakt-review-metric span{
-  font-size:11.5px;line-height:1.25;color:#536776
-}
-#home-content #home-contact-form .home-kontakt-review-metric .home-kontakt-stars{
-  color:#CE9235;font-size:13px;letter-spacing:1px;white-space:nowrap
-}
-#home-content #home-contact-form .home-kontakt-insurance{
-  margin:17px 0 9px;font-size:13.5px;line-height:1.55;color:#61717C
-}
-#home-content #home-contact-form .home-kontakt-links{
-  display:flex;flex-wrap:wrap;gap:9px 24px
-}
-#home-content #home-contact-form .home-kontakt-links a{
-  display:inline-flex;align-items:center;min-height:32px;
-  color:#1769B1;font-size:13px;font-weight:750;text-decoration:none!important
-}
-#home-content #home-contact-form .home-kontakt-links a:hover{
-  text-decoration:underline!important;text-underline-offset:4px
+#home-content #home-contact-form .home-kontakt-method:focus-visible{
+  outline:3px solid #1769B1;outline-offset:3px;
 }
 #home-content #home-contact-form .home-kontakt-form-panel{
-  min-width:0;width:100%;max-width:590px;justify-self:end
+  justify-self:end;width:100%;max-width:490px;min-width:0;
 }
 #home-content #home-contact-form .home-kontakt-form-panel .kf.kf--ruhig{
-  box-shadow:0 18px 48px rgba(18,39,50,.09)
+  box-shadow:0 22px 65px rgba(28,53,63,.11)!important;
 }
-#home-content #home-contact-form a:focus-visible{
-  outline:3px solid #1769B1;outline-offset:3px
-}
-@media(max-width:1000px){
+@media(max-width:980px){
+  #home-content #home-contact-form .home-kontakt-shell{max-width:620px!important}
   #home-content #home-contact-form .home-kontakt-layout{
-    max-width:730px;margin:0 auto;grid-template-columns:minmax(0,1fr);gap:20px
+    display:grid;grid-template-columns:1fr;gap:20px;align-items:stretch;
   }
   #home-content #home-contact-form .home-kontakt-left{display:contents}
   #home-content #home-contact-form .home-kontakt-intro{order:1}
-  #home-content #home-contact-form .home-kontakt-trust{order:2}
-  #home-content #home-contact-form .home-kontakt-form-panel{order:3;justify-self:stretch;max-width:none}
-  #home-content #home-contact-form .home-kontakt-methods{order:4}
-  #home-content #home-contact-form .home-kontakt-intro h2{
-    font-size:clamp(35px,5.2vw,50px);margin-bottom:10px
+  #home-content #home-contact-form .home-kontakt-form-panel{
+    order:2;justify-self:stretch;max-width:none
   }
-  #home-content #home-contact-form .home-kontakt-lead{font-size:16px}
+  #home-content #home-contact-form .home-kontakt-methods{order:3;justify-content:center;margin-top:4px}
 }
 @media(max-width:560px){
   #home-content #home-contact-form.home-kontakt-section{
-    padding:34px 0 65px!important
-  }
-  #home-content #home-contact-form .home-kontakt-eyebrow{
-    font-size:11px;margin-bottom:12px
+    padding:35px 0 47px!important;
   }
   #home-content #home-contact-form .home-kontakt-intro h2{
-    font-size:clamp(34px,8.8vw,42px)
+    font-size:clamp(34px,8.5vw,43px);margin-bottom:14px;
   }
   #home-content #home-contact-form .home-kontakt-lead{
-    font-size:16px;line-height:1.55
+    font-size:15px;line-height:1.58;
   }
-  #home-content #home-contact-form .home-kontakt-methods{
-    grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 12px
+  #home-content #home-contact-form .home-kontakt-benefits{
+    margin-top:17px;gap:8px 15px;
   }
-  #home-content #home-contact-form .home-kontakt-method{gap:9px;padding:8px 1px}
-  #home-content #home-contact-form .home-kontakt-method-icon{flex-basis:19px;width:19px;height:19px}
-  #home-content #home-contact-form .home-kontakt-method strong{font-size:13.5px}
-  #home-content #home-contact-form .home-kontakt-method>span>span{font-size:12.5px}
-  #home-content #home-contact-form .home-kontakt-reviewstrip{padding:14px 15px;gap:10px}
-  #home-content #home-contact-form .home-kontakt-reviewstrip-label{font-size:12.5px}
-  #home-content #home-contact-form .home-kontakt-review-metric{min-width:53px}
-  #home-content #home-contact-form .home-kontakt-review-metric--count{
-    min-width:67px;margin-left:7px;padding-left:7px
-  }
-  #home-content #home-contact-form .home-kontakt-review-metric strong{font-size:20px}
-  #home-content #home-contact-form .home-kontakt-review-metric span{font-size:10px}
-  #home-content #home-contact-form .home-kontakt-review-metric .home-kontakt-stars{
-    font-size:10.5px;letter-spacing:0
-  }
-  #home-content #home-contact-form .home-kontakt-insurance{font-size:12.5px;line-height:1.5}
+  #home-content #home-contact-form .home-kontakt-benefits li{font-size:12px;}
+  #home-content #home-contact-form .home-kontakt-layout{gap:17px;}
+}
+@media(prefers-reduced-motion:reduce){
+  #home-content #home-contact-form .home-kontakt-method{transition:none!important}
 }
