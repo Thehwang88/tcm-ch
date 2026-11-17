@@ -45,16 +45,17 @@ const itemListLd = {
   <section class="ev-section" id="open">
     <div class="wrap">
       <p class="ev-label">Our clinics</p>
-      <h2 class="ev-h2">Zürich and St. Gallen</h2>
-      <div class="std-jump"><a href="#open">Zürich</a><a href="#st-gallen">St. Gallen</a><a href="#thurgau">Thurgau</a><a href="#more">More</a></div>
+      <h2 class="ev-h2">Zürich, St. Gallen and Winterthur</h2>
+      <div class="std-jump"><a href="#open">Zürich</a><a href="#st-gallen">St. Gallen</a><a href="#winterthur">Winterthur</a><a href="#thurgau">Thurgau</a><a href="#more">More</a></div>
       <div class="std-stufe1">
         <div class="std-zh"><div class="std-zh-box"><div class="std-label">Zürich</div><h3 class="std-zh-h">Acupuncture &amp; TCM across Zürich</h3><p class="std-zh-p">TCM.ch clinics and partner practices in <a href="/en/acupuncture-zurich/">Zürich</a>. Tell us where you are looking for an appointment; we suggest the practice or the next free slot.</p><div class="std-zh-btns"><a class="ev-btn ev-btn--solid" href="/en/acupuncture-zurich/">Find an appointment in Zürich</a></div></div><Fragment set:html={standortGridHtml(['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'], { variant: 'hero', cols: 3, lang: 'en' })} /></div>
         <div class="std-sg" id="st-gallen"><Fragment set:html={standortCardHtml('st-gallen', { variant: 'hero', lang: 'en' })} /></div>
+         <div class="std-sg" id="winterthur"><Fragment set:html={standortCardHtml('winterthur-marktgasse', { variant: 'hero', lang: 'en' })} /></div>
       </div>
-      <h3 class="std-h3" id="thurgau">Thurgau &amp; Winterthur</h3><p class="std-sub">Partner practices Hwang; appointments directly via hwang.ch.</p>
-      <Fragment set:html={standortGridHtml(['frauenfeld', 'kreuzlingen', 'winterthur-muenzgasse'], { variant: 'hero', cols: 3, lang: 'en' })} />
+      <h3 class="std-h3" id="thurgau">Thurgau</h3><p class="std-sub">Partner practices Hwang in Frauenfeld and Kreuzlingen.</p>
+      <Fragment set:html={standortGridHtml(['frauenfeld', 'kreuzlingen'], { variant: 'hero', cols: 3, lang: 'en' })} />
       <h3 class="std-h3" id="more">More locations and openings</h3>
-      <Fragment set:html={standortGridHtml(['bottighofen', 'rorschach', 'wil', 'volketswil', 'basel', 'luzern', 'bern', 'winterthur-marktgasse'], { variant: 'kompakt', cols: 4, lang: 'en' })} />
+      <Fragment set:html={standortGridHtml(['bottighofen', 'rorschach', 'wil', 'volketswil', 'basel', 'luzern', 'bern'], { variant: 'kompakt', cols: 4, lang: 'en' })} />
     </div>
   </section>
 
