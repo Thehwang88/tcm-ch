@@ -94,7 +94,6 @@ export const CHECKIN_FREIGABE = {
   'bern': { name: 'Bern', freigabe: 'Inhaber bestätigt operativen Klinikbetrieb 17.11.2026; Check-in wie übrige Standorte' },
   'kreuzlingen': { name: 'Kreuzlingen', freigabe: 'Inhaber-Auftrag 08.11.2026 (Partnerpraxis Praxis Hwang, identisches 360°-Angebot wie St. Gallen)' },
   'frauenfeld': { name: 'Frauenfeld', freigabe: 'Inhaber-Auftrag 08.11.2026 (Partnerpraxis Praxis Hwang, identisches 360°-Angebot wie St. Gallen)' },
-  'volketswil': { name: 'Volketswil', freigabe: 'Inhaber-Auftrag 08.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'wil': { name: 'Wil', freigabe: 'Inhaber-Auftrag 08.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'rorschach': { name: 'Rorschach', freigabe: 'Inhaber-Auftrag 08.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
 };
@@ -128,7 +127,7 @@ export const KAMPAGNEN = {
 };
 
 /** Reihenfolge der globalen Standortauswahl (Bern Marktgasse 50 ist ein regulär buchbarer Standort). */
-export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'bern', 'luzern'];
+export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'bern', 'luzern'];
 /** Keine aktive TCM.ch-Formularumleitung nach Hwang: Winterthur-Anfragen gehen direkt an Marktgasse.
  * Export für bestehende Server-Integration erhalten; ältere Partner-Ziele werden nicht mehr angeboten. */
 export const HWANG_ZIEL = {};

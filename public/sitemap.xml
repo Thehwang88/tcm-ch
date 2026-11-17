@@ -1219,12 +1219,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tcm.ch/en/locations/volketswil/</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://tcm.ch/en/locations/wil/</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -3704,12 +3698,6 @@
   </url>
   <url>
     <loc>https://tcm.ch/standorte/st-gallen/</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tcm.ch/standorte/volketswil/</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

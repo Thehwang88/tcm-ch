@@ -10,6 +10,12 @@
 /wissen/akupunktur-in-meiner-naehe-schweiz/ /akupunktur-in-der-naehe/  301
 /akupunktur-tcm-winterthur /standorte/winterthur-marktgasse/  301
 /standorte/winterthur      /standorte/winterthur-marktgasse/  301
+# Ehemals beworbener, nicht von TCM.ch betriebener Standort Volketswil (17.11.2026).
+# Weder Behandlungs- noch Buchungsseite mehr; Besucher zu aktuellen Standorten führen.
+/standorte/volketswil      /standorte/        301
+/standorte/volketswil/     /standorte/        301
+/en/locations/volketswil  /en/locations/     301
+/en/locations/volketswil/ /en/locations/     301
 # Alter Winterthur-Münzgasse-Slug: neue primäre TCM.ch Klinik ist Marktgasse 78 (operativ seit 17.11.2026).
 /standorte/winterthur-muenzgasse      /standorte/winterthur-marktgasse/  301
 /standorte/winterthur-muenzgasse/     /standorte/winterthur-marktgasse/  301

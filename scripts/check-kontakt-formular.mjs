@@ -65,10 +65,13 @@ ok(legacy.length === 0, `kein allgemeines Altformular mehr${legacy.length ? ': '
 const homeSel = (html.get('dist/index.html').match(/<select[^>]*id="kf-home-standort"[\s\S]*?<\/select>/) || [''])[0];
 const homeOpts = [...homeSel.matchAll(/<option value="([^"]*)" data-id="([^"]*)" data-art="([^"]*)"/g)].map((m) => [m[1].replace(/&amp;/g, '&'), m[2], m[3]]);
 const primaryIds = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'st-gallen', 'basel', 'bern'];
-const secondaryIds = ['volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'wil', 'rorschach'];
+const secondaryIds = ['frauenfeld', 'kreuzlingen', 'bottighofen', 'wil', 'rorschach'];
+
+ok(!Z.some((z) => z.id === 'volketswil') && !Object.prototype.hasOwnProperty.call(CHECKIN_FREIGABE, 'volketswil'),
+  'Volketswil: kein Termin-Ziel und keine kostenlose Check-in-Freigabe');
 const expectedGlobal = [...primaryIds, ...secondaryIds, 'andere'].flatMap((id) => Z.filter((z) => z.id === id));
 ok(homeOpts.length === expectedGlobal.length && homeOpts.every(([v, id, a], i) => expectedGlobal[i].value === v && expectedGlobal[i].id === id && expectedGlobal[i].art === a),
-  `eine globale Standortauswahl = sieben Hauptkliniken, sechs Partner und Andere; kanonische Werte/IDs/Zielarten (${homeOpts.length} Optionen)`);
+  `eine globale Standortauswahl = sieben Hauptkliniken, fünf Partner und Andere; kanonische Werte/IDs/Zielarten (${homeOpts.length} Optionen)`);
 ok(!homeSel.includes('data-id="luzern"') &&
   /<optgroup label="Unsere Kliniken">/.test(homeSel) &&
   /<optgroup label="Weitere Standorte &amp; Partnerpraxen">/.test(homeSel) &&

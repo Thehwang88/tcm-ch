@@ -16,7 +16,7 @@ const description =
 // Kurze deutsche Ortsbeschreibung pro Standort.
 const desc: Record<string, string> = {
    'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Ohmstrasse 14 · Zürich Nord', 'zuerich-bahnhofstrasse': 'Zürich City',
-  'winterthur-marktgasse': 'Altstadt Winterthur', 'winterthur-muenzgasse': 'Altstadt, Münzgasse 2', 'volketswil': 'Zürcher Oberland',
+  'winterthur-marktgasse': 'Altstadt Winterthur', 'winterthur-muenzgasse': 'Altstadt, Münzgasse 2',
   'frauenfeld': 'Thurgau · auch für Weinfelden', 'kreuzlingen': 'Am Bodensee · auch ab Konstanz', 'bottighofen': 'Am Bodensee',
   'st-gallen': 'Beim Bahnhof', 'rorschach': 'Bodenseeregion', 'wil': 'Fürstenland',
   'basel': 'Innenstadt · Steinenvorstadt 73', 'luzern': 'Eröffnung 2027 · Warteliste offen',
@@ -25,7 +25,7 @@ const desc: Record<string, string> = {
 
 // Regionen-Gruppierung (crawlbare Karten, keine div-onclick).
 const groups = [
-  { label: 'Region Zürich & Winterthur', ids: ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
+  { label: 'Region Zürich & Winterthur', ids: ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse'] },
   { label: 'Ostschweiz & Bodensee', ids: ['st-gallen', 'frauenfeld', 'kreuzlingen', 'wil', 'rorschach', 'bottighofen'] },
   { label: 'Basel & Nordwestschweiz', ids: ['basel'] },
   { label: 'Zentralschweiz', ids: ['luzern'] },
@@ -100,7 +100,7 @@ const body = `<div style="padding-top:68px">
     <div class="wrap" style="max-width:760px">
       <div class="section-label">TCM in deiner Nähe</div>
       <h2 class="section-title">Warum "in der Nähe" bei uns <em>mehr ist als ein Standort</em></h2>
-      <p class="section-sub">Wenn du nach Akupunktur in deiner Nähe suchst, willst du zwei Dinge: einen kurzen Weg und eine Praxis, der du vertraust. Bei TCM.ch bekommst du beides. Wir sind kein einzelnes Studio, sondern ein Netzwerk aus eigenen und Partnerpraxen in der Deutschschweiz. TCM in deiner Nähe heisst bei uns konkret: in Zürich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach und Bottighofen. Die Chance ist gross, dass eine davon nur wenige Minuten von dir entfernt liegt. In <a href="/standorte/basel/">Basel</a> behandeln wir an der Steinenvorstadt 73. Dazu kommt ein Standort im Aufbau: <a href="/standorte/luzern/">Akupunktur Luzern</a> ab 2027, die Warteliste ist offen.</p>
+      <p class="section-sub">Wenn du nach Akupunktur in deiner Nähe suchst, willst du zwei Dinge: einen kurzen Weg und eine Praxis, der du vertraust. Bei TCM.ch bekommst du beides. Wir sind kein einzelnes Studio, sondern ein Netzwerk aus eigenen und Partnerpraxen in der Deutschschweiz. TCM in deiner Nähe heisst bei uns konkret: in Zürich, Winterthur, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach und Bottighofen. Die Chance ist gross, dass eine davon nur wenige Minuten von dir entfernt liegt. In <a href="/standorte/basel/">Basel</a> behandeln wir an der Steinenvorstadt 73. Dazu kommt ein Standort im Aufbau: <a href="/standorte/luzern/">Akupunktur Luzern</a> ab 2027, die Warteliste ist offen.</p>
       <p class="section-sub" style="margin-top:16px">Was alle Standorte verbindet, ist der gleiche Anspruch. An jeder Praxis behandeln EMR- oder ASCA-registrierte Therapeutinnen und Therapeuten. Diese Register prüfen Ausbildung und Weiterbildung, und sie sind die Voraussetzung dafür, dass sich deine Zusatzversicherung an den Kosten beteiligt. Ob du in der Stadt Zürich oder am Bodensee zu uns kommst: Die Qualitätsstandards sind dieselben, und die Abrechnung über die <a href="/krankenkassen/">Zusatzversicherung</a> läuft überall gleich.</p>
       <p class="section-sub" style="margin-top:16px">Das häufigste Anliegen ist die klassische <a href="/therapien/akupunktur/">Akupunktur</a>, etwa bei <a href="/beschwerden/rueckenschmerzen/">Rücken-</a> und <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a>, Kopfschmerzen, <a href="/beschwerden/schlafprobleme/">Schlafproblemen</a> oder stressbedingten Beschwerden; was die Krankenkasse dabei übernimmt, steht unter <a href="/krankenkassen/akupunktur/">Akupunktur &amp; Krankenkasse</a>. Viele Standorte bieten darüber hinaus <a href="/therapien/tuina/">Tuina-Massage</a>, <a href="/therapien/schroepfen/">Schröpfen</a>, <a href="/therapien/shiatsu/">Shiatsu</a> und chinesische Kräutertherapie an. An ausgewählten Praxen ist auch <a href="/therapien/schroepfen/hijama/">Hijama</a> möglich, das blutige Schröpfen. Welche Methoden dein nächstgelegenes Team anbietet, siehst du auf der jeweiligen Standortseite.</p>
       <p class="section-sub" style="margin-top:16px">Du musst nicht vorher wissen, welche Behandlung die richtige ist. Schildere uns kurz, worum es geht und wo du wohnst. Wir schlagen dir den passenden Standort in deiner Nähe vor und, wenn du möchtest, gleich einen Termin. Wir melden uns persönlich mit einem Terminvorschlag.</p>

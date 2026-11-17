@@ -16,7 +16,7 @@ const shots = args.includes('--shots') ? args[args.indexOf('--shots') + 1] : '';
 if (shots) fs.mkdirSync(shots, { recursive: true });
 let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  ✓ ' + m); } else { fails++; console.log('  ✗ ' + m); } };
 const POSTER = '/videos/hero-praxis/hwang-praxis-poster-1280.webp', POSTER_M = '/videos/hero-praxis/hwang-praxis-poster-640.webp';
-const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-bahnhofstrasse', 'zuerich-oerlikon'];
+const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-bahnhofstrasse', 'zuerich-oerlikon'];
 const NO_VIDEO = ['luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
 const read = (d, u) => fs.readFileSync(path.join(d, u, 'index.html'), 'utf8');
 

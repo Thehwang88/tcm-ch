@@ -9,7 +9,7 @@ import { therapies } from '../../data/therapies';
 import { enLocationPath } from '../../data/locations';
 interface Props { formAnchor?: string }
 const { formAnchor = '#appointment' } = Astro.props;
-const cityOrder = ['Zürich', 'Winterthur', 'Volketswil', 'Basel', 'St. Gallen', 'Wil', 'Rorschach', 'Frauenfeld', 'Kreuzlingen', 'Bottighofen', 'Luzern', 'Bern'];
+const cityOrder = ['Zürich', 'Winterthur', 'Basel', 'St. Gallen', 'Wil', 'Rorschach', 'Frauenfeld', 'Kreuzlingen', 'Bottighofen', 'Luzern', 'Bern'];
 const cities = [...new Set(clinics.map((c) => c.city))].sort((a, b) => cityOrder.indexOf(a) - cityOrder.indexOf(b));
 const statusLabel = (c: Clinic) => c.status === 'operational' ? (c.betreiber ? 'Open · partner practice' : 'Open') : c.status === 'review' ? 'Status under review' : `Planned · ${c.openingNote ?? 'in preparation'}`;
 const pick = (c: Clinic) => c.status === 'operational' ? c.name : (c.vorab?.[c.vorab.length - 1]?.value ?? '');

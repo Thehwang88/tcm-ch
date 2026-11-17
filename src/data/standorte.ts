@@ -155,8 +155,7 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
     ],
     "nearby": [
       { "slug": "zuerich-oerlikon", "plz": "8050", "city": "Zürich Oerlikon", "desc": "Ohmstrasse 14, Zürich Nord" },
-      { "slug": "zuerich-hoengg", "plz": "8049", "city": "Zürich Höngg", "desc": "Zürich West, Kreis 10" },
-      { "slug": "volketswil", "plz": "8604", "city": "Volketswil", "desc": "Zürich Glattal" }
+      { "slug": "zuerich-hoengg", "plz": "8049", "city": "Zürich Höngg", "desc": "Zürich West, Kreis 10" }
     ]
   };
 
@@ -567,86 +566,6 @@ export const standorte: Record<string, Standort> = {
       }
     ]
   },
-  "volketswil": {
-    "cro": true,
-    "ablaufBlock": true,
-    "slug": "volketswil",
-    "stadt": "Volketswil",
-    "hero": {
-      "banner": "Standort Volketswil",
-      "lead": "Hier bekommst du Zeit, keine Standardlösung.",
-      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
-      "image": "/images/hero-main.webp",
-      "locationHook": "Lindenstrasse 2/1, 8604 Volketswil"
-    },
-    "nap": {
-      "strasse": "Lindenstrasse 2/1",
-      "mapEmbed": "https://www.google.com/maps?q=Lindenstrasse%202%2F1%2C%208604%20Volketswil&output=embed",
-      "plz": "8604",
-      "ort": "Volketswil",
-      "telefon": "+41 77 523 61 22",
-      "email": "termine@tcm.ch",
-      "oeffnungszeiten": [
-        {
-          "tag": "Mo–Fr",
-          "zeit": "7:30–19:30 Uhr"
-        },
-        {
-          "tag": "Sa",
-          "zeit": "7:30–16:30 Uhr"
-        }
-      ]
-    },
-    "intro": {
-      "body": "<h2>TCM Volketswil, Akupunktur, Tuina &amp; TCM-Klinik im Zürcher Oberland</h2><p>Unsere <strong>TCM-Praxis Volketswil</strong> liegt zentral im Zürcher Oberland, gut erreichbar aus dem ganzen Glattal und der Region Uster/Dübendorf. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
-      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus dem Zürcher Oberland und Glattal</h2><p>Zu unseren Patient:innen zählen Menschen aus Volketswil und allen Ortsteilen, <strong>Zentrum</strong>, <strong>Gutenswil</strong>, <strong>Hegnau</strong> und <strong>Kindhausen</strong>. Aus umliegenden Gemeinden wie Uster, Dübendorf, Schwerzenbach, Greifensee, Wangen-Brüttisellen, Pfäffikon ZH und Mönchaltorf kommen Patient:innen regelmässig zu uns.</p>"
-    },
-    "anfahrt": {
-      "oev": "Volketswil hat keinen eigenen Bahnhof. Du erreichst uns über die Bahnhöfe Schwerzenbach, Effretikon oder Uster und von dort weiter mit dem Bus. In Volketswil verkehren die VBG-Buslinien 720, 721, 725, 726 und 727; zum Volkiland fahren die Linien 721, 726 und 727.",
-      "autoParken": ""
-    },
-    "therapien": [
-      "akupunktur",
-      "schroepfen",
-      "tuina",
-      "kraeutertherapie",
-      "gesichtsakupunktur",
-      "akupressur",
-      "shiatsu",
-      "gua-sha",
-      "physiotherapie"
-    ],
-    "beschwerdenIntro": "Ob akut oder chronisch: Diese Themen begleiten wir in Volketswil am häufigsten.",
-    "beschwerden": [
-      "rueckenschmerzen",
-      "schulterschmerzen",
-      "migraene",
-      "stress-burnout",
-      "schlafprobleme",
-      "kinderwunsch"
-    ],
-    "team": [],
-    "nearby": [
-      {
-        "slug": "zuerich-oerlikon",
-        "plz": "8050",
-        "city": "Zürich Oerlikon",
-        "desc": "Zürich Nord"
-      },
-      {
-        "slug": "winterthur-marktgasse",
-        "plz": "8400",
-        "city": "Winterthur Marktgasse",
-        "desc": "Nahe Zürich"
-      },
-      {
-        "slug": "zuerich-bahnhofstrasse",
-        "plz": "8001",
-        "city": "Zürich Bahnhofstrasse",
-        "desc": "Bahnhofstrasse 37, Zürich City"
-      }
-    ]
-  },
   "wil": {
     "cro": true,
     "ablaufBlock": true,
@@ -802,12 +721,6 @@ export const standorte: Record<string, Standort> = {
         "plz": "8050",
         "city": "Zürich Oerlikon",
         "desc": "Zürich Nord"
-      },
-      {
-        "slug": "volketswil",
-        "plz": "8604",
-        "city": "Volketswil",
-        "desc": "Zürich Glattal"
       }
     ]
   },
@@ -888,12 +801,6 @@ export const standorte: Record<string, Standort> = {
     "massageLink": { "href": "/massage-winterthur/", "text": "Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Dann findest du Angebote, Dauer und Preise auf der Seite", "anchor": "Massage in Winterthur" },
     "nearby": [
       {
-        "slug": "volketswil",
-        "plz": "8604",
-        "city": "Volketswil",
-        "desc": "Zürcher Oberland"
-      },
-      {
         "slug": "frauenfeld",
         "plz": "8500",
         "city": "Frauenfeld",
@@ -960,12 +867,6 @@ export const standorte: Record<string, Standort> = {
         "plz": "8050",
         "city": "Zürich Oerlikon",
         "desc": "Zürich Nord"
-      },
-      {
-        "slug": "volketswil",
-        "plz": "8604",
-        "city": "Volketswil",
-        "desc": "Zürich Glattal"
       }
     ]
   },

@@ -111,22 +111,6 @@ export const locationContent: Record<string, LocationContent> = {
     nearby: ['st-gallen', 'kreuzlingen', 'wil'],
   },
 
-  volketswil: {
-    lead: 'Here you get time, not a standard solution.',
-    sub: 'Our team looks after you on site, with experience from Switzerland and South Korea, plenty of time and every method we know.',
-    about: [
-      'Our Volketswil clinic is centrally located in the Zürcher Oberland, easy to reach from the whole Glattal and the Uster/Dübendorf area. We offer the full range of Traditional Chinese Medicine: acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. Practitioner recognition (EMR/ASCA) is checked for you before the first appointment.',
-    ],
-    area: 'Our patients come from all parts of Volketswil (Zentrum, Gutenswil, Hegnau, Kindhausen) and from Uster, Dübendorf, Schwerzenbach, Greifensee, Wangen-Brüttisellen, Pfäffikon ZH and Mönchaltorf.',
-    faqs: [
-      { q: 'Where exactly are you in Volketswil?', a: 'Our clinic is at Lindenstrasse 2/1, 8604 Volketswil.' },
-      BOOK_FAQ('Volketswil'),
-      { q: 'Does health insurance cover the treatment?', a: INSURANCE },
-      { q: 'How many sessions will I need?', a: SESSIONS },
-    ],
-    nearby: ['zuerich-oerlikon', 'winterthur-marktgasse', 'zuerich-hoengg'],
-  },
-
   wil: {
     lead: 'Medical TCM, personal and unhurried.',
     sub: 'Our team looks after you on site, with experience from Switzerland and South Korea, plenty of time and every method we know.',
@@ -155,7 +139,7 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
     ],
     hero: { src: '/images/standort-winterthur-muenzgasse.jpg', alt: 'TCM.ch practice Winterthur Münzgasse', caption: 'Münzgasse 2, Winterthur' },
-    nearby: ['winterthur-marktgasse', 'frauenfeld', 'volketswil'],
+    nearby: ['winterthur-marktgasse', 'frauenfeld'],
   },
 
   'winterthur-marktgasse': {
@@ -190,7 +174,7 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
       { q: 'How many sessions will I need?', a: SESSIONS },
     ],
-    nearby: ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'volketswil'],
+    nearby: ['zuerich-bahnhofstrasse', 'zuerich-oerlikon'],
   },
 
   'zuerich-oerlikon': {
@@ -225,7 +209,7 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
       { q: 'How many sessions will I need?', a: SESSIONS },
     ],
-    nearby: ['zuerich-oerlikon', 'zuerich-hoengg', 'volketswil'],
+    nearby: ['zuerich-oerlikon', 'zuerich-hoengg'],
   },
 
   'st-gallen': {

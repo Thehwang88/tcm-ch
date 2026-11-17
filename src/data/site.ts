@@ -20,7 +20,6 @@ export const standorte = [
   { id: 'zuerich-oerlikon', label: 'Zürich Oerlikon' },
   { id: 'zuerich-hoengg', label: 'Zürich Höngg' },
   { id: 'winterthur-marktgasse', label: 'Winterthur Marktgasse' },
-  { id: 'volketswil', label: 'Volketswil' },
   { id: 'frauenfeld', label: 'Frauenfeld' },
   { id: 'kreuzlingen', label: 'Kreuzlingen' },
   { id: 'st-gallen', label: 'St. Gallen' },
