@@ -815,7 +815,7 @@ export const standorte: Record<string, Standort> = {
     "cro": true,
     "v2": true,
     "praxisBilder": [
-      { "src": "/images/standort-winterthur.webp", "srcset": "/images/standort-winterthur-800.webp 800w, /images/standort-winterthur.webp 1448w", "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich", "label": "Marktgasse 78" }
+      { "src": "/images/winterthur-marktgasse-reception.webp", "srcset": "/images/winterthur-marktgasse-reception-800.webp 800w, /images/winterthur-marktgasse-reception.webp 1200w", "width": 1200, "height": 900, "ratio": "4/3", "alt": "Visualisierung: heller Empfangsbereich mit TCM.ch Logo, kein Foto der tatsächlichen Praxisräume", "label": "Visualisierung · Marktgasse 78" }
     ],
     "slug": "winterthur-marktgasse",
     "stadt": "Winterthur Marktgasse",
@@ -829,8 +829,8 @@ export const standorte: Record<string, Standort> = {
       "banner": "Standort Winterthur Marktgasse",
       "lead": "Kurz vorbeikommen, in Ruhe klären, was dir hilft.",
       "sub": "Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie an der Marktgasse 78, wenige Gehminuten vom Hauptbahnhof. <em style=\"font-style:italic;opacity:.85\">EMR-/ASCA-registrierte Therapeut:innen, Abrechnung über die Zusatzversicherung.</em>",
-      "image": "/images/standort-winterthur.webp",
-      "imageAlt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+      "image": "/images/winterthur-marktgasse-reception.webp",
+      "imageAlt": "Visualisierung: TCM.ch Empfangsbereich, kein Foto der Praxis Winterthur Marktgasse",
       "locationHook": "Marktgasse 78, 8400 Winterthur"
     },
     "nap": {
