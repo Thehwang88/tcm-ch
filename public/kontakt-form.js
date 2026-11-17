@@ -492,6 +492,11 @@
           // Kampagnen-Sheet: eigene, zutreffende Bestätigung für den 360°-Check (data-kf-ok-checkin); sonst Standardtexte.
           ok.querySelector('[data-kf-ok-text]').textContent = (t === 'checkin' && card.getAttribute('data-kf-ok-checkin')) || OK[t];
           form.replaceWith(ok); ok.focus({ preventScroll: true });
+          // Center the original inline success as a reliable fallback even if the
+          // global modal script is blocked. Also leave it visible after the
+          // receipt dialog is closed, not clipped by the sticky site header.
+          try { ok.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' }); }
+          catch (eScroll) { ok.scrollIntoView(true); }
           // Display a consistent, immediately visible receipt even when the form was
           // below the fold or moved into the booking sheet. No extra tracking.
           if (window.tcmPatientSuccess) window.tcmPatientSuccess.show({
