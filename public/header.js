@@ -216,7 +216,7 @@ function navMoreToggle(){
   setAudience('patient'); // Default, hält Optik und Panels konsistent
 })();
 
-/* "Termin finden" CTA: on-page contact form (home, location pages, Zürich hub) if present, else /kontakt. */
+/* "Termin anfragen" CTA: on-page contact form (home, location pages, Zürich hub) if present, else /kontakt. */
 (function(){
   var cta = document.getElementById('navCtaBtn');
   if (cta) cta.addEventListener('click', function(){
@@ -307,7 +307,8 @@ function navMoreToggle(){
     var nodes=root.querySelectorAll ? root.querySelectorAll('a,button') : [];
     for(var i=0;i<nodes.length;i++){
       var el=nodes[i];
-      if(el.dataset.tcmQuickCta==='1')continue;
+      // Keep the compact header and drawer booking CTAs free of extra time badges.
+      if(el.dataset.tcmQuickCta==='1'||el.id==='navCtaBtn'||el.classList.contains('drw-cta-primary'))continue;
       var label=(el.textContent||'').replace(/\s+/g,' ').trim();
       if(label!=='Termin anfragen' && label!=='Termin anfragen ⚡️')continue;
       // Primary CTAs use the dark SoftRiver brand colour, not a bright RGB blue.
