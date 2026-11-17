@@ -157,6 +157,8 @@ export const clinics: Clinic[] = [
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
 
   { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',
+    // Concept visual, not a photo of completed Luzern premises (opening planned for 2027).
+    bild: { src: '/images/luzern-clinic-visualization-800.webp', alt: 'Visualisierung einer möglichen TCM.ch Klinik in Luzern – keine bestehenden Praxisräume' },
     street: null, postalCode: null, phone: '+41 77 523 61 22',
     hinweis: 'Zentralschweiz · Warteliste offen',
     openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, status: 'planned', openingNote: 'Opening in 2027',
