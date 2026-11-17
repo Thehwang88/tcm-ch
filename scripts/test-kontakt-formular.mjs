@@ -232,11 +232,11 @@ ok(await pg.$eval('#kf-home-standort', (s) => {
     groups[0].label === 'Unsere Kliniken' &&
     groups[1].label === 'Weitere Standorte & Partnerpraxen' &&
     groups[0].querySelectorAll('option').length === 7 &&
-    groups[1].querySelectorAll('option').length === 6 &&
+    groups[1].querySelectorAll('option').length === 5 &&
     [...s.options].some((o) => o.value === 'Andere / in meiner Nähe') &&
     ![...s.options].some((o) => o.getAttribute('data-id') === 'luzern') &&
     !s.closest('[data-kf-form]').querySelector('[data-kf-other-locations]');
-}), 'Global: a single select groups seven clinics and six partner practices plus Andere; Luzern excluded');
+}), 'Global: a single select groups seven clinics and five partner practices plus Andere; Luzern excluded');
 await sel(pg, 'home', 'Frauenfeld');
 ok(await pg.$eval('#kf-home-standort', (s) => s.value === 'Frauenfeld') &&
   (await ev(pg, 'formular_senden')).length === 0,
@@ -1134,7 +1134,7 @@ console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfun
 
 console.log('S. Standortseiten nach der SG-Vorlage: obere Box, Struktur, Sticky, Versand (gemockt), keine SG-Sonderangebote');
 {
-  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon', 'zuerich-bahnhofstrasse'];
+  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon', 'zuerich-bahnhofstrasse'];
   for (const slug of STD) {
     const html = fs.readFileSync(path.join(dist, 'standorte', slug, 'index.html'), 'utf8');
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
