@@ -112,6 +112,18 @@ const schema = {
   padding:clamp(28px,3.5vw,46px) 0 clamp(40px,4vw,58px)!important;
   background:var(--tcm-surface-strong,#E8E6E3)!important
 }
+/* /standorte/ is a SPA <div class="page">, not body > main.
+   The November fixed promo bar therefore never receives the global main offset.
+   Reserve the actual fixed nav + offer-banner height, scoped to this route only. */
+html.tcm-nov-offer-active #page-standorte{
+  padding-top:calc(var(--header-h,76px) + 40px)!important;
+}
+@media(max-width:900px){
+  html.tcm-nov-offer-active #page-standorte{
+    padding-top:calc(max(var(--header-h,64px), 80px) + 42px)!important;
+  }
+}
+
 #page-standorte .std-overview>.wrap{max-width:1200px!important}
 #page-standorte #standorte-page-grid.std-grid{display:block;margin:0;max-width:none}
 #page-standorte .std-overview-intro{max-width:840px;margin:0 0 31px}
