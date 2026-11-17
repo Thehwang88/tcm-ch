@@ -18,7 +18,7 @@ const checks = [
   ['wall-logo not used as hero image', !hero.includes('bern-marktgasse-logo-wall')],
   ['wall-logo kept in location cards', /class="sgt-foto"[\s\S]{0,400}bern-marktgasse-logo-wall\.avif/.test(html)],
   ['correct clinic address', html.includes('Marktgasse 50') && html.includes('3011 Bern')],
-  ['regular opening hours', /Mo–Sa[\s\S]{0,120}7:30–19:30 Uhr/.test(html) && /So[\s\S]{0,120}8:00–17:00 Uhr/.test(html) && html.includes('"Mo-Sa 07:30-19:30"')],
+  ['regular opening hours', /Mo–Fr[\s\S]{0,120}7:30–19:30 Uhr/.test(html) && /Sa[\s\S]{0,120}7:30–16:30 Uhr/.test(html) && html.includes('"Mo-Fr 07:30-19:30"') && html.includes('"Sa 07:30-16:30"')],
   ['direct booking section', /id="sgt-h"[^>]*>Termin in\s*<em>Bern<\/em>/.test(html)],
   ['active appointment form', html.includes('id="anfrage-box"') && html.includes('Termin anfragen')],
   ['canonical URL unchanged', html.includes('https://tcm.ch/standorte/bern/')],
