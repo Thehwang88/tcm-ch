@@ -11,7 +11,7 @@ import SgCheckinPopup from '../../components/SgCheckinPopup.astro';
 import { standortGridHtml, buchbareClinics } from '../../lib/standort-card';
 import { massageLinksForTherapie, massageLinksHtml } from '../../data/massage-links';
 import { therapieTiefeHtml } from '../../data/therapie-tiefe';
-import homeBody from '../../data/home-body.html?raw';
+import shiatsuOffer from '../../data/shiatsu-offer.html?raw';
 import { prefillForm } from '../../data/form-prefill';
 import { inlineBodyImage } from '../../data/inline-body-image';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
@@ -89,9 +89,7 @@ let prefilledBody = appendSidebarAllLink(
   'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
 // Shiatsu: Standard-Offer-Block ("Starte ohne Risiko") 1:1 von Home wiederverwenden.
 if (slug === 'shiatsu') {
-  const os = homeBody.indexOf('<section id="s-offer"');
-  const offer = os >= 0 ? homeBody.slice(os, homeBody.indexOf('</section>', os) + '</section>'.length) : '';
-  prefilledBody = prefilledBody.replace('<div id="therapie-cities-section">', offer + '<div id="therapie-cities-section">');
+  prefilledBody = prefilledBody.replace('<div id="therapie-cities-section">', shiatsuOffer + '<div id="therapie-cities-section">');
 }
 // Standortblock (05.11.2026): Leaf-Karten im #therapie-cities-section durch die zentrale Standortkarte ersetzen
 // (alle buchbaren Standorte, kompakt, 4 pro Reihe). Kein stiller Fallback.
