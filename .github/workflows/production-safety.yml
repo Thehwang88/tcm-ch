@@ -1,0 +1,76 @@
+name: Production safety gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "15 5 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-safety-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  production-safety:
+    name: Production build & contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build exact Cloudflare artifact
+        run: npm run build
+      - name: Immutable legacy template and deployment contracts
+        run: node scripts/check-deployment-contracts.mjs
+      - name: Bern clinic route contract
+        run: node scripts/check-bern-live.mjs
+      - name: Standort link and CTA regression gate
+        run: node scripts/check-standort-ux.mjs
+      - name: German-English route integrity
+        run: node scripts/check-i18n.mjs
+      - name: English form analytics (mocked; no live conversions)
+        run: node scripts/test-en-analytics.mjs
+
+  # Legacy suites have known pre-existing failures (same as the last good
+  # deployment). Publish diagnostics; never misrepresent them as green.
+  # Require this job only after those suites have been repaired.
+  legacy-regressions:
+    name: Legacy regression inventory (informational)
+    if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    needs: production-safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Run and report outstanding regression suites
+        run: node scripts/ci-legacy-audit.mjs
+      - name: Upload full regression logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-regressions-${{ github.run_id }}
+          path: ci-legacy-results/
+          if-no-files-found: ignore
+          retention-days: 14
