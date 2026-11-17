@@ -1,0 +1,104 @@
+/* Homepage-only Hwang-style patient form test.
+   Preserves the canonical TCM.ch form, consent, delivery and validation. */
+#home-content #home-contact-form .home-kontakt-form-panel .kf.kf--ruhig{
+  --kf-ink:#182832;--kf-line:#E5EAEC;--kf-neon:#1769B1;
+  --kf-px:clamp(20px,3vw,35px);
+  padding:clamp(20px,3vw,34px)!important;
+  border:1px solid #E7ECEF!important;border-radius:27px!important;
+  background:#fff!important;box-shadow:0 12px 42px rgba(23,45,64,.07)!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-kopf{
+  padding:0!important;margin:0 0 22px!important;background:#fff!important;color:#17212A!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-kopf .kf-h{
+  color:#17212A!important;font-size:clamp(24px,2.2vw,31px)!important;
+  font-weight:650!important;letter-spacing:-.035em!important;line-height:1.25!important;
+  margin:0 0 8px!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-kopf-sub{
+  color:#697985!important;font-size:14px!important;line-height:1.5!important;
+}
+/* Never hide the actual terminology radios until the adapter is initialized;
+   on script failure the original form remains fully usable. */
+#home-content #home-contact-form .kf[data-home-friendly-ready="1"] :is(.kf-sec-h,.kf-opts){
+  position:absolute!important;clip-path:inset(50%)!important;
+  width:1px!important;height:1px!important;
+  padding:0!important;margin:0!important;overflow:hidden!important;
+  white-space:nowrap!important;border:0!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-fields{
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:16px;row-gap:15px;margin:0!important;align-items:start;
+}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field{
+  grid-column:1/-1;min-width:0;margin:0!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field:has([name="name"]){grid-column:1/-1;grid-row:1}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field:has([name="email"]){grid-column:1;grid-row:2}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field:has([name="telefon"]){grid-column:2;grid-row:2}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field:has([name="standort"]){grid-column:1/-1;grid-row:3}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-home-service{grid-column:1/-1;grid-row:4}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field:has([name="anliegen"]){grid-column:1/-1;grid-row:5}
+#home-content #home-contact-form .kf--ruhig .kf-fields>.kf-home-callback{grid-column:1/-1;grid-row:6}
+#home-content #home-contact-form .kf--ruhig .kf-fields>:not(.kf-field):not(.kf-home-callback){grid-column:1/-1}
+#home-content #home-contact-form .kf--ruhig .kf-label{
+  margin:0 0 7px!important;font-size:14px!important;font-weight:550!important;
+  line-height:1.35;color:#677889!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-input{
+  width:100%;min-height:54px;padding:13px 16px!important;
+  font-size:16px!important;line-height:1.45!important;
+  border:1.5px solid transparent!important;border-radius:17px!important;
+  color:#1F2D37!important;background:#F5F6F7!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-input::placeholder{color:#9BA7B2!important}
+#home-content #home-contact-form .kf--ruhig .kf-input:focus{
+  background:#fff!important;border-color:#1769B1!important;
+  box-shadow:0 0 0 3px rgba(23,105,177,.12)!important;outline:none!important;
+}
+#home-content #home-contact-form .kf--ruhig select.kf-input{cursor:pointer;appearance:auto!important}
+#home-content #home-contact-form .kf--ruhig .kf-textarea{
+  min-height:122px!important;resize:vertical;
+}
+#home-content #home-contact-form .kf-home-callback{
+  display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;
+  min-height:34px;cursor:pointer;color:#647584;font-size:14px;line-height:1.4;
+}
+#home-content #home-contact-form .kf-home-callback input{
+  accent-color:#1769B1;width:19px;height:19px;margin:0;flex:0 0 19px;
+}
+#home-content #home-contact-form .kf-home-callback>span{font-weight:650;color:#526575}
+#home-content #home-contact-form .kf-home-callback small{
+  display:block;flex-basis:100%;padding-left:29px;margin-top:-7px;
+  font-size:12.5px;line-height:1.4;color:#8895A0;
+}
+#home-content #home-contact-form .kf--ruhig .kf-btn--primary{
+  min-height:56px;border-radius:999px!important;
+  background:#1769B1!important;border-color:#1769B1!important;
+  color:#fff!important;font-size:16px!important;font-weight:750!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-btn--primary:hover{
+  background:#12588D!important;border-color:#12588D!important;
+}
+#home-content #home-contact-form .kf--ruhig .kf-fhint{font-size:12px!important}
+#home-content #home-contact-form .kf-home-service[hidden]{display:none!important}
+#home-content #home-contact-form .kf--ruhig .kf-field:has([name="telefon"]) .kf-fhint{display:none}
+#home-content #home-contact-form .kf--ruhig :is(.kf-input,.kf-btn,.kf-home-callback input):focus-visible{
+  outline:3px solid #1769B1;outline-offset:3px
+}
+@media(max-width:460px){
+  #home-content #home-contact-form .home-kontakt-form-panel .kf.kf--ruhig{padding:23px 18px!important}
+  #home-content #home-contact-form .kf--ruhig .kf-fields{column-gap:10px;row-gap:13px}
+  #home-content #home-contact-form .kf--ruhig .kf-input{padding:13px 12px!important}
+}
+@media(max-width:350px){
+  #home-content #home-contact-form .kf--ruhig .kf-fields{grid-template-columns:minmax(0,1fr)}
+  #home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field:has([name="telefon"]),
+  #home-content #home-contact-form .kf--ruhig .kf-fields>.kf-field:has([name="email"]){
+    grid-column:1/-1;grid-row:auto;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #home-content #home-contact-form .kf--ruhig .kf-input,
+  #home-content #home-contact-form .kf--ruhig .kf-btn{transition:none!important}
+}
