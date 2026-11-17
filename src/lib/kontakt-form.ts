@@ -193,7 +193,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<option value="${esc(x.value)}" data-id="${x.id}" data-art="${x.art}"${x.standard ? ' data-default="1"' : ''} data-tel="${esc(x.tel)}"${x.checkin ? ' data-checkin="1"' : ''}${x.onedoc ? ` data-onedoc="${esc(x.onedoc)}"` : ''}${x.hinweis ? ` data-hinweis="${esc(x.hinweis)}"` : ''}${secondary ? ' data-kf-secondary="1"' : ''}${selected ? ' selected' : ''}>${esc(x.label)}</option>`;
   const select = fixed ? '' :
     `<div class="kf-field"><label class="kf-label" for="${p}-standort">Standort ${Q ? '<span class="kf-star" aria-hidden="true">*</span>' : '<span aria-hidden="true">*</span>'}</label>` +
-    `<select class="kf-input kf-select" id="${p}-standort" name="standort" required aria-describedby="${p}-standort-err">` +
+    `<select class="kf-input kf-select kf-location-select" id="${p}-standort" name="standort" required aria-describedby="${p}-standort-err">` +
     '<option value="">Standort auswählen</option>' +
     visibleOpts.map((x: any, i: number) => optionMarkup(x, i === selectedIdx, SECONDARY_LOCATION_IDS.includes(x.id))).join('') +
     '</select>' +
