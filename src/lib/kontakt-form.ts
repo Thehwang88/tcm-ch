@@ -247,10 +247,12 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   // Karten (z. B. 320 px Viewport: 234–252 px Inhalt) abgeschnitten bzw. die Karte verbreitern. Dann offizielle Grösse
   // «compact» (150×140). Inline am Kartenende (Karte dann vollständig geparst, kein Zwischen-Paint), weil Turnstile
   // implizit schon vor DOMContentLoaded rendert (kontakt-form.js ist dafür zu spät).
+  // Always-visible managed Cloudflare widget: if automated verification stalls, patients can
+  // see and complete the challenge rather than encountering a hidden-token submission error.
   // Kampagnen-Sheet: Container ohne cf-turnstile-Klasse (kein implizites Rendern im verborgenen Dialog); das Sheet-Skript
   // rendert explizit beim Öffnen und setzt dann die Klasse (Token-Pflicht im Submit bleibt).
   const ts = HB ? `<div class="kf-ts" data-kf-ts-lazy data-sitekey="${esc(sitekey)}"></div>`
-    : `<div class="cf-turnstile kf-ts" data-sitekey="${esc(sitekey)}" data-appearance="interaction-only"></div>`;
+    : `<div class="cf-turnstile kf-ts" data-sitekey="${esc(sitekey)}" data-appearance="always"></div>`;
   const tsSize = Q && !HB ? `<script>(function(e){if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode.querySelector('.kf-ts'))</script>` : '';
   const note = `<p class="kf-note">Mit deiner Anfrage ist noch kein Termin gebucht.</p>`;
   const legalKurz = `<p class="kf-legal kf-legal--kurz"><a href="/datenschutz/">Datenschutz</a></p>`;
