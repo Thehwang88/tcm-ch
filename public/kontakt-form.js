@@ -54,6 +54,7 @@
     var scopeNames = card.getAttribute('data-kf-scope-names') || 'St. Gallen';
     var sel = form.querySelector('select[name="standort"]');
     var radios = [].slice.call(form.querySelectorAll('input[name="terminart"]'));
+    var friendlySelect = null, friendlyWrap = null, friendlyError = null, friendlyUpdate = function () {};
     var rCheckin = form.querySelector('input[name="terminart"][value="checkin"]');
     var submitBtn = form.querySelector('[data-kf-submit]');
     var panel = form.querySelector('[data-kf-onedoc-panel]');
@@ -86,6 +87,13 @@
       var box = document.getElementById('kf-' + inst + '-' + id + '-err');
       if (el && name !== 'terminart') { if (msg) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
       if (box) { box.textContent = msg || ''; box.hidden = !msg; }
+      // The visible friendly selector mirrors the original, canonical radio
+      // error. The radio fieldset stays in the DOM for fallback/accessibility.
+      if (name === 'terminart' && friendlySelect) {
+        if (msg) friendlySelect.setAttribute('aria-invalid', 'true');
+        else friendlySelect.removeAttribute('aria-invalid');
+        if (friendlyError) { friendlyError.textContent = msg || ''; friendlyError.hidden = !msg; }
+      }
     }
     function clearErrs() { ['terminart', 'standort', 'name', 'telefon', 'email'].forEach(function (n) { fieldErr(n, ''); }); if (errBox) errBox.hidden = true; }
 
@@ -169,6 +177,7 @@
         if (!telBtn.getAttribute('data-kf-tel-default')) telBtn.setAttribute('data-kf-tel-default', telText.textContent);
         telText.textContent = tel; telBtn.setAttribute('href', 'tel:' + tel.replace(/[^\d+]/g, ''));
       }
+      friendlyUpdate();
     }
     // Vorauswahl (05.11.2026): frisches Formular → «Ersttermin mit Behandlung», sofern angeboten. Rein visuell/inhaltlich:
     // kein change-Event, kein dataLayer-Event. noDefault: ein nicht mehr verfügbarer Check-in wird nicht ersetzt.
@@ -254,6 +263,93 @@
     // Direktlink mit Check-in-Wunsch an einem Formular ohne Check-in-Angebot: Hinweis an der (gelösten) Auswahl.
     if (blockedOnLoad) fieldErr('terminart', checkinNA);
 
+    // Global Hwang-inspired friendly form: display ONE compact service select,
+    // while keeping the canonical terminart radios, offer IDs, validation,
+    // prefill, Turnstile and dataLayer events exactly as before.
+    // Home has its own dedicated adapter; campaign variants retain their own UI.
+    if (inst !== 'home' && !card.hasAttribute('data-kf-kampagne') && opts && radios.length) {
+      var friendlyHost = form.querySelector('.kf-fields');
+      if (friendlyHost) {
+        friendlyWrap = document.createElement('div');
+        friendlyWrap.className = 'kf-field kf-friendly-service';
+        var friendlyId = 'kf-' + inst + '-friendly-service';
+        var friendlyLabel = document.createElement('label');
+        friendlyLabel.className = 'kf-label';
+        friendlyLabel.htmlFor = friendlyId;
+        friendlyLabel.textContent = 'Dienstleistung';
+        var star = document.createElement('span');
+        star.className = 'kf-star'; star.textContent = ' *'; star.setAttribute('aria-hidden', 'true');
+        friendlyLabel.appendChild(star);
+        friendlySelect = document.createElement('select');
+        friendlySelect.className = 'kf-input kf-select';
+        friendlySelect.id = friendlyId;
+        friendlySelect.setAttribute('data-kf-friendly-service', '');
+        friendlySelect.required = true;
+        var friendlyBlank = document.createElement('option');
+        friendlyBlank.value = ''; friendlyBlank.textContent = 'Dienstleistung auswählen';
+        friendlySelect.appendChild(friendlyBlank);
+        var friendlyCheckin = null, friendlyBehandlung = null;
+        if (rCheckin) {
+          friendlyCheckin = document.createElement('option');
+          friendlyCheckin.value = 'checkin';
+          friendlyCheckin.textContent = 'Gratis 30 Min. Kennenlernen';
+          friendlySelect.appendChild(friendlyCheckin);
+        }
+        if (rBeh) {
+          friendlyBehandlung = document.createElement('option');
+          friendlyBehandlung.value = 'behandlung';
+          friendlyBehandlung.textContent = 'Ersttermin mit Behandlung';
+          friendlySelect.appendChild(friendlyBehandlung);
+        }
+        var friendlyNote = document.createElement('p');
+        friendlyNote.className = 'kf-fhint kf-friendly-note';
+        friendlyNote.setAttribute('data-kf-friendly-note', '');
+        friendlyError = document.createElement('p');
+        friendlyError.className = 'kf-ferr';
+        friendlyError.id = friendlyId + '-err';
+        friendlyError.hidden = true;
+        friendlyError.setAttribute('role', 'alert');
+        friendlySelect.setAttribute('aria-describedby', friendlyId + '-note ' + friendlyId + '-err');
+        friendlyNote.id = friendlyId + '-note';
+        friendlyWrap.appendChild(friendlyLabel);
+        friendlyWrap.appendChild(friendlySelect);
+        friendlyWrap.appendChild(friendlyNote);
+        friendlyWrap.appendChild(friendlyError);
+        friendlyHost.parentNode.insertBefore(friendlyWrap, friendlyHost);
+        friendlyUpdate = function () {
+          var tg = target();
+          var notTreatment = !!(tg && tg.art !== 'behandlung');
+          friendlyWrap.hidden = notTreatment;
+          var okCheckin = !!(rCheckin && !rCheckin.disabled && checkinAllowed());
+          if (friendlyCheckin) {
+            friendlyCheckin.disabled = !okCheckin;
+            friendlyCheckin.hidden = !okCheckin;
+          }
+          var current = chosen();
+          friendlySelect.value = current === 'checkin' && !okCheckin ? '' : current;
+          if (friendlySelect.selectedIndex < 0) friendlySelect.value = '';
+          friendlyNote.textContent = friendlySelect.value === 'checkin'
+            ? '30 Minuten · kostenlos, ohne Behandlung und unverbindlich.'
+            : friendlySelect.value === 'behandlung'
+              ? '90 Minuten · Gespräch, Diagnostik und erste Behandlung. Zusatzversicherung je nach Police.'
+              : '';
+          friendlyNote.hidden = !friendlyNote.textContent;
+        };
+        friendlySelect.addEventListener('change', function () {
+          var value = friendlySelect.value;
+          noDefault = false; byDefault = false;
+          var next = radios.filter(function (r) { return r.value === value && !r.disabled; })[0] || null;
+          radios.forEach(function (r) { r.checked = r === next; });
+          fieldErr('terminart', '');
+          if (next) next.dispatchEvent(new Event('change', { bubbles: true }));
+          else sync();
+        });
+        friendlyUpdate();
+        card.setAttribute('data-kf-friendly-ready', '1');
+        if (blockedOnLoad) fieldErr('terminart', checkinNA);
+      }
+    }
+
     // ── Kompakter SG-Hero: Rückruf-Bereich und optionale Angaben als Disclosures (ohne JS: alles offen) ──
     var rrBtn = form.querySelector('[data-kf-rr]'), rrBox = rrBtn && document.getElementById(rrBtn.getAttribute('aria-controls'));
     var optBtn = form.querySelector('[data-kf-opt]'), optBox = optBtn && document.getElementById(optBtn.getAttribute('aria-controls'));
@@ -311,6 +407,9 @@
       var homeService = inst === 'home' && form.querySelector('[data-kf-service]');
       if (homeService && !homeService.closest('[hidden]')) {
         return { el: homeService.closest('.kf-field') || homeService, focus: homeService };
+      }
+      if (friendlySelect && friendlyWrap && !friendlyWrap.hidden) {
+        return { el: friendlyWrap, focus: friendlySelect };
       }
       if (opts && shown(opts)) {
         var cur = radios.filter(function (x) { return x.checked; })[0];
@@ -407,7 +506,7 @@
       if (!em && emReq) fail('email', 'Bitte gib deine E-Mail-Adresse an.');
       else if (em && !emailOk(em)) fail('email', 'Bitte prüfe deine E-Mail-Adresse.');
       if (first) {
-        var fe = first === 'terminart' ? (radios.filter(function (r) { return !r.disabled; })[0]) : form.querySelector('[name="' + first + '"]');
+        var fe = first === 'terminart' ? (friendlySelect && friendlyWrap && !friendlyWrap.hidden ? friendlySelect : radios.filter(function (r) { return !r.disabled; })[0]) : form.querySelector('[name="' + first + '"]');
         if (fe) { openFor(fe); fe.focus(); }
         return;
       }
