@@ -23,6 +23,7 @@ const schema = {
   <section class="kontakt-layout-section" aria-labelledby="kontakt-title">
     <div class="wrap kontakt-shell">
       <div class="kontakt-layout">
+        <div class="kontakt-left">
         <div class="kontakt-intro">
           <p class="kontakt-eyebrow">Kontakt · TCM.ch Kliniken</p>
           <h1 id="kontakt-title">Wir sind für dich da.</h1>
@@ -87,6 +88,7 @@ const schema = {
             <a href="/krankenkassen/">Krankenkasse &amp; Kosten <span aria-hidden="true">→</span></a>
           </div>
         </div>
+        </div>
 
         <div class="kontakt-form-panel" aria-label="Terminanfrage-Formular">
           {/* Shared TerminForm unchanged: #formular, #terminform, Turnstile and server-confirmed conversion events. */}
@@ -107,13 +109,14 @@ const schema = {
   .kontakt-layout{
     display:grid;
     grid-template-columns:minmax(0,1.06fr) minmax(430px,.94fr);
-    grid-template-areas:"intro form" "methods form" "trust form";
     align-items:start;
-    column-gap:clamp(30px,5vw,86px);
-    row-gap:clamp(11px,1.4vw,19px);
-    align-content:start;
+    gap:clamp(30px,4vw,70px);
   }
-  .kontakt-intro{grid-area:intro;min-width:0}
+  .kontakt-left{
+    display:flex;flex-direction:column;align-items:stretch;
+    gap:clamp(13px,1.6vw,22px);min-width:0;
+  }
+  .kontakt-intro{min-width:0}
   .kontakt-eyebrow{
     margin:0 0 10px;
     font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
@@ -133,7 +136,6 @@ const schema = {
     color:#52616B;
   }
   .kontakt-methods{
-    grid-area:methods;
     display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
     gap:7px 13px;
     min-width:0;
@@ -163,7 +165,7 @@ const schema = {
     color:var(--tcm-primary,#1769B1);text-decoration:underline;text-underline-offset:3px;
   }
   .kontakt-trust{
-    grid-area:trust;min-width:0;max-width:640px;
+    min-width:0;max-width:640px;
   }
   .kontakt-reviewstrip{
     display:flex;align-items:center;justify-content:space-between;gap:14px;
@@ -211,7 +213,7 @@ const schema = {
   }
   .kontakt-support-links a:hover{text-decoration:underline;text-underline-offset:4px}
   .kontakt-form-panel{
-    grid-area:form;min-width:0;width:100%;max-width:590px;justify-self:end;
+    min-width:0;width:100%;max-width:590px;justify-self:end;
   }
   /* Layout overrides ONLY. Original TerminForm and its conversion events remain untouched. */
   :global(.kontakt-form-panel .tf-section){
@@ -231,10 +233,13 @@ const schema = {
     .kontakt-layout{
       max-width:730px;margin:0 auto;
       grid-template-columns:minmax(0,1fr);
-      grid-template-areas:"intro" "trust" "form" "methods";
-      row-gap:20px;
+      gap:20px;
     }
-    .kontakt-form-panel{justify-self:stretch;max-width:none}
+    .kontakt-left{display:contents}
+    .kontakt-intro{order:1}
+    .kontakt-trust{order:2}
+    .kontakt-form-panel{order:3;justify-self:stretch;max-width:none}
+    .kontakt-methods{order:4}
     .kontakt-intro h1{font-size:clamp(35px,5.2vw,50px);margin-bottom:10px}
     .kontakt-lead{font-size:16px}
   }
