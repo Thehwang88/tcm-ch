@@ -18,79 +18,197 @@ const schema = {
   isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
 };
 ---
+
 <LayoutDe stickyCta={false} title={`${title} | TCM.ch`} description={description} path={path} schema={schema} turnstile={true}>
-  <section class="hero">
-    <div class="wrap kontakt-hero">
-      <div class="eyebrow">Kontakt · TCM.ch</div>
-      <h1>Termin anfragen</h1>
-      <p class="lead">{description}</p>
-    </div>
-  </section>
+  <section class="kontakt-layout-section" aria-labelledby="kontakt-title">
+    <div class="wrap kontakt-shell">
+      <div class="kontakt-layout">
+        <div class="kontakt-intro">
+          <p class="kontakt-eyebrow">Kontakt · TCM.ch Kliniken</p>
+          <h1 id="kontakt-title">Wir sind für dich da.</h1>
+          <p class="kontakt-lead">
+            Du möchtest einen Termin vereinbaren oder hast Fragen zu unseren Behandlungen?
+            Schreib uns oder ruf an – wir helfen dir, die passende Praxis zu finden.
+          </p>
+        </div>
 
-  <section class="section" style="padding-top:0">
-    <div class="wrap kontakt-wrap">
-      <div class="channels">
-        <a class="channel channel--primary" href={waHref} target="_blank" rel="noopener">
-          <div class="ch-label">Am schnellsten</div>
-          <div class="ch-title">Per WhatsApp</div>
-          <div class="ch-sub">Schildere kurz dein Anliegen – wir melden uns persönlich.</div>
-          <span class="ch-go">WhatsApp öffnen →</span>
-        </a>
-        <a class="channel" href={`tel:${phone.replace(/\s+/g, '')}`}>
-          <div class="ch-label">Anrufen</div>
-          <div class="ch-title">{phone}</div>
-          <div class="ch-sub">Mo–Sa erreichbar. Wir finden gemeinsam den passenden Termin.</div>
-          <span class="ch-go">Anrufen →</span>
-        </a>
-        <a class="channel" href={`mailto:${email}`}>
-          <div class="ch-label">E-Mail</div>
-          <div class="ch-title">{email}</div>
-          <div class="ch-sub">Schreib uns dein Anliegen – wir melden uns zeitnah zurück.</div>
-          <span class="ch-go">E-Mail schreiben →</span>
-        </a>
-      </div>
+        <div class="kontakt-methods" aria-label="So erreichst du uns">
+          <a class="kontakt-method" href={`mailto:${email}`}>
+            <svg class="kontakt-method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>
+            </svg>
+            <span><strong>E-Mail</strong><span>{email}</span></span>
+          </a>
+          <a class="kontakt-method" href={`tel:${phone.replace(/\s+/g, '')}`}>
+            <svg class="kontakt-method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.5v3a2 2 0 0 1-2.2 2A19.4 19.4 0 0 1 2.5 4.2 2 2 0 0 1 4.5 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7.8 10a16 16 0 0 0 6.2 6.2l1.5-1.6a2 2 0 0 1 1.8-.6l3 .5a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            <span><strong>Telefon</strong><span>{phone}</span></span>
+          </a>
+          <div class="kontakt-method kontakt-method--info">
+            <svg class="kontakt-method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+            </svg>
+            <span><strong>Erreichbarkeit</strong><span>Mo–Sa telefonisch erreichbar</span></span>
+          </div>
+          <a class="kontakt-method" href={waHref} target="_blank" rel="noopener">
+            <svg class="kontakt-method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.8 8.8 0 0 1-9.1 9A9.2 9.2 0 0 1 7.5 19L3 20.5l1.5-4.4A9 9 0 1 1 21 11.5Z"/>
+              <path d="M8.5 9c.6 2.9 3.2 5.5 6.4 6.4"/>
+            </svg>
+            <span><strong>WhatsApp</strong><span>Nachricht schreiben <span aria-hidden="true">↗</span></span></span>
+          </a>
+        </div>
 
-      <TerminForm heading="Oder direkt anfragen" />
+        <div class="kontakt-trust">
+          <div class="kontakt-trust-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m12 2 8 4v5c0 5-3.6 8.7-8 11-4.4-2.3-8-6-8-11V6l8-4Z"/><path d="m8.5 12 2.5 2.5L16 9"/>
+            </svg>
+            <strong>Gut informiert in die Behandlung</strong>
+          </div>
+          <p>EMR-/ASCA-anerkannte Therapeut:innen. Eine Kostenbeteiligung durch die Zusatzversicherung ist je nach Police und behandelnder Person möglich.</p>
+          <div class="kontakt-support-links">
+            <a href="/standorte/">Unsere Standorte <span aria-hidden="true">→</span></a>
+            <a href="/krankenkassen/">Versicherung &amp; Kosten <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
 
-      <div class="kontakt-foot">
-        <p>
-          <strong>EMR-/ASCA-anerkannt.</strong> Behandlungen werden in der Regel über die
-          Zusatzversicherung für Komplementärmedizin abgerechnet (80–100 %).
-        </p>
-        <p>
-          <a href="/standorte/">Alle Standorte ansehen →</a> &nbsp;·&nbsp;
-          <a href="/krankenkassen/">Krankenkasse &amp; Deckung →</a>
-        </p>
+        <div class="kontakt-form-panel" aria-label="Terminanfrage-Formular">
+          {/* Shared TerminForm unchanged: #formular, #terminform, Turnstile and server-confirmed conversion events. */}
+          <TerminForm />
+        </div>
       </div>
     </div>
   </section>
 </LayoutDe>
 
 <style>
-  .kontakt-hero { max-width: 680px; }
-  .hero .lead { max-width: 600px; }
-
-  .channels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .channel {
-    display: flex; flex-direction: column; height: 100%;
-    border: 1px solid var(--border); border-radius: var(--r-card); padding: 24px;
-    text-decoration: none; background: var(--white);
-    transition: border-color var(--t-fast) ease, box-shadow var(--t-fast) ease, transform var(--t-fast) ease;
+  .kontakt-layout-section{
+    background:var(--brand-surface,#F6F5F2);
+    padding:clamp(38px,5.5vw,80px) 0 clamp(60px,7vw,100px);
+    min-height:600px;
   }
-  .channel:hover { border-color: var(--blue); box-shadow: var(--sh-card); transform: translateY(-2px); }
-  .channel--primary { background: var(--blue); border-color: var(--blue); }
-  .channel--primary .ch-label, .channel--primary .ch-sub { color: rgba(255,255,255,.85); }
-  .channel--primary .ch-title, .channel--primary .ch-go { color: #fff; }
-  .ch-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-  .ch-title { font-size: 19px; font-weight: 800; color: var(--ink); margin: 6px 0 8px; }
-  .ch-sub { font-size: 14.5px; line-height: 1.5; color: var(--mid); flex: 1; }
-  .ch-go { margin-top: 16px; font-size: 14px; font-weight: 700; color: var(--blue); }
-
-  .kontakt-foot { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 20px; font-size: 15px; color: var(--mid); }
-  .kontakt-foot p { margin: 0 0 10px; }
-  .kontakt-foot strong { color: var(--ink); }
-  .kontakt-foot a { color: var(--blue); font-weight: 600; text-decoration: none; }
-  .kontakt-foot a:hover { text-decoration: underline; }
-
-  @media (max-width: 760px) { .channels { grid-template-columns: 1fr; } }
+  .kontakt-shell{max-width:1320px}
+  .kontakt-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(430px,.92fr);
+    grid-template-areas:"intro form" "methods form" "trust form";
+    align-items:start;
+    column-gap:clamp(30px,5vw,86px);
+    row-gap:clamp(24px,2.5vw,36px);
+  }
+  .kontakt-intro{grid-area:intro;min-width:0}
+  .kontakt-eyebrow{
+    margin:0 0 18px;
+    font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    color:#496074;
+  }
+  .kontakt-intro h1{
+    max-width:680px;margin:0 0 23px;
+    font-family:var(--font-sans);
+    font-size:clamp(40px,4.2vw,66px);
+    font-weight:850;line-height:1.08;letter-spacing:-.045em;
+    color:var(--brand-black,#020B10);
+    text-wrap:balance;
+  }
+  .kontakt-lead{
+    max-width:58ch;margin:0;
+    font-size:clamp(16px,1.3vw,19px);line-height:1.65;
+    color:#52616B;
+  }
+  .kontakt-methods{
+    grid-area:methods;
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:19px 16px;
+    min-width:0;
+  }
+  .kontakt-method{
+    display:flex;align-items:flex-start;gap:12px;min-width:0;
+    padding:10px 3px;
+    color:var(--brand-black,#020B10);
+    text-decoration:none;border-radius:9px;
+  }
+  .kontakt-method:not(.kontakt-method--info):hover{
+    background:rgba(23,105,177,.05);
+  }
+  .kontakt-method-icon{
+    display:block;flex:0 0 22px;width:22px;height:22px;
+    margin-top:2px;color:var(--tcm-primary,#1769B1);
+  }
+  .kontakt-method>span{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .kontakt-method strong{
+    display:block;font-size:15px;font-weight:800;line-height:1.3;
+  }
+  .kontakt-method>span>span{
+    display:block;font-size:14px;line-height:1.4;
+    color:#52616B;overflow-wrap:anywhere;
+  }
+  .kontakt-method:not(.kontakt-method--info):hover>span>span{
+    color:var(--tcm-primary,#1769B1);text-decoration:underline;text-underline-offset:3px;
+  }
+  .kontakt-trust{
+    grid-area:trust;
+    max-width:640px;padding:22px 24px;
+    border:1px solid rgba(35,56,70,.12);
+    border-radius:16px;background:#fff;
+  }
+  .kontakt-trust-title{
+    display:flex;align-items:center;gap:11px;
+    font-size:16px;line-height:1.4;color:var(--brand-black,#020B10);
+  }
+  .kontakt-trust-title svg{
+    flex:none;width:24px;height:24px;color:var(--tcm-primary,#1769B1);
+  }
+  .kontakt-trust p{
+    margin:10px 0 15px;
+    font-size:14px;line-height:1.6;color:#52616B;
+  }
+  .kontakt-support-links{display:flex;flex-wrap:wrap;gap:8px 23px}
+  .kontakt-support-links a{
+    display:inline-flex;align-items:center;min-height:32px;
+    color:var(--tcm-primary,#1769B1);font-size:14px;font-weight:750;
+    text-decoration:none;
+  }
+  .kontakt-support-links a:hover{text-decoration:underline;text-underline-offset:4px}
+  .kontakt-form-panel{
+    grid-area:form;min-width:0;width:100%;max-width:590px;justify-self:end;
+  }
+  /* Layout overrides ONLY. Original TerminForm and its conversion events remain untouched. */
+  :global(.kontakt-form-panel .tf-section){
+    padding:0!important;margin:0;scroll-margin-top:105px;
+  }
+  :global(.kontakt-form-panel .tf-wrap){
+    padding:0!important;margin:0!important;
+    width:100%;max-width:none!important;
+  }
+  :global(.kontakt-form-panel .kf.kf--ruhig){
+    box-shadow:0 18px 48px rgba(18,39,50,.09);
+  }
+  :global(.kontakt-layout-section a:focus-visible){
+    outline:3px solid #1769B1;outline-offset:3px;
+  }
+  @media(max-width:1000px){
+    .kontakt-layout{
+      max-width:730px;margin:0 auto;
+      grid-template-columns:minmax(0,1fr);
+      grid-template-areas:"intro" "form" "methods" "trust";
+      row-gap:28px;
+    }
+    .kontakt-form-panel{justify-self:stretch;max-width:none}
+    .kontakt-intro h1{font-size:clamp(38px,5.4vw,58px);margin-bottom:16px}
+    .kontakt-lead{font-size:17px}
+  }
+  @media(max-width:560px){
+    .kontakt-layout-section{padding:34px 0 72px;min-height:0}
+    .kontakt-eyebrow{font-size:11px;margin-bottom:12px}
+    .kontakt-intro h1{font-size:clamp(36px,9vw,46px)}
+    .kontakt-lead{font-size:16px;line-height:1.55}
+    .kontakt-methods{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 6px}
+    .kontakt-method{gap:7px;padding:8px 1px}
+    .kontakt-method-icon{flex-basis:19px;width:19px;height:19px}
+    .kontakt-method strong{font-size:13.5px}
+    .kontakt-method>span>span{font-size:12.5px}
+    .kontakt-trust{padding:18px 16px}
+  }
 </style>
