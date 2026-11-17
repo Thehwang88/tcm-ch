@@ -67,6 +67,13 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const migrated = getStandort(slug!);
+// Bern is an open clinic, never the old waitlist/legacy leaf. Fail the build on any regression.
+if (slug === 'bern') {
+  const bernClinic = clinics.find((c) => c.id === 'bern');
+  if (!migrated || migrated.planned || migrated.review || migrated.partnerUmleitung || bernClinic?.status !== 'operational') {
+    throw new Error('Bern must render the data-driven operating-clinic template, never the waitlist landing page');
+  }
+}
 const url = `https://tcm.ch/standorte/${slug}/`;
 
 // Interne Links in den /haut/-Cluster. Die Standort-Seiten werden täglich gecrawlt,
