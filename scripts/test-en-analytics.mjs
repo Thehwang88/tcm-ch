@@ -35,7 +35,7 @@ const origin = () => `http://127.0.0.1:${srv.address().port}`;
 
 const fails = []; let passes = 0;
 const ok = (cond, msg) => { if (cond) passes++; else fails.push(msg); };
-const browser = await puppeteer.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox', '--no-proxy-server'] });
+const browser = await puppeteer.launch({ executablePath: process.env.CHROMIUM || await puppeteer.executablePath(), args: ['--no-sandbox', '--no-proxy-server'] });
 
 async function open(p, vp = { width: 1440, height: 900 }) {
   const page = await browser.newPage();
@@ -71,7 +71,7 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
   ok(await clickNoNav(page, '.ev-pick a[data-pick="Zürich – nächster freier Termin"]'), 'T1 flexible selector exists');
   ok((await page.$eval('#en-zurich-form [name="standort"]', (s) => s.value)) === 'Zürich – nächster freier Termin', 'T1 flexible option preselected (DE routing value)');
   ok((await events(page)).length === 3, 'T1 one event per selector click');
-  ok((await page.$$eval('form', (f) => f.length)) === 1, 'T1 exactly one form on the Zürich page');
+  ok((await page.evaluate(() => document.querySelectorAll('form#en-zurich-form').length)) === 1, 'T1 exactly one canonical Zürich appointment form (other independent forms allowed)');
   ev = await events(page);
   ok(ev.every((e) => e.event !== 'form_submit' && e.event !== 'form_submit_success'), 'T1 clicks are never form events');
   ok(await clickNoNav(page, '.ev-panel a[href*="wa.me"]'), 'T1 WhatsApp link exists');
@@ -122,15 +122,15 @@ const PII = { name: 'Test Person', email: 'test.person@example.ch', tel: '+41 79
   ok((await page.$eval('#en-nearme-form [name="anliegen"]', (t) => t.value)) === 'Treatment interest: Cupping. ', 'T7 treatment interest prefilled in the message');
   await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Bern"]').click(); });
   const bern = await page.evaluate(() => { const c = [...document.querySelectorAll('.ev-finder__clinic')].find((x) => !x.hidden && x.getAttribute('data-city') === 'Bern'); return c ? { status: c.getAttribute('data-status'), label: c.querySelector('a[data-finder-pick]').textContent.trim(), pick: c.querySelector('a[data-finder-pick]').getAttribute('data-pick') } : null; });
-  ok(bern && bern.status === 'planned' && /Send a request/.test(bern.label) && bern.pick === '', `T7 planned Bern offers no bookable option (no vorab), got ${JSON.stringify(bern)}`);
+  ok(bern && bern.status === 'operational' && bern.label === 'Request here' && bern.pick === 'Bern', `T7 operational Bern offers a canonical booking option, got ${JSON.stringify(bern)}`);
   await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Luzern"]').click(); });
   const lu = await page.evaluate(() => { const c = [...document.querySelectorAll('.ev-finder__clinic')].find((x) => !x.hidden && x.getAttribute('data-city') === 'Luzern'); return c ? c.querySelector('a[data-finder-pick]').textContent.trim() + '|' + c.querySelector('a[data-finder-pick]').getAttribute('data-pick') : null; });
   ok(lu === 'Register interest|Luzern – Vormerkung, Eröffnung 2027', `T7 planned Luzern → register interest with its vorab value, got ${JSON.stringify(lu)}`);
   ok((await events(page)).length === 1, 'T7 finder choices emit no events (only the request link does)');
-  // Winterthur (22.10.2026): both clinics operational → 'Request here' with their canonical names; no clinic is under review any more.
+  // Winterthur: active TCM.ch Marktgasse only in the EN finder; old Hwang Münzgasse remains outside this TCM.ch clinic selector.
   await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Winterthur"]').click(); });
   const wt = await page.evaluate(() => [...document.querySelectorAll('.ev-finder__clinic')].filter((x) => !x.hidden && x.getAttribute('data-city') === 'Winterthur').map((c) => c.getAttribute('data-status') + '|' + c.querySelector('a[data-finder-pick]').textContent.trim() + '|' + c.querySelector('a[data-finder-pick]').getAttribute('data-pick')).sort().join(' ; '));
-  ok(wt === 'operational|Request here|Winterthur Marktgasse ; operational|Request here|Winterthur Münzgasse', `T7 Winterthur: Marktgasse + Münzgasse operational, bookable with canonical names, got ${JSON.stringify(wt)}`);
+  ok(wt === 'operational|Request here|Winterthur Marktgasse', `T7 only TCM.ch Winterthur Marktgasse bookable in the EN finder, got ${JSON.stringify(wt)}`);
   ok((await page.$$eval('.ev-finder__clinic[data-status="review"]', (cs) => cs.length)) === 0 && !(await page.content()).includes('confirmation pending') && !(await page.content()).includes('under review'), 'T7 no clinic under review (no pending/under-review wording)');
   ok((await page.$$eval('.ev-finder__clinic[data-status="operational"] a[data-finder-pick]', (as) => as.every((a) => a.textContent.trim() === 'Request here'))), 'T7 only operational clinics say "Request here"');
   // End-to-end payload: Basel + Cupping chosen above → submit → /api/anfrage body carries standort, interest prefix and quelle
