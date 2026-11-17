@@ -71,7 +71,7 @@ export const clinics: Clinic[] = [
     bild: { src: '/img/standorte/kreuzlingen.webp', alt: 'Praxis Hwang Kreuzlingen, Romanshornerstrasse 1' },
     hinweis: 'Romanshornerstrasse 1 · Praxis Hwang',
     gbp: { name: 'Praxis Hwang', cid: '4845104578104635100', verified: 'dashboard' },
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.6500, lng: 9.1750 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.6500, lng: 9.1750 }, status: 'operational',
     areaServed: ['Kreuzlingen', 'Tägerwilen', 'Bottighofen', 'Münsterlingen', 'Lengwil', 'Altnau', 'Ermatingen', 'Konstanz'] },
 
   { id: 'bottighofen', name: 'Bottighofen', city: 'Bottighofen', region: 'Lake Constance / Thurgau',
@@ -88,7 +88,7 @@ export const clinics: Clinic[] = [
     bild: { src: '/img/standorte/frauenfeld.webp', alt: 'Praxis Hwang Frauenfeld, Rheinstrasse 25' },
     hinweis: 'Rheinstrasse 25 · Praxis Hwang',
     gbp: { name: 'Praxis Hwang', cid: '14089881053313594982', verified: 'dashboard' },
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.5567, lng: 8.8983 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.5567, lng: 8.8983 }, status: 'operational',
     areaServed: ['Frauenfeld', 'Matzingen', 'Stettfurt', 'Felben-Wellhausen', 'Müllheim', 'Pfyn', 'Aadorf', 'Eschlikon', 'Weinfelden', 'Amriswil'] },
 
   { id: 'winterthur-muenzgasse', name: 'Winterthur Münzgasse', city: 'Winterthur', region: 'Greater Zürich',
@@ -107,7 +107,7 @@ export const clinics: Clinic[] = [
     // Öffnungszeiten bleiben bis zur tatsächlichen Bestätigung leer – keine Zeiten erfinden.
     bild: { src: '/images/winterthur-marktgasse-reception-800.webp', alt: 'Visualisierung: heller Empfangsbereich mit TCM.ch Logo, kein Foto der Praxis Winterthur Marktgasse' },
     hinweis: 'Marktgasse 78 · Winterthurer Altstadt',
-    openingHours: [], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
     areaServed: ['Winterthur', 'Veltheim', 'Töss', 'Oberwinterthur', 'Seen', 'Wülflingen', 'Mattenbach', 'Hegi', 'Seuzach', 'Wiesendangen', 'Elsau', 'Neftenbach', 'Pfungen', 'Brütten', 'Hettlingen', 'Illnau-Effretikon'] },
 
   { id: 'zuerich-hoengg', name: 'Zürich Höngg', city: 'Zürich', region: 'Zürich',
@@ -119,7 +119,7 @@ export const clinics: Clinic[] = [
     gbp: { name: 'Praxis Hwang', cid: '10520113234113581859', verified: 'dashboard' },
     // Inhaber 05.11.2026: Höngg als TCM.ch-Buchungsziel (Formular, Check-in) trotz Betreiberin Praxis Hwang → Karte live.
     karte: { status: 'live' },
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4040, lng: 8.4970 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4040, lng: 8.4970 }, status: 'operational',
     areaServed: ['Zürich', 'Höngg', 'Wipkingen', 'Affoltern', 'Albisrieden', 'Schlieren', 'Dietikon', 'Regensdorf'] },
 
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
@@ -128,7 +128,7 @@ export const clinics: Clinic[] = [
     // Eröffnet: Betrieb durch die Inhaber:in bestätigt (02.11.2026, zuvor 'planned'). Öffnungszeiten nicht bestätigt → keine erfinden.
     hinweis: 'Ohmstrasse 14 · Zürich Nord',
     gbp: { name: 'TCM.ch Zürich Oerlikon', cid: '7941897367090169557', verified: 'dashboard' },
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
   // TCM.ch Zürich Bahnhofstrasse: Mietvertrag bestätigt, Nutzung durch Medthera freigegeben (02.11.2026). Live, 1. OG.
@@ -138,7 +138,7 @@ export const clinics: Clinic[] = [
     street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
     hinweis: 'Bahnhofstrasse 37 · Zürich City',
     gbp: { name: 'TCM.ch Zürich Bahnhofstrasse', cid: '7979795935203150889', verified: 'dashboard' },
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
     areaServed: ['Zürich', 'Kreis 1', 'Altstadt', 'Enge', 'Aussersihl', 'Wiedikon'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
@@ -146,7 +146,7 @@ export const clinics: Clinic[] = [
     // Aktiver Standort (Inhaberbestätigung 12.10.2026). Öffnungszeiten bestätigt (Inhaber 06.11.2026): wie St. Gallen.
     hinweis: 'Steinenvorstadt 73 · Innenstadt',
     gbp: { name: 'TCM.ch Basel', cid: '7260991150521954357', verified: 'dashboard' },
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.5528, lng: 7.5878 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.5528, lng: 7.5878 }, status: 'operational',
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
 
   { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',
@@ -165,7 +165,7 @@ export const clinics: Clinic[] = [
     hinweis: 'Marktgasse 50 · Berner Altstadt',
     // GBP noch nicht öffentlich: keine erfundene CID, keine Bewertungslinks.
     // Inhaber wünscht dieselben Öffnungszeiten wie Basel (voriger Auftrag und Betriebsbestätigung).
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 46.948, lng: 7.4474 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 46.948, lng: 7.4474 }, status: 'operational',
     areaServed: ['Bern', 'Köniz', 'Ostermundigen', 'Ittigen', 'Zollikofen', 'Muri bei Bern', 'Worb'] },
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
@@ -173,7 +173,7 @@ export const clinics: Clinic[] = [
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22', schemaName: 'TCM.ch St Gallen',
     hinweis: 'Oberer Graben 22 · beim HB',
     gbp: { name: 'TCM.ch St Gallen', cid: '349562997880494535', verified: 'dashboard' },
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
     areaServed: ['St. Gallen', 'Gaiserwald', 'Wittenbach', 'Mörschwil', 'Goldach', 'Eggersriet', 'Gossau', 'Herisau', 'Teufen', 'Speicher'] },
 
   { id: 'rorschach', name: 'Rorschach', city: 'Rorschach', region: 'Lake Constance',
@@ -181,7 +181,7 @@ export const clinics: Clinic[] = [
     // Inhaber 05.11.2026: Rorschach als eigener Standort (live), Zeiten wie alle TCM.ch-Standorte.
     hinweis: 'Pestalozzistrasse 11 · Bodenseeregion',
     // Audit 08.11.2026: an der Pestalozzistrasse 11 ist nur «GIOIA-TCM Corinna Reinhart» gelistet, kein TCM.ch-Profil → kein gbp.
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4783, lng: 9.4894 }, status: 'operational',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4783, lng: 9.4894 }, status: 'operational',
     areaServed: ['Rorschach', 'Rorschacherberg', 'Goldach', 'Arbon', 'Horn', 'Steinach', 'Tübach', 'Mörschwil', 'Heiden', 'Walzenhausen', 'Berneck', 'Au', 'Thal', 'Altstätten'] },
 
   { id: 'wil', name: 'Wil', city: 'Wil', region: 'Fürstenland',
