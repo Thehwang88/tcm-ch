@@ -370,8 +370,7 @@ body.tcm-warm .kf .kf-opts .kf-opt--checkin:has(input:checked){
   line-height:1.35;cursor:pointer
 }
 .kf .kf-location-choice:hover{border-color:#8CAEC7;background:#EFF6FB}
-.kf .kf-location-choice:focus-visible,
-.kf .kf-location-more>summary:focus-visible{outline:3px solid #1769B1;outline-offset:2px}
+.kf .kf-location-choice:focus-visible{outline:3px solid #1769B1;outline-offset:2px}
 @media(max-width:450px){
   .kf .kf-location-more-grid{grid-template-columns:minmax(0,1fr)}
 }
