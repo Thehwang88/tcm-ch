@@ -92,16 +92,17 @@ const homeClinicCardHtml = (id: string) => {
   const primary = id === 'luzern'
     ? `<a class="home-loc-cta home-loc-cta--primary" href="${escHome(href)}#warteliste">Vormerken</a>`
     : id === 'zuerich-hub'
-      ? `<a class="home-loc-cta home-loc-cta--primary" href="/akupunktur-tcm-zuerich/#zh-funnel"${tracking}>Termin anfragen</a>`
+      ? `<a class="home-loc-cta home-loc-cta--primary" href="/akupunktur-tcm-zuerich/#zh-funnel"${tracking}>Termin in Zürich anfragen</a>`
       : `<a class="home-loc-cta home-loc-cta--primary" href="/?standort=${encodeURIComponent(id)}" data-booking-sheet="home" data-booking-location="${escHome(id)}" data-care-cta="home-location-card-${escHome(id)}">Termin anfragen</a>`;
   return `<article class="home-loc-card home-loc-card--image reveal" aria-label="TCM.ch ${escHome(meta.name)}">
     <a class="home-loc-visual" href="${escHome(href)}" aria-label="Mehr Informationen zu TCM.ch ${escHome(meta.name)}"${tracking}>${visual}</a>
     <div class="home-loc-main">
       <h3 class="home-loc-name">${homePin}<span>${escHome(meta.name)}</span></h3>
+      ${id === 'luzern' ? '<span class="home-loc-status">Eröffnung 2027</span>' : ''}
     </div>
     <div class="home-loc-actions">
       ${primary}
-      <a class="home-loc-cta home-loc-cta--secondary" href="${escHome(href)}"${tracking}>Mehr Infos <span aria-hidden="true">→</span></a>
+      <a class="home-loc-more" href="${escHome(href)}"${tracking}>Mehr Infos <span aria-hidden="true">→</span></a>
     </div>
   </article>`;
 };
@@ -188,8 +189,8 @@ const homeHtml = homeHtmlCards;
       font-size:clamp(27px,3vw,40px);line-height:1.1;letter-spacing:-.035em
     }
     #home-content .home-loc-main{
-      display:flex;align-items:center;min-width:0;flex:1;
-      padding:17px 19px 10px
+      display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+      gap:4px;min-width:0;flex:1;padding:17px 19px 10px
     }
     #home-content .home-loc-name{
       display:flex;align-items:center;gap:9px;margin:0;
@@ -199,27 +200,34 @@ const homeHtml = homeHtmlCards;
     #home-content .home-loc-pin{
       display:block;flex:none;color:#506579
     }
+    #home-content .home-loc-status{
+      display:block;margin-left:30px;font-family:var(--font-sans);
+      font-size:13.5px;font-weight:600;line-height:1.4;color:#5B6872
+    }
     #home-content .home-loc-actions{
-      display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
-      gap:9px;padding:4px 19px 19px
+      display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);
+      align-items:center;gap:9px;padding:4px 19px 19px
     }
     #home-content .home-loc-cta{
       display:flex;align-items:center;justify-content:center;gap:5px;
       box-sizing:border-box;min-width:0;min-height:48px;padding:10px 12px;
       border:1px solid transparent;border-radius:11px;text-align:center;
       font-family:var(--font-sans);font-size:14px;line-height:1.2;
-      font-weight:750;text-decoration:none;white-space:nowrap;
+      font-weight:750;text-decoration:none;white-space:normal;
       transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease
     }
     #home-content .home-loc-cta--primary{
       color:#fff!important;background:var(--tcm-primary,#1769B1);border-color:var(--tcm-primary,#1769B1)
     }
     #home-content .home-loc-cta--primary:hover{background:#12578f;border-color:#12578f;color:#fff!important}
-    #home-content .home-loc-cta--secondary{
-      color:var(--brand-black,#020B10);background:#fff;border-color:#D8DEE2
+    #home-content .home-loc-more{
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
+      min-height:48px;min-width:0;padding:6px 0;
+      color:#344C5F;font-family:var(--font-sans);font-size:14px;
+      font-weight:750;text-decoration:none;white-space:nowrap
     }
-    #home-content .home-loc-cta--secondary:hover{background:#F2F6F8;border-color:#AEBFCB}
-    #home-content .home-loc-card :is(.home-loc-cta,.home-loc-visual):focus-visible{
+    #home-content .home-loc-more:hover{text-decoration:underline;text-underline-offset:4px}
+    #home-content .home-loc-card :is(.home-loc-cta,.home-loc-more,.home-loc-visual):focus-visible{
       outline:3px solid #547A9A;outline-offset:2px
     }
     #home-content .home-locations-secondary{margin:24px 0 0;text-align:center}
