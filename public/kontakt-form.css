@@ -56,7 +56,7 @@
 .kf-opts .kf-ferr{margin:0}
 .kf-req{font-size:13.5px;color:var(--kf-mid);margin:2px 0 14px}
 .kf-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
-.kf-ts{margin:0 0 10px;max-width:100%;overflow:hidden}
+.kf-ts{margin:0 0 10px;max-width:100%;overflow:visible;min-height:65px}
 .kf-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;padding:14px 20px;border-radius:14px;font:inherit;font-size:16.5px;font-weight:800;line-height:1.2;text-decoration:none;cursor:pointer;text-align:center}
 .kf-btn--primary{background:var(--kf-neon);color:var(--kf-ink);border:1.5px solid var(--kf-neon)}
 .kf-btn--primary:hover{background:var(--tcm-primary-hover,#10558F);border-color:var(--tcm-primary-hover,#10558F)}
