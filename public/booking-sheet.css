@@ -56,3 +56,70 @@
 #tcm-booking-sheet .tcm-booking-content .kf-form{
   margin-top:0!important;
 }
+
+/* The dialog now hosts ONLY the actual form card, not its surrounding
+   two-column homepage contact SECTION. Reapply the Hwang-style form styling
+   without depending on #home-content (which no longer contains the card). */
+#tcm-booking-sheet .tcm-booking-content--home [data-kf-instance="home"]{
+  box-sizing:border-box;max-width:none!important;padding:0!important;
+  background:#fff!important;border:0!important;box-shadow:none!important
+}
+#tcm-booking-sheet .tcm-booking-content--home [data-home-friendly-ready="1"] :is(.kf-opts,.kf-sec-h){
+  position:absolute!important;clip-path:inset(50%)!important;
+  width:1px!important;height:1px!important;overflow:hidden!important;
+  padding:0!important;margin:0!important;white-space:nowrap!important;border:0!important
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;gap:13px 12px;margin:0!important
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field{
+  grid-column:1/-1;min-width:0;margin:0!important
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field:has([name="name"]){grid-row:1}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field:has([name="email"]){grid-column:1;grid-row:2}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field:has([name="telefon"]){grid-column:2;grid-row:2}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field:has([name="standort"]){grid-row:3}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-home-service{grid-row:4}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field:has([name="anliegen"]){grid-row:5}
+#tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-home-callback{grid-row:6;grid-column:1/-1}
+#tcm-booking-sheet .tcm-booking-content--home .kf-label{
+  margin:0 0 6px!important;color:#647584!important;font-size:13px!important;font-weight:550!important
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-input{
+  box-sizing:border-box;min-height:49px!important;width:100%!important;
+  padding:11px 13px!important;border-radius:14px!important;
+  background:#F5F6F7!important;border:1px solid #E7ECEF!important;
+  color:#25323D!important;font-size:16px!important
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-textarea{
+  min-height:93px!important;resize:vertical
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-home-callback{
+  display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;font-size:13px;color:#566875
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-home-callback input{
+  accent-color:#1769B1;width:18px;height:18px;flex:0 0 18px;margin:0
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-home-callback small{
+  flex-basis:100%;padding-left:26px;margin-top:-5px;font-size:11px;color:#7D8A94
+}
+#tcm-booking-sheet .tcm-booking-content--home .kf-home-service[hidden]{display:none!important}
+#tcm-booking-sheet .tcm-booking-content--home .kf-btn--primary{
+  background:#1769B1!important;border-radius:999px!important;min-height:50px!important
+}
+/* Zürich's native inline form lives in the same dialog, without dragging its
+   heading, proof strip, location grid or the full Zürich funnel along. */
+#tcm-booking-sheet .tcm-booking-content--zh .tcm-booking-zh-host{
+  max-width:100%!important;min-width:0!important;padding:0!important;margin:0!important
+}
+#tcm-booking-sheet .tcm-booking-content--zh .inline-form-card{
+  max-width:none!important;padding:0!important
+}
+@media(max-width:350px){
+  #tcm-booking-sheet .tcm-booking-content--home .kf-fields{grid-template-columns:1fr}
+  #tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field:has([name="email"]),
+  #tcm-booking-sheet .tcm-booking-content--home .kf-fields>.kf-field:has([name="telefon"]){
+    grid-row:auto;grid-column:1/-1
+  }
+}
