@@ -268,7 +268,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? ` data-kf-standort="${esc(fixed.name)}" data-kf-standort-id="${fixed.id}" data-kf-standort-art="behandlung"` : ' data-kf-global="1"') +
     (fixed && checkinOk ? ' data-kf-checkin="1"' : '') + (o.autoprefill ? ` data-kf-autoprefill="${o.autoprefill}"` : '') +
     ` data-kf-scope-names="${esc(scopeNames)}"` + (o.cardStyle ? ` style="${esc(o.cardStyle)}"` : '') + `>` +
-    `<link rel="stylesheet" href="/kontakt-form.css">` +
+    `<link rel="stylesheet" href="/kontakt-form.css?v=20261117-370">` +
     `<form class="kf-form" novalidate data-kf-form${o.formId ? ` id="${esc(o.formId)}"` : ''}${o.formName ? ` name="${esc(o.formName)}" data-name="${esc(o.formName)}"` : ''} aria-labelledby="${p}-h">` +
     // Ruhig (SG): schwarzer Kopfbereich mit Überschrift und Subline, darunter weisser Formularbereich.
     (HB ? `<div class="kf-kopf kf-kopf--herbst"><span class="kf-eyebrow">${esc(HB.copy.sheetLabel)}</span><${H} class="kf-h" id="${p}-h">${esc(HB.soldOut ? HB.copy.sheetHSoldout : HB.copy.sheetH)}</${H}><p class="kf-kopf-sub">${esc(HB.soldOut ? HB.copy.sheetSubSoldout : HB.copy.sheetSub)}</p>` +
