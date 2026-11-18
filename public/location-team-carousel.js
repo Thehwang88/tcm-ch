@@ -50,7 +50,7 @@
         var to = Math.max(0, Math.min(total - 1, currentIndex() + direction));
         track.scrollTo({
           left: to * step(),
-          behavior: reduced.matches ? 'instant' : 'smooth'
+          behavior: reduced.matches ? 'auto' : 'smooth'
         });
       }
       prev.addEventListener('click', function () { move(-1); });
