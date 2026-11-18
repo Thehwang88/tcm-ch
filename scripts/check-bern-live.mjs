@@ -16,7 +16,7 @@ const checks = [
   ['shared hero video (as Basel): responsive sources + poster', /<video\b[^>]*preload="none"[^>]*poster="\/videos\/hero-praxis\/hwang-praxis-poster-1280\.webp"/.test(hero)
     && hero.includes('hwang-praxis-640.mp4') && hero.includes('hwang-praxis-1280.webm')],
   ['wall-logo not used as hero image', !hero.includes('bern-marktgasse-logo-wall')],
-  ['wall-logo kept in location cards', /class="sgt-foto"[\s\S]{0,400}bern-marktgasse-logo-wall\.avif/.test(html)],
+  ['wall-logo kept in real clinic photo area', /class="(?:sgt-foto|up-mobile-clinic-photo)"[\s\S]{0,400}bern-marktgasse-logo-wall\.avif/.test(html)],
   ['correct clinic address', html.includes('Marktgasse 50') && html.includes('3011 Bern')],
   ['regular opening hours', /Mo–Fr[\s\S]{0,120}7:30–19:30 Uhr/.test(html) && /Sa[\s\S]{0,120}7:30–16:30 Uhr/.test(html) && html.includes('"Mo-Fr 07:30-19:30"') && html.includes('"Sa 07:30-16:30"')],
   ['direct booking section', /id="sgt-h"[^>]*>Termin in\s*<em>Bern<\/em>/.test(html)],
