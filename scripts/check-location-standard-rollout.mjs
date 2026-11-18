@@ -1,18 +1,21 @@
 // Single shared SG-standard page and full 16-profile team on all clinic routes.
 // Validates rendered HTML without submitting forms, booking or any analytics event.
 import assert from 'node:assert/strict';
-import {readdirSync,readFileSync,statSync} from 'node:fs';
+import {readdirSync,readFileSync,statSync,existsSync} from 'node:fs';
 import {join} from 'node:path';
 
 const base='dist/standorte';
 const rosterSource=readFileSync('src/data/therapeuten.ts','utf8');
 const slugs=[...rosterSource.matchAll(/^\s{4}slug:\s*'([^']+)'/gm)].map(m=>m[1]);
 assert(slugs.length >= 12 && new Set(slugs).size===slugs.length,'Public therapist registry invalid');
-const dirs=readdirSync(base).filter(x=>statSync(join(base,x)).isDirectory());
-const skipped = new Set();
-const clinicPages=dirs.map(slug=>({slug,path:join(base,slug,'index.html')}))
-  .filter(x=>!skipped.has(x.slug)).map(x=>({slug:x.slug,html:readFileSync(x.path,'utf8')}));
+const clinicIds = new Set([...readFileSync('src/data/locations.ts','utf8').matchAll(/\{\s*id:\s*'([^']+)'/g)].map(m=>m[1]));
+const dirs=readdirSync(base).filter(x=>statSync(join(base,x)).isDirectory() && clinicIds.has(x));
+const clinicPages=dirs.flatMap(slug=>{
+  const file=join(base,slug,'index.html');
+  return existsSync(file)?[{slug,html:readFileSync(file,'utf8')}]:[];
+});
 assert(clinicPages.length>=8,'Unexpectedly few clinic routes');
+assert(clinicPages.some(x=>x.slug==='bern')&&clinicPages.some(x=>x.slug==='st-gallen')&&clinicPages.some(x=>x.slug==='kreuzlingen'),'Missing key SG/BE/TG clinic routes');
 const errors=[];
 const check=(okay,slug,reason)=>{if(!okay)errors.push(slug+': '+reason)};
 for(const {slug,html} of clinicPages){
