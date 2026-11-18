@@ -1,0 +1,42 @@
+---
+/** Compact SG-style complaint groups, but only for topics available at this clinic. */
+import type { Standort } from '../../data/standorte';
+import { symptomCards } from '../../data/symptom-cards';
+const { data } = Astro.props as { data: Standort };
+const groups = [
+  { title:'Rücken & Nacken', subjects:['rueckenschmerzen','nackenschmerzen'], copy:'Schmerzen und Verspannungen am Bewegungsapparat.' },
+  { title:'Migräne', subjects:['migraene'], copy:'Migräne und wiederkehrende Kopfschmerz-Beschwerden.' },
+  { title:'Stress & Schlaf', subjects:['stress-burnout','schlafprobleme'], copy:'Anspannung, Erschöpfung und Schlafprobleme.' },
+  { title:'Zyklus & Kinderwunsch', subjects:['zyklusbeschwerden','kinderwunsch'], copy:'Zyklusbeschwerden und ergänzende Begleitung bei Kinderwunsch.' },
+];
+const available = data.beschwerden.filter(slug=>!!symptomCards[slug]);
+const visible = groups.filter(group=>group.subjects.some(slug=>available.includes(slug))).slice(0,4);
+const seen = new Set(visible.flatMap(group=>group.subjects.filter(slug=>available.includes(slug))));
+const other = available.filter(slug=>!seen.has(slug));
+const link = (slug: string) => '/beschwerden/' + slug + '/?standort=' + encodeURIComponent(data.slug);
+const ctaLabel = data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfrage für ' + data.stadt + ' stellen' : 'Termin in ' + data.stadt + ' anfragen';
+---
+<section class="section sg-cro-section sg-cro-beschwerden" id={'beschwerden-'+data.slug} aria-labelledby={'beschwerden-h-'+data.slug}>
+  <div class="wrap">
+    <div class="sg-cro-heading">
+      <div class="section-label">Häufige Anliegen</div>
+      <h2 class="section-title" id={'beschwerden-h-'+data.slug}>Wobei können wir <em>helfen</em>?</h2>
+      <p>Wir besprechen deine Beschwerden und klären gemeinsam, welche Behandlung zu deinem Anliegen passt.</p>
+    </div>
+    <div class="sg-cro-grid">
+      {visible.map(g=><div class="sg-cro-card sg-cro-symptom-card"><h3>{g.title}</h3><p>{g.copy}</p></div>)}
+    </div>
+    {available.length>0 && <details class="sg-cro-more">
+      <summary>Alle Beschwerdethemen ansehen <span aria-hidden="true">+</span></summary>
+      <div class="sg-cro-links">
+        {available.map(slug=><a href={link(slug)}>{symptomCards[slug].name} <span aria-hidden="true">↗</span></a>)}
+      </div>
+    </details>}
+    <div class="sg-cro-booking">
+      <a class="tcm-btn tcm-btn--primary" data-care-cta="clinic-complaints-termin" href="#termin-formular">
+        {ctaLabel} <span aria-hidden="true">→</span>
+      </a>
+      <span>Du musst die passende Therapie nicht selbst auswählen.</span>
+    </div>
+  </div>
+</section>
