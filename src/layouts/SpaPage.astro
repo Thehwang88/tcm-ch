@@ -80,6 +80,12 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <link rel="stylesheet" href="/footer-rebrand.css" />
     <link rel="stylesheet" href="/patient-success.css" />
     <link rel="stylesheet" href="/standort-card.css" />
+    {path === '/ueber-uns' && <Fragment>
+      <link rel="stylesheet" href="/proof-section.css" />
+      <link rel="stylesheet" href="/free-intro-section.css" />
+      <link rel="stylesheet" href="/home-kontakt-layout.css" />
+      <link rel="stylesheet" href="/home-hwang-form.css" />
+    </Fragment>}
     {warmClinicPalette && <link rel="stylesheet" href="/warm-clinic.css" />}
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
