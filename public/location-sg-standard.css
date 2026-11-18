@@ -1,13 +1,13 @@
 /* Shared SG-standard location layout: all data-driven clinics. Scoped to the new component. */
-.std-sg-layout.sgt--location-first{background:#F5F4F1;padding:clamp(32px,4.4vw,60px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
+.std-sg-layout.sgt--location-first{background:#F5F4F1;padding:clamp(24px,3.5vw,42px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
 .std-sg-layout .sgt-wrap{max-width:1280px;margin:auto}
-.std-sg-layout .sgt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,525px);gap:clamp(28px,4vw,58px);align-items:start}
+.std-sg-layout .sgt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,525px);gap:clamp(24px,3vw,42px);align-items:start}
 .std-sg-layout .sgt-practice{min-width:0;display:flex;flex-direction:column;scroll-margin-top:92px}
 .std-sg-layout .sgt-practice .up-h2{order:0;margin:0 0 12px;font-size:clamp(28px,2.7vw,39px);line-height:1.16}
 .std-sg-layout .sgt-practice>.content-body{order:1;margin-bottom:16px!important}
 .std-sg-layout .sgt-practice .content-body p{font-size:15px;line-height:1.56;color:#526676;margin:0 0 12px}
-.std-sg-layout .sgt-practice .up-grid{order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px;margin:0 0 8px!important}
-.std-sg-layout .sgt-practice .up-item{display:flex;align-items:flex-start;gap:12px;min-width:0;padding:7px 3px;margin:0;border:0;background:none}
+.std-sg-layout .sgt-practice .up-grid{order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 17px;margin:0 0 6px!important}
+.std-sg-layout .sgt-practice .up-item{display:flex;align-items:flex-start;gap:12px;min-width:0;padding:3px 3px;margin:0;border:0;background:none}
 .std-sg-layout .sgt-fact-icon{display:flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px;min-width:22px;margin:2px 0 0;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;color:#1769B1!important}
 .std-sg-layout .sgt-fact-icon svg{width:22px;height:22px;stroke:#1769B1!important;stroke-width:1.7!important}
 .std-sg-layout .up-body{display:flex;flex-direction:column;gap:5px;align-items:flex-start;min-width:0}
@@ -15,7 +15,7 @@
 .std-sg-layout .up-val,.std-sg-layout .up-val div{font-size:14px!important;line-height:1.45!important;font-weight:400!important;color:#52616B!important;overflow-wrap:anywhere}
 .std-sg-layout a.up-val{text-decoration:none!important}
 .std-sg-layout a.up-val:hover{color:#1769B1!important;text-decoration:underline!important;text-underline-offset:3px}
-.std-sg-layout .sgt-network-proof{order:3;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 21px;background:#fff;border:1px solid #DFE6EB;border-radius:16px;margin:16px 0 18px}
+.std-sg-layout .sgt-network-proof{order:3;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 17px;background:#fff;border:1px solid #DFE6EB;border-radius:16px;margin:10px 0 13px}
 .std-sg-layout .sgt-network-proof-label{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
 .std-sg-layout .sgt-network-proof-label strong{font-size:15px;color:#162733}
 .std-sg-layout .sgt-network-proof-label span{font-size:11.5px;color:#61717C}
@@ -25,15 +25,15 @@
 .std-sg-layout .sgt-network-proof-metric span{font-size:11.5px;color:#536776}
 .std-sg-layout .sgt-network-proof-stars{color:#CE9235!important;letter-spacing:1px;white-space:nowrap}
 .std-sg-layout .sgt-network-proof-count{min-width:80px;border-left:1px solid #DDE5EB;padding-left:11px;margin-left:11px}
-.std-sg-layout .up-mobile-clinic-photo{order:4;display:block!important;overflow:hidden;margin:0 0 18px!important;border-radius:18px;border:1px solid #E0E6E9}
-.std-sg-layout .up-mobile-clinic-photo img{width:100%;height:auto;max-height:285px;aspect-ratio:16/9;object-fit:cover;display:block}
+.std-sg-layout .up-mobile-clinic-photo{order:4;display:block!important;overflow:hidden;margin:0 0 12px!important;border-radius:18px;border:1px solid #E0E6E9}
+.std-sg-layout .up-mobile-clinic-photo img{width:100%;height:auto;max-height:235px;aspect-ratio:16/9;object-fit:cover;display:block}
 .std-sg-layout .up-map{order:5;overflow:hidden;border-radius:16px;min-height:0!important}
-.std-sg-layout .up-map iframe{width:100%;height:240px}
+.std-sg-layout .up-map iframe{width:100%;height:210px}
 .std-sg-layout .up-map:empty{display:none}
 .std-sg-layout .up-maplinks{order:6}
 .std-sg-layout .up-transit-acc,.std-sg-layout .up-transit{order:7}
 .std-sg-layout .sg-wissen-xlink,.std-sg-layout .sg-hub-xlink{order:8}
-.std-sg-layout .sgt-location-actions{order:9;display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.std-sg-layout .sgt-location-actions{order:9;display:flex;flex-wrap:wrap;gap:10px;margin-top:11px}
 .std-sg-layout .sgt-location-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 17px;border:1px solid #CDDCE6;border-radius:999px;background:#fff;color:#1769B1!important;text-decoration:none!important;font-size:14px;font-weight:750}
 .std-sg-layout .sgt-location-actions a:hover{background:#E8F2FA;border-color:#A7C7DE}
 .std-sg-layout .sgt-main{min-width:0;width:100%;max-width:525px}
@@ -47,11 +47,11 @@
 .std-sg-layout a:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
 @media(min-width:1024px){.std-sg-layout .sgt-main.sgt-main--sticky{position:sticky;top:var(--sgt-sticky-top,92px);align-self:start}}
 @media(max-width:1023px){
-  .std-sg-layout .sgt-grid{grid-template-columns:minmax(0,1fr);max-width:690px;margin:auto;gap:27px}
+  .std-sg-layout .sgt-grid{grid-template-columns:minmax(0,1fr);max-width:690px;margin:auto;gap:20px}
   .std-sg-layout .sgt-main{max-width:none}
 }
 @media(max-width:767px){
-  .std-sg-layout.sgt--location-first{padding:30px 16px 38px}
+  .std-sg-layout.sgt--location-first{padding:22px 16px 27px}
   .std-sg-layout .sgt-practice .up-grid{gap:12px 14px}
   .std-sg-layout .sgt-practice .up-h2{font-size:29px}
   .std-sg-layout .up-mobile-clinic-photo img{max-height:220px}
