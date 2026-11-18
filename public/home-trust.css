@@ -2,16 +2,16 @@
    no counters, carousels, analytics changes, or layout shifts. */
 #home-content .home-trust-section{
   padding:clamp(32px,4.8vw,62px) 0 clamp(32px,4.4vw,56px);
-  background:#f6f9fb;
+  background:var(--tcm-surface);
 }
 #home-content .home-trust-inner{max-width:1180px;margin:0 auto}
 #home-content .home-trust-header{text-align:center;margin:0 0 26px}
 #home-content .home-trust-eyebrow{
-  display:block;margin-bottom:8px;color:#5b7587;font-size:11px;
+  display:block;margin-bottom:8px;color:var(--tcm-text-soft);font-size:11px;
   font-weight:800;letter-spacing:.14em;text-transform:uppercase
 }
 #home-content .home-trust-title{
-  margin:0;color:#142838;font-family:var(--font-sans,inherit);
+  margin:0;color:var(--tcm-ink);font-family:var(--font-sans,inherit);
   font-size:clamp(24px,3vw,37px);font-weight:800;letter-spacing:-.04em;line-height:1.14
 }
 #home-content .home-trust-grid{
@@ -19,58 +19,58 @@
 }
 #home-content .home-trust-card{
   display:flex;flex-direction:column;min-width:0;min-height:186px;
-  padding:clamp(18px,2vw,25px);border:1px solid #e3eaf0;border-radius:20px;
-  background:#fff;box-shadow:0 4px 18px rgba(23,52,76,.025)
+  padding:clamp(18px,2vw,25px);border:1px solid var(--tcm-border);border-radius:20px;
+  background:var(--tcm-bg);box-shadow:0 4px 18px rgba(23,27,26,.025)
 }
-#home-content .home-trust-card--tint{background:#eaf5f8;border-color:#deedf3}
+#home-content .home-trust-card--tint{background:var(--tcm-surface-strong);border-color:var(--tcm-border)}
 #home-content .home-trust-card-label{
-  margin:0 0 20px;color:#53697a;font-size:13px;font-weight:650;line-height:1.35
+  margin:0 0 20px;color:var(--tcm-text-soft);font-size:13px;font-weight:650;line-height:1.35
 }
 #home-content .home-trust-number{
-  margin:auto 0 8px;color:#213f54;
+  margin:auto 0 8px;color:var(--tcm-ink);
   font-size:clamp(38px,4.5vw,58px);font-weight:800;line-height:1;
   letter-spacing:-.055em;white-space:nowrap;font-variant-numeric:tabular-nums
 }
-#home-content .home-trust-card--tint .home-trust-number{color:#237b74}
+#home-content .home-trust-card--tint .home-trust-number{color:var(--tcm-ink)}
 #home-content .home-trust-number small{
-  font-size:.37em;letter-spacing:0;font-weight:600;color:#638093
+  font-size:.37em;letter-spacing:0;font-weight:600;color:var(--tcm-muted)
 }
 #home-content .home-trust-card-value{
-  margin:0;color:#243b4c;font-size:14px;font-weight:650;line-height:1.4
+  margin:0;color:var(--tcm-text);font-size:14px;font-weight:650;line-height:1.4
 }
 #home-content .home-trust-stars{
-  margin:-3px 0 5px;color:#298a79;font-size:16px;letter-spacing:2px;
+  margin:-3px 0 5px;color:var(--tcm-text);font-size:16px;letter-spacing:2px;
   line-height:1;white-space:nowrap
 }
 #home-content .home-trust-insurance{
   display:flex;align-items:center;gap:18px;margin-top:14px;
-  padding:20px 24px;border:1px solid #dce9f0;border-radius:18px;background:#fff
+  padding:20px 24px;border:1px solid var(--tcm-border);border-radius:18px;background:var(--tcm-bg)
 }
 #home-content .home-trust-insurance-icon{
   display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;
-  border-radius:14px;background:#eaf5f8;color:#247a78
+  border-radius:14px;background:var(--tcm-surface);color:var(--tcm-ink)
 }
 #home-content .home-trust-insurance strong{
-  display:block;color:#1a394a;font-size:17px;font-weight:800;line-height:1.25
+  display:block;color:var(--tcm-ink);font-size:17px;font-weight:800;line-height:1.25
 }
 #home-content .home-trust-insurance p{
-  margin:5px 0 0;color:#5a7080;font-size:13px;line-height:1.5
+  margin:5px 0 0;color:var(--tcm-text-soft);font-size:13px;line-height:1.5
 }
 #home-content .home-review-quote{
-  padding:26px 0;background:#fff
+  padding:26px 0;background:var(--tcm-bg)
 }
 #home-content .home-review-quote-inner{
   display:flex;align-items:flex-start;justify-content:center;gap:18px;
   max-width:980px;margin:0 auto
 }
 #home-content .home-review-quote blockquote{
-  margin:0;color:#344b5c;font-size:15px;line-height:1.55;font-weight:500
+  margin:0;color:var(--tcm-text);font-size:15px;line-height:1.55;font-weight:500
 }
 #home-content .home-review-quote-attribution{
-  flex:0 0 auto;align-self:center;color:#607586;font-size:12px;text-align:right
+  flex:0 0 auto;align-self:center;color:var(--tcm-muted);font-size:12px;text-align:right
 }
 #home-content .home-review-quote-attribution a{
-  color:#1769b1;text-decoration:underline;text-underline-offset:3px
+  color:var(--tcm-primary);text-decoration:underline;text-underline-offset:3px
 }
 @media(max-width:900px){
   #home-content .home-trust-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
