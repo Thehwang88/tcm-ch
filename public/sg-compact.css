@@ -1,0 +1,32 @@
+/* St. Gallen location page only. Compact Ad-friendly clinic service presentation. */
+.sg-cro-section{padding:clamp(42px,5vw,66px) 16px;scroll-margin-top:85px}
+.sg-cro-therapien{background:#fff}
+.sg-cro-beschwerden{background:#F5F4F1}
+.sg-cro-section .wrap{max-width:1240px;margin:0 auto}
+.sg-cro-heading{margin-bottom:24px}
+.sg-cro-heading .section-title{margin:9px 0 10px;line-height:1.16}
+.sg-cro-heading p{font-size:15px;line-height:1.55;color:#5d6a72;max-width:610px;margin:0}
+.sg-cro-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.sg-cro-card{min-width:0;min-height:153px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:22px 20px;border:1px solid #E2E6E9;border-radius:18px;background:#fff;box-shadow:0 5px 15px rgba(21,44,60,.035)}
+.sg-cro-card h3{font-size:18px;font-weight:800;line-height:1.27;letter-spacing:-.025em;color:#1A2B34;margin:0}
+.sg-cro-card p{font-size:14px;line-height:1.55;color:#5A6A74;margin:0}
+a.sg-cro-therapy-card{color:inherit!important;text-decoration:none!important}
+.sg-cro-therapy-card .sg-cro-card-link{margin-top:auto;font-size:13px;font-weight:750;color:#1769B1}
+.sg-cro-therapy-card:hover{border-color:#A7CAE1;box-shadow:0 8px 23px rgba(21,80,130,.09)}
+.sg-cro-section a:focus-visible,.sg-cro-more summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
+.sg-cro-more{max-width:100%;margin:19px 0 0;border:1px solid #DFE7EB;border-radius:13px;background:#fff;overflow:hidden}
+.sg-cro-more summary{display:flex;align-items:center;justify-content:space-between;gap:15px;list-style:none;padding:15px 19px;min-height:46px;cursor:pointer;color:#1769B1;font-size:14px;font-weight:750}
+.sg-cro-more summary::-webkit-details-marker{display:none}
+.sg-cro-more[open] summary{border-bottom:1px solid #E9EDF0}
+.sg-cro-more summary>span{font-size:22px;line-height:1}
+.sg-cro-more[open] summary>span{transform:rotate(45deg)}
+.sg-cro-links{padding:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px}
+.sg-cro-links a{font-size:14px;font-weight:650;color:#314B5B!important;text-decoration:none!important;line-height:1.45}
+.sg-cro-links a:hover{text-decoration:underline!important;text-underline-offset:3px}
+.sg-cro-booking{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:26px;text-align:center}
+.sg-cro-booking>a{min-height:49px;display:inline-flex;align-items:center;gap:12px;justify-content:center;background:#1769B1;border:1px solid #1769B1;border-radius:999px;padding:12px 24px;color:#fff!important;font-size:14px;font-weight:750;text-decoration:none!important}
+.sg-cro-booking>a:hover{background:#135891}
+.sg-cro-booking>span{font-size:12.5px;color:#677783}
+@media(max-width:1050px){.sg-cro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.sg-cro-section{padding:36px 16px}.sg-cro-heading{margin-bottom:19px}.sg-cro-grid{gap:11px}.sg-cro-card{min-height:134px;padding:17px 16px}.sg-cro-card h3{font-size:16px}.sg-cro-card p{font-size:13px}.sg-cro-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.sg-cro-grid{grid-template-columns:1fr}.sg-cro-card{min-height:auto;gap:7px}.sg-cro-therapy-card{min-height:118px!important}.sg-cro-links{grid-template-columns:1fr}.sg-cro-booking>a{width:100%;box-sizing:border-box}}
