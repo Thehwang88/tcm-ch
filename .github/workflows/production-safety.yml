@@ -45,6 +45,8 @@ jobs:
         run: node scripts/check-standort-ux.mjs
       - name: SG location-first structure and OneDoc regression contract
         run: node scripts/check-sg-location-first.mjs
+      - name: SG compact therapy and complaint CRO contract
+        run: node scripts/check-sg-compact-sections.mjs
       - name: SG knowledge guide SEO/booking contract
         run: node scripts/check-sg-knowledge-hub.mjs
       - name: German-English route integrity
