@@ -22,7 +22,7 @@ intro = intro
   .replace('Ein junges Team. Eine klare Mission.<br><em>TCM, wie sie sein sollte.</em>', 'Persönliche TCM.<br><em>Mit Menschen, die zuhören.</em>')
   .replace('<p class="sub-desc">Wer wir sind, woran wir glauben, und warum wir TCM in der Schweiz neu denken.</p>',
     '<p class="sub-desc">Lerne unser Team und unseren Ansatz kennen. Bei uns findest du eine passende Praxis, verständliche Informationen und einen einfachen Weg zur Terminanfrage.</p>'
-    + '<div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/">Termin anfragen <span aria-hidden="true">→</span></a><a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Standort finden</a></div>'
+    + '<div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/?von=/ueber-uns/">Termin anfragen <span aria-hidden="true">→</span></a><a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Standort finden</a></div>'
     + '<p class="uu-cro-micro">Persönliche Rückmeldung · keine automatische Terminbuchung</p>')
   .replace('alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen"', 'alt="Einblicke in das TCM.ch Team"');
 
@@ -48,7 +48,7 @@ const care = '<section class="uu-cro-section uu-cro-steps" id="ueber-uns-care-sy
   + '<div><span>01</span><h3>Anliegen schildern</h3><p>Erzähl uns kurz, wobei du Unterstützung suchst.</p></div>'
   + '<div><span>02</span><h3>Persönlich klären</h3><p>Wir besprechen Standort, Termin und Fragen zur Zusatzversicherung. Die Deckung hängt von deiner Police ab.</p></div>'
   + '<div><span>03</span><h3>Behandlung starten</h3><p>Du vereinbarst deinen Termin bei der passenden Fachperson.</p></div>'
-  + '</div><div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/">Termin anfragen <span aria-hidden="true">→</span></a>'
+  + '</div><div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/?von=/ueber-uns/">Termin anfragen <span aria-hidden="true">→</span></a>'
   + '<a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Alle Standorte</a></div></div></section>';
 
 let founder = between('<section class="founder-section" id="ueber-uns-founder"', '<section class="uu-advisor"');
@@ -57,7 +57,7 @@ founder = founder
   .replace(/<div class="founder-body">[\s\S]*?<\/div> <div class="founder-sig">/,
     '<div class="founder-body"><p>TCM.ch ist aus der Überzeugung entstanden, dass Traditionelle Chinesische Medizin persönlicher, verständlicher und leichter zugänglich sein sollte.</p><p>Mir ist wichtig, dass du weisst, wer dich behandelt, wie du uns erreichst und welche Schritte als Nächstes folgen.</p></div> <div class="founder-sig">')
   .replace(/<a href="https:\/\/wa\.me\/41775236122" class="founder-cta" target="_blank">[\s\S]*?<\/a>/,
-    '<a href="/kontakt/" class="founder-cta">Persönlich Kontakt aufnehmen <span aria-hidden="true">→</span></a>');
+    '<a href="/kontakt/?von=/ueber-uns/" class="founder-cta">Persönlich Kontakt aufnehmen <span aria-hidden="true">→</span></a>');
 
 const bts = between('<section class="bts-section" id="ueber-uns-bts"', '<section class="founder-section"');
 const behind = '<details class="uu-cro-more uu-cro-bts-more"><summary>Hinter die Kulissen schauen <span aria-hidden="true">↓</span></summary>'
@@ -73,7 +73,7 @@ const mission = '<section class="uu-cro-mission" id="ueber-uns-vision"><div clas
   + '</div></section>';
 const finish = '<section class="uu-cro-finish"><div class="wrap"><div><div class="uu-cro-eyebrow">Du möchtest uns kennenlernen?</div>'
   + '<h2>Der nächste Schritt ist einfach.</h2><p>Finde deine Praxis oder schreib uns dein Anliegen. Wir melden uns persönlich.</p></div>'
-  + '<div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/">Termin anfragen <span aria-hidden="true">→</span></a>'
+  + '<div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/?von=/ueber-uns/">Termin anfragen <span aria-hidden="true">→</span></a>'
   + '<a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Praxen ansehen</a></div></div></section>';
 // Keep a single closing tag for #page-ueber-uns; the old B2B recruiting
 // section, media-logo strip, negative comparison and duplicated CEO block
