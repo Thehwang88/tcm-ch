@@ -43,6 +43,8 @@ jobs:
         run: node scripts/check-bern-live.mjs
       - name: Standort link and CTA regression gate
         run: node scripts/check-standort-ux.mjs
+      - name: SG location-first structure and OneDoc regression contract
+        run: node scripts/check-sg-location-first.mjs
       - name: German-English route integrity
         run: node scripts/check-i18n.mjs
       - name: Install Chromium for mocked browser tests
