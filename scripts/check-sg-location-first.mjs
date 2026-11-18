@@ -20,7 +20,7 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   'name="quelle" value="launch-hero-sg"',
   'class="sgt-onedoc" id="online-buchen"',
   'onedoc.ch/de/widget/',
-  'class="sg-location-team"',
+  'class="section sg-location-team"',
   'id="sg-team"',
   'Corinna Reinhart', 'Astrid Lenggenhager',
   'sgt-team-testimonial',
@@ -35,7 +35,7 @@ const order = [
   'class="sgt-main"',
   'data-kf-instance="sg-hero"',
   'id="online-buchen"',
-  'class="sg-location-team"',
+  'class="section sg-location-team"',
   'id="sg-therapien"',
   'id="sg-beschwerden"',
 ].map((x) => html.indexOf(x));
