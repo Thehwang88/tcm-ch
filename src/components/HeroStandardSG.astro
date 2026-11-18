@@ -68,7 +68,11 @@ const card = renderKontaktForm({
   quelleDetail: 'Hero St. Gallen · reguläres Terminformular', seite: '/standorte/st-gallen/',
   wunschzeit: true, sitekey, headingTag: 'h3',
   onedocBeideTerminarten: true, ohneOnedocAlternative: true,
-  checkinZuerst: true, ruhig: true, zusatzOffen: true,
+  // Ad-led SG page: JS defaults to the paid Ersttermin. Leave the native
+  // radio initially unselected so explicit ?terminart=checkin / old #first30
+  // deep links can take precedence before the default is applied.
+  // Both options, offer IDs and form/analytics behavior remain unchanged.
+  checkinZuerst: false, ruhig: true, zusatzOffen: true,
   kopfTitel: 'Termin anfragen',
 });
 ---
@@ -106,7 +110,7 @@ const card = renderKontaktForm({
       <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
       <div class="sgt-head">
         <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
-        <p class="sgt-sub">Gratis kennenlernen oder direkt behandeln lassen – wir melden uns persönlich.</p>
+        <p class="sgt-sub">Ersttermin mit Behandlung oder 30 Minuten gratis kennenlernen – wir melden uns persönlich.</p>
       </div>
       <div class="sgt-form"><Fragment set:html={card} /></div>
       <details class="sgt-onedoc" id="online-buchen">

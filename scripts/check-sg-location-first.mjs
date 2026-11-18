@@ -50,6 +50,17 @@ const order = [
 assert(order.every((p) => p >= 0), 'Missing order marker');
 assert(order.every((p, i) => !i || p > order[i - 1]), 'SG location -> booking -> team -> therapy order changed');
 assert((html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
+const sgForm = html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"[\s\S]*?<script src="\/kontakt-form\.js(?:\?v=[^"]+)?"/)?.[0];
+assert(sgForm, 'SG canonical form markup should be present');
+assert(!sgForm.includes('data-kf-default="checkin"'), 'SG must not automatically preselect the free check-in');
+assert(sgForm.includes('data-kf-checkin="1"'), 'SG free check-in remains available as a secondary option');
+const sgRadios = [...sgForm.matchAll(/<input class="kf-radio" type="radio" name="terminart"[^>]*>/g)].map((m) => m[0]);
+assert(sgRadios.length === 2 && /value="behandlung"/.test(sgRadios[0]) && /value="checkin"/.test(sgRadios[1]), 'Paid first appointment should be first, free check-in secondary');
+assert(sgRadios.every((r) => !/\schecked(?:\s|>)/.test(r)), 'SSR should leave radios neutral: explicit check-in deep links must win before JS chooses Ersttermin');
+const formJs = readFileSync('public/kontakt-form.js', 'utf8');
+assert(formJs.includes("card.getAttribute('data-kf-default') || 'behandlung'"), 'SG JS fallback must select Ersttermin');
+assert(formJs.includes("if (!explicit) explicit = 'checkin'"), 'Legacy first30 opt-ins remain honored');
+
 assert((html.match(/class="sgt-practice-photo"/g) || []).length === 1, 'SG must display exactly one dedicated reception photo');
 assert((html.match(/class="sgt-network-proof"/g) || []).length === 1, 'SG must show one network review banner');
 const reviewIndex = html.indexOf('class="sgt-network-proof"');
