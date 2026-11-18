@@ -47,6 +47,8 @@ jobs:
         run: node scripts/check-sg-location-first.mjs
       - name: SG compact therapy and complaint CRO contract
         run: node scripts/check-sg-compact-sections.mjs
+      - name: All location SG-standard and uniform team roster
+        run: node scripts/check-location-standard-rollout.mjs
       - name: SG knowledge guide SEO/booking contract
         run: node scripts/check-sg-knowledge-hub.mjs
       - name: German-English route integrity

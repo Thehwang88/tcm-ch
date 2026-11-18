@@ -10,6 +10,7 @@
 export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
 import ClinicalLead from '../../../components/standort/ClinicalLead.astro';
+import { locationTeamHtml } from '../../../lib/location-team';
 import { symptomCards } from '../../../data/symptom-cards';
 import { therapyCards } from '../../../data/therapy-cards';
 
@@ -171,6 +172,10 @@ const schema = [
   </section>
 
   <ClinicalLead slug="luzern" />
+
+  <!-- Entire canonical team roster, same order as other location pages.
+       This is NOT a confirmed Luzern staffing announcement. -->
+  <Fragment set:html={locationTeamHtml('luzern', 'Luzern')} />
 
   <!-- ── EINZUGSGEBIET ── -->
   <section class="section" style="background:var(--surface)">

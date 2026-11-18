@@ -5,7 +5,7 @@
 import { renderKontaktForm } from '../lib/kontakt-form';
 import HeroMedia from './standort/HeroMedia.astro';
 import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
-import { getTherapeut, getPublicTherapistProfile, teamCardHtml } from '../data/therapeuten';
+import { locationTeamHtml } from '../lib/location-team';
 
 const { sitekey, praxisHtml = '' } = Astro.props;
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
@@ -50,15 +50,6 @@ const pra = praxisHtml
   .replaceAll('class="up-ico"', 'class="sgt-fact-icon"')
   .replace('href="tel:+41775236122"', 'href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel"')
   .replace(sgPhotoMarker, SG_NETWORK_REVIEW_STRIP + sgPhotoMarker);
-
-const teamSlugs = ['corinna-reinhart', 'astrid-lenggenhager'];
-const localTeam = teamSlugs.map((slug) => {
-  const person = getTherapeut(slug);
-  if (!person || !person.standorte?.includes('st-gallen')) {
-    throw new Error('HeroStandardSG: therapist not assigned to St. Gallen: ' + slug);
-  }
-  return teamCardHtml(getPublicTherapistProfile(person));
-}).join('');
 
 const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form',
@@ -128,17 +119,8 @@ const card = renderKontaktForm({
   </div>
 </section>
 
-<section class="section sg-location-team" id="sg-team" aria-labelledby="sg-team-h">
-  <div class="wrap">
-    <div class="section-label">Unser Team vor Ort</div>
-    <h2 class="section-title" id="sg-team-h">Dein Team in <em>St. Gallen</em></h2>
-    <div class="team-grid sg-team-grid"><Fragment set:html={localTeam} /></div>
-    <div class="sg-team-testimonial">
-      <blockquote>«Das Team ist freundlich, nimmt sich Zeit und hört aufmerksam zu. Die Atmosphäre ist angenehm und professionell.»</blockquote>
-      <p>Maria C. · Google-Rezension <a href={SG_MAPS} target="_blank" rel="noopener noreferrer">Bewertungen ansehen <span aria-hidden="true">↗</span></a></p>
-    </div>
-  </div>
-</section>
+<Fragment set:html={locationTeamHtml('st-gallen', 'St. Gallen')} />
+<section class="section sg-team-feedback" aria-label="Patientenfeedback St. Gallen"><div class="wrap"><div class="sg-team-testimonial"><blockquote>«Das Team ist freundlich, nimmt sich Zeit und hört aufmerksam zu. Die Atmosphäre ist angenehm und professionell.»</blockquote><p>Maria C. · Google-Rezension <a href={SG_MAPS} target="_blank" rel="noopener noreferrer">Bewertungen ansehen <span aria-hidden="true">↗</span></a></p></div></div></section>
 <style is:global>
   /* SG-only. Other data-driven clinic templates stay untouched. */
   /* Visual balance: center the copy BLOCK inside the left hero half while
@@ -158,9 +140,9 @@ const card = renderKontaktForm({
   .lsr-hero.hlsg .lsr-tlink{display:inline-block;font-size:14px;font-weight:700;color:var(--blue,#1769B1);margin-top:9px}
   .lsr-hero.hlsg .lsr-tlink[hidden]{display:none!important}
 
-  .sgt--location-first{font-family:var(--font-sans,'Figtree',system-ui,sans-serif);background:#F7F8F8;padding:clamp(32px,4.4vw,60px) 16px}
+  .sgt--location-first{font-family:var(--font-sans,'Figtree',system-ui,sans-serif);background:#F7F8F8;padding:clamp(24px,3.5vw,42px) 16px}
   .sgt--location-first .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
-  .sgt--location-first .sgt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,525px);gap:clamp(28px,4vw,58px);align-items:start}
+  .sgt--location-first .sgt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,525px);gap:clamp(24px,3vw,42px);align-items:start}
   .sgt--location-first .sgt-practice{min-width:0;scroll-margin-top:calc(var(--header-h,76px) + 14px)}
   .sgt--location-first .sgt-practice .up-h2{margin:0 0 12px;font-size:clamp(28px,2.7vw,39px);line-height:1.16}
   /* One brief, original SG-specific paragraph directly below the clinic title. */
@@ -170,11 +152,11 @@ const card = renderKontaktForm({
      muted details and a clear two-column contact facts layout. */
   .sgt--location-first .sgt-practice .up-grid{
     display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:19px 20px;margin:0 0 7px!important;min-width:0;
+    gap:12px 18px;margin:0 0 7px!important;min-width:0;
   }
   .sgt--location-first .sgt-practice .up-item{
     display:flex;align-items:flex-start;gap:12px;min-width:0;
-    padding:7px 3px;margin:0;border:none;background:transparent;box-shadow:none;
+    padding:3px 3px;margin:0;border:none;background:transparent;box-shadow:none;
   }
   .sgt--location-first .sgt-practice .sgt-fact-icon{
     display:flex;align-items:center;justify-content:center;flex:0 0 22px;
@@ -208,7 +190,7 @@ const card = renderKontaktForm({
   /* Same rounded white review card as /kontakt/, explicitly network-wide. */
   .sgt--location-first .sgt-network-proof{
     box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;
-    gap:14px;width:100%;padding:20px 22px;margin:20px 0 8px;
+    gap:13px;width:100%;padding:16px 18px;margin:12px 0 8px;
     background:#fff;border:1px solid rgba(35,56,70,.1);border-radius:16px;
   }
   .sgt--location-first .sgt-network-proof-label{
@@ -241,13 +223,13 @@ const card = renderKontaktForm({
     min-width:87px;border-left:1px solid #DDE5EB;
     padding-left:12px;margin-left:12px;
   }
-  .sgt--location-first .sgt-practice-photo{display:block;overflow:hidden;margin:22px 0 20px;border-radius:18px;border:1px solid #E0E6E9}
-  .sgt--location-first .sgt-practice-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:285px;object-fit:cover}
+  .sgt--location-first .sgt-practice-photo{display:block;overflow:hidden;margin:13px 0 13px;border-radius:18px;border:1px solid #E0E6E9}
+  .sgt--location-first .sgt-practice-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:235px;object-fit:cover}
   .sgt--location-first .sgt-practice .up-map{overflow:hidden;border-radius:16px}
-  .sgt--location-first .sgt-practice .up-map iframe{height:250px}
+  .sgt--location-first .sgt-practice .up-map iframe{height:210px}
   .sgt--location-first .sgt-practice .sg-hub-xlink,.sgt--location-first .sgt-practice .sg-wissen-xlink{margin:12px 0 0!important;font-size:13px!important}
   .sgt--location-first .sgt-practice .sg-wissen-xlink span{display:none!important}
-  .sgt--location-first .sgt-location-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .sgt--location-first .sgt-location-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
   .sgt--location-first .sgt-location-actions a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 17px;background:#fff;border:1px solid #CDDCE6;border-radius:999px;color:#1769B1!important;text-decoration:none;font-size:14px;font-weight:750}
   .sgt--location-first .sgt-location-actions a:hover{background:#E8F2FA;border-color:#A7C7DE}
   .sgt--location-first .sgt-location-actions a:focus-visible,.sgt--location-first .sgt-onedoc summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
@@ -263,7 +245,7 @@ const card = renderKontaktForm({
       align-self:start;
     }
   }
-  .sgt--location-first .sgt-head{margin:0 0 19px}
+  .sgt--location-first .sgt-head{margin:0 0 12px}
   .sgt--location-first .sgt-head .section-title{margin:0 0 8px;font-size:clamp(25px,2.6vw,34px)}
   .sgt--location-first .sgt-sub{font-size:14.5px;line-height:1.5;color:#61717A;margin:0}
   .sgt--location-first .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
@@ -303,8 +285,8 @@ const card = renderKontaktForm({
     .lsr-hero.hlsg .lsr-ctas a{display:flex;width:100%;min-height:50px;justify-content:center}
     .lsr-hero.hlsg .lsr-btn-primary{background:var(--tcm-primary,#1769B1)!important;color:#fff!important;border-color:var(--tcm-primary,#1769B1)!important}
     .lsr-hero.hlsg .lsr-trust>div{font-size:12.5px}
-    .sgt--location-first{padding:30px 16px 38px}
-    .sgt--location-first .sgt-grid{gap:26px}
+    .sgt--location-first{padding:23px 16px 28px}
+    .sgt--location-first .sgt-grid{gap:20px}
     .sgt--location-first .sgt-practice .up-h2{font-size:29px;margin-bottom:16px}
     .sgt--location-first .sgt-practice .up-grid{gap:12px 14px}
     .sgt--location-first .sgt-network-proof{padding:17px 16px;gap:12px}

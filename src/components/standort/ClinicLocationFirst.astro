@@ -1,0 +1,70 @@
+---
+/**
+ * Data-driven location pages share SG's patient-first structure:
+ * facts, real clinic photo/map and arrival info on the left;
+ * exactly one canonical booking/request form on the right.
+ */
+import type { Standort } from '../../data/standorte';
+import { telHref, waHref } from '../../data/standorte';
+import { clinics, mapsDirectionsUrl } from '../../data/locations';
+import UeberPraxis from './UeberPraxis.astro';
+import AnfrageKarte from './AnfrageKarte.astro';
+const { data, sitekey, umleitungCard = '' } = Astro.props as { data: Standort; sitekey: string; umleitungCard?: string };
+const clinic = clinics.find(c => c.id === data.slug);
+const pu = data.partnerUmleitung;
+const planned = !!(data.planned || data.review);
+const maps = data.nap.mapsDirections ?? (clinic ? mapsDirectionsUrl(clinic) : undefined);
+const wa = waHref(data.nap.telefon, 'Hallo, ich habe eine Frage zur TCM-Praxis in ' + data.stadt + '.');
+const bookingText = pu ? 'Termine bei unserer Partnerpraxis' : data.review ? 'Wir helfen dir, eine passende Praxis zu finden.' : data.planned ? 'Anfrage für den geplanten Standort – noch keine Terminbuchung.' : 'Ersttermin mit Behandlung oder kostenlos kennenlernen – wir melden uns persönlich.';
+const bookingTitle = pu ? 'Termin bei der Partnerpraxis' : planned ? 'Anfrage für ' + data.stadt : 'Termin in ' + data.stadt;
+---
+<section class="sgt sgt--location-first std-sg-layout" id="standort-kontakt-praxis" aria-label={'Praxis und Termin ' + data.stadt}>
+  <div class="sgt-wrap sgt-grid">
+    <div class="sgt-practice" id="sg-standort">
+      <UeberPraxis data={data} locationFirst />
+      <div class="sgt-location-actions">
+        {maps && data.nap.strasse && <a href={maps} target="_blank" rel="noopener noreferrer" data-care-cta="clinic-route">↗ Route planen</a>}
+        <a href={telHref(data.nap.telefon)} data-kf-tel data-care-cta="clinic-phone">Anrufen</a>
+        {!planned && <a href={wa} target="_blank" rel="noopener noreferrer" data-care-cta="clinic-wa">WhatsApp</a>}
+      </div>
+    </div>
+    <div class="sgt-main" data-std-box-oben>
+      <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
+      <div class="sgt-head">
+        <h2 class="section-title" id="sgt-h">{pu ? bookingTitle.replace(data.stadt, '') : planned ? bookingTitle.replace(data.stadt, '') : 'Termin in '} <em>{data.stadt}</em></h2>
+        <p class="sgt-sub">{bookingText}</p>
+      </div>
+      <span id="termin-formular" class="sgt-anchor" aria-hidden="true"></span>
+      <div class="sgt-form">
+        {pu ? <Fragment set:html={umleitungCard} /> : <AnfrageKarte data={data} sitekey={sitekey} oben />}
+      </div>
+    </div>
+  </div>
+</section>
+<script is:inline>
+  // Bounded, height-aware sticky booking column: never obscures lower fields.
+  (function(){
+    var section = document.querySelector('.std-sg-layout');
+    if(!section || !window.matchMedia) return;
+    var left=section.querySelector('.sgt-practice');
+    var right=section.querySelector('.sgt-main');
+    var mq=window.matchMedia('(min-width:1024px)');
+    if(!left||!right)return;
+    var frame=0;
+    function update(){
+      frame=0;
+      var enabled=mq.matches && left.offsetHeight>right.offsetHeight+30;
+      if(!enabled){right.classList.remove('sgt-main--sticky');right.style.removeProperty('--sgt-sticky-top');return;}
+      var topHeader=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))||76;
+      var top=Math.round(Math.min(topHeader+16,window.innerHeight-right.offsetHeight-16));
+      right.style.setProperty('--sgt-sticky-top',top+'px');
+      right.classList.add('sgt-main--sticky');
+    }
+    function schedule(){if(!frame)frame=requestAnimationFrame(update);}
+    schedule();
+    window.addEventListener('resize',schedule,{passive:true});
+    if(mq.addEventListener)mq.addEventListener('change',schedule);
+    if(window.ResizeObserver){var ro=new ResizeObserver(schedule);ro.observe(left);ro.observe(right);}
+    window.addEventListener('load',schedule,{once:true});
+  })();
+</script>

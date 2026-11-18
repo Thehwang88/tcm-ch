@@ -1,0 +1,35 @@
+---
+/** Compact SG-style therapy panel for structured location data. */
+import type { Standort } from '../../data/standorte';
+import { therapyCards } from '../../data/therapy-cards';
+const { data } = Astro.props as { data: Standort };
+const all = data.therapien.map(slug=>({slug, card:therapyCards[slug]})).filter(x=>x.card);
+const first = ['akupunktur','tuina','schroepfen','kraeutertherapie'];
+const featured = [
+  ...first.map(slug=>all.find(x=>x.slug===slug)).filter((x):x is (typeof all)[number] => !!x),
+  ...all.filter(x=>!first.includes(x.slug))
+].slice(0,4);
+const used = new Set(featured.map(x=>x.slug));
+const extra = all.filter(x=>!used.has(x.slug));
+const link = (slug: string) => '/therapien/' + slug + '/?standort=' + encodeURIComponent(data.slug);
+---
+<section class="section sg-cro-section sg-cro-therapien" id={'therapien-'+data.slug} aria-labelledby={'therapien-h-'+data.slug}>
+  <div class="wrap">
+    <div class="sg-cro-heading">
+      <div class="section-label">Unsere Methoden</div>
+      <h2 class="section-title" id={'therapien-h-'+data.slug}>TCM-Therapien in <em>{data.stadt}</em></h2>
+      <p>Wir wählen die passende Behandlung gemeinsam anhand deines Anliegens.</p>
+    </div>
+    <div class="sg-cro-grid">
+      {featured.map(({slug,card})=><a class="sg-cro-card sg-cro-therapy-card" href={link(slug)}>
+        <h3>{card.name}</h3><p>{card.tagline}</p>
+        <span class="sg-cro-card-link">Zur Therapie <span aria-hidden="true">↗</span></span>
+      </a>)}
+    </div>
+    {extra.length>0 && <details class="sg-cro-more">
+      <summary>Weitere Therapien ansehen <span aria-hidden="true">+</span></summary>
+      <div class="sg-cro-links">{extra.map(({slug,card})=><a href={link(slug)}>{card.name} <span aria-hidden="true">↗</span></a>)}</div>
+    </details>}
+    {data.massageLink && <p class="sg-cro-footnote">{data.massageLink.text} <a href={data.massageLink.href}>{data.massageLink.anchor}</a>.</p>}
+  </div>
+</section>
