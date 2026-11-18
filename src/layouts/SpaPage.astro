@@ -80,7 +80,20 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <link rel="stylesheet" href="/footer-rebrand.css" />
     <link rel="stylesheet" href="/patient-success.css" />
     <link rel="stylesheet" href="/standort-card.css" />
+    {path?.startsWith('/standorte/') && <link rel="stylesheet" href="/location-team-carousel.css" />}
+    {path?.startsWith('/standorte/') && path !== '/standorte/st-gallen' && <link rel="stylesheet" href="/location-sg-standard.css" />}
     {path === '/standorte/st-gallen' && <link rel="stylesheet" href="/sg-compact.css" />}
+    {path?.startsWith('/standorte/') && <script is:inline>
+      document.addEventListener('click',function(event){
+        var button=event.target.closest && event.target.closest('.tc-team-prev,.tc-team-next');
+        if(!button)return;
+        var section=button.closest('.tc-team-section'),track=section&&section.querySelector('.tc-team-track');
+        var card=track&&track.querySelector('.tc-team-slide');
+        if(!track||!card)return;
+        var gap=parseFloat(getComputedStyle(track).columnGap)||14;
+        track.scrollBy({left:(card.getBoundingClientRect().width+gap)*(button.classList.contains('tc-team-next')?1:-1),behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+      });
+    </script>}
     {path === '/ueber-uns' && <Fragment>
       <link rel="stylesheet" href="/proof-section.css" />
       <link rel="stylesheet" href="/free-intro-section.css" />
