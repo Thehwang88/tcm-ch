@@ -28,8 +28,8 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   'name="quelle" value="launch-hero-sg"',
   'class="sgt-onedoc" id="online-buchen"',
   'onedoc.ch/de/widget/',
-  'class="section sg-location-team"',
-  'id="sg-team"',
+  'class="section tc-team-section"',
+  'id="team-st-gallen"',
   'Corinna Reinhart', 'Astrid Lenggenhager',
   'sg-team-testimonial',
   'id="sg-therapien"',
@@ -43,7 +43,7 @@ const order = [
   'class="sgt-main"',
   'data-kf-instance="sg-hero"',
   'id="online-buchen"',
-  'class="section sg-location-team"',
+  'class="section tc-team-section"',
   'id="sg-therapien"',
   'id="sg-beschwerden"',
 ].map((x) => html.indexOf(x));
@@ -75,7 +75,7 @@ assert(!html.includes('class="up-ico"'), 'Legacy grey-background icon class must
 assert(sgCss.includes('background:none!important;background-color:transparent!important'), 'Contact icons must have no grey background');
 assert(sgCss.includes('.sgt--location-first .sgt-network-proof'), 'Network review strip should be styled for SG');
 assert(sgCss.includes('@media(max-width:440px)'), 'Small-screen review strip must remain responsive');
-assert((html.match(/class="team-grid sg-team-grid"/g) || []).length === 1, 'One team section only');
+assert((html.match(/class="section tc-team-section"/g) || []).length === 1, 'One complete team carousel only');
 no('class="sgt-channels"', 'repeated three contact-channel cards');
 no('class="sgu"', 'repeated USP row');
 no('class="sgt-aside"', 'old duplicate NAP/team/sidebar');
