@@ -82,7 +82,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <link rel="stylesheet" href="/standort-card.css" />
     {path?.startsWith('/standorte/') && <link rel="stylesheet" href="/location-team-carousel.css" />}
     {path?.startsWith('/standorte/') && path !== '/standorte/st-gallen' && <link rel="stylesheet" href="/location-sg-standard.css" />}
-    {path === '/standorte/st-gallen' && <link rel="stylesheet" href="/sg-compact.css" />}
+    {path?.startsWith('/standorte/') && <link rel="stylesheet" href="/sg-compact.css" />}
     {path?.startsWith('/standorte/') && <script is:inline>
       document.addEventListener('click',function(event){
         var button=event.target.closest && event.target.closest('.tc-team-prev,.tc-team-next');
