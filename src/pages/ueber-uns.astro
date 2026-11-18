@@ -56,7 +56,8 @@ const homeBetween = (start: string, end: string) => {
   if (a < 0 || b <= a) throw new Error('About homepage section missing: ' + start);
   return homeBody.slice(a, b).trim();
 };
-const proof = homeBetween('<section id="s-offer" class="section proof-section"', '<section class="section home-cities-section"');
+const proof = homeBetween('<section class="home-trust-section" id="home-trust"', '<section class="section svc-section"');
+const testimonial = homeBetween('<section class="home-review-quote"', '<section class="section home-cities-section"');
 const freeIntro = homeBetween('<section id="home-free-intro" class="free-intro-section"', '<section id="home-contact-form"')
   .replace('data-care-cta="home-free-intro"', 'data-care-cta="about-free-intro"');
 const homeContactLegacy = homeBetween('<section id="home-contact-form"', '<section class="section hf-section"');
@@ -66,7 +67,7 @@ const homeContact = upgradeLegacyForms(homeContactLegacy, {
 });
 if ((homeContact.match(/data-kf-instance="home"/g) ?? []).length !== 1)
   throw new Error('About: the shared homepage-style contact form was not rendered exactly once');
-const patientSections = '<div id="home-content" class="uu-cro-home-sections">' + proof + freeIntro + homeContact + '</div>';
+const patientSections = '<div id="home-content" class="uu-cro-home-sections">' + proof + testimonial + freeIntro + homeContact + '</div>';
 // Keep a single closing tag for #page-ueber-uns; the old B2B recruiting
 // section, media-logo strip, negative comparison and duplicated CEO block
 // are intentionally not in the patient journey.
@@ -78,7 +79,6 @@ const schema = { '@context': 'https://schema.org', '@type': 'AboutPage', name: t
 ---
 <SpaPage title={title} description={description} path="/ueber-uns" body={body} schema={schema}>
   <script slot="pre-footer" src="/home-friendly-form.js" is:inline defer></script>
-  <script slot="pre-footer" src="/proof-section.js" is:inline defer></script>
   <script slot="pre-footer" is:inline>
     // Start behind-the-scenes clips only when approaching the viewport.
     // Posters remain visible until playback; scrolling away pauses decoding.
