@@ -20,8 +20,31 @@ if (!praxisHtml.includes('<h2 class="up-h2">Über die Praxis</h2>') ||
     !praxisHtml.includes('sgt-practice-photo')) {
   throw new Error('HeroStandardSG: canonical clinic facts/map/photo not found');
 }
+// Reuse the exact *network-wide* aggregate figures currently published on
+// /kontakt/. Do not label these as reviews of St. Gallen alone.
+const SG_NETWORK_REVIEW_STRIP = `
+  <div class="sgt-network-proof" aria-label="TCM.ch Netzwerk: 4.89 von 5 Sternen aus über tausend Rezensionen">
+    <div class="sgt-network-proof-label">
+      <strong>Patientenbewertungen</strong>
+      <span>TCM.ch Netzwerk · standortübergreifend</span>
+    </div>
+    <div class="sgt-network-proof-metrics">
+      <div class="sgt-network-proof-metric">
+        <strong>4.89</strong>
+        <span class="sgt-network-proof-stars" aria-label="4.89 von 5 Sternen">★★★★★</span>
+      </div>
+      <div class="sgt-network-proof-metric sgt-network-proof-count">
+        <strong>1'000+</strong>
+        <span>Rezensionen</span>
+      </div>
+    </div>
+  </div>`;
+const sgPhotoMarker = '<figure class="sgt-practice-photo"';
+if (praxisHtml.split(sgPhotoMarker).length !== 2)
+  throw new Error('St. Gallen: expected one reception image after practice facts');
 const pra = praxisHtml
-  .replace('href="tel:+41775236122"', 'href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel"');
+  .replace('href="tel:+41775236122"', 'href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel"')
+  .replace(sgPhotoMarker, SG_NETWORK_REVIEW_STRIP + sgPhotoMarker);
 
 const teamSlugs = ['corinna-reinhart', 'astrid-lenggenhager'];
 const localTeam = teamSlugs.map((slug) => {
@@ -134,9 +157,80 @@ const card = renderKontaktForm({
   /* One brief, original SG-specific paragraph directly below the clinic title. */
   .sgt--location-first .sgt-practice>.content-body{margin-bottom:16px}
   .sgt--location-first .sgt-practice .content-body p{font-size:15px;line-height:1.56;color:#566B78;margin:0 0 17px}
-  .sgt--location-first .sgt-practice .up-grid{margin-top:0}
-  .sgt--location-first .sgt-practice .up-item{min-width:0}
-  .sgt--location-first .sgt-practice .up-val{overflow-wrap:anywhere}
+  /* Same visual language as /kontakt/: unboxed blue icons, bold titles,
+     muted details and a clear two-column contact facts layout. */
+  .sgt--location-first .sgt-practice .up-grid{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:19px 20px;margin:0 0 7px!important;min-width:0;
+  }
+  .sgt--location-first .sgt-practice .up-item{
+    display:flex;align-items:flex-start;gap:12px;min-width:0;
+    padding:7px 3px;margin:0;border:none;background:transparent;box-shadow:none;
+  }
+  .sgt--location-first .sgt-practice .up-ico{
+    display:flex;align-items:center;justify-content:center;flex:0 0 22px;
+    width:22px;height:22px;min-width:22px;
+    margin:2px 0 0;padding:0!important;border:0!important;border-radius:0!important;
+    background:transparent!important;box-shadow:none!important;color:#1769B1!important;
+  }
+  .sgt--location-first .sgt-practice .up-ico svg{
+    width:22px;height:22px;stroke:#1769B1!important;stroke-width:1.7!important;
+  }
+  .sgt--location-first .sgt-practice .up-body{
+    display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;
+  }
+  .sgt--location-first .sgt-practice .up-label{
+    margin:0;font-size:15px!important;line-height:1.35!important;
+    font-weight:800!important;letter-spacing:0!important;color:#152733!important;
+  }
+  .sgt--location-first .sgt-practice .up-val,
+  .sgt--location-first .sgt-practice .up-val div{
+    display:block;font-size:14px!important;line-height:1.45!important;
+    font-weight:400!important;color:#52616B!important;
+    overflow-wrap:anywhere;
+  }
+  .sgt--location-first .sgt-practice a.up-val{
+    text-decoration:none!important;
+  }
+  .sgt--location-first .sgt-practice a.up-val:hover{
+    color:#1769B1!important;text-decoration:underline!important;text-underline-offset:3px;
+  }
+  /* Same rounded white review card as /kontakt/, explicitly network-wide. */
+  .sgt--location-first .sgt-network-proof{
+    box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;
+    gap:14px;width:100%;padding:20px 22px;margin:20px 0 8px;
+    background:#fff;border:1px solid rgba(35,56,70,.1);border-radius:16px;
+  }
+  .sgt--location-first .sgt-network-proof-label{
+    display:flex;flex-direction:column;justify-content:center;min-width:0;gap:5px;flex:1;
+  }
+  .sgt--location-first .sgt-network-proof-label strong{
+    font-size:15px;font-weight:750;line-height:1.4;color:#162733;
+  }
+  .sgt--location-first .sgt-network-proof-label span{
+    font-size:11.5px;line-height:1.3;color:#61717C;
+  }
+  .sgt--location-first .sgt-network-proof-metrics{
+    flex:0 0 auto;display:flex;align-items:center;
+  }
+  .sgt--location-first .sgt-network-proof-metric{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-width:66px;gap:3px;text-align:center;
+  }
+  .sgt--location-first .sgt-network-proof-metric strong{
+    font-size:clamp(21px,1.9vw,27px);line-height:1.05;
+    letter-spacing:-.035em;font-weight:800;color:#162733;
+  }
+  .sgt--location-first .sgt-network-proof-metric span{
+    font-size:11.5px;line-height:1.25;color:#536776;
+  }
+  .sgt--location-first .sgt-network-proof-metric .sgt-network-proof-stars{
+    font-size:13px;letter-spacing:1px;white-space:nowrap;color:#CE9235;
+  }
+  .sgt--location-first .sgt-network-proof-count{
+    min-width:87px;border-left:1px solid #DDE5EB;
+    padding-left:12px;margin-left:12px;
+  }
   .sgt--location-first .sgt-practice-photo{display:block;overflow:hidden;margin:22px 0 20px;border-radius:18px;border:1px solid #E0E6E9}
   .sgt--location-first .sgt-practice-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:285px;object-fit:cover}
   .sgt--location-first .sgt-practice .up-map{overflow:hidden;border-radius:16px}
@@ -202,6 +296,10 @@ const card = renderKontaktForm({
     .sgt--location-first{padding:30px 16px 38px}
     .sgt--location-first .sgt-grid{gap:26px}
     .sgt--location-first .sgt-practice .up-h2{font-size:29px;margin-bottom:16px}
+    .sgt--location-first .sgt-practice .up-grid{gap:12px 14px}
+    .sgt--location-first .sgt-network-proof{padding:17px 16px;gap:12px}
+    .sgt--location-first .sgt-network-proof-metric{min-width:56px}
+    .sgt--location-first .sgt-network-proof-count{min-width:74px;padding-left:9px;margin-left:9px}
     .sgt--location-first .sgt-practice-photo{margin:15px 0 12px}
     .sgt--location-first .sgt-practice-photo img{aspect-ratio:16/9;max-height:220px}
     /* Google Maps opens externally on mobile; do not push the booking form
@@ -211,6 +309,12 @@ const card = renderKontaktForm({
     .sgt--location-first .sgt-onedoc-body{padding:12px}
     .sg-location-team{padding:32px 16px}
     .sg-location-team .sg-team-testimonial{margin-top:20px}
+  }
+  @media(max-width:440px){
+    .sgt--location-first .sgt-practice .up-grid{grid-template-columns:minmax(0,1fr);gap:10px}
+    .sgt--location-first .sgt-network-proof{align-items:flex-start;flex-wrap:wrap}
+    .sgt--location-first .sgt-network-proof-label{flex:1 1 100%}
+    .sgt--location-first .sgt-network-proof-metrics{width:100%;justify-content:flex-start;margin-top:3px}
   }
   @media(prefers-reduced-motion:reduce){.sgt--location-first .sgt-onedoc-arrow{transition:none}}
 </style>

@@ -14,6 +14,11 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   'Du suchst Hilfe bei Schmerzen, Stress oder chronischen Beschwerden in St. Gallen?',
   'Unsere Praxis verbindet klassische TCM mit moderner Diagnostik',
   'sgt-main--sticky', '--sgt-sticky-top',
+  'class="sgt-network-proof"',
+  'TCM.ch Netzwerk · standortübergreifend',
+  'Patientenbewertungen',
+  '1\'000+',
+  '4.89',
   'class="sgt-practice-photo"',
   'class="up-map"',
   'data-booking-sheet="sg"', 'href="#sg-standort"',
@@ -46,6 +51,16 @@ assert(order.every((p) => p >= 0), 'Missing order marker');
 assert(order.every((p, i) => !i || p > order[i - 1]), 'SG location -> booking -> team -> therapy order changed');
 assert((html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
 assert((html.match(/class="sgt-practice-photo"/g) || []).length === 1, 'SG must display exactly one dedicated reception photo');
+assert((html.match(/class="sgt-network-proof"/g) || []).length === 1, 'SG must show one network review banner');
+const reviewIndex = html.indexOf('class="sgt-network-proof"');
+const imageIndex = html.indexOf('class="sgt-practice-photo"');
+const contactsIndex = html.indexOf('class="up-grid"');
+assert(contactsIndex > 0 && reviewIndex > contactsIndex && imageIndex > reviewIndex, 'Local facts -> network review banner -> clinic photo order lost');
+assert(html.includes('aria-label="TCM.ch Netzwerk: 4.89 von 5 Sternen aus über tausend Rezensionen"'), 'Aggregate network context must be accessible');
+const sgCss = readFileSync('src/components/HeroStandardSG.astro','utf8');
+assert(sgCss.includes('.sgt--location-first .sgt-practice .up-ico svg') && sgCss.includes('stroke:#1769B1'), 'Location icons must use /kontakt blue style');
+assert(sgCss.includes('.sgt--location-first .sgt-network-proof'), 'Network review strip should be styled for SG');
+assert(sgCss.includes('@media(max-width:440px)'), 'Small-screen review strip must remain responsive');
 assert((html.match(/class="team-grid sg-team-grid"/g) || []).length === 1, 'One team section only');
 no('class="sgt-channels"', 'repeated three contact-channel cards');
 no('class="sgu"', 'repeated USP row');
