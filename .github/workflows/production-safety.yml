@@ -37,6 +37,8 @@ jobs:
         run: npm run build
       - name: Immutable legacy template and deployment contracts
         run: node scripts/check-deployment-contracts.mjs
+      - name: About-page patient conversion contract
+        run: node scripts/check-about-cro.mjs
       - name: Bern clinic route contract
         run: node scripts/check-bern-live.mjs
       - name: Standort link and CTA regression gate
