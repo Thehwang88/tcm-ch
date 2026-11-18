@@ -31,7 +31,11 @@ for(const {slug,html} of clinicPages){
   check(!section.includes('An diesem Standort')&&!section.includes('tc-team-marker'),slug,'staff grouping labels remain');
   check(section.includes('tc-team-track')&&section.includes('tc-team-swipe'),slug,'mobile swipe track missing');
   check((html.match(/class="section tc-team-section"/g)||[]).length===1,slug,'duplicate full team blocks');
-  if(slug!=='st-gallen' && slug!=='kreuzlingen' && slug!=='bottighofen'){
+  if(slug==='luzern'){
+    check(html.includes('id="warteliste"')&&html.includes('value="warteliste-luzern"'),slug,'preopening waitlist must remain unchanged');
+    check(!html.includes('std-sg-layout'),slug,'Luzern has no confirmed address; do not fabricate active clinic facts');
+  }
+  if(!['st-gallen','kreuzlingen','bottighofen','luzern'].includes(slug)){
     check(html.includes('std-sg-layout'),slug,'new SG-standard location-first layout missing');
     check(html.includes('sgt-fact-icon'),slug,'clinic facts should have unboxed blue icons');
     check(html.includes('class="sg-cro-grid"'),slug,'compact therapies / symptoms missing');
