@@ -22,7 +22,7 @@ if (!praxisHtml.includes('<h2 class="up-h2">Über die Praxis</h2>') ||
 }
 // Reuse the exact *network-wide* aggregate figures currently published on
 // /kontakt/. Do not label these as reviews of St. Gallen alone.
-const SG_NETWORK_REVIEW_STRIP = \`
+const SG_NETWORK_REVIEW_STRIP = `
   <div class="sgt-network-proof" aria-label="TCM.ch Netzwerk: 4.89 von 5 Sternen aus über tausend Rezensionen">
     <div class="sgt-network-proof-label">
       <strong>Patientenbewertungen</strong>
@@ -38,7 +38,7 @@ const SG_NETWORK_REVIEW_STRIP = \`
         <span>Rezensionen</span>
       </div>
     </div>
-  </div>\`;
+  </div>`;
 const sgPhotoMarker = '<figure class="sgt-practice-photo"';
 if (praxisHtml.split(sgPhotoMarker).length !== 2)
   throw new Error('St. Gallen: expected one reception image after practice facts');
