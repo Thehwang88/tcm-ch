@@ -31,6 +31,7 @@ try{
     page.on('request',r=>r.url().startsWith(origin)?r.continue():r.abort());
     await page.goto(origin+'/standorte/'+route+'/',{waitUntil:'load',timeout:25000});
     await page.waitForFunction(()=>document.querySelector('.tc-team-section')?.dataset.teamCarouselReady==='1',{timeout:15000});
+    await page.$eval('.tc-team-section',el=>el.scrollIntoView({block:'start',behavior:'instant'}));
     const layout=await page.evaluate(()=>{
       const sec=document.querySelector('.tc-team-section');
       const track=sec.querySelector('.tc-team-track');
