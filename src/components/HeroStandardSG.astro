@@ -42,7 +42,12 @@ const SG_NETWORK_REVIEW_STRIP = `
 const sgPhotoMarker = '<figure class="sgt-practice-photo"';
 if (praxisHtml.split(sgPhotoMarker).length !== 2)
   throw new Error('St. Gallen: expected one reception image after practice facts');
+// Drop the legacy .up-ico hook completely; global styles applied grey
+// background squares to it despite the SG-only blue icon treatment.
+const iconCount = (praxisHtml.match(/class="up-ico"/g) || []).length;
+if (iconCount !== 4) throw new Error('St. Gallen: expected four clinic fact icons');
 const pra = praxisHtml
+  .replaceAll('class="up-ico"', 'class="sgt-fact-icon"')
   .replace('href="tel:+41775236122"', 'href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel"')
   .replace(sgPhotoMarker, SG_NETWORK_REVIEW_STRIP + sgPhotoMarker);
 
@@ -167,13 +172,14 @@ const card = renderKontaktForm({
     display:flex;align-items:flex-start;gap:12px;min-width:0;
     padding:7px 3px;margin:0;border:none;background:transparent;box-shadow:none;
   }
-  .sgt--location-first .sgt-practice .up-ico{
+  .sgt--location-first .sgt-practice .sgt-fact-icon{
     display:flex;align-items:center;justify-content:center;flex:0 0 22px;
     width:22px;height:22px;min-width:22px;
     margin:2px 0 0;padding:0!important;border:0!important;border-radius:0!important;
-    background:transparent!important;box-shadow:none!important;color:#1769B1!important;
+    background:none!important;background-color:transparent!important;
+    box-shadow:none!important;text-shadow:none!important;color:#1769B1!important;
   }
-  .sgt--location-first .sgt-practice .up-ico svg{
+  .sgt--location-first .sgt-practice .sgt-fact-icon svg{
     width:22px;height:22px;stroke:#1769B1!important;stroke-width:1.7!important;
   }
   .sgt--location-first .sgt-practice .up-body{
