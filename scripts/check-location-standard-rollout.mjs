@@ -30,6 +30,7 @@ for(const {slug,html} of clinicPages){
   check(!section.includes('data-local-therapist')&&!section.includes('data-network-therapist'),slug,'local/network sorting or labels remain');
   check(!section.includes('An diesem Standort')&&!section.includes('tc-team-marker'),slug,'staff grouping labels remain');
   check(section.includes('tc-team-track')&&section.includes('tc-team-swipe'),slug,'mobile swipe track missing');
+  check(!section.includes('class="tmc reveal"'),slug,'vertical reveal can create blank cards in horizontal swipe');
   check((html.match(/class="section tc-team-section"/g)||[]).length===1,slug,'duplicate full team blocks');
   if(slug==='luzern'){
     check(html.includes('id="warteliste"')&&html.includes('value="warteliste-luzern"'),slug,'preopening waitlist must remain unchanged');
