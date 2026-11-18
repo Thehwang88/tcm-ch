@@ -7,7 +7,9 @@ const esc = (s: string) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(
 export function locationTeamHtml(slug: string, city: string): string {
   const cards = therapeuten.map(t =>
     '<div class="tc-team-slide">' +
-      teamCardHtml(getPublicTherapistProfile(t)) +
+      // Horizontal slides must not inherit the vertical reveal animation:
+      // off-screen slides can otherwise appear as empty white cards when swiped.
+      teamCardHtml(getPublicTherapistProfile(t)).replace('class="tmc reveal"', 'class="tmc"') +
     '</div>'
   ).join('');
   return '<section class="section tc-team-section" id="team-' + esc(slug) + '" aria-labelledby="tc-team-head-' + esc(slug) + '">' +
