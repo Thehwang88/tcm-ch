@@ -23,7 +23,7 @@ assert(!symptom.includes('svc-card')&&!symptom.includes('Mehr erfahren'), 'No ei
 assert(symptom.includes('href="#termin-formular"') && sg.includes('id="termin-formular"'),'Booking CTA must target the actual SG form');
 assert(!symptom.includes('href="#kontakt"'),'Old removed #kontakt anchor must not be used');
 assert(sg.includes('href="/sg-compact.css"'), 'SG-only compact CSS must load');
-assert(!other.includes('href="/sg-compact.css"') && other.includes('href="/location-sg-standard.css"') && other.includes('sg-cro-therapien'), 'Other clinic pages must use the new shared SG-style compact sections, but not the SG-specific CSS');
+assert(other.includes('href="/sg-compact.css"') && other.includes('href="/location-sg-standard.css"') && other.includes('sg-cro-therapien'), 'Other clinic pages must use both the shared SG compact section CSS and clinic facts layout CSS');
 const style=readFileSync('public/sg-compact.css','utf8');
 assert(style.includes('@media(max-width:480px)')&&style.includes('.sg-cro-more summary:focus-visible'),'Mobile and keyboard treatment retained');
 console.log('SG CRO: four key therapies, four symptom groups, 18 indexed detail links, direct booking and isolation confirmed');
