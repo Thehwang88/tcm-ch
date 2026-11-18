@@ -31,10 +31,10 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   'class="section tc-team-section"',
   'id="team-st-gallen"',
   'Corinna Reinhart', 'Astrid Lenggenhager',
-  'sg-team-testimonial',
   'id="sg-therapien"',
   'id="sg-beschwerden"',
 ].forEach((marker) => has(marker));
+no('sg-team-feedback', 'obsolete extra testimonial section');
 const order = [
   '<section class="lsr-hero hlsg">',
   '<section class="sgt sgt--location-first"',
