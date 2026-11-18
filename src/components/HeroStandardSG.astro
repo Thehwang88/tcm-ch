@@ -109,6 +109,17 @@ const card = renderKontaktForm({
 </section>
 <style is:global>
   /* SG-only. Other data-driven clinic templates stay untouched. */
+  /* Visual balance: center the copy BLOCK inside the left hero half while
+     keeping its typography left-aligned. Match video center vertically. */
+  .lsr-hero.hlsg .lsr-inner{align-items:stretch}
+  .lsr-hero.hlsg .lsr-left{
+    box-sizing:border-box;width:100%;max-width:620px;margin-inline:auto;
+    min-width:0;padding:clamp(36px,4.3vw,68px) clamp(24px,3vw,48px);
+    display:flex;flex-direction:column;justify-content:center;
+    align-items:flex-start;text-align:left;
+  }
+  .lsr-hero.hlsg .lsr-h1{max-width:580px}
+  .lsr-hero.hlsg .lsr-lead{max-width:510px}
   .lsr-hero.hlsg .lsr-trust{margin:0 0 19px}
   .lsr-hero.hlsg .lsr-trust>div{font-size:13.5px;line-height:1.5}
   .lsr-hero.hlsg .lsr-tert{display:none!important}
@@ -163,6 +174,13 @@ const card = renderKontaktForm({
     .sgt--location-first .sgt-practice .up-map iframe{height:245px}
   }
   @media(max-width:767px){
+    /* Mobile: no desktop centering gutters or forced hero height. */
+    .lsr-hero.hlsg .lsr-inner{min-height:0}
+    .lsr-hero.hlsg .lsr-left{
+      max-width:none;margin:0;padding:clamp(25px,5vw,34px) 20px 23px;
+      align-items:stretch;
+    }
+    .lsr-hero.hlsg .lsr-h1,.lsr-hero.hlsg .lsr-lead{max-width:none}
     .lsr-hero.hlsg .lsr-ctas{display:flex;flex-direction:column;gap:9px}
     .lsr-hero.hlsg .lsr-ctas a{display:flex;width:100%;min-height:50px;justify-content:center}
     .lsr-hero.hlsg .lsr-btn-primary{background:var(--tcm-primary,#1769B1)!important;color:#fff!important;border-color:var(--tcm-primary,#1769B1)!important}
