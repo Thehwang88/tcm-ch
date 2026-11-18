@@ -26,7 +26,7 @@ const absent = (s) => assert(!own.includes(s), 'Legacy About content still visib
   'Wir wachsen,', 'Keine Listing-Gebühr.',
 ].forEach(absent);
 assert((own.match(/href="\/kontakt\/\?von=\/ueber-uns\/"/g) || []).length >= 3, 'Need at least three about-to-contact entrypoints');
-const positions = ['uu-hero', 'ueber-uns-team', 'ueber-uns-care-system', 'ueber-uns-founder', 'uu-cro-finish'].map((id) => own.indexOf(id));
+const positions = ['<div class="uu-hero">', '<section class="section team-section" id="ueber-uns-team"', '<section class="uu-cro-section uu-cro-steps" id="ueber-uns-care-system"', '<section class="founder-section" id="ueber-uns-founder"', '<section class="uu-cro-finish"'].map((tag) => own.indexOf(tag));
 assert(positions.every((p) => p >= 0), 'Missing section in About flow');
 assert(positions.every((p, i) => i === 0 || p > positions[i - 1]), 'Wrong About page section order');
 const teamLinks = (own.match(/href="\/team\/[^"]+\/" class="tmc reveal"/g) || []);
