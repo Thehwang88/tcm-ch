@@ -15,7 +15,7 @@ const absent = (s) => assert(!own.includes(s), 'Legacy About content still visib
   'Persönliche TCM.', 'Echte Menschen.',
   'Lerne unser Team kennen und finde die passende Praxis.',
   'ueber-uns-team', 'ueber-uns-founder', 'ueber-uns-bts',
-  'proof-section', 'free-intro-section', 'home-kontakt-section',
+  'home-trust-section', 'free-intro-section', 'home-kontakt-section',
   'href="/kontakt/?von=/ueber-uns/"', 'href="/standorte/"',
 ].forEach(present);
 [
@@ -28,7 +28,7 @@ const absent = (s) => assert(!own.includes(s), 'Legacy About content still visib
   'Bei uns findest du eine passende Praxis, verständliche Informationen',
 ].forEach(absent);
 assert((own.match(/href="\/kontakt\/\?von=\/ueber-uns\/"/g) || []).length >= 2, 'Need at least two about-to-contact entrypoints');
-const positions = ['<div class="uu-hero">', '<section class="section team-section" id="ueber-uns-team"', '<section class="bts-section" id="ueber-uns-bts"', '<section class="founder-section" id="ueber-uns-founder"', '<section id="s-offer"', '<section id="home-free-intro"', '<section id="home-contact-form"'].map((tag) => own.indexOf(tag));
+const positions = ['<div class="uu-hero">', '<section class="section team-section" id="ueber-uns-team"', '<section class="bts-section" id="ueber-uns-bts"', '<section class="founder-section" id="ueber-uns-founder"', '<section class="home-trust-section" id="home-trust"', '<section id="home-free-intro"', '<section id="home-contact-form"'].map((tag) => own.indexOf(tag));
 assert(positions.every((p) => p >= 0), 'Missing section in About flow');
 assert(positions.every((p, i) => i === 0 || p > positions[i - 1]), 'Wrong About page section order');
 const teamLinks = (own.match(/href="\/team\/[^"]+\/" class="tmc reveal"/g) || []);
@@ -42,11 +42,13 @@ assert((own.match(/class="tmc-grid"/g) || []).length === 1, 'Full team appears i
 assert((own.match(/data-kf-instance="home"/g) || []).length === 1, 'Reuse one canonical shared enquiry form');
 assert(own.includes('data-kf-terminart="checkin"'), 'Free intro must pass the check-in intent to the shared form');
 assert(own.includes('/images/softriver/behandlung-sitzend-1200.webp'), 'Existing introduction picture preserved');
-assert(own.includes("15'000") && own.includes('data-proof-count="98"') && own.includes('data-proof-count="96"') && own.includes('data-proof-count="95"'), 'Existing homepage review proof preserved');
+assert(own.includes("15'000+") && own.includes("1'000+") && own.includes('4.87') && own.includes('Weiterempfehlungen') && own.includes('Von allen Krankenkassen anerkannt'), 'Updated homepage trust proof must also appear on About');
+assert(own.includes('home-review-quote') && own.includes('Volker Z.'), 'Patient testimonial must remain on About');
+assert(!own.includes('data-proof-count'), 'Obsolete animated proof metrics should not be duplicated');
 assert(own.includes('team.webp?v=2'), 'Original hero team photo/video lost');
 assert(!own.includes('<section class="uu-cro-mission"'), 'Repeated mission statement must be removed');
 assert(!own.includes('<section class="uu-cro-section uu-cro-steps"'), 'Redundant three-step section must be removed');
 assert(!own.includes('<nav class="uu-cro-nav"'), 'Mini navigation must be removed');
 assert(!own.includes('<div class="uu-cro-trust"'), 'Repetitive trust strip must be removed');
 assert(!own.includes('<button class="back-btn"'), 'Redundant back button must be removed');
-console.log('About CRO: minimal hero, full team, BTS, founder and homepage proof/offer/contact verified');
+console.log('About CRO: minimal hero, full team, BTS, founder and new shared homepage trust/quote/offer/contact verified');
