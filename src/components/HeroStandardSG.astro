@@ -148,6 +148,17 @@ const card = renderKontaktForm({
   .sgt--location-first .sgt-location-actions a:hover{background:#E8F2FA;border-color:#A7C7DE}
   .sgt--location-first .sgt-location-actions a:focus-visible,.sgt--location-first .sgt-onedoc summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
   .sgt--location-first .sgt-main{min-width:0;max-width:525px;width:100%}
+  /* When the location facts on the left run longer than the form, let the
+     right booking column follow the scroll. Its position is always bounded
+     by the SG section; tall forms use a negative sticky top so that the
+     lower fields remain reachable without a nested scroll container. */
+  @media(min-width:1024px){
+    .sgt--location-first .sgt-main.sgt-main--sticky{
+      position:sticky;
+      top:var(--sgt-sticky-top,calc(var(--header-h,76px) + 16px));
+      align-self:start;
+    }
+  }
   .sgt--location-first .sgt-head{margin:0 0 19px}
   .sgt--location-first .sgt-head .section-title{margin:0 0 8px;font-size:clamp(25px,2.6vw,34px)}
   .sgt--location-first .sgt-sub{font-size:14.5px;line-height:1.5;color:#61717A;margin:0}
@@ -203,6 +214,45 @@ const card = renderKontaktForm({
   }
   @media(prefers-reduced-motion:reduce){.sgt--location-first .sgt-onedoc-arrow{transition:none}}
 </style>
+<script is:inline>
+  // Smart SG-only sticky booking column.
+  // - Desktop only; mobile/tablet always flow normally.
+  // - Only stick if the practice-content column actually runs longer.
+  // - For long forms, show their lower fields as the user scrolls rather
+  //   than clipping them below the viewport or nesting a scroll container.
+  // - Recalculate if the form grows (validation, OneDoc expanded, etc.).
+  (function(){
+    var section=document.querySelector('.sgt--location-first');
+    if(!section||!window.matchMedia)return;
+    var left=section.querySelector('.sgt-practice');
+    var right=section.querySelector('.sgt-main');
+    var mq=window.matchMedia('(min-width:1024px)');
+    if(!left||!right)return;
+    var raf=0;
+    function update(){
+      raf=0;
+      var enabled=mq.matches && left.offsetHeight>right.offsetHeight+30;
+      if(!enabled){
+        right.classList.remove('sgt-main--sticky');
+        right.style.removeProperty('--sgt-sticky-top');
+        return;
+      }
+      var head=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))||76;
+      var top=Math.round(Math.min(head+16, window.innerHeight-right.offsetHeight-16));
+      right.style.setProperty('--sgt-sticky-top',top+'px');
+      right.classList.add('sgt-main--sticky');
+    }
+    function schedule(){if(!raf)raf=requestAnimationFrame(update);}
+    schedule();
+    window.addEventListener('resize',schedule,{passive:true});
+    if(mq.addEventListener)mq.addEventListener('change',schedule);
+    if(window.ResizeObserver){
+      var ro=new ResizeObserver(schedule);
+      ro.observe(left);ro.observe(right);
+    }
+    window.addEventListener('load',schedule,{once:true});
+  })();
+</script>
 <script is:inline>
   // Preserve old direct links (#online-buchen) used by OneDoc, FAQ, banners,
   // and clinic dropdowns, even though the embedded calendar is now optional.
