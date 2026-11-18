@@ -31,7 +31,7 @@ const bookingTitle = pu ? 'Termin bei der Partnerpraxis' : planned ? 'Anfrage f√
     <div class="sgt-main" data-std-box-oben>
       <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
       <div class="sgt-head">
-        <h2 class="section-title" id="sgt-h">{bookingTitle}</h2>
+        <h2 class="section-title" id="sgt-h">{pu ? bookingTitle.replace(data.stadt, '') : planned ? bookingTitle.replace(data.stadt, '') : 'Termin in '} <em>{data.stadt}</em></h2>
         <p class="sgt-sub">{bookingText}</p>
       </div>
       <span id="termin-formular" class="sgt-anchor" aria-hidden="true"></span>
