@@ -14,36 +14,27 @@ const between = (start: string, end: string) => {
   return rawBody.slice(a, b);
 };
 
-// Retain the actual existing hero photograph/video and all the page-scoped
-// visuals, but remove the old four-paragraph intro and unverified media strip.
+// Preserve the original video/photo while cutting duplicated copy, navigation
+// and corporate essays; keep the patient journey focused on people and contact.
 let intro = rawBody.slice(0, rawBody.indexOf('<div class="uu-press">'));
 if (!intro.includes('<div style="margin-top:20px;max-width:760px">')) throw new Error('Über-uns intro marker changed');
 intro = intro.slice(0, intro.indexOf('<div style="margin-top:20px;max-width:760px">'))
-  + '<div class="uu-cro-brief"><p>Wir verbinden Traditionelle Chinesische Medizin mit persönlicher Betreuung und klarer Organisation. Unsere Fachpersonen, ihre Ausbildungen und ihre Anerkennungen kannst du direkt in den Profilen kennenlernen.</p></div></div></div>';
+  + '</div></div>';
 intro = intro
-  .replace('Ein junges Team. Eine klare Mission.<br><em>TCM, wie sie sein sollte.</em>', 'Persönliche TCM.<br><em>Mit Menschen, die zuhören.</em>')
+  .replace('Ein junges Team. Eine klare Mission.<br><em>TCM, wie sie sein sollte.</em>', 'Persönliche TCM.<br><em>Echte Menschen.</em>')
   .replace('<p class="sub-desc">Wer wir sind, woran wir glauben, und warum wir TCM in der Schweiz neu denken.</p>',
-    '<p class="sub-desc">Lerne unser Team und unseren Ansatz kennen. Bei uns findest du eine passende Praxis, verständliche Informationen und einen einfachen Weg zur Terminanfrage.</p>'
-    + '<div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/?von=/ueber-uns/">Termin anfragen <span aria-hidden="true">→</span></a><a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Standort finden</a></div>'
-    + '<p class="uu-cro-micro">Persönliche Rückmeldung · keine automatische Terminbuchung</p>')
-  .replace('alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen"', 'alt="Einblicke in das TCM.ch Team"');
+    '<p class="sub-desc">Lerne unser Team kennen und finde die passende Praxis.</p>'
+    + '<div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/?von=/ueber-uns/">Termin anfragen <span aria-hidden="true">→</span></a><a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Standort finden</a></div>')
+  .replace('alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen"', 'alt="Einblicke in das TCM.ch Team"')
+  .replace(/<button class="back-btn"[^>]*>[\s\S]*?<\/button>/, '');
 
 const teamSource = between('<section class="section team-section" id="ueber-uns-team"', '<section class="bts-section"');
 // Restore the complete original team grid, open and fully visible (no details).
 // Cards still come from the canonical therapist registry.
-const team = teamSource.replace('<!--TEAM-GRID-->', teamGridHtml());
-
-const care = '<section class="uu-cro-section uu-cro-steps" id="ueber-uns-care-system">'
-  + '<span id="ueber-uns-familientradition" class="uu-cro-anchor"></span>'
-  + '<div class="wrap"><div class="uu-cro-eyebrow">Dein Weg zu uns</div>'
-  + '<h2>Von der ersten Frage zum passenden Termin.</h2>'
-  + '<p class="uu-cro-lead">Du musst nicht wissen, welche Therapie du brauchst. Wir helfen dir dabei, den nächsten Schritt zu finden.</p>'
-  + '<div class="uu-cro-step-grid">'
-  + '<div><span>01</span><h3>Anliegen schildern</h3><p>Erzähl uns kurz, wobei du Unterstützung suchst.</p></div>'
-  + '<div><span>02</span><h3>Persönlich klären</h3><p>Wir besprechen Standort, Termin und Fragen zur Zusatzversicherung. Die Deckung hängt von deiner Police ab.</p></div>'
-  + '<div><span>03</span><h3>Behandlung starten</h3><p>Du vereinbarst deinen Termin bei der passenden Fachperson.</p></div>'
-  + '</div><div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/?von=/ueber-uns/">Termin anfragen <span aria-hidden="true">→</span></a>'
-  + '<a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Alle Standorte</a></div></div></section>';
+const team = teamSource
+  .replace('Anerkannte Fachpersonen. <em>Echte Menschen.</em>', 'Lerne unser <em>Team kennen.</em>')
+  .replace('Unser Team bringt unterschiedliche Ausbildungswege, klinische Erfahrungen und TCM-Schwerpunkte mit. Deshalb zeigen wir bei jeder Person transparent, welche Ausbildung, Methoden und Anerkennungen tatsächlich vorliegen.', 'Menschen, Erfahrungen und Qualifikationen – direkt im Profil.')
+  .replace('<!--TEAM-GRID-->', teamGridHtml());
 
 let founder = between('<section class="founder-section" id="ueber-uns-founder"', '<section class="uu-advisor"');
 founder = founder
@@ -57,15 +48,6 @@ const bts = between('<section class="bts-section" id="ueber-uns-bts"', '<section
 // The preserved Behind-the-Scenes section is shown exactly as before,
 // including all six video tiles, posters, pillars and its original layout.
 const behind = bts;
-const nav = '<nav class="uu-cro-nav" aria-label="Über uns: Bereiche">'
-  + '<a href="#ueber-uns-team">Unser Team</a><a href="#ueber-uns-care-system">Dein Weg</a>'
-  + '<a href="#ueber-uns-bts">Behind the Scenes</a><a href="#ueber-uns-founder">Unsere Geschichte</a></nav>';
-const trust = '<div class="uu-cro-trust"><div class="wrap"><span>Qualifikationen pro Person transparent</span>'
-  + '<span>Zusatzversicherung je nach Police</span><span>Persönliche Antwort auf Anfragen</span></div></div>';
-const mission = '<section class="uu-cro-mission" id="ueber-uns-vision"><div class="wrap"><div class="uu-cro-eyebrow">Wofür wir stehen</div>'
-  + '<h2>Tradition in der Behandlung. Klarheit im Ablauf.</h2>'
-  + '<p>Wir möchten, dass du eine fundierte Einschätzung und eine verständliche Begleitung bekommst. Darum zeigen wir unsere Fachpersonen, erklären die Behandlungsschritte und helfen bei der Wahl der passenden Praxis.</p>'
-  + '</div></section>';
 // Reuse the exact three existing TCM.ch homepage sections in the requested
 // order: genuine patient feedback -> free introduction -> contact form.
 // Keep one shared renderer/handler for enquiries; do not copy the old legacy form.
@@ -88,11 +70,10 @@ const patientSections = '<div id="home-content" class="uu-cro-home-sections">' +
 // Keep a single closing tag for #page-ueber-uns; the old B2B recruiting
 // section, media-logo strip, negative comparison and duplicated CEO block
 // are intentionally not in the patient journey.
-const body = [intro, trust, nav, team, care,
-  '<span class="uu-cro-anchor" id="ueber-uns-advisor"></span>',
-  mission, behind, founder, patientSections, '</section>'].join('');
+// Short, patient-first About flow: team, genuine video, founder, then proof/offer/form.
+const body = [intro, team, behind, founder, patientSections, '</section>'].join('');
 const title = 'Über uns – Unser Team & unsere Geschichte | TCM.ch';
-const description = 'Lerne das TCM.ch Team, unsere Arbeitsweise und den Weg zum passenden Termin kennen. Fachpersonen, Standorte und persönliche Terminanfrage.';
+const description = 'Lerne die Menschen hinter TCM.ch kennen, entdecke unser Team und finde deine Praxis. Jetzt persönlich einen Termin anfragen.';
 const schema = { '@context': 'https://schema.org', '@type': 'AboutPage', name: title, url: 'https://tcm.ch/ueber-uns/', inLanguage: 'de-CH', isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } };
 ---
 <SpaPage title={title} description={description} path="/ueber-uns" body={body} schema={schema}>
@@ -199,4 +180,20 @@ const schema = { '@context': 'https://schema.org', '@type': 'AboutPage', name: t
 #page-ueber-uns .bts-section{margin:0}
 #page-ueber-uns .bts-section .bts-stage{overflow:hidden}
 
+
+/* Tighter, clearer hero without a second explanatory paragraph. */
+#page-ueber-uns #ueber-uns-intro{padding-top:clamp(74px,9vh,100px)!important}
+#page-ueber-uns .ueber-intro{padding-bottom:clamp(36px,4vw,58px)!important}
+#page-ueber-uns .uu-hero{align-items:center!important}
+#page-ueber-uns .sub-title{max-width:650px;line-height:1.07!important;margin-bottom:17px!important}
+#page-ueber-uns .sub-title em{font-style:normal!important;font-weight:800!important;color:#1769B1!important}
+#page-ueber-uns .sub-desc{font-size:clamp(16px,1.5vw,19px)!important;line-height:1.52!important;max-width:34ch!important;margin-bottom:0!important}
+#page-ueber-uns .uu-cro-actions{margin-top:22px}
+#page-ueber-uns #ueber-uns-team{padding-top:clamp(38px,4vw,58px)!important}
+#page-ueber-uns #ueber-uns-team .team-sub{max-width:380px;line-height:1.55}
+@media(max-width:767px){
+  #page-ueber-uns #ueber-uns-intro{padding-top:78px!important}
+  #page-ueber-uns .ueber-intro{padding-bottom:34px!important}
+  #page-ueber-uns .sub-desc{max-width:32ch!important}
+}
 </style>
