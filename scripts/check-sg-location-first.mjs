@@ -1,0 +1,54 @@
+// SG-specific layout regression contract. Runs against the built Astro HTML
+// and never submits a patient enquiry or touches live analytics.
+import { readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+
+const html = readFileSync('dist/standorte/st-gallen/index.html','utf8');
+const has = (x, why=x) => assert(html.includes(x), 'St. Gallen missing: ' + why);
+const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + why);
+[
+  '<section class="lsr-hero hlsg">',
+  '<section class="sgt sgt--location-first"',
+  'class="sgt-practice" id="sg-standort"',
+  'Oberer Graben 22, 9000 St. Gallen',
+  'class="sgt-practice-photo"',
+  'class="up-map"',
+  'data-booking-sheet="sg"', 'href="#sg-standort"',
+  'id="termin"',
+  'id="termin-formular"',
+  'data-kf-instance="sg-hero"',
+  'name="quelle" value="launch-hero-sg"',
+  'class="sgt-onedoc" id="online-buchen"',
+  'onedoc.ch/de/widget/',
+  'class="sg-location-team"',
+  'id="sg-team"',
+  'Corinna Reinhart', 'Astrid Lenggenhager',
+  'sgt-team-testimonial',
+  'id="sg-therapien"',
+  'id="sg-beschwerden"',
+].forEach(has);
+const order = [
+  '<section class="lsr-hero hlsg">',
+  '<section class="sgt sgt--location-first"',
+  'class="sgt-practice" id="sg-standort"',
+  'Oberer Graben 22, 9000 St. Gallen',
+  'class="sgt-main"',
+  'data-kf-instance="sg-hero"',
+  'id="online-buchen"',
+  'class="sg-location-team"',
+  'id="sg-therapien"',
+  'id="sg-beschwerden"',
+].map((x) => html.indexOf(x));
+assert(order.every((p) => p >= 0), 'Missing order marker');
+assert(order.every((p, i) => !i || p > order[i - 1]), 'SG location -> booking -> team -> therapy order changed');
+assert((html.match(/data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
+assert((html.match(/class="sgt-practice-photo"/g) || []).length === 1, 'SG must display exactly one dedicated reception photo');
+assert((html.match(/class="team-grid sg-team-grid"/g) || []).length === 1, 'One team section only');
+no('class="sgt-channels"', 'repeated three contact-channel cards');
+no('class="sgu"', 'repeated USP row');
+no('class="sgt-aside"', 'old duplicate NAP/team/sidebar');
+no('class="sg-cta-repeat"', 'repeated old CTA');
+no('Du weisst nicht, welche Behandlung du brauchst?', 'old redundant notice');
+assert(/id="online-buchen"[^>]*>|class="sgt-onedoc" id="online-buchen"/.test(html), 'OneDoc anchor lost');
+assert(html.includes('widgetConfigs["7a0d6d1be45b44d5cbe90243187f9e7c30949c5dd23682bf770e7b5808674794"]'), 'SG OneDoc measurement config lost');
+console.log('SG location-first contract: hero balance, unique NAP, team, contact/OneDoc and anchors OK');
