@@ -403,6 +403,14 @@ if (migrated) {
     if (start < 0 || end < 0) throw new Error('Bottighofen: original therapist section not found');
     spaBody = spaBody.slice(0,start) + locationTeamHtml('bottighofen','Bottighofen') + spaBody.slice(end+10);
   }
+  if (slug === 'kreuzlingen') {
+    // Kreuzlingen has no legacy team section: insert the shared full roster
+    // directly after its genuine practice/arrival block.
+    const start=spaBody.indexOf('<section class="up-sec">');
+    const end=start<0?-1:spaBody.indexOf('</section>',start);
+    if(start<0||end<0)throw new Error('Kreuzlingen: original Über die Praxis section not found');
+    spaBody=spaBody.slice(0,end+10)+locationTeamHtml('kreuzlingen','Kreuzlingen')+spaBody.slice(end+10);
+  }
   // «Praxen in der Nähe» (05.11.2026): Leaf-Karten durch die zentrale Standortkarte ersetzen (max. 3 buchbare nach Distanz).
   {
     const rs = spaBody.indexOf('<section class="related-section">');
