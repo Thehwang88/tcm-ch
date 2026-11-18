@@ -22,6 +22,12 @@ export function locationTeamHtml(slug: string, city: string): string {
       '<div class="tc-team-buttons" aria-label="Team-Karussell steuern"><button type="button" class="tc-team-prev" aria-label="Vorherige Teammitglieder anzeigen">‹</button><button type="button" class="tc-team-next" aria-label="Weitere Teammitglieder anzeigen">›</button></div>' +
       '</div>' +
       '<div class="tc-team-track" role="region" aria-roledescription="Karussell" aria-label="TCM.ch Team – horizontal wischen" tabindex="0">' + cards + '</div>' +
-      '<p class="tc-team-swipe">Wische, um weitere Teammitglieder zu sehen <span aria-hidden="true">↔</span></p>' +
+      '<div class="tc-team-footer">' +
+        '<p class="tc-team-swipe"><span class="tc-team-swipe-arrow" aria-hidden="true">←</span> Nach links wischen</p>' +
+        '<div class="tc-team-position">' +
+          '<span class="tc-team-count" aria-label="Teamkarte 1 von ' + therapeuten.length + '"><strong class="tc-team-current">01</strong><span aria-hidden="true"> / ' + String(therapeuten.length).padStart(2, '0') + '</span></span>' +
+          '<span class="tc-team-progress" role="progressbar" aria-label="Fortschritt durch die Teamkarten" aria-valuemin="1" aria-valuemax="' + therapeuten.length + '" aria-valuenow="1"><span class="tc-team-progress-fill"></span></span>' +
+        '</div>' +
+      '</div>' +
     '</div></section>';
 }

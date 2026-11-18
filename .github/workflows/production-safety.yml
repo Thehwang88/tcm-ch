@@ -59,6 +59,8 @@ jobs:
           node --input-type=module -e "import p from 'puppeteer'; console.log('CHROMIUM='+await p.executablePath())" >> "$GITHUB_ENV"
       - name: SG Ersttermin default and explicit check-in (mock browser, no submissions)
         run: node scripts/test-sg-ersttermin-default.mjs
+      - name: Mobile team swipe and visible next-card peek (Chromium)
+        run: node scripts/test-location-team-swipe.mjs
       - name: English form analytics (mocked; no live conversions)
         run: node scripts/test-en-analytics.mjs
 

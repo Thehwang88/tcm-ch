@@ -43,3 +43,73 @@
  .tc-team-slide .tmc-photo{height:180px}
 }
 @media(prefers-reduced-motion:reduce){.tc-team-track{scroll-behavior:auto}}
+
+/* Explicit progress and affordance, rather than relying on a "swipe" caption. */
+.tc-team-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:3px 2px 0}
+.tc-team-position{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.tc-team-count{display:inline-flex;align-items:baseline;gap:2px;white-space:nowrap;color:#7A8992;font-size:12px;font-variant-numeric:tabular-nums}
+.tc-team-count strong{color:#1769B1;font-size:13px;font-weight:800}
+.tc-team-progress{position:relative;display:block;width:84px;height:4px;border-radius:999px;background:#E2E9ED;overflow:hidden}
+.tc-team-progress-fill{position:absolute;left:0;top:0;height:100%;width:6.25%;border-radius:999px;background:#1769B1;transition:width .22s ease}
+.tc-team-prev:disabled,.tc-team-next:disabled{opacity:.3;cursor:default;pointer-events:none}
+
+@media(max-width:767px){
+  .tc-team-section .wrap{width:100%;max-width:none!important;padding:0!important;overflow:visible}
+  .tc-team-top{padding:0 16px;margin-bottom:12px}
+  /* Full viewport track prevents nested .wrap widths from hiding card #2. */
+  .tc-team-track{
+    box-sizing:border-box;width:100vw;max-width:100vw;
+    margin-left:calc(50% - 50vw);padding:2px 16px 10px!important;
+    gap:12px;align-items:flex-start;scroll-padding-inline:16px;
+    overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+  /* Reserve at least 80px of visible next-card teaser at 320–430px. */
+  .tc-team-slide{
+    flex:0 0 clamp(205px,calc(100vw - 110px),292px)!important;
+    align-self:flex-start;scroll-snap-align:start;
+  }
+  .tc-team-slide .tmc{height:auto;min-height:0}
+  .tc-team-slide .tmc-body{flex:0 0 auto;padding:14px 14px 13px}
+  .tc-team-slide .tmc-cta{margin-top:10px;padding-top:0}
+  .tc-team-slide .tmc-photo{height:185px}
+  /* Keep long professional titles from forcing a large empty card body. */
+  .tc-team-slide .tmc-title,.tc-team-slide .tmc-focus{
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .tc-team-buttons{display:flex}
+  .tc-team-prev{display:none}
+  .tc-team-next{
+    width:40px;height:40px;font-size:25px;flex:0 0 40px;
+    border-color:#BCD4E5;background:#EAF4FB;
+    box-shadow:0 2px 8px rgba(23,105,177,.10);
+  }
+  .tc-team-footer{padding:0 16px;margin:5px 0 0}
+  .tc-team-swipe{display:flex;align-items:center;gap:6px;margin:0;
+    font-size:12px;font-weight:650;color:#516B7D;text-align:left}
+  .tc-team-swipe-arrow{display:inline-flex;align-items:center;justify-content:center;
+    width:23px;height:23px;border-radius:50%;background:#E5F2FA;color:#1769B1;
+    font-size:18px;line-height:1;font-weight:700}
+}
+@media(max-width:420px){
+  .tc-team-slide{flex-basis:clamp(205px,calc(100vw - 110px),292px)!important}
+  .tc-team-slide .tmc-photo{height:177px}
+}
+
+/* A single short "try swiping" nudge after the slider enters view.
+   No automatic carousel rotation, and never when reduced-motion is requested. */
+@keyframes tc-team-peek-nudge{
+  0%,16%,100%{transform:translate3d(0,0,0)}
+  43%,63%{transform:translate3d(-26px,0,0)}
+}
+@media(max-width:767px) and (prefers-reduced-motion:no-preference){
+  .tc-team-track.tc-team-cue .tc-team-slide{
+    animation:tc-team-peek-nudge 950ms cubic-bezier(.4,0,.2,1) 1 both;
+  }
+  .tc-team-track.tc-team-cue ~ .tc-team-footer .tc-team-swipe-arrow{
+    animation:tc-team-peek-nudge 950ms cubic-bezier(.4,0,.2,1) 1 both;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .tc-team-progress-fill{transition:none}
+}
