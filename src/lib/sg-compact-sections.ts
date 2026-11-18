@@ -28,7 +28,8 @@ const shref = (slug: string) => '/beschwerden/' + slug + '/?standort=st-gallen';
 export function sgTherapienCompactHtml(leaf: string): string {
   if (therapies.length !== SG_THERAPIE_SLUGS.length ||
       therapies.some((t,i) => t.slug !== SG_THERAPIE_SLUGS[i] ||
-        !leaf.includes('href="/therapien/' + t.slug + '/"'))) {
+        !(leaf.includes('href="/therapien/' + t.slug + '/"') ||
+          leaf.includes('href="/therapien/' + t.slug + '/?standort=st-gallen"')))) {
     throw new Error('SG therapy URLs changed in legacy leaf; review compact cards');
   }
   const cards = therapies.slice(0,4).map(t =>
