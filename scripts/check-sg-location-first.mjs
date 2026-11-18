@@ -41,7 +41,7 @@ const order = [
 ].map((x) => html.indexOf(x));
 assert(order.every((p) => p >= 0), 'Missing order marker');
 assert(order.every((p, i) => !i || p > order[i - 1]), 'SG location -> booking -> team -> therapy order changed');
-assert((html.match(/data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
+assert((html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
 assert((html.match(/class="sgt-practice-photo"/g) || []).length === 1, 'SG must display exactly one dedicated reception photo');
 assert((html.match(/class="team-grid sg-team-grid"/g) || []).length === 1, 'One team section only');
 no('class="sgt-channels"', 'repeated three contact-channel cards');
