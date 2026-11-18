@@ -24,7 +24,7 @@ let browser;
 try {
   browser=await puppeteer.launch({executablePath:process.env.CHROMIUM||puppeteer.executablePath(),args:['--no-sandbox','--no-proxy-server']});
   const scenarios=[
-    ['/standorte/st-gallen/','behandlung','Default SG ad landing'),
+    ['/standorte/st-gallen/','behandlung','Default SG ad landing'],
     ['/standorte/st-gallen/?terminart=behandlung','behandlung','Explicit Ersttermin'],
     ['/standorte/st-gallen/?terminart=checkin','checkin','Explicit free check-in'],
     ['/standorte/st-gallen/?first30=1','checkin','Legacy free check-in link'],
