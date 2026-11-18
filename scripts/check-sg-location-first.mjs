@@ -11,6 +11,9 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   '<section class="sgt sgt--location-first"',
   'class="sgt-practice" id="sg-standort"',
   'Oberer Graben 22, 9000 St. Gallen',
+  'Du suchst Hilfe bei Schmerzen, Stress oder chronischen Beschwerden in St. Gallen?',
+  'Unsere Praxis verbindet klassische TCM mit moderner Diagnostik',
+  'sgt-main--sticky', '--sgt-sticky-top',
   'class="sgt-practice-photo"',
   'class="up-map"',
   'data-booking-sheet="sg"', 'href="#sg-standort"',
@@ -48,7 +51,9 @@ no('class="sgt-channels"', 'repeated three contact-channel cards');
 no('class="sgu"', 'repeated USP row');
 no('class="sgt-aside"', 'old duplicate NAP/team/sidebar');
 no('class="sg-cta-repeat"', 'repeated old CTA');
+no('<section class="related-section">', 'Praxen in der Nähe should be removed for SG');
+no('Praxen <em>in der Nähe</em>', 'nearby clinics heading should be absent');
 no('Du weisst nicht, welche Behandlung du brauchst?', 'old redundant notice');
 assert(/id="online-buchen"[^>]*>|class="sgt-onedoc" id="online-buchen"/.test(html), 'OneDoc anchor lost');
 assert(html.includes('widgetConfigs["7a0d6d1be45b44d5cbe90243187f9e7c30949c5dd23682bf770e7b5808674794"]'), 'SG OneDoc measurement config lost');
-console.log('SG location-first contract: hero balance, unique NAP, team, contact/OneDoc and anchors OK');
+console.log('SG location-first contract: restored SG introduction, no nearby clinics, smart sticky form, NAP, OneDoc and team OK');

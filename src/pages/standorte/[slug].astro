@@ -406,7 +406,9 @@ if (migrated) {
     const rs = spaBody.indexOf('<section class="related-section">');
     if (rs < 0) throw new Error(`${slug}: related-section (Praxen in der Nähe) nicht gefunden - Leaf geändert?`);
     const re = spaBody.indexOf('</section>', rs) + 10;
-    const near = nearbyClinics(slug!, 3);
+    // SG pilot: this competing-clinic cross-sell is deliberately removed.
+    // All other legacy location pages retain their existing nearby-clinic cards.
+    const near = slug === 'st-gallen' ? [] : nearbyClinics(slug!, 3);
     spaBody = spaBody.slice(0, rs) + (near.length ? '<section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="reveal">' + standortGridHtml(near, { variant: 'kompakt', cols: 3 }) + '</div></div></section>' : '') + spaBody.slice(re);
     // Buchungsanker #termin (Standortkarten «Termin buchen →») auf Legacy-Leaves ohne eigenen Anker: vor der Kontaktsektion.
     if (!/id="termin"/.test(spaBody)) spaBody = spaBody.replace('<section id="kontakt" class="section contact-section-inline"', '<span id="termin" class="kf-compat-anchor" aria-hidden="true" style="display:block;height:0;scroll-margin-top:var(--header-h,76px)"></span><section id="kontakt" class="section contact-section-inline"');

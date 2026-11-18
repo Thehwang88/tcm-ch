@@ -11,8 +11,9 @@ const { sitekey, praxisHtml = '' } = Astro.props;
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
 const SG_MAPS = 'https://www.google.com/maps/place/TCM.ch+St+Gallen/@47.423225,9.3740224,17z/data=!4m8!3m7!1s0x479b1fa8422eee23:0x4d9e5b1cb4999c7!8m2!3d47.423225!4d9.3740224!9m1!1b1';
 
-// Build-time guard: preserve the leaf's real NAP, hours, image, map and routes.
-// The long prose is redundant after the hero; remove only that single intro paragraph.
+// Preserve the leaf's original, location-specific practice introduction and
+// all local NAP, opening times, image, map and travel information for patients/SEO.
+// Do not strip the introductory paragraph: it is the only visible SG prose here.
 if (!praxisHtml.includes('<h2 class="up-h2">Über die Praxis</h2>') ||
     !praxisHtml.includes('Oberer Graben 22, 9000 St. Gallen') ||
     !praxisHtml.includes('id=') && !praxisHtml.includes('class="up-map"') ||
@@ -20,7 +21,6 @@ if (!praxisHtml.includes('<h2 class="up-h2">Über die Praxis</h2>') ||
   throw new Error('HeroStandardSG: canonical clinic facts/map/photo not found');
 }
 const pra = praxisHtml
-  .replace(/<div class="content-body" style="margin-bottom:18px"><p>[\s\S]*?<\/p><\/div>/, '')
   .replace('href="tel:+41775236122"', 'href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel"');
 
 const teamSlugs = ['corinna-reinhart', 'astrid-lenggenhager'];
@@ -130,7 +130,10 @@ const card = renderKontaktForm({
   .sgt--location-first .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
   .sgt--location-first .sgt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,525px);gap:clamp(28px,4vw,58px);align-items:start}
   .sgt--location-first .sgt-practice{min-width:0;scroll-margin-top:calc(var(--header-h,76px) + 14px)}
-  .sgt--location-first .sgt-practice .up-h2{margin:0 0 18px;font-size:clamp(28px,2.7vw,39px);line-height:1.16}
+  .sgt--location-first .sgt-practice .up-h2{margin:0 0 12px;font-size:clamp(28px,2.7vw,39px);line-height:1.16}
+  /* One brief, original SG-specific paragraph directly below the clinic title. */
+  .sgt--location-first .sgt-practice>.content-body{margin-bottom:16px}
+  .sgt--location-first .sgt-practice .content-body p{font-size:15px;line-height:1.56;color:#566B78;margin:0 0 17px}
   .sgt--location-first .sgt-practice .up-grid{margin-top:0}
   .sgt--location-first .sgt-practice .up-item{min-width:0}
   .sgt--location-first .sgt-practice .up-val{overflow-wrap:anywhere}
@@ -145,6 +148,17 @@ const card = renderKontaktForm({
   .sgt--location-first .sgt-location-actions a:hover{background:#E8F2FA;border-color:#A7C7DE}
   .sgt--location-first .sgt-location-actions a:focus-visible,.sgt--location-first .sgt-onedoc summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
   .sgt--location-first .sgt-main{min-width:0;max-width:525px;width:100%}
+  /* When the location facts on the left run longer than the form, let the
+     right booking column follow the scroll. Its position is always bounded
+     by the SG section; tall forms use a negative sticky top so that the
+     lower fields remain reachable without a nested scroll container. */
+  @media(min-width:1024px){
+    .sgt--location-first .sgt-main.sgt-main--sticky{
+      position:sticky;
+      top:var(--sgt-sticky-top,calc(var(--header-h,76px) + 16px));
+      align-self:start;
+    }
+  }
   .sgt--location-first .sgt-head{margin:0 0 19px}
   .sgt--location-first .sgt-head .section-title{margin:0 0 8px;font-size:clamp(25px,2.6vw,34px)}
   .sgt--location-first .sgt-sub{font-size:14.5px;line-height:1.5;color:#61717A;margin:0}
@@ -200,6 +214,45 @@ const card = renderKontaktForm({
   }
   @media(prefers-reduced-motion:reduce){.sgt--location-first .sgt-onedoc-arrow{transition:none}}
 </style>
+<script is:inline>
+  // Smart SG-only sticky booking column.
+  // - Desktop only; mobile/tablet always flow normally.
+  // - Only stick if the practice-content column actually runs longer.
+  // - For long forms, show their lower fields as the user scrolls rather
+  //   than clipping them below the viewport or nesting a scroll container.
+  // - Recalculate if the form grows (validation, OneDoc expanded, etc.).
+  (function(){
+    var section=document.querySelector('.sgt--location-first');
+    if(!section||!window.matchMedia)return;
+    var left=section.querySelector('.sgt-practice');
+    var right=section.querySelector('.sgt-main');
+    var mq=window.matchMedia('(min-width:1024px)');
+    if(!left||!right)return;
+    var raf=0;
+    function update(){
+      raf=0;
+      var enabled=mq.matches && left.offsetHeight>right.offsetHeight+30;
+      if(!enabled){
+        right.classList.remove('sgt-main--sticky');
+        right.style.removeProperty('--sgt-sticky-top');
+        return;
+      }
+      var head=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))||76;
+      var top=Math.round(Math.min(head+16, window.innerHeight-right.offsetHeight-16));
+      right.style.setProperty('--sgt-sticky-top',top+'px');
+      right.classList.add('sgt-main--sticky');
+    }
+    function schedule(){if(!raf)raf=requestAnimationFrame(update);}
+    schedule();
+    window.addEventListener('resize',schedule,{passive:true});
+    if(mq.addEventListener)mq.addEventListener('change',schedule);
+    if(window.ResizeObserver){
+      var ro=new ResizeObserver(schedule);
+      ro.observe(left);ro.observe(right);
+    }
+    window.addEventListener('load',schedule,{once:true});
+  })();
+</script>
 <script is:inline>
   // Preserve old direct links (#online-buchen) used by OneDoc, FAQ, banners,
   // and clinic dropdowns, even though the embedded calendar is now optional.
