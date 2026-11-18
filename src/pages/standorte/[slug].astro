@@ -49,6 +49,10 @@ import ClinicConcierge from '../../components/ClinicConcierge.astro';
 import KontaktPraxis from '../../components/standort/KontaktPraxis.astro';
 import AnfrageKarte from '../../components/standort/AnfrageKarte.astro';
 import TerminSektion from '../../components/standort/TerminSektion.astro';
+import ClinicLocationFirst from '../../components/standort/ClinicLocationFirst.astro';
+import { locationTeamHtml } from '../../lib/location-team';
+import CompactTherapien from '../../components/standort/CompactTherapien.astro';
+import CompactBeschwerden from '../../components/standort/CompactBeschwerden.astro';
 import Faq from '../../components/standort/Faq.astro';
 
 export function getStaticPaths() {
@@ -392,6 +396,13 @@ if (migrated) {
     return html.slice(0, at) + html.slice(end + 10);
   };
   spaBody = removeOldPromo((slug === 'st-gallen') ? sgBody : legacyBody + beschwerdenLinks + hautBlock + ksBlock);
+  if (slug === 'bottighofen') {
+    const heading = spaBody.indexOf('Deine Therapeutin in Bottighofen');
+    const start = heading < 0 ? -1 : spaBody.lastIndexOf('<section', heading);
+    const end = heading < 0 ? -1 : spaBody.indexOf('</section>', heading);
+    if (start < 0 || end < 0) throw new Error('Bottighofen: original therapist section not found');
+    spaBody = spaBody.slice(0,start) + locationTeamHtml('bottighofen','Bottighofen') + spaBody.slice(end+10);
+  }
   // «Praxen in der Nähe» (05.11.2026): Leaf-Karten durch die zentrale Standortkarte ersetzen (max. 3 buchbare nach Distanz).
   {
     const rs = spaBody.indexOf('<section class="related-section">');
@@ -444,23 +455,14 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         </div>
       </section>
       )}
-      {/* SG-Vorlage 1:1 (08.11.2026, HeroStandardSG ohne OneDoc): Termin-Bereich (#termin: Praxis links, Kanalkarten + Formular
-          rechts) → USP kompakt → «Über die Praxis» einspaltig → Hinweis → Therapien (8 + «Weitere») → Beschwerden (8 Karten,
-          CTA) → Transparenz (3 Karten) → Praxen in der Nähe → WhatsApp → FAQ → Weiterlesen. Kein Team-/Leitungsblock, kein
-          Ablauf, keine Krankenkassen-Sektion, kein Einzugsgebiet, kein unteres Formular (alles wie St. Gallen). */}
-      <TerminSektion data={data} sitekey={turnstileSitekey} umleitungCard={umleitungCard} />
-      <KontaktPraxis id="standort-kontakt-praxis" uspLabel={`Darum TCM.ch ${data.stadt}`}>
-        <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} umleitung={!!PU} />
-        <UeberPraxis slot="info" data={data} inner sg />
-      </KontaktPraxis>
+      {/* Shared SG-style facts + canonical booking component. */}
+      <ClinicLocationFirst data={data} sitekey={turnstileSitekey} umleitungCard={umleitungCard} />
     </div>
     <div class:list={["page active std-ds std-vorlage", { "std-zh-cro": ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].includes(data.slug) }]} id="page-standort" style="display:block">
       <div id="standort-content">
-        <section class="section std-hinweis" style="padding:20px 0 0 !important;background:var(--bg)"><div class="wrap"><div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px"><div style="font-family:var(--font-sans);font-weight:800;font-size:clamp(17px,3.4vw,21px);color:var(--black);line-height:1.25;margin-bottom:6px">Keine Ahnung, wo du anfangen sollst? Dafür sind wir da.</div><div style="font-size:14.5px;color:var(--mid);line-height:1.55;max-width:70ch">Du musst nicht wissen, welche Therapie du brauchst. {data.planned ? 'Schreib uns' : 'Komm vorbei'}, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div></div></div></section>
-        <Therapien data={data} />
-        <Beschwerden data={data} />
-        <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review, data.vorVertrag, true)} />
-        <WeitereStandorte data={data} />
+        <Fragment set:html={locationTeamHtml(data.slug, data.stadt)} />
+        <CompactTherapien data={data} />
+        <CompactBeschwerden data={data} />
         <Faq data={data} />
         <Fragment set:html={weiterlesenHtml} />
       </div>
