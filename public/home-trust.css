@@ -1,4 +1,4 @@
-/* Homepage trust proof immediately after the hero. Deliberately static:
+/* Homepage trust proof immediately after the hero. Values stay static:
    no counters, carousels, analytics changes, or layout shifts. */
 #home-content .home-trust-section{
   padding:clamp(32px,4.8vw,62px) 0 clamp(32px,4.4vw,56px);
@@ -94,4 +94,23 @@
   #home-content .home-review-quote-inner{display:block}
   #home-content .home-review-quote blockquote{font-size:14px}
   #home-content .home-review-quote-attribution{margin-top:10px;text-align:left}
+}
+
+
+/* One-time, visibility-triggered entrance. Content is visible by default, including
+   when JavaScript is disabled or reduced motion is requested. */
+@keyframes home-trust-enter {
+  from { opacity:0; transform:translateY(14px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@media (prefers-reduced-motion:no-preference) {
+  #home-content .home-trust-section.home-trust-animate .home-trust-card {
+    animation:home-trust-enter .58s cubic-bezier(.2,.8,.2,1) both;
+  }
+  #home-content .home-trust-section.home-trust-animate .home-trust-card:nth-child(2){animation-delay:90ms}
+  #home-content .home-trust-section.home-trust-animate .home-trust-card:nth-child(3){animation-delay:180ms}
+  #home-content .home-trust-section.home-trust-animate .home-trust-card:nth-child(4){animation-delay:270ms}
+  #home-content .home-trust-section.home-trust-animate .home-trust-insurance {
+    animation:home-trust-enter .6s cubic-bezier(.2,.8,.2,1) .34s both;
+  }
 }
