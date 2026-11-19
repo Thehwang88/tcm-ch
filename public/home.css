@@ -5968,3 +5968,25 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 @media(max-width:600px){
   #home-content #heroPatient .sr-hero-city-links{font-size:13px;column-gap:7px;row-gap:4px;margin-bottom:20px}
 }
+/* On phones the hero uses display:contents, so the city nav otherwise
+   defaults to order:0 and appears above the heading. Keep it directly
+   below "Generation." and above the primary appointment CTA. */
+@media(max-width:767px){
+  #home-content #heroPatient .sr-hero-city-links{
+    order:3;
+    justify-content:flex-start;
+    margin:0 24px 20px;
+    padding:0;
+    font-size:14px;
+    column-gap:8px;
+    row-gap:6px;
+    line-height:1.5;
+  }
+  #home-content #heroPatient .sr-cta{order:4}
+  #home-content #heroPatient .sr-lead{order:5}
+  #home-content #heroPatient .sr-trust{order:6}
+}
+@media(max-width:375px){
+  #home-content #heroPatient .sr-hero-city-links{font-size:13px;column-gap:7px}
+}
+
