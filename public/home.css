@@ -5946,3 +5946,25 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 @media (max-width:375px) {
   #home-content #heroPatient .sr-h1 {font-size:36px;}
 }
+
+
+/* Homepage hero: bookable city shortcuts, without a second CTA row. */
+#home-content #heroPatient .sr-lead{margin-bottom:10px}
+#home-content #heroPatient .sr-hero-city-links{
+  display:flex;align-items:center;flex-wrap:wrap;column-gap:9px;row-gap:5px;
+  margin:0 0 24px;font-family:var(--font-sans);font-size:14px;line-height:1.5;
+}
+#home-content #heroPatient .sr-hero-city-links a{
+  color:var(--tcm-text);font-weight:700;text-decoration:underline;
+  text-decoration-color:var(--tcm-border);text-underline-offset:4px;
+}
+#home-content #heroPatient .sr-hero-city-links a:hover{
+  color:var(--tcm-ink);text-decoration-color:currentColor;
+}
+#home-content #heroPatient .sr-hero-city-links a:focus-visible{
+  outline:2px solid var(--tcm-primary);outline-offset:3px;border-radius:2px;
+}
+#home-content #heroPatient .sr-hero-city-links > span{color:var(--tcm-muted)}
+@media(max-width:600px){
+  #home-content #heroPatient .sr-hero-city-links{font-size:13px;column-gap:7px;row-gap:4px;margin-bottom:20px}
+}
