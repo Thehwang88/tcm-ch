@@ -8,6 +8,7 @@ const groups = [
   { title:'Migräne', subjects:['migraene'], copy:'Migräne und wiederkehrende Kopfschmerz-Beschwerden.' },
   { title:'Stress & Schlaf', subjects:['stress-burnout','schlafprobleme'], copy:'Anspannung, Erschöpfung und Schlafprobleme.' },
   { title:'Zyklus & Kinderwunsch', subjects:['zyklusbeschwerden','kinderwunsch'], copy:'Zyklusbeschwerden und ergänzende Begleitung bei Kinderwunsch.' },
+  { title:'Verdauungsbeschwerden', subjects:['verdauungsprobleme'], copy:'Begleitende Behandlung bei Verdauungsproblemen und Reizdarm-Beschwerden.' },
 ];
 const available = data.beschwerden.filter(slug=>!!symptomCards[slug]);
 const visible = groups.filter(group=>group.subjects.some(slug=>available.includes(slug))).slice(0,4);
