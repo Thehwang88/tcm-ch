@@ -13,7 +13,9 @@ for (const slug of PILOT) {
   const no = (x, why = x) => assert(!html.includes(x), `${slug} still has: ${why}`);
   [
     '<section class="lsr-hero hlsg std-sg-hero">', 'data-booking-sheet="clinic" data-booking-wish="checkin" data-kf-terminart="checkin" data-care-cta="hero-checkin">30 Min. gratis Termin anfragen ⚡️</a>',
-    'data-care-cta="hero-wa"', 'Per WhatsApp schreiben</a>', 'data-care-cta="hero-tel">Anrufen</a>', 'href="#sg-standort" data-care-cta="hero-anfahrt">Anfahrt</a>',
+    // Desktop (.lsr-d): «Anliegen kostenlos schildern» + WhatsApp-Textlink; Mobile (.lsr-m): WhatsApp-Button.
+    `class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-d" data-open-concern data-concern-location="${slug === 'zuerich-oerlikon' ? 'Zürich Oerlikon' : slug === 'zuerich-hoengg' ? 'Zürich Höngg' : 'Zürich Bahnhofstrasse'}" data-concern-location-slug="${slug}">Anliegen kostenlos schildern</a>`,
+    'tcm-btn--hero lsr-m" data-care-cta="hero-wa">', 'Per WhatsApp schreiben</a>', 'data-care-cta="hero-tel">Anrufen</a><span class="lsr-d" aria-hidden="true">·</span><a href="https://wa.me/', 'class="lsr-d" data-care-cta="hero-wa">WhatsApp</a>', 'href="#sg-standort" data-care-cta="hero-anfahrt">Anfahrt</a>',
     '<ul class="lsr-usp">', 'Krankenkassen anerkannt (EMR/ASCA)</li>', 'Kurzfristige Termine verfügbar</li>',
     '<section class="sgt sgt--location-first sgt--formular"', 'class="sgt-wrap sgt-grid sgt-grid--single"', 'class="sgt-network-proof"',
     'id="termin-formular"', 'id="anfrage-box" data-kf data-kf-instance="standort-oben"', 'data-kf-default="checkin" data-kf-submit-checkin="Gratis Check-in anfragen"',

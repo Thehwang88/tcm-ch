@@ -1,7 +1,7 @@
 ---
 // Zürich-Pilot (20.11.2026): Hero nach der St.-Gallen-Vorlage (HeroStandardSG) für datengetriebene Standortseiten.
 // Hauptbutton öffnet das Termin-Popup (booking-sheet.js, Typ clinic → #anfrage-box) mit vorgewähltem Gratis-Check-in,
-// Zweitbutton WhatsApp (kein OneDoc in Zürich), Linkzeile Anrufen · Anfahrt, drei Häkchen. Styles: SgLayoutStyles (.lsr-hero.hlsg).
+// Zweitbutton Desktop «Anliegen kostenlos schildern», Mobile WhatsApp (kein OneDoc in Zürich); Linkzeile Anrufen · (WhatsApp) · Anfahrt; drei Häkchen. Styles: SgLayoutStyles (.lsr-hero.hlsg).
 import type { Standort } from '../../data/standorte';
 import { telHref, waHref } from '../../data/standorte';
 import HeroMedia from './HeroMedia.astro';
@@ -24,10 +24,13 @@ const WA_SVG = '<svg class="lsr-wa-ic" viewBox="0 0 24 24" width="18" height="18
       <p class="lsr-lead"><span class="lsr-lead-d" set:html={data.hero.lead}></span><span class="lsr-lead-m">{kurz}</span></p>
       <div class="lsr-ctas">
         <a href="#termin-formular" class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" data-booking-sheet="clinic" data-booking-wish="checkin" data-kf-terminart="checkin" data-care-cta="hero-checkin">30 Min. gratis Termin anfragen ⚡️</a>
-        <a href={wa} target="_blank" rel="noopener noreferrer" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero" data-care-cta="hero-wa"><Fragment set:html={WA_SVG} /> Per WhatsApp schreiben</a>
+        {/* Desktop (ab 641px, .lsr-d): «Anliegen kostenlos schildern» (Anliegen-Sheet wie auf der Startseite), WhatsApp als Textlink;
+            Mobile (bis 640px, .lsr-m): WhatsApp-Button. Umschaltung über SgLayoutStyles. */}
+        <a href="/kontakt/" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-d" data-open-concern data-concern-location={data.stadt} data-concern-location-slug={data.slug}>Anliegen kostenlos schildern</a>
+        <a href={wa} target="_blank" rel="noopener noreferrer" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-m" data-care-cta="hero-wa"><Fragment set:html={WA_SVG} /> Per WhatsApp schreiben</a>
       </div>
       <p class="lsr-quick">
-        <a href={telHref(data.nap.telefon)} data-kf-tel data-care-cta="hero-tel">Anrufen</a><span aria-hidden="true">·</span><a href="#sg-standort" data-care-cta="hero-anfahrt">Anfahrt</a>
+        <a href={telHref(data.nap.telefon)} data-kf-tel data-care-cta="hero-tel">Anrufen</a><span class="lsr-d" aria-hidden="true">·</span><a href={wa} target="_blank" rel="noopener noreferrer" class="lsr-d" data-care-cta="hero-wa">WhatsApp</a><span aria-hidden="true">·</span><a href="#sg-standort" data-care-cta="hero-anfahrt">Anfahrt</a>
       </p>
       <ul class="lsr-usp">
         <li><span class="lsr-check" aria-hidden="true">✓</span>Krankenkassen anerkannt (EMR/ASCA)</li>
