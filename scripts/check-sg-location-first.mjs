@@ -14,6 +14,8 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   'Unsere Praxis verbindet klassische TCM mit moderner Diagnostik',
   'class="sgt sgt--location-first sgt--formular"', 'class="sgt-wrap sgt-grid sgt-grid--single"',
   'class="sgt sgt--location-first sgt--praxis"', 'class="sgt-practice sgt-praxis-media"',
+  '<ul class="lsr-usp">', 'Krankenkassen anerkannt (EMR/ASCA)</li>', 'Oberer Graben 22, St. Gallen</li>', 'Kurzfristige Termine verfügbar</li>',
+  `a[href="#online-buchen"]:not([data-onedoc-sheet])`,
   'class="sgt-network-proof"',
   'TCM.ch Netzwerk · standortübergreifend',
   'Patientenbewertungen',
@@ -72,6 +74,7 @@ assert(sgRadios.every((r) => !/\schecked(?:\s|>)/.test(r)), 'SSR leaves radios n
 assert(/<span class="kf-opt-t">30 Min\. gratis<\/span><\/span><\/label>/.test(sgForm) && /<span class="kf-opt-t">Ersttermin mit Behandlung<\/span><\/span><\/label>/.test(sgForm), 'Tabs carry only their labels');
 for (const s of ['Dein erster Termin ist <em class="sgf-accent">gratis</em>', '30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.', 'Erste Akupunktur noch in derselben Sitzung', 'data-kf-submit-checkin="Gratis Erstgespräch anfragen"', 'data-kf-submit-behandlung="Ersttermin anfragen"', 'placeholder="Name *" required aria-required="true"', 'placeholder="Handynummer *" required aria-required="true"', 'placeholder="E-Mail *" required aria-required="true"', 'placeholder="Wunschzeit (optional, z. B. Do Nachmittag)">', '<p class="kf-req"><span aria-hidden="true">*</span> Pflichtfeld</p>', 'data-appearance="interaction-only"', 'Unverbindlich. Bestätigung per WhatsApp oder Telefon.', 'data-kf-ok-checkin="'])
   assert(sgForm.includes(s), 'SG form missing: ' + s);
+assert(!html.includes('class="lsr-trust"') && !html.includes('class="lsr-info"'), 'Hero: .lsr-trust/.lsr-info replaced by .lsr-usp');
 for (const s of ['name="anliegen"', 'class="lsr-info"', 'Wir rufen dich zur Terminvereinbarung zurück.', 'Direkt starten oder TCM zuerst kennenlernen.', 'TCM zuerst kennenlernen oder direkt starten.', 'Ohne Behandlung'])
   assert(!sgForm.includes(s), 'SG form still has: ' + s);
 assert(!/ohne Behandlung|nur kennenlernen|gratis kennenlernen/i.test(html.slice(html.indexOf('<section class="lsr-hero hlsg">'))), 'SG offer copy: free first appointment includes a first acupuncture session everywhere');

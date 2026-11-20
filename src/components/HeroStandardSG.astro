@@ -87,9 +87,6 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
       <span class="lsr-eyebrow">TCM.ch Praxis · St. Gallen</span>
       <h1 class="lsr-h1">Akupunktur &amp; TCM in <span class="lsr-accent">St. Gallen</span></h1>
       <p class="lsr-lead"><span class="lsr-lead-d">Persönliche TCM und Akupunktur am Oberen Graben, nahe dem Bahnhof St. Gallen.</span><span class="lsr-lead-m">Am Oberen Graben, nahe dem Bahnhof.</span></p>
-      <div class="lsr-trust">
-        <div><span class="lsr-check" aria-hidden="true">✓</span> EMR-/ASCA-anerkannte Fachpersonen · Zusatzversicherung je nach Police</div>
-      </div>
       <div class="lsr-ctas">
         <a href="#termin-formular" class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" data-booking-sheet="sg" data-booking-wish="checkin" data-kf-terminart="checkin" data-care-cta="hero-checkin">30 Min. gratis Termin anfragen ⚡️</a>
         <a href="#online-buchen" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-d" data-onedoc-sheet data-care-cta="hero-onedoc">Termin online buchen</a>
@@ -99,6 +96,11 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
       <p class="lsr-quick">
         <a href="#online-buchen" class="lsr-m" data-onedoc-sheet data-care-cta="hero-onedoc">Online buchen</a><span class="lsr-m" aria-hidden="true">·</span><a href="tel:+41775236122" data-kf-tel data-care-cta="hero-tel">Anrufen</a><span class="lsr-d" aria-hidden="true">·</span><a href={SG_WA} target="_blank" rel="noopener noreferrer" class="lsr-d" data-care-cta="hero-wa">WhatsApp</a><span aria-hidden="true">·</span><a href="#sg-standort" data-care-cta="hero-anfahrt">Anfahrt</a>
       </p>
+      <ul class="lsr-usp">
+        <li><span class="lsr-check" aria-hidden="true">✓</span>Krankenkassen anerkannt (EMR/ASCA)</li>
+        <li><span class="lsr-check" aria-hidden="true">✓</span>Oberer Graben 22, St. Gallen</li>
+        <li><span class="lsr-check" aria-hidden="true">✓</span>Kurzfristige Termine verfügbar</li>
+      </ul>
       <a class="lsr-tlink" href="#sg-therapien" data-sg-therapie-link hidden></a>
     </div>
     <HeroMedia id="sg-hero-media" />
@@ -193,8 +195,10 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
   }
   .lsr-hero.hlsg .lsr-h1{max-width:580px}
   .lsr-hero.hlsg .lsr-lead{max-width:510px}
-  .lsr-hero.hlsg .lsr-trust{margin:0 0 19px}
-  .lsr-hero.hlsg .lsr-trust>div{font-size:13.5px;line-height:1.5}
+  /* Drei Häkchen unter der Linkzeile (Desktop und Mobile), ersetzen .lsr-trust und .lsr-info. */
+  .lsr-hero.hlsg .lsr-usp{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px;font-size:15.5px;line-height:1.45;font-weight:600;color:var(--brand-black,#020B10)}
+  .lsr-hero.hlsg .lsr-usp li{display:flex;align-items:flex-start;gap:8px}
+  .lsr-hero.hlsg .lsr-usp .lsr-check{color:#2D9B6F;font-weight:800;flex:0 0 auto}
   .lsr-hero.hlsg .lsr-tert{display:none!important}
   .lsr-hero.hlsg .lsr-tlink{display:inline-block;font-size:14px;font-weight:700;color:var(--blue,#1769B1);margin-top:9px}
   .lsr-hero.hlsg .lsr-tlink[hidden]{display:none!important}
@@ -311,13 +315,13 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
   .sgt--praxis .sgt-praxis-media{min-width:0}
   .sgt--praxis .sgt-praxis-media .sgt-practice-photo{margin:0 0 14px}
   /* Linkzeile direkt unter den Buttons: warm-clinic.css ordnet die Hero-Kinder per order (CTAs 4, Trust 5). */
-  @media(min-width:768px){.lsr-hero.hlsg .lsr-quick{order:4}}
+  @media(min-width:768px){.lsr-hero.hlsg .lsr-quick,.lsr-hero.hlsg .lsr-usp{order:4}}
   /* Mobile-Hero (bis 640px): .lsr-m nur mobil, .lsr-d nur ab 641px. Desktop unverändert. Selektoren mit wiederholter
      Klasse, weil warm-clinic.css display/order/padding der Hero-Buttons mit !important und :is()-Spezifität setzt. */
   body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a.lsr-m,.lsr-hero.hlsg .lsr-quick .lsr-m,.lsr-hero.hlsg .lsr-lead-m{display:none!important}
   .lsr-hero.hlsg .lsr-wa-ic{width:18px;height:18px;margin-right:8px;flex:0 0 auto}
   @media(max-width:640px){
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a.lsr-d,.lsr-hero.hlsg .lsr-quick .lsr-d,.lsr-hero.hlsg .lsr-eyebrow,.lsr-hero.hlsg .lsr-trust,.lsr-hero.hlsg .lsr-info,.lsr-hero.hlsg .lsr-lead-d,.lsr-hero.hlsg .tcm-winter-snow-layer{display:none!important}
+    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a.lsr-d,.lsr-hero.hlsg .lsr-quick .lsr-d,.lsr-hero.hlsg .lsr-eyebrow,.lsr-hero.hlsg .lsr-lead-d,.lsr-hero.hlsg .tcm-winter-snow-layer{display:none!important}
     .lsr-hero.hlsg .lsr-lead-m{display:inline!important}
     body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a.lsr-m{display:flex!important;order:3!important;background:transparent!important;color:var(--tcm-ink,#171B1A)!important;border:2px solid var(--tcm-ink,#171B1A)!important}
     .lsr-hero.hlsg .lsr-quick .lsr-m{display:inline-flex!important}
@@ -395,7 +399,8 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
     .lsr-hero.hlsg .lsr-ctas a{display:flex;width:100%;min-height:50px;justify-content:center}
     .lsr-hero.hlsg .lsr-quick{justify-content:center;margin-top:2px}
     .lsr-hero.hlsg .lsr-btn-primary{background:var(--tcm-primary,#1769B1)!important;color:#fff!important;border-color:var(--tcm-primary,#1769B1)!important}
-    .lsr-hero.hlsg .lsr-trust>div{font-size:12.5px}
+    /* Legacy-Leaf-Regel «#online-buchen{padding-bottom:150px}» (alte Sektion, Platz für die Sticky-Bar) gilt nicht für die Karte. */
+    .sgt--location-first #online-buchen{padding-bottom:0}
     .sgt--location-first{padding:23px 16px 28px}
     .sgt--location-first .sgt-grid{gap:20px}
     .sgt--location-first .sgt-practice .up-h2{font-size:29px;margin-bottom:16px}
@@ -428,7 +433,6 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
     body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a{width:auto!important;flex:0 1 auto!important}
     .lsr-hero.hlsg .lsr-quick{font-size:16px;color:var(--brand-black,#020B10)}
     .lsr-hero.hlsg .lsr-quick a{color:var(--brand-black,#020B10);text-decoration:underline;text-underline-offset:3px}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-trust,body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-trust>div{font-size:15px!important}
   }
 </style>
 <script is:inline>
@@ -441,7 +445,8 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
     openForHash();
     window.addEventListener('hashchange',openForHash);
     document.addEventListener('click',function(e){
-      var link=e.target.closest&&e.target.closest('a[href="#online-buchen"]');
+      // Hero-Links mit data-onedoc-sheet öffnen das Popup (Body wird dorthin verschoben), nicht die Karte.
+      var link=e.target.closest&&e.target.closest('a[href="#online-buchen"]:not([data-onedoc-sheet])');
       if(link)panel.open=true;
     });
   })();
