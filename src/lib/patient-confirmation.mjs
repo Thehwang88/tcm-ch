@@ -27,7 +27,11 @@ export function patientConfirmation({ name = '', standort = '', kind = 'inquiry'
   if (kind === 'treatment') typeNote = en
     ? 'You enquired about an initial appointment with treatment (90 minutes).'
     : 'Sie haben einen Ersttermin mit Behandlung (90 Minuten) angefragt.';
-  if (kind === 'checkin') typeNote = en
+  // St. Gallen (20.11.2026): Gratis-Ersttermin inkl. erster Akupunktur; alle anderen Standorte unverändert.
+  if (kind === 'checkin') typeNote = clinic === 'St. Gallen'
+    ? (en ? 'You enquired about the free first appointment (30 minutes, including a first acupuncture session).'
+         : 'Sie haben den Gratis-Ersttermin (30 Min., inkl. erster Akupunktur) angefragt.')
+    : en
     ? 'You enquired about the free 30-minute TCM check-in (without treatment).'
     : 'Sie haben den kostenlosen 30-minütigen TCM-Check-in (ohne Behandlung) angefragt.';
   if (kind === 'routing') typeNote = en

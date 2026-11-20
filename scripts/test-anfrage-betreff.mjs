@@ -17,7 +17,7 @@ let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  
 const { onRequestPost } = await import(path.resolve('functions/api/anfrage.js'));
 const sent = [];
 globalThis.fetch = async (url, init) => { if (String(url).includes('turnstile')) return new Response(JSON.stringify({ success: true })); sent.push(JSON.parse(init.body)); return new Response('{}', { status: 200 }); };
-const server = async (d) => { const n = sent.length; const res = await onRequestPost({ request: new Request('https://tcm.ch/api/anfrage', { method: 'POST', body: JSON.stringify(d) }), env: { RESEND_API_KEY: 'x', TURNSTILE_SECRET: 'y' } }); return { status: res.status, body: await res.json(), mail: sent.length > n ? sent[sent.length - 1] : null }; };
+const server = async (d) => { const n = sent.length; const res = await onRequestPost({ request: new Request('https://tcm.ch/api/anfrage', { method: 'POST', body: JSON.stringify(d) }), env: { RESEND_API_KEY: 'x', TURNSTILE_SECRET: 'y' } }); return { status: res.status, body: await res.json(), mail: sent.length > n ? sent[n] : null }; };
 
 const card = (i) => `[data-kf-instance="${i}"]`;
 const EVENTS = ['formular_senden', 'form_submit', 'generate_lead', 'termin_anfrage'];
@@ -49,11 +49,9 @@ async function flow({ url, inst, terminart, standort, width = 390 }) {
 
 const SCEN = [
   ['SG oben · Ersttermin', { url: '/standorte/st-gallen/', inst: 'sg-hero', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
-  ['SG oben · Check-in', { url: '/standorte/st-gallen/', inst: 'sg-hero', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
-  ['SG unten · Ersttermin', { url: '/standorte/st-gallen/', inst: 'sg-unten', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
-  ['SG unten · Check-in', { url: '/standorte/st-gallen/', inst: 'sg-unten', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
+  ['SG oben · Check-in', { url: '/standorte/st-gallen/', inst: 'sg-hero', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Gratis-Ersttermin inkl. erster Akupunktur · 30 Min.', '30 Minuten', 'kostenlos, inkl. erster Akupunktur'],
   ['Homepage + SG · Ersttermin', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
-  ['Homepage + SG · Check-in', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
+  ['Homepage + SG · Check-in', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Gratis-Ersttermin inkl. erster Akupunktur · 30 Min.', '30 Minuten', 'kostenlos, inkl. erster Akupunktur'],
   ['Basel (ohne Check-in) · Ersttermin', { url: '/standorte/basel/', inst: 'standort', terminart: 'behandlung' }, 'Neue Anfrage · Basel · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['Homepage + Luzern · Vormerkung', { url: '/', inst: 'home', standort: 'Luzern – Vormerkung, Eröffnung 2027' }, 'Neue Anfrage · Luzern · Vormerkung', null, null],
   ['Homepage + Andere · Routing', { url: '/', inst: 'home', standort: 'Andere / in meiner Nähe' }, 'Neue Anfrage · Andere / in meiner Nähe · Anfrage passende Praxis', null, null],
@@ -64,7 +62,8 @@ for (const [label, f, subj, dauer, kosten] of SCEN) {
   const r = await flow(f);
   const p = r.calls[0] || {};
   ok(r.calls.length === 1, `genau ein Versand (${p.angebot_id}, Quelle ${p.quelle}${p.formular ? ', Formular ' + p.formular : ''})`);
-  if (f.terminart) ok(r.tile === (f.terminart === 'checkin' ? 'Kostenloser TCM 360°-Check-in · 30 Minuten' : 'Ersttermin mit Behandlung · 90 Minuten'), `Formular-Kachel «${r.tile}»`);
+  // SG-Hero (20.11.2026): Terminart-Tabs ohne Dauerzeile; übrige Formulare: Kacheln mit Dauer.
+  if (f.terminart) ok(r.tile === (f.inst === 'sg-hero' ? (f.terminart === 'checkin' ? '30 Min. gratis · ' : 'Ersttermin mit Behandlung · ') : f.terminart === 'checkin' ? 'Kostenloser TCM 360°-Check-in · 30 Minuten' : 'Ersttermin mit Behandlung · 90 Minuten'), `Formular-Kachel «${r.tile}»`);
   ok(r.events.length === 1, `genau ein Tracking-Event (${r.events.map((e) => e.event).join(', ')})`);
   ok(!r.events.some((e) => JSON.stringify(e).includes('79 123')), 'keine Telefonnummer im dataLayer');
   const s = await server(p);

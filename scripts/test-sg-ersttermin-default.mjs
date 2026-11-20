@@ -1,5 +1,5 @@
-// Mocked browser smoke: SG booking defaults to Ersttermin but explicit free
-// check-in deep links and manual changes remain possible. No API submissions.
+// Mocked browser smoke: SG booking defaults to the free first appointment (checkin, 20.11.2026);
+// explicit Ersttermin deep links and manual changes remain possible. No API submissions.
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,7 +24,7 @@ let browser;
 try {
   browser=await puppeteer.launch({executablePath:process.env.CHROMIUM||puppeteer.executablePath(),args:['--no-sandbox','--no-proxy-server']});
   const scenarios=[
-    ['/standorte/st-gallen/','behandlung','Default SG ad landing'],
+    ['/standorte/st-gallen/','checkin','Default SG ad landing'],
     ['/standorte/st-gallen/?terminart=behandlung','behandlung','Explicit Ersttermin'],
     ['/standorte/st-gallen/?terminart=checkin','checkin','Explicit free check-in'],
     ['/standorte/st-gallen/?first30=1','checkin','Legacy free check-in link'],
@@ -45,14 +45,14 @@ try {
     if(got.radio!==expected||got.select!==expected||!got.freeEnabled||got.location!=='st-gallen')
       throw new Error(label+': got '+JSON.stringify(got)+', expected '+expected);
     if(label==='Default SG ad landing'){
-      // Patient can freely switch from the paid appointment to the free intro.
-      await page.select('[data-kf-instance="sg-hero"] [data-kf-friendly-service]','checkin');
+      // Patient can freely switch from the free first appointment to the paid one (Tab B).
+      await page.click('[data-kf-instance="sg-hero"] label[for="kf-sg-hero-ta-behandlung"]');
       const changed=await page.$eval('[data-kf-instance="sg-hero"]',el=>({
         radio:el.querySelector('input[name="terminart"]:checked')?.value,
         select:el.querySelector('[data-kf-friendly-service]')?.value,
       }));
-      if(changed.radio!=='checkin'||changed.select!=='checkin')
-        throw new Error('Free check-in manual selection broken: '+JSON.stringify(changed));
+      if(changed.radio!=='behandlung'||changed.select!=='behandlung')
+        throw new Error('Ersttermin manual selection broken: '+JSON.stringify(changed));
     }
     await page.close();
     console.log('OK: '+label+' → '+expected);

@@ -35,7 +35,7 @@ const SG_NETWORK_REVIEW_STRIP = `
       </div>
     </div>
   </div>`;
-const card = renderKontaktForm({
+const cardRaw = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form',
   // Both historical anchors must continue working, including legacy check-in links.
   compatAnchors: ['first30', 'termin-formular'],
@@ -43,13 +43,47 @@ const card = renderKontaktForm({
   quelleDetail: 'Hero St. Gallen · reguläres Terminformular', seite: '/standorte/st-gallen/',
   wunschzeit: true, sitekey, headingTag: 'h3',
   onedocBeideTerminarten: true, ohneOnedocAlternative: true,
-  // Ad-led SG page: JS defaults to the paid Ersttermin. Leave the native
-  // radio initially unselected so explicit ?terminart=checkin / old #first30
-  // deep links can take precedence before the default is applied.
-  // Both options, offer IDs and form/analytics behavior remain unchanged.
-  checkinZuerst: false, ruhig: true, zusatzOffen: true,
+  // 20.11.2026: Gratis-Termin (checkin) zuerst und vorausgewählt (checkinZuerst-Standard der Instanz); explizite
+  // Auslöser (data-kf-terminart, ?terminart=, #first30) behalten Vorrang (kontakt-form.js). Angebots-IDs/Tracking unverändert.
+  ruhig: true, zusatzOffen: true,
   kopfTitel: 'Termin anfragen',
 });
+// SG-Karte (20.11.2026, nur diese Instanz): Terminart-Radios als zwei Tabs, Angebotstext je Tab, vier Felder mit
+// Platzhaltern (Labels nur für Screenreader), ohne Anliegen/Hinweise, Turnstile nur bei Bedarf sichtbar.
+// Reine String-Anpassung der gerenderten Karte; die geteilte Komponente und ihr JS bleiben unverändert. Guards statt stiller Fallbacks.
+const sub = (from: string | RegExp, to: string, name: string) => {
+  const n = typeof from === 'string' ? card.split(from).length - 1 : (card.match(from) || []).length;
+  if (n !== 1) throw new Error(`HeroStandardSG: SG-Formular «${name}» ${n === 0 ? 'nicht' : 'mehrfach'} gefunden - kontakt-form.ts geändert?`);
+  card = card.replace(from, to);
+};
+let card = cardRaw;
+// SSR lässt die Radios ungesetzt (JS wählt den Standard checkin), damit ?terminart=behandlung / #first30 / data-kf-terminart Vorrang haben.
+sub('value="checkin" checked data-kf-angebot="TCM_CHECKIN"', 'value="checkin" data-kf-angebot="TCM_CHECKIN"', 'Check-in-Radio');
+sub('class="inline-form-card kf kf--ruhig kf--gelb" id="offer-form"', 'class="inline-form-card kf kf--ruhig kf--gelb kf--checkin sgf" id="offer-form"', 'Karte');
+sub('data-kf-default="checkin" data-kf-submit-checkin="Gratis Check-in anfragen"',
+  'data-kf-default="checkin" data-kf-ok-checkin="Deine Anfrage: Gratis-Ersttermin, 30 Min., inkl. erster Akupunktur in St. Gallen. Wir melden uns per WhatsApp oder Telefon zur Terminvereinbarung." data-kf-submit-checkin="Gratis Erstgespräch anfragen"', 'Submit-Label Check-in');
+sub('<p class="kf-kopf-sub">TCM zuerst kennenlernen oder direkt starten.</p>', '', 'Kopf-Subline');
+sub('<span class="kf-opt-t">Kostenloser TCM 360°-Check-in</span><span class="kf-opt-gueltig" data-kf-gueltig hidden>Buchung bis <span data-kf-gueltig-bis></span>, Termin auch später möglich.</span><span class="kf-opt-dur">30 Minuten</span><span class="kf-opt-d">Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.</span><span class="kf-opt-note">Ohne Behandlung. Unverbindlich.</span>',
+  '<span class="kf-opt-t">30 Min. gratis</span>', 'Tab A');
+sub('<span class="kf-opt-t">Ersttermin mit Behandlung</span><span class="kf-opt-dur">90 Minuten · Krankenkasse anerkannt (Zusatzversicherung)</span><span class="kf-opt-d">Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.</span>',
+  '<span class="kf-opt-t">Ersttermin mit Behandlung</span>', 'Tab B');
+sub('</fieldset>',
+  '</fieldset>' +
+  '<div class="sgf-panel sgf-panel--checkin"><p class="sgf-t">Dein erster Termin ist <em class="sgf-accent">gratis</em></p><p class="sgf-line">30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>' +
+  '<ul class="sgf-list"><li>TCM-Check und ausführliches Erstgespräch</li><li>Einschätzung durch anerkannte Therapeut:innen (EMR/ASCA)</li><li>Erste Akupunktur noch in derselben Sitzung</li><li>Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</li></ul></div>' +
+  '<div class="sgf-panel sgf-panel--behandlung"><p class="sgf-t">Ersttermin mit Behandlung</p><p class="sgf-line">90 Minuten: persönliches Gespräch, TCM-Diagnostik und erste Behandlung. Krankenkasse anerkannt, Zusatzversicherung je nach Police.</p></div>', 'Tab-Inhalte');
+sub('for="kf-sg-hero-name">Dein Name <span', 'for="kf-sg-hero-name">Name <span', 'Label Name');
+sub('placeholder="Vor- und Nachname"', 'placeholder="Name"', 'Platzhalter Name');
+sub('for="kf-sg-hero-tel">Telefonnummer <span', 'for="kf-sg-hero-tel">Handynummer <span', 'Label Handynummer');
+sub('placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="kf-sg-hero-tel-hint kf-sg-hero-tel-err"', 'placeholder="Handynummer" required aria-required="true" aria-describedby="kf-sg-hero-tel-err"', 'Platzhalter Handynummer');
+sub('<p class="kf-fhint" id="kf-sg-hero-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>', '', 'Telefon-Hinweis');
+sub('placeholder="name@beispiel.ch"', 'placeholder="E-Mail"', 'Platzhalter E-Mail');
+sub(/<div class="kf-field"><label class="kf-label" for="kf-sg-hero-anliegen">[\s\S]*?<p class="kf-ferr" id="kf-sg-hero-anliegen-err" hidden><\/p><\/div>/, '', 'Feld Anliegen');
+sub('placeholder="z. B. Do Nachmittag"', 'placeholder="Wunschzeit (z. B. Do Nachmittag)"', 'Platzhalter Wunschzeit');
+sub('<p class="kf-req"><span aria-hidden="true">*</span> Pflichtfeld</p>', '', 'Pflichtfeld-Hinweis');
+sub('data-appearance="always"', 'data-appearance="interaction-only"', 'Turnstile');
+sub('data-kf-submit>Gratis Check-in anfragen <span', 'data-kf-submit>Gratis Erstgespräch anfragen <span', 'Submit-Text');
+sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. Bestätigung per WhatsApp oder Telefon.</p><p class="kf-legal kf-legal--kurz">', 'Hinweis unter dem Button');
 ---
 <section class="lsr-hero hlsg">
   <div class="lsr-inner">
@@ -128,7 +162,7 @@ const card = renderKontaktForm({
       <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
       <div class="sgt-head">
         <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
-        <p class="sgt-sub">Ersttermin mit Behandlung oder 30 Minuten gratis kennenlernen – wir melden uns persönlich.</p>
+        <p class="sgt-sub">Gratis-Ersttermin mit erster Akupunktur (30 Minuten) oder Ersttermin mit Behandlung. Wir melden uns persönlich.</p>
       </div>
       <Fragment set:html={SG_NETWORK_REVIEW_STRIP} />
       <div class="sgt-form"><Fragment set:html={card} /></div>
@@ -138,7 +172,7 @@ const card = renderKontaktForm({
           <span class="sgt-onedoc-arrow" aria-hidden="true">+</span>
         </summary>
         <div class="sgt-onedoc-body">
-          <p class="sgt-od-sub">Wähle im Kalender den kostenlosen TCM-Check-in oder den passenden Behandlungstermin.</p>
+          <p class="sgt-od-sub">Wähle im Kalender den Gratis-Ersttermin (30 Min., inkl. erster Akupunktur) oder den passenden Behandlungstermin.</p>
           <Fragment set:html={ONEDOC_SG_WIDGET} />
           <p class="sgt-od-fallback">Kalender nicht sichtbar? <a href={ONEDOC_SG_WIDGET_URL} target="_blank" rel="noopener noreferrer">OneDoc direkt öffnen <span aria-hidden="true">↗</span></a></p>
         </div>
@@ -285,6 +319,28 @@ const card = renderKontaktForm({
   .sgt--location-first .sgt-sub{font-size:14.5px;line-height:1.5;color:#61717A;margin:0}
   .sgt--location-first .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
   .sgt--location-first .sgt-form .kf{width:100%;max-width:none!important;margin:0}
+  /* SG-Formular (#offer-form): Tabs statt Kacheln/Dropdown, Angebotstext je Tab, Platzhalter statt Labels. Gilt inline und im Popup. */
+  #offer-form .kf-kopf,#offer-form .kf-fields>.kf-field>.kf-label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;padding:0!important}
+  #offer-form .kf-intro,#offer-form .kf-friendly-service{display:none!important}
+  #offer-form .kf-opts{display:grid!important;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 16px;padding:4px;background:#EEF2F5;border-radius:14px}
+  #offer-form .kf-opt{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px 10px!important;border:0!important;border-radius:11px;background:transparent!important;box-shadow:none!important;text-align:center;color:#4A5B68;transition:background .15s ease,color .15s ease}
+  #offer-form .kf-opt.is-checked{background:#fff!important;box-shadow:0 1px 3px rgba(2,11,16,.14)!important;color:var(--kf-ink,#1769B1)}
+  #offer-form .kf-opt:focus-within{outline:2px solid var(--kf-ink,#1769B1);outline-offset:2px}
+  #offer-form .kf-radio{position:absolute;top:0;right:0;width:1px;height:1px;opacity:0;pointer-events:none}
+  #offer-form .kf-opt-body{display:block}
+  #offer-form .kf-opt-t{margin:0!important;font-size:14.5px!important;font-weight:750;line-height:1.25}
+  #offer-form .sgf-panel{display:none;margin:0 0 14px}
+  #offer-form.kf--checkin .sgf-panel--checkin,#offer-form.kf--behandlung .sgf-panel--behandlung{display:block}
+  #offer-form .sgf-t{margin:0 0 5px;font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+  #offer-form .sgf-accent{font-style:italic;font-family:'Nunito',sans-serif;color:var(--blue,#1769B1)}
+  #offer-form .sgf-line{margin:0 0 10px;font-size:14.5px;line-height:1.5;color:#566B78}
+  #offer-form .sgf-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  #offer-form .sgf-list li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.45}
+  #offer-form .sgf-list li::before{content:"✓";position:absolute;left:1px;top:0;font-weight:800;color:var(--blue,#1769B1)}
+  #offer-form .kf-fields{margin-top:0!important}
+  #offer-form .kf-ts{min-height:0;margin:0}
+  #offer-form .sgf-note{margin:8px 0 0;font-size:13px;line-height:1.45;color:#566B78;text-align:center}
+  #offer-form .kf-legal{margin-top:4px}
   .sgt--location-first .sgt-onedoc{background:#fff;border:1px solid #DDE6EC;border-radius:17px;margin:14px 0 0;scroll-margin-top:calc(var(--header-h,76px) + 12px);overflow:hidden}
   .sgt--location-first .sgt-onedoc summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;font-size:14.5px;font-weight:750;color:#1769B1}
   .sgt--location-first .sgt-onedoc summary::-webkit-details-marker{display:none}

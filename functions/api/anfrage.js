@@ -72,11 +72,16 @@ export async function onRequestPost({ request, env }) {
       if (!_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
       // Interne Termindisposition: Carlos reserviert für SG-Erstbehandlungen 90 Minuten.
       // Patientenformular (90 Minuten), alle anderen Standorte und Gratis-Check-in (30 Minuten) bleiben unverändert.
+      // St. Gallen (20.11.2026): der Gratis-Termin enthält eine erste Akupunktur. Nur dieser Standort (Team-Mail und
+      // Patientenbestätigung, patient-confirmation.mjs); Angebots-ID TCM_CHECKIN, Klassifikation und andere Standorte unverändert.
       const mailTermin = ziel.id === 'st-gallen' && neu.terminart === 'behandlung'
         ? { ...neu, dauerMin: 90, anzeige: neu.label + ' · 90 Minuten' }
+        : ziel.id === 'st-gallen' && neu.terminart === 'checkin'
+        ? { ...neu, label: 'Gratis-Ersttermin inkl. erster Akupunktur', anzeige: 'Gratis-Ersttermin, 30 Min., inkl. erster Akupunktur',
+            beschreibung: 'Gratis-Ersttermin, 30 Min., inkl. erster Akupunktur: Erstgespräch, TCM-Check und erste Akupunktur, ohne Verpflichtung', kosten: 'kostenlos, inkl. erster Akupunktur' }
         : neu;
-      offer = { art: neu.art, terminart: neu.beschreibung, angebot: neu.label + ' – ' + ort, betreff: neu.betreff,
-        label: neu.label, anzeige: mailTermin.anzeige || neu.label, dauerMin: mailTermin.dauerMin, kosten: neu.kosten, mailBetreff: terminBetreff(mailTermin, ziel) };
+      offer = { art: neu.art, terminart: mailTermin.beschreibung, angebot: mailTermin.label + ' – ' + ort, betreff: neu.betreff,
+        label: mailTermin.label, anzeige: mailTermin.anzeige || neu.label, dauerMin: mailTermin.dauerMin, kosten: mailTermin.kosten, mailBetreff: terminBetreff(mailTermin, ziel) };
       d.angebot = offer.angebot;
     } else if (offerId) {
       // Historische IDs (FIRST 30 / regulär SG): unverändert, damit offene Browser-Tabs weiter zugestellt werden.

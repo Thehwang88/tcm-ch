@@ -64,13 +64,20 @@ assert(html.indexOf('class="sgt sgt--location-first sgt--formular"') < html.inde
 assert((html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
 const sgForm = html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"[\s\S]*?<script src="\/kontakt-form\.js(?:\?v=[^"]+)?"/)?.[0];
 assert(sgForm, 'SG canonical form markup should be present');
-assert(!sgForm.includes('data-kf-default="checkin"'), 'SG must not automatically preselect the free check-in');
-assert(sgForm.includes('data-kf-checkin="1"'), 'SG free check-in remains available as a secondary option');
+// 20.11.2026: Gratis-Termin (checkin) als Tab A zuerst und vorausgewählt; Ersttermin mit Behandlung als Tab B wählbar.
+assert(sgForm.includes('data-kf-default="checkin"'), 'SG preselects the free first appointment (checkin)');
+assert(sgForm.includes('data-kf-checkin="1"'), 'SG free first appointment remains available');
 const sgRadios = [...sgForm.matchAll(/<input class="kf-radio" type="radio" name="terminart"[^>]*>/g)].map((m) => m[0]);
-assert(sgRadios.length === 2 && /value="behandlung"/.test(sgRadios[0]) && /value="checkin"/.test(sgRadios[1]), 'Paid first appointment should be first, free check-in secondary');
-assert(sgRadios.every((r) => !/\schecked(?:\s|>)/.test(r)), 'SSR should leave radios neutral: explicit check-in deep links must win before JS chooses Ersttermin');
+assert(sgRadios.length === 2 && /value="checkin"/.test(sgRadios[0]) && /value="behandlung"/.test(sgRadios[1]), 'Tab A (checkin) first, Tab B (behandlung) second');
+assert(sgRadios.every((r) => !/\schecked(?:\s|>)/.test(r)), 'SSR leaves radios neutral: JS applies data-kf-default, explicit deep links win');
+assert(/<span class="kf-opt-t">30 Min\. gratis<\/span><\/span><\/label>/.test(sgForm) && /<span class="kf-opt-t">Ersttermin mit Behandlung<\/span><\/span><\/label>/.test(sgForm), 'Tabs carry only their labels');
+for (const s of ['Dein erster Termin ist <em class="sgf-accent">gratis</em>', '30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.', 'Erste Akupunktur noch in derselben Sitzung', 'data-kf-submit-checkin="Gratis Erstgespräch anfragen"', 'data-kf-submit-behandlung="Ersttermin anfragen"', 'placeholder="Name"', 'placeholder="Handynummer"', 'placeholder="E-Mail"', 'placeholder="Wunschzeit (z. B. Do Nachmittag)"', 'data-appearance="interaction-only"', 'Unverbindlich. Bestätigung per WhatsApp oder Telefon.', 'data-kf-ok-checkin="'])
+  assert(sgForm.includes(s), 'SG form missing: ' + s);
+for (const s of ['name="anliegen"', 'Pflichtfeld', 'Wir rufen dich zur Terminvereinbarung zurück.', 'Direkt starten oder TCM zuerst kennenlernen.', 'TCM zuerst kennenlernen oder direkt starten.', 'Ohne Behandlung'])
+  assert(!sgForm.includes(s), 'SG form still has: ' + s);
+assert(!/ohne Behandlung|nur kennenlernen|gratis kennenlernen/i.test(html.slice(html.indexOf('<section class="lsr-hero hlsg">'))), 'SG offer copy: free first appointment includes a first acupuncture session everywhere');
 const formJs = readFileSync('public/kontakt-form.js', 'utf8');
-assert(formJs.includes("card.getAttribute('data-kf-default') || 'behandlung'"), 'SG JS fallback must select Ersttermin');
+assert(formJs.includes("card.getAttribute('data-kf-default') || 'behandlung'"), 'JS honours data-kf-default');
 assert(formJs.includes("if (!explicit) explicit = 'checkin'"), 'Legacy first30 opt-ins remain honored');
 
 assert((html.match(/class="sgt-practice-photo"/g) || []).length === 1, 'SG must display exactly one dedicated reception photo');
