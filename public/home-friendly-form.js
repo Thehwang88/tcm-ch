@@ -65,12 +65,17 @@
       if (serviceSelect.value === 'checkin' && !checkinAllowed()) {
         serviceSelect.value = 'behandlung';
         setRadio('behandlung');
+        autoSwitched = true;
         err.textContent = NA_SWITCHED;
         err.hidden = false;
-      } else if (!err.hidden && err.textContent === NA_SWITCHED && checkinAllowed()) {
-        err.hidden = true;
+      } else if (autoSwitched && checkinAllowed()) {
+        // Nur der automatische Wechsel wird zurückgenommen; eine eigene Wahl «Behandlung» bleibt (autoSwitched wird im change-Handler gelöscht).
+        if (serviceSelect.value === 'behandlung') { serviceSelect.value = 'checkin'; setRadio('checkin'); }
+        autoSwitched = false;
+        if (err.textContent === NA_SWITCHED) err.hidden = true;
       }
     }
+    var autoSwitched = false;
     var NA_SWITCHED = 'Der Gratis-Termin (30 Min.) wird an diesem Standort nicht angeboten. Wir haben «Akupunktur / TCM-Behandlung» für dich gewählt.';
     function setRadio(value) {
       radios.forEach(function (r) { r.checked = r.value === value; });
@@ -79,6 +84,7 @@
       if (selected) selected.dispatchEvent(new Event('change', { bubbles: true }));
     }
     serviceSelect.addEventListener('change', function () {
+      autoSwitched = false;
       err.hidden = true; serviceSelect.removeAttribute('aria-invalid');
       if (serviceSelect.value === 'checkin' && !checkinAllowed()) {
         err.textContent = 'Der Gratis-Termin (30 Min.) wird an diesem Standort nicht angeboten. Bitte wähle «Akupunktur / TCM-Behandlung» oder eine andere Praxis.';

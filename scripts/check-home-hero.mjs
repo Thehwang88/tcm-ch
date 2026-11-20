@@ -19,4 +19,5 @@ assert(headerWa, 'header WhatsApp destination not found');
 assert((hero.match(/class="sr-btn /g) || []).length === 2, 'exactly two hero buttons');
 const js = readFileSync('public/home-friendly-form.js', 'utf8');
 assert(js.includes("serviceSelect.value = 'behandlung';") && js.includes('Der Gratis-Termin (30 Min.) wird an diesem Standort nicht angeboten.'), 'home adapter: location without check-in switches to Behandlung with a clear note');
+assert(js.includes('autoSwitched = true;') && js.includes("if (serviceSelect.value === 'behandlung') { serviceSelect.value = 'checkin'; setRadio('checkin'); }") && /addEventListener\('change', function \(\) \{\s*autoSwitched = false;/.test(js), 'home adapter: automatic switch reverts to checkin at a location with offer, manual choice stays');
 console.log('Home hero contract: Gratis-Termin CTA (checkin preselect), WhatsApp (header target), Anrufen · Standorte, old buttons removed OK');
