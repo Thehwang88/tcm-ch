@@ -121,7 +121,8 @@ for (const w of WIDTHS) {
   ok(done && aligned(v) && v.tgt === 'standort', `${w}px Homepage «Termin finden» ohne Standort → Standortwahl: ${desc(v)}`);
   await choose(pg, 'home', 'St. Gallen'); n0 = await navCount(pg, 'home');
   await pg.$eval('button.sr-btn--solid[onclick="openContactForm()"]', (b) => b.click()); done = await waitNav(pg, 'home', n0); v = await view(pg, 'home');
-  ok(done && aligned(v) && v.tgt === 'terminart' && (await st(pg, 'home')).checked === 'behandlung', `${w}px Homepage mit Standort → Terminart: ${desc(v)}`);
+  // 20.11.2026: Hero-Hauptbutton «30 Min. gratis Termin anfragen» wählt den Gratis-Termin (checkin) vor.
+  ok(done && aligned(v) && v.tgt === 'terminart' && (await st(pg, 'home')).checked === 'checkin', `${w}px Homepage mit Standort → Terminart: ${desc(v)}`);
   await pg.close();
   // Beschwerdeseite: Artikel-CTA #kontakt
   ({ pg } = await open('/beschwerden/rueckenschmerzen/', { width: w })); n0 = await navCount(pg, 'leaf');

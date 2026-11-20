@@ -60,13 +60,18 @@
       // Never render the offer as a disabled dropdown row. If a chosen clinic
       // does not offer check-in, show a clear inline message instead.
       checkinOption.disabled = false;
+      // Gratis-Termin (Check-in) vorgewählt, gewählter Standort bietet ihn nicht an (z. B. Partnerpraxis Bottighofen):
+      // auf «Ersttermin mit Behandlung» wechseln und das klar sagen; bei Wechsel zu einem Standort mit Angebot Hinweis löschen.
       if (serviceSelect.value === 'checkin' && !checkinAllowed()) {
-        serviceSelect.value = '';
-        radios.forEach(function (r) { r.checked = false; });
-        err.textContent = 'Gratis Kennenlernen an diesem Standort nicht verfügbar. Bitte wähle eine andere Dienstleistung oder Praxis.';
+        serviceSelect.value = 'behandlung';
+        setRadio('behandlung');
+        err.textContent = NA_SWITCHED;
         err.hidden = false;
+      } else if (!err.hidden && err.textContent === NA_SWITCHED && checkinAllowed()) {
+        err.hidden = true;
       }
     }
+    var NA_SWITCHED = 'Der Gratis-Termin (30 Min.) wird an diesem Standort nicht angeboten. Wir haben «Akupunktur / TCM-Behandlung» für dich gewählt.';
     function setRadio(value) {
       radios.forEach(function (r) { r.checked = r.value === value; });
       var selected = form.querySelector('input[name="terminart"]:checked');
@@ -76,7 +81,7 @@
     serviceSelect.addEventListener('change', function () {
       err.hidden = true; serviceSelect.removeAttribute('aria-invalid');
       if (serviceSelect.value === 'checkin' && !checkinAllowed()) {
-        err.textContent = 'Gratis Kennenlernen ist an diesem Standort nicht verfügbar.';
+        err.textContent = 'Der Gratis-Termin (30 Min.) wird an diesem Standort nicht angeboten. Bitte wähle «Akupunktur / TCM-Behandlung» oder eine andere Praxis.';
         err.hidden = false; serviceSelect.setAttribute('aria-invalid','true');
         serviceSelect.value = ''; radios.forEach(function (r) { r.checked = false; });
         return;

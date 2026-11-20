@@ -161,6 +161,22 @@ const homeHtml = homeHtmlCards;
       body.tcm-warm > #home-content{padding-top:60px!important;margin-top:0!important}
       body.tcm-warm > #home-content > #heroPatient{margin-top:0!important;padding-top:0!important}
     }
+    /* Hero-CTAs (20.11.2026): Gratis-Termin + WhatsApp, Linkzeile «Anrufen · Standorte»; kein Hero-Text unter 15px ausser Eyebrow.
+       Nur #heroPatient (DE); /en/ nutzt diese Klassen nicht. */
+    body #home-content #heroPatient .sr-btn--wa .sr-wa-ic{width:18px;height:18px;margin-right:8px;flex:0 0 auto}
+    /* Beide Buttons nebeneinander (Spaltenbreite 562px): etwas schmalere Polster, gleiche Höhe. */
+    body #home-content #heroPatient .sr-cta{gap:12px}
+    body #home-content #heroPatient .sr-cta .sr-btn{padding:0 20px}
+    body #home-content #heroPatient .sr-hero-quick{display:flex;flex-wrap:wrap;align-items:center;gap:0 10px;margin:-22px 0 28px;font-family:var(--font-sans);font-size:16px;font-weight:700;line-height:1.5;color:var(--brand-black,#020B10)}
+    body #home-content #heroPatient .sr-hero-quick a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:inherit;text-decoration:underline;text-decoration-color:var(--tcm-border);text-underline-offset:4px}
+    body #home-content #heroPatient .sr-hero-city-links{font-size:15px!important}
+    /* warm-clinic.css setzt die Häkchen mobil auf 12.5px (!important, body.tcm-warm …): wiederholte Klasse für höhere Spezifität. */
+    body #home-content #heroPatient .sr-trust li,body.tcm-warm #home-content #heroPatient .sr-trust.sr-trust li{font-size:15px!important}
+    @media(max-width:767px){
+      body #home-content #heroPatient .sr-cta{flex-direction:column;gap:10px}
+      body #home-content #heroPatient .sr-cta .sr-btn{width:100%}
+      body #home-content #heroPatient .sr-hero-quick{justify-content:center;margin:-16px 0 24px}
+    }
     /* Primary therapy grid: one compact link to the complete therapy overview. */
     #s-behandlungen .svc-all-cta{display:flex;justify-content:center;margin-top:clamp(24px,3vw,36px)}
     #s-behandlungen .svc-all-cta-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 24px;border-radius:999px;border:1.5px solid #171B1A;background:#171B1A;color:#fff;font-family:var(--font-sans);font-size:15px;font-weight:700;text-decoration:none;transition:background .16s ease,border-color .16s ease}
