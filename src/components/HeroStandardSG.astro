@@ -6,6 +6,8 @@ import { renderKontaktForm } from '../lib/kontakt-form';
 import HeroMedia from './standort/HeroMedia.astro';
 import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_2, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
 import { locationTeamHtml } from '../lib/location-team';
+import { tabsForm, NETWORK_REVIEW_STRIP as SG_NETWORK_REVIEW_STRIP } from '../lib/form-tabs';
+import SgLayoutStyles from './standort/SgLayoutStyles.astro';
 
 // teil: 'oben' (Hero, Formular, OneDoc-Popup, Team) oder 'ende' (Seitenende: offenes OneDoc-Widget + zweites Formular, slot body-insert).
 const { sitekey, teil = 'oben' } = Astro.props;
@@ -14,25 +16,6 @@ const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Fra
 const WA_SVG = '<svg class="lsr-wa-ic" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>';
 // «Über die Praxis» (Text, NAP, Foto, Karte, Anreise) steht seit 20.11.2026 unten auf der Seite
 // (standorte/[slug].astro, nach dem FAQ) – hier nur Hero, Formular und OneDoc.
-// Reuse the exact *network-wide* aggregate figures currently published on
-// /kontakt/. Do not label these as reviews of St. Gallen alone.
-const SG_NETWORK_REVIEW_STRIP = `
-  <div class="sgt-network-proof" aria-label="TCM.ch Netzwerk: 4.89 von 5 Sternen aus über tausend Rezensionen">
-    <div class="sgt-network-proof-label">
-      <strong>Patientenbewertungen</strong>
-      <span>TCM.ch Netzwerk · standortübergreifend</span>
-    </div>
-    <div class="sgt-network-proof-metrics">
-      <div class="sgt-network-proof-metric">
-        <strong>4.89</strong>
-        <span class="sgt-network-proof-stars" aria-label="4.89 von 5 Sternen">★★★★★</span>
-      </div>
-      <div class="sgt-network-proof-metric sgt-network-proof-count">
-        <strong>1'000+</strong>
-        <span>Rezensionen</span>
-      </div>
-    </div>
-  </div>`;
 const SG_FORM = {
   standortId: 'st-gallen', quelle: 'launch-hero-sg', seite: '/standorte/st-gallen/',
   wunschzeit: true, sitekey, headingTag: 'h3',
@@ -42,44 +25,14 @@ const SG_FORM = {
   ruhig: true, zusatzOffen: true,
   kopfTitel: 'Termin anfragen',
 };
-// SG-Karte (20.11.2026, nur diese Instanz): Terminart-Radios als zwei Tabs, Angebotstext je Tab, vier Felder mit
-// Platzhaltern (Labels nur für Screenreader), ohne Anliegen/Hinweise, Turnstile nur bei Bedarf sichtbar.
-// Reine String-Anpassung der gerenderten Karte; die geteilte Komponente und ihr JS bleiben unverändert. Guards statt stiller Fallbacks.
-const sgForm = (raw: string, p: string, cardId: string) => {
-let card = raw;
-const sub = (from: string | RegExp, to: string, name: string) => {
-  const n = typeof from === 'string' ? card.split(from).length - 1 : (card.match(from) || []).length;
-  if (n !== 1) throw new Error(`HeroStandardSG: SG-Formular «${name}» (${p}) ${n === 0 ? 'nicht' : 'mehrfach'} gefunden - kontakt-form.ts geändert?`);
-  card = card.replace(from, to);
-};
-// SSR lässt die Radios ungesetzt (JS wählt den Standard checkin), damit ?terminart=behandlung / #first30 / data-kf-terminart Vorrang haben.
-sub('value="checkin" checked data-kf-angebot="TCM_CHECKIN"', 'value="checkin" data-kf-angebot="TCM_CHECKIN"', 'Check-in-Radio');
-sub(`class="inline-form-card kf kf--ruhig kf--gelb" id="${cardId}"`, `class="inline-form-card kf kf--ruhig kf--gelb kf--checkin sgf" id="${cardId}"`, 'Karte');
-sub('data-kf-default="checkin" data-kf-submit-checkin="Gratis Check-in anfragen"',
-  'data-kf-default="checkin" data-kf-ok-checkin="Deine Anfrage: Gratis-Ersttermin, 30 Min., inkl. erster Akupunktur in St. Gallen. Wir melden uns per WhatsApp oder Telefon zur Terminvereinbarung." data-kf-submit-checkin="Gratis Erstgespräch anfragen"', 'Submit-Label Check-in');
-sub('<p class="kf-kopf-sub">TCM zuerst kennenlernen oder direkt starten.</p>', '', 'Kopf-Subline');
-sub('<span class="kf-opt-t">Kostenloser TCM 360°-Check-in</span><span class="kf-opt-gueltig" data-kf-gueltig hidden>Buchung bis <span data-kf-gueltig-bis></span>, Termin auch später möglich.</span><span class="kf-opt-dur">30 Minuten</span><span class="kf-opt-d">Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.</span><span class="kf-opt-note">Ohne Behandlung. Unverbindlich.</span>',
-  '<span class="kf-opt-t">30 Min. gratis</span>', 'Tab A');
-sub('<span class="kf-opt-t">Ersttermin mit Behandlung</span><span class="kf-opt-dur">90 Minuten · Krankenkasse anerkannt (Zusatzversicherung)</span><span class="kf-opt-d">Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.</span>',
-  '<span class="kf-opt-t">Ersttermin mit Behandlung</span>', 'Tab B');
-sub('</fieldset>',
-  '</fieldset>' +
-  '<div class="sgf-panel sgf-panel--checkin"><p class="sgf-t">Dein erster Termin ist <em class="sgf-accent">gratis</em></p><p class="sgf-line">30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>' +
-  '<ul class="sgf-list"><li>TCM-Check und ausführliches Erstgespräch</li><li>Einschätzung durch anerkannte Therapeut:innen (EMR/ASCA)</li><li>Erste Akupunktur noch in derselben Sitzung</li><li>Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</li></ul></div>' +
-  '<div class="sgf-panel sgf-panel--behandlung"><p class="sgf-t">Ersttermin mit Behandlung</p><p class="sgf-line">90 Minuten: persönliches Gespräch, TCM-Diagnostik und erste Behandlung. Krankenkasse anerkannt, Zusatzversicherung je nach Police.</p></div>', 'Tab-Inhalte');
-sub(`for="${p}-name">Dein Name <span`, `for="${p}-name">Name <span`, 'Label Name');
-sub('placeholder="Vor- und Nachname"', 'placeholder="Name *"', 'Platzhalter Name');
-sub(`for="${p}-tel">Telefonnummer <span`, `for="${p}-tel">Handynummer <span`, 'Label Handynummer');
-sub(`placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="${p}-tel-hint ${p}-tel-err"`, `placeholder="Handynummer *" required aria-required="true" aria-describedby="${p}-tel-err"`, 'Platzhalter Handynummer');
-sub(`<p class="kf-fhint" id="${p}-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>`, ``, 'Telefon-Hinweis');
-sub('placeholder="name@beispiel.ch" required aria-required="true"', 'placeholder="E-Mail *" required aria-required="true"', 'Platzhalter E-Mail');
-sub(new RegExp('<div class="kf-field"><label class="kf-label" for="' + p + '-anliegen">[\\s\\S]*?<p class="kf-ferr" id="' + p + '-anliegen-err" hidden></p></div>'), '', 'Feld Anliegen');
-sub('placeholder="z. B. Do Nachmittag"', 'placeholder="Wunschzeit (optional, z. B. Do Nachmittag)"', 'Platzhalter Wunschzeit');
-sub('data-appearance="always"', 'data-appearance="interaction-only"', 'Turnstile');
-sub('data-kf-submit>Gratis Check-in anfragen <span', 'data-kf-submit>Gratis Erstgespräch anfragen <span', 'Submit-Text');
-sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. Bestätigung per WhatsApp oder Telefon.</p><p class="kf-legal kf-legal--kurz">', 'Hinweis unter dem Button');
-return card;
-};
+// SG-Karte (20.11.2026, nur diese Instanz): Terminart-Tabs via src/lib/form-tabs.ts; Angebotstexte/Submit/Erfolgsmeldung St. Gallen.
+const SG_PANEL_A = '<div class="sgf-panel sgf-panel--checkin"><p class="sgf-t">Dein erster Termin ist <em class="sgf-accent">gratis</em></p><p class="sgf-line">30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>' +
+  '<ul class="sgf-list"><li>TCM-Check und ausführliches Erstgespräch</li><li>Einschätzung durch anerkannte Therapeut:innen (EMR/ASCA)</li><li>Erste Akupunktur noch in derselben Sitzung</li><li>Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</li></ul></div>';
+const SG_PANEL_B = '<div class="sgf-panel sgf-panel--behandlung"><p class="sgf-t">Ersttermin mit Behandlung</p><p class="sgf-line">90 Minuten: persönliches Gespräch, TCM-Diagnostik und erste Behandlung. Krankenkasse anerkannt, Zusatzversicherung je nach Police.</p></div>';
+const sgForm = (raw: string, p: string, cardId: string) => tabsForm(raw, {
+  p, cardId, panelA: SG_PANEL_A, panelB: SG_PANEL_B, submitCheckin: 'Gratis Erstgespräch anfragen',
+  okCheckin: 'Deine Anfrage: Gratis-Ersttermin, 30 Min., inkl. erster Akupunktur in St. Gallen. Wir melden uns per WhatsApp oder Telefon zur Terminvereinbarung.',
+});
 // Oben: Hero-Formular (#offer-form, Instanz sg-hero, historische Anker). Ende: zweites Formular (#offer-form-ende, Instanz sg-ende),
 // gleiche Tabs/Angebot/Pflichtfelder, eigene IDs und eigenes Turnstile; Versand/dataLayer wie oben (kontakt-form.js je Karte).
 const card = teil === 'ende' ? '' : sgForm(renderKontaktForm({
@@ -227,265 +180,7 @@ const cardEnde = teil === 'ende' ? sgForm(renderKontaktForm({
 </section>
 </>)}
 
-<style is:global>
-  /* SG-only. Other data-driven clinic templates stay untouched. */
-  /* Visual balance: center the copy BLOCK inside the left hero half while
-     keeping its typography left-aligned. Match video center vertically. */
-  .lsr-hero.hlsg .lsr-inner{align-items:stretch}
-  .lsr-hero.hlsg .lsr-left{
-    box-sizing:border-box;width:100%;max-width:620px;margin-inline:auto;
-    min-width:0;padding:clamp(36px,4.3vw,68px) clamp(24px,3vw,48px);
-    display:flex;flex-direction:column;justify-content:center;
-    align-items:flex-start;text-align:left;
-  }
-  .lsr-hero.hlsg .lsr-h1{max-width:580px}
-  .lsr-hero.hlsg .lsr-lead{max-width:510px}
-  /* Drei Häkchen unter der Linkzeile (Desktop und Mobile), ersetzen .lsr-trust und .lsr-info. */
-  .lsr-hero.hlsg .lsr-usp{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px;font-size:15.5px;line-height:1.45;font-weight:600;color:var(--brand-black,#020B10)}
-  .lsr-hero.hlsg .lsr-usp li{display:flex;align-items:flex-start;gap:8px}
-  .lsr-hero.hlsg .lsr-usp .lsr-check{color:#2D9B6F;font-weight:800;flex:0 0 auto}
-  .lsr-hero.hlsg .lsr-tert{display:none!important}
-  .lsr-hero.hlsg .lsr-tlink{display:inline-block;font-size:14px;font-weight:700;color:var(--blue,#1769B1);margin-top:9px}
-  .lsr-hero.hlsg .lsr-tlink[hidden]{display:none!important}
-  .lsr-hero.hlsg .lsr-quick{display:flex;flex-wrap:wrap;align-items:center;gap:0 10px;margin:-2px 0 0;font-size:14px;font-weight:700;line-height:1.5;color:#61717A}
-  .lsr-hero.hlsg .lsr-quick a{color:var(--blue,#1769B1);text-decoration:none}
-  .lsr-hero.hlsg .lsr-quick a:hover{text-decoration:underline}
-  #sg-onedoc-sheet .sgt-onedoc-body{padding:4px 0 0}
-  #sg-onedoc-sheet .sgt-od-sub{margin:0 0 12px;color:#61717A;font-size:13.5px;line-height:1.5}
-  #sg-onedoc-sheet .od-widget{display:block;width:100%;min-height:400px}
-  #sg-onedoc-sheet .sgt-od-fallback{margin:10px 0 0;font-size:13px;color:#61717A}
-  #sg-onedoc-sheet .sgt-od-fallback a{color:#1769B1;font-weight:700;text-decoration:none}
-
-  .sgt--location-first{font-family:var(--font-sans,'Figtree',system-ui,sans-serif);background:#F7F8F8;padding:clamp(24px,3.5vw,42px) 16px}
-  .sgt--location-first .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
-  .sgt--location-first .sgt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,525px);gap:clamp(24px,3vw,42px);align-items:start}
-  .sgt--location-first .sgt-practice{min-width:0;scroll-margin-top:calc(var(--header-h,76px) + 14px)}
-  .sgt--location-first .sgt-practice .up-h2{margin:0 0 12px;font-size:clamp(28px,2.7vw,39px);line-height:1.16}
-  /* One brief, original SG-specific paragraph directly below the clinic title. */
-  .sgt--location-first .sgt-practice>.content-body{margin-bottom:16px}
-  .sgt--location-first .sgt-practice .content-body p{font-size:15px;line-height:1.56;color:#566B78;margin:0 0 17px}
-  /* Same visual language as /kontakt/: unboxed blue icons, bold titles,
-     muted details and a clear two-column contact facts layout. */
-  .sgt--location-first .sgt-practice .up-grid{
-    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px 18px;margin:0 0 7px!important;min-width:0;
-  }
-  .sgt--location-first .sgt-practice .up-item{
-    display:flex;align-items:flex-start;gap:12px;min-width:0;
-    padding:3px 3px;margin:0;border:none;background:transparent;box-shadow:none;
-  }
-  .sgt--location-first .sgt-practice .sgt-fact-icon{
-    display:flex;align-items:center;justify-content:center;flex:0 0 22px;
-    width:22px;height:22px;min-width:22px;
-    margin:2px 0 0;padding:0!important;border:0!important;border-radius:0!important;
-    background:none!important;background-color:transparent!important;
-    box-shadow:none!important;text-shadow:none!important;color:#1769B1!important;
-  }
-  .sgt--location-first .sgt-practice .sgt-fact-icon svg{
-    width:22px;height:22px;stroke:#1769B1!important;stroke-width:1.7!important;
-  }
-  .sgt--location-first .sgt-practice .up-body{
-    display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;
-  }
-  .sgt--location-first .sgt-practice .up-label{
-    margin:0;font-size:15px!important;line-height:1.35!important;
-    font-weight:800!important;letter-spacing:0!important;color:#152733!important;
-  }
-  .sgt--location-first .sgt-practice .up-val,
-  .sgt--location-first .sgt-practice .up-val div{
-    display:block;font-size:14px!important;line-height:1.45!important;
-    font-weight:400!important;color:#52616B!important;
-    overflow-wrap:anywhere;
-  }
-  .sgt--location-first .sgt-practice a.up-val{
-    text-decoration:none!important;
-  }
-  .sgt--location-first .sgt-practice a.up-val:hover{
-    color:#1769B1!important;text-decoration:underline!important;text-underline-offset:3px;
-  }
-  /* Same rounded white review card as /kontakt/, explicitly network-wide. */
-  .sgt--location-first .sgt-network-proof{
-    box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;
-    gap:13px;width:100%;padding:16px 18px;margin:12px 0 8px;
-    background:#fff;border:1px solid rgba(35,56,70,.1);border-radius:16px;
-  }
-  .sgt--location-first .sgt-network-proof-label{
-    display:flex;flex-direction:column;justify-content:center;min-width:0;gap:5px;flex:1;
-  }
-  .sgt--location-first .sgt-network-proof-label strong{
-    font-size:15px;font-weight:750;line-height:1.4;color:#162733;
-  }
-  .sgt--location-first .sgt-network-proof-label span{
-    font-size:11.5px;line-height:1.3;color:#61717C;
-  }
-  .sgt--location-first .sgt-network-proof-metrics{
-    flex:0 0 auto;display:flex;align-items:center;
-  }
-  .sgt--location-first .sgt-network-proof-metric{
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    min-width:66px;gap:3px;text-align:center;
-  }
-  .sgt--location-first .sgt-network-proof-metric strong{
-    font-size:clamp(21px,1.9vw,27px);line-height:1.05;
-    letter-spacing:-.035em;font-weight:800;color:#162733;
-  }
-  .sgt--location-first .sgt-network-proof-metric span{
-    font-size:11.5px;line-height:1.25;color:#536776;
-  }
-  .sgt--location-first .sgt-network-proof-metric .sgt-network-proof-stars{
-    font-size:13px;letter-spacing:1px;white-space:nowrap;color:#CE9235;
-  }
-  .sgt--location-first .sgt-network-proof-count{
-    min-width:87px;border-left:1px solid #DDE5EB;
-    padding-left:12px;margin-left:12px;
-  }
-  .sgt--location-first .sgt-practice-photo{display:block;overflow:hidden;margin:13px 0 13px;border-radius:18px;border:1px solid #E0E6E9}
-  .sgt--location-first .sgt-practice-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:235px;object-fit:cover}
-  .sgt--location-first .sgt-practice .up-map{overflow:hidden;border-radius:16px}
-  .sgt--location-first .sgt-practice .up-map iframe{height:210px}
-  .sgt--location-first .sgt-practice .sg-hub-xlink,.sgt--location-first .sgt-practice .sg-wissen-xlink{margin:12px 0 0!important;font-size:13px!important}
-  .sgt--location-first .sgt-practice .sg-wissen-xlink span{display:none!important}
-  .sgt--location-first .sgt-location-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
-  .sgt--location-first .sgt-location-actions a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 17px;background:#fff;border:1px solid #CDDCE6;border-radius:999px;color:#1769B1!important;text-decoration:none;font-size:14px;font-weight:750}
-  .sgt--location-first .sgt-location-actions a:hover{background:#E8F2FA;border-color:#A7C7DE}
-  .sgt--location-first .sgt-location-actions a:focus-visible,.sgt--location-first .sgt-onedoc summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
-  .sgt--location-first .sgt-main{min-width:0;max-width:525px;width:100%}
-  .sgt--location-first .sgt-grid--single{grid-template-columns:minmax(0,1fr);justify-items:center}
-  .sgt--location-first .sgt-grid--single .sgt-main{max-width:620px}
-  .sgt--location-first .sgt-grid--single .sgt-head{text-align:center}
-  .sgt--location-first .sgt-grid--single .sgt-network-proof{margin:0 0 14px}
-  /* «Über die Praxis» unten (in #page-standort, dessen Sektionsregeln die Seitenränder entfernen): Infos links, Foto/Karte rechts. */
-  #page-standort .sgt--praxis{padding:clamp(28px,4vw,52px) 40px!important;background:#F7F8F8}
-  .sgt--praxis .sgt-grid--praxis{grid-template-columns:minmax(0,1fr) minmax(0,480px)}
-  .sgt--praxis .sgt-praxis-media{min-width:0}
-  .sgt--praxis .sgt-praxis-media .sgt-practice-photo{margin:0 0 14px}
-  /* Linkzeile direkt unter den Buttons: warm-clinic.css ordnet die Hero-Kinder per order (CTAs 4, Trust 5). */
-  @media(min-width:768px){.lsr-hero.hlsg .lsr-quick,.lsr-hero.hlsg .lsr-usp{order:4}}
-  /* Mobile-Hero (bis 640px): .lsr-m nur mobil, .lsr-d nur ab 641px. Desktop unverändert. Selektoren mit wiederholter
-     Klasse, weil warm-clinic.css display/order/padding der Hero-Buttons mit !important und :is()-Spezifität setzt. */
-  body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a.lsr-m,.lsr-hero.hlsg .lsr-quick .lsr-m,.lsr-hero.hlsg .lsr-lead-m{display:none!important}
-  .lsr-hero.hlsg .lsr-wa-ic{width:18px;height:18px;margin-right:8px;flex:0 0 auto}
-  @media(max-width:640px){
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a.lsr-d,.lsr-hero.hlsg .lsr-quick .lsr-d,.lsr-hero.hlsg .lsr-eyebrow,.lsr-hero.hlsg .lsr-lead-d,.lsr-hero.hlsg .tcm-winter-snow-layer{display:none!important}
-    .lsr-hero.hlsg .lsr-lead-m{display:inline!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a.lsr-m{display:flex!important;order:3!important;background:transparent!important;color:var(--tcm-ink,#171B1A)!important;border:2px solid var(--tcm-ink,#171B1A)!important}
-    .lsr-hero.hlsg .lsr-quick .lsr-m{display:inline-flex!important}
-    .lsr-hero.hlsg .lsr-quick span.lsr-m{display:inline!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-left{padding:16px 20px 16px!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-h1{margin:0 0 8px!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-lead{margin:0 0 14px!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas{gap:8px!important;margin:0 0 4px!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a{min-height:48px!important;padding:10px 16px!important}
-    .lsr-hero.hlsg .lsr-quick{justify-content:center;margin-top:0;font-size:15px;gap:0 2px}
-    .lsr-hero.hlsg .lsr-quick a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px}
-  }
-  .sgt--location-first .sgt-head{margin:0 0 12px}
-  .sgt--location-first .sgt-head .section-title{margin:0 0 8px;font-size:clamp(25px,2.6vw,34px)}
-  .sgt--location-first .sgt-sub{font-size:14.5px;line-height:1.5;color:#61717A;margin:0}
-  .sgt--location-first .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
-  .sgt--location-first .sgt-form .kf{width:100%;max-width:none!important;margin:0}
-  /* SG-Formulare (.sgf = #offer-form und #offer-form-ende): Tabs statt Kacheln/Dropdown, Angebotstext je Tab, Platzhalter statt Labels. Gilt inline und im Popup. */
-  .kf.sgf.sgf .kf-kopf,.kf.sgf.sgf .kf-fields>.kf-field>.kf-label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;padding:0!important}
-  .kf.sgf.sgf .kf-intro,.kf.sgf.sgf .kf-friendly-service{display:none!important}
-  .kf.sgf.sgf .kf-opts{display:grid!important;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 16px;padding:4px;background:#EEF2F5;border-radius:14px}
-  .kf.sgf.sgf .kf-opt{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px 10px!important;border:0!important;border-radius:11px;background:transparent!important;box-shadow:none!important;text-align:center;color:#4A5B68;transition:background .15s ease,color .15s ease}
-  .kf.sgf.sgf .kf-opt.is-checked{background:#fff!important;box-shadow:0 1px 3px rgba(2,11,16,.14)!important;color:var(--kf-ink,#1769B1)}
-  .kf.sgf.sgf .kf-opt:focus-within{outline:2px solid var(--kf-ink,#1769B1);outline-offset:2px}
-  .kf.sgf.sgf .kf-radio{position:absolute;top:0;right:0;width:1px;height:1px;opacity:0;pointer-events:none}
-  .kf.sgf.sgf .kf-opt-body{display:block}
-  .kf.sgf.sgf .kf-opt-t{margin:0!important;font-size:14.5px!important;font-weight:750;line-height:1.25}
-  .kf.sgf.sgf .sgf-panel{display:none;margin:0 0 14px}
-  .kf.sgf.sgf.kf--checkin .sgf-panel--checkin,.kf.sgf.sgf.kf--behandlung .sgf-panel--behandlung{display:block}
-  .kf.sgf.sgf .sgf-t{margin:0 0 5px;font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
-  .kf.sgf.sgf .sgf-accent{font-style:italic;font-family:'Nunito',sans-serif;color:var(--blue,#1769B1)}
-  .kf.sgf.sgf .sgf-line{margin:0 0 10px;font-size:14.5px;line-height:1.5;color:#566B78}
-  .kf.sgf.sgf .sgf-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-  .kf.sgf.sgf .sgf-list li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.45}
-  .kf.sgf.sgf .sgf-list li::before{content:"✓";position:absolute;left:1px;top:0;font-weight:800;color:var(--blue,#1769B1)}
-  .kf.sgf.sgf .kf-fields{margin-top:0!important}
-  .kf.sgf.sgf .kf-ts{min-height:0;margin:0}
-  .kf.sgf.sgf .kf-req{margin:-2px 0 10px;font-size:12.5px;color:#566B78}
-  .kf.sgf.sgf .sgf-note{margin:8px 0 0;font-size:13px;line-height:1.45;color:#566B78;text-align:center}
-  .kf.sgf.sgf .kf-legal{margin-top:4px}
-  .sgt--location-first .sgt-onedoc{background:#fff;border:1px solid #DDE6EC;border-radius:17px;margin:14px 0 0;scroll-margin-top:calc(var(--header-h,76px) + 12px);overflow:hidden}
-  .sgt--location-first .sgt-onedoc summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;font-size:14.5px;font-weight:750;color:#1769B1}
-  .sgt--location-first .sgt-onedoc summary::-webkit-details-marker{display:none}
-  .sgt--location-first .sgt-onedoc[open] summary{border-bottom:1px solid #E5EBEF}
-  .sgt--location-first .sgt-onedoc-arrow{font-size:23px;font-weight:400;line-height:1;transition:transform .15s ease}
-  .sgt--location-first .sgt-onedoc[open] .sgt-onedoc-arrow{transform:rotate(45deg)}
-  .sgt--location-first .sgt-onedoc-body{padding:16px 18px 18px}
-  .sgt--location-first .sgt-od-sub{margin:0 0 12px;color:#61717A;font-size:13.5px;line-height:1.5}
-  .sgt--location-first .sgt-onedoc .od-widget{display:block;width:100%;min-height:400px}
-  /* Seitenende: Eyebrow, offenes Widget (kein Akkordeon), Formular-Sektion weiss abgesetzt. */
-  .sgt--ende .sgt-eyebrow{display:block;font-size:12.5px;font-weight:750;letter-spacing:.11em;text-transform:uppercase;color:#61717A;margin:0 0 8px}
-  .sgt--ende .sgt-sub a{color:#1769B1;font-weight:700;text-decoration:none}
-  .sgt--ende-onedoc .sgt-onedoc-open{background:#fff;border:1px solid #DDE6EC;border-radius:17px;padding:16px 18px 18px}
-  .sgt--ende-onedoc .od-widget{display:block;width:100%;min-height:400px}
-  .sgt--ende-form{background:#fff}
-  .sgt--location-first .sgt-od-fallback{margin:10px 0 0;font-size:13px;color:#61717A}
-  .sgt--location-first .sgt-od-fallback a{color:#1769B1;font-weight:700;text-decoration:none}
-  .sg-location-team{background:#fff;padding:clamp(38px,4vw,60px) 16px}
-  .sg-location-team .section-title{margin:7px 0 21px}
-  .sg-location-team .sg-team-grid{margin:0}
-  .sg-location-team .sg-team-testimonial{max-width:780px;margin-top:26px;padding:17px 21px;background:#F4F8FB;border:1px solid #E0EBF4;border-radius:16px}
-  .sg-location-team .sg-team-testimonial blockquote{font-size:15px;line-height:1.6;color:#263C4A;margin:0 0 9px}
-  .sg-location-team .sg-team-testimonial p{margin:0;color:#60717B;font-size:13px}
-  .sg-location-team .sg-team-testimonial a{margin-left:8px;color:#1769B1;text-decoration:none;font-weight:700}
-  @media(max-width:900px){
-    .sgt--location-first .sgt-grid{grid-template-columns:minmax(0,1fr);gap:28px;max-width:660px;margin:0 auto}
-    .sgt--praxis .sgt-grid--praxis{max-width:660px}
-    #page-standort .sgt--praxis{padding:28px 16px!important}
-    .sgt--location-first .sgt-main{max-width:none}
-    .sgt--location-first .sgt-practice .up-map iframe{height:245px}
-  }
-  @media(max-width:767px){
-    /* Mobile: no desktop centering gutters or forced hero height. */
-    .lsr-hero.hlsg .lsr-inner{min-height:0}
-    .lsr-hero.hlsg .lsr-left{
-      max-width:none;margin:0;padding:clamp(25px,5vw,34px) 20px 23px;
-      align-items:stretch;
-    }
-    .lsr-hero.hlsg .lsr-h1,.lsr-hero.hlsg .lsr-lead{max-width:none}
-    .lsr-hero.hlsg .lsr-ctas{display:flex;flex-direction:column;gap:9px}
-    .lsr-hero.hlsg .lsr-ctas a{display:flex;width:100%;min-height:50px;justify-content:center}
-    .lsr-hero.hlsg .lsr-quick{justify-content:center;margin-top:2px}
-    .lsr-hero.hlsg .lsr-btn-primary{background:var(--tcm-primary,#1769B1)!important;color:#fff!important;border-color:var(--tcm-primary,#1769B1)!important}
-    /* Legacy-Leaf-Regel «#online-buchen{padding-bottom:150px}» (alte Sektion, Platz für die Sticky-Bar) gilt nicht für die Karte. */
-    .sgt--location-first #online-buchen{padding-bottom:0}
-    .sgt--location-first{padding:23px 16px 28px}
-    .sgt--location-first .sgt-grid{gap:20px}
-    .sgt--location-first .sgt-practice .up-h2{font-size:29px;margin-bottom:16px}
-    .sgt--location-first .sgt-practice .up-grid{gap:12px 14px}
-    .sgt--location-first .sgt-network-proof{padding:17px 16px;gap:12px}
-    .sgt--location-first .sgt-network-proof-metric{min-width:56px}
-    .sgt--location-first .sgt-network-proof-count{min-width:74px;padding-left:9px;margin-left:9px}
-    .sgt--location-first .sgt-practice-photo{margin:15px 0 12px}
-    .sgt--location-first .sgt-practice-photo img{aspect-ratio:16/9;max-height:220px}
-    /* Google Maps opens externally on mobile; do not push the booking form
-       another 250px down just to repeat a map. The address remains clickable. */
-    .sgt--location-first .sgt-practice .up-map{display:none}
-    .sgt--location-first .sgt-location-actions a{flex:1 1 auto}
-    .sgt--location-first .sgt-onedoc-body{padding:12px}
-    .sg-location-team{padding:32px 16px}
-    .sg-location-team .sg-team-testimonial{margin-top:20px}
-  }
-  @media(max-width:440px){
-    .sgt--location-first .sgt-practice .up-grid{grid-template-columns:minmax(0,1fr);gap:10px}
-    .sgt--location-first .sgt-network-proof{align-items:flex-start;flex-wrap:wrap}
-    .sgt--location-first .sgt-network-proof-label{flex:1 1 100%}
-    .sgt--location-first .sgt-network-proof-metrics{width:100%;justify-content:flex-start;margin-top:3px}
-  }
-  @media(prefers-reduced-motion:reduce){.sgt--location-first .sgt-onedoc-arrow{transition:none}}
-  /* Hero Desktop (ab 641px): weniger Zeilen, grössere Schrift; kein Text im Hero unter 15px. Mobile (bis 640px) unverändert. */
-  @media(min-width:641px){
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-eyebrow{font-size:15px!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-lead{font-size:18px!important;line-height:1.5!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas{flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important}
-    body.tcm-warm .lsr-hero.hlsg.hlsg.hlsg .lsr-ctas > a{width:auto!important;flex:0 1 auto!important}
-    .lsr-hero.hlsg .lsr-quick{font-size:16px;color:var(--brand-black,#020B10)}
-    .lsr-hero.hlsg .lsr-quick a{color:var(--brand-black,#020B10);text-decoration:underline;text-underline-offset:3px}
-  }
-</style>
+<SgLayoutStyles />
 {teil !== 'ende' && (<>
 <script is:inline>
   // Preserve old direct links (#online-buchen) used by OneDoc, FAQ, banners,

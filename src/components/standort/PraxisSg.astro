@@ -1,0 +1,43 @@
+---
+// Zürich-Pilot (20.11.2026): «Über die Praxis» nach dem FAQ wie in St. Gallen, zweispaltig (Infos links, Foto/Karte rechts).
+// Inhalt kommt per Slot (UeberPraxis locationFirst ohneProof) und wird hier nur aufgeteilt; Links/Attribute unverändert.
+// Anker #sg-standort (Hero «Anfahrt») und #standort-kontakt-praxis (FAQ «Praxisangaben») bleiben erhalten.
+import type { Standort } from '../../data/standorte';
+import { waHref } from '../../data/standorte';
+import { clinics, mapsDirectionsUrl } from '../../data/locations';
+import SgLayoutStyles from './SgLayoutStyles.astro';
+const { data } = Astro.props as { data: Standort };
+const clinic = clinics.find((c) => c.id === data.slug);
+const maps = data.nap.mapsDirections ?? (clinic ? mapsDirectionsUrl(clinic) : undefined);
+const wa = waHref(data.nap.telefon, 'Hallo, ich habe eine Frage zur TCM-Praxis in ' + data.stadt + '.');
+const html = await Astro.slots.render('default');
+const pf = html.indexOf('<figure class="up-mobile-clinic-photo"');
+const pfEnd = pf >= 0 ? html.indexOf('</figure>', pf) + '</figure>'.length : -1;
+const mi = html.indexOf('<div class="up-map">');
+if (mi < 0 || (pf >= 0 && pfEnd < pf) || html.split('<div class="up-map">').length !== 2) throw new Error(`PraxisSg (${data.slug}): Karte/Foto nicht eindeutig gefunden - UeberPraxis geändert?`);
+let mapEnd = html.indexOf('</div>', mi) + '</div>'.length;
+const ml = html.indexOf('<p class="up-maplinks"', mapEnd);
+if (ml === mapEnd) mapEnd = html.indexOf('</p>', ml) + '</p>'.length;
+const foto = pf >= 0 ? html.slice(pf, pfEnd) : '';
+const left = (pf >= 0 ? html.slice(0, pf) + html.slice(pfEnd, mi) : html.slice(0, mi)) + html.slice(mapEnd);
+const right = foto + html.slice(mi, mapEnd);
+---
+<section class="sgt sgt--location-first sgt--praxis" id="standort-kontakt-praxis" aria-label={'Über die Praxis ' + data.stadt}>
+  <div class="sgt-wrap sgt-grid sgt-grid--praxis">
+    <div class="sgt-practice" id="sg-standort">
+      <Fragment set:html={left} />
+      <div class="sgt-location-actions">
+        {maps && data.nap.strasse && <a href={maps} target="_blank" rel="noopener noreferrer" data-care-cta="clinic-route"><span aria-hidden="true">↗</span> Route planen</a>}
+        <a href={wa} target="_blank" rel="noopener noreferrer" data-care-cta="clinic-wa"><span aria-hidden="true">↗</span> WhatsApp</a>
+      </div>
+    </div>
+    <div class="sgt-practice sgt-praxis-media"><Fragment set:html={right} /></div>
+  </div>
+</section>
+<SgLayoutStyles />
+<style is:global>
+  /* Praxisfoto in der rechten Spalte (UeberPraxis rendert es als Mobile-Foto): auf allen Breiten zeigen. */
+  .sgt--praxis .up-mobile-clinic-photo{display:block!important;margin:0 0 14px;border-radius:16px;overflow:hidden;box-shadow:none}
+  .sgt--praxis .up-mobile-clinic-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+  .sgt--praxis .up-maplinks{margin:8px 0 0}
+</style>

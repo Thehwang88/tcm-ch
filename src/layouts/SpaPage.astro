@@ -43,7 +43,7 @@ const winterSnowTarget =
   path === '/standorte' ? '#page-standorte .std-overview-intro' :
   path === '/akupunktur-tcm-zuerich' ? '.akz .lsr-hero.akzh' :
   path === '/standorte/st-gallen' ? '.lsr-hero.hlsg, .lsr-hero.f30-hero' :
-  /^\/standorte\/(?:basel|bern|zuerich-(?:bahnhofstrasse|oerlikon|hoengg))$/.test(path) ? '.lsr-hero.std-location-hero' :
+  /^\/standorte\/(?:basel|bern|zuerich-(?:bahnhofstrasse|oerlikon|hoengg))$/.test(path) ? '.lsr-hero.std-location-hero, .lsr-hero.hlsg' :
   null;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo

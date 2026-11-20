@@ -103,7 +103,8 @@ const formIndex = html.indexOf('data-kf-instance="sg-hero"');
 const headIndex = html.indexOf('id="sgt-h"');
 assert(headIndex > 0 && reviewIndex > headIndex && formIndex > reviewIndex && formIndex - reviewIndex < 1500, 'Heading -> network review strip -> form card order lost');
 assert(html.includes('aria-label="TCM.ch Netzwerk: 4.89 von 5 Sternen aus über tausend Rezensionen"'), 'Aggregate network context must be accessible');
-const sgCss = readFileSync('src/components/HeroStandardSG.astro','utf8');
+// Styles der SG-Vorlage seit 20.11.2026 in SgLayoutStyles.astro (auch Zürich-Pilot), Komponente HeroStandardSG daneben.
+const sgCss = readFileSync('src/components/standort/SgLayoutStyles.astro','utf8') + readFileSync('src/components/HeroStandardSG.astro','utf8');
 assert(sgCss.includes('.sgt--location-first .sgt-practice .sgt-fact-icon svg') && sgCss.includes('stroke:#1769B1'), 'Location icons must use /kontakt blue style');
 assert((html.match(/class="sgt-fact-icon"/g) || []).length === 4, 'SG clinic facts must have four clean blue icons');
 assert(!html.includes('class="up-ico"'), 'Legacy grey-background icon class must not render on SG');

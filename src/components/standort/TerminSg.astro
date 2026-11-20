@@ -1,0 +1,48 @@
+---
+// Zürich-Pilot (20.11.2026): Formular-Sektion nach der St.-Gallen-Vorlage, einspaltig und zentriert; oben (teil="oben",
+// Bewertungszeile über der Karte, Instanz standort-oben, #anfrage-box, Anker #termin/#termin-formular) und am Seitenende
+// (teil="ende", Instanz standort, #anfrage-box-ende). Terminart-Tabs via src/lib/form-tabs.ts mit dem Zürcher Angebot
+// (Kostenloser TCM 360°-Check-in ohne Behandlung, Freigabe in kontakt-angebote.mjs); kein OneDoc, keine SG-Texte.
+import type { Standort } from '../../data/standorte';
+import { waHref } from '../../data/standorte';
+import { renderKontaktForm } from '../../lib/kontakt-form';
+import { tabsForm, NETWORK_REVIEW_STRIP } from '../../lib/form-tabs';
+import SgLayoutStyles from './SgLayoutStyles.astro';
+const { data, sitekey, teil = 'oben' } = Astro.props as { data: Standort; sitekey: string; teil?: 'oben' | 'ende' };
+const oben = teil === 'oben';
+const inst = oben ? 'standort-oben' : 'standort';
+const cardId = oben ? 'anfrage-box' : 'anfrage-box-ende';
+const raw = renderKontaktForm({
+  instance: inst, standortId: data.slug, cardId, quelleDetail: oben ? 'Anfragebox oben' : 'Anfragebox Seitenende',
+  ...(oben ? { compatAnchors: ['termin-formular'] } : {}),
+  wunschzeit: true, sitekey, headingTag: 'h3', ruhig: true, zusatzOffen: true, kopfTitel: 'Termin anfragen', waHref: waHref(data.nap.telefon),
+});
+const panelA = `<div class="sgf-panel sgf-panel--checkin"><p class="sgf-t">Kostenloser TCM 360°-<em class="sgf-accent">Check-in</em></p><p class="sgf-line">30 Minuten, kostenlos, für Neupatient:innen in ${data.stadt}.</p>` +
+  '<ul class="sgf-list"><li>Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik</li><li>Zeit für deine Fragen und Krankenkassen-Check</li><li>Einschätzung durch anerkannte Therapeut:innen (EMR/ASCA)</li><li>Ohne Behandlung, unverbindlich. Du entscheidest danach in Ruhe.</li></ul></div>';
+const panelB = '<div class="sgf-panel sgf-panel--behandlung"><p class="sgf-t">Ersttermin mit Behandlung</p><p class="sgf-line">90 Minuten: persönliches Gespräch, TCM-Diagnostik und erste Behandlung. Krankenkasse anerkannt, Zusatzversicherung je nach Police.</p></div>';
+const card = tabsForm(raw, { p: 'kf-' + inst, cardId, panelA, panelB, ohneAlternativen: true });
+---
+<section class={`sgt sgt--location-first sgt--formular${oben ? '' : ' sgt--ende sgt--ende-form'}`} id={oben ? undefined : 'anfrage-unten'} aria-labelledby={oben ? 'sgt-h' : 'std-ende-h'}>
+  <div class="sgt-wrap sgt-grid sgt-grid--single">
+    <div class="sgt-main">
+      {oben && <span id="termin" class="sgt-anchor" aria-hidden="true"></span>}
+      <div class="sgt-head">
+        {oben ? (
+          <Fragment>
+            <h2 class="section-title" id="sgt-h">Termin in <em>{data.stadt}</em></h2>
+            <p class="sgt-sub">Kostenloser TCM 360°-Check-in (30 Minuten) oder Ersttermin mit Behandlung. Wir melden uns persönlich.</p>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <span class="sgt-eyebrow">Anfrage senden</span>
+            <h2 class="section-title" id="std-ende-h">Termin anfragen</h2>
+            <p class="sgt-sub">Schick uns dein Anliegen und wir melden uns bei dir.</p>
+          </Fragment>
+        )}
+      </div>
+      {oben && <Fragment set:html={NETWORK_REVIEW_STRIP} />}
+      <div class="sgt-form"><Fragment set:html={card} /></div>
+    </div>
+  </div>
+</section>
+<SgLayoutStyles />

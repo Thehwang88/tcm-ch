@@ -5,7 +5,8 @@ import { heroVideo, isSymbolbild } from '../../data/hero-video';
 import { clinics } from '../../data/locations';
 // SG-Vorlage: ohne eigene <section>-Hülle, als Praxisspalte im Kontaktbereich (Slot info in KontaktPraxis.astro), wie in
 // St. Gallen mit Telefon und E-Mail und voller Kartenhöhe.
-const { data, sg = false, locationFirst = false } = Astro.props as { data: Standort; sg?: boolean; locationFirst?: boolean };
+// ohneProof: Bewertungszeile nicht hier (Zürich-Pilot zeigt sie über der Formularkarte, TerminSg).
+const { data, sg = false, locationFirst = false, ohneProof = false } = Astro.props as { data: Standort; sg?: boolean; locationFirst?: boolean; ohneProof?: boolean };
 /* Same local clinic image used in the desktop appointment sidebar.
    Present it below "Über die Praxis" on mobile instead of before the booking form. */
 const mobileClinicPhoto = (sg || locationFirst) && !data.planned
@@ -94,7 +95,7 @@ const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').spl
     {it.kind === 'hours' && <div class="up-val">{data.nap.oeffnungszeiten.map((o) => (<div>{o.tag} {o.zeit}</div>))}</div>}
   </div></div>
 ))}
-</div>{locationFirst && (
+</div>{locationFirst && !ohneProof && (
   <div class="sgt-network-proof" aria-label="TCM.ch Netzwerkbewertungen, standortübergreifend">
     <div class="sgt-network-proof-label"><strong>Patientenbewertungen</strong><span>TCM.ch Netzwerk · standortübergreifend</span></div>
     <div class="sgt-network-proof-metrics"><div class="sgt-network-proof-metric"><strong>4.89</strong><span class="sgt-network-proof-stars" aria-label="4.89 von 5 Sternen">★★★★★</span></div><div class="sgt-network-proof-metric sgt-network-proof-count"><strong>1'000+</strong><span>Rezensionen</span></div></div>
