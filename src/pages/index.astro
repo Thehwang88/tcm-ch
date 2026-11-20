@@ -164,6 +164,9 @@ const homeHtml = homeHtmlCards;
     /* Hero-CTAs (20.11.2026): Gratis-Termin + WhatsApp, Linkzeile «Anrufen · Standorte»; kein Hero-Text unter 15px ausser Eyebrow.
        Nur #heroPatient (DE); /en/ nutzt diese Klassen nicht. */
     body #home-content #heroPatient .sr-btn--wa .sr-wa-ic{width:18px;height:18px;margin-right:8px;flex:0 0 auto}
+    /* Desktop (ab 768px): Zweitbutton «Anliegen kostenlos schildern» (.sr-d), WhatsApp als Textlink; Mobile (bis 767px): WhatsApp-Button (.sr-m).
+       Wiederholte Klasse, weil warm-clinic.css die Hero-Buttons mit !important setzt. */
+    body #home-content #heroPatient .sr-m.sr-m{display:none!important}
     /* Beide Buttons nebeneinander (Spaltenbreite 562px): etwas schmalere Polster, gleiche Höhe. */
     body #home-content #heroPatient .sr-cta{gap:12px}
     body #home-content #heroPatient .sr-cta .sr-btn{padding:0 20px}
@@ -175,6 +178,8 @@ const homeHtml = homeHtmlCards;
     @media(max-width:767px){
       body #home-content #heroPatient .sr-cta{flex-direction:column;gap:10px}
       body #home-content #heroPatient .sr-cta .sr-btn{width:100%}
+      body #home-content #heroPatient .sr-d.sr-d{display:none!important}
+      body #home-content #heroPatient .sr-cta .sr-btn.sr-m.sr-m{display:inline-flex!important}
       /* warm-clinic.css ordnet die Hero-Kinder mobil per order (Eyebrow 1, H1 2, Buttons 3, Bild 4): Linkzeile direkt hinter den Buttons. */
       body #home-content #heroPatient .sr-hero-quick{order:3;justify-content:center;margin:-2px 0 18px}
     }
