@@ -6,20 +6,16 @@ import { renderKontaktForm } from '../lib/kontakt-form';
 import HeroMedia from './standort/HeroMedia.astro';
 import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
 import { locationTeamHtml } from '../lib/location-team';
+import { clinics } from '../data/locations';
 
-const { sitekey, praxisHtml = '' } = Astro.props;
+const { sitekey } = Astro.props;
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
-const SG_MAPS = 'https://www.google.com/maps/place/TCM.ch+St+Gallen/@47.423225,9.3740224,17z/data=!4m8!3m7!1s0x479b1fa8422eee23:0x4d9e5b1cb4999c7!8m2!3d47.423225!4d9.3740224!9m1!1b1';
-
-// Preserve the leaf's original, location-specific practice introduction and
-// all local NAP, opening times, image, map and travel information for patients/SEO.
-// Do not strip the introductory paragraph: it is the only visible SG prose here.
-if (!praxisHtml.includes('<h2 class="up-h2">Über die Praxis</h2>') ||
-    !praxisHtml.includes('Oberer Graben 22, 9000 St. Gallen') ||
-    !praxisHtml.includes('id=') && !praxisHtml.includes('class="up-map"') ||
-    !praxisHtml.includes('sgt-practice-photo')) {
-  throw new Error('HeroStandardSG: canonical clinic facts/map/photo not found');
-}
+// Hero-Infozeile aus den Standortdaten (locations.ts), nicht hart codiert.
+const SG = clinics.find((c) => c.id === 'st-gallen');
+if (!SG) throw new Error('HeroStandardSG: Standortdaten st-gallen fehlen');
+const SG_INFO = `${SG.street}, ${SG.postalCode} ${SG.city} · ${SG.openingHours.join(' · ')}`;
+// «Über die Praxis» (Text, NAP, Foto, Karte, Anreise) steht seit 20.11.2026 unten auf der Seite
+// (standorte/[slug].astro, nach dem FAQ) – hier nur Hero, Formular und OneDoc.
 // Reuse the exact *network-wide* aggregate figures currently published on
 // /kontakt/. Do not label these as reviews of St. Gallen alone.
 const SG_NETWORK_REVIEW_STRIP = `
@@ -39,18 +35,6 @@ const SG_NETWORK_REVIEW_STRIP = `
       </div>
     </div>
   </div>`;
-const sgPhotoMarker = '<figure class="sgt-practice-photo"';
-if (praxisHtml.split(sgPhotoMarker).length !== 2)
-  throw new Error('St. Gallen: expected one reception image after practice facts');
-// Drop the legacy .up-ico hook completely; global styles applied grey
-// background squares to it despite the SG-only blue icon treatment.
-const iconCount = (praxisHtml.match(/class="up-ico"/g) || []).length;
-if (iconCount !== 4) throw new Error('St. Gallen: expected four clinic fact icons');
-const pra = praxisHtml
-  .replaceAll('class="up-ico"', 'class="sgt-fact-icon"')
-  .replace('href="tel:+41775236122"', 'href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel"')
-  .replace(sgPhotoMarker, SG_NETWORK_REVIEW_STRIP + sgPhotoMarker);
-
 const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form',
   // Both historical anchors must continue working, including legacy check-in links.
@@ -83,6 +67,7 @@ const card = renderKontaktForm({
       <p class="lsr-quick">
         <a href="tel:+41775236122" data-kf-tel data-care-cta="hero-tel">Anrufen</a><span aria-hidden="true">·</span><a href={SG_WA} target="_blank" rel="noopener noreferrer" data-care-cta="hero-wa">WhatsApp</a><span aria-hidden="true">·</span><a href="#sg-standort" data-care-cta="hero-anfahrt">Anfahrt</a>
       </p>
+      <p class="lsr-info">{SG_INFO}</p>
       <a class="lsr-tlink" href="#sg-therapien" data-sg-therapie-link hidden></a>
     </div>
     <HeroMedia id="sg-hero-media" />
@@ -136,23 +121,16 @@ const card = renderKontaktForm({
 })();
 </script>
 
-{/* Hwang-inspired: real clinic information first (exactly once), booking alongside.
-    On mobile the location facts lead; the Hero booking CTA still jumps to the form. */}
-<section class="sgt sgt--location-first" aria-label="Praxis und Termin St. Gallen">
-  <div class="sgt-wrap sgt-grid">
-    <div class="sgt-practice" id="sg-standort">
-      <Fragment set:html={pra} />
-      <div class="sgt-location-actions">
-        <a href={SG_MAPS} target="_blank" rel="noopener noreferrer" data-care-cta="sg-route"><span aria-hidden="true">↗</span> Route planen</a>
-        <a href={SG_WA} target="_blank" rel="noopener noreferrer" data-care-cta="termin-karte-wa"><span aria-hidden="true">↗</span> WhatsApp</a>
-      </div>
-    </div>
+{/* Formular allein direkt unter dem Hero (einspaltig, zentriert); Bewertungszeile direkt über der Karte. */}
+<section class="sgt sgt--location-first sgt--formular" aria-label="Termin St. Gallen">
+  <div class="sgt-wrap sgt-grid sgt-grid--single">
     <div class="sgt-main" aria-labelledby="sgt-h">
       <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
       <div class="sgt-head">
         <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
         <p class="sgt-sub">Ersttermin mit Behandlung oder 30 Minuten gratis kennenlernen – wir melden uns persönlich.</p>
       </div>
+      <Fragment set:html={SG_NETWORK_REVIEW_STRIP} />
       <div class="sgt-form"><Fragment set:html={card} /></div>
       <details class="sgt-onedoc" id="online-buchen">
         <summary data-care-cta="termin-karte-checkin">
@@ -292,17 +270,16 @@ const card = renderKontaktForm({
   .sgt--location-first .sgt-location-actions a:hover{background:#E8F2FA;border-color:#A7C7DE}
   .sgt--location-first .sgt-location-actions a:focus-visible,.sgt--location-first .sgt-onedoc summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
   .sgt--location-first .sgt-main{min-width:0;max-width:525px;width:100%}
-  /* When the location facts on the left run longer than the form, let the
-     right booking column follow the scroll. Its position is always bounded
-     by the SG section; tall forms use a negative sticky top so that the
-     lower fields remain reachable without a nested scroll container. */
-  @media(min-width:1024px){
-    .sgt--location-first .sgt-main.sgt-main--sticky{
-      position:sticky;
-      top:var(--sgt-sticky-top,calc(var(--header-h,76px) + 16px));
-      align-self:start;
-    }
-  }
+  .sgt--location-first .sgt-grid--single{grid-template-columns:minmax(0,1fr);justify-items:center}
+  .sgt--location-first .sgt-grid--single .sgt-main{max-width:620px}
+  .sgt--location-first .sgt-grid--single .sgt-head{text-align:center}
+  .sgt--location-first .sgt-grid--single .sgt-network-proof{margin:0 0 14px}
+  /* «Über die Praxis» unten (in #page-standort, dessen Sektionsregeln die Seitenränder entfernen): Infos links, Foto/Karte rechts. */
+  #page-standort .sgt--praxis{padding:clamp(28px,4vw,52px) 40px!important;background:#F7F8F8}
+  .sgt--praxis .sgt-grid--praxis{grid-template-columns:minmax(0,1fr) minmax(0,480px)}
+  .sgt--praxis .sgt-praxis-media{min-width:0}
+  .sgt--praxis .sgt-praxis-media .sgt-practice-photo{margin:0 0 14px}
+  .lsr-hero.hlsg .lsr-info{margin:8px 0 0;font-size:13px;line-height:1.5;color:rgba(2,11,16,.7)}
   .sgt--location-first .sgt-head{margin:0 0 12px}
   .sgt--location-first .sgt-head .section-title{margin:0 0 8px;font-size:clamp(25px,2.6vw,34px)}
   .sgt--location-first .sgt-sub{font-size:14.5px;line-height:1.5;color:#61717A;margin:0}
@@ -328,6 +305,8 @@ const card = renderKontaktForm({
   .sg-location-team .sg-team-testimonial a{margin-left:8px;color:#1769B1;text-decoration:none;font-weight:700}
   @media(max-width:900px){
     .sgt--location-first .sgt-grid{grid-template-columns:minmax(0,1fr);gap:28px;max-width:660px;margin:0 auto}
+    .sgt--praxis .sgt-grid--praxis{max-width:660px}
+    #page-standort .sgt--praxis{padding:28px 16px!important}
     .sgt--location-first .sgt-main{max-width:none}
     .sgt--location-first .sgt-practice .up-map iframe{height:245px}
   }
@@ -369,45 +348,6 @@ const card = renderKontaktForm({
   }
   @media(prefers-reduced-motion:reduce){.sgt--location-first .sgt-onedoc-arrow{transition:none}}
 </style>
-<script is:inline>
-  // Smart SG-only sticky booking column.
-  // - Desktop only; mobile/tablet always flow normally.
-  // - Only stick if the practice-content column actually runs longer.
-  // - For long forms, show their lower fields as the user scrolls rather
-  //   than clipping them below the viewport or nesting a scroll container.
-  // - Recalculate if the form grows (validation, OneDoc expanded, etc.).
-  (function(){
-    var section=document.querySelector('.sgt--location-first');
-    if(!section||!window.matchMedia)return;
-    var left=section.querySelector('.sgt-practice');
-    var right=section.querySelector('.sgt-main');
-    var mq=window.matchMedia('(min-width:1024px)');
-    if(!left||!right)return;
-    var raf=0;
-    function update(){
-      raf=0;
-      var enabled=mq.matches && left.offsetHeight>right.offsetHeight+30;
-      if(!enabled){
-        right.classList.remove('sgt-main--sticky');
-        right.style.removeProperty('--sgt-sticky-top');
-        return;
-      }
-      var head=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))||76;
-      var top=Math.round(Math.min(head+16, window.innerHeight-right.offsetHeight-16));
-      right.style.setProperty('--sgt-sticky-top',top+'px');
-      right.classList.add('sgt-main--sticky');
-    }
-    function schedule(){if(!raf)raf=requestAnimationFrame(update);}
-    schedule();
-    window.addEventListener('resize',schedule,{passive:true});
-    if(mq.addEventListener)mq.addEventListener('change',schedule);
-    if(window.ResizeObserver){
-      var ro=new ResizeObserver(schedule);
-      ro.observe(left);ro.observe(right);
-    }
-    window.addEventListener('load',schedule,{once:true});
-  })();
-</script>
 <script is:inline>
   // Preserve old direct links (#online-buchen) used by OneDoc, FAQ, banners,
   // and clinic dropdowns, even though the embedded calendar is now optional.

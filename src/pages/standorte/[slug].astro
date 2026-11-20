@@ -325,7 +325,8 @@ if (migrated) {
     const ki = sgBody.indexOf(kontaktMarker);
     const ke = ki >= 0 ? sgBody.indexOf('</section>', ki) : -1;
     if (ke < 0) throw new Error('st-gallen: untere Kontaktsektion nicht gefunden - Leaf geändert?');
-    sgBody = sgBody.slice(0, ki) + sgFaqHtml + sgWeiterlesenHtml + sgBody.slice(ke + 10);
+    // «Über die Praxis» steht seit 20.11.2026 zwischen FAQ und «Weiterlesen» (Platzhalter, gefüllt weiter unten).
+    sgBody = sgBody.slice(0, ki) + sgFaqHtml + '<!--sg-praxis-->' + sgWeiterlesenHtml + sgBody.slice(ke + 10);
     // Keine Preisangaben (05.11.2026): Kostenkarte «CHF 130–160 pro Sitzung» → nur «Krankenkassen anerkannt (EMR/ASCA)» mit Link;
     // Transparenz-Karte («Was du vorab prüfen kannst») ohne Tarifbezug. Guards statt stiller Fallbacks.
     const kk0 = sgBody.indexOf('<div class="sg-kosten-card"');
@@ -375,6 +376,25 @@ if (migrated) {
         throw new Error('st-gallen: Über-die-Praxis-Sektion nicht eindeutig gefunden - Leaf geändert?');
       sgPraxisHtml = sgBody.slice(up0 + '<section class="up-sec"><div class="up-wrap">'.length, up1);
       sgBody = sgBody.slice(0, up0) + sgBody.slice(up1 + '</div></section>'.length);
+      // Praxis-Sektion (NAP, Foto, Karte, Anreise) nach dem FAQ: Infos links, Foto/Karte rechts (Styles .sgt-* aus
+      // HeroStandardSG, dort seit 16.10.2026). Guards statt stiller Fallbacks; Markup/Attribute der Links unverändert.
+      if (!sgPraxisHtml.includes('Oberer Graben 22, 9000 St. Gallen') || !sgPraxisHtml.includes('class="up-map"') ||
+          sgPraxisHtml.split('<figure class="sgt-practice-photo"').length !== 2 || (sgPraxisHtml.match(/class="up-ico"/g) || []).length !== 4)
+        throw new Error('st-gallen: Praxisangaben/Foto/Karte/Icons nicht eindeutig gefunden - Leaf geändert?');
+      const pra = sgPraxisHtml
+        .replaceAll('class="up-ico"', 'class="sgt-fact-icon"')
+        .replace('href="tel:+41775236122"', 'href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel"');
+      const pf = pra.indexOf('<figure class="sgt-practice-photo"'), pt = pra.indexOf('<details class="up-transit-acc"');
+      if (pf < 0 || pt < pf) throw new Error('st-gallen: Reihenfolge Foto → Karte → Anreise nicht gefunden - Leaf geändert?');
+      const SG_MAPS = 'https://www.google.com/maps/place/TCM.ch+St+Gallen/@47.423225,9.3740224,17z/data=!4m8!3m7!1s0x479b1fa8422eee23:0x4d9e5b1cb4999c7!8m2!3d47.423225!4d9.3740224!9m1!1b1';
+      const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
+      const sgPraxisSection = '<section class="sgt sgt--location-first sgt--praxis" aria-label="Über die Praxis St. Gallen"><div class="sgt-wrap sgt-grid sgt-grid--praxis">' +
+        '<div class="sgt-practice" id="sg-standort">' + pra.slice(0, pf) + pra.slice(pt) +
+        '<div class="sgt-location-actions"><a href="' + SG_MAPS + '" target="_blank" rel="noopener noreferrer" data-care-cta="sg-route"><span aria-hidden="true">↗</span> Route planen</a>' +
+        '<a href="' + SG_WA + '" target="_blank" rel="noopener noreferrer" data-care-cta="termin-karte-wa"><span aria-hidden="true">↗</span> WhatsApp</a></div></div>' +
+        '<div class="sgt-practice sgt-praxis-media">' + pra.slice(pf, pt) + '</div></div></section>';
+      if (sgBody.split('<!--sg-praxis-->').length !== 2) throw new Error('st-gallen: Praxis-Platzhalter nicht gefunden');
+      sgBody = sgBody.replace('<!--sg-praxis-->', sgPraxisSection);
     }
   }
   // Andere Legacy-Leaves (Bottighofen): Block vor dem Kontaktformular, sonst vor den Beschwerden-Links.
@@ -509,7 +529,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
     `}</style>}
 
     {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstBannerSG />}
-    {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} praxisHtml={sgPraxisHtml} />)}
+    {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} />)}
     {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstSheetSG sitekey={turnstileSitekey} />}
     <ClinicConcierge slot="pre-footer" locationName={conciergeName} status={conciergeStatus} />
   </SpaPage>

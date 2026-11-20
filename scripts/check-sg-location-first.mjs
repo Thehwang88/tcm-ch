@@ -8,12 +8,13 @@ const has = (x, why=x) => assert(html.includes(x), 'St. Gallen missing: ' + why)
 const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + why);
 [
   '<section class="lsr-hero hlsg">',
-  '<section class="sgt sgt--location-first"',
   'class="sgt-practice" id="sg-standort"',
   'Oberer Graben 22, 9000 St. Gallen',
   'Du suchst Hilfe bei Schmerzen, Stress oder chronischen Beschwerden in St. Gallen?',
   'Unsere Praxis verbindet klassische TCM mit moderner Diagnostik',
-  'sgt-main--sticky', '--sgt-sticky-top',
+  'class="sgt sgt--location-first sgt--formular"', 'class="sgt-wrap sgt-grid sgt-grid--single"',
+  'class="sgt sgt--location-first sgt--praxis"', 'class="sgt-practice sgt-praxis-media"',
+  'class="lsr-info">Oberer Graben 22, 9000 St. Gallen · Mo-Fr 07:30-19:30 · Sa 07:30-16:30<',
   'class="sgt-network-proof"',
   'TCM.ch Netzwerk · standortübergreifend',
   'Patientenbewertungen',
@@ -35,20 +36,31 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   'id="sg-beschwerden"',
 ].forEach((marker) => has(marker));
 no('sg-team-feedback', 'obsolete extra testimonial section');
+// 20.11.2026: Hero → Formular (allein, einspaltig) → OneDoc → Team → Therapien → Beschwerden → FAQ → «Über die Praxis» → Weiterlesen.
 const order = [
   '<section class="lsr-hero hlsg">',
-  '<section class="sgt sgt--location-first"',
-  'class="sgt-practice" id="sg-standort"',
-  'Oberer Graben 22, 9000 St. Gallen',
+  '<section class="sgt sgt--location-first sgt--formular"',
   'class="sgt-main"',
+  'class="sgt-network-proof"',
   'data-kf-instance="sg-hero"',
   'id="online-buchen"',
   'class="section tc-team-section"',
   'id="sg-therapien"',
   'id="sg-beschwerden"',
+  'id="sg-faq"',
+  '<section class="sgt sgt--location-first sgt--praxis"',
+  'class="sgt-practice" id="sg-standort"',
+  '>Oberer Graben 22, 9000 St. Gallen</a>',
+  'class="up-transit-acc"',
+  'class="sgt-location-actions"',
+  'class="sgt-practice sgt-praxis-media"',
+  'class="sgt-practice-photo"',
+  'class="up-map"',
+  'id="sg-weiterlesen"',
 ].map((x) => html.indexOf(x));
 assert(order.every((p) => p >= 0), 'Missing order marker');
-assert(order.every((p, i) => !i || p > order[i - 1]), 'SG location -> booking -> team -> therapy order changed');
+assert(order.every((p, i) => !i || p > order[i - 1]), 'SG hero -> form -> team -> therapy -> FAQ -> practice -> Weiterlesen order changed');
+assert(html.indexOf('class="sgt sgt--location-first sgt--formular"') < html.indexOf('id="page-standort"') && html.indexOf('id="page-standort"') < html.indexOf('sgt--praxis'), 'Form section precedes #page-standort; practice section lives inside it');
 assert((html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
 const sgForm = html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"[\s\S]*?<script src="\/kontakt-form\.js(?:\?v=[^"]+)?"/)?.[0];
 assert(sgForm, 'SG canonical form markup should be present');
@@ -64,9 +76,9 @@ assert(formJs.includes("if (!explicit) explicit = 'checkin'"), 'Legacy first30 o
 assert((html.match(/class="sgt-practice-photo"/g) || []).length === 1, 'SG must display exactly one dedicated reception photo');
 assert((html.match(/class="sgt-network-proof"/g) || []).length === 1, 'SG must show one network review banner');
 const reviewIndex = html.indexOf('class="sgt-network-proof"');
-const imageIndex = html.indexOf('class="sgt-practice-photo"');
-const contactsIndex = html.indexOf('class="up-grid"');
-assert(contactsIndex > 0 && reviewIndex > contactsIndex && imageIndex > reviewIndex, 'Local facts -> network review banner -> clinic photo order lost');
+const formIndex = html.indexOf('data-kf-instance="sg-hero"');
+const headIndex = html.indexOf('id="sgt-h"');
+assert(headIndex > 0 && reviewIndex > headIndex && formIndex > reviewIndex && formIndex - reviewIndex < 1500, 'Heading -> network review strip -> form card order lost');
 assert(html.includes('aria-label="TCM.ch Netzwerk: 4.89 von 5 Sternen aus über tausend Rezensionen"'), 'Aggregate network context must be accessible');
 const sgCss = readFileSync('src/components/HeroStandardSG.astro','utf8');
 assert(sgCss.includes('.sgt--location-first .sgt-practice .sgt-fact-icon svg') && sgCss.includes('stroke:#1769B1'), 'Location icons must use /kontakt blue style');
@@ -85,4 +97,4 @@ no('Praxen <em>in der Nähe</em>', 'nearby clinics heading should be absent');
 no('Du weisst nicht, welche Behandlung du brauchst?', 'old redundant notice');
 assert(/id="online-buchen"[^>]*>|class="sgt-onedoc" id="online-buchen"/.test(html), 'OneDoc anchor lost');
 assert(html.includes('widgetConfigs["7a0d6d1be45b44d5cbe90243187f9e7c30949c5dd23682bf770e7b5808674794"]'), 'SG OneDoc measurement config lost');
-console.log('SG location-first contract: restored SG introduction, no nearby clinics, smart sticky form, NAP, OneDoc and team OK');
+console.log('SG contract: hero -> single-column form (review strip above card) -> OneDoc -> team -> FAQ -> practice (NAP, photo, map) -> Weiterlesen OK');
