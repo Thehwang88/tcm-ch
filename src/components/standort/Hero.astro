@@ -115,6 +115,15 @@ const video = heroVideo(data);
     }
   }
   .std-location-hero .std-hero-mobile-address{display:none}
+  /* Lesbarkeit (20.11.2026): kein Text im Hero unter 15px ausser dem Eyebrow, Desktop und Mobile. Wiederholte Klasse,
+     weil warm-clinic.css diese Zeilen mit :is()-Spezifität und !important kleiner setzt; home.css bleibt unverändert. */
+  body .lsr-hero.std-location-hero.std-location-hero.std-location-hero .std-hero-trust,
+  body .lsr-hero.std-location-hero.std-location-hero.std-location-hero .std-hero-trust>div{font-size:15.5px!important;line-height:1.45!important;color:var(--tcm-ink,#171B1A)!important}
+  body .lsr-hero.std-location-hero.std-location-hero.std-location-hero .std-hero-mobile-address{font-size:15px!important;line-height:1.45!important;color:var(--tcm-ink,#171B1A)!important}
+  body .lsr-hero.std-location-hero.std-location-hero.std-location-hero .lsr-tert,
+  body .lsr-hero.std-location-hero.std-location-hero.std-location-hero .lsr-note{font-size:15.5px!important;line-height:1.45!important;color:var(--tcm-ink,#171B1A)!important}
+  body .lsr-hero.std-location-hero.std-location-hero.std-location-hero .tsr-crumb,
+  body .lsr-hero.std-location-hero.std-location-hero.std-location-hero .tsr-crumb button{font-size:15px!important}
   /* Mobile first: homepage-like hierarchy on the shared operational location
      heroes only. Desktop, copy, schema, form routing and clinic status stay intact. */
   @media (max-width:767px){
@@ -137,7 +146,7 @@ const video = heroVideo(data);
     .std-location-hero .lsr-ctas .lsr-btn-primary{
       width:100%;min-height:52px;justify-content:center;
     }
-    .std-location-hero .std-hero-trust{order:5;margin:0 0 9px;font-size:13px;line-height:1.35}
+    .std-location-hero .std-hero-trust{order:5;margin:0 0 9px;font-size:15.5px;line-height:1.45}
     .std-location-hero:not(.std-location-hero--pending) .std-hero-trust > div:first-child,
     .std-location-hero:not(.std-location-hero--pending) .std-hero-trust > div:last-child{
       display:none!important;
@@ -150,10 +159,10 @@ const video = heroVideo(data);
       color:var(--tcm-ink,#171B1A)!important;
       box-shadow:none!important;text-decoration:underline;text-underline-offset:3px;
     }
-    .std-location-hero .std-hero-note{order:6;margin:0;font-size:13px;line-height:1.4}
+    .std-location-hero .std-hero-note{order:6;margin:0;font-size:15.5px;line-height:1.45}
     .std-location-hero .std-hero-mobile-address{
       display:block;order:7;margin:3px 0 0;
-      font-size:13px;line-height:1.4;color:var(--tcm-text-soft,#505453);
+      font-size:15px;line-height:1.45;color:var(--tcm-ink,#171B1A);
     }
     .std-location-hero:not(.std-location-hero--pending):not(.std-location-hero--partner) .std-hero-note{
       display:none!important;
