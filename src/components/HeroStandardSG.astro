@@ -4,10 +4,11 @@
 // Never change special campaign (HeroLaunchSG) or other clinic templates.
 import { renderKontaktForm } from '../lib/kontakt-form';
 import HeroMedia from './standort/HeroMedia.astro';
-import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
+import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_2, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
 import { locationTeamHtml } from '../lib/location-team';
 
-const { sitekey } = Astro.props;
+// teil: 'oben' (Hero, Formular, OneDoc-Popup, Team) oder 'ende' (Seitenende: offenes OneDoc-Widget + zweites Formular, slot body-insert).
+const { sitekey, teil = 'oben' } = Astro.props;
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
 // WhatsApp-Icon der Seite (identischer Pfad wie WA_ICON in lib/kontakt-form.ts), nur für den mobilen Hero-Button.
 const WA_SVG = '<svg class="lsr-wa-ic" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>';
@@ -32,31 +33,28 @@ const SG_NETWORK_REVIEW_STRIP = `
       </div>
     </div>
   </div>`;
-const cardRaw = renderKontaktForm({
-  instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form',
-  // Both historical anchors must continue working, including legacy check-in links.
-  compatAnchors: ['first30', 'termin-formular'],
-  quelle: 'launch-hero-sg', formName: 'Hero-Termin-StGallen', formular: 'Hero-Termin-StGallen',
-  quelleDetail: 'Hero St. Gallen · reguläres Terminformular', seite: '/standorte/st-gallen/',
+const SG_FORM = {
+  standortId: 'st-gallen', quelle: 'launch-hero-sg', seite: '/standorte/st-gallen/',
   wunschzeit: true, sitekey, headingTag: 'h3',
   onedocBeideTerminarten: true, ohneOnedocAlternative: true,
   // 20.11.2026: Gratis-Termin (checkin) zuerst und vorausgewählt (checkinZuerst-Standard der Instanz); explizite
   // Auslöser (data-kf-terminart, ?terminart=, #first30) behalten Vorrang (kontakt-form.js). Angebots-IDs/Tracking unverändert.
   ruhig: true, zusatzOffen: true,
   kopfTitel: 'Termin anfragen',
-});
+};
 // SG-Karte (20.11.2026, nur diese Instanz): Terminart-Radios als zwei Tabs, Angebotstext je Tab, vier Felder mit
 // Platzhaltern (Labels nur für Screenreader), ohne Anliegen/Hinweise, Turnstile nur bei Bedarf sichtbar.
 // Reine String-Anpassung der gerenderten Karte; die geteilte Komponente und ihr JS bleiben unverändert. Guards statt stiller Fallbacks.
+const sgForm = (raw: string, p: string, cardId: string) => {
+let card = raw;
 const sub = (from: string | RegExp, to: string, name: string) => {
   const n = typeof from === 'string' ? card.split(from).length - 1 : (card.match(from) || []).length;
-  if (n !== 1) throw new Error(`HeroStandardSG: SG-Formular «${name}» ${n === 0 ? 'nicht' : 'mehrfach'} gefunden - kontakt-form.ts geändert?`);
+  if (n !== 1) throw new Error(`HeroStandardSG: SG-Formular «${name}» (${p}) ${n === 0 ? 'nicht' : 'mehrfach'} gefunden - kontakt-form.ts geändert?`);
   card = card.replace(from, to);
 };
-let card = cardRaw;
 // SSR lässt die Radios ungesetzt (JS wählt den Standard checkin), damit ?terminart=behandlung / #first30 / data-kf-terminart Vorrang haben.
 sub('value="checkin" checked data-kf-angebot="TCM_CHECKIN"', 'value="checkin" data-kf-angebot="TCM_CHECKIN"', 'Check-in-Radio');
-sub('class="inline-form-card kf kf--ruhig kf--gelb" id="offer-form"', 'class="inline-form-card kf kf--ruhig kf--gelb kf--checkin sgf" id="offer-form"', 'Karte');
+sub(`class="inline-form-card kf kf--ruhig kf--gelb" id="${cardId}"`, `class="inline-form-card kf kf--ruhig kf--gelb kf--checkin sgf" id="${cardId}"`, 'Karte');
 sub('data-kf-default="checkin" data-kf-submit-checkin="Gratis Check-in anfragen"',
   'data-kf-default="checkin" data-kf-ok-checkin="Deine Anfrage: Gratis-Ersttermin, 30 Min., inkl. erster Akupunktur in St. Gallen. Wir melden uns per WhatsApp oder Telefon zur Terminvereinbarung." data-kf-submit-checkin="Gratis Erstgespräch anfragen"', 'Submit-Label Check-in');
 sub('<p class="kf-kopf-sub">TCM zuerst kennenlernen oder direkt starten.</p>', '', 'Kopf-Subline');
@@ -69,18 +67,33 @@ sub('</fieldset>',
   '<div class="sgf-panel sgf-panel--checkin"><p class="sgf-t">Dein erster Termin ist <em class="sgf-accent">gratis</em></p><p class="sgf-line">30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>' +
   '<ul class="sgf-list"><li>TCM-Check und ausführliches Erstgespräch</li><li>Einschätzung durch anerkannte Therapeut:innen (EMR/ASCA)</li><li>Erste Akupunktur noch in derselben Sitzung</li><li>Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</li></ul></div>' +
   '<div class="sgf-panel sgf-panel--behandlung"><p class="sgf-t">Ersttermin mit Behandlung</p><p class="sgf-line">90 Minuten: persönliches Gespräch, TCM-Diagnostik und erste Behandlung. Krankenkasse anerkannt, Zusatzversicherung je nach Police.</p></div>', 'Tab-Inhalte');
-sub('for="kf-sg-hero-name">Dein Name <span', 'for="kf-sg-hero-name">Name <span', 'Label Name');
+sub(`for="${p}-name">Dein Name <span`, `for="${p}-name">Name <span`, 'Label Name');
 sub('placeholder="Vor- und Nachname"', 'placeholder="Name *"', 'Platzhalter Name');
-sub('for="kf-sg-hero-tel">Telefonnummer <span', 'for="kf-sg-hero-tel">Handynummer <span', 'Label Handynummer');
-sub('placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="kf-sg-hero-tel-hint kf-sg-hero-tel-err"', 'placeholder="Handynummer *" required aria-required="true" aria-describedby="kf-sg-hero-tel-err"', 'Platzhalter Handynummer');
-sub('<p class="kf-fhint" id="kf-sg-hero-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>', '', 'Telefon-Hinweis');
+sub(`for="${p}-tel">Telefonnummer <span`, `for="${p}-tel">Handynummer <span`, 'Label Handynummer');
+sub(`placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="${p}-tel-hint ${p}-tel-err"`, `placeholder="Handynummer *" required aria-required="true" aria-describedby="${p}-tel-err"`, 'Platzhalter Handynummer');
+sub(`<p class="kf-fhint" id="${p}-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>`, ``, 'Telefon-Hinweis');
 sub('placeholder="name@beispiel.ch" required aria-required="true"', 'placeholder="E-Mail *" required aria-required="true"', 'Platzhalter E-Mail');
-sub(/<div class="kf-field"><label class="kf-label" for="kf-sg-hero-anliegen">[\s\S]*?<p class="kf-ferr" id="kf-sg-hero-anliegen-err" hidden><\/p><\/div>/, '', 'Feld Anliegen');
+sub(new RegExp('<div class="kf-field"><label class="kf-label" for="' + p + '-anliegen">[\\s\\S]*?<p class="kf-ferr" id="' + p + '-anliegen-err" hidden></p></div>'), '', 'Feld Anliegen');
 sub('placeholder="z. B. Do Nachmittag"', 'placeholder="Wunschzeit (optional, z. B. Do Nachmittag)"', 'Platzhalter Wunschzeit');
 sub('data-appearance="always"', 'data-appearance="interaction-only"', 'Turnstile');
 sub('data-kf-submit>Gratis Check-in anfragen <span', 'data-kf-submit>Gratis Erstgespräch anfragen <span', 'Submit-Text');
 sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. Bestätigung per WhatsApp oder Telefon.</p><p class="kf-legal kf-legal--kurz">', 'Hinweis unter dem Button');
+return card;
+};
+// Oben: Hero-Formular (#offer-form, Instanz sg-hero, historische Anker). Ende: zweites Formular (#offer-form-ende, Instanz sg-ende),
+// gleiche Tabs/Angebot/Pflichtfelder, eigene IDs und eigenes Turnstile; Versand/dataLayer wie oben (kontakt-form.js je Karte).
+const card = teil === 'ende' ? '' : sgForm(renderKontaktForm({
+  ...SG_FORM, instance: 'sg-hero', cardId: 'offer-form',
+  // Both historical anchors must continue working, including legacy check-in links.
+  compatAnchors: ['first30', 'termin-formular'],
+  formName: 'Hero-Termin-StGallen', formular: 'Hero-Termin-StGallen', quelleDetail: 'Hero St. Gallen · reguläres Terminformular',
+}), 'kf-sg-hero', 'offer-form');
+const cardEnde = teil === 'ende' ? sgForm(renderKontaktForm({
+  ...SG_FORM, instance: 'sg-ende', cardId: 'offer-form-ende',
+  formName: 'Ende-Termin-StGallen', formular: 'Ende-Termin-StGallen', quelleDetail: 'Seitenende St. Gallen · Terminformular',
+}), 'kf-sg-ende', 'offer-form-ende') : '';
 ---
+{teil !== 'ende' && (<>
 <section class="lsr-hero hlsg">
   <div class="lsr-inner">
     <div class="lsr-left">
@@ -181,6 +194,38 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
 </section>
 
 <Fragment set:html={locationTeamHtml('st-gallen', 'St. Gallen')} />
+</>)}
+
+{teil === 'ende' && (<>
+{/* Seitenende (slot body-insert, nach «Über die Praxis»/«Weiterlesen», vor dem CARE-Concierge): offenes OneDoc-Widget, dann das zweite Formular. */}
+<section class="sgt sgt--location-first sgt--ende sgt--ende-onedoc" id="online-buchen-unten" aria-labelledby="sg-ob-h">
+  <div class="sgt-wrap sgt-grid sgt-grid--single">
+    <div class="sgt-main">
+      <div class="sgt-head">
+        <span class="sgt-eyebrow">Online-Buchung</span>
+        <h2 class="section-title" id="sg-ob-h">Bereit für deinen Termin?</h2>
+        <p class="sgt-sub">Wähle direkt einen freien Termin in St. Gallen, Bestätigung sofort per E-Mail. Frage vorher? <a href={SG_WA} target="_blank" rel="noopener noreferrer" data-care-cta="ende-wa">Per WhatsApp</a></p>
+      </div>
+      <div class="sgt-onedoc-open">
+        <Fragment set:html={ONEDOC_SG_WIDGET_2} />
+        <p class="sgt-od-fallback">Kalender nicht sichtbar? <a href={ONEDOC_SG_WIDGET_URL} target="_blank" rel="noopener noreferrer">OneDoc direkt öffnen <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sgt sgt--location-first sgt--ende sgt--ende-form" id="anfrage-unten" aria-labelledby="sg-ende-h">
+  <div class="sgt-wrap sgt-grid sgt-grid--single">
+    <div class="sgt-main">
+      <div class="sgt-head">
+        <span class="sgt-eyebrow">Anfrage senden</span>
+        <h2 class="section-title" id="sg-ende-h">Gratis Ersttermin anfragen</h2>
+        <p class="sgt-sub">Schick uns dein Anliegen und wir melden uns bei dir.</p>
+      </div>
+      <div class="sgt-form"><Fragment set:html={cardEnde} /></div>
+    </div>
+  </div>
+</section>
+</>)}
 
 <style is:global>
   /* SG-only. Other data-driven clinic templates stay untouched. */
@@ -339,29 +384,29 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
   .sgt--location-first .sgt-sub{font-size:14.5px;line-height:1.5;color:#61717A;margin:0}
   .sgt--location-first .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
   .sgt--location-first .sgt-form .kf{width:100%;max-width:none!important;margin:0}
-  /* SG-Formular (#offer-form): Tabs statt Kacheln/Dropdown, Angebotstext je Tab, Platzhalter statt Labels. Gilt inline und im Popup. */
-  #offer-form .kf-kopf,#offer-form .kf-fields>.kf-field>.kf-label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;padding:0!important}
-  #offer-form .kf-intro,#offer-form .kf-friendly-service{display:none!important}
-  #offer-form .kf-opts{display:grid!important;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 16px;padding:4px;background:#EEF2F5;border-radius:14px}
-  #offer-form .kf-opt{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px 10px!important;border:0!important;border-radius:11px;background:transparent!important;box-shadow:none!important;text-align:center;color:#4A5B68;transition:background .15s ease,color .15s ease}
-  #offer-form .kf-opt.is-checked{background:#fff!important;box-shadow:0 1px 3px rgba(2,11,16,.14)!important;color:var(--kf-ink,#1769B1)}
-  #offer-form .kf-opt:focus-within{outline:2px solid var(--kf-ink,#1769B1);outline-offset:2px}
-  #offer-form .kf-radio{position:absolute;top:0;right:0;width:1px;height:1px;opacity:0;pointer-events:none}
-  #offer-form .kf-opt-body{display:block}
-  #offer-form .kf-opt-t{margin:0!important;font-size:14.5px!important;font-weight:750;line-height:1.25}
-  #offer-form .sgf-panel{display:none;margin:0 0 14px}
-  #offer-form.kf--checkin .sgf-panel--checkin,#offer-form.kf--behandlung .sgf-panel--behandlung{display:block}
-  #offer-form .sgf-t{margin:0 0 5px;font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
-  #offer-form .sgf-accent{font-style:italic;font-family:'Nunito',sans-serif;color:var(--blue,#1769B1)}
-  #offer-form .sgf-line{margin:0 0 10px;font-size:14.5px;line-height:1.5;color:#566B78}
-  #offer-form .sgf-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-  #offer-form .sgf-list li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.45}
-  #offer-form .sgf-list li::before{content:"✓";position:absolute;left:1px;top:0;font-weight:800;color:var(--blue,#1769B1)}
-  #offer-form .kf-fields{margin-top:0!important}
-  #offer-form .kf-ts{min-height:0;margin:0}
-  #offer-form .kf-req{margin:-2px 0 10px;font-size:12.5px;color:#566B78}
-  #offer-form .sgf-note{margin:8px 0 0;font-size:13px;line-height:1.45;color:#566B78;text-align:center}
-  #offer-form .kf-legal{margin-top:4px}
+  /* SG-Formulare (.sgf = #offer-form und #offer-form-ende): Tabs statt Kacheln/Dropdown, Angebotstext je Tab, Platzhalter statt Labels. Gilt inline und im Popup. */
+  .kf.sgf.sgf .kf-kopf,.kf.sgf.sgf .kf-fields>.kf-field>.kf-label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;padding:0!important}
+  .kf.sgf.sgf .kf-intro,.kf.sgf.sgf .kf-friendly-service{display:none!important}
+  .kf.sgf.sgf .kf-opts{display:grid!important;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 16px;padding:4px;background:#EEF2F5;border-radius:14px}
+  .kf.sgf.sgf .kf-opt{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px 10px!important;border:0!important;border-radius:11px;background:transparent!important;box-shadow:none!important;text-align:center;color:#4A5B68;transition:background .15s ease,color .15s ease}
+  .kf.sgf.sgf .kf-opt.is-checked{background:#fff!important;box-shadow:0 1px 3px rgba(2,11,16,.14)!important;color:var(--kf-ink,#1769B1)}
+  .kf.sgf.sgf .kf-opt:focus-within{outline:2px solid var(--kf-ink,#1769B1);outline-offset:2px}
+  .kf.sgf.sgf .kf-radio{position:absolute;top:0;right:0;width:1px;height:1px;opacity:0;pointer-events:none}
+  .kf.sgf.sgf .kf-opt-body{display:block}
+  .kf.sgf.sgf .kf-opt-t{margin:0!important;font-size:14.5px!important;font-weight:750;line-height:1.25}
+  .kf.sgf.sgf .sgf-panel{display:none;margin:0 0 14px}
+  .kf.sgf.sgf.kf--checkin .sgf-panel--checkin,.kf.sgf.sgf.kf--behandlung .sgf-panel--behandlung{display:block}
+  .kf.sgf.sgf .sgf-t{margin:0 0 5px;font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+  .kf.sgf.sgf .sgf-accent{font-style:italic;font-family:'Nunito',sans-serif;color:var(--blue,#1769B1)}
+  .kf.sgf.sgf .sgf-line{margin:0 0 10px;font-size:14.5px;line-height:1.5;color:#566B78}
+  .kf.sgf.sgf .sgf-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  .kf.sgf.sgf .sgf-list li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.45}
+  .kf.sgf.sgf .sgf-list li::before{content:"✓";position:absolute;left:1px;top:0;font-weight:800;color:var(--blue,#1769B1)}
+  .kf.sgf.sgf .kf-fields{margin-top:0!important}
+  .kf.sgf.sgf .kf-ts{min-height:0;margin:0}
+  .kf.sgf.sgf .kf-req{margin:-2px 0 10px;font-size:12.5px;color:#566B78}
+  .kf.sgf.sgf .sgf-note{margin:8px 0 0;font-size:13px;line-height:1.45;color:#566B78;text-align:center}
+  .kf.sgf.sgf .kf-legal{margin-top:4px}
   .sgt--location-first .sgt-onedoc{background:#fff;border:1px solid #DDE6EC;border-radius:17px;margin:14px 0 0;scroll-margin-top:calc(var(--header-h,76px) + 12px);overflow:hidden}
   .sgt--location-first .sgt-onedoc summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;font-size:14.5px;font-weight:750;color:#1769B1}
   .sgt--location-first .sgt-onedoc summary::-webkit-details-marker{display:none}
@@ -371,6 +416,12 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
   .sgt--location-first .sgt-onedoc-body{padding:16px 18px 18px}
   .sgt--location-first .sgt-od-sub{margin:0 0 12px;color:#61717A;font-size:13.5px;line-height:1.5}
   .sgt--location-first .sgt-onedoc .od-widget{display:block;width:100%;min-height:400px}
+  /* Seitenende: Eyebrow, offenes Widget (kein Akkordeon), Formular-Sektion weiss abgesetzt. */
+  .sgt--ende .sgt-eyebrow{display:block;font-size:12.5px;font-weight:750;letter-spacing:.11em;text-transform:uppercase;color:#61717A;margin:0 0 8px}
+  .sgt--ende .sgt-sub a{color:#1769B1;font-weight:700;text-decoration:none}
+  .sgt--ende-onedoc .sgt-onedoc-open{background:#fff;border:1px solid #DDE6EC;border-radius:17px;padding:16px 18px 18px}
+  .sgt--ende-onedoc .od-widget{display:block;width:100%;min-height:400px}
+  .sgt--ende-form{background:#fff}
   .sgt--location-first .sgt-od-fallback{margin:10px 0 0;font-size:13px;color:#61717A}
   .sgt--location-first .sgt-od-fallback a{color:#1769B1;font-weight:700;text-decoration:none}
   .sg-location-team{background:#fff;padding:clamp(38px,4vw,60px) 16px}
@@ -435,6 +486,7 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
     .lsr-hero.hlsg .lsr-quick a{color:var(--brand-black,#020B10);text-decoration:underline;text-underline-offset:3px}
   }
 </style>
+{teil !== 'ende' && (<>
 <script is:inline>
   // Preserve old direct links (#online-buchen) used by OneDoc, FAQ, banners,
   // and clinic dropdowns, even though the embedded calendar is now optional.
@@ -473,3 +525,4 @@ sub('<p class="kf-legal kf-legal--kurz">', '<p class="sgf-note">Unverbindlich. B
     if (ta && !ta.value) { ta.value = c.anliegen; try { ta.dispatchEvent(new Event('input', { bubbles: true })); } catch (e) {} }
   })();
 </script>
+</>)}

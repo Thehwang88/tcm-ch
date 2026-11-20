@@ -58,11 +58,25 @@ const order = [
   'class="sgt-practice-photo"',
   'class="up-map"',
   'id="sg-weiterlesen"',
+  // 20.11.2026: Seitenende (slot body-insert): offenes zweites OneDoc-Widget, dann zweites Formular (sg-ende), dann Concierge.
+  'id="online-buchen-unten"',
+  'id="od-widget-7a0d6d1be45b44d5cbe90243187f9e7c30949c5dd23682bf770e7b5808674794-2"',
+  'id="anfrage-unten"',
+  'data-kf-instance="sg-ende"',
+  'care-concierge',
 ].map((x) => html.indexOf(x));
 assert(order.every((p) => p >= 0), 'Missing order marker');
 assert(order.every((p, i) => !i || p > order[i - 1]), 'SG hero -> form -> team -> therapy -> FAQ -> practice -> Weiterlesen order changed');
 assert(html.indexOf('class="sgt sgt--location-first sgt--formular"') < html.indexOf('id="page-standort"') && html.indexOf('id="page-standort"') < html.indexOf('sgt--praxis'), 'Form section precedes #page-standort; practice section lives inside it');
 assert((html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"/g) || []).length === 1, 'SG regular page must contain exactly one canonical inquiry form');
+assert((html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-ende"/g) || []).length === 1, 'SG end-of-page form (sg-ende) exactly once');
+assert((html.match(/window\.addEventListener\("message"/g) || []).length === 1, 'OneDoc message listener exactly once');
+assert((html.match(/<iframe class="od-widget"/g) || []).length === 2 && html.includes('loading="lazy"'), 'Two OneDoc iframes (top accordion + open end-of-page), second lazy');
+assert(html.includes('fr[k].contentWindow===e.source'), 'OneDoc height routed per widget via e.source');
+{ const ids = [...html.matchAll(/ id="([^"]+)"/g)].map((m) => m[1]); const dup = ids.filter((x, i) => ids.indexOf(x) !== i); assert(dup.length === 0, 'Duplicate ids: ' + [...new Set(dup)].join(', ')); }
+for (const s of ['<span class="sgt-eyebrow">Online-Buchung</span>', 'Bereit für deinen Termin?', '<span class="sgt-eyebrow">Anfrage senden</span>', 'Gratis Ersttermin anfragen</h2>', 'Schick uns dein Anliegen und wir melden uns bei dir.'])
+  assert(html.includes(s), 'End-of-page section missing: ' + s);
+assert(!/24[–-]48|Slots begrenzt|Ärztlich begleitet|Kassendeckung vorab/.test(html), 'Old claims must not return');
 const sgForm = html.match(/<div class="inline-form-card kf[^>]*data-kf-instance="sg-hero"[\s\S]*?<script src="\/kontakt-form\.js(?:\?v=[^"]+)?"/)?.[0];
 assert(sgForm, 'SG canonical form markup should be present');
 // 20.11.2026: Gratis-Termin (checkin) als Tab A zuerst und vorausgewählt; Ersttermin mit Behandlung als Tab B wählbar.

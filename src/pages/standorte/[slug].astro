@@ -531,6 +531,8 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
     {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstBannerSG />}
     {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} />)}
     {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstSheetSG sitekey={turnstileSitekey} />}
+    {/* Seitenende St. Gallen (nach dem Leaf-Body inkl. «Über die Praxis», vor dem Concierge): offenes OneDoc-Widget + zweites Formular. */}
+    {slug === 'st-gallen' && !first30.showCampaign && <HeroStandardSG sitekey={turnstileSitekey} teil="ende" slot="body-insert" />}
     <ClinicConcierge slot="pre-footer" locationName={conciergeName} status={conciergeStatus} />
   </SpaPage>
 )}
