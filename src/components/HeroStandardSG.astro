@@ -77,14 +77,64 @@ const card = renderKontaktForm({
         <div><span class="lsr-check" aria-hidden="true">✓</span> EMR-/ASCA-anerkannte Fachpersonen · Zusatzversicherung je nach Police</div>
       </div>
       <div class="lsr-ctas">
-        <a href="#termin-formular" class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" data-booking-sheet="sg" data-booking-wish="behandlung" data-kf-terminart="behandlung" data-care-cta="hero-ersttermin">Termin anfragen</a>
-        <a href="#sg-standort" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero" data-care-cta="hero-anfahrt">Praxis &amp; Anfahrt</a>
+        <a href="#termin-formular" class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" data-booking-sheet="sg" data-booking-wish="checkin" data-kf-terminart="checkin" data-care-cta="hero-checkin">30 Min. gratis Termin anfragen ⚡️</a>
+        <a href="#online-buchen" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero" data-onedoc-sheet data-care-cta="hero-onedoc">Termin online buchen</a>
       </div>
+      <p class="lsr-quick">
+        <a href="tel:+41775236122" data-kf-tel data-care-cta="hero-tel">Anrufen</a><span aria-hidden="true">·</span><a href={SG_WA} target="_blank" rel="noopener noreferrer" data-care-cta="hero-wa">WhatsApp</a><span aria-hidden="true">·</span><a href="#sg-standort" data-care-cta="hero-anfahrt">Anfahrt</a>
+      </p>
       <a class="lsr-tlink" href="#sg-therapien" data-sg-therapie-link hidden></a>
     </div>
     <HeroMedia id="sg-hero-media" />
   </div>
 </section>
+
+{/* OneDoc-Popup (gleiche Dialog-Hülle wie #tcm-booking-sheet). Das bestehende Embed aus #online-buchen wird beim Öffnen
+    hineinverschoben (Widget lädt erst dann, Listener/Tracking bleiben) und beim Schliessen zurückgestellt. */}
+<dialog id="sg-onedoc-sheet" class="tcm-booking-sheet" aria-labelledby="sg-onedoc-sheet-title">
+  <div class="tcm-booking-panel">
+    <div class="tcm-booking-head">
+      <span class="tcm-booking-grip" aria-hidden="true"></span>
+      <div class="tcm-booking-heading">
+        <span class="tcm-booking-overline">TCM.ch St. Gallen · OneDoc</span>
+        <h2 id="sg-onedoc-sheet-title">Termin online buchen.</h2>
+        <p>Freie Termine direkt im Kalender der Praxis wählen.</p>
+      </div>
+      <button type="button" class="tcm-booking-close" aria-label="Online-Buchung schliessen" data-onedoc-close autofocus>×</button>
+    </div>
+    <div class="tcm-booking-scroll" tabindex="-1">
+      <div class="tcm-booking-content" data-onedoc-content></div>
+    </div>
+  </div>
+</dialog>
+<script is:inline>
+(function(){
+  var d=document.getElementById('sg-onedoc-sheet'),slot=d&&d.querySelector('[data-onedoc-content]');
+  if(!d||!slot||!d.showModal)return;
+  var origin=null,trigger=null,body=null;
+  document.addEventListener('click',function(e){
+    var btn=e.target&&e.target.closest?e.target.closest('[data-onedoc-sheet]'):null;
+    if(!btn||e.defaultPrevented||e.button||e.ctrlKey||e.metaKey||e.altKey||e.shiftKey||d.open)return;
+    body=document.querySelector('#online-buchen .sgt-onedoc-body');
+    if(!body||!body.parentNode)return;
+    e.preventDefault();
+    origin=document.createComment('onedoc-sheet-origin');
+    body.parentNode.insertBefore(origin,body);
+    slot.appendChild(body);
+    trigger=btn;
+    try{d.showModal();}catch(err){origin.replaceWith(body);origin=null;trigger=null;return;}
+    var s=d.querySelector('.tcm-booking-scroll');if(s)s.scrollTop=0;
+    var c=d.querySelector('[data-onedoc-close]');if(c)c.focus({preventScroll:true});
+  },true);
+  d.addEventListener('click',function(e){if(e.target===d||e.target.closest('[data-onedoc-close]'))d.close();});
+  d.addEventListener('close',function(){
+    if(origin&&origin.parentNode&&body)origin.replaceWith(body);
+    origin=null;body=null;
+    if(trigger&&trigger.isConnected)trigger.focus({preventScroll:true});
+    trigger=null;
+  });
+})();
+</script>
 
 {/* Hwang-inspired: real clinic information first (exactly once), booking alongside.
     On mobile the location facts lead; the Hero booking CTA still jumps to the form. */}
@@ -139,6 +189,14 @@ const card = renderKontaktForm({
   .lsr-hero.hlsg .lsr-tert{display:none!important}
   .lsr-hero.hlsg .lsr-tlink{display:inline-block;font-size:14px;font-weight:700;color:var(--blue,#1769B1);margin-top:9px}
   .lsr-hero.hlsg .lsr-tlink[hidden]{display:none!important}
+  .lsr-hero.hlsg .lsr-quick{display:flex;flex-wrap:wrap;align-items:center;gap:0 10px;margin:-2px 0 0;font-size:14px;font-weight:700;line-height:1.5;color:#61717A}
+  .lsr-hero.hlsg .lsr-quick a{color:var(--blue,#1769B1);text-decoration:none}
+  .lsr-hero.hlsg .lsr-quick a:hover{text-decoration:underline}
+  #sg-onedoc-sheet .sgt-onedoc-body{padding:4px 0 0}
+  #sg-onedoc-sheet .sgt-od-sub{margin:0 0 12px;color:#61717A;font-size:13.5px;line-height:1.5}
+  #sg-onedoc-sheet .od-widget{display:block;width:100%;min-height:400px}
+  #sg-onedoc-sheet .sgt-od-fallback{margin:10px 0 0;font-size:13px;color:#61717A}
+  #sg-onedoc-sheet .sgt-od-fallback a{color:#1769B1;font-weight:700;text-decoration:none}
 
   .sgt--location-first{font-family:var(--font-sans,'Figtree',system-ui,sans-serif);background:#F7F8F8;padding:clamp(24px,3.5vw,42px) 16px}
   .sgt--location-first .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
@@ -283,6 +341,7 @@ const card = renderKontaktForm({
     .lsr-hero.hlsg .lsr-h1,.lsr-hero.hlsg .lsr-lead{max-width:none}
     .lsr-hero.hlsg .lsr-ctas{display:flex;flex-direction:column;gap:9px}
     .lsr-hero.hlsg .lsr-ctas a{display:flex;width:100%;min-height:50px;justify-content:center}
+    .lsr-hero.hlsg .lsr-quick{justify-content:center;margin-top:2px}
     .lsr-hero.hlsg .lsr-btn-primary{background:var(--tcm-primary,#1769B1)!important;color:#fff!important;border-color:var(--tcm-primary,#1769B1)!important}
     .lsr-hero.hlsg .lsr-trust>div{font-size:12.5px}
     .sgt--location-first{padding:23px 16px 28px}
