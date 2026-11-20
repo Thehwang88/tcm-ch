@@ -14,7 +14,6 @@ const no = (x, why=x) => assert(!html.includes(x), 'St. Gallen still has: ' + wh
   'Unsere Praxis verbindet klassische TCM mit moderner Diagnostik',
   'class="sgt sgt--location-first sgt--formular"', 'class="sgt-wrap sgt-grid sgt-grid--single"',
   'class="sgt sgt--location-first sgt--praxis"', 'class="sgt-practice sgt-praxis-media"',
-  'class="lsr-info">Oberer Graben 22, 9000 St. Gallen · Mo-Fr 07:30-19:30 · Sa 07:30-16:30<',
   'class="sgt-network-proof"',
   'TCM.ch Netzwerk · standortübergreifend',
   'Patientenbewertungen',
@@ -71,9 +70,9 @@ const sgRadios = [...sgForm.matchAll(/<input class="kf-radio" type="radio" name=
 assert(sgRadios.length === 2 && /value="checkin"/.test(sgRadios[0]) && /value="behandlung"/.test(sgRadios[1]), 'Tab A (checkin) first, Tab B (behandlung) second');
 assert(sgRadios.every((r) => !/\schecked(?:\s|>)/.test(r)), 'SSR leaves radios neutral: JS applies data-kf-default, explicit deep links win');
 assert(/<span class="kf-opt-t">30 Min\. gratis<\/span><\/span><\/label>/.test(sgForm) && /<span class="kf-opt-t">Ersttermin mit Behandlung<\/span><\/span><\/label>/.test(sgForm), 'Tabs carry only their labels');
-for (const s of ['Dein erster Termin ist <em class="sgf-accent">gratis</em>', '30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.', 'Erste Akupunktur noch in derselben Sitzung', 'data-kf-submit-checkin="Gratis Erstgespräch anfragen"', 'data-kf-submit-behandlung="Ersttermin anfragen"', 'placeholder="Name"', 'placeholder="Handynummer"', 'placeholder="E-Mail"', 'placeholder="Wunschzeit (z. B. Do Nachmittag)"', 'data-appearance="interaction-only"', 'Unverbindlich. Bestätigung per WhatsApp oder Telefon.', 'data-kf-ok-checkin="'])
+for (const s of ['Dein erster Termin ist <em class="sgf-accent">gratis</em>', '30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.', 'Erste Akupunktur noch in derselben Sitzung', 'data-kf-submit-checkin="Gratis Erstgespräch anfragen"', 'data-kf-submit-behandlung="Ersttermin anfragen"', 'placeholder="Name *" required aria-required="true"', 'placeholder="Handynummer *" required aria-required="true"', 'placeholder="E-Mail *" required aria-required="true"', 'placeholder="Wunschzeit (optional, z. B. Do Nachmittag)">', '<p class="kf-req"><span aria-hidden="true">*</span> Pflichtfeld</p>', 'data-appearance="interaction-only"', 'Unverbindlich. Bestätigung per WhatsApp oder Telefon.', 'data-kf-ok-checkin="'])
   assert(sgForm.includes(s), 'SG form missing: ' + s);
-for (const s of ['name="anliegen"', 'Pflichtfeld', 'Wir rufen dich zur Terminvereinbarung zurück.', 'Direkt starten oder TCM zuerst kennenlernen.', 'TCM zuerst kennenlernen oder direkt starten.', 'Ohne Behandlung'])
+for (const s of ['name="anliegen"', 'class="lsr-info"', 'Wir rufen dich zur Terminvereinbarung zurück.', 'Direkt starten oder TCM zuerst kennenlernen.', 'TCM zuerst kennenlernen oder direkt starten.', 'Ohne Behandlung'])
   assert(!sgForm.includes(s), 'SG form still has: ' + s);
 assert(!/ohne Behandlung|nur kennenlernen|gratis kennenlernen/i.test(html.slice(html.indexOf('<section class="lsr-hero hlsg">'))), 'SG offer copy: free first appointment includes a first acupuncture session everywhere');
 const formJs = readFileSync('public/kontakt-form.js', 'utf8');
