@@ -37,7 +37,12 @@ for(const {slug,html} of clinicPages){
     check(!html.includes('std-sg-layout'),slug,'Luzern has no confirmed address; do not fabricate active clinic facts');
   }
   if(!['st-gallen','kreuzlingen','bottighofen','luzern'].includes(slug)){
-    check(html.includes('std-sg-layout'),slug,'new SG-standard location-first layout missing');
+    // 20.11 Zürich CRO pilot uses HeroSg + TerminSg + PraxisSg (SG-style split sections),
+    // while the other migrated clinics still use the combined ClinicLocationFirst wrapper.
+    const zhPilot = ['zuerich-bahnhofstrasse','zuerich-hoengg','zuerich-oerlikon'].includes(slug);
+    check(zhPilot
+      ? html.includes('std-sg-hero') && html.includes('sgt--formular') && html.includes('sgt--praxis')
+      : html.includes('std-sg-layout'),slug,'new SG-standard location-first layout missing');
     check(html.includes('sgt-fact-icon'),slug,'clinic facts should have unboxed blue icons');
     check(html.includes('class="sg-cro-grid"'),slug,'compact therapies / symptoms missing');
     check(html.includes('href="/location-sg-standard.css"'),slug,'shared SG layout CSS missing');
