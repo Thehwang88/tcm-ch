@@ -29,8 +29,7 @@ const pictureSet = (variant: 'home'|'about'|'location', localPhoto?: string, loc
     : [architectureTile(architecture.hanokAndModern, 'heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Unsere Menschen', 'heritage-tile--people'),
        tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Hwang-Logo', 'Praxis Hwang · Schweiz seit 2012', 'heritage-tile--hwang'),
-       tilePhoto(koreanCorridor, 'Lichtdurchfluteter Innenraum im Wonnam-Tempel mit Holzlamellen und geschwungener Wand', 'Seoul · Moderne trifft Tradition', 'heritage-tile--corridor'),
-       tilePhoto('/images/team-hero.jpg', 'Das Team von TCM.ch', 'Die nächste Generation', 'heritage-tile--team')];
+       tilePhoto(koreanCorridor, 'Lichtdurchfluteter Innenraum im Wonnam-Tempel mit Holzlamellen und geschwungener Wand', 'Seoul · Moderne trifft Tradition', 'heritage-tile--corridor')];
   return `<div class="${group}" aria-label="Fotogalerie zu Korea, Praxis Hwang und TCM.ch">${cards.join('')}</div>`;
 };
 export const homeHeritageHtml = `<section class="heritage-story heritage-story--home" id="unsere-geschichte" aria-labelledby="heritage-home-title">
