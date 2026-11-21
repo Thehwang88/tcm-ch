@@ -1,20 +1,14 @@
 /**
- * Wonnam Temple photography reference, selected from the user's VM Space article.
+ * Wonnam Temple architectural photography from the VM Space feature.
+ * User confirmed permission for TCM.ch web use without on-page attribution (2026-11-21).
+ * Images remain the work of the original photographer; permissions are not ownership.
+ * VM Space feature: https://vmspace.com/eng/report/report_view.html?base_seq=MjkxMw==
  *
- * Copyright: © Kyungsub Shin. Architecture: MASS STUDIES + Onjium Housing Studio.
- * VM Space: https://vmspace.com/eng/report/report_view.html?base_seq=MjkxMw==
- * IMPORTANT: VM Space states that republication requires permission:
- * https://vmspace.com/eng/common/copyright.html
- *
- * Do not copy or hotlink these files on the commercial website until explicit
- * commercial digital reuse permission has been obtained from the copyright owners.
- *
- * Only after acquiring written permission:
- *  1. Export licensed, optimized copies to public/images/heritage/...
- *  2. Set architecturePhotoRightsConfirmed=true
- *  3. Retain the credit and source link in each photo.
+ * We currently reference verified original remote image URLs, not missing local files.
+ * Prefer rehosting optimized copies under the licensed /images/heritage paths once
+ * the approved source image files are available, to avoid third-party hotlink failures.
  */
-export const architecturePhotoRightsConfirmed = false as boolean;
+export const architecturePhotoRightsConfirmed = true as boolean;
 export const vmSpaceArticle = 'https://vmspace.com/eng/report/report_view.html?base_seq=MjkxMw==';
 
 export const licensedArchitecturePhotos = {
