@@ -1,6 +1,7 @@
 // Shared visual storytelling modules for homepage, About and clinic pages.
 // No invented archival family photography or third-party architecture rights.
-// Photo assets are already used elsewhere on tcm.ch; Korean architecture is an original SVG illustration.
+// Original artwork remains as the default until written image reuse rights are confirmed.
+import { architecturePhotoRightsConfirmed, licensedArchitecturePhotos, vmSpaceArticle } from '../data/heritage-architecture-rights';
 const esc = (v: string) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const tilePhoto = (src: string, alt: string, label: string, extra = '') =>
@@ -26,23 +27,34 @@ const bridgeTile = (extra = '') => `<figure class="heritage-tile heritage-tile--
 <p>Tradition<br><em>weitergedacht.</em></p>
 <figcaption>Gestaltungsmotiv: Von Korea in die Schweiz</figcaption></figure>`;
 
+// The VM Space assets are never copied or rendered without confirmed rights.
+const licensedTile = (photo: { intendedLocalSrc: string; alt: string; label: string }, extra = '') =>
+  `<figure class="heritage-tile heritage-tile--licensed ${extra}"><img src="${esc(photo.intendedLocalSrc)}" alt="${esc(photo.alt)}" loading="lazy" decoding="async" width="1000" height="750"><figcaption>${esc(photo.label)} · Foto © Kyungsub Shin · <a href="${esc(vmSpaceArticle)}" target="_blank" rel="noopener noreferrer">VM Space</a></figcaption></figure>`;
+
+const koreaArchitectureTile = (extra = '') => architecturePhotoRightsConfirmed
+  ? licensedTile(licensedArchitecturePhotos.hanokAndModern, extra)
+  : koreaTile(extra);
+const modernArchitectureTile = () => architecturePhotoRightsConfirmed
+  ? licensedTile(licensedArchitecturePhotos.circleSanctuary)
+  : bridgeTile();
+
 const pictureSet = (variant: 'home'|'about'|'location', localPhoto?: string, localAlt?: string) => {
   const group = variant === 'location' ? 'heritage-gallery heritage-gallery--compact' : 'heritage-gallery heritage-gallery--' + variant;
   const cards = variant === 'location'
-    ? [koreaTile('heritage-tile--first'),
+    ? [koreaArchitectureTile('heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve mit dem Team bei einem TCM.ch Fotoshooting', 'Menschen hinter TCM.ch'),
        tilePhoto(localPhoto || '/images/team.webp?v=2', localAlt || 'Teamfoto des TCM.ch Netzwerks', localPhoto ? 'Die Praxis heute' : 'Unser Netzwerk')]
     : variant === 'home'
-    ? [koreaTile('heritage-tile--first'),
+    ? [koreaArchitectureTile('heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und das TCM.ch Team beim Fotoshooting', 'Die Menschen'),
-       bridgeTile(),
+       modernArchitectureTile(),
        tilePhoto('/images/standort-stgallen.webp', 'Einblick in die TCM.ch Praxis in St. Gallen', 'Die Praxis heute'),
        tilePhoto('/images/team.webp?v=2', 'Gemeinschaftliches Teamfoto von TCM.ch', 'Unser Netzwerk')]
-    : [koreaTile('heritage-tile--first'),
+    : [koreaArchitectureTile('heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Die Menschen'),
-       bridgeTile(),
+       modernArchitectureTile(),
        tilePhoto('/images/team.webp?v=2', 'Teamfoto von TCM.ch', 'Unser Team'),
-       tilePhoto('/images/standort-stgallen.webp', 'Empfangsbereich der TCM.ch Praxis St. Gallen', 'Unsere Praxen'),
+       architecturePhotoRightsConfirmed ? licensedTile(licensedArchitecturePhotos.timberCorridor) : tilePhoto('/images/standort-stgallen.webp', 'Empfangsbereich der TCM.ch Praxis St. Gallen', 'Unsere Praxen'),
        tilePhoto('/images/team-hero.jpg', 'TCM.ch Team im gemeinsamen Gespräch', 'Die nächste Generation')];
   return `<div class="${group}" aria-label="Bilder und Illustrationen zur Geschichte von TCM.ch">${cards.join('')}</div>`;
 };
