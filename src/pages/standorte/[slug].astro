@@ -51,6 +51,7 @@ import AnfrageKarte from '../../components/standort/AnfrageKarte.astro';
 import TerminSektion from '../../components/standort/TerminSektion.astro';
 import ClinicLocationFirst from '../../components/standort/ClinicLocationFirst.astro';
 import { locationTeamHtml } from '../../lib/location-team';
+import { locationHeritageHtml } from '../../lib/heritage-story';
 import CompactTherapien from '../../components/standort/CompactTherapien.astro';
 import CompactBeschwerden from '../../components/standort/CompactBeschwerden.astro';
 import Faq from '../../components/standort/Faq.astro';
@@ -452,6 +453,17 @@ const data = migrated as Standort;
 const conciergeClinic = clinics.find((c) => c.id === slug);
 const conciergeName = conciergeClinic?.name ?? (migrated?.stadt ?? slug!);
 const conciergeStatus = conciergeClinic?.status ?? (migrated?.review ? 'review' : migrated?.planned ? 'planned' : 'operational');
+// Reusable heritage section: only actual operating clinics, never waitlists or unconfirmed addresses.
+// Insert without touching the lead/booking/FAQ components or tracking attributes.
+const heritageCity = migrated?.stadt ?? conciergeClinic?.city ?? conciergeName;
+const heritageImage = conciergeClinic?.bild?.src;
+const heritageAlt = conciergeClinic?.bild?.alt;
+const heritageLocation = locationHeritageHtml(heritageCity, heritageImage, heritageAlt);
+if (!migrated && conciergeStatus === 'operational') {
+  const anchor = slug === 'st-gallen' ? '<section class="section sg-weiterlesen"' : '<section class="related-section">';
+  if (spaBody.split(anchor).length !== 2) throw new Error(`standort ${slug}: unique heritage insertion anchor not found`);
+  spaBody = spaBody.replace(anchor, heritageLocation + anchor);
+}
 // Partner-Umleitung (Marktgasse bis zur Eröffnung 2027 → Praxis Hwang): Umleitungskarte statt Anfragebox/Formular/OneDoc;
 // Karte trägt den Sticky-CTA-Hinweis (StickyCtaBar liest data-sticky-cta-href/-label).
 const PU = migrated?.partnerUmleitung;
@@ -497,6 +509,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         <Fragment set:html={locationTeamHtml(data.slug, data.stadt)} />
         <CompactTherapien data={data} />
         <CompactBeschwerden data={data} />
+        {!data.planned && !data.review && !data.partnerUmleitung && <Fragment set:html={heritageLocation} />}
         <Faq data={data} />
         {sgPilot && <PraxisSg data={data}><UeberPraxis data={data} locationFirst ohneProof /></PraxisSg>}
         <Fragment set:html={weiterlesenHtml} />

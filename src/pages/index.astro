@@ -12,6 +12,7 @@ import BookingSheet from '../components/BookingSheet.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
+import { homeHeritageHtml } from '../lib/heritage-story';
 import { cardHref, clinicById } from '../lib/standort-card';
 import { clinics, mapsDirectionsUrl } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
@@ -127,7 +128,9 @@ const homeHtmlCards = homeHtmlBase
       .map(homeClinicCardHtml).join(''));
 
 if (/<!--sc:/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig gerendert');
-const homeHtml = homeHtmlCards;
+const homeHeritageAnchor = '<section class="section svc-section" id="s-behandlungen">';
+if (homeHtmlCards.split(homeHeritageAnchor).length !== 2) throw new Error('index.astro: heritage must appear once after trust section and before therapies');
+const homeHtml = homeHtmlCards.replace(homeHeritageAnchor, homeHeritageHtml + homeHeritageAnchor);
 ---
 <!doctype html>
 <html lang="de-CH">
@@ -145,6 +148,7 @@ const homeHtml = homeHtmlCards;
     <link rel="stylesheet" href="/standort-card.css" />
     <link rel="stylesheet" href="/warm-clinic.css" />
     <link rel="stylesheet" href="/home-trust.css" />
+    <link rel="stylesheet" href="/heritage-story.css" />
     <script is:inline src="/home-trust-motion.js" defer></script>
     <link rel="stylesheet" href="/home-conditions.css" />
     <link rel="stylesheet" href="/free-intro-section.css" />
