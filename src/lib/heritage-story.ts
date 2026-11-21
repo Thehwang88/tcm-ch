@@ -31,7 +31,7 @@ const pictureSet = (variant: 'home'|'about'|'location', localPhoto?: string, loc
   const cards = variant === 'location'
     ? [koreaTile('heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve mit dem Team bei einem TCM.ch Fotoshooting', 'Menschen hinter TCM.ch'),
-       tilePhoto(localPhoto || '/images/standort-stgallen.webp', localAlt || 'Einblick in eine TCM.ch Praxis', 'TCM.ch heute')]
+       tilePhoto(localPhoto || '/images/team.webp?v=2', localAlt || 'Teamfoto des TCM.ch Netzwerks', localPhoto ? 'Die Praxis heute' : 'Unser Netzwerk')]
     : variant === 'home'
     ? [koreaTile('heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und das TCM.ch Team beim Fotoshooting', 'Die Menschen'),
