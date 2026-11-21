@@ -7,6 +7,7 @@ import rawBody from '../data/ueber-uns-body.html?raw';
 import homeBody from '../data/home-body.html?raw';
 import { teamGridHtml } from '../data/therapeuten';
 import { upgradeLegacyForms } from '../lib/kontakt-form';
+import { aboutHeritageHtml } from '../lib/heritage-story';
 
 const between = (start: string, end: string) => {
   const a = rawBody.indexOf(start), b = rawBody.indexOf(end);
@@ -21,9 +22,9 @@ if (!intro.includes('<div style="margin-top:20px;max-width:760px">')) throw new 
 intro = intro.slice(0, intro.indexOf('<div style="margin-top:20px;max-width:760px">'))
   + '</div></div>';
 intro = intro
-  .replace('Ein junges Team. Eine klare Mission.<br><em>TCM, wie sie sein sollte.</em>', 'Persönliche TCM.<br><em>Echte Menschen.</em>')
+  .replace('Ein junges Team. Eine klare Mission.<br><em>TCM, wie sie sein sollte.</em>', 'Vier Generationen.<br><em>Eine neue Ära der TCM.</em>')
   .replace('<p class="sub-desc">Wer wir sind, woran wir glauben, und warum wir TCM in der Schweiz neu denken.</p>',
-    '<p class="sub-desc">Lerne unser Team kennen und finde die passende Praxis.</p>'
+    '<p class="sub-desc">Von unseren Wurzeln in Korea über die Gründung der Praxis Hwang 2012 in Kreuzlingen bis zu TCM.ch heute: Wir bewahren unsere Geschichte und gestalten die nächste Generation der TCM in der Schweiz.</p>'
     + '<div class="uu-cro-actions"><a class="uu-cro-btn uu-cro-btn--primary" href="/kontakt/?von=/ueber-uns/">Termin anfragen <span aria-hidden="true">→</span></a><a class="uu-cro-btn uu-cro-btn--secondary" href="/standorte/">Standort finden</a></div>')
   .replace('alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen"', 'alt="Einblicke in das TCM.ch Team"')
   .replace(/<button class="back-btn"[^>]*>[\s\S]*?<\/button>/, '');
@@ -72,9 +73,9 @@ const patientSections = '<div id="home-content" class="uu-cro-home-sections">' +
 // section, media-logo strip, negative comparison and duplicated CEO block
 // are intentionally not in the patient journey.
 // Short, patient-first About flow: team, genuine video, founder, then proof/offer/form.
-const body = [intro, team, behind, founder, patientSections, '</section>'].join('');
-const title = 'Über uns – Unser Team & unsere Geschichte | TCM.ch';
-const description = 'Lerne die Menschen hinter TCM.ch kennen, entdecke unser Team und finde deine Praxis. Jetzt persönlich einen Termin anfragen.';
+const body = [intro, aboutHeritageHtml, team, behind, founder, patientSections, '</section>'].join('');
+const title = 'Vier Generationen TCM – Unsere Geschichte & Team | TCM.ch';
+const description = 'Von Korea in die Schweiz: Vier Generationen Familientradition, Praxis Hwang seit 2012 und die nächste Generation der TCM. Entdecke unsere Geschichte und unser Team.';
 const schema = { '@context': 'https://schema.org', '@type': 'AboutPage', name: title, url: 'https://tcm.ch/ueber-uns/', inLanguage: 'de-CH', isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } };
 ---
 <SpaPage title={title} description={description} path="/ueber-uns" body={body} schema={schema}>
