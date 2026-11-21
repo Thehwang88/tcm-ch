@@ -3,33 +3,41 @@
 import { licensedArchitecturePhotos as architecture } from '../data/heritage-architecture-rights';
 const esc = (v: string) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-const tilePhoto = (src: string, alt: string, label: string, extra = '') =>
-  `<figure class="heritage-tile ${extra}"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async" width="720" height="520"><figcaption>${esc(label)}</figcaption></figure>`;
+const tilePhoto = (src: string, alt: string, label: string, extra = '') => {
+  // Width/height track each source orientation for responsive browser layout.
+  const portrait = extra.includes('heritage-tile--corridor');
+  const reception = extra.includes('heritage-tile--hwang');
+  const width = portrait ? 667 : reception ? 1200 : 720;
+  const height = portrait ? 1000 : reception ? 800 : 520;
+  return `<figure class="heritage-tile ${extra}"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async" width="${width}" height="${height}"><figcaption>${esc(label)}</figcaption></figure>`;
+};
 
 const architectureTile = (photo: { originalReferenceUrl: string; alt: string; label: string }, extra = '') =>
   `<figure class="heritage-tile heritage-tile--licensed ${extra}"><img src="${esc(photo.originalReferenceUrl)}" alt="${esc(photo.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="1000" height="750"><figcaption>${esc(photo.label)} · Wonnam-Tempel, Seoul</figcaption></figure>`;
 
+// Original, publicly hosted photo from Praxis Hwang's own Kreuzlingen gallery.
+const hwangReception = 'https://cdn.prod.website-files.com/67b0345c66f48f117fbcc562/685ba70fc3905327089d7168_tinywow_579A1800_81910170.webp';
+// Original Wonnam Temple corridor photograph, also selected by the user.
+const koreanCorridor = architecture.timberCorridor.originalReferenceUrl;
+
 const pictureSet = (variant: 'home'|'about'|'location', localPhoto?: string, localAlt?: string) => {
   const group = variant === 'location' ? 'heritage-gallery heritage-gallery--compact' : 'heritage-gallery heritage-gallery--' + variant;
+  // Do not duplicate crops or add decorative architecture the user has explicitly removed.
   const cards = variant === 'location'
     ? [architectureTile(architecture.hanokAndModern, 'heritage-tile--first'),
-       tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Menschen hinter TCM.ch'),
+       tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Holzverkleidung und Hwang-Logo', 'Praxis Hwang · Kreuzlingen', 'heritage-tile--hwang'),
        tilePhoto(localPhoto || '/images/team.webp?v=2', localAlt || 'Teamfoto des TCM.ch Netzwerks', localPhoto ? 'Die Praxis heute' : 'Unser Netzwerk')]
     : variant === 'home'
     ? [architectureTile(architecture.hanokAndModern, 'heritage-tile--first'),
-       tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Unsere Menschen'),
-       architectureTile(architecture.circleSanctuary),
-       tilePhoto('/images/standort-stgallen.webp', 'Einblick in die TCM.ch Praxis in St. Gallen', 'TCM.ch heute'),
-       architectureTile(architecture.contemporaryFacade)]
+       tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Unsere Menschen', 'heritage-tile--people'),
+       tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Hwang-Logo', 'Praxis Hwang · 2012', 'heritage-tile--hwang'),
+       tilePhoto(koreanCorridor, 'Lichtdurchfluteter Innenraum mit geschwungener Wand und Holzlamellen im Wonnam-Tempel Seoul', 'Tradition neu gedacht · Seoul', 'heritage-tile--corridor')]
     : [architectureTile(architecture.hanokAndModern, 'heritage-tile--first'),
-       tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Die Menschen'),
-       architectureTile(architecture.circleSanctuary),
-       architectureTile(architecture.contemporaryFacade),
-       architectureTile(architecture.timberCorridor),
-       tilePhoto('/images/team-hero.jpg', 'Das Team von TCM.ch', 'Unsere neue Generation')];
-  return `<div class="${group}" aria-label="Fotogalerie zu TCM.ch, den koreanischen Wurzeln und zeitgenössischer Architektur in Seoul">${cards.join('')}</div>`;
+       tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Unsere Menschen', 'heritage-tile--people'),
+       tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Hwang-Logo', 'Praxis Hwang · Schweiz seit 2012', 'heritage-tile--hwang'),
+       tilePhoto(koreanCorridor, 'Lichtdurchfluteter Innenraum im Wonnam-Tempel mit Holzlamellen und geschwungener Wand', 'Seoul · Moderne trifft Tradition', 'heritage-tile--corridor')];
+  return `<div class="${group}" aria-label="Fotogalerie zu Korea, Praxis Hwang und TCM.ch">${cards.join('')}</div>`;
 };
-
 export const homeHeritageHtml = `<section class="heritage-story heritage-story--home" id="unsere-geschichte" aria-labelledby="heritage-home-title">
 <div class="wrap heritage-story-inner"><div class="heritage-story-copy">
 <p class="heritage-kicker">UNSERE GESCHICHTE <span>·</span> SEIT 2012 IN DER SCHWEIZ</p>
