@@ -3,8 +3,14 @@
 import { licensedArchitecturePhotos as architecture } from '../data/heritage-architecture-rights';
 const esc = (v: string) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-const tilePhoto = (src: string, alt: string, label: string, extra = '') =>
-  `<figure class="heritage-tile ${extra}"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async" width="720" height="520"><figcaption>${esc(label)}</figcaption></figure>`;
+const tilePhoto = (src: string, alt: string, label: string, extra = '') => {
+  // Width/height track each source orientation for responsive browser layout.
+  const portrait = extra.includes('heritage-tile--corridor');
+  const reception = extra.includes('heritage-tile--hwang');
+  const width = portrait ? 667 : reception ? 1200 : 720;
+  const height = portrait ? 1000 : reception ? 800 : 520;
+  return `<figure class="heritage-tile ${extra}"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async" width="${width}" height="${height}"><figcaption>${esc(label)}</figcaption></figure>`;
+};
 
 const architectureTile = (photo: { originalReferenceUrl: string; alt: string; label: string }, extra = '') =>
   `<figure class="heritage-tile heritage-tile--licensed ${extra}"><img src="${esc(photo.originalReferenceUrl)}" alt="${esc(photo.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="1000" height="750"><figcaption>${esc(photo.label)} · Wonnam-Tempel, Seoul</figcaption></figure>`;
