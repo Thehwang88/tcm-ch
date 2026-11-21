@@ -285,8 +285,8 @@
     align-items:center;
   }
   .heritage-story--location .heritage-gallery--compact{
-    grid-template-columns:minmax(0,1.14fr) minmax(0,1fr);
-    grid-template-rows:repeat(2,clamp(166px,14.4vw,196px));
+    grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);
+    grid-template-rows:repeat(2,clamp(145px,11.7vw,170px));
     column-gap:10px;
     row-gap:10px;
   }
