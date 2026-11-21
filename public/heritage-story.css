@@ -73,3 +73,8 @@
 .heritage-story-link:focus-visible{outline:var(--focus-ring,3px solid #171B1A);outline-offset:var(--focus-ring-offset,3px)}
 .heritage-gallery .heritage-tile{box-shadow:var(--sh-sm,0 1px 3px rgba(0,0,0,.06))}
 .heritage-values-grid article{box-shadow:var(--sh-sm,0 1px 3px rgba(0,0,0,.06))}
+
+/* Credited licensed architectural photography (enabled only once rights are cleared). */
+.heritage-tile--licensed figcaption{background:linear-gradient(transparent,rgba(10,18,20,.82));line-height:1.5}
+.heritage-tile--licensed figcaption a{color:#fff!important;text-decoration:underline;text-underline-offset:3px}
+.heritage-tile--licensed figcaption a:focus-visible{outline:2px solid #fff;outline-offset:3px}
