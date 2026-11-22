@@ -5990,3 +5990,88 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
   #home-content #heroPatient .sr-hero-city-links{font-size:13px;column-gap:7px}
 }
 
+
+
+/* Three owner-provided patient-feedback metrics: overlapping circles on desktop,
+   quiet equal-height cards on mobile. Not a clinical-outcomes claim. */
+#home-content .home-feedback-results{
+  background:var(--tcm-surface);padding:clamp(42px,5vw,72px) 20px;
+  color:var(--tcm-ink);font-family:var(--font-sans);
+}
+#home-content .home-feedback-inner{max-width:1180px;margin:0 auto}
+#home-content .home-feedback-heading{text-align:center;margin:0 auto 34px;max-width:720px}
+#home-content .home-feedback-eyebrow{
+  display:block;margin-bottom:9px;font-size:11px;font-weight:800;
+  letter-spacing:.14em;color:var(--tcm-text-soft)
+}
+#home-content .home-feedback-heading h2{
+  margin:0;color:var(--tcm-ink);font-size:clamp(27px,3.4vw,40px);
+  line-height:1.13;letter-spacing:-.035em;font-weight:800
+}
+#home-content .home-feedback-heading p{
+  margin:11px 0 0;color:var(--tcm-text-soft);font-size:15px;line-height:1.5
+}
+#home-content .home-feedback-figures{
+  display:flex;align-items:center;justify-content:center;
+  isolation:isolate;max-width:1040px;margin:0 auto
+}
+#home-content .home-feedback-figure{
+  position:relative;display:flex;flex:0 1 330px;min-width:0;
+  aspect-ratio:1/1;border-radius:50%;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;padding:36px;
+  box-sizing:border-box;border:1.5px solid var(--tcm-border);
+  background:var(--tcm-bg);box-shadow:0 12px 30px rgba(23,27,26,.035)
+}
+#home-content .home-feedback-figure + .home-feedback-figure{margin-left:-24px}
+#home-content .home-feedback-figure:nth-child(2){
+  z-index:2;background:var(--tcm-surface-strong);border-color:var(--tcm-border)
+}
+#home-content .home-feedback-figure strong{
+  display:block;white-space:nowrap;color:var(--tcm-ink);
+  font-size:clamp(52px,5vw,74px);font-weight:800;letter-spacing:-.06em;line-height:1
+}
+#home-content .home-feedback-figure strong span{font-size:.57em}
+#home-content .home-feedback-figure p{
+  margin:15px 0 0;max-width:235px;font-size:clamp(15px,1.4vw,18px);
+  line-height:1.45;color:var(--tcm-text);font-weight:600
+}
+#home-content .home-feedback-disclaimer{
+  max-width:760px;margin:28px auto 0;text-align:center;
+  color:var(--tcm-muted);font-size:12px;line-height:1.55
+}
+@media(max-width:800px){
+  #home-content .home-feedback-results{padding:40px 20px}
+  #home-content .home-feedback-heading{margin-bottom:24px}
+  #home-content .home-feedback-figures{display:grid;grid-template-columns:1fr;gap:12px;max-width:530px}
+  #home-content .home-feedback-figure{
+    aspect-ratio:auto;min-height:112px;border-radius:18px;
+    flex-direction:row;justify-content:flex-start;text-align:left;
+    gap:20px;padding:20px 22px;box-shadow:none
+  }
+  #home-content .home-feedback-figure + .home-feedback-figure{margin-left:0}
+  #home-content .home-feedback-figure strong{
+    flex:0 0 128px;font-size:clamp(42px,8vw,58px)
+  }
+  #home-content .home-feedback-figure p{
+    max-width:none;margin:0;font-size:15px
+  }
+  #home-content .home-feedback-disclaimer{margin-top:20px}
+}
+@media(max-width:390px){
+  #home-content .home-feedback-figure{padding:16px;gap:13px}
+  #home-content .home-feedback-figure strong{flex-basis:103px;font-size:42px}
+  #home-content .home-feedback-figure p{font-size:13px}
+}
+@media(prefers-reduced-motion:no-preference){
+  #home-content .home-feedback-figure{
+    animation:home-feedback-arrive .65s cubic-bezier(.2,.8,.2,1) both;
+    animation-play-state:paused
+  }
+  #home-content .home-feedback-results.home-feedback-visible .home-feedback-figure{animation-play-state:running}
+  #home-content .home-feedback-results.home-feedback-visible .home-feedback-figure:nth-child(2){animation-delay:.10s}
+  #home-content .home-feedback-results.home-feedback-visible .home-feedback-figure:nth-child(3){animation-delay:.20s}
+}
+@keyframes home-feedback-arrive{
+  from{opacity:0;transform:translateY(13px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
