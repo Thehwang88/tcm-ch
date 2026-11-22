@@ -5995,11 +5995,11 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 /* Three owner-provided patient-feedback metrics: overlapping circles on desktop,
    quiet equal-height cards on mobile. Not a clinical-outcomes claim. */
 #home-content .home-feedback-results{
-  background:var(--tcm-surface);padding:clamp(42px,5vw,72px) 20px;
+  background:var(--tcm-surface);padding:clamp(36px,4vw,56px) 20px;
   color:var(--tcm-ink);font-family:var(--font-sans);
 }
 #home-content .home-feedback-inner{max-width:1180px;margin:0 auto}
-#home-content .home-feedback-heading{text-align:center;margin:0 auto 34px;max-width:720px}
+#home-content .home-feedback-heading{text-align:center;margin:0 auto 25px;max-width:720px}
 #home-content .home-feedback-eyebrow{
   display:block;margin-bottom:9px;font-size:11px;font-weight:800;
   letter-spacing:.14em;color:var(--tcm-text-soft)
@@ -6024,24 +6024,24 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 }
 #home-content .home-feedback-figure + .home-feedback-figure{margin-left:-24px}
 #home-content .home-feedback-figure:nth-child(2){
-  z-index:2;background:var(--tcm-surface-strong);border-color:var(--tcm-border)
+  z-index:2;background:var(--tcm-surface-strong);border-color:#B9B6B1;box-shadow:0 12px 32px rgba(23,27,26,.065)
 }
 #home-content .home-feedback-figure strong{
   display:block;white-space:nowrap;color:var(--tcm-ink);
-  font-size:clamp(52px,5vw,74px);font-weight:800;letter-spacing:-.06em;line-height:1
+  font-size:clamp(68px,6.2vw,92px);font-weight:800;letter-spacing:-.065em;line-height:1
 }
 #home-content .home-feedback-figure strong span{font-size:.57em}
 #home-content .home-feedback-figure p{
-  margin:15px 0 0;max-width:235px;font-size:clamp(15px,1.4vw,18px);
+  margin:12px 0 0;max-width:225px;font-size:clamp(14px,1.25vw,16px);
   line-height:1.45;color:var(--tcm-text);font-weight:600
 }
 #home-content .home-feedback-disclaimer{
-  max-width:760px;margin:28px auto 0;text-align:center;
+  max-width:760px;margin:20px auto 0;text-align:center;
   color:var(--tcm-muted);font-size:12px;line-height:1.55
 }
 @media(max-width:800px){
-  #home-content .home-feedback-results{padding:40px 20px}
-  #home-content .home-feedback-heading{margin-bottom:24px}
+  #home-content .home-feedback-results{padding:34px 20px}
+  #home-content .home-feedback-heading{margin-bottom:20px}
   #home-content .home-feedback-figures{display:grid;grid-template-columns:1fr;gap:12px;max-width:530px}
   #home-content .home-feedback-figure{
     aspect-ratio:auto;min-height:112px;border-radius:18px;
@@ -6061,6 +6061,13 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
   #home-content .home-feedback-figure{padding:16px;gap:13px}
   #home-content .home-feedback-figure strong{flex-basis:103px;font-size:42px}
   #home-content .home-feedback-figure p{font-size:13px}
+}
+
+/* Small phones: preserve the actual three-box layout and prevent numeral/text collisions. */
+@media(max-width:360px){
+  #home-content .home-feedback-figure{gap:10px;padding:15px}
+  #home-content .home-feedback-figure strong{flex-basis:96px;font-size:39px}
+  #home-content .home-feedback-figure p{font-size:12.5px;line-height:1.4}
 }
 @media(prefers-reduced-motion:no-preference){
   #home-content .home-feedback-results.home-feedback-visible .home-feedback-figure{
