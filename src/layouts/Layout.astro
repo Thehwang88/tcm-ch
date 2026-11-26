@@ -61,6 +61,8 @@ const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path]
       <link rel="stylesheet" href="/home.css" />
       <link rel="stylesheet" href="/warm-clinic.css" />
       <link rel="stylesheet" href="/kontakt-form.css" />
+      <!-- Static English pages must never inherit the legacy SPA anti-FOUC visibility lock. -->
+      <style is:inline>html:not(.ready){visibility:visible!important}html:not(.js) .reveal{opacity:1!important;transform:none!important}</style>
     </Fragment>}
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
