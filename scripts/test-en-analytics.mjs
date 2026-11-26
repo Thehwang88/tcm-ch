@@ -99,9 +99,17 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
 // T3 Contact page: sticky bar link + non-booking links
 {
   const page = await open('/en/', { width: 390, height: 844 });
+  ok(await page.evaluate(() => getComputedStyle(document.documentElement).visibility === 'visible' && getComputedStyle(document.querySelector('#heroPatient h1')).visibility === 'visible'), 'T3 English home document and hero visible');
+  ok(await page.$$eval('#s-behandlungen .svc-card', els => els.length===8), 'T3 eight treatment cards');
+  ok(await page.$$eval('#s-standorte .home-loc-card', els => els.length===6), 'T3 six city cards');
+  ok(await page.$eval('#heroPatient .tcm-santa-hat', el=>el.getAttribute('src')==='/images/seasonal/santa-hat-realistic.webp'), 'T3 shared Santa hat asset');
+  ok(await page.evaluate(() => {const d=new Date(),n=(d.getMonth()+1)*100+d.getDate();return n<1112||n>1226||document.querySelectorAll('#heroPatient .tcm-winter-snowflake').length===17;}), 'T3 seasonal snow layer');
   ok(await clickNoNav(page, '.scb-bar a.scb-primary'), 'T3 sticky primary exists');
   const ev = await events(page);
   ok(ev.length === 1 && ev[0].cta_type === 'booking' && ev[0].cta_target === '/en/contact/', `T3 sticky /en/contact/ → booking, got ${JSON.stringify(ev)}`);
+  ok(await clickNoNav(page,'#heroPatient a[data-free-intro]'), 'T3 hero intro CTA exists');
+  ok(await page.$eval('#en-home-form [name="anliegen"]', el=>el.value.includes('free 30-minute introductory appointment')), 'T3 introductory request prefilled');
+  ok((await events(page)).filter(e=>e.cta_target==='#home-contact-form').length===1, 'T3 home CTA tracked once');
   const src = fs.readFileSync(path.join(DIST, 'en/index.html'), 'utf8');
   ok((src.match(/GTM-PZ92Q3KJ/g) || []).length === 1, 'T6 one GTM container id in head');
   ok((src.match(/addEventListener\('en-form'/g) || []).length === 1, 'T6 one EnAnalytics script');
@@ -194,6 +202,11 @@ async function submit(p, formSel) {
   ok(status === 'error', 'T4 network drop → error status');
   ok(names.includes('form_submit_error') && !names.includes('form_submit_success'), `T4 network drop → error, no success, got ${JSON.stringify(names)}`);
   ok(ev.find((e) => e.event === 'form_submit_error')?.reason === 'network', 'T4 network reason');
+}
+{
+  apiMode='ok';
+  const { ev,status }=await submit('/en/','#en-home-form');
+  ok(status==='success' && ev.filter(e=>e.event==='form_submit_success').length===1,'T3 home form success tracked once');
 }
 // Zürich location mirror: verify visible hero, section ordering and canonical preselection on all three clinics.
 for(const [slug,name] of [['zuerich-oerlikon','Zürich Oerlikon'],['zuerich-bahnhofstrasse','Zürich Bahnhofstrasse'],['zuerich-hoengg','Zürich Höngg']]){
