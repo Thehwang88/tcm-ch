@@ -116,6 +116,13 @@ const mirrorConditions = [['back-pain','Back pain','Acute or persistent pain.'],
 (function(){var more=document.getElementById('en-zh-more');if(more)more.addEventListener('click',function(){document.querySelectorAll('#zh-quartiere .zhx-chip-x').forEach(function(c){c.hidden=false;c.classList.remove('zhx-chip-x')});more.hidden=true;more.setAttribute('aria-expanded','true')});document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-district]');if(!a)return;var input=document.querySelector('#en-zurich-form [name="anliegen"]');if(input&&!input.value)input.value='Preferred district: '+a.getAttribute('data-district')+'\n';});})();
 </script>
 <style is:global>
+html:has(main.akz #en-zurich-form){scroll-behavior:auto}
+main.akz #en-zurich-form .ev-form__row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+main.akz #en-zurich-form .ev-field{display:flex;flex-direction:column;min-width:0;position:relative}
+main.akz #en-zurich-form .ev-hp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+main.akz #en-zurich-form .ev-field textarea{min-height:100px!important}
+main.akz #en-zurich-form .ev-field :is(input,select,textarea){pointer-events:auto;visibility:visible}
+
 main.akz .reveal {opacity:1!important;transform:none!important}
 main.akz .zh-hero-video {opacity:1!important}
 main.akz .kk-q {cursor:pointer;list-style:none;width:100%;text-align:left}
