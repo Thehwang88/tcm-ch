@@ -58,7 +58,7 @@ const team = locationTeamHtml(id,name)
  .replaceAll('Profil ansehen','View profile (German)')
  .replace(/aria-label="Profil von ([^"]+) ansehen"/g,'aria-label="View profile of $1 (German)" hreflang="de"')
  .replaceAll('class="tmc-title"','class="tmc-title" lang="de"')
- .replaceAll('class="tmc-focus"','class="tmc-focus" lang="de"');
+ .replace(/<div class="tmc-focus">[\s\S]*?<\/div>/g, '<div class="tmc-focus">See full profile for areas of focus.</div>');
 ---
 <link rel="stylesheet" href="/location-team-carousel.css"/>
 <link rel="stylesheet" href="/location-sg-standard.css"/>
@@ -125,7 +125,7 @@ const team = locationTeamHtml(id,name)
   msg.value=prefixes[kind]+v;
   document.querySelectorAll('.en-zh-wishes button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-en-wish')===kind));});
   if(note)note.textContent=kind==='checkin'?'30 minutes, no treatment included; availability confirmed by our team.':'First consultation, assessment and treatment as appropriate.';
- });
+ },true);
 })();
 </script>
 <style is:global>
