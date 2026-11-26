@@ -1,0 +1,151 @@
+---
+import AppointmentForm from './AppointmentForm.astro';
+import ClinicConcierge from '../ClinicConcierge.astro';
+import HeroMedia from '../standort/HeroMedia.astro';
+import SgLayoutStyles from '../standort/SgLayoutStyles.astro';
+import { locationTeamHtml } from '../../lib/location-team';
+import { licensedArchitecturePhotos as architecture } from '../../data/heritage-architecture-rights';
+import { therapies, enTherapyPath } from '../../data/therapies';
+import { conditions, enConditionPath } from '../../data/conditions';
+import { therapyCards } from '../../data/therapy-cards';
+import { symptomCards } from '../../data/symptom-cards';
+import { getStandort } from '../../data/standorte';
+import { mapsDirectionsUrl, mapsPlaceUrl, formatHours, type Clinic } from '../../data/locations';
+import { locationContent } from '../../data/en/locations-content';
+import { site } from '../../data/site';
+const { clinic } = Astro.props as { clinic: Clinic };
+const { id, name, city, street, postalCode, phone, openingHours } = clinic;
+const data = getStandort(id);
+if (!data || clinic.status !== 'operational') throw new Error('EN Zürich mirror requires operational clinic data: '+id);
+const content = locationContent[id];
+const path = '/en/locations/'+id+'/';
+const tel = 'tel:'+phone.replace(/[^+\d]/g,'');
+const wa = 'https://wa.me/'+phone.replace(/\D/g,'')+'?text='+encodeURIComponent('Hello, I would like to request an appointment in '+name+'.');
+const directions = mapsDirectionsUrl(clinic);
+const place = mapsPlaceUrl(clinic);
+const formId = 'en-location-form-'+id;
+const endFormId = formId+'-end';
+const image = clinic.bild?.src || data.hero.image;
+const first = ['akupunktur','tuina','schroepfen','kraeutertherapie'];
+const all = data.therapien.map(slug=>({slug, card:therapyCards[slug], en:therapies.find(t=>t.deSlug===slug)})).filter(x=>x.card);
+const featured = [...first.map(slug=>all.find(x=>x.slug===slug)).filter(Boolean),...all.filter(x=>!first.includes(x.slug))].slice(0,4);
+const used = new Set(featured.map(x=>x!.slug));
+const rest = all.filter(x=>!used.has(x.slug));
+const tx = (x: typeof all[number]) => x.en ? enTherapyPath(x.en.slug) : '/therapien/'+x.slug+'/';
+const therapyDescriptions: Record<string,string> = {akupunktur:'Targeted treatment with fine needles.',tuina:'Manual treatment from Chinese medicine.',schroepfen:'Traditional technique using suction cups.',kraeutertherapie:'Individually prepared herbal formulas.'};
+const groups = [
+ {title:'Back & neck',copy:'Musculoskeletal pain and tension.',subjects:['rueckenschmerzen','nackenschmerzen']},
+ {title:'Migraine',copy:'Migraine and recurring headaches.',subjects:['migraene']},
+ {title:'Stress & sleep',copy:'Tension, exhaustion and sleep problems.',subjects:['stress-burnout','schlafprobleme']},
+ {title:'Cycle & fertility',copy:'Complementary support for menstrual concerns and fertility.',subjects:['zyklusbeschwerden','kinderwunsch']},
+ {title:'Digestion',copy:'Complementary support for digestive concerns.',subjects:['verdauungsprobleme']}
+];
+const available = data.beschwerden.filter(slug=>!!symptomCards[slug]);
+const visible = groups.filter(g=>g.subjects.some(slug=>available.includes(slug))).slice(0,4);
+const links = available.map(slug=>{const c=conditions.find(x=>x.deSlug===slug);return {label:c?.condition??symptomCards[slug].name,href:c?enConditionPath(c.slug):'/beschwerden/'+slug+'/',de:!c}});
+const team = locationTeamHtml(id,name)
+ .replaceAll('Menschen statt Standardlösungen','People, not standard solutions')
+ .replaceAll('Unser <em>gesamtes Team</em>','Our <em>entire team</em>')
+ .replaceAll('Lerne die Menschen hinter TCM.ch kennen – unser gesamtes Team auf einen Blick.','Meet the entire TCM.ch network team. Availability and languages vary by clinic. Profiles are in German.')
+ .replaceAll('Team-Karussell steuern','Team carousel controls')
+ .replaceAll('Vorherige Teammitglieder anzeigen','Show previous team members')
+ .replaceAll('Weitere Teammitglieder anzeigen','Show more team members')
+ .replaceAll('Karussell','carousel')
+ .replaceAll('TCM.ch Team – horizontal wischen','TCM.ch team – swipe horizontally')
+ .replaceAll('Nach links wischen','Swipe left')
+ .replaceAll('Teamkarte 1 von','Team card 1 of')
+ .replaceAll('Fortschritt durch die Teamkarten','Progress through team cards')
+ .replaceAll('Profil ansehen','View profile (German)')
+ .replace(/aria-label="Profil von ([^"]+) ansehen"/g,'aria-label="View profile of $1 (German)" hreflang="de"')
+ .replaceAll('class="tmc-title"','class="tmc-title" lang="de"')
+ .replaceAll('class="tmc-focus"','class="tmc-focus" lang="de"');
+---
+<link rel="stylesheet" href="/location-team-carousel.css"/>
+<link rel="stylesheet" href="/location-sg-standard.css"/>
+<link rel="stylesheet" href="/sg-compact.css"/>
+<link rel="stylesheet" href="/heritage-story.css"/>
+<div class="en-zh-clinic std-zh-cro">
+ <section class="lsr-hero hlsg std-sg-hero">
+  <div class="lsr-inner"><div class="lsr-left">
+   <span class="lsr-eyebrow">{clinic.betreiber ? clinic.betreiber.name+' · Partner practice in the TCM.ch network' : 'TCM.ch clinic · '+name}</span>
+   <h1 class="lsr-h1">Acupuncture &amp; TCM in <em>{name}</em></h1>
+   <p class="lsr-lead"><span class="lsr-lead-d">{content.lead}</span><span class="lsr-lead-m">{street} · {postalCode} {city}</span></p>
+   <div class="lsr-ctas"><a class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" href="#appointment" data-en-wish="checkin">Request a free 30-min appointment ⚡️</a><a class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-d" href="#appointment">Discuss your concerns for free</a><a class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-m" href={wa} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a></div>
+   <p class="lsr-quick"><a href={tel}>Call</a><span class="lsr-d" aria-hidden="true">·</span><a class="lsr-d" href={wa} target="_blank" rel="noopener noreferrer">WhatsApp</a><span aria-hidden="true">·</span><a href="#sg-standort">Directions</a></p>
+   <ul class="lsr-usp"><li><span class="lsr-check" aria-hidden="true">✓</span>EMR/ASCA recognition, practitioner-specific</li><li><span class="lsr-check" aria-hidden="true">✓</span>{street}, {postalCode} {city}</li><li><span class="lsr-check" aria-hidden="true">✓</span>Personal appointment coordination in English</li></ul>
+  </div><HeroMedia /></div>
+ </section>
+ <section class="sgt sgt--location-first sgt--formular" id="appointment" aria-labelledby="sgt-h">
+  <div class="sgt-wrap sgt-grid sgt-grid--single"><div class="sgt-main">
+   <div class="sgt-head"><h2 class="section-title" id="sgt-h">Appointment in <em>{name}</em></h2><p class="sgt-sub">Free 30-minute introductory consultation or first appointment with treatment. We reply personally.</p></div>
+   <div class="sgt-network-proof" aria-label="TCM.ch network: 4.89 out of 5 stars from over one thousand reviews"><div class="sgt-network-proof-label"><strong>Patient reviews</strong><span>TCM.ch network · all locations</span></div><div class="sgt-network-proof-metrics"><div class="sgt-network-proof-metric"><strong>4.89</strong><span class="sgt-network-proof-stars" aria-label="4.89 out of 5 stars">★★★★★</span></div><div class="sgt-network-proof-metric sgt-network-proof-count"><strong>1'000+</strong><span>Reviews</span></div></div></div>
+   <div class="sgt-form"><div class="inline-form-card kf kf--ruhig kf-huelle en-zh-form-card">
+    <div class="kf-kopf"><h3 class="kf-h inline-form-title">Request an appointment</h3></div>
+    <div class="en-zh-wishes" role="group" aria-label="Appointment type"><button type="button" data-en-wish="checkin" aria-pressed="false">Free 30-min introduction</button><button type="button" data-en-wish="treatment" aria-pressed="false">First appointment with treatment</button></div>
+    <p class="en-zh-wish-note" aria-live="polite">Choose the type of appointment you prefer. We confirm the details with you.</p>
+    <AppointmentForm id={formId} preselect={name} source={path} heading="" intro="" />
+   </div></div>
+  </div></div>
+ </section>
+ <div class="std-ds std-vorlage std-zh-cro" id="standort-content">
+  <Fragment set:html={team}/>
+  <section class="section sg-cro-section sg-cro-therapien" id="therapies"><div class="wrap"><div class="sg-cro-heading"><div class="section-label">Our methods</div><h2 class="section-title">TCM therapies in <em>{name}</em></h2><p>We choose the appropriate treatment together based on your concerns.</p></div><div class="sg-cro-grid">{featured.map(x=>x&&<a class="sg-cro-card sg-cro-therapy-card" href={tx(x)} hreflang={x.en?undefined:'de'}><h3>{x.en?.name??x.card.name}</h3><p>{therapyDescriptions[x.slug]??x.en?.summary??'More information in German.'}</p><span class="sg-cro-card-link">Explore therapy ↗</span></a>)}</div>{rest.length>0&&<details class="sg-cro-more"><summary>View more therapies <span aria-hidden="true">+</span></summary><div class="sg-cro-links">{rest.map(x=><a href={tx(x)} hreflang={x.en?undefined:'de'}>{x.en?.name??x.card.name}{!x.en?' (DE)':''} ↗</a>)}</div></details>}</div></section>
+  <section class="section sg-cro-section sg-cro-beschwerden" id="conditions"><div class="wrap"><div class="sg-cro-heading"><div class="section-label">Common concerns</div><h2 class="section-title">How can we <em>help?</em></h2><p>We discuss your concerns and decide together whether TCM is appropriate.</p></div><div class="sg-cro-grid">{visible.map(g=><div class="sg-cro-card sg-cro-symptom-card"><h3>{g.title}</h3><p>{g.copy}</p></div>)}</div><details class="sg-cro-more"><summary>View all conditions <span aria-hidden="true">+</span></summary><div class="sg-cro-links">{links.map(l=><a href={l.href} hreflang={l.de?'de':undefined}>{l.label}{l.de?' (DE)':''} ↗</a>)}</div></details><div class="sg-cro-booking"><a class="tcm-btn tcm-btn--primary" href="#appointment">Request an appointment in {name} →</a><span>You do not need to choose the right therapy yourself.</span></div></div></section>
+  <section class="heritage-story heritage-story--location" aria-label="The story behind TCM.ch"><div class="wrap heritage-location-inner"><div class="heritage-gallery heritage-gallery--compact"><figure class="heritage-tile heritage-tile--licensed heritage-tile--first"><img src={architecture.hanokAndModern.originalReferenceUrl} alt="Traditional and contemporary architecture at Wonnam Temple in Seoul" loading="lazy" width="1000" height="750" referrerpolicy="no-referrer"/><figcaption>Our roots · Korea &amp; Won Buddhism</figcaption></figure><figure class="heritage-tile heritage-tile--hwang"><img src="https://cdn.prod.website-files.com/67b0345c66f48f117fbcc562/685ba70fc3905327089d7168_tinywow_579A1800_81910170.webp" alt="Praxis Hwang reception in Kreuzlingen" loading="lazy" width="1200" height="800"/><figcaption>Praxis Hwang · since 2012</figcaption></figure><figure class="heritage-tile heritage-tile--today"><img src={image} alt={'TCM.ch '+name} loading="lazy" width="720" height="520"/><figcaption>TCM.ch today · fourth generation</figcaption></figure></div><div class="heritage-story-copy"><p class="heritage-kicker">OUR ROOTS</p><h2>Four generations of tradition.<br/><em>Personal care in {name}.</em></h2><p>Our story connects four generations of Korean family roots, shaped in part by Won Buddhism, with Praxis Hwang, founded in Kreuzlingen in 2012. Today our team carries these values forward with qualified practitioners and clear processes.</p><a class="heritage-story-link" href="/ueber-uns/" hreflang="de">Discover our story (German) →</a></div></div></section>
+  <section class="section" id="faq"><div class="wrap"><div class="section-label">Your visit</div><h2 class="section-title">Questions about <em>{name}</em></h2><div class="ev-faq en-zh-faq">{content.faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
+ </div>
+ <section class="sgt sgt--location-first sgt--praxis" id="standort-kontakt-praxis" aria-label={'About the clinic '+name}><div class="sgt-wrap sgt-grid sgt-grid--praxis">
+  <div class="sgt-practice" id="sg-standort"><h2 class="up-h2">About the clinic</h2><div class="content-body">{content.about.map(p=><p set:html={p}/>)}</div>
+   <div class="up-grid">
+    <div class="up-item"><div class="sgt-fact-icon" aria-hidden="true">⌖</div><div class="up-body"><strong class="up-label">Address</strong><p>{clinic.betreiber?.name}<br/>{street}<br/>{postalCode} {city}</p></div></div>
+    <div class="up-item"><div class="sgt-fact-icon" aria-hidden="true">◷</div><div class="up-body"><strong class="up-label">Opening hours</strong>{openingHours.map(h=><span>{formatHours(h)}</span>)}</div></div>
+    <div class="up-item"><div class="sgt-fact-icon" aria-hidden="true">☎</div><div class="up-body"><strong class="up-label">Telephone</strong><a href={tel}>{phone}</a></div></div>
+    <div class="up-item"><div class="sgt-fact-icon" aria-hidden="true">✉</div><div class="up-body"><strong class="up-label">Email</strong><a href={'mailto:'+site.email}>{site.email}</a></div></div>
+   </div>
+   <div class="sgt-location-actions"><a href={directions} target="_blank" rel="noopener noreferrer">↗ Directions</a><a href={wa} target="_blank" rel="noopener noreferrer">↗ WhatsApp</a></div>
+  </div><div class="sgt-practice sgt-praxis-media"><figure class="up-mobile-clinic-photo"><img src={image} alt={'TCM.ch clinic '+name} loading="lazy" width="1200" height="900"/></figure><div class="up-map"><iframe title={'Map of '+name} src={'https://maps.google.com/maps?q='+encodeURIComponent(street+', '+postalCode+' '+city+', Switzerland')+'&output=embed'} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div><p class="up-maplinks"><a href={place||directions} target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a></p></div>
+ </div></section>
+ <section class="section sg-weiterlesen"><div class="wrap"><div class="sg-wl"><h2 class="sg-wl-label">Further reading</h2><a href="/en/knowledge/what-to-expect-first-acupuncture-session/">Your first session</a><a href="/en/health-insurance-acupuncture/">Insurance &amp; costs</a><a href="/en/knowledge/english-speaking-acupuncturist-switzerland/">English-speaking practitioners</a><a href="/en/acupuncture-zurich/">All Zürich clinics</a><a href="/en/knowledge/">More patient information →</a></div></div></section>
+ <section class="sgt sgt--location-first sgt--formular sgt--ende sgt--ende-form" id="appointment-end"><div class="sgt-wrap sgt-grid sgt-grid--single"><div class="sgt-main"><div class="sgt-head"><span class="sgt-eyebrow">Send your enquiry</span><h2 class="section-title">Request an appointment</h2><p class="sgt-sub">Tell us what you need and we will get back to you.</p></div><div class="sgt-form"><div class="inline-form-card kf kf--ruhig kf-huelle en-zh-form-card"><AppointmentForm id={endFormId} preselect={name} source={path} heading="" intro=""/></div></div></div></div></section>
+ <ClinicConcierge lang="en" locationName={name} status={clinic.status}/>
+</div>
+<SgLayoutStyles/>
+<script is:inline src="/location-team-carousel.js?v=1" defer></script>
+<script is:inline define:vars={{formId}}>
+(function(){
+ var f=document.getElementById(formId);if(!f)return;
+ var note=document.querySelector('.en-zh-wish-note');
+ var prefixes={checkin:'I would like a free 30-minute introductory consultation if available. ',treatment:'I would like a first appointment with treatment. '};
+ document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('[data-en-wish]');if(!a)return;
+  var kind=a.getAttribute('data-en-wish'),msg=f.querySelector('[name="anliegen"]');
+  if(!prefixes[kind]||!msg)return;
+  var v=msg.value;
+  Object.values(prefixes).forEach(function(p){if(v.indexOf(p)===0)v=v.slice(p.length);});
+  msg.value=prefixes[kind]+v;
+  document.querySelectorAll('.en-zh-wishes button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-en-wish')===kind));});
+  if(note)note.textContent=kind==='checkin'?'30 minutes, no treatment included; availability confirmed by our team.':'First consultation, assessment and treatment as appropriate.';
+ });
+})();
+</script>
+<style is:global>
+html:has(.en-zh-clinic){scroll-behavior:auto;visibility:visible!important}
+.en-zh-clinic .reveal{opacity:1!important;transform:none!important}
+.en-zh-clinic #appointment,.en-zh-clinic #appointment-end{scroll-margin-top:90px}
+.en-zh-clinic .en-zh-form-card{max-width:540px!important;margin:auto}
+.en-zh-clinic .ev-form{border:0;box-shadow:none;background:transparent;padding:0;margin:0;max-width:none}
+.en-zh-clinic .ev-hp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.en-zh-clinic .ev-field{display:flex;flex-direction:column;min-width:0}
+.en-zh-clinic .ev-form__row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.en-zh-clinic .ev-field textarea{min-height:100px!important}
+.en-zh-clinic .ev-form button[type=submit]{width:100%;background:var(--tcm-primary,#1769B1)!important;color:#fff!important}
+.en-zh-clinic .en-zh-wishes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.en-zh-clinic .en-zh-wishes button{font:inherit;font-size:14px;font-weight:700;border:1px solid #CBD5DC;background:#fff;border-radius:12px;padding:12px;color:#243943;cursor:pointer}
+.en-zh-clinic .en-zh-wishes button[aria-pressed=true]{border-color:#1769B1;background:#E9F2FA;color:#1769B1}
+.en-zh-clinic .en-zh-wish-note{font-size:14px;line-height:1.45;margin:0 0 16px;color:#566B78}
+.en-zh-clinic .up-mobile-clinic-photo{display:block!important;margin:0 0 14px;border-radius:16px;overflow:hidden}
+.en-zh-clinic .up-mobile-clinic-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.en-zh-clinic .up-map iframe{display:block;width:100%;min-height:270px;border:0}
+.en-zh-clinic .en-zh-faq{max-width:820px;margin:auto}
+@media(max-width:767px){.en-zh-clinic .ev-form__row{grid-template-columns:1fr}}
+</style>
