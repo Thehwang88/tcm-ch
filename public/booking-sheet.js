@@ -42,6 +42,39 @@
     return null;
   }
   function formOf(el){return el&&el.querySelector('form');}
+  // Moving a rendered iframe can destroy its browsing context. Recreate the
+  // managed challenge after the real card has reached its final mobile width.
+  // Keep the existing sitekey, form and server-side token requirement intact.
+  function refreshMobileChallenge(node){
+    if(!window.matchMedia('(max-width:767px)').matches)return;
+    var api=window.turnstile;
+    if(!api||typeof api.render!=='function'||typeof api.remove!=='function')return;
+    var form=formOf(node);
+    if(!form)return;
+    var widgets=form.querySelectorAll('.cf-turnstile.kf-ts[data-sitekey]');
+    for(var i=0;i<widgets.length;i++){
+      var el=widgets[i];
+      var response=el.querySelector('[name="cf-turnstile-response"]');
+      var match=response&&/^cf-chl-widget-(.+)_response$/.exec(response.id);
+      var widgetId=el.__bookingWidgetId||(match&&match[1]);
+      // Do not interfere with an implicit widget still being initialised.
+      if(!widgetId)continue;
+      try{
+        api.remove(widgetId);
+        el.__bookingWidgetId=null;
+        var size=el.clientWidth>=300?'normal':'compact';
+        el.dataset.size=size;
+        el.__bookingWidgetId=api.render(el,{
+          sitekey:el.dataset.sitekey,
+          appearance:'always',
+          size:size
+        });
+      }catch(err){
+        // Retain the canonical submit handler's missing-token recovery path.
+        // Never permit a submit without a valid token.
+      }
+    }
+  }
   function setWish(el,wish){
     if(!wish)return;
     var form=formOf(el);
@@ -119,6 +152,7 @@
       pending=false;
       return false;
     }
+    refreshMobileChallenge(node);
     if(scroller)scroller.scrollTop=0;
     var close=dialog.querySelector('[data-booking-close]');
     if(close)close.focus({preventScroll:true});
@@ -133,6 +167,7 @@
     // Remove the custom Zürich wrapper after extracting the native section.
     if(origin&&origin.parentNode)origin.replaceWith(node);
     else document.body.appendChild(node);
+    refreshMobileChallenge(node);
     slot.textContent='';
     slot.className='tcm-booking-content';
     origin=null;current=null;

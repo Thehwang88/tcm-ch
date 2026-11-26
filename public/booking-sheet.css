@@ -137,3 +137,14 @@
 #tcm-booking-sheet .tcm-booking-content .kf[data-kf] .kf-fields{
   max-width:100%!important;
 }
+
+/* The homepage adapter uses a two-column grid. Keep footer text and the
+   managed verification widget in full-width rows, including when portaled. */
+@media(max-width:767px){
+  #tcm-booking-sheet .tcm-booking-content .kf-fields > :is(.kf-req,.kf-ts,.kf-err){
+    grid-column:1/-1;min-width:0;
+  }
+  #tcm-booking-sheet .tcm-booking-content .kf-ts{
+    min-height:0!important;margin:0!important;padding:0!important;
+  }
+}
