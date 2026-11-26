@@ -252,6 +252,27 @@ apiMode='ok';
  ok(status==='success'&&ev.filter(e=>e.event==='form_submit_success').length===1,'EN locations form success tracked once');
 }
 
+
+for(const slug of ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg']){
+ for(const viewport of [{width:390,height:844},{width:1280,height:800},{width:1440,height:900}]){
+  const p=await open('/en/locations/'+slug+'/',viewport);
+  const g=await p.evaluate(()=>{
+   const el=s=>document.querySelector(s),rect=s=>{const r=el(s).getBoundingClientRect();return {top:r.top,bottom:r.bottom,left:r.left,right:r.right,width:r.width,height:r.height}};
+   return {hero:rect('.lsr-hero'),inner:rect('.lsr-inner'),text:rect('.lsr-left'),media:rect('.lsr-right'),header:rect('#mainNav'),cta:rect('.lsr-ctas'),scroll:document.documentElement.scrollWidth,width:innerWidth,padding:parseFloat(getComputedStyle(el('.lsr-hero')).paddingTop)};
+  });
+  ok(g.padding===0&&Math.abs(g.hero.top-g.inner.top)<2,slug+' no duplicate header offset '+viewport.width);
+  ok(g.scroll<=g.width+2,slug+' no horizontal overflow '+viewport.width);
+  if(viewport.width>=901){
+   ok(Math.abs(g.text.top-g.media.top)<2&&Math.abs(g.text.bottom-g.media.bottom)<2,slug+' equal-height hero halves '+viewport.width);
+   ok(Math.abs(g.media.width-g.inner.width/2)<2,slug+' balanced split '+viewport.width);
+   ok(g.hero.height<=720,slug+' compact hero '+viewport.width);
+  }else{
+   ok(g.media.top>=g.text.bottom-2&&g.media.height>=200&&g.media.height<=340,slug+' stacked mobile media');
+  }
+  await p.close();
+ }
+}
+
 await browser.close(); srv.close();
 for (const f of fails) console.log('FAIL  ' + f);
 console.log(`en-analytics: ${passes} passed, ${fails.length} failed`);
