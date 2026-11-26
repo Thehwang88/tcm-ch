@@ -1,18 +1,11 @@
 ---
 // /en/locations/ — EN V2 location directory (mirrors DE /standorte/ hub: Mint hero + photo, status-aware cards).
 import Layout from '../../../layouts/Layout.astro';
-import HeroSplit from '../../../components/en/HeroSplit.astro';
-import CtaBand from '../../../components/en/CtaBand.astro';
-import { publicClinics as clinics, enLocationPath, locationImages } from '../../../data/locations';
-import { getStandort } from '../../../data/standorte';
-import { locationContent } from '../../../data/en/locations-content';
-import { standortCardHtml, standortGridHtml } from '../../../lib/standort-card';
+import { publicClinics as clinics, enLocationPath, mapsDirectionsUrl } from '../../../data/locations';
 
 const path = '/en/locations/';
-const open = clinics.filter((c) => c.status === 'operational');
-const upcoming = clinics.filter((c) => c.status !== 'operational');
-const thumb = (id: string) => locationContent[id]?.hero ?? (getStandort(id) ? { src: getStandort(id)!.hero.image, alt: `TCM.ch clinic ${id}` } : locationImages[id]);
-
+import AppointmentForm from '../../../components/en/AppointmentForm.astro';
+import { clinicById, cardName } from '../../../lib/standort-card';
 const breadcrumbLd = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
@@ -24,67 +17,90 @@ const itemListLd = {
   '@context': 'https://schema.org', '@type': 'ItemList', name: 'TCM.ch clinics in Switzerland',
   itemListElement: clinics.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: `Acupuncture & TCM in ${c.name}`, url: `https://tcm.ch${enLocationPath(c.id)}` })),
 };
+const esc = (s: string) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const mainIds = ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen','winterthur-marktgasse','basel','bern'] as const;
+const additionalIds = ['frauenfeld','kreuzlingen','bottighofen','wil','rorschach','luzern'] as const;
+const displayName: Record<string,string> = { 'winterthur-marktgasse': 'Winterthur' };
+const icons = {
+  phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6.5-6.5 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.5 2.1L7.9 9a16 16 0 0 0 6 6l.9-.9a2 2 0 0 1 2.1-.5l2.8.7A2 2 0 0 1 22 16.9Z"/>',
+  map: '<path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+};
+const detailAction = (kind: keyof typeof icons, href: string, text: string, label: string, external=false) =>
+  `<a class="stdc-secondary" href="${esc(href)}" aria-label="${esc(label)}" ${external ? 'target="_blank" rel="noopener noreferrer"' : ''}><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[kind]}</svg><span>${esc(text)}</span></a>`;
+const mainCard = (id: typeof mainIds[number]) => {
+  const c = clinicById(id);
+  if(c.status !== 'operational') throw new Error(`/standorte/: main clinic ${id} must be operational`);
+  const label = esc(displayName[id] ?? cardName(c));
+  const href = enLocationPath(c.id);
+  if(/^https?:\/\//.test(href)) throw new Error(`/standorte/: main clinic ${id} unexpectedly routes outside TCM.ch`);
+  const img = id === 'basel'
+    ? {src:'/images/basel-empfang-800.webp',alt:'Reception at TCM.ch Basel, Steinenvorstadt 73'}
+    : c.bild;
+  if(!img) throw new Error(`/standorte/: main clinic ${id} missing image`);
+  if(!c.street || !c.postalCode) throw new Error(`/standorte/: main clinic ${id} missing postal address`);
+  const route = mapsDirectionsUrl(c);
+  const address = `${c.street}, ${c.postalCode} ${c.city}`;
+  const hours = c.openingHours.length
+    ? c.openingHours.map(line => esc(line.replace(/Mo/g,'Mon').replace(/Fr/g,'Fri').replace(/Sa/g,'Sat').replace(/So/g,'Sun').replace(/-/g,'–'))).join('<br>')
+    : 'Hours on request';
+  const phone = c.phone.replace(/[^+\d]/g,'');
+  return `<article class="stdc stdc--clinic" aria-label="TCM.ch ${label}">
+    <a class="stdc-visual" href="${esc(href)}" aria-label="More information about TCM.ch ${label}">
+      <img class="stdc-photo" src="${esc(img.src)}" alt="${esc(/Visualisierung/i.test(img.alt) ? `Illustration of TCM.ch ${label}` : `TCM.ch ${label}`)}" width="1200" height="675" loading="lazy" decoding="async">
+      ${/Visualisierung/i.test(img.alt) ? '<span class="stdc-image-note">Illustration</span>' : ''}
+    </a>
+    <div class="stdc-main">
+      <h3 class="stdc-h"><a href="${esc(href)}">${label}</a></h3>
+      <p class="stdc-address">${esc(address)}</p>
+      <p class="stdc-hours"><span>Opening hours</span><span>${hours}</span></p>
+    </div>
+    <div class="stdc-actions">
+      <a class="stdc-primary" href="#standorte-anfrage" data-pick="${esc(c.name)}">Request an appointment <span aria-hidden="true">→</span></a>
+      <div class="stdc-secondary-actions" role="group" aria-label="More options for ${label}">
+        ${detailAction('phone', `tel:${phone}`, 'Call', `TCM.ch ${label} call`)}
+        ${route ? detailAction('map', route, 'Directions', `Directions to TCM.ch ${label}`,true) : ''}
+        ${detailAction('info', href, 'More info', `More information about TCM.ch ${label}`)}
+      </div>
+    </div>
+  </article>`;
+};
+// Do not imply that partner clinics are TCM.ch-owned, or that planned Luzern accepts treatment bookings.
+const additionalRow = (id: typeof additionalIds[number]) => {
+  const c=clinicById(id);
+  const href=enLocationPath(c.id), external=false;
+  const label=esc(cardName(c));
+  const descriptor = id==='luzern' ? 'Opening 2027 · Waitlist'
+    : id==='bottighofen' ? 'Partner clinic TCM Pelican'
+    : c.betreiber ? 'Praxis Hwang · Partner practice' : 'Additional treatment location';
+  const action=id==='luzern'?'Register interest':'More info';
+  return `<a class="std-partner-row" href="${esc(href)}"${external?' target="_blank" rel="noopener"':''}>
+    <span class="std-partner-row-copy"><strong>${label}</strong><span>${esc(descriptor)}</span></span>
+    <span class="std-partner-row-action">${action} <span aria-hidden="true">→</span></span>
+  </a>`;
+};
+const liste =
+  '<div class="std-primary-group"><h2 class="std-group-heading">Zürich</h2><div class="std-featured-grid">' +
+    mainIds.slice(0,3).map(mainCard).join('')+'</div></div>'+
+  '<div class="std-primary-group"><h2 class="std-group-heading">More clinics</h2><div class="std-featured-grid std-featured-grid--other">' +
+    mainIds.slice(3).map(mainCard).join('')+'</div></div>'+
+  '<details id="standorte-weitere" class="std-other-locations"><summary><span>More locations &amp; partner practices</span><span class="std-disclosure-meta">'+additionalIds.length+' locations <span aria-hidden="true">⌄</span></span></summary><div class="std-partner-grid">'+
+    additionalIds.map(additionalRow).join('')+'</div></details>';
+
+const contact = "<div class=\"reveal\"> <div class=\"section-label\">Find the right care</div> <h2 class=\"section-title\">Find the <em>right care.</em></h2> <p class=\"section-sub\" style=\"margin-bottom:0\">Briefly tell us what you need, and we will help you find the right next step.</p> <div class=\"intake-trust-row\"> <div class=\"intake-trust-item\"><span class=\"intake-trust-dot\"></span>Find a suitable clinic without a long search</div> <div class=\"intake-trust-item\"><span class=\"intake-trust-dot\"></span>Locations across German-speaking Switzerland</div> <div class=\"intake-trust-item\"><span class=\"intake-trust-dot\"></span>Supplementary insurance, depending on your policy</div> </div> <div class=\"contact-methods-mini\" style=\"gap:8px\"> <a href=\"https://wa.me/41775236122\" class=\"contact-method-mini\" target=\"_blank\"> <div class=\"cm-icon-mini cm-wa\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"white\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z\"></path></svg></div> <div><strong>Start on WhatsApp</strong><span>Personal reply from our team</span></div> </a> <a href=\"tel:+41775236122\" class=\"contact-method-mini phone-quiet\"> <div class=\"cm-icon-mini cm-phone\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z\"></path></svg></div> <div><strong>TCM.ch appointment coordination (Mon–Fri)</strong><span>+41 77 523 61 22</span></div> </a> <a href=\"mailto:termine@tcm.ch\" class=\"contact-method-mini\"> <div class=\"cm-icon-mini cm-mail\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"></rect><path d=\"m22 7-10 6L2 7\"></path></svg></div> <div><strong>Email</strong><span>termine@tcm.ch</span></div> </a> </div> </div> ";
 ---
-<Layout
-  title="Acupuncture & TCM Clinics in Switzerland | Locations | TCM.ch"
-  description="TCM.ch clinics in Zürich, Winterthur, St. Gallen, Basel and Bern, plus partner practices in Thurgau. English-language appointment requests; insurance reimbursement depends on your policy."
-  path={path}
-  schema={[breadcrumbLd, itemListLd]}
->
-  <HeroSplit
-    eyebrow="TCM.ch · Swiss clinic network"
-    h1="Acupuncture & TCM clinics across <em>Switzerland</em>"
-    lead="Clinics and partner practices in German-speaking Switzerland. Pick the location closest to you; requests are welcome in English or German."
-    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '#open', label: 'See all locations', kind: 'outline' }]}
-    trust={['Request by WhatsApp or phone', 'Supplementary insurance: depends on your policy', 'Personal reply in English']}
-    image={{ src: '/images/standorte-hero.webp', alt: 'Reception area of a TCM.ch clinic', caption: 'TCM.ch clinic' }}
-    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Locations' }]}
-  />
-
-  {/* Tiers like DE /standorte/ (05.11.2026): central location card (src/lib/standort-card.ts), hero without photo, compact for tier 3. */}
-  <section class="ev-section" id="open">
-    <div class="wrap">
-      <p class="ev-label">Our clinics</p>
-      <h2 class="ev-h2">Zürich, St. Gallen and Winterthur</h2>
-      <div class="std-jump"><a href="#open">Zürich</a><a href="#st-gallen">St. Gallen</a><a href="#winterthur">Winterthur</a><a href="#thurgau">Thurgau</a><a href="#more">More</a></div>
-      <div class="std-stufe1">
-        <div class="std-zh"><div class="std-zh-box"><div class="std-label">Zürich</div><h3 class="std-zh-h">Acupuncture &amp; TCM across Zürich</h3><p class="std-zh-p">TCM.ch clinics and partner practices in <a href="/en/acupuncture-zurich/">Zürich</a>. Tell us where you are looking for an appointment; we suggest the practice or the next free slot.</p><div class="std-zh-btns"><a class="ev-btn ev-btn--solid" href="/en/acupuncture-zurich/">Find an appointment in Zürich</a></div></div><Fragment set:html={standortGridHtml(['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'], { variant: 'hero', cols: 3, lang: 'en' })} /></div>
-        <div class="std-sg" id="st-gallen"><Fragment set:html={standortCardHtml('st-gallen', { variant: 'hero', lang: 'en' })} /></div>
-         <div class="std-sg" id="winterthur"><Fragment set:html={standortCardHtml('winterthur-marktgasse', { variant: 'hero', lang: 'en' })} /></div>
-      </div>
-      <h3 class="std-h3" id="thurgau">Thurgau</h3><p class="std-sub">Partner practices Hwang in Frauenfeld and Kreuzlingen.</p>
-      <Fragment set:html={standortGridHtml(['frauenfeld', 'kreuzlingen'], { variant: 'hero', cols: 3, lang: 'en' })} />
-      <h3 class="std-h3" id="more">More locations and openings</h3>
-      <Fragment set:html={standortGridHtml(['bottighofen', 'rorschach', 'wil', 'basel', 'luzern', 'bern'], { variant: 'kompakt', cols: 4, lang: 'en' })} />
-    </div>
-  </section>
-
-
-  <section class="ev-section">
-    <div class="wrap">
-      <div class="ev-grid">
-        <a class="ev-card" href="/en/acupuncture-zurich/"><h3>Acupuncture in Zürich</h3><p>All Zürich practices on one page: tell us your district and we suggest the practice or the next available appointment.</p></a>
-        <a class="ev-card" href="/en/acupuncture-near-me/"><h3>Acupuncture near me</h3><p>All addresses on one page, for choosing the clinic that is easiest to reach.</p></a>
-        <a class="ev-card" href="/en/health-insurance-acupuncture/"><h3>Insurance &amp; costs</h3><p>Basic versus supplementary insurance, what practitioner recognition (EMR/ASCA) means and how reimbursement works.</p></a>
-        <a class="ev-card" href="/en/conditions/"><h3>Conditions</h3><p>Back pain, migraine, sleep, fertility and more: what TCM can realistically help with.</p></a>
-      </div>
-    </div>
-  </section>
-
-  <CtaBand text="Not sure which location fits? Tell us where you live and what is going on; we suggest the nearest clinic and reply personally in English or German." />
-</Layout>
+<Layout title="Acupuncture & TCM Clinics in Switzerland | Locations | TCM.ch" description="TCM.ch clinics in Zürich, Winterthur, St. Gallen, Basel and Bern, plus partner practices. English-language appointment requests; insurance reimbursement depends on your policy." path={path} schema={[breadcrumbLd,itemListLd]} zurichMirror>
+<link rel="stylesheet" href="/en-locations-overview.css"/>
+<div id="page-standorte" class="en-locations-overview">
+<section class="section std-overview" aria-labelledby="std-overview-heading"><div class="wrap"><div class="std-overview-intro"><h1 class="std-overview-heading" id="std-overview-heading">Our TCM.ch <em>locations.</em></h1><p class="std-overview-lead">Choose a clinic or let us suggest the right appointment.</p><a class="std-overview-primary" href="#standorte-anfrage">Find an appointment →</a></div><div id="standorte-page-grid" class="std-grid"><Fragment set:html={liste}/></div></div></section>
+<section class="section contact-section-inline" id="standorte-anfrage" style="background:var(--surface)"><div class="wrap"><div class="contact-inline-grid"><Fragment set:html={contact}/><div><div class="inline-form-card kf kf--ruhig kf-huelle"><div class="kf-kopf"><h3 class="kf-h inline-form-title">Request the right treatment</h3><p class="kf-kopf-sub">Free and without obligation. We will reply personally with a proposal.</p></div><AppointmentForm id="en-locations-form" source={path} heading="" intro=""/></div></div></div></div></section>
+<section class="cta-band"><div class="wrap"><h2>Not sure which clinic suits you?</h2><p>Our concierge can help you find the right TCM.ch clinic, free of charge.</p><div class="cta-band-btns"><a href="https://wa.me/41775236122" class="btn-white" target="_blank" rel="noopener">Get advice on WhatsApp</a></div></div></section>
+</div></Layout>
 <style is:global>
-  .std-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 20px; }
-  .std-jump a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1.5px solid rgba(2,11,16,.14); border-radius: 999px; font-size: 14.5px; font-weight: 700; color: #020B10; text-decoration: none; background: #fff; }
-  .std-stufe1 { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
-  .std-zh { display: flex; flex-direction: column; gap: 14px; }
-  .std-zh-box { background: #F4FAF8; border: 1px solid rgba(45,155,111,.14); border-radius: 18px; padding: 22px 20px; }
-  .std-label { font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #2D9B6F; }
-  .std-zh-h { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 6px 0; }
-  .std-zh-p { font-size: 15px; color: rgba(2,11,16,.7); line-height: 1.55; margin: 0 0 14px; }
-  .std-sg .sc { height: 100%; }
-  .std-h3 { font-size: 20px; font-weight: 800; letter-spacing: -.02em; margin: 36px 0 6px; scroll-margin-top: 90px; }
-  .std-sub { font-size: 14.5px; color: rgba(2,11,16,.7); margin: 0 0 14px; }
-  #st-gallen, #thurgau, #more { scroll-margin-top: 90px; }
-  @media (max-width: 900px) { .std-stufe1 { grid-template-columns: minmax(0, 1fr); } }
+#page-standorte #en-locations-form{border:0;box-shadow:none;background:transparent;padding:0;margin:0;max-width:none}
+#page-standorte #en-locations-form .ev-hp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+#page-standorte #en-locations-form .ev-form__row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#page-standorte #en-locations-form .ev-field{display:flex;flex-direction:column;min-width:0}
+#page-standorte #en-locations-form button[type=submit]{width:100%;background:#1769B1;color:white}
+@media(max-width:767px){#page-standorte #en-locations-form .ev-form__row{grid-template-columns:1fr}}
 </style>
