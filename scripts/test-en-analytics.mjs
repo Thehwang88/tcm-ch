@@ -195,6 +195,23 @@ async function submit(p, formSel) {
   ok(names.includes('form_submit_error') && !names.includes('form_submit_success'), `T4 network drop → error, no success, got ${JSON.stringify(names)}`);
   ok(ev.find((e) => e.event === 'form_submit_error')?.reason === 'network', 'T4 network reason');
 }
+// Zürich location mirror: verify visible hero, section ordering and canonical preselection on all three clinics.
+for(const [slug,name] of [['zuerich-oerlikon','Zürich Oerlikon'],['zuerich-bahnhofstrasse','Zürich Bahnhofstrasse'],['zuerich-hoengg','Zürich Höngg']]){
+ const p='/en/locations/'+slug+'/';
+ const page=await open(p,{width:390,height:844});
+ ok(await page.evaluate(()=>getComputedStyle(document.documentElement).visibility==='visible'&&getComputedStyle(document.querySelector('main h1')).visibility==='visible'),slug+' visible hero');
+ ok(await page.$('main [data-hero-video]')!==null,slug+' shared video hero');
+ ok(await page.evaluate(()=>{const a=document.querySelector('#appointment'),b=document.querySelector('.tc-team-section'),c=document.querySelector('#therapies'),d=document.querySelector('#faq'),e=document.querySelector('#sg-standort');return !!(a&&b&&c&&d&&e&&a.compareDocumentPosition(b)&4&&b.compareDocumentPosition(c)&4&&c.compareDocumentPosition(d)&4&&d.compareDocumentPosition(e)&4)}),slug+' booking/team/therapy/FAQ/practice order');
+ const form='#en-location-form-'+slug;
+ ok(await page.$eval(form+' [name="standort"]',el=>el.value)===name,slug+' correct clinic preselection');
+ ok(await clickNoNav(page,'.lsr-hero a[data-en-wish="checkin"]'),slug+' hero CTA');
+ ok(await page.$eval(form+' [name="anliegen"]',el=>el.value.includes('free 30-minute introductory consultation')),slug+' check-in preference retained');
+ ok((await events(page)).filter(e=>e.cta_target==='#appointment').length===1,slug+' CTA tracked once');
+ await page.close();
+ apiMode='ok';
+ const result=await submit(p,form);
+ ok(result.status==='success'&&result.ev.filter(e=>e.event==='form_submit_success').length===1,slug+' mocked form success tracked once');
+}
 await browser.close(); srv.close();
 for (const f of fails) console.log('FAIL  ' + f);
 console.log(`en-analytics: ${passes} passed, ${fails.length} failed`);
