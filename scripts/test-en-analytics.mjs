@@ -100,8 +100,8 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
 {
   const page = await open('/en/', { width: 390, height: 844 });
   ok(await page.evaluate(() => getComputedStyle(document.documentElement).visibility === 'visible' && getComputedStyle(document.querySelector('#heroPatient h1')).visibility === 'visible'), 'T3 English home document and hero visible');
-  ok(await page.$eval('#s-behandlungen .svc-card', els => els.length===8), 'T3 eight treatment cards');
-  ok(await page.$eval('#s-standorte .home-loc-card', els => els.length===6), 'T3 six city cards');
+  ok(await page.$$eval('#s-behandlungen .svc-card', els => els.length===8), 'T3 eight treatment cards');
+  ok(await page.$$eval('#s-standorte .home-loc-card', els => els.length===6), 'T3 six city cards');
   ok(await page.$eval('#heroPatient .tcm-santa-hat', el=>el.getAttribute('src')==='/images/seasonal/santa-hat-realistic.webp'), 'T3 shared Santa hat asset');
   ok(await page.evaluate(() => {const d=new Date(),n=(d.getMonth()+1)*100+d.getDate();return n<1112||n>1226||document.querySelectorAll('#heroPatient .tcm-winter-snowflake').length===17;}), 'T3 seasonal snow layer');
   ok(await clickNoNav(page, '.scb-bar a.scb-primary'), 'T3 sticky primary exists');
