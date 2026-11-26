@@ -225,6 +225,33 @@ for(const [slug,name] of [['zuerich-oerlikon','Zürich Oerlikon'],['zuerich-bahn
  const result=await submit(p,form);
  ok(result.status==='success'&&result.ev.filter(e=>e.event==='form_submit_success').length===1,slug+' mocked form success tracked once');
 }
+
+// English directory and therapy overviews: match the DE card counts and maintain EN routing.
+for(const viewport of [{width:390,height:844},{width:1440,height:900}]){
+ const p=await open('/en/locations/',viewport);
+ ok(await p.evaluate(()=>getComputedStyle(document.documentElement).visibility==='visible'&&getComputedStyle(document.querySelector('main h1')).visibility==='visible'),'EN locations visible '+viewport.width);
+ ok(await p.$$eval('.stdc--clinic',els=>els.length===7),'EN locations seven featured cards');
+ ok(await p.$$eval('.std-partner-row',els=>els.length===6),'EN locations six additional rows');
+ ok(await p.$eval('#standorte-weitere',el=>!el.open),'EN additional locations collapsed');
+ ok(await clickNoNav(p,'.stdc-primary[data-pick="Zürich Oerlikon"]'),'EN locations booking CTA');
+ ok(await p.$eval('#en-locations-form [name="standort"]',el=>el.value)==='Zürich Oerlikon','EN locations correct preselection');
+ ok((await events(p)).filter(e=>e.cta_target==='#standorte-anfrage').length===1,'EN locations CTA tracked once');
+ await p.close();
+ const t=await open('/en/therapies/',viewport);
+ ok(await t.evaluate(()=>getComputedStyle(document.documentElement).visibility==='visible'&&getComputedStyle(document.querySelector('main h1')).visibility==='visible'),'EN therapies visible '+viewport.width);
+ ok(await t.$$eval('.svc-grid .svc-card',els=>els.length===12),'EN therapies twelve photo cards');
+ ok(await t.$$eval('.therapy-specialists-links a',els=>els.length===5),'EN therapies five specialist links');
+ ok(await t.$$eval('.svc-card[href^="/therapien/"], .therapy-specialists-links a[href^="/therapien/"]',els=>els.every(el=>el.getAttribute('hreflang')==='de')),'EN therapies DE-only leaves labelled');
+ ok(await clickNoNav(t,'.therapy-help-button'),'EN therapy booking CTA');
+ ok((await events(t)).filter(e=>e.cta_type==='booking'&&e.cta_target==='/en/contact/').length===1,'EN therapies CTA tracked once');
+ await t.close();
+}
+apiMode='ok';
+{
+ const {ev,status}=await submit('/en/locations/','#en-locations-form');
+ ok(status==='success'&&ev.filter(e=>e.event==='form_submit_success').length===1,'EN locations form success tracked once');
+}
+
 await browser.close(); srv.close();
 for (const f of fails) console.log('FAIL  ' + f);
 console.log(`en-analytics: ${passes} passed, ${fails.length} failed`);
