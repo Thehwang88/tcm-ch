@@ -70,7 +70,7 @@ const team = locationTeamHtml(id,name)
    <span class="lsr-eyebrow">{clinic.betreiber ? clinic.betreiber.name+' · Partner practice in the TCM.ch network' : 'TCM.ch clinic · '+name}</span>
    <h1 class="lsr-h1">Acupuncture &amp; TCM in <em>{name}</em></h1>
    <p class="lsr-lead"><span class="lsr-lead-d">{content.lead}</span><span class="lsr-lead-m">{street} · {postalCode} {city}</span></p>
-   <div class="lsr-ctas"><a class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" href="#appointment" data-en-wish="checkin">Request a free 30-min appointment ⚡️</a><a class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-d" href="#appointment">Discuss your concerns for free</a><a class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-m" href={wa} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a></div>
+   <div class="lsr-ctas"><a class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" href="#appointment" data-en-wish="checkin">Free 30-min consultation ⚡️</a><a class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-d" href="#appointment">Discuss your concerns</a><a class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero lsr-m" href={wa} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a></div>
    <p class="lsr-quick"><a href={tel}>Call</a><span class="lsr-d" aria-hidden="true">·</span><a class="lsr-d" href={wa} target="_blank" rel="noopener noreferrer">WhatsApp</a><span aria-hidden="true">·</span><a href="#sg-standort">Directions</a></p>
    <ul class="lsr-usp"><li><span class="lsr-check" aria-hidden="true">✓</span>EMR/ASCA recognition, practitioner-specific</li><li><span class="lsr-check" aria-hidden="true">✓</span>{street}, {postalCode} {city}</li><li><span class="lsr-check" aria-hidden="true">✓</span>Personal appointment coordination in English</li></ul>
   </div><HeroMedia /></div>
@@ -148,4 +148,37 @@ html:has(.en-zh-clinic){scroll-behavior:auto;visibility:visible!important}
 .en-zh-clinic .up-map iframe{display:block;width:100%;min-height:270px;border:0}
 .en-zh-clinic .en-zh-faq{max-width:820px;margin:auto}
 @media(max-width:767px){.en-zh-clinic .ev-form__row{grid-template-columns:1fr}}
+
+/* EN uses an in-flow sticky header, unlike the fixed German SPA navigation.
+   Remove inherited header compensation and use a balanced, content-sized split. */
+body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg.std-sg-hero{padding:0!important;margin:0!important}
+body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-inner{width:100%;max-width:none;gap:0;align-items:stretch}
+body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-left{box-sizing:border-box;min-width:0}
+body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-right{margin:0!important;min-width:0;align-self:stretch}
+body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-quick{order:5!important;margin:0 0 8px!important;line-height:1.4;font-size:14px}
+body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-usp{order:6!important;margin:0!important;font-size:14px;line-height:1.4;gap:5px}
+@media(min-width:901px){
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:clamp(480px,63svh,620px)}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-left{width:100%;max-width:690px;padding:clamp(28px,3vw,46px) clamp(24px,3.4vw,50px)!important;justify-content:center;align-items:flex-start}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-eyebrow{font-size:12px!important;margin:0 0 14px!important;letter-spacing:.1em!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-h1{font-size:clamp(34px,3.05vw,49px)!important;max-width:100%!important;line-height:1.08!important;letter-spacing:-.035em!important;margin:0 0 18px!important;text-wrap:initial;overflow-wrap:anywhere}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-lead{font-size:clamp(15px,1.15vw,18px)!important;line-height:1.5!important;max-width:100%;margin:0 0 20px!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-ctas{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;gap:9px!important;margin:0 0 14px!important;width:100%}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg.hlsg.hlsg.std-sg-hero .lsr-ctas > a{font-size:14px!important;padding:11px 16px!important;min-height:48px!important;white-space:nowrap!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-right{height:auto;min-height:100%;overflow:hidden}
+}
+@media(min-width:1200px){
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-ctas{flex-wrap:nowrap!important}
+}
+@media(max-width:900px){
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-inner{display:flex;flex-direction:column;min-height:0}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg.hlsg .lsr-left{width:100%;max-width:none;padding:24px clamp(18px,5vw,30px) 20px!important;align-items:stretch!important;text-align:left!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg.hlsg .lsr-h1{max-width:none!important;font-size:clamp(30px,7.6vw,43px)!important;line-height:1.1!important;margin:0 0 10px!important;text-wrap:initial;overflow-wrap:anywhere!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-lead{margin:0 0 15px!important;font-size:15px!important;line-height:1.45!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-ctas{margin:0 0 10px!important;gap:8px!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-right{height:clamp(205px,55vw,340px);min-height:0;container-type:normal;overflow:hidden}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-quick{justify-content:flex-start!important}
+ body.tcm-warm main .en-zh-clinic .lsr-hero.hlsg .lsr-usp{font-size:13px;gap:4px}
+}
+
 </style>
