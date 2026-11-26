@@ -59,6 +59,7 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
 // T1 Zürich funnel
 {
   const page = await open('/en/acupuncture-zurich/');
+  ok(await page.evaluate(() => getComputedStyle(document.documentElement).visibility === 'visible' && getComputedStyle(document.querySelector('main h1')).visibility === 'visible'), 'T1 Zürich document and hero must be visible, including with legacy CSS');
   ok(await clickNoNav(page, '.lsr-hero a[href="#zh-funnel"]'), 'T1 hero #zh-funnel CTA exists');
   let ev = await events(page);
   ok(ev.length === 1 && ev[0].event === 'cta_click' && ev[0].cta_type === 'booking' && ev[0].cta_target === '#zh-funnel', `T1 hero → one booking cta_click (#zh-funnel), got ${JSON.stringify(ev)}`);
