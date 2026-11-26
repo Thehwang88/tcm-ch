@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import puppeteer from 'puppeteer';
+// Vollständiges Team: Grösse aus dem Register (src/data/therapeuten.ts), nicht hart codiert (26.11.2026: 17 Profile).
+const ROSTER_SIZE=[...fs.readFileSync('src/data/therapeuten.ts','utf8').matchAll(/^\s{4}slug:\s*'([^']+)'/gm)].length;
 
 const dist=path.resolve('dist');
 const mime={'.html':'text/html','.js':'application/javascript','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp','.png':'image/png'};
@@ -51,7 +53,7 @@ try{
         animation:getComputedStyle(slides[0]).animationName,
       };
     });
-    assert.equal(layout.total,16,route+' entire team roster must remain');
+    assert.equal(layout.total,ROSTER_SIZE,route+' entire team roster must remain');
     assert.ok(layout.trackWidth>=width-3,route+' '+width+': track does not use full viewport '+JSON.stringify(layout));
     assert.ok(layout.cardWidth<=width-94,route+' '+width+': card too large to reveal next '+JSON.stringify(layout));
     assert.ok(layout.visible>=54,route+' '+width+': next card is not visibly peeking '+JSON.stringify(layout));
