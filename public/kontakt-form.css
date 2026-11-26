@@ -516,3 +516,24 @@ body.tcm-warm .kf .kf-opts .kf-opt--checkin:has(input:checked){
     min-height:50px!important;padding:11px 43px 11px 13px!important;
   }
 }
+
+/* Mobile form footer: never reserve empty space for an unrendered challenge.
+   The widget stays in normal flow and retains its intrinsic size when visible.
+   Full-width placement also prevents a half-width grid cell in booking sheets
+   from forcing the challenge into the taller compact layout. */
+@media(max-width:767px){
+  .kf[data-kf] .kf-fields > .kf-req,
+  .kf[data-kf] .kf-fields > .kf-ts,
+  .kf-huelle .cf-turnstile-wrap{
+    grid-column:1/-1;
+    min-width:0;
+  }
+  .kf[data-kf] .kf-ts,
+  .kf-huelle .cf-turnstile-wrap,
+  .kf-huelle .cf-turnstile{
+    min-height:0!important;
+    margin-block:0!important;
+    padding-block:0!important;
+  }
+  .kf[data-kf] .kf-req{margin-bottom:4px}
+}
