@@ -273,6 +273,45 @@ for(const slug of ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg']
  }
 }
 
+
+ // Real pointer regression: DOM .click() bypasses CSS pointer-events and cannot detect
+ // the static EN reveal bug. Use hit testing and actual Chromium mouse input.
+ for(const viewport of [{width:390,height:844},{width:1440,height:900}]){
+   const p=await open('/en/',viewport);
+   await p.evaluate(()=>{
+     window.__homeClicks=[];
+     document.addEventListener('click',e=>{
+       const a=e.target.closest('a[href]');
+       if(a){e.preventDefault();window.__homeClicks.push(a.getAttribute('data-pointer-test'));}
+     },true);
+     [...document.querySelectorAll('main a[href], main button, main input:not([type="hidden"]), main select, main textarea, main summary')].forEach((a,i)=>{
+       if(a.getClientRects().length&&a.closest('.ev-hp')===null&&getComputedStyle(a).visibility==='visible')a.setAttribute('data-pointer-test',String(i));
+     });
+   });
+   const ids=await p.$$eval('main [data-pointer-test]',els=>els.map(e=>e.getAttribute('data-pointer-test')));
+   for(const id of ids){
+     const sel='[data-pointer-test="'+id+'"]';
+     const h=await p.$eval(sel,el=>{
+       el.scrollIntoView({block:'center',inline:'center',behavior:'instant'});
+       const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+       const hit=document.elementFromPoint(x,y);
+       return {ok:!!hit&&(el===hit||el.contains(hit)),x,y,label:(el.getAttribute('aria-label')||el.textContent||el.name||'').trim().slice(0,70),href:el.getAttribute('href'),location:!!el.closest('#s-standorte'),hit:hit?.className?.baseVal??hit?.className};
+     });
+     ok(h.ok,'EN home pointer '+viewport.width+' '+h.label+' hit='+h.hit);
+     if(h.ok&&h.href&&h.location){
+       await p.mouse.click(h.x,h.y);
+       ok(await p.evaluate(id=>window.__homeClicks.includes(id),id),'EN home real location click '+viewport.width+' '+h.label);
+     }
+   }
+   ok(await p.$eval('#en-home-form [name="standort"]',el=>!!el.value),'EN home real booking clicks preselect clinic');
+   await p.close();
+ }
+ for(const route of ['/en/acupuncture-zurich/','/en/locations/','/en/therapies/','/en/locations/zuerich-bahnhofstrasse/','/en/locations/zuerich-oerlikon/','/en/locations/zuerich-hoengg/']){
+   const p=await open(route);
+   ok(await p.$$eval('main .reveal',els=>els.every(e=>getComputedStyle(e).pointerEvents!=='none')),route+' reveal cards accept pointer input');
+   await p.close();
+ }
+
 await browser.close(); srv.close();
 for (const f of fails) console.log('FAIL  ' + f);
 console.log(`en-analytics: ${passes} passed, ${fails.length} failed`);
