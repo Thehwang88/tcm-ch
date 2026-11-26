@@ -615,6 +615,52 @@ export const therapeuten: Therapeut[] = [
       'Daneben behandelt sie Frauenbeschwerden und Schmerzen an Gelenken und Wirbelsäule. Weitergebildet hat sie sich unter anderem in der Ohrakupunktur nach dem NADA-Protokoll, das aus der Suchtarbeit stammt.',
     ],
   },
+  {
+    slug: 'jaime-aranguren-bardesi',
+    name: 'Jaime Aranguren Bardesi',
+    titel: 'TCM-Therapeut',
+    untertitel: 'Akupunktur & Tuina · Zertifikat OdA AM',
+    cardFocus: ['Bewegungsapparat & Atemwege', 'Stress & Schlaf'],
+    bild: '/images/Jaime-Aranguren-Bardesi.webp',
+    ortLabel: 'Bern',
+    standorte: ['bern'],
+    kurzbeschreibung: 'TCM-Therapeut mit Zertifikat OdA AM und Praxiserfahrung in Berlin und Bern. Schwerpunkte Bewegungsapparat, Atembeschwerden, Stress und Schlafstörungen; Behandlung auf Deutsch, Englisch und Spanisch.',
+    schwerpunkte: ['Beschwerden des Bewegungsapparates', 'Atembeschwerden', 'Stress', 'Schlafstörungen'],
+    methoden: ['Akupunktur', 'Elektroakupunktur', 'Tuina-Massage', 'Schröpfen', 'Moxibustion', 'Gua Sha'],
+    ausbildung: [
+      { titel: 'Zertifikat OdA AM', jahr: '2026', status: 'abgeschlossen' },
+      { titel: 'Weiterbildung TCM-Akupunktur und Tuina', institution: 'Biomedica Zürich', jahr: '2025–2026', status: 'abgeschlossen' },
+      { titel: 'TCM-Ausbildung', institution: 'Heilpraktiker Schule in Selbstverwaltung, Berlin', jahr: '2019–2022', status: 'abgeschlossen' },
+      { titel: 'Bachelor Übersetzer und Dolmetscher', institution: 'Universidad Autónoma de Madrid', jahr: '2009–2013', status: 'abgeschlossen' },
+    ],
+    weiterbildungen: [
+      { titel: 'Advanced Acupuncture bei Jeffrey Yuen', jahr: '2026' },
+    ],
+    weitereQualifikationen: ['Berufsausübungsbewilligung Kanton Bern'],
+    berufserfahrung: [
+      { rolle: 'Selbstständiger Akupunkteur', organisation: 'Nakama Akupunktur', ort: 'Bern', zeitraum: '2023–2025' },
+      { rolle: 'TCM-Therapeut', organisation: 'Berlinakupunktur', ort: 'Berlin', zeitraum: '2022–2023' },
+      { rolle: 'Lehrpraxis / Ambulatorium TCM', ort: 'Berlin', zeitraum: '2021–2022' },
+    ],
+    registrierungen: [
+      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'ASCA', status: 'anerkannt' },
+      { organisation: 'EGK', status: 'anerkannt' },
+      { organisation: 'Visana', status: 'anerkannt' },
+    ],
+    mitgliedschaften: ['TCM Fachverband Schweiz'],
+    sprachen: ['Deutsch', 'Englisch', 'Spanisch'],
+    bio: [
+      'Jaime Aranguren Bardesi ist ausgebildeter TCM-Therapeut mit Zertifikat OdA AM und praktischer Erfahrung in Berlin und Bern. Seine Behandlungen verbinden traditionelle chinesische Medizin mit einem individuellen, ganzheitlichen Therapieansatz.',
+      'Seine besonderen Schwerpunkte liegen bei Beschwerden des Bewegungsapparates, Atembeschwerden, Stress und Schlafstörungen. Dank seines sprachlichen und interkulturellen Hintergrunds betreut er Patientinnen und Patienten auf Deutsch, Englisch und Spanisch.',
+    ],
+    // Bestehender Team-Buchungskanal (WhatsApp), mit Standort Bern vorbelegt.
+    bookingUrl: 'https://wa.me/41775236122?text=' + encodeURIComponent('Hallo, ich möchte einen Termin bei Jaime Aranguren Bardesi in Bern anfragen.'),
+    seo: {
+      title: 'Jaime Aranguren Bardesi | TCM-Therapeut Akupunktur & Tuina in Bern | TCM.ch',
+      description: 'Jaime Aranguren Bardesi, TCM-Therapeut mit Zertifikat OdA AM bei TCM.ch Bern: Akupunktur, Tuina, Schröpfen, Moxibustion. Schwerpunkte Bewegungsapparat, Atembeschwerden, Stress und Schlaf. Deutsch, Englisch, Spanisch.',
+    },
+  },
 ];
 
 export const getTherapeut = (slug: string) => therapeuten.find((t) => t.slug === slug);
