@@ -1,14 +1,13 @@
-// Shared heritage gallery: genuine TCM.ch team/clinic photos and approved Wonnam Temple architecture photos.
+// Shared heritage gallery: genuine TCM.ch team/clinic photos and one approved Wonnam Temple architecture photo.
 // The historical architectural images are not portrayed as buildings owned by the Hwang family.
 import { licensedArchitecturePhotos as architecture } from '../data/heritage-architecture-rights';
 const esc = (v: string) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const tilePhoto = (src: string, alt: string, label: string, extra = '') => {
   // Width/height track each source orientation for responsive browser layout.
-  const portrait = extra.includes('heritage-tile--corridor');
   const reception = extra.includes('heritage-tile--hwang');
-  const width = portrait ? 667 : reception ? 1200 : 720;
-  const height = portrait ? 1000 : reception ? 800 : 520;
+  const width = reception ? 1200 : 720;
+  const height = reception ? 800 : 520;
   return `<figure class="heritage-tile ${extra}"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async" width="${width}" height="${height}"><figcaption>${esc(label)}</figcaption></figure>`;
 };
 
@@ -17,8 +16,6 @@ const architectureTile = (photo: { originalReferenceUrl: string; alt: string; la
 
 // Original, publicly hosted photo from Praxis Hwang's own Kreuzlingen gallery.
 const hwangReception = 'https://cdn.prod.website-files.com/67b0345c66f48f117fbcc562/685ba70fc3905327089d7168_tinywow_579A1800_81910170.webp';
-// Original Wonnam Temple corridor photograph, also selected by the user.
-const koreanCorridor = architecture.timberCorridor.originalReferenceUrl;
 
 const pictureSet = (variant: 'home'|'about'|'location', localPhoto?: string, localAlt?: string) => {
   const group = variant === 'location' ? 'heritage-gallery heritage-gallery--compact' : 'heritage-gallery heritage-gallery--' + variant;
@@ -30,12 +27,10 @@ const pictureSet = (variant: 'home'|'about'|'location', localPhoto?: string, loc
     : variant === 'home'
     ? [architectureTile({ ...architecture.hanokAndModern, label: 'Unsere Wurzeln · Korea & Won-Buddhismus' }, 'heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Die 4. Generation · TCM.ch', 'heritage-tile--people'),
-       tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Hwang-Logo', 'Praxis Hwang · seit 2012', 'heritage-tile--hwang'),
-       tilePhoto(koreanCorridor, 'Lichtdurchfluteter Innenraum mit geschwungener Wand und Holzlamellen im Wonnam-Tempel Seoul', 'Won-buddhistische Wurzeln · Seoul', 'heritage-tile--corridor')]
+       tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Hwang-Logo', 'Praxis Hwang · seit 2012', 'heritage-tile--hwang')]
     : [architectureTile({ ...architecture.hanokAndModern, label: 'Unsere Wurzeln · Korea & Won-Buddhismus' }, 'heritage-tile--first'),
        tilePhoto('/images/img-9ddc7d8df590.webp', 'Simon Stüve und Team beim TCM.ch Fotoshooting', 'Die 4. Generation · TCM.ch', 'heritage-tile--people'),
-       tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Hwang-Logo', 'Praxis Hwang · Schweiz seit 2012', 'heritage-tile--hwang'),
-       tilePhoto(koreanCorridor, 'Lichtdurchfluteter Innenraum im Wonnam-Tempel mit Holzlamellen und geschwungener Wand', 'Won-buddhistische Wurzeln · Seoul', 'heritage-tile--corridor')];
+       tilePhoto(hwangReception, 'Empfang der Praxis Hwang in Kreuzlingen mit Hwang-Logo', 'Praxis Hwang · Schweiz seit 2012', 'heritage-tile--hwang')];
   return `<div class="${group}" aria-label="Fotogalerie zu Korea, Praxis Hwang und TCM.ch">${cards.join('')}</div>`;
 };
 export const homeHeritageHtml = `<section class="heritage-story heritage-story--home" id="unsere-geschichte" aria-labelledby="heritage-home-title">
@@ -50,7 +45,7 @@ export const aboutHeritageHtml = `<section class="heritage-story heritage-story-
 <div class="wrap"><div class="heritage-about-heading"><p class="heritage-kicker">VON KOREA IN DIE SCHWEIZ</p><h2 id="heritage-about-title">Tradition bewahren.<br><em>Zukunft gestalten.</em></h2>
 <p>Unsere Geschichte beginnt nicht erst mit einer Schweizer Praxis. Sie führt zurück nach Korea, in eine Familie, in deren Geschichte der Won-Buddhismus eine besondere Rolle spielt. Der hochrangige Geistliche Hwang Jikpyeong (1932–2019) steht für eine Haltung, die uns wichtig ist: Wissen weitergeben, Verantwortung übernehmen und für andere da sein.</p><p>2012 begann mit der Praxis Hwang in Kreuzlingen das Schweizer Kapitel. Heute tragen wir diese Werte mit TCM.ch weiter – als neue Generation mit qualifizierten Fachpersonen, transparenten Abläufen und persönlicher Patientenbetreuung.</p></div>
 ${pictureSet('about')}
-<div class="heritage-photo-context"><strong>Was zeigen diese Bilder?</strong><p>Die Architekturaufnahmen stammen vom Wonnam-Tempel in Seoul – einem zeitgenössischen Ort des Won-Buddhismus. Die Verbindung von traditionellem Hanok und moderner Architektur steht für unsere Idee: Herkunft bewahren und weiterdenken. Der Tempel ist ein Symbol dieser Wurzeln, kein ehemaliger Praxis- oder Familiensitz.</p></div>
+<div class="heritage-photo-context"><strong>Was zeigen diese Bilder?</strong><p>Die Architekturaufnahme stammt vom Wonnam-Tempel in Seoul – einem zeitgenössischen Ort des Won-Buddhismus. Die Verbindung von traditionellem Hanok und moderner Architektur steht für unsere Idee: Herkunft bewahren und weiterdenken. Der Tempel ist ein Symbol dieser Wurzeln, kein ehemaliger Praxis- oder Familiensitz.</p></div>
 <ol class="heritage-timeline" aria-label="Meilensteine der TCM.ch Geschichte">
 <li><span>01</span><h3>Korea &amp; Won-Buddhismus</h3><p>Vier Generationen Familiengeschichte. Unsere Wurzeln sind mit einer koreanischen Tradition verbunden, die Mitgefühl, Bildung und Verantwortung im Alltag betont.</p></li>
 <li><span>02</span><h3>Hwang Jikpyeong</h3><p>Der hochrangige Won-buddhistische Geistliche (1932–2019) ist Teil unserer Familiengeschichte. Seine Lebenshaltung steht sinnbildlich für das Weitergeben von Wissen und Fürsorge.</p></li>
