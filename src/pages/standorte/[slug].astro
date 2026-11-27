@@ -467,9 +467,9 @@ if (!migrated && conciergeStatus === 'operational') {
 // Partner-Umleitung (Marktgasse bis zur Eröffnung 2027 → Praxis Hwang): Umleitungskarte statt Anfragebox/Formular/OneDoc;
 // Karte trägt den Sticky-CTA-Hinweis (StickyCtaBar liest data-sticky-cta-href/-label).
 const PU = migrated?.partnerUmleitung;
-// Zürich-Pilot (20.11.2026): St.-Gallen-Layout (HeroSg → TerminSg oben → Team/Therapien/Beschwerden/FAQ → PraxisSg → Weiterlesen
+// Zürich-Pilot, erweitert auf Basel (27.11.2026): St.-Gallen-Layout (HeroSg → TerminSg oben → Team/Therapien/Beschwerden/FAQ → PraxisSg → Weiterlesen
 // → TerminSg Seitenende) nur für diese drei operativen DE-Standortseiten; alle anderen Standorte und EN unverändert.
-const sgPilot = !!migrated && ['zuerich-oerlikon', 'zuerich-bahnhofstrasse', 'zuerich-hoengg'].includes(slug!) && !migrated.planned && !migrated.review && !PU;
+const sgPilot = !!migrated && ['zuerich-oerlikon', 'zuerich-bahnhofstrasse', 'zuerich-hoengg', 'basel'].includes(slug!) && !migrated.planned && !migrated.review && !PU;
 const escU = (x: string) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const umleitungCard = PU
   ? `<div class="inline-form-card kf kf--ruhig kf-huelle" id="anfrage-box" data-sticky-cta-href="${escU(PU.href)}" data-sticky-cta-label="${escU(PU.cta)}"><link rel="stylesheet" href="/kontakt-form.css"><div class="kf-kopf"><h2 class="kf-h">Termin in Winterthur</h2><p class="kf-kopf-sub">${escU(PU.hinweis)}</p></div><div class="kf-fields" style="padding-top:16px"><a class="kf-btn kf-btn--primary" href="${escU(PU.href)}" target="_blank" rel="noopener" style="display:inline-flex;justify-content:center;width:100%;text-decoration:none">${escU(PU.cta)} <span aria-hidden="true">→</span></a><p class="kf-note" style="margin-top:10px">Du wechselst auf hwang.ch, die Website der Praxis Hwang. Die Praxis an der Marktgasse 78 eröffnet 2027.</p></div></div>`
@@ -488,7 +488,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
     {/* Wie St. Gallen (HeroStandardSG): Hero und Kontakt-/Praxisbereich vor #page-standort, damit dort weder die
         seitenweiten Karten-/Abstandsregeln ([id^="page-"] …) noch die Hero-Geschwisterregel (#sg-premium-hero ~ section) greifen. */}
     {sgPilot ? <HeroSg data={data} /> : <Hero data={data} />}
-    <div class:list={["std-oben", { "std-zh-cro": ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].includes(data.slug) }]}>
+    <div class:list={["std-oben", { "std-zh-cro": ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','basel'].includes(data.slug) }]}>
       {data.planned && (
       <section class="section" data-status-banner={data.review ? 'review' : 'planned'} style="padding:0;background:var(--bg)">
         <div class="wrap" style="padding-top:12px">
@@ -504,7 +504,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
       {/* Shared SG-style facts + canonical booking component. Pilot: Formular allein unter dem Hero, Praxis nach dem FAQ. */}
       {sgPilot ? <TerminSg data={data} sitekey={turnstileSitekey} teil="oben" /> : <ClinicLocationFirst data={data} sitekey={turnstileSitekey} umleitungCard={umleitungCard} />}
     </div>
-    <div class:list={["page active std-ds std-vorlage", { "std-zh-cro": ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].includes(data.slug) }]} id="page-standort" style="display:block">
+    <div class:list={["page active std-ds std-vorlage", { "std-zh-cro": ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','basel'].includes(data.slug) }]} id="page-standort" style="display:block">
       <div id="standort-content">
         <Fragment set:html={locationTeamHtml(data.slug, data.stadt)} />
         <CompactTherapien data={data} />
