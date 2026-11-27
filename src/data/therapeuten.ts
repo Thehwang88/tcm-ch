@@ -581,6 +581,7 @@ export const therapeuten: Therapeut[] = [
     titel: 'Dipl. Naturheilpraktikerin TCM',
     untertitel: 'Akupunktur / Tuina · Zertifikat OdA AM',
     cardFocus: ['Psycho-emotionale Beschwerden', 'Frauengesundheit & Schmerzen'],
+    bild: '/images/Desiree-Letter.webp',
     ortLabel: 'Winterthur',
     standorte: ['winterthur-muenzgasse'],
     kurzbeschreibung: 'Naturheilpraktikerin TCM mit einem Bachelor in Sozialer Arbeit und mehrjähriger Erfahrung in Suchttherapie und Sozialpsychiatrie.',
