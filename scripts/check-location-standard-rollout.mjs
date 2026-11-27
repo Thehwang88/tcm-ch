@@ -37,9 +37,9 @@ for(const {slug,html} of clinicPages){
     check(!html.includes('std-sg-layout'),slug,'Luzern has no confirmed address; do not fabricate active clinic facts');
   }
   if(!['st-gallen','kreuzlingen','bottighofen','luzern'].includes(slug)){
-    // 20.11 Zürich CRO pilot uses HeroSg + TerminSg + PraxisSg (SG-style split sections),
+    // Zürich CRO pilot and Basel use HeroSg + TerminSg + PraxisSg (SG-style split sections),
     // while the other migrated clinics still use the combined ClinicLocationFirst wrapper.
-    const zhPilot = ['zuerich-bahnhofstrasse','zuerich-hoengg','zuerich-oerlikon'].includes(slug);
+    const zhPilot = ['zuerich-bahnhofstrasse','zuerich-hoengg','zuerich-oerlikon','basel'].includes(slug);
     check(zhPilot
       ? html.includes('std-sg-hero') && html.includes('sgt--formular') && html.includes('sgt--praxis')
       : html.includes('std-sg-layout'),slug,'new SG-standard location-first layout missing');
@@ -47,6 +47,11 @@ for(const {slug,html} of clinicPages){
     check(html.includes('class="sg-cro-grid"'),slug,'compact therapies / symptoms missing');
     check(html.includes('href="/location-sg-standard.css"'),slug,'shared SG layout CSS missing');
     check(html.includes('id="termin-formular"'),slug,'booking anchor not preserved');
+    if(slug==='basel'){
+      check(html.includes('sgt--ende-form'),slug,'Basel missing end-of-page booking form');
+      check(html.includes('Termine auf Anfrage'),slug,'Basel hero should not promise short-notice availability');
+      check(html.includes('Steinenvorstadt 73'),slug,'Basel address changed');
+    }
   }
 }
 const css=readFileSync('public/location-team-carousel.css','utf8');
