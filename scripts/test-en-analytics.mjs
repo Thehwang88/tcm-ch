@@ -59,23 +59,24 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
 // T1 Zürich funnel
 {
   const page = await open('/en/acupuncture-zurich/');
-  ok(await clickNoNav(page, '.ev-hero a[href="#zh-funnel"]'), 'T1 hero #zh-funnel CTA exists');
+  ok(await page.evaluate(() => getComputedStyle(document.documentElement).visibility === 'visible' && getComputedStyle(document.querySelector('main h1')).visibility === 'visible'), 'T1 Zürich document and hero must be visible, including with legacy CSS');
+  ok(await clickNoNav(page, '.lsr-hero a[href="#zh-funnel"]'), 'T1 hero #zh-funnel CTA exists');
   let ev = await events(page);
   ok(ev.length === 1 && ev[0].event === 'cta_click' && ev[0].cta_type === 'booking' && ev[0].cta_target === '#zh-funnel', `T1 hero → one booking cta_click (#zh-funnel), got ${JSON.stringify(ev)}`);
   // Wave 2: practice selector cards link to #zh-funnel with data-pick → booking click + form preselect
-  ok(await clickNoNav(page, '.ev-pick a[data-pick="Zürich Höngg"]'), 'T1 selector card (Höngg) exists');
+  ok(await clickNoNav(page, '#standorte a[data-pick="Zürich Höngg"]'), 'T1 selector card (Höngg) exists');
   ev = await events(page);
   ok(ev.length === 2 && ev[1].cta_type === 'booking' && ev[1].cta_target === '#zh-funnel', `T1 selector card → second booking event (#zh-funnel), got ${JSON.stringify(ev[1])}`);
   const picked = await page.$eval('#en-zurich-form [name="standort"]', (s) => s.value);
   ok(picked === 'Zürich Höngg', `T1 selector preselects the form option, got ${JSON.stringify(picked)}`);
-  ok(await clickNoNav(page, '.ev-pick a[data-pick="Zürich – nächster freier Termin"]'), 'T1 flexible selector exists');
+  ok(await clickNoNav(page, '#standorte a[data-pick="Zürich – nächster freier Termin"]'), 'T1 flexible selector exists');
   ok((await page.$eval('#en-zurich-form [name="standort"]', (s) => s.value)) === 'Zürich – nächster freier Termin', 'T1 flexible option preselected (DE routing value)');
   ok((await events(page)).length === 3, 'T1 one event per selector click');
   ok((await page.evaluate(() => document.querySelectorAll('form#en-zurich-form').length)) === 1, 'T1 exactly one canonical Zürich appointment form (other independent forms allowed)');
   ev = await events(page);
   ok(ev.every((e) => e.event !== 'form_submit' && e.event !== 'form_submit_success'), 'T1 clicks are never form events');
-  ok(await clickNoNav(page, '.ev-panel a[href*="wa.me"]'), 'T1 WhatsApp link exists');
-  ok(await clickNoNav(page, '.ev-panel a[href^="tel:"]'), 'T1 tel link exists');
+  ok(await clickNoNav(page, '.contact-methods-mini a[href*="wa.me"]'), 'T1 WhatsApp link exists');
+  ok(await clickNoNav(page, '.contact-methods-mini a[href^="tel:"]'), 'T1 tel link exists');
   ev = await events(page);
   ok(ev.filter((e) => e.cta_type === 'whatsapp').length === 1 && ev.filter((e) => e.cta_type === 'phone').length === 1, 'T1 whatsapp + phone tracked once each');
   ok(ev.every((e) => e.lang === 'en' && e.page_path === '/en/acupuncture-zurich/'), 'T1 lang/page_path on every event');
@@ -98,9 +99,17 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
 // T3 Contact page: sticky bar link + non-booking links
 {
   const page = await open('/en/', { width: 390, height: 844 });
+  ok(await page.evaluate(() => getComputedStyle(document.documentElement).visibility === 'visible' && getComputedStyle(document.querySelector('#heroPatient h1')).visibility === 'visible'), 'T3 English home document and hero visible');
+  ok(await page.$$eval('#s-behandlungen .svc-card', els => els.length===8), 'T3 eight treatment cards');
+  ok(await page.$$eval('#s-standorte .home-loc-card', els => els.length===6), 'T3 six city cards');
+  ok(await page.$eval('#heroPatient .tcm-santa-hat', el=>el.getAttribute('src')==='/images/seasonal/santa-hat-realistic.webp'), 'T3 shared Santa hat asset');
+  ok(await page.evaluate(() => {const d=new Date(),n=(d.getMonth()+1)*100+d.getDate();return n<1112||n>1226||document.querySelectorAll('#heroPatient .tcm-winter-snowflake').length===17;}), 'T3 seasonal snow layer');
   ok(await clickNoNav(page, '.scb-bar a.scb-primary'), 'T3 sticky primary exists');
   const ev = await events(page);
   ok(ev.length === 1 && ev[0].cta_type === 'booking' && ev[0].cta_target === '/en/contact/', `T3 sticky /en/contact/ → booking, got ${JSON.stringify(ev)}`);
+  ok(await clickNoNav(page,'#heroPatient a[data-free-intro]'), 'T3 hero intro CTA exists');
+  ok(await page.$eval('#en-home-form [name="anliegen"]', el=>el.value.includes('free 30-minute introductory appointment')), 'T3 introductory request prefilled');
+  ok((await events(page)).filter(e=>e.cta_target==='#home-contact-form').length===1, 'T3 home CTA tracked once');
   const src = fs.readFileSync(path.join(DIST, 'en/index.html'), 'utf8');
   ok((src.match(/GTM-PZ92Q3KJ/g) || []).length === 1, 'T6 one GTM container id in head');
   ok((src.match(/addEventListener\('en-form'/g) || []).length === 1, 'T6 one EnAnalytics script');
@@ -160,7 +169,7 @@ async function submit(p, formSel) {
   try {
     await page.waitForFunction((s) => { const st = document.querySelector(s + ' .ev-form__status'); return st && !st.hidden; }, { timeout: 15000 }, formSel);
   } catch (err) {
-    const dbg = await page.evaluate((s) => ({ status: document.querySelector(s + ' .ev-form__status')?.outerHTML, token: !!document.querySelector(s + ' [name="cf-turnstile-response"]'), dl: (window.dataLayer || []).length }), formSel);
+    const dbg = await page.evaluate((s) => ({ status: document.querySelector(s + ' .ev-form__status')?.outerHTML, token: !!document.querySelector(s + ' [name="cf-turnstile-response"]'), dl: (window.dataLayer || []).length, fields: [...document.querySelectorAll(s+' [required]')].map(el=>({name:el.name,valid:el.validity.valid,filled:!!el.value})), honeypotFilled:!!document.querySelector(s+' [name="website"]')?.value }), formSel);
     throw new Error(`form status not shown (apiMode=${apiMode}, ${p}): ${JSON.stringify(dbg)}`);
   }
   const ev = await events(page);
@@ -194,6 +203,115 @@ async function submit(p, formSel) {
   ok(names.includes('form_submit_error') && !names.includes('form_submit_success'), `T4 network drop → error, no success, got ${JSON.stringify(names)}`);
   ok(ev.find((e) => e.event === 'form_submit_error')?.reason === 'network', 'T4 network reason');
 }
+{
+  apiMode='ok';
+  const { ev,status }=await submit('/en/','#en-home-form');
+  ok(status==='success' && ev.filter(e=>e.event==='form_submit_success').length===1,'T3 home form success tracked once');
+}
+// Zürich location mirror: verify visible hero, section ordering and canonical preselection on all three clinics.
+for(const [slug,name] of [['zuerich-oerlikon','Zürich Oerlikon'],['zuerich-bahnhofstrasse','Zürich Bahnhofstrasse'],['zuerich-hoengg','Zürich Höngg']]){
+ const p='/en/locations/'+slug+'/';
+ const page=await open(p,{width:390,height:844});
+ ok(await page.evaluate(()=>getComputedStyle(document.documentElement).visibility==='visible'&&getComputedStyle(document.querySelector('main h1')).visibility==='visible'),slug+' visible hero');
+ ok(await page.$('main [data-hero-video]')!==null,slug+' shared video hero');
+ ok(await page.evaluate(()=>{const a=document.querySelector('#appointment'),b=document.querySelector('.tc-team-section'),c=document.querySelector('#therapies'),d=document.querySelector('#faq'),e=document.querySelector('#sg-standort');return !!(a&&b&&c&&d&&e&&a.compareDocumentPosition(b)&4&&b.compareDocumentPosition(c)&4&&c.compareDocumentPosition(d)&4&&d.compareDocumentPosition(e)&4)}),slug+' booking/team/therapy/FAQ/practice order');
+ const form='#en-location-form-'+slug;
+ ok(await page.$eval(form+' [name="standort"]',el=>el.value)===name,slug+' correct clinic preselection');
+ ok(await clickNoNav(page,'.lsr-hero a[data-en-wish="checkin"]'),slug+' hero CTA');
+ ok(await page.$eval(form+' [name="anliegen"]',el=>el.value.includes('free 30-minute introductory consultation')),slug+' check-in preference retained');
+ ok((await events(page)).filter(e=>e.cta_target==='#appointment').length===1,slug+' CTA tracked once');
+ await page.close();
+ apiMode='ok';
+ const result=await submit(p,form);
+ ok(result.status==='success'&&result.ev.filter(e=>e.event==='form_submit_success').length===1,slug+' mocked form success tracked once');
+}
+
+// English directory and therapy overviews: match the DE card counts and maintain EN routing.
+for(const viewport of [{width:390,height:844},{width:1440,height:900}]){
+ const p=await open('/en/locations/',viewport);
+ ok(await p.evaluate(()=>getComputedStyle(document.documentElement).visibility==='visible'&&getComputedStyle(document.querySelector('main h1')).visibility==='visible'),'EN locations visible '+viewport.width);
+ ok(await p.$$eval('.stdc--clinic',els=>els.length===7),'EN locations seven featured cards');
+ ok(await p.$$eval('.std-partner-row',els=>els.length===6),'EN locations six additional rows');
+ ok(await p.$eval('#standorte-weitere',el=>!el.open),'EN additional locations collapsed');
+ ok(await clickNoNav(p,'.stdc-primary[data-pick="Zürich Oerlikon"]'),'EN locations booking CTA');
+ ok(await p.$eval('#en-locations-form [name="standort"]',el=>el.value)==='Zürich Oerlikon','EN locations correct preselection');
+ ok((await events(p)).filter(e=>e.cta_target==='#standorte-anfrage').length===1,'EN locations CTA tracked once');
+ await p.close();
+ const t=await open('/en/therapies/',viewport);
+ ok(await t.evaluate(()=>getComputedStyle(document.documentElement).visibility==='visible'&&getComputedStyle(document.querySelector('main h1')).visibility==='visible'),'EN therapies visible '+viewport.width);
+ ok(await t.$$eval('.svc-grid .svc-card',els=>els.length===12),'EN therapies twelve photo cards');
+ ok(await t.$$eval('.therapy-specialists-links a',els=>els.length===5),'EN therapies five specialist links');
+ ok(await t.$$eval('.svc-card[href^="/therapien/"], .therapy-specialists-links a[href^="/therapien/"]',els=>els.every(el=>el.getAttribute('hreflang')==='de')),'EN therapies DE-only leaves labelled');
+ ok(await clickNoNav(t,'.therapy-help-button'),'EN therapy booking CTA');
+ ok((await events(t)).filter(e=>e.cta_type==='booking'&&e.cta_target==='/en/contact/').length===1,'EN therapies CTA tracked once');
+ await t.close();
+}
+apiMode='ok';
+{
+ const {ev,status}=await submit('/en/locations/','#en-locations-form');
+ ok(status==='success'&&ev.filter(e=>e.event==='form_submit_success').length===1,'EN locations form success tracked once');
+}
+
+
+for(const slug of ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg']){
+ for(const viewport of [{width:390,height:844},{width:1280,height:800},{width:1440,height:900}]){
+  const p=await open('/en/locations/'+slug+'/',viewport);
+  const g=await p.evaluate(()=>{
+   const el=s=>document.querySelector(s),rect=s=>{const r=el(s).getBoundingClientRect();return {top:r.top,bottom:r.bottom,left:r.left,right:r.right,width:r.width,height:r.height}};
+   return {hero:rect('.lsr-hero'),inner:rect('.lsr-inner'),text:rect('.lsr-left'),media:rect('.lsr-right'),header:rect('#mainNav'),cta:rect('.lsr-ctas'),scroll:document.documentElement.scrollWidth,width:innerWidth,padding:parseFloat(getComputedStyle(el('.lsr-hero')).paddingTop)};
+  });
+  ok(g.padding===0&&Math.abs(g.hero.top-g.inner.top)<2,slug+' no duplicate header offset '+viewport.width);
+  ok(g.scroll<=g.width+2,slug+' no horizontal overflow '+viewport.width);
+  if(viewport.width>=901){
+   ok(Math.abs(g.text.top-g.media.top)<2&&Math.abs(g.text.bottom-g.media.bottom)<2,slug+' equal-height hero halves '+viewport.width);
+   ok(Math.abs(g.media.width-g.inner.width/2)<2,slug+' balanced split '+viewport.width);
+   ok(g.hero.height<=720,slug+' compact hero '+viewport.width);
+  }else{
+   ok(g.media.top>=g.text.bottom-2&&g.media.height>=200&&g.media.height<=340,slug+' stacked mobile media');
+  }
+  await p.close();
+ }
+}
+
+
+ // Real pointer regression: DOM .click() bypasses CSS pointer-events and cannot detect
+ // the static EN reveal bug. Use hit testing and actual Chromium mouse input.
+ for(const viewport of [{width:390,height:844},{width:1440,height:900}]){
+   const p=await open('/en/',viewport);
+   await p.evaluate(()=>{
+     window.__homeClicks=[];
+     document.addEventListener('click',e=>{
+       const a=e.target.closest('a[href]');
+       if(a){e.preventDefault();window.__homeClicks.push(a.getAttribute('data-pointer-test'));}
+     },true);
+     [...document.querySelectorAll('main a[href], main button, main input:not([type="hidden"]), main select, main textarea, main summary')].forEach((a,i)=>{
+       if(a.getClientRects().length&&a.closest('.ev-hp')===null&&getComputedStyle(a).visibility==='visible')a.setAttribute('data-pointer-test',String(i));
+     });
+   });
+   const ids=await p.$$eval('main [data-pointer-test]',els=>els.map(e=>e.getAttribute('data-pointer-test')));
+   for(const id of ids){
+     const sel='[data-pointer-test="'+id+'"]';
+     const h=await p.$eval(sel,el=>{
+       el.scrollIntoView({block:'center',inline:'center',behavior:'instant'});
+       const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+       const hit=document.elementFromPoint(x,y);
+       return {ok:!!hit&&(el===hit||el.contains(hit)),x,y,label:(el.getAttribute('aria-label')||el.textContent||el.name||'').trim().slice(0,70),href:el.getAttribute('href'),location:!!el.closest('#s-standorte'),hit:hit?.className?.baseVal??hit?.className};
+     });
+     ok(h.ok,'EN home pointer '+viewport.width+' '+h.label+' hit='+h.hit);
+     if(h.ok&&h.href&&h.location){
+       await p.mouse.click(h.x,h.y);
+       ok(await p.evaluate(id=>window.__homeClicks.includes(id),id),'EN home real location click '+viewport.width+' '+h.label);
+     }
+   }
+   ok(await p.$eval('#en-home-form [name="standort"]',el=>!!el.value),'EN home real booking clicks preselect clinic');
+   await p.close();
+ }
+ for(const route of ['/en/acupuncture-zurich/','/en/locations/','/en/therapies/','/en/locations/zuerich-bahnhofstrasse/','/en/locations/zuerich-oerlikon/','/en/locations/zuerich-hoengg/']){
+   const p=await open(route);
+   ok(await p.$$eval('main .reveal',els=>els.every(e=>getComputedStyle(e).pointerEvents!=='none')),route+' reveal cards accept pointer input');
+   await p.close();
+ }
+
 await browser.close(); srv.close();
 for (const f of fails) console.log('FAIL  ' + f);
 console.log(`en-analytics: ${passes} passed, ${fails.length} failed`);

@@ -3,6 +3,7 @@
 // (Hero → status → USP → about + NAP panel → therapies → conditions → FAQ → form → nearby → CTA).
 // Facts only from locations.ts / standorte.ts; English copy from data/en/locations-content.ts.
 import Layout from '../../../layouts/Layout.astro';
+import ZurichClinicMirror from '../../../components/en/ZurichClinicMirror.astro';
 import HeroSplit from '../../../components/en/HeroSplit.astro';
 import StatusBanner from '../../../components/en/StatusBanner.astro';
 import UspStrip from '../../../components/en/UspStrip.astro';
@@ -35,6 +36,7 @@ const content = locationContent[id];
 if (!content) throw new Error(`locations-content.ts: missing EN content for ${id}`);
 
 const planned = clinic.status !== 'operational';
+const zhMirror = !planned && ['zuerich-oerlikon','zuerich-bahnhofstrasse','zuerich-hoengg'].includes(id);
 const underReview = clinic.status === 'review';
 const partner = clinic.betreiber;
 const path = enLocationPath(id);
@@ -143,7 +145,8 @@ const faqLd = {
 };
 const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, faqLd];
 ---
-<Layout title={title} description={description} path={path} schema={schema} location={id} noindex={!!de?.noindex} robots="noindex, follow">
+<Layout title={title} description={description} path={path} schema={schema} location={id} noindex={!!de?.noindex} robots="noindex, follow" zurichMirror={zhMirror}>
+  {zhMirror ? <ZurichClinicMirror clinic={clinic} /> : <Fragment>
   <HeroSplit eyebrow={eyebrow} h1={h1} lead={content.lead} sub={content.sub} ctas={ctas} trust={trust} note={locationHook} image={hero} crumbs={crumbs} />
   {PU ? (
     <div class="ev-status"><div class="wrap"><div class="ev-status__in">
@@ -291,4 +294,5 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
   ) : (
     <ClinicConcierge lang="en" locationName={name} status={clinic.status} />
   )}
+  </Fragment>}
 </Layout>
