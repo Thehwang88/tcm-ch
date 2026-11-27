@@ -35,7 +35,7 @@ const WA_SVG = '<svg class="lsr-wa-ic" viewBox="0 0 24 24" width="18" height="18
       <ul class="lsr-usp">
         <li><span class="lsr-check" aria-hidden="true">✓</span>Krankenkassen anerkannt (EMR/ASCA)</li>
         <li><span class="lsr-check" aria-hidden="true">✓</span>{adresse}</li>
-        <li><span class="lsr-check" aria-hidden="true">✓</span>Kurzfristige Termine verfügbar</li>
+        <li><span class="lsr-check" aria-hidden="true">✓</span>{data.slug === "basel" ? "Termine auf Anfrage" : "Kurzfristige Termine verfügbar"}</li>
       </ul>
     </div>
     <HeroMedia />
